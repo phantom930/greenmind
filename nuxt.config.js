@@ -1,5 +1,7 @@
 import webpack from 'webpack';
 import theme from './themeConfig';
+import { getRoutes } from './routes';
+
 const isDev = process.env.NODE_ENV !== 'production';
 
 export default {
@@ -46,7 +48,11 @@ export default {
     ]
   },
   router: {
-    middleware: ['checkout']
+    extendRoutes(routes) {
+      getRoutes(`${__dirname}`)
+        .forEach((route) => routes.unshift(route));
+    },
+    middleware: ['checkout'],
   },
   pwa: {
     manifest: {

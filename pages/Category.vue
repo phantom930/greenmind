@@ -30,12 +30,12 @@
               class="navbar__filters-icon"
               data-cy="category-icon_"
             />
-            {{ $t('Filters') }}
+            {{ $t("Filters") }}
           </SfButton>
         </LazyHydrate>
 
         <div class="navbar__sort desktop-only">
-          <span class="navbar__label">{{ $t('Sort by') }}:</span>
+          <span class="navbar__label">{{ $t("Sort by") }}:</span>
           <LazyHydrate on-interaction>
             <SfSelect
               :value="sortBy.selected"
@@ -57,16 +57,16 @@
 
         <div class="navbar__counter">
           <span class="navbar__label desktop-only"
-            >{{ $t('Products found') }}:
+            >{{ $t("Products found") }}:
           </span>
           <span class="desktop-only">{{ pagination.totalItems }}</span>
           <span class="navbar__label smartphone-only"
-            >{{ pagination.totalItems }} {{ $t('Items') }}</span
+            >{{ pagination.totalItems }} {{ $t("Items") }}</span
           >
         </div>
 
         <div class="navbar__view">
-          <span class="navbar__view-label desktop-only">{{ $t('View') }}</span>
+          <span class="navbar__view-label desktop-only">{{ $t("View") }}</span>
           <SfIcon
             data-cy="category-icon_grid-view"
             class="navbar__view-icon"
@@ -234,7 +234,7 @@
                   style="margin: 0 0 1rem auto; display: block"
                   @click="() => {}"
                 >
-                  {{ $t('Save for later') }}
+                  {{ $t("Save for later") }}
                 </SfButton>
               </template>
             </SfProductCardHorizontal>
@@ -257,7 +257,7 @@
             class="products__show-on-page"
           >
             <span class="products__show-on-page__label">{{
-              $t('Show on page')
+              $t("Show on page")
             }}</span>
             <LazyHydrate on-interaction>
               <SfSelect
@@ -285,13 +285,13 @@
             loading="lazy"
           />
           <p class="before-results__paragraph">
-            {{ $t('Sorry, we didnt find what youre looking for') }}
+            {{ $t("Sorry, we didnt find what youre looking for") }}
           </p>
           <SfButton
             class="before-results__button color-secondary smartphone-only"
             @click="$emit('close')"
           >
-            {{ $t('Go back') }}
+            {{ $t("Go back") }}
           </SfButton>
         </div>
       </SfLoader>
@@ -365,12 +365,12 @@
         <template #content-bottom>
           <div class="filters__buttons">
             <SfButton class="sf-button--full-width" @click="applyFilters">{{
-              $t('Done')
+              $t("Done")
             }}</SfButton>
             <SfButton
               class="sf-button--full-width filters__button-clear"
               @click="clearFilters"
-              >{{ $t('Clear all') }}</SfButton
+              >{{ $t("Clear all") }}</SfButton
             >
           </div>
         </template>
@@ -397,24 +397,24 @@ import {
   SfLoader,
   SfColor,
   SfProperty,
-  SfImage
-} from '@storefront-ui/vue';
-import { ref, computed, onMounted } from '@vue/composition-api';
+  SfImage,
+} from "@storefront-ui/vue";
+import { ref, computed, onMounted } from "@vue/composition-api";
 import {
   useCart,
   useWishlist,
   productGetters,
   useFacet,
-  facetGetters
-} from '@vue-storefront/odoo';
-import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import { useUiHelpers, useUiState } from '~/composables';
-import { onSSR } from '@vue-storefront/core';
-import LazyHydrate from 'vue-lazy-hydration';
+  facetGetters,
+} from "@vue-storefront/odoo";
+import { useCache, CacheTagPrefix } from "@vue-storefront/cache";
+import { useUiHelpers, useUiState } from "~/composables";
+import { onSSR } from "@vue-storefront/core";
+import LazyHydrate from "vue-lazy-hydration";
 
 export default {
-  name: 'Category',
-  transition: 'fade',
+  name: "Category",
+  transition: "fade",
   setup(props, { root }) {
     const th = useUiHelpers();
     const selectedFilters = ref([]);
@@ -425,7 +425,7 @@ export default {
     const {
       addItem: addItemToWishlist,
       removeItem: removeItemFromWishList,
-      isInWishlist
+      isInWishlist,
     } = useWishlist();
     const { result, search, loading } = useFacet();
     const { params, query } = root.$router.history.current;
@@ -435,10 +435,10 @@ export default {
       facetGetters.getCategoryTree(result.value)
     );
     const sortBy = computed(() =>
-      facetGetters.getSortOptions({ input: { sort: query?.sort } } || '')
+      facetGetters.getSortOptions({ input: { sort: query?.sort } } || "")
     );
     const facets = computed(() =>
-      facetGetters.getGrouped(result.value, ['color', 'size'])
+      facetGetters.getGrouped(result.value, ["color", "size"])
     );
     const pagination = computed(() => facetGetters.getPagination(result.value));
     const showProducts = computed(
@@ -454,7 +454,7 @@ export default {
       const name =
         currentCategory.value?.parent?.name ||
         categoryTree.value?.items[0]?.label ||
-        '';
+        "";
       return name;
     });
 
@@ -473,14 +473,14 @@ export default {
       facetGetters.getBreadcrumbs({
         input: {
           params,
-          currentRootCategory: currentRootCategory.value
-        }
+          currentRootCategory: currentRootCategory.value,
+        },
       })
     );
 
     onSSR(async () => {
       const params = {
-        ...th.getFacetsFromURL()
+        ...th.getFacetsFromURL(),
       };
 
       await search(params);
@@ -488,8 +488,8 @@ export default {
       addTags([
         {
           prefix: CacheTagPrefix.Category,
-          value: currentRootCategory.value.id || params.slug_2
-        }
+          value: currentRootCategory.value.id || params.slug_2,
+        },
       ]);
     });
 
@@ -515,7 +515,7 @@ export default {
         selectedFilters.value.push({
           filterName: facet.label,
           label: option.label,
-          id: option.value
+          id: option.value,
         });
 
         return;
@@ -564,7 +564,7 @@ export default {
       clearFilters,
       facetHasMoreThanOneOption,
       showProducts,
-      currentCategoryNameForAccordion
+      currentCategoryNameForAccordion,
     };
   },
   components: {
@@ -585,8 +585,8 @@ export default {
     SfHeading,
     SfProperty,
     LazyHydrate,
-    SfImage
-  }
+    SfImage,
+  },
 };
 </script>
 
