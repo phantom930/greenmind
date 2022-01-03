@@ -83,7 +83,6 @@ export default {
           }
         },
         // @core-development-only-start
-        coreDevelopment: true,
         // @core-development-only-end
         useRawSource: {
           dev: ['@vue-storefront/odoo', '@vue-storefront/core'],
@@ -95,12 +94,7 @@ export default {
     [
       '@vue-storefront/nuxt-theme',
       {
-        generate: {
-          replace: {
-            apiClient: '@vue-storefront/odoo-api',
-            composables: '@vue-storefront/odoo'
-          }
-        }
+        routes: false
       }
     ],
     // @core-development-only-end
