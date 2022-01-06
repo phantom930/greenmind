@@ -5,10 +5,6 @@ import { getRoutes } from './routes';
 const isDev = process.env.NODE_ENV !== 'production';
 
 export default {
-  server: {
-    port: 3000,
-    host: '0.0.0.0'
-  },
   css: ['@/assets/styles.scss'],
   head: {
     title: 'Vue Storefront',
