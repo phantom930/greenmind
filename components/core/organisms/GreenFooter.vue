@@ -1,0 +1,254 @@
+<template>
+    <SfFooter
+    :column="4" multiple
+    class="footer"
+    >
+    <SfFooterColumn :title="$t('PRODUKTER')">
+        <SfList>
+            <SfListItem
+                v-for="item in produkter"
+                :key="item"
+            >
+            <SfMenuItem
+                :label="$t(item)"
+            />
+            </SfListItem>
+        </SfList>
+    </SfFooterColumn>
+    <SfFooterColumn :title="$t('OM OS')">
+        <SfList>
+            <SfListItem
+                v-for="item in OmOs"
+                :key="item"
+            >
+            <SfMenuItem
+                :label="$t(item)"
+            />
+            </SfListItem>
+        </SfList>
+    </SfFooterColumn>
+    <SfFooterColumn :title="$t('HJÆLP')">
+        <SfList>
+            <SfListItem
+                v-for="item in hjaelp"
+                :key="item"
+            >
+            <SfMenuItem
+                :label="$t(item)"
+            />
+            </SfListItem>
+        </SfList>
+    </SfFooterColumn>
+    <SfFooterColumn :title="$t('BUTIKKER')">
+        <SfList>
+            <SfListItem
+                v-for="item in butikker"
+                :key="item"
+            >
+            <SfMenuItem
+                :label="$t(item)"
+            />
+            </SfListItem>
+        </SfList>
+        <SfFooterColumn :title="$t('KONTAKT')">
+        <SfList>
+            <SfListItem
+                v-for="item in kontakt"
+                :key="item"
+            >
+            <SfMenuItem
+                :label="$t(item)"
+            />
+            </SfListItem>
+        </SfList>
+    </SfFooterColumn>
+    </SfFooterColumn>
+    <SfFooterColumn title="Social" class="bottom-columns-social">
+      <div class="footer__socials">
+        <SfImage 
+            class="footer__social-image"
+            v-for="item in social"
+            :key="item"
+            :src="require('/assets/images/icons/'+item+'.svg')"
+            :alt="item"
+            width="32"
+            height="32"
+        >
+        </SfImage>
+      </div>
+    </SfFooterColumn>
+    <SfFooterColumn class="bottom-columns-emarket">
+        <SfImage 
+            class="footer__social-image"
+            :src="require('/assets/images/footer/emarket.svg')"
+            alt="emarket"
+            width="58"
+            height="58"
+        >
+        </SfImage>
+        <SfImage 
+            class="footer__social-image"
+            :src="require('/assets/images/footer/emarket.svg')"
+            alt="emarket"
+            width="58"
+            height="58"
+        >
+        </SfImage>
+        <SfImage 
+            class="footer__social-image"
+            :src="require('/assets/images/footer/emarket.svg')"
+            alt="emarket"
+            width="58"
+            height="58"
+        >
+        </SfImage>
+    </SfFooterColumn>
+    <SfFooterColumn>
+    </SfFooterColumn>
+    <SfFooterColumn class="bottom-columns-email">
+        <GreenEmailForm 
+        :inputPlaceholder="$t('Type your email')"
+        type="email"
+        :buttonPlaceholder="$t('SUBSCRIBE')"
+        />
+    </SfFooterColumn>
+    <!-- Column with icons missing here -->
+
+    </SfFooter>
+</template>
+
+<script>
+import { SfFooter, SfList, SfMenuItem, SfInput, SfButton, SfImage, SfLink } from '@storefront-ui/vue'
+
+export default {
+    components: {
+        SfFooter,
+        SfList,
+        SfMenuItem,
+        SfInput,
+        SfButton,
+        SfImage,
+        SfLink
+    },
+    data() {
+        return {
+            produkter: [
+                this.$i18n.t('iPhones'),
+                this.$i18n.t('Smartphones'),
+                this.$i18n.t('Tablets'),
+                this.$i18n.t('Computere'),
+                this.$i18n.t('Tilbehør'),
+                this.$i18n.t('Andre produkter')
+                ],
+            OmOs: [
+                this.$i18n.t('Hvorfor vælge Greenmind?'),
+                this.$i18n.t('Sådan sæelger du?'),
+                this.$i18n.t('Sådan køber du?'),
+                this.$i18n.t('Reparation'),
+                this.$i18n.t('Blog')
+            ],
+            hjaelp: [
+                this.$i18n.t('Kundeservice'),
+                this.$i18n.t('Fragt og retur'),
+                this.$i18n.t('Handelsbetingelser'),
+                this.$i18n.t('GDPR'),
+                this.$i18n.t('Cookies'),
+                this.$i18n.t('FAQ')
+            ],
+            butikker: [
+                this.$i18n.t('Find butik')
+            ],
+            kontakt: [
+                this.$i18n.t('Tlf: 78756535'),
+                this.$i18n.t('email: hans@greenmind.dk')
+            ],
+            social: [
+                'facebook',
+                'pinterest',
+                'google',
+                'twitter',
+                'youtube'
+            ]
+        }
+    }
+}
+</script>
+
+<style lang="scss">
+
+.footer {
+  margin-bottom: 3.75rem;
+  background-color: #32463D;
+  @include for-desktop {
+    margin-bottom: 0;
+  }
+  &__socials {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto var(--spacer-lg);
+    padding: var(--spacer-base) var(--spacer-xl);
+    @include for-desktop {
+      justify-content: flex-start;
+      padding: var(--spacer-xs) 0;
+      margin: 0 auto;
+    }
+  }
+  &__social-image {
+    margin: 0 var(--spacer-2xs) 0 0;
+  }
+}
+.sf-footer {
+  @include for-desktop {
+    border-top: none;
+    padding-bottom: 0;
+    margin-top: var(--spacer-2xl);
+  }
+  &__container {
+    margin: var(--spacer-sm);
+    @include for-desktop {
+      max-width: 69rem;
+      margin: 0 auto;
+    }
+  };
+}
+.sf-footer-column{
+    background-color: #32463D;
+    width: 275px;
+}
+.sf-footer-column__title{
+    background-color: #32463D;
+}
+.bottom-columns-email {
+  transform: translate(-135px, -80px);
+}
+.bottom-columns-email .sf-button {
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+.bottom-columns-social {
+  transform: translate(-0px, -80px);
+}
+.bottom-columns-emarket {
+  transform: translate(-0px, -75px);
+}
+.sf-footer-column__title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    
+}
+.sf-menu-item {
+    font-family: 'Josefin Sans', sans-serif;;
+    font-size: 18px;
+    font-weight: 400;
+}
+.sf-input--outline input {
+    font-family: 'Josefin Sans', sans-serif;;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+}
+</style>

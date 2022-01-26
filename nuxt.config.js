@@ -6,6 +6,11 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 export default {
   css: ['@/assets/styles.scss'],
+  components: [
+    '~/components/core/atoms',
+    '~/components/core/organisms',
+    '~/components/core/molecules'
+  ],
   head: {
     title: 'Vue Storefront',
     meta: [
@@ -31,13 +36,13 @@ export default {
       {
         rel: 'preload',
         href:
-          'https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,600,700|Roboto:300,300i,400,400i,500,700&display=swap',
+          'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
         as: 'style'
       },
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,600,700|Roboto:300,300i,400,400i,500,700&display=swap',
+          'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap',
         media: 'print',
         onload: 'this.media=\'all\''
       }
