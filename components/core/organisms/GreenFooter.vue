@@ -241,12 +241,12 @@ export default {
     
 }
 .sf-menu-item {
-    font-family: 'Josefin Sans', sans-serif;;
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
 }
 .sf-input--outline input {
-    font-family: 'Josefin Sans', sans-serif;;
+    font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 24px;
