@@ -21,7 +21,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .btn_primary__pine{
     border-radius: 40px;
     width: 168px;
@@ -43,5 +43,5 @@ export default {
     --button-transition: background 0s ;
     --button-text-decoration: underline;
   background-size: 100%;
-  }
+}
 </style>

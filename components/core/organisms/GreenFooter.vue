@@ -174,7 +174,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .footer {
   margin-bottom: 3.75rem;
@@ -197,7 +197,7 @@ export default {
     margin: 0 var(--spacer-2xs) 0 0;
   }
 }
-.sf-footer {
+::v-deep .sf-footer {
   @include for-desktop {
     border-top: none;
     padding-bottom: 0;
@@ -211,15 +211,15 @@ export default {
     }
   };
 }
-.sf-footer-column{
+::v-deep .sf-footer-column{
     background-color: #32463D;
     width: 275px;
 }
-.sf-footer-column__title{
+::v-deep .sf-footer-column__title{
     background-color: #32463D;
 }
 .bottom-columns-email {
-  transform: translate(-135px, -80px);
+  transform: translate(-125px, -80px);
 }
 .bottom-columns-email .sf-button {
   text-decoration: none;
@@ -234,18 +234,18 @@ export default {
 .bottom-columns-emarket {
   transform: translate(-0px, -75px);
 }
-.sf-footer-column__title {
+::v-deep .sf-footer-column__title {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
     
 }
-.sf-menu-item {
+::v-deep .sf-menu-item {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
     font-weight: 400;
 }
-.sf-input--outline input {
+::v-deep .sf-input--outline input {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;

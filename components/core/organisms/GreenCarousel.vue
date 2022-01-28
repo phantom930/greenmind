@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .carousel-item {
     display: flex;
     flex-direction: column;
@@ -149,27 +149,24 @@ padding-top:15px
     font-size: 26px;
     font-weight: 500;
 }
-.sf-carousel__wrapper {
+::v-deep .sf-carousel__wrapper {
     height: 525px;
 }
-.glide__track {
+::v-deep .glide__track {
     transform: scale(0.98,1);
 }
-.sf-carousel__controls {
+::v-deep .sf-carousel__controls {
     width: 90%;
     transform: translate(5%, -100%);
 }
-.sf-button {
+::v-deep .sf-button {
     border-radius: 40px;
     background-color: #F1F2F3;
 }
-.sf-button:hover {
+::v-deep .sf-button:hover {
     background-color: #7BA393;
 }
-.sf-button:active {
+::v-deep .sf-button:active {
     background-color: #43464E;
-}
-.sf-button__disabled {
-    background-color: #F1F2F3;
 }
 </style>

@@ -2,13 +2,20 @@
   <div>
     <h2>Comming soon</h2>
     <!-- <GreenFooter /> -->
+    <!-- <GreenEmailForm /> -->
     <!-- <GreenPrimaryButton :buttonPlaceholder="$t('SE FLERE')"/> -->
-    <GreenCarousel
+    <!-- <GreenCarousel
     :item="item"
     :feature1="storage"
     :feature2="color"
     :price="price"
     :currency="currency"
+    /> -->
+    <GreenBannerVertical
+    banner_title="Stand"
+    banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+    banner_button="SE MERE"
+    banner_image="banner_1"
     />
     <br>
     <br>

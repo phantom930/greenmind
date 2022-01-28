@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sf-div--email {
     display: flex;
     height: 32px;
@@ -57,5 +57,17 @@ export default {
     width: 116px;
     transform: translate(-95%) scale(0.8, 0.8);
     --button-background: #7BA393
+}
+.sf-button--email:hover{
+    --button-background: #78A886;
+    --button-box-shadow-opacity: 0.25;
+    --button-background: #78A886 radial-gradient(circle, transparent 1%, #32463D 1%) center/15000%;
+}
+.sf-button--email:active {
+    --button-box-shadow: none;
+    --button-background: #32463D radial-gradient(circle, transparent 40%, #78A886 1%) center/15000%;
+    --button-transition: background 0s ;
+    --button-text-decoration: none;
+  background-size: 100%;
 }
 </style>
