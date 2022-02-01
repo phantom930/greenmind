@@ -24,13 +24,12 @@ export default {
 <style lang="scss" scoped>
 .btn_primary__pine{
     border-radius: 40px;
-    width: 168px;
-    height: 50px;
     --button-background: #32463D;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
+    padding: 18px 52px;
 }
 .btn_primary__pine:hover{
     --button-background: #78A886;
