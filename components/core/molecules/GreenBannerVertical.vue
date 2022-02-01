@@ -54,8 +54,6 @@ export default {
 }
 ::v-deep .sf-button{
     border-radius: 40px;
-    width: 168px;
-    height: 50px;
     --button-background: #32463D;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
@@ -64,6 +62,7 @@ export default {
     margin-left: auto;
     margin-right: auto;
     margin-top: 64%;
+    padding: 18px 52px;
 }
 ::v-deep .sf-button:hover{
     --button-background: #78A886;
