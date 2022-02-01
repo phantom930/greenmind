@@ -19,7 +19,7 @@
       <Notification />
     </div>
     <LazyHydrate when-visible>
-      <AppFooter />
+      <GreenFooter />
     </LazyHydrate>
   </div>
 </template>
