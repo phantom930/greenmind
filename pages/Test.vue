@@ -32,11 +32,12 @@
 </template>
 
 <script>
-import { SfBreadcrumbs, SfButton } from '@storefront-ui/vue'
+import { SfBreadcrumbs, SfButton, SfCheckbox } from '@storefront-ui/vue'
 export default {
   components: {
     SfBreadcrumbs,
-    SfButton
+    SfButton,
+    SfCheckbox
   },
   data() {
     return {
