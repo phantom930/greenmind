@@ -1,19 +1,39 @@
 <template>
   <div id="category">
+    <SfBreadcrumbs
+      class="breadcrumbs desktop-only"
+      :breadcrumbs="breadcrumbs"
+    />
     <div class="navbar section">
       <div class="navbar__aside desktop-only">
-        <SfBreadcrumbs
-          class="breadcrumbs desktop-only"
-          :breadcrumbs="breadcrumbs"
-        />
+        <LazyHydrate never>
+          <SfHeading
+            :level="3"
+            :title="$t('Categories')"
+            class="navbar__title"
+          />
+        </LazyHydrate>
       </div>
 
       <div class="navbar__main">
-        <div class="navbar__title desktop-only">
-          <SfHeading
-                :title="$t('iPhones')"
+        <LazyHydrate on-interaction>
+          <SfButton
+            class="sf-button--text navbar__filters-button"
+            data-cy="category-btn_filters"
+            aria-label="Filters"
+            @click="toggleFilterSidebar"
+          >
+            <SfIcon
+              size="24px"
+              color="dark-secondary"
+              icon="filter2"
+              class="navbar__filters-icon"
+              data-cy="category-icon_"
             />
-        </div>
+            {{ $t("Filters") }}
+          </SfButton>
+        </LazyHydrate>
+
         <div class="navbar__sort desktop-only">
           <span class="navbar__label">{{ $t("Sort by") }}:</span>
           <LazyHydrate on-interaction>
@@ -33,6 +53,42 @@
               >
             </SfSelect>
           </LazyHydrate>
+        </div>
+
+        <div class="navbar__counter">
+          <span class="navbar__label desktop-only"
+            >{{ $t("Products found") }}:
+          </span>
+          <span class="desktop-only">{{ pagination.totalItems }}</span>
+          <span class="navbar__label smartphone-only"
+            >{{ pagination.totalItems }} {{ $t("Items") }}</span
+          >
+        </div>
+
+        <div class="navbar__view">
+          <span class="navbar__view-label desktop-only">{{ $t("View") }}</span>
+          <SfIcon
+            data-cy="category-icon_grid-view"
+            class="navbar__view-icon"
+            :color="isCategoryGridView ? 'green' : 'dark-secondary'"
+            icon="tiles"
+            size="14px"
+            role="button"
+            aria-label="Change to grid view"
+            :aria-pressed="isCategoryGridView"
+            @click="changeToCategoryGridView"
+          />
+          <SfIcon
+            data-cy="category-icon_list-view"
+            class="navbar__view-icon"
+            :color="!isCategoryGridView ? 'green' : 'dark-secondary'"
+            icon="list"
+            size="14px"
+            role="button"
+            aria-label="Change to list view"
+            :aria-pressed="!isCategoryGridView"
+            @click="changeToCategoryListView"
+          />
         </div>
       </div>
     </div>
@@ -103,9 +159,11 @@
                 productGetters.getPrice(product).special &&
                 $n(productGetters.getPrice(product).special, 'currency')
               "
-              score-rating= false
-              wishlistIcon = false
-              :show-add-to-cart-button="false"
+              :max-rating="5"
+              :score-rating="productGetters.getAverageRating(product)"
+              :show-add-to-cart-button="true"
+              :isInWishlist="isInWishlist({ product })"
+              :isAddedToCart="isInCart({ product })"
               :link="
                 localePath(
                   `/p/${productGetters.getId(product)}/${productGetters.getSlug(
@@ -114,6 +172,12 @@
                 )
               "
               class="products__product-card"
+              @click:wishlist="
+                isInWishlist({ product })
+                  ? removeItemFromWishList({ product: { product } })
+                  : addItemToWishlist({ product })
+              "
+              @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
             />
           </transition-group>
           <transition-group
@@ -527,12 +591,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-:root {
-  --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7ba393);
-  @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary);
-}
 #category {
   box-sizing: border-box;
   @include for-desktop {
@@ -544,18 +602,13 @@ export default {
   &.section {
     padding: var(--spacer-xs);
     @include for-desktop {
-      padding: 0 0 15px 0;
+      padding: 0;
     }
   }
 }
-::v-deep .breadcrumbs {
-  --breadcrumbs-font: var(--font-family--primary);
-  margin-top: auto;
-}
-::v-deep .sf-heading__title{
-  --heading-title-font: var(--font-family--primary);
-  --heading-title-font-weight: 700;
-  --heading-title-font-size: 34px;
+.breadcrumbs {
+  margin: var(--spacer-base) auto var(--spacer-lg);
+  text-transform: capitalize;
 }
 .navbar {
   position: relative;
@@ -563,7 +616,7 @@ export default {
   border: 1px solid var(--c-light);
   border-width: 0 0 1px 0;
   @include for-desktop {
-    border-width: 0px 0 1px 0;
+    border-width: 1px 0 1px 0;
   }
   &.section {
     padding: var(--spacer-sm);
@@ -578,7 +631,10 @@ export default {
     padding: var(--spacer-sm) 0;
   }
   &__aside {
+    flex: 0 0 15%;
     padding: var(--spacer-sm) var(--spacer-sm);
+    border: 1px solid var(--c-light);
+    border-width: 0 1px 0 0;
   }
   &__main {
     flex: 1;
@@ -589,16 +645,44 @@ export default {
     }
   }
   &__title {
+    --heading-title-font-weight: var(--font-weight--semibold);
+    --heading-title-font-size: var(--font-size--xl);
+  }
+  &__filters-icon {
+    margin: 0 0 0 var(--spacer-xs);
+    order: 1;
+    @include for-desktop {
+      margin: 0 var(--spacer-xs) 0 0;
+      order: 0;
+    }
+  }
+  &__filters-button {
     display: flex;
     align-items: center;
-    margin: 0 auto 0 auto;
+    --button-font-size: var(--font-size--base);
+    --button-text-decoration: none;
+    --button-color: var(--c-link);
+    --button-font-weight: var(--font-weight--normal);
+    @include for-mobile {
+      --button-font-weight: var(--font-weight--medium);
+      order: 2;
+    }
+    svg {
+      fill: var(--c-text-muted);
+      transition: fill 150ms ease;
+    }
+    &:hover {
+      svg {
+        fill: var(--c-primary);
+      }
+    }
   }
   &__label {
-    font-family: var(--font-family--primary);
-    font-weight: 400;
-    color: #72757E;
+    font-family: var(--font-family--secondary);
+    font-weight: var(--font-weight--normal);
+    color: var(--c-text-muted);
     @include for-desktop {
-      color: #72757E;
+      color: var(--c-link);
       margin: 0 var(--spacer-2xs) 0 0;
     }
   }
@@ -611,20 +695,19 @@ export default {
     --select-option-font-size: var(--font-size-sm);
     --select-error-message-height: 0;
     ::v-deep .sf-select__dropdown {
-      font-size: 16px;
-      font-family: var(--font-family--primary);
-      font-weight: 400;
-      color: #1D1F22;
+      font-size: var(--font-size-sm);
+      font-family: var(--font-family--secondary);
+      font-weight: var(--font-weight--light);
       margin: 0;
     }
     ::v-deep .sf-select__placeholder {
-      --select-option-font-size: 16px;
+      --select-option-font-size: var(--font-size-sm);
     }
   }
   &__sort {
     display: flex;
     align-items: center;
-    margin: 0 0 0 var(--spacer-2xl);
+    margin: 0 auto 0 var(--spacer-2xl);
   }
   &__counter {
     font-family: var(--font-family--secondary);
@@ -666,7 +749,7 @@ export default {
   display: flex;
 }
 .sidebar {
-  flex: 0 0 18%;
+  flex: 0 0 15%;
   padding: var(--spacer-sm);
   border: 1px solid var(--c-light);
   border-width: 0 1px 0 0;
@@ -856,44 +939,5 @@ export default {
     margin: var(--spacer-xl) auto;
     width: 100%;
   }
-}
-::v-deep .sf-accordion-item__content {
-    list-style: none;
-    padding: 0px 0px;
-    font-size: 20px;
-    font-weight: 500;
-}
-::v-deep .sf-range {
-    margin: 20px 0px 35px 15px;
-    width: 85%;
-}
-::v-deep .sf-range .noUi-tooltip {
-    bottom: -200%;
-}
-::v-deep .sf-range .noUi-handle {
-    width: 16px;
-    height: 16px;
-    transform: translate3d(-5px, 5%, 0);
-}
-::v-deep .sf-range .noUi-touch-area {
-    background-color: var(--c-primary);
-}
-::v-deep .sf-color-picker {
-    position: relative;
-    width: 115%;
-    margin: 0px 0px 0px -37px;
-}
-::v-deep .range-label {
-    font-family: 'Josefin Sans', sans-serif;
-    line-height: 24px;
-    font-size: 20px;
-    font-weight: 500;
-}
-::v-deep .main_title {
-    font-family: 'Josefin Sans', sans-serif;
-    line-height: 24px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-bottom: 20%;
 }
 </style>
