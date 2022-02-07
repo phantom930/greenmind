@@ -4,7 +4,7 @@
     :title= banner_title
     :description= banner_description
     :buttonText= banner_button
-    background="#CABDBD"
+    :background= background
     :image="require('/assets/images/banner/'+banner_image+'.svg')"
 />
 </div>
@@ -31,6 +31,10 @@ export default {
             default: ''
         },
         banner_image: {
+            type: String,
+            default: ''
+        },
+        background: {
             type: String,
             default: ''
         }

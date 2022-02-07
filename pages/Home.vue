@@ -4,18 +4,36 @@
     <!-- <GreenFooter /> -->
     <!-- <GreenEmailForm /> -->
     <!-- <GreenPrimaryButton :buttonPlaceholder="$t('SE FLERE')"/> -->
+    <div style="display: flex">
+      <GreenBannerVertical
+      banner_title="Stand"
+      banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+      banner_button="SE MERE"
+      background= "#CABDBD"
+      banner_image="banner_1"
+      />
+      <GreenBannerVertical
+      banner_title="Stand"
+      banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+      banner_button="SE MERE"
+      banner_image="banner_2"
+      background= "#D6D4D4"
+      style="padding: 0 32px;"
+      />
+      <GreenBannerVertical
+      banner_title="Stand"
+      banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+      banner_button="SE MERE"
+      banner_image="banner_3"
+      background= "#E0D6C9"
+      />
+    </div>
     <GreenCarousel
     :item="item"
     :feature1="storage"
     :feature2="color"
     :price="price"
     :currency="currency"
-    />
-    <GreenBannerVertical
-    banner_title="Stand"
-    banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
-    banner_button="SE MERE"
-    banner_image="banner_1"
     />
     <!-- <SfBreadcrumbs 
     :breadcrumbs= breadcrumb
