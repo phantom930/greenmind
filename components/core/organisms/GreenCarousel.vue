@@ -1,4 +1,9 @@
 <template>
+<div>
+  <SfHeading
+  :title="carousel_title"
+  level=2
+  />
   <SfCarousel
   :style="{maxWidth: '1312px', margin: 'auto'}"
   :settings="{type: 'carousel',
@@ -59,15 +64,17 @@
     </div>
     </SfCarouselItem>
   </SfCarousel>
+</div>
 </template>
 
 <script>
-import { SfCarousel, SfCarouselItem, SfImage } from '@storefront-ui/vue'
+import { SfCarousel, SfCarouselItem, SfImage, SfHeading } from '@storefront-ui/vue'
 export default {
     components: {
         SfCarousel,
         SfCarouselItem,
-        SfImage
+        SfImage,
+        SfHeading
     },
     props: {
         item: {
@@ -89,12 +96,26 @@ export default {
         currency: {
             type: String,
             default: ''
+        },
+        carousel_title: {
+            type: String,
+            default: ''
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+::v-deep .sf-heading{
+    padding: 3% 0;
+    background-color: #F3F3F3;
+}
+::v-deep .sf-heading__title {
+      font: var(--font-family--primary);
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 35px;
+}
 .carousel-item {
     display: flex;
     flex-direction: column;
@@ -107,7 +128,8 @@ export default {
     font-size: 2.5rem;
 }
 .carousel-item:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 10px -2px rgba(11, 12, 13, 0.1);
+    cursor: pointer;
 }
 .carousel-image {
     transform: translate(25px, -10px);
@@ -154,6 +176,8 @@ padding-top:15px
 }
 ::v-deep .glide__track {
     transform: scale(0.98,1);
+    padding-top: 10px;
+
 }
 ::v-deep .sf-carousel__controls {
     width: 90%;
@@ -168,5 +192,8 @@ padding-top:15px
 }
 ::v-deep .sf-button:active {
     background-color: #43464E;
+}
+::v-deep .sf-carousel{
+    background-color: #F3F3F3;
 }
 </style>

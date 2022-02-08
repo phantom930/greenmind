@@ -56,6 +56,7 @@
     :feature2="color"
     :price="price"
     :currency="currency"
+    :carousel_title="$t('Populære produkter')"
     />
     <!-- <SfBreadcrumbs 
     :breadcrumbs= breadcrumb
