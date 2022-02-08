@@ -49,7 +49,7 @@
       banner_button="SE MERE"
       banner_image="banner_2"
       background= "#D6D4D4"
-      style="padding: 0 32px;"
+      style="padding: 0 41px;"
       />
       <GreenBannerVertical
       banner_title="Stand"
