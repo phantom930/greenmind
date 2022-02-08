@@ -26,6 +26,15 @@
       style="background-size: auto; background-position-y: center;"
       />
     </SfHero>
+     <SfBanner
+      title=""
+      subtitle=""
+      description=""
+      buttonText=""
+      background=""
+      :image="require('/assets/images/homeUspBanner/banner_1.svg')"
+      style="background-size: auto; background-position-y: center; margin-top: -10%;"
+    />
     <div style="display: flex">
       <GreenBannerVertical
       banner_title="Stand"
@@ -68,12 +77,13 @@
 </template>
 
 <script>
-import { SfBreadcrumbs, SfButton, SfHero } from '@storefront-ui/vue'
+import { SfBreadcrumbs, SfButton, SfHero, SfBanner } from '@storefront-ui/vue'
 export default {
   components: {
     SfBreadcrumbs,
     SfButton,
-    SfHero
+    SfHero,
+    SfBanner
   },
   data() {
     return {
