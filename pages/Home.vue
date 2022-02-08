@@ -195,4 +195,7 @@ export default {
 ::v-deep .bottom_hero .sf-button {
   transform: translate(550%, -20px);
 }
+::v-deep .bottom_hero .sf-hero {
+  height: 250px;
+}
 </style>
