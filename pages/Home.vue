@@ -66,13 +66,20 @@
     :price="price"
     :currency="currency"
     :carousel_title="$t('Populære produkter')"
+    style="padding-top: 5%;"
     />
-    <!-- <SfBreadcrumbs 
-    :breadcrumbs= breadcrumb
-    /> -->
-    <br>
-    <br>
-    <br>
+    <div class="bottom_hero">
+      <SfHero>
+        <SfHeroItem
+          title="Subscribe to Newsletters"
+          subtitle="Be aware of upcoming sales and events. Receive gifts and special offers!"
+          buttonText="SE MERE"
+          background="none"
+          :image="require('/assets/images/homeHero/homeHero_2.svg')"
+          style="background-size: auto; background-position-y: center; margin-top: -15%;"
+        />
+      </SfHero>
+    </div>
   </div>
 </template>
 
@@ -136,7 +143,8 @@ export default {
 }
 ::v-deep .sf-hero-item__button .sf-button {
     border-radius: 40px;
-    --button-background: #32463D;
+    --button-background: #F1F2F3;
+    --button-color: #72757E;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -145,13 +153,13 @@ export default {
     transform: translate(0%, -50%);
 }
 ::v-deep .sf-hero-item__button .sf-button:hover{
-    --button-background: #78A886;
+    --button-background: #E0E0E1;
     --button-box-shadow-opacity: 0.25;
-    --button-background: #78A886 radial-gradient(circle, transparent 1%, #32463D 1%) center/15000%;
+    --button-background: #E0E0E1 radial-gradient(circle, transparent 1%, #E0E0E1 1%) center/15000%;
 }
 ::v-deep .sf-hero-item__button .sf-button:active {
     --button-box-shadow: none;
-    --button-background: #32463D radial-gradient(circle, transparent 40%, #78A886 1%) center/15000%;
+    --button-background: #F1F2F3 radial-gradient(circle, transparent 40%, #E0E0E1 1%) center/15000%;
     --button-transition: background 0s ;
     --button-text-decoration: underline;
   background-size: 100%;
@@ -168,5 +176,23 @@ export default {
 }
 ::v-deep .sf-hero__control--right {
   display: none;
+}
+::v-deep .bottom_hero .sf-hero-item__title{
+  transform: translate(70%, 100%);
+  line-height: 35px;
+  font-weight: 700;
+  font-size: 34px;
+}
+::v-deep .bottom_hero .sf-hero-item__subtitle{
+  transform: translate(86%, 256%);
+  font-family: var(--font-family--primary);
+  font-weight: 400;
+  line-height: 22px;
+  font-size: 18px;
+  color: #FFFFFF;
+  text-transform: none;
+}
+::v-deep .bottom_hero .sf-button {
+  transform: translate(550%, -20px);
 }
 </style>

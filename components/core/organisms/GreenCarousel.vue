@@ -172,7 +172,7 @@ padding-top:15px
     font-weight: 500;
 }
 ::v-deep .sf-carousel__wrapper {
-    height: 525px;
+    height: 650px;
 }
 ::v-deep .glide__track {
     transform: scale(0.98,1);

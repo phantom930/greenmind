@@ -71,11 +71,11 @@ export default {
 ::v-deep .sf-button:hover{
     --button-background: #78A886;
     --button-box-shadow-opacity: 0.25;
-    --button-background: #78A886 radial-gradient(circle, transparent 1%, #32463D 1%) center/15000%;
+    --button-background: #78A886 radial-gradient(circle, transparent 1%, #BAE8D6 1%) center/15000%;
 }
 ::v-deep .sf-button:active {
     --button-box-shadow: none;
-    --button-background: #32463D radial-gradient(circle, transparent 40%, #78A886 1%) center/15000%;
+    --button-background: #78A886 radial-gradient(circle, transparent 40%, #BAE8D6 1%) center/15000%;
     --button-transition: background 0s ;
     --button-text-decoration: underline;
     background-size: 100%;
