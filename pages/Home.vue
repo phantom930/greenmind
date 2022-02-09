@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <GreenFooter /> -->
-    <!-- <GreenEmailForm /> -->
-    <!-- <GreenPrimaryButton :buttonPlaceholder="$t('SE FLERE')"/> -->
     <SfHero>
       <SfHeroItem
       title="Colorful summer dresses are already in store"
@@ -35,7 +32,36 @@
       :image="require('/assets/images/homeUspBanner/banner_1.svg')"
       style="background-size: auto; background-position-y: center; margin-top: -10%;"
     />
-    <div style="display: flex">
+    <div style="display: flex" class="category_card">
+      <SfCategoryCard
+        label="iPhones"
+        :background="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
+        style="background-repeat: no-repeat; background-position-x: center;"
+        link="#"
+      />
+      <div style="padding-right: 25px"/>
+      <SfCategoryCard
+        label="Smartphones"
+        :background="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
+        style="background-repeat: no-repeat; background-position-x: center;"
+        link="#"
+      />
+      <div style="padding-right: 25px"/>
+      <SfCategoryCard
+        label="Tablets"
+        :background="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
+        style="background-repeat: no-repeat; background-position-x: center;"
+        link="#"
+      />
+      <div style="padding-right: 25px"/>
+      <SfCategoryCard
+        label="Computere"
+        :background="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
+        style="background-repeat: no-repeat; background-position-x: center;"
+        link="#"
+      />
+    </div>
+    <div style="display: flex; padding-top: 5%;">
       <GreenBannerVertical
       banner_title="Stand"
       banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
@@ -84,13 +110,14 @@
 </template>
 
 <script>
-import { SfBreadcrumbs, SfButton, SfHero, SfBanner } from '@storefront-ui/vue'
+import { SfBreadcrumbs, SfButton, SfHero, SfBanner, SfCategoryCard } from '@storefront-ui/vue'
 export default {
   components: {
     SfBreadcrumbs,
     SfButton,
     SfHero,
-    SfBanner
+    SfBanner,
+    SfCategoryCard
   },
   data() {
     return {
@@ -197,5 +224,20 @@ export default {
 }
 ::v-deep .bottom_hero .sf-hero {
   height: 250px;
+}
+::v-deep .category_card .sf-category-card__label{
+  font: var(--font-family--primary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+}
+::v-deep .category_card .sf-category-card__details{
+  background:none;
+}
+::v-deep .category_card .sf-category-card{
+  height:270px;
 }
 </style>
