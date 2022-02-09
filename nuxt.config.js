@@ -63,7 +63,7 @@ export default {
     }
   },
   loading: { color: '#fff' },
-  plugins: [],
+  plugins: ['~/plugins/getImage.ts'],
   buildModules: [
     // to core
     '@nuxtjs/pwa',
@@ -105,6 +105,7 @@ export default {
     ['@vue-storefront/odoo/nuxt', {}]
   ],
   publicRuntimeConfig: {
+    baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://vsfdemo.labs.odoogap.com/',
     theme
   },
   modules: [
