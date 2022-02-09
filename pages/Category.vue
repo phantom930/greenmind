@@ -7,12 +7,9 @@
           :breadcrumbs="breadcrumbs"
         />
       </div>
-
       <div class="navbar__main">
         <div class="navbar__title desktop-only">
-          <SfHeading
-                :title="$t('iPhones')"
-            />
+          <SfHeading :title="$t('iPhones')" />
         </div>
         <div class="navbar__sort desktop-only">
           <span class="navbar__label">{{ $t("Sort by") }}:</span>
@@ -95,16 +92,17 @@
               :key="product.id"
               :style="{ '--index': i }"
               :title="productGetters.getName(product)"
-              :image="productGetters.getCoverImage(product)"
+              :image="$image(productGetters.getCoverImage(product))"
               :regular-price="
                 $n(productGetters.getPrice(product).regular, 'currency')
               "
               :special-price="
-                productGetters.getPrice(product).special && 'Fra ' + 
-                $n(productGetters.getPrice(product).special, 'currency')
+                productGetters.getPrice(product).special &&
+                'Fra ' +
+                  $n(productGetters.getPrice(product).special, 'currency')
               "
-              score-rating= false
-              wishlistIcon = false
+              score-rating="false"
+              wishlistIcon="false"
               :show-add-to-cart-button="false"
               :link="
                 localePath(
@@ -130,7 +128,7 @@
               :style="{ '--index': i }"
               :title="productGetters.getName(product)"
               :description="productGetters.getDescription(product)"
-              :image="productGetters.getCoverImage(product)"
+              :image="$image(productGetters.getCoverImage(product))"
               :regular-price="
                 $n(productGetters.getPrice(product).regular, 'currency')
               "
@@ -529,9 +527,9 @@ export default {
 <style lang="scss">
 :root {
   --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7BA393);
+  @include generate-color-variants(--_c-green-primary, #7ba393);
   @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary); 
+  @include assign-color-variants(--c-secondary, --_c-green-secondary);
 }
 </style>
 
@@ -555,7 +553,7 @@ export default {
   --breadcrumbs-font: var(--font-family--primary);
   margin-top: auto;
 }
-::v-deep .sf-heading__title{
+::v-deep .sf-heading__title {
   --heading-title-font: var(--font-family--primary);
   --heading-title-font-weight: 700;
   --heading-title-font-size: 34px;
@@ -599,9 +597,9 @@ export default {
   &__label {
     font-family: var(--font-family--primary);
     font-weight: 400;
-    color: #72757E;
+    color: #72757e;
     @include for-desktop {
-      color: #72757E;
+      color: #72757e;
       margin: 0 var(--spacer-2xs) 0 0;
     }
   }
@@ -617,7 +615,7 @@ export default {
       font-size: 16px;
       font-family: var(--font-family--primary);
       font-weight: 400;
-      color: #1D1F22;
+      color: #1d1f22;
       margin: 0;
     }
     ::v-deep .sf-select__placeholder {
@@ -861,66 +859,66 @@ export default {
   }
 }
 ::v-deep .sf-accordion-item__content {
-    list-style: none;
-    padding: 0px 0px;
-    font-size: 20px;
-    font-weight: 500;
+  list-style: none;
+  padding: 0px 0px;
+  font-size: 20px;
+  font-weight: 500;
 }
 ::v-deep .sf-range {
-    margin: 20px 0px 35px 15px;
-    width: 85%;
+  margin: 20px 0px 35px 15px;
+  width: 85%;
 }
 ::v-deep .sf-range .noUi-tooltip {
-    bottom: -200%;
+  bottom: -200%;
 }
 ::v-deep .sf-range .noUi-handle {
-    width: 16px;
-    height: 16px;
-    transform: translate3d(-5px, 5%, 0);
+  width: 16px;
+  height: 16px;
+  transform: translate3d(-5px, 5%, 0);
 }
 ::v-deep .sf-range .noUi-touch-area {
-    background-color: var(--c-primary);
+  background-color: var(--c-primary);
 }
 ::v-deep .sf-color-picker {
-    position: relative;
-    width: 115%;
-    margin: 0px 0px 0px -37px;
+  position: relative;
+  width: 115%;
+  margin: 0px 0px 0px -37px;
 }
 ::v-deep .range-label {
-    font-family: 'Josefin Sans', sans-serif;
-    line-height: 24px;
-    font-size: 20px;
-    font-weight: 500;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 24px;
+  font-size: 20px;
+  font-weight: 500;
 }
 ::v-deep .main_title {
-    font-family: 'Josefin Sans', sans-serif;
-    line-height: 24px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-bottom: 20%;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 24px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20%;
 }
-::v-deep .sf-product-card::after{
+::v-deep .sf-product-card::after {
   border-radius: 14px;
   cursor: pointer;
 }
-::v-deep .sf-product-card__title{
+::v-deep .sf-product-card__title {
   font: var(--font-family--primary);
   font-size: 26px;
   font-weight: 500;
   line-height: 24px;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-left: auto;
   margin-right: auto;
 }
-::v-deep .sf-price__old{
+::v-deep .sf-price__old {
   display: none;
 }
-::v-deep .sf-price__special{
+::v-deep .sf-price__special {
   font: var(--font-family--primary);
   font-size: 26px;
   font-weight: 500;
   line-height: 24px;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-left: auto;
   margin-right: auto;
 }

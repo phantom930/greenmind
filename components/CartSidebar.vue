@@ -22,14 +22,14 @@
                 data-cy="collected-product-cart-sidebar"
                 v-for="product in products"
                 :key="cartGetters.getItemSku(product)"
-                :image="cartGetters.getItemImage(product)"
+                :image="$image(cartGetters.getItemImage(product))"
                 :title="cartGetters.getItemName(product)"
                 :regular-price="
                   $n(cartGetters.getItemPrice(product).regular, 'currency')
                 "
                 :special-price="
                   cartGetters.getItemPrice(product).special &&
-                    $n(cartGetters.getItemPrice(product).special, 'currency')
+                  $n(cartGetters.getItemPrice(product).special, 'currency')
                 "
                 :stock="99999"
                 :qty="cartGetters.getItemQty(product)"
@@ -40,11 +40,10 @@
                 <template #configuration>
                   <div class="collected-product__properties">
                     <SfProperty
-                      v-for="(attribute,
-                      key) in cartGetters.getItemAttributes(product, [
-                        'color',
-                        'size'
-                      ])"
+                      v-for="(attribute, key) in cartGetters.getItemAttributes(
+                        product,
+                        ['color', 'size']
+                      )"
                       :key="key"
                       :name="key"
                       :value="attribute"
@@ -77,7 +76,10 @@
           <div v-if="totalItems">
             <SfProperty
               name="Total price"
-              class="sf-property--full-width sf-property--large my-cart__total-price"
+              class="
+                sf-property--full-width sf-property--large
+                my-cart__total-price
+              "
             >
               <template #value>
                 <SfPrice :regular="$n(totals.subtotal, 'currency')" />
@@ -88,7 +90,7 @@
                 class="sf-button--full-width color-secondary"
                 @click="toggleCartSidebar"
               >
-                {{ $t('Go to checkout') }}
+                {{ $t("Go to checkout") }}
               </SfButton>
             </nuxt-link>
           </div>
@@ -96,7 +98,7 @@
             <SfButton
               class="sf-button--full-width color-primary"
               @click="toggleCartSidebar"
-              >{{ $t('Go back shopping') }}</SfButton
+              >{{ $t("Go back shopping") }}</SfButton
             >
           </div>
         </transition>
@@ -113,15 +115,15 @@ import {
   SfProperty,
   SfPrice,
   SfCollectedProduct,
-  SfImage
-} from '@storefront-ui/vue';
-import { computed } from '@vue/composition-api';
-import { useCart, useUser, cartGetters } from '@vue-storefront/odoo';
-import { useUiState } from '~/composables';
-import { onSSR } from '@vue-storefront/core';
+  SfImage,
+} from "@storefront-ui/vue";
+import { computed } from "@vue/composition-api";
+import { useCart, useUser, cartGetters } from "@vue-storefront/odoo";
+import { useUiState } from "~/composables";
+import { onSSR } from "@vue-storefront/core";
 
 export default {
-  name: 'Cart',
+  name: "Cart",
   components: {
     SfSidebar,
     SfButton,
@@ -130,7 +132,7 @@ export default {
     SfProperty,
     SfPrice,
     SfCollectedProduct,
-    SfImage
+    SfImage,
   },
   setup() {
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
@@ -153,9 +155,9 @@ export default {
       toggleCartSidebar,
       totals,
       totalItems,
-      cartGetters
+      cartGetters,
     };
-  }
+  },
 };
 </script>
 

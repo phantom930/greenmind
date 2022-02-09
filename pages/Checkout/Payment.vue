@@ -26,8 +26,8 @@
       >
         <SfTableData class="table__image">
           <SfImage
-            :src="cartGetters.getItemImage(product)"
-            :alt="cartGetters.getItemName(product)"
+            :src="$image(cartGetters.getItemImage(product))"
+            :alt="$image(cartGetters.getItemName(product))"
           />
         </SfTableData>
         <SfTableData class="table__data table__description table__data">

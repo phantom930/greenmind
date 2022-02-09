@@ -29,7 +29,7 @@
               <SfCollectedProduct
                 v-for="product in products"
                 :key="wishlistGetters.getItemSku(product)"
-                :image="wishlistGetters.getItemImage(product)"
+                :image="$image(wishlistGetters.getItemImage(product))"
                 :title="wishlistGetters.getItemName(product)"
                 :regular-price="
                   $n(wishlistGetters.getItemPrice(product).regular, 'currency')
@@ -98,7 +98,7 @@
           @click="toggleWishlistSidebar"
           class="sf-button--full-width color-secondary"
         >
-          {{ $t('Start shopping') }}
+          {{ $t("Start shopping") }}
         </SfButton>
       </template>
     </SfSidebar>
@@ -113,20 +113,20 @@ import {
   SfProperty,
   SfPrice,
   SfCollectedProduct,
-  SfImage
-} from '@storefront-ui/vue';
-import { computed } from '@vue/composition-api';
+  SfImage,
+} from "@storefront-ui/vue";
+import { computed } from "@vue/composition-api";
 import {
   useWishlist,
   useUser,
   wishlistGetters,
-  productGetters
-} from '@vue-storefront/odoo';
-import { onSSR } from '@vue-storefront/core';
-import { useUiState } from '~/composables';
+  productGetters,
+} from "@vue-storefront/odoo";
+import { onSSR } from "@vue-storefront/core";
+import { useUiState } from "~/composables";
 
 export default {
-  name: 'Wishlist',
+  name: "Wishlist",
   components: {
     SfSidebar,
     SfButton,
@@ -135,7 +135,7 @@ export default {
     SfProperty,
     SfPrice,
     SfCollectedProduct,
-    SfImage
+    SfImage,
   },
   setup() {
     const { isWishlistSidebarOpen, toggleWishlistSidebar } = useUiState();
@@ -167,9 +167,9 @@ export default {
       totals,
       totalItems,
       wishlistGetters,
-      productGetters
+      productGetters,
     };
-  }
+  },
 };
 </script>
 
