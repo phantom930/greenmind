@@ -195,22 +195,17 @@
         </LazyHydrate>
       </div>
     </div>
-
-    <LazyHydrate when-visible>
-      <RelatedProducts
-        :products="relatedProducts"
-        :loading="relatedLoading"
-        title="Match it with"
-      />
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-      <InstagramFeed />
-    </LazyHydrate>
-
-    <LazyHydrate when-visible>
-      <MobileStoreBanner />
-    </LazyHydrate>
+    <div class="product_carousel">
+    <GreenCarousel
+    :item="item"
+    :feature1="storage"
+    :feature2="color"
+    :price="price"
+    :currency="currency"
+    :carousel_title="$t('Populære produkter')"
+    style="padding-top: 5%;"
+    />
+    </div>
   </div>
 </template>
 <script>
@@ -416,7 +411,13 @@ export default {
       detailsIsActive: false,
       brand:
         'Brand name is the perfect pairing of quality and design. This label creates major everyday vibes with its collection of modern brooches, silver and gold jewellery, or clips it back with hair accessories in geo styles.',
-      careInstructions: 'Do not wash!'
+      careInstructions: 'Do not wash!',
+      //static - to remove
+      item: ["iPhone8", "iPhone13", "iPhone8", "iPhone8", "iPhone8"],
+      storage: ["128 Gb","128 Gb","128 Gb","128 Gb","128 Gb"],
+      color: ["Gold", "Red", "Silver", "Black", "Gold"],
+      price: ["2,999", "2,999", "2,999", "2,999", "2,999",],
+      currency: ["$"]
     };
   }
 };
@@ -600,5 +601,11 @@ export default {
   100% {
     transform: translate3d(0, 0, 0);
   }
+}
+::v-deep .product_carousel .sf-heading {
+  background-color: transparent;
+}
+::v-deep .product_carousel .sf-carousel {
+  background-color: transparent;
 }
 </style>
