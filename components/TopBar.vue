@@ -1,27 +1,18 @@
 <template>
   <SfTopBar class="topbar">
-    <template #left>
-      <SfButton class="sf-button--text">{{ $t('Help & FAQs') }}</SfButton>
-    </template>
     <template #center>
-      <p>{{ $t('Download') }}</p>
-      <SfButton class="topbar__button sf-button--text">{{ $t('Find out more') }}</SfButton>
-    </template>
-    <template #right>
-      <LocaleSelector />
+      <SfButton>{{ $t('SE TILBUD') }}</SfButton>
     </template>
   </SfTopBar>
 </template>
 
 <script>
 import { SfButton, SfTopBar } from '@storefront-ui/vue';
-import LocaleSelector from './LocaleSelector';
 
 export default {
   components: {
     SfTopBar,
     SfButton,
-    LocaleSelector
   }
 };
 
@@ -30,8 +21,21 @@ export default {
 .topbar {
   position: relative;
   z-index: 2;
+  background: #32463D;
+  color: #fff;
   &__button {
     margin: 0 0 0 var(--spacer-xs);
   }
+}
+
+::v-deep .sf-button {
+  padding: 0;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+::v-deep .sf-button:active {
+  text-decoration: none;
 }
 </style>
