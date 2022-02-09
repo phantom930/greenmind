@@ -100,7 +100,7 @@
                 $n(productGetters.getPrice(product).regular, 'currency')
               "
               :special-price="
-                productGetters.getPrice(product).special &&
+                productGetters.getPrice(product).special && 'Fra ' + 
                 $n(productGetters.getPrice(product).special, 'currency')
               "
               score-rating= false
@@ -526,13 +526,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 :root {
   --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7ba393);
+  @include generate-color-variants(--_c-green-primary, #7BA393);
   @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary);
+  @include assign-color-variants(--c-secondary, --_c-green-secondary); 
 }
+</style>
+
+<style lang="scss" scoped>
 #category {
   box-sizing: border-box;
   @include for-desktop {
@@ -895,5 +898,30 @@ export default {
     font-size: 26px;
     font-weight: 500;
     margin-bottom: 20%;
+}
+::v-deep .sf-product-card::after{
+  border-radius: 14px;
+  cursor: pointer;
+}
+::v-deep .sf-product-card__title{
+  font: var(--font-family--primary);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #1D1F22;
+  margin-left: auto;
+  margin-right: auto;
+}
+::v-deep .sf-price__old{
+  display: none;
+}
+::v-deep .sf-price__special{
+  font: var(--font-family--primary);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #1D1F22;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
