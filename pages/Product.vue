@@ -120,6 +120,38 @@
             @click="addItem({ product, quantity: parseInt(qty) })"
           />
         </div>
+        <div class="usp_banner_products">
+          <div style="display:grid; padding-left: 8%;">
+            <SfImage
+              :src="require('/assets/images/productsUspBanner/banner_1.svg')"
+              width="63"
+              height="71"
+              alt="Vue Storefront Next"
+              style="margin-left: auto; margin-right: auto;"
+            />
+            <span class="usp_text_product">Produkter er testet af egne eksperter</span>
+          </div>
+          <div style="display:grid; padding-left: 8%;">
+            <SfImage
+              :src="require('/assets/images/productsUspBanner/banner_2.svg')"
+              width="63"
+              height="71"
+              alt="Vue Storefront Next"
+              style="margin-left: auto; margin-right: auto;"
+            />
+            <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
+          </div>
+          <div style="display:grid; padding-left: 8%;">
+            <SfImage
+              :src="require('/assets/images/productsUspBanner/banner_3.svg')"
+              width="63"
+              height="71"
+              alt="Vue Storefront Next"
+              style="margin-left: auto; margin-right: auto;"
+            />
+            <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
+          </div>
+        </div>
 
         <LazyHydrate when-idle>
           <SfTabs :open-tab="1" class="product__tabs">
@@ -419,6 +451,15 @@ export default {
 };
 </script>
 
+<style lang="scss">
+:root {
+  --font-family--primary: "Josefin Sans";
+  @include generate-color-variants(--_c-green-primary, #7ba393);
+  @include assign-color-variants(--c-primary, --_c-green-primary);
+  @include assign-color-variants(--c-secondary, --_c-green-secondary);
+}
+</style>
+
 <style lang="scss" scoped>
 #product {
   box-sizing: border-box;
@@ -603,5 +644,24 @@ export default {
 }
 ::v-deep .product_carousel .sf-carousel {
   background-color: transparent;
+}
+.usp_banner_products{
+  height: 120px;
+  width: 531px;
+  border-radius: 10px;
+  background-color: #F3F3F3;
+  display: flex;
+  margin-top: 7%;
+}
+.usp_text_product{
+  width: 122px;
+  font-family: var(--font-family--primary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}
+::v-deep .product__tabs {
+  margin-top: 7%;
 }
 </style>
