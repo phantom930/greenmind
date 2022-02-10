@@ -902,7 +902,7 @@ export default {
   cursor: pointer;
 }
 ::v-deep .sf-product-card__title {
-  font: var(--font-family--primary);
+  font-family: var(--font-family--primary);
   font-size: 26px;
   font-weight: 500;
   line-height: 24px;
@@ -914,7 +914,7 @@ export default {
   display: none;
 }
 ::v-deep .sf-price__special {
-  font: var(--font-family--primary);
+  font-family: var(--font-family--primary);
   font-size: 26px;
   font-weight: 500;
   line-height: 24px;
