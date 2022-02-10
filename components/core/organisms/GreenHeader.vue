@@ -314,6 +314,10 @@ export default {
 ::v-deep .sf-header__action.list {
     transform: rotate(180deg);
 }
+::v-deep .sf-header__actions{
+    z-index: 2;
+}
+::v-deep .sf-header__logo{
+  z-index: 2;
+}
 </style>
-</style>
-
