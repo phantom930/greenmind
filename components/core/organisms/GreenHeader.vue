@@ -316,7 +316,7 @@ export default {
     transform: rotate(180deg);
 }
 ::v-deep .sf-header__actions{
-    z-index: 2;
+    z-index: 1;
 }
 ::v-deep .sf-header__logo{
   z-index: 2;

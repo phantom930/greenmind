@@ -251,4 +251,8 @@ export default {
     font-weight: 500;
     line-height: 24px;
 }
+
+.footer {
+    padding-bottom: 0;
+}
 </style>
