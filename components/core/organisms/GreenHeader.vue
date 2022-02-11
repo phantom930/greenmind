@@ -8,16 +8,9 @@
       }"
     >
       <template #logo>
-        <nuxt-link :to="localePath('/')" class="sf-header__logo">
-          <SfImage
-            src="/icons/logo.svg"
-            alt="Vue Storefront Next"
-            class="sf-header__logo-image"
-          />
-        </nuxt-link>
       </template>
       <template #navigation>
-        <div class="grid grid-cols-3 auto-cols-min">
+        <div class="grid grid-cols-3 auto-cols-min header-links">
           <SfHeaderNavigationItem
             v-for="(category, index) in sbCategories"
             :key="index"
@@ -27,6 +20,13 @@
             :link="localePath(`/c/${category.slug}/${category.id}`)"
           />
         </div>
+        <nuxt-link :to="localePath('/')" class="sf-header__logo">
+          <SfImage
+            src="/icons/logo.svg"
+            alt="Vue Storefront Next"
+            class="sf-header__logo-image"
+          />
+        </nuxt-link>
       </template>
       <template #header-icons>
         <div class="sf-header__icons">
@@ -305,6 +305,7 @@ export default {
     font-size: 14px;
     color: #43464E;
     font-weight: 500;
+    margin: 0;
 }
 
 ::v-deep .sf-search-bar {
@@ -319,5 +320,25 @@ export default {
 }
 ::v-deep .sf-header__logo{
   z-index: 2;
+}
+
+::v-deep .sf-header__navigation {
+    justify-content: space-between;
+    align-items: center;
+    max-width: 638px;
+    width: 100%;
+    margin-left: 0;
+}
+
+::v-deep .header-links {
+    column-gap: 15px;
+}
+
+::v-deep .sf-overlay {
+    z-index: var(--overlay-z-index, 3);
+}
+
+::v-deep .sf-sidebar__aside {
+    z-index: var(--sidebar-z-index, 4);
 }
 </style>
