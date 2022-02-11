@@ -1,7 +1,7 @@
 <template>
   <SfHeader>
       <template #navigation>
-        <div class="grid grid-cols-3 auto-cols-min header-links">
+        <div class="header-links">
           <SfHeaderNavigationItem
             v-for="(category, index) in sbCategories"
             :key="index"
@@ -42,5 +42,27 @@ export default {
 }
 ::v-deep .sf-header__icons{
     display: none;
+}
+
+::v-deep .header-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+::v-deep .sf-header-navigation-item {
+  display: block;
+}
+
+::v-deep .sf-header__navigation {
+  width: 100%;
+  z-index: 1;
+}
+
+::v-deep .sf-header-navigation-item__link {
+  font-weight: 500;
+  font-size: 14px;
+  color: #1D1F22;
 }
 </style>

@@ -341,4 +341,8 @@ export default {
 ::v-deep .sf-sidebar__aside {
     z-index: var(--sidebar-z-index, 4);
 }
+
+::v-deep .sf-header__wrapper {
+  border-bottom: 1px solid #F1F2F3;
+}
 </style>
