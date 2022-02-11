@@ -6,6 +6,7 @@
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
+      <GreenTopbarTertiary />
 
     <div id="layout">
       <nuxt :key="$route.fullPath"/>
