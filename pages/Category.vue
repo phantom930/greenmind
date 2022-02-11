@@ -98,7 +98,6 @@
               "
               :special-price="
                 productGetters.getPrice(product).special &&
-                'Fra ' +
                   $n(productGetters.getPrice(product).special, 'currency')
               "
               score-rating="false"
@@ -112,6 +111,9 @@
                 )
               "
               class="products__product-card"
+              description="128 GB | Gold"
+              price_helper="Fra"
+              discount="$ 50.00"
             />
           </transition-group>
           <transition-group
