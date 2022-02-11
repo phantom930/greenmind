@@ -924,4 +924,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+::v-deep .sf-breadcrumbs__breadcrumb.current{
+  text-transform: capitalize;
+}
 </style>
