@@ -66,6 +66,7 @@ export default {
   plugins: ['~/plugins/getImage.ts'],
   buildModules: [
     // to core
+    '@nuxtjs/composition-api/module',
     '@nuxtjs/pwa',
     '@nuxtjs/web-vitals',
     '@nuxtjs/tailwindcss',
