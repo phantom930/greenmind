@@ -177,6 +177,7 @@ export default {
     font-weight: 500;
     text-decoration: none;
     padding: 18px 52px;
+    padding-top: 20px;
     transform: translate(0%, -50%);
 }
 ::v-deep .sf-hero-item__button .sf-button:hover{
