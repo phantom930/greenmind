@@ -21,7 +21,7 @@
     "@nuxtjs/style-resources": "1.1.0",
     "@storefront-ui/vue": "0.12.0",
     "@vue-storefront/cache": "^2.5.0",
-    "@vue-storefront/middleware":"2.5.0",
+    "@vue-storefront/middleware": "2.5.0",
     "@vue-storefront/nuxt": "2.5.0",
     "@vue-storefront/nuxt-theme": "2.5.0",
     "@vue-storefront/odoo": "1.1.0",
@@ -35,6 +35,7 @@
     "vue-scrollto": "^2.17.1"
   },
   "devDependencies": {
+    "@nuxt/image": "^0.6.1",
     "@nuxt/types": "latest",
     "@nuxt/typescript-build": "latest",
     "@nuxtjs/pwa": "^3.3.5",

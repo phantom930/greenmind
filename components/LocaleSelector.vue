@@ -26,7 +26,8 @@
               <template #icon>
                 <SfImage
                   :src="`/icons/langs/${lang.code}.webp`"
-                  width="20"
+                  :width="20"
+                  :height="20"
                   alt="Flag"
                   class="language__flag"
                 />

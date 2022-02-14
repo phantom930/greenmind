@@ -74,9 +74,9 @@ export default {
   loading: { color: '#fff' },
   plugins: ['~/plugins/getImage.ts'],
   buildModules: [
-    // to core
     '@nuxtjs/composition-api/module',
     '@nuxtjs/pwa',
+    '@nuxt/image',
     '@nuxtjs/web-vitals',
     '@nuxtjs/tailwindcss',
     '@nuxt/typescript-build',

@@ -60,6 +60,8 @@
               alt="Empty bag"
               class="empty-cart__image"
               src="/icons/empty-cart.svg"
+              :width="240"
+              :height="162"
             />
             <SfHeading
               title="Your cart is empty"

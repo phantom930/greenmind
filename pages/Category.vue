@@ -136,8 +136,12 @@
               v-for="(product, i) in products"
               :key="product.id"
               :style="{ '--index': i }"
+              :imageWidth="216"
+              :imageHeight="288"
               :title="productGetters.getName(product)"
               :image="$image(productGetters.getCoverImage(product))"
+              :nuxtImgConfig="{ fit: 'cover' }"
+              image-tag="nuxt-img"
               :regular-price="
                 $n(productGetters.getPrice(product).regular, 'currency')
               "
@@ -145,7 +149,7 @@
                 productGetters.getPrice(product).special &&
                 $n(productGetters.getPrice(product).special, 'currency')
               "
-              score-rating="false"
+              :score-rating="false"
               wishlistIcon="false"
               :show-add-to-cart-button="false"
               :link="
@@ -173,9 +177,13 @@
               v-for="(product, i) in products"
               :key="product.id"
               :style="{ '--index': i }"
+              :imageWidth="216"
+              :imageHeight="288"
               :title="productGetters.getName(product)"
               :description="productGetters.getDescription(product)"
               :image="$image(productGetters.getCoverImage(product))"
+              :nuxtImgConfig="{ fit: 'cover' }"
+              image-tag="nuxt-img"
               :regular-price="
                 $n(productGetters.getPrice(product).regular, 'currency')
               "
@@ -260,6 +268,8 @@
         </div>
         <div v-else key="no-results" class="before-results">
           <SfImage
+            :width="256"
+            :height="176"
             src="/error/error.svg"
             class="before-results__picture"
             alt="error"
