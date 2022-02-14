@@ -673,4 +673,7 @@ export default {
 ::v-deep .sf-tabs__title {
   margin-right: 15%;
 }
+::v-deep .sf-add-to-cart__select-quantity {
+  display: none;
+}
 </style>
