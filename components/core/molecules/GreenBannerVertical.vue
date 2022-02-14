@@ -67,6 +67,7 @@ export default {
     margin-right: auto;
     margin-top: 64%;
     padding: 18px 52px;
+    padding-top: 20px;
 }
 ::v-deep .sf-button:hover{
     --button-background: #78A886;
