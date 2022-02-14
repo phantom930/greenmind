@@ -1,6 +1,8 @@
 export default ({ app }, inject) => {
     const getImage =  (imagePath: string) => {
-        return `${app.$config.baseURL}${imagePath?.replace('/', '')}`;
+        //@TODO temporary removing base url until api response was OK
+        // return `${app.$config.baseURL}${imagePath?.replace('/', '')}`; 
+        return imagePath; 
     }
     inject('image', getImage)
 }
