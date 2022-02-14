@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SfHeading :title="carousel_title" level="2" />
+    <SfHeading :title="carousel_title" :level="2" />
     <SfCarousel
       :style="{ maxWidth: '1312px', margin: 'auto' }"
       :settings="{
@@ -73,16 +73,10 @@
 </template>
 
 <script>
-import {
-  SfCarousel,
-  SfCarouselItem,
-  SfImage,
-  SfHeading,
-} from "@storefront-ui/vue";
+import { SfCarousel, SfImage, SfHeading } from "@storefront-ui/vue";
 export default {
   components: {
     SfCarousel,
-    SfCarouselItem,
     SfImage,
     SfHeading,
   },

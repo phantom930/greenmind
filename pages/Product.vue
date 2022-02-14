@@ -133,8 +133,8 @@
           <div style="display: grid; padding-left: 8%">
             <SfImage
               :src="require('/assets/images/productsUspBanner/banner_2.svg')"
-              width="63"
-              height="71"
+              :width="63"
+              :height="71"
               alt="Vue Storefront Next"
               style="margin-left: auto; margin-right: auto"
             />
@@ -145,8 +145,8 @@
           <div style="display: grid; padding-left: 8%">
             <SfImage
               :src="require('/assets/images/productsUspBanner/banner_3.svg')"
-              width="63"
-              height="71"
+              :width="63"
+              :height="71"
               alt="Vue Storefront Next"
               style="margin-left: auto; margin-right: auto"
             />
