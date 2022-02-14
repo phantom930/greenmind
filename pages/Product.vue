@@ -43,9 +43,6 @@
           </div>
         </div>
         <div>
-          <p class="product__description desktop-only">
-            {{ description }}
-          </p>
           <SfButton
             data-cy="product-btn_size-guide"
             class="sf-button--text desktop-only product__guide"
@@ -157,7 +154,7 @@
           <SfTabs :open-tab="1" class="product__tabs">
             <SfTab data-cy="product-tab_description" title="Description">
               <div class="product__description">
-                {{ $t("Product description") }}
+                {{ description }}
               </div>
 
               <SfProperty
@@ -186,23 +183,8 @@
                 </template>
               </SfProperty>
             </SfTab>
-            <SfTab title="Read reviews" data-cy="product-tab_reviews">
-              <SfReview
-                v-for="review in reviews"
-                :key="reviewGetters.getReviewId(review)"
-                :author="reviewGetters.getReviewAuthor(review)"
-                :date="reviewGetters.getReviewDate(review)"
-                :message="reviewGetters.getReviewMessage(review)"
-                :max-rating="5"
-                :rating="reviewGetters.getReviewRating(review)"
-                :char-limit="250"
-                read-more-text="Read more"
-                hide-full-text="Read less"
-                class="product__review"
-              />
-            </SfTab>
             <SfTab
-              title="Additional Information"
+              :title="$t('Specifikationer')"
               data-cy="product-tab_additional"
               class="product__additional-info"
             >
@@ -222,6 +204,21 @@
                 </p>
                 <p>{{ careInstructions }}</p>
               </div>
+            </SfTab>
+            <SfTab :title="$t('Reviews')" data-cy="product-tab_reviews">
+              <SfReview
+                v-for="review in reviews"
+                :key="reviewGetters.getReviewId(review)"
+                :author="reviewGetters.getReviewAuthor(review)"
+                :date="reviewGetters.getReviewDate(review)"
+                :message="reviewGetters.getReviewMessage(review)"
+                :max-rating="5"
+                :rating="reviewGetters.getReviewRating(review)"
+                :char-limit="250"
+                read-more-text="Read more"
+                hide-full-text="Read less"
+                class="product__review"
+              />
             </SfTab>
           </SfTabs>
         </LazyHydrate>
@@ -663,5 +660,8 @@ export default {
 }
 ::v-deep .product__tabs {
   margin-top: 7%;
+}
+::v-deep .sf-tabs__title {
+  margin-right: 15%;
 }
 </style>
