@@ -24,29 +24,29 @@
   </div>
 </template>
 <script>
-import { SfSteps, SfButton } from '@storefront-ui/vue';
-import CartPreview from '~/components/Checkout/CartPreview';
-import { computed } from '@vue/composition-api';
+import { SfSteps, SfButton } from "@storefront-ui/vue";
+import CartPreview from "~/components/Checkout/CartPreview";
+import { computed } from "@nuxtjs/composition-api";
 const STEPS = {
-  shipping: 'Shipping',
-  billing: 'Billing',
-  payment: 'Payment'
+  shipping: "Shipping",
+  billing: "Billing",
+  payment: "Payment",
 };
 export default {
-  name: 'Checkout',
+  name: "Checkout",
   components: {
     SfButton,
     SfSteps,
-    CartPreview
+    CartPreview,
   },
   setup(props, context) {
     const currentStep = computed(() =>
-      context.root.$route.path.split('/').pop()
+      context.root.$route.path.split("/").pop()
     );
     const currentStepIndex = computed(() =>
       Object.keys(STEPS).findIndex((s) => s === currentStep.value)
     );
-    const isThankYou = computed(() => currentStep.value === 'thank-you');
+    const isThankYou = computed(() => currentStep.value === "thank-you");
     const handleStepClick = (stepIndex) => {
       const key = Object.keys(STEPS)[stepIndex];
       context.root.$router.push(`/checkout/${key}`);
@@ -56,9 +56,9 @@ export default {
       STEPS,
       currentStepIndex,
       isThankYou,
-      currentStep
+      currentStep,
     };
-  }
+  },
 };
 </script>
 

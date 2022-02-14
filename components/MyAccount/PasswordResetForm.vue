@@ -50,29 +50,29 @@
         </ValidationProvider>
       </div>
       <SfButton class="form__button">
-        {{ $t('Update password') }}
+        {{ $t("Update password") }}
       </SfButton>
     </form>
   </ValidationObserver>
 </template>
 
 <script>
-import { ref } from '@vue/composition-api';
-import { ValidationProvider, ValidationObserver } from 'vee-validate';
-import { SfInput, SfButton } from '@storefront-ui/vue';
+import { ref } from "@nuxtjs/composition-api";
+import { ValidationProvider, ValidationObserver } from "vee-validate";
+import { SfInput, SfButton } from "@storefront-ui/vue";
 export default {
-  name: 'PasswordResetForm',
+  name: "PasswordResetForm",
   components: {
     SfInput,
     SfButton,
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   setup(_, { emit }) {
     const resetForm = () => ({
-      currentPassword: '',
-      newPassword: '',
-      repeatPassword: ''
+      currentPassword: "",
+      newPassword: "",
+      repeatPassword: "",
     });
     const form = ref(resetForm());
     const submitForm = (resetValidationFn) => () => {
@@ -83,13 +83,13 @@ export default {
       const onError = () => {
         // TODO: Handle error
       };
-      emit('submit', { form, onComplete, onError });
+      emit("submit", { form, onComplete, onError });
     };
     return {
       form,
-      submitForm
+      submitForm,
     };
-  }
+  },
 };
 </script>
 

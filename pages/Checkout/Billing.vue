@@ -160,7 +160,7 @@
             type="submit"
             :disabled="invalid"
           >
-            {{ $t('Continue to payment') }}
+            {{ $t("Continue to payment") }}
           </SfButton>
         </div>
       </div>
@@ -175,32 +175,32 @@ import {
   SfButton,
   SfSelect,
   SfRadio,
-  SfCheckbox
-} from '@storefront-ui/vue';
-import { ref, onMounted, watch } from '@vue/composition-api';
-import { onSSR } from '@vue-storefront/core';
+  SfCheckbox,
+} from "@storefront-ui/vue";
+import { ref, onMounted, watch } from "@nuxtjs/composition-api";
+import { onSSR } from "@vue-storefront/core";
 import {
   useBilling,
   useCountrySearch,
-  useShippingAsBillingAddress
-} from '@vue-storefront/odoo';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+  useShippingAsBillingAddress,
+} from "@vue-storefront/odoo";
+import { required, min, digits } from "vee-validate/dist/rules";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 
-extend('required', {
+extend("required", {
   ...required,
-  message: 'This field is required'
+  message: "This field is required",
 });
-extend('min', {
+extend("min", {
   ...min,
-  message: 'The field should have at least {length} characters'
+  message: "The field should have at least {length} characters",
 });
-extend('digits', {
+extend("digits", {
   ...digits,
-  message: 'Please provide a valid phone number'
+  message: "Please provide a valid phone number",
 });
 export default {
-  name: 'Billing',
+  name: "Billing",
   components: {
     SfHeading,
     SfInput,
@@ -209,15 +209,11 @@ export default {
     SfRadio,
     SfCheckbox,
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   setup(props, { root }) {
-    const {
-      search,
-      searchCountryStates,
-      countries,
-      countryStates
-    } = useCountrySearch();
+    const { search, searchCountryStates, countries, countryStates } =
+      useCountrySearch();
     const { load: loadBillingAddress, billing, save, error } = useBilling();
 
     const { use } = useShippingAsBillingAddress();
@@ -227,13 +223,13 @@ export default {
     const formRef = ref(false);
 
     const form = ref({
-      name: '',
-      street: '',
-      city: '',
+      name: "",
+      street: "",
+      city: "",
       state: { id: null },
       country: { id: null },
-      zip: '',
-      phone: null
+      zip: "",
+      phone: null,
     });
 
     const handleCheckSameAddress = async () => {
@@ -252,7 +248,7 @@ export default {
       isFormSubmitted.value = true;
 
       if (!error.save) {
-        root.$router.push('/checkout/payment');
+        root.$router.push("/checkout/payment");
       }
     };
 
@@ -285,9 +281,9 @@ export default {
       handleCheckSameAddress,
       sameAsShipping,
       form,
-      handleFormSubmit
+      handleFormSubmit,
     };
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>

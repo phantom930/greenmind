@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable camelcase */
-import { getCurrentInstance } from '@vue/composition-api';
+import { getCurrentInstance } from '@nuxtjs/composition-api';
 import { Category } from '@vue-storefront/odoo-api/server';
 const getInstance = () => {
   const vm = getCurrentInstance();
-  return vm.$root as any;
+  return vm.root as any;
 };
 
 const queryParamsNotFilters = ['page', 'sort', 'itemsPerPage'];

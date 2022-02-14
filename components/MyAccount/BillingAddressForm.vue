@@ -144,56 +144,56 @@
         />
       </ValidationProvider>
       <SfButton class="form__button" :disabled="invalid">
-        {{ isNew ? 'Add the address' : 'Update the address' }}
+        {{ isNew ? "Add the address" : "Update the address" }}
       </SfButton>
     </form>
   </ValidationObserver>
 </template>
 
 <script type="module">
-import { SfInput, SfButton, SfSelect, SfCheckbox } from '@storefront-ui/vue';
-import { useCountrySearch } from '@vue-storefront/odoo';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { watch } from '@vue/composition-api';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
-import { reactive, onBeforeMount, defineComponent } from '@vue/composition-api';
-extend('required', { ...required, message: 'This field is required' });
-extend('min', {
+import { SfInput, SfButton, SfSelect, SfCheckbox } from "@storefront-ui/vue";
+import { useCountrySearch } from "@vue-storefront/odoo";
+import { required, min, digits } from "vee-validate/dist/rules";
+import { watch } from "@nuxtjs/composition-api";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import {n-api';
+  reactive,
+  onBeforeMount,
+  defineComponent,
+} from "@nuxtjs/composition-api";
+extend("required", { ...required, message: "This field is required" });
+extend("min", {
   ...min,
-  message: 'The field should have at least {length} characters'
+  message: "The field should have at least {length} characters",
 });
-extend('digits', { ...digits, message: 'Please provide a valid phone number' });
+extend("digits", { ...digits, message: "Please provide a valid phone number" });
 
 export default defineComponent({
-  name: 'AddressForm',
+  name: "AddressForm",
   components: {
     SfInput,
     SfButton,
     SfSelect,
     SfCheckbox,
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   props: {
     address: {
       type: Object,
       default: () => ({
         state: { id: null },
-        country: { id: null }
-      })
+        country: { id: null },
+      }),
     },
     isNew: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props, { emit }) {
-    const {
-      search,
-      searchCountryStates,
-      countries,
-      countryStates
-    } = useCountrySearch('my-account-billing');
+    const { search, searchCountryStates, countries, countryStates } =
+      useCountrySearch("my-account-billing");
 
     const form = reactive({
       name: props.address.name,
@@ -203,19 +203,19 @@ export default defineComponent({
       country: { id: String(props.address.country.id) },
       zip: props.address.zip,
       phone: props.address.phone,
-      ...(props.isNew ? {} : { id: props.address.id })
+      ...(props.isNew ? {} : { id: props.address.id }),
     });
 
     const submitForm = () => {
-      emit('submit', {
+      emit("submit", {
         form: form,
         onComplete: () => {},
-        onError: () => {}
+        onError: () => {},
       });
     };
     onBeforeMount(async () => {
       await search();
-      if (form?.country?.id && form.country.id !== 'null') {
+      if (form?.country?.id && form.country.id !== "null") {
         await searchCountryStates(form.country.id);
       }
     });
@@ -233,9 +233,9 @@ export default defineComponent({
       form,
       submitForm,
       countries,
-      countryStates
+      countryStates,
     };
-  }
+  },
 });
 </script>
 

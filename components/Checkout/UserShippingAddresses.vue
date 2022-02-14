@@ -27,28 +27,28 @@
 </template>
 
 <script>
-import { SfCheckbox, SfAddressPicker } from '@storefront-ui/vue';
-import { useUserShipping, userShippingGetters } from '@vue-storefront/odoo';
-import { computed } from '@vue/composition-api';
-import UserShippingAddress from '~/components/UserShippingAddress';
+import { SfCheckbox, SfAddressPicker } from "@storefront-ui/vue";
+import { useUserShipping, userShippingGetters } from "@vue-storefront/odoo";
+import { computed } from "@nuxtjs/composition-api";
+import UserShippingAddress from "~/components/UserShippingAddress";
 export default {
-  name: 'UserShippingAddresses',
+  name: "UserShippingAddresses",
   components: {
     SfCheckbox,
     SfAddressPicker,
-    UserShippingAddress
+    UserShippingAddress,
   },
   props: {
     currentAddressId: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     value: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
-  emits: ['setCurrentAddress'],
+  emits: ["setCurrentAddress"],
   setup(props, { emit }) {
     const { shipping: userShipping } = useUserShipping();
     const setCurrentAddress = (addressId) => {
@@ -59,7 +59,7 @@ export default {
       if (!selectedAddress) {
         return;
       }
-      emit('setCurrentAddress', selectedAddress[0]);
+      emit("setCurrentAddress", selectedAddress[0]);
     };
     const shippingAddresses = computed(() =>
       userShippingGetters.getAddresses(userShipping.value)
@@ -67,9 +67,9 @@ export default {
     return {
       setCurrentAddress,
       shippingAddresses,
-      userShippingGetters
+      userShippingGetters,
     };
-  }
+  },
 };
 </script>
 

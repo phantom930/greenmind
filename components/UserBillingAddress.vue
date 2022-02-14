@@ -20,18 +20,18 @@
 </template>
 
 <script>
-import { toRef, computed } from '@vue/composition-api';
-import { userBillingGetters } from '@vue-storefront/odoo';
+import { toRef, computed } from "@nuxtjs/composition-api";
+import { userBillingGetters } from "@vue-storefront/odoo";
 export default {
-  name: 'UserBillingAddress',
+  name: "UserBillingAddress",
   props: {
     address: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   setup(props) {
-    const address = toRef(props, 'address');
+    const address = toRef(props, "address");
     const userBillingAddress = computed(() => ({
       firstName: userBillingGetters.getFirstName(address.value),
       lastName: userBillingGetters.getLastName(address.value),
@@ -39,15 +39,15 @@ export default {
       streetNumber: userBillingGetters.getApartmentNumber(address.value),
       postalCode: userBillingGetters.getPostCode(address.value),
       city: userBillingGetters.getCity(address.value),
-      province: userBillingGetters.getProvince(address.value) || '',
+      province: userBillingGetters.getProvince(address.value) || "",
       country: userBillingGetters.getCountry(address.value),
       phone: userBillingGetters.getPhone(address.value),
-      isDefault: userBillingGetters.isDefault(address.value)
+      isDefault: userBillingGetters.isDefault(address.value),
     }));
     return {
-      userBillingAddress
+      userBillingAddress,
     };
-  }
+  },
 };
 </script>
 

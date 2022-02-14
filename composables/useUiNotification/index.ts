@@ -1,4 +1,5 @@
-import VueCompositionAPI, { computed, reactive } from '@vue/composition-api';
+import VueCompositionAPI from '@vue/composition-api';
+import { computed, reactive } from '@nuxtjs/composition-api';
 import Vue from 'vue';
 
 

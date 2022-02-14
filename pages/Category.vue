@@ -1,37 +1,50 @@
 <template>
   <div id="category">
     <div class="usp_banner_products">
-          <div style="display:flex; margin-left: auto; align-items: center;">
-            <SfImage
-              :src="require('/assets/images/productsUspBanner/banner_1.svg')"
-              width="63"
-              height="71"
-              alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto;"
-            />
-            <span class="usp_text_product">Produkter er testet af egne eksperter</span>
-          </div>
-          <div style="display:flex; padding-left: 8%; align-items: center;">
-            <SfImage
-              :src="require('/assets/images/productsUspBanner/banner_2.svg')"
-              width="63"
-              height="71"
-              alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto;"
-            />
-            <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
-          </div>
-          <div style="display:flex; padding-left: 8%; margin-right: auto; align-items: center;">
-            <SfImage
-              :src="require('/assets/images/productsUspBanner/banner_3.svg')"
-              width="63"
-              height="71"
-              alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto;"
-            />
-            <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
-          </div>
-        </div>
+      <div style="display: flex; margin-left: auto; align-items: center">
+        <SfImage
+          :src="require('/assets/images/productsUspBanner/banner_1.svg')"
+          :width="63"
+          :height="71"
+          alt="Vue Storefront Next"
+          style="margin-left: auto; margin-right: auto"
+        />
+        <span class="usp_text_product"
+          >Produkter er testet af egne eksperter</span
+        >
+      </div>
+      <div style="display: flex; padding-left: 8%; align-items: center">
+        <SfImage
+          :src="require('/assets/images/productsUspBanner/banner_2.svg')"
+          :width="63"
+          :height="71"
+          alt="Vue Storefront Next"
+          style="margin-left: auto; margin-right: auto"
+        />
+        <span class="usp_text_product"
+          >14 dages returret <br />2 års garanti</span
+        >
+      </div>
+      <div
+        style="
+          display: flex;
+          padding-left: 8%;
+          margin-right: auto;
+          align-items: center;
+        "
+      >
+        <SfImage
+          :src="require('/assets/images/productsUspBanner/banner_3.svg')"
+          width="63"
+          height="71"
+          alt="Vue Storefront Next"
+          style="margin-left: auto; margin-right: auto"
+        />
+        <span class="usp_text_product"
+          >Ombyt i én af vores<br />10 butikker</span
+        >
+      </div>
+    </div>
     <div class="navbar section">
       <div class="navbar__aside desktop-only">
         <SfBreadcrumbs
@@ -130,7 +143,7 @@
               "
               :special-price="
                 productGetters.getPrice(product).special &&
-                  $n(productGetters.getPrice(product).special, 'currency')
+                $n(productGetters.getPrice(product).special, 'currency')
               "
               score-rating="false"
               wishlistIcon="false"
@@ -956,16 +969,16 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
-::v-deep .sf-breadcrumbs__breadcrumb.current{
+::v-deep .sf-breadcrumbs__breadcrumb.current {
   text-transform: capitalize;
 }
-.usp_banner_products{
+.usp_banner_products {
   height: 80px;
   border-radius: 10px;
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   display: flex;
 }
-.usp_text_product{
+.usp_text_product {
   width: 165px;
   font-family: var(--font-family--primary);
   font-size: 14px;

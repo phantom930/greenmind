@@ -158,7 +158,7 @@
         type="button"
         @click.native="handleAddNewAddressBtnClick"
       >
-        {{ $t('Add new address') }}
+        {{ $t("Add new address") }}
       </SfButton>
 
       <SfHeading
@@ -173,33 +173,33 @@
         @selectedMethod="handleSelectedMethodShipping"
       />
       <SfButton type="submit" :disabled="invalid">
-        {{ $t('Continue to billing') }}
+        {{ $t("Continue to billing") }}
       </SfButton>
     </form>
   </ValidationObserver>
 </template>
 
 <script>
-import { SfHeading, SfInput, SfButton, SfSelect } from '@storefront-ui/vue';
-import { ref, watch, onMounted, computed } from '@vue/composition-api';
+import { SfHeading, SfInput, SfButton, SfSelect } from "@storefront-ui/vue";
+import { ref, watch, onMounted, computed } from "@nuxtjs/composition-api";
 import {
   useCountrySearch,
   useUser,
   userShippingGetters,
-  useShipping
-} from '@vue-storefront/odoo';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+  useShipping,
+} from "@vue-storefront/odoo";
+import { required, min, digits } from "vee-validate/dist/rules";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 
-extend('required', { ...required, message: 'This field is required' });
-extend('min', {
+extend("required", { ...required, message: "This field is required" });
+extend("min", {
   ...min,
-  message: 'The field should have at least {length} characters'
+  message: "The field should have at least {length} characters",
 });
-extend('digits', { ...digits, message: 'Please provide a valid phone number' });
+extend("digits", { ...digits, message: "Please provide a valid phone number" });
 
 export default {
-  name: 'Shipping',
+  name: "Shipping",
   components: {
     SfHeading,
     SfInput,
@@ -208,14 +208,14 @@ export default {
     ValidationProvider,
     ValidationObserver,
     UserShippingAddresses: () =>
-      import('~/components/Checkout/UserShippingAddresses.vue'),
+      import("~/components/Checkout/UserShippingAddresses.vue"),
     VsfShippingProvider: () =>
-      import('~/components/Checkout/VsfShippingProvider')
+      import("~/components/Checkout/VsfShippingProvider"),
   },
   setup(props, { root, emit }) {
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
-    const currentAddressId = ref('');
+    const currentAddressId = ref("");
     const defaultShippingAddress = ref(false);
     const isShippingDetailsStepCompleted = ref(false);
     const canAddNewAddress = ref(true);
@@ -224,33 +224,29 @@ export default {
 
     const { isAuthenticated } = useUser();
 
-    const {
-      search,
-      searchCountryStates,
-      countries,
-      countryStates
-    } = useCountrySearch();
+    const { search, searchCountryStates, countries, countryStates } =
+      useCountrySearch();
 
     const form = ref({
-      name: '',
-      street: '',
-      city: '',
+      name: "",
+      street: "",
+      city: "",
       state: { id: null },
       country: { id: null },
-      zip: '',
+      zip: "",
       phone: null,
-      selectedMethodShipping: null
+      selectedMethodShipping: null,
     });
 
     const handleFormSubmit = async () => {
       await save({ shippingDetails: form.value });
       isFormSubmitted.value = true;
 
-      if (root.$router.history.current.path !== '/my-account/shipping-details')
-        root.$router.push('/checkout/billing');
-      else root.$router.push('/my-account/shipping-details');
+      if (root.$router.history.current.path !== "/my-account/shipping-details")
+        root.$router.push("/checkout/billing");
+      else root.$router.push("/my-account/shipping-details");
 
-      emit('finish', true);
+      emit("finish", true);
     };
 
     const hasSavedShippingAddress = computed(() => {
@@ -263,7 +259,7 @@ export default {
     });
 
     const handleAddNewAddressBtnClick = () => {
-      currentAddressId.value = '';
+      currentAddressId.value = "";
       form.value = {};
       canAddNewAddress.value = true;
       isShippingDetailsStepCompleted.value = false;
@@ -315,9 +311,9 @@ export default {
       form,
       countries,
       countryStates,
-      handleFormSubmit
+      handleFormSubmit,
     };
-  }
+  },
 };
 </script>
 

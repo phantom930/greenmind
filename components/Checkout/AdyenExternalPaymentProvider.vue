@@ -12,24 +12,22 @@
 <script>
 /* eslint-disable camelcase */
 
-import { onMounted, ref } from '@vue/composition-api';
-import { useAdyenExternalPaymentProvider } from '@vue-storefront/odoo';
+import { onMounted, ref } from "@nuxtjs/composition-api";
+import { useAdyenExternalPaymentProvider } from "@vue-storefront/odoo";
 
 export default {
-  name: 'AdyenExternalPaymentProvider',
+  name: "AdyenExternalPaymentProvider",
   props: {
     provider: {
       required: true,
-      type: Object
-    }
+      type: Object,
+    },
   },
   setup(props, { emit }) {
-    const form = ref('form');
+    const form = ref("form");
 
-    const {
-      paymentExternalResponse,
-      getPaymentExternal
-    } = useAdyenExternalPaymentProvider(props.provider);
+    const { paymentExternalResponse, getPaymentExternal } =
+      useAdyenExternalPaymentProvider(props.provider);
 
     const sendForm = () => {
       // set the url action from api
@@ -44,16 +42,16 @@ export default {
 
     onMounted(async () => {
       await getPaymentExternal();
-      emit('isPaymentReady', true);
-      emit('providerPaymentHandler', sendForm);
+      emit("isPaymentReady", true);
+      emit("providerPaymentHandler", sendForm);
     });
 
     return {
       paymentExternalResponse,
       sendForm,
-      form
+      form,
     };
-  }
+  },
 };
 </script>
 

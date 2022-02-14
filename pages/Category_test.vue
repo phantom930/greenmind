@@ -1,161 +1,158 @@
 <template>
   <div id="category">
     <div class="navbar section">
-        <div class="navbar__aside desktop-only">
-            <SfBreadcrumbs
-              class="breadcrumbs desktop-only"
-              :breadcrumbs="breadcrumbs"
-            />
+      <div class="navbar__aside desktop-only">
+        <SfBreadcrumbs
+          class="breadcrumbs desktop-only"
+          :breadcrumbs="breadcrumbs"
+        />
+      </div>
+      <div class="navbar__main">
+        <div class="navbar__title desktop-only">
+          <LazyHydrate never>
+            <SfHeading :title="$t('iPhones')" />
+          </LazyHydrate>
         </div>
-        <div class="navbar__main">
-            <div class="navbar__title desktop-only">
-            <LazyHydrate never>
-            <SfHeading
-                :title="$t('iPhones')"
-            />
-            </LazyHydrate>
-            </div>
-            <div class="navbar__sort desktop-only">
-              <span class="navbar__label">{{ $t("Sort by") }}:</span>
-              <LazyHydrate on-interaction>
-                <SfSelect
-                  :value="sortBy.selected"
-                  placeholder="Select sorting"
-                  data-cy="category-select_sortBy"
-                  class="navbar__select"
-                >
-                <SfSelectOption
-                  v-for="(option, index) in sortBy.options"
-                  :key="index"
-                  :value="option"
-                  class="sort-by__option"
-                  >{{ option }}</SfSelectOption
-                >
-                </SfSelect>
-            </LazyHydrate>
-            </div>
-        </div>
-    </div>    
-    <div class="main section">
-        <div class="sidebar desktop-only">
-            <h3 class="main_title">Filter</h3>
-            <SfAccordion
-            showChevron
-            transition="sf-expand"
+        <div class="navbar__sort desktop-only">
+          <span class="navbar__label">{{ $t("Sort by") }}:</span>
+          <LazyHydrate on-interaction>
+            <SfSelect
+              :value="sortBy.selected"
+              placeholder="Select sorting"
+              data-cy="category-select_sortBy"
+              class="navbar__select"
             >
-                <SfAccordionItem
-                v-for="(accordion, index) in accordions1"
+              <SfSelectOption
+                v-for="(option, index) in sortBy.options"
                 :key="index"
-                :header="accordion.name"
-                >
-                <template>
-                <SfList class="list">
-                    <SfListItem
-                    class="list__item"
-                    v-for="(item, id) in accordion.label"
-                    :key="item"
-                    >
-                    <SfCheckbox
-                        :label="item"
-                        v-model="accordion.active[id]"
-                    />
-                    </SfListItem>
-                </SfList>
-                </template>
-                </SfAccordionItem>
-            </SfAccordion>
-            <template>
-                <h4 class="range_label">Pris</h4>
-            </template>
-            <SfRange 
-              :value="[20,200]"
-              :disabled="false"
-              :config='{"start":[20,200],"range":{"min":20,"max":600},"step":10,"connect":true,"direction":"ltr","orientation":"horizontal","behaviour":"tap-drag","tooltips":true,"keyboardSupport":true}'
-            />
-            <SfAccordion
-            showChevron
-            transition="sf-expand"
-            >
-            <SfAccordionItem
-                v-for="(accordion, index) in accordions2"
-                :key="index"
-                :header="accordion.name"
-            >
-            <template>
-                <SfList class="list">
-                    <SfListItem
-                        class="list__item"
-                        v-for="(item, id) in accordion.label"
-                        :key="item"
-                    >
-                    <SfCheckbox
-                        :label="item"
-                        v-model="accordion.active[id]"
-                    />
-                    </SfListItem>
-                </SfList>
-            </template>
-            </SfAccordionItem>
-            </SfAccordion>
-            <template>
-                <h4 class="range_label">Farve</h4>
-            </template>
-            <SfColorPicker :isOpen="true" :hasClose="false">
-                <SfColor style="margin: 0.4375rem" v-for="color in colors" :key="color.value" :color="color.color" :selected="color.selected" @click="color.selected = !color.selected"/>
-            </SfColorPicker>
-            <SfAccordion
-            showChevron
-            transition="sf-expand"
-            >
-            <SfAccordionItem
-                v-for="(accordion, index) in accordions3"
-                :key="index"
-                :header="accordion.name"
-            >
-            <template>
-                <SfList class="list">
-                    <SfListItem
-                        class="list__item"
-                        v-for="(item, id) in accordion.label"
-                        :key="item"
-                    >
-                    <SfCheckbox
-                        :label="item"
-                        v-model="accordion.active[id]"
-                    />
-                    </SfListItem>
-                </SfList>
-            </template>
-            </SfAccordionItem>
-            </SfAccordion>
-        </div>
-        <div class="products__grid">
-            <GreenProductCard
-            v-for="(product, index) in phones"
-            :key="index"
-            :product_card_title="product.title"
-            :product_card_regularPrice="product.price"
-            product_card_image="iPhone8"
-            />
+                :value="option"
+                class="sort-by__option"
+                >{{ option }}</SfSelectOption
+              >
+            </SfSelect>
+          </LazyHydrate>
         </div>
       </div>
+    </div>
+    <div class="main section">
+      <div class="sidebar desktop-only">
+        <h3 class="main_title">Filter</h3>
+        <SfAccordion showChevron transition="sf-expand">
+          <SfAccordionItem
+            v-for="(accordion, index) in accordions1"
+            :key="index"
+            :header="accordion.name"
+          >
+            <template>
+              <SfList class="list">
+                <SfListItem
+                  class="list__item"
+                  v-for="(item, id) in accordion.label"
+                  :key="item"
+                >
+                  <SfCheckbox :label="item" v-model="accordion.active[id]" />
+                </SfListItem>
+              </SfList>
+            </template>
+          </SfAccordionItem>
+        </SfAccordion>
+        <template>
+          <h4 class="range_label">Pris</h4>
+        </template>
+        <SfRange
+          :value="[20, 200]"
+          :disabled="false"
+          :config="{
+            start: [20, 200],
+            range: { min: 20, max: 600 },
+            step: 10,
+            connect: true,
+            direction: 'ltr',
+            orientation: 'horizontal',
+            behaviour: 'tap-drag',
+            tooltips: true,
+            keyboardSupport: true,
+          }"
+        />
+        <SfAccordion showChevron transition="sf-expand">
+          <SfAccordionItem
+            v-for="(accordion, index) in accordions2"
+            :key="index"
+            :header="accordion.name"
+          >
+            <template>
+              <SfList class="list">
+                <SfListItem
+                  class="list__item"
+                  v-for="(item, id) in accordion.label"
+                  :key="item"
+                >
+                  <SfCheckbox :label="item" v-model="accordion.active[id]" />
+                </SfListItem>
+              </SfList>
+            </template>
+          </SfAccordionItem>
+        </SfAccordion>
+        <template>
+          <h4 class="range_label">Farve</h4>
+        </template>
+        <SfColorPicker :isOpen="true" :hasClose="false">
+          <SfColor
+            style="margin: 0.4375rem"
+            v-for="color in colors"
+            :key="color.value"
+            :color="color.color"
+            :selected="color.selected"
+            @click="color.selected = !color.selected"
+          />
+        </SfColorPicker>
+        <SfAccordion showChevron transition="sf-expand">
+          <SfAccordionItem
+            v-for="(accordion, index) in accordions3"
+            :key="index"
+            :header="accordion.name"
+          >
+            <template>
+              <SfList class="list">
+                <SfListItem
+                  class="list__item"
+                  v-for="(item, id) in accordion.label"
+                  :key="item"
+                >
+                  <SfCheckbox :label="item" v-model="accordion.active[id]" />
+                </SfListItem>
+              </SfList>
+            </template>
+          </SfAccordionItem>
+        </SfAccordion>
+      </div>
+      <div class="products__grid">
+        <GreenProductCard
+          v-for="(product, index) in phones"
+          :key="index"
+          :product_card_title="product.title"
+          :product_card_regularPrice="product.price"
+          product_card_image="iPhone8"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/composition-api';
+import { ref } from "@nuxtjs/composition-api";
 import {
-    SfBreadcrumbs,
-    SfHeading,
-    SfIcon,
-    SfSelect,
-    SfButton,
-    SfAccordion,
-    SfCheckbox,
-    SfList,
-    SfRange,
-    SfColorPicker,
-    SfColor
+  SfBreadcrumbs,
+  SfHeading,
+  SfIcon,
+  SfSelect,
+  SfButton,
+  SfAccordion,
+  SfCheckbox,
+  SfList,
+  SfRange,
+  SfColorPicker,
+  SfColor,
 } from "@storefront-ui/vue";
 export default {
   data() {
@@ -175,113 +172,126 @@ export default {
           link: "#",
         },
       ],
-      sortBy: {options: ["Price from low to high", "Price from high to low", "From A to Z"]},
+      sortBy: {
+        options: [
+          "Price from low to high",
+          "Price from high to low",
+          "From A to Z",
+        ],
+      },
       accordions1: [
-          {
-            name: "Model",
-            label: ["iPhone 8", "iPhone 10", "iPhone 13"],
-            active: [false, false, false]
-          },
-          {
-            name: "Stand",
-            label: ["Ny vare", "Som ny", "Meget flot", "Okay", "Slidt"],
-            active: [false, false, false, false, false]
-          }
+        {
+          name: "Model",
+          label: ["iPhone 8", "iPhone 10", "iPhone 13"],
+          active: [false, false, false],
+        },
+        {
+          name: "Stand",
+          label: ["Ny vare", "Som ny", "Meget flot", "Okay", "Slidt"],
+          active: [false, false, false, false, false],
+        },
       ],
       accordions2: [
-          {
-            name: "Lagerplads",
-            label: ["16 GB og under", "32 GB", "64 GB", "128 GB", "256 GB", "512 GB og over"],
-            active: [false, false, false, false, false, false]
-          }
+        {
+          name: "Lagerplads",
+          label: [
+            "16 GB og under",
+            "32 GB",
+            "64 GB",
+            "128 GB",
+            "256 GB",
+            "512 GB og over",
+          ],
+          active: [false, false, false, false, false, false],
+        },
       ],
       accordions3: [
-          {
-            name: "På lager i butik",
-            label: [],
-            active: []
-          }
+        {
+          name: "På lager i butik",
+          label: [],
+          active: [],
+        },
       ],
       colors: [
         {
-            "label": "Sand",
-            "value": "sand",
-            "color": "#EDCBB9",
-            "selected": false
+          label: "Sand",
+          value: "sand",
+          color: "#EDCBB9",
+          selected: false,
         },
         {
-            "label": "Mint",
-            "value": "mint",
-            "color": "#ABD9D8",
-            "selected": false
+          label: "Mint",
+          value: "mint",
+          color: "#ABD9D8",
+          selected: false,
         },
         {
-            "label": "Light Gray",
-            "value": "light gray",
-            "color": "#F1F2F3",
-            "selected": false
+          label: "Light Gray",
+          value: "light gray",
+          color: "#F1F2F3",
+          selected: false,
         },
         {
-            "label": "Vivid rose",
-            "value": "vivid rose",
-            "color": "#DB5593",
-            "selected": false
+          label: "Vivid rose",
+          value: "vivid rose",
+          color: "#DB5593",
+          selected: false,
         },
         {
-            "label": "Peach",
-            "value": "peach",
-            "color": "#F59F93",
-            "selected": false
+          label: "Peach",
+          value: "peach",
+          color: "#F59F93",
+          selected: false,
         },
         {
-            "label": "Citrus",
-            "value": "citrus",
-            "color": "#FFEE97",
-            "selected": false
-        }
-        ],
-        phones: [
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          },
-          {
-            title: "iPhone 8",
-            price: " Fra 2.999,-"
-          }
-        ]
+          label: "Citrus",
+          value: "citrus",
+          color: "#FFEE97",
+          selected: false,
+        },
+      ],
+      phones: [
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+        {
+          title: "iPhone 8",
+          price: " Fra 2.999,-",
+        },
+      ],
     };
   },
   setup() {
-      const selected = ref(false);
+    const selected = ref(false);
 
-      return {
-          selected
-      }
+    return {
+      selected,
+    };
   },
   components: {
     SfBreadcrumbs,
@@ -294,7 +304,7 @@ export default {
     SfList,
     SfRange,
     SfColorPicker,
-    SfColor
+    SfColor,
   },
 };
 </script>
@@ -325,7 +335,7 @@ export default {
   --breadcrumbs-font: var(--font-family--primary);
   margin-top: auto;
 }
-::v-deep .sf-heading__title{
+::v-deep .sf-heading__title {
   --heading-title-font: var(--font-family--primary);
   --heading-title-font-weight: 700;
   --heading-title-font-size: 34px;
@@ -369,9 +379,9 @@ export default {
   &__label {
     font-family: var(--font-family--primary);
     font-weight: 400;
-    color: #72757E;
+    color: #72757e;
     @include for-desktop {
-      color: #72757E;
+      color: #72757e;
       margin: 0 var(--spacer-2xs) 0 0;
     }
   }
@@ -387,7 +397,7 @@ export default {
       font-size: 16px;
       font-family: var(--font-family--primary);
       font-weight: 400;
-      color: #1D1F22;
+      color: #1d1f22;
       margin: 0;
     }
     ::v-deep .sf-select__placeholder {
@@ -631,42 +641,42 @@ export default {
   }
 }
 ::v-deep .sf-accordion-item__content {
-    list-style: none;
-    padding: 0px 0px;
-    font-size: 20px;
-    font-weight: 500;
+  list-style: none;
+  padding: 0px 0px;
+  font-size: 20px;
+  font-weight: 500;
 }
 ::v-deep .sf-range {
-    margin: 20px 0px 35px 15px;
-    width: 85%;
+  margin: 20px 0px 35px 15px;
+  width: 85%;
 }
 ::v-deep .sf-range .noUi-tooltip {
-    bottom: -200%;
+  bottom: -200%;
 }
 ::v-deep .sf-range .noUi-handle {
-    width: 16px;
-    height: 16px;
-    transform: translate3d(-5px, 5%, 0);
+  width: 16px;
+  height: 16px;
+  transform: translate3d(-5px, 5%, 0);
 }
 ::v-deep .sf-range .noUi-touch-area {
-    background-color: var(--c-primary);
+  background-color: var(--c-primary);
 }
 ::v-deep .sf-color-picker {
-    position: relative;
-    width: 115%;
-    margin: 0px 0px 0px -37px;
+  position: relative;
+  width: 115%;
+  margin: 0px 0px 0px -37px;
 }
 ::v-deep .range-label {
-    font-family: 'Josefin Sans', sans-serif;
-    line-height: 24px;
-    font-size: 20px;
-    font-weight: 500;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 24px;
+  font-size: 20px;
+  font-weight: 500;
 }
 ::v-deep .main_title {
-    font-family: 'Josefin Sans', sans-serif;
-    line-height: 24px;
-    font-size: 26px;
-    font-weight: 500;
-    margin-bottom: 20%;
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 24px;
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20%;
 }
 </style>

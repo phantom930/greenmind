@@ -32,10 +32,10 @@
         <SfTable class="products">
           <SfTableHeading>
             <SfTableHeader class="products__name">{{
-              $t('Product')
+              $t("Product")
             }}</SfTableHeader>
-            <SfTableHeader>{{ $t('Quantity') }}</SfTableHeader>
-            <SfTableHeader>{{ $t('Price') }}</SfTableHeader>
+            <SfTableHeader>{{ $t("Quantity") }}</SfTableHeader>
+            <SfTableHeader>{{ $t("Price") }}</SfTableHeader>
           </SfTableHeading>
           <SfTableRow
             v-for="(item, i) in orderGetters.getItems(currentOrder)"
@@ -55,21 +55,21 @@
             </SfTableData>
             <SfTableData>{{ orderGetters.getItemQty(item) }}</SfTableData>
             <SfTableData>{{
-              $n(orderGetters.getItemPrice(item), 'currency')
+              $n(orderGetters.getItemPrice(item), "currency")
             }}</SfTableData>
           </SfTableRow>
         </SfTable>
       </div>
       <div v-else>
         <p class="message">
-          {{ $t('Details and status orders') }}
+          {{ $t("Details and status orders") }}
         </p>
         <div v-if="orders.length === 0" class="no-orders">
           <p class="no-orders__title">
-            {{ $t('You currently have no orders') }}
+            {{ $t("You currently have no orders") }}
           </p>
           <SfButton class="no-orders__button">{{
-            $t('Start shopping')
+            $t("Start shopping")
           }}</SfButton>
         </div>
         <SfTable v-else class="orders">
@@ -80,12 +80,12 @@
               >{{ tableHeader }}</SfTableHeader
             >
             <SfTableHeader class="orders__element--right">
-              <span class="smartphone-only">{{ $t('Download') }}</span>
+              <span class="smartphone-only">{{ $t("Download") }}</span>
               <SfButton
                 class="desktop-only sf-button--text orders__download-all"
                 @click="downloadOrders()"
               >
-                {{ $t('Download all') }}
+                {{ $t("Download all") }}
               </SfButton>
             </SfTableHeader>
           </SfTableHeading>
@@ -93,7 +93,7 @@
             <SfTableData>{{ orderGetters.getId(order) }}</SfTableData>
             <SfTableData>{{ orderGetters.getDate(order) }}</SfTableData>
             <SfTableData>{{
-              $n(orderGetters.getPrice(order), 'currency')
+              $n(orderGetters.getPrice(order), "currency")
             }}</SfTableData>
             <SfTableData>
               <span :class="getStatusTextClass(order)">{{
@@ -105,13 +105,13 @@
                 class="sf-button--text smartphone-only"
                 @click="downloadOrder(order)"
               >
-                {{ $t('Download') }}
+                {{ $t("Download") }}
               </SfButton>
               <SfButton
                 class="sf-button--text desktop-only"
                 @click="currentOrder = order"
               >
-                {{ $t('View details') }}
+                {{ $t("View details") }}
               </SfButton>
             </SfTableData>
           </SfTableRow>
@@ -133,19 +133,19 @@
 </template>
 
 <script>
-import { SfTabs, SfTable, SfButton, SfProperty } from '@storefront-ui/vue';
-import { computed, ref } from '@vue/composition-api';
-import { useUserOrder, orderGetters } from '@vue-storefront/odoo';
-import { AgnosticOrderStatus } from '@vue-storefront/core';
-import { onSSR } from '@vue-storefront/core';
+import { SfTabs, SfTable, SfButton, SfProperty } from "@storefront-ui/vue";
+import { computed, ref } from "@nuxtjs/composition-api";
+import { useUserOrder, orderGetters } from "@vue-storefront/odoo";
+import { AgnosticOrderStatus } from "@vue-storefront/core";
+import { onSSR } from "@vue-storefront/core";
 
 export default {
-  name: 'PersonalDetails',
+  name: "PersonalDetails",
   components: {
     SfTabs,
     SfTable,
     SfButton,
-    SfProperty
+    SfProperty,
   },
   setup() {
     const { orders, search } = useUserOrder();
@@ -155,24 +155,24 @@ export default {
       await search();
     });
 
-    const tableHeaders = ['Order ID', 'Payment date', 'Amount', 'Status'];
+    const tableHeaders = ["Order ID", "Payment date", "Amount", "Status"];
 
     const getStatusTextClass = (order) => {
       const status = orderGetters.getStatus(order);
       switch (status) {
         case AgnosticOrderStatus.Open:
-          return 'text-warning';
+          return "text-warning";
         case AgnosticOrderStatus.Complete:
-          return 'text-success';
+          return "text-success";
         default:
-          return '';
+          return "";
       }
     };
 
     const downloadFile = (file, name) => {
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       document.body.appendChild(a);
-      a.style = 'display: none';
+      a.style = "display: none";
 
       const url = window.URL.createObjectURL(file);
       a.href = url;
@@ -183,15 +183,15 @@ export default {
 
     const downloadOrders = async () => {
       downloadFile(
-        new Blob([JSON.stringify(orders.value)], { type: 'application/json' }),
-        'orders.json'
+        new Blob([JSON.stringify(orders.value)], { type: "application/json" }),
+        "orders.json"
       );
     };
 
     const downloadOrder = async (order) => {
       downloadFile(
-        new Blob([JSON.stringify(order)], { type: 'application/json' }),
-        'order ' + orderGetters.getId(order) + '.json'
+        new Blob([JSON.stringify(order)], { type: "application/json" }),
+        "order " + orderGetters.getId(order) + ".json"
       );
     };
 
@@ -203,9 +203,9 @@ export default {
       orderGetters,
       downloadOrder,
       downloadOrders,
-      currentOrder
+      currentOrder,
     };
-  }
+  },
 };
 </script>
 

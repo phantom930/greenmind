@@ -27,23 +27,23 @@
 </template>
 
 <script>
-import { SfButton, SfRadio } from '@storefront-ui/vue';
-import { ref } from '@vue/composition-api';
+import { SfButton, SfRadio } from "@storefront-ui/vue";
+import { ref } from "@nuxtjs/composition-api";
 
 const SHIPPING_METHODS = [
-  { label: 'Visa Debit', value: 'visa_debit' },
-  { label: 'MasterCard', value: 'master_card' },
-  { label: 'VisaElectron', value: 'visa_electron' },
-  { label: 'Cash on delivery', value: 'cash' },
-  { label: 'Check', value: 'check' }
+  { label: "Visa Debit", value: "visa_debit" },
+  { label: "MasterCard", value: "master_card" },
+  { label: "VisaElectron", value: "visa_electron" },
+  { label: "Cash on delivery", value: "cash" },
+  { label: "Check", value: "check" },
 ];
 
 export default {
-  name: 'VsfPaymentProvider',
+  name: "VsfPaymentProvider",
 
   components: {
     SfButton,
-    SfRadio
+    SfRadio,
   },
 
   setup(props, { emit }) {
@@ -51,15 +51,15 @@ export default {
 
     const selectMethod = (method) => {
       selectedMethod.value = method;
-      emit('status');
+      emit("status");
     };
 
     return {
       shippingMethods: SHIPPING_METHODS,
       selectedMethod,
-      selectMethod
+      selectMethod,
     };
-  }
+  },
 };
 </script>
 

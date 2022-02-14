@@ -13,7 +13,7 @@
         <p class="reset-pass-text" v-show="isForgottenPassword">
           {{
             $t(
-              'Enter your email to receive instructions on how to reset your password'
+              "Enter your email to receive instructions on how to reset your password"
             )
           }}
         </p>
@@ -67,7 +67,7 @@
             >
               <SfLoader :class="{ loader: loading }" :loading="loading">
                 <div>
-                  {{ isForgottenPassword ? $t('Reset password') : $t('Login') }}
+                  {{ isForgottenPassword ? $t("Reset password") : $t("Login") }}
                 </div>
               </SfLoader>
             </SfButton>
@@ -79,17 +79,17 @@
             class="sf-button--text"
             @click="isForgottenPassword = !isForgottenPassword"
           >
-            {{ isForgottenPassword ? $t('Login?') : $t('Forgotten password?') }}
+            {{ isForgottenPassword ? $t("Login?") : $t("Forgotten password?") }}
           </SfButton>
         </div>
         <div class="bottom">
-          <p class="bottom__paragraph">{{ $t('No account') }}</p>
+          <p class="bottom__paragraph">{{ $t("No account") }}</p>
           <SfButton
             data-cy="login-btn_sign-up"
             class="sf-button--text"
             @click="displayChoosedTrue(() => (isCreateAccount = true))"
           >
-            {{ $t('Register today') }}
+            {{ $t("Register today") }}
           </SfButton>
         </div>
       </div>
@@ -155,19 +155,19 @@
               :disabled="loading"
             >
               <SfLoader :class="{ loader: loading }" :loading="loading">
-                <div>{{ $t('Create an account') }}</div>
+                <div>{{ $t("Create an account") }}</div>
               </SfLoader>
             </SfButton>
           </form>
         </ValidationObserver>
         <div class="action">
-          {{ $t('or') }}
+          {{ $t("or") }}
           <SfButton
             data-cy="login-btn_login-into-account"
             class="sf-button--text"
             @click="displayChoosedTrue(() => (isLogin = true))"
           >
-            {{ $t('login in to your account') }}
+            {{ $t("login in to your account") }}
           </SfButton>
         </div>
       </div>
@@ -175,8 +175,8 @@
   </SfModal>
 </template>
 <script>
-import { ref, watch } from '@vue/composition-api';
-import { useUiNotification } from '~/composables';
+import { ref, watch } from "@nuxtjs/composition-api";
+import { useUiNotification } from "~/composables";
 
 import {
   SfModal,
@@ -185,25 +185,25 @@ import {
   SfCheckbox,
   SfLoader,
   SfAlert,
-  SfBar
-} from '@storefront-ui/vue';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
-import { required, email } from 'vee-validate/dist/rules';
-import { useUser, usePassword } from '@vue-storefront/odoo';
-import { useUiState } from '~/composables';
+  SfBar,
+} from "@storefront-ui/vue";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import { required, email } from "vee-validate/dist/rules";
+import { useUser, usePassword } from "@vue-storefront/odoo";
+import { useUiState } from "~/composables";
 
-extend('email', {
+extend("email", {
   ...email,
-  message: 'Invalid email'
+  message: "Invalid email",
 });
 
-extend('required', {
+extend("required", {
   ...required,
-  message: 'This field is required'
+  message: "This field is required",
 });
 
 export default {
-  name: 'LoginModal',
+  name: "LoginModal",
   components: {
     SfModal,
     SfInput,
@@ -213,7 +213,7 @@ export default {
     SfAlert,
     ValidationProvider,
     ValidationObserver,
-    SfBar
+    SfBar,
   },
   setup() {
     const { isLoginModalOpen, toggleLoginModal } = useUiState();
@@ -230,7 +230,7 @@ export default {
     const {
       sendResetPassword,
       errors: errorPassword,
-      resetPasswordErrors
+      resetPasswordErrors,
     } = usePassword();
 
     watch(isLoginModalOpen, () => {
@@ -244,17 +244,17 @@ export default {
       await fn({ user: params, customQuery });
 
       if (error.value.login) {
-        send({ message: error?.value?.login?.message, type: 'danger' });
+        send({ message: error?.value?.login?.message, type: "danger" });
         return;
       }
       if (error.value.register) {
-        send({ message: error?.value?.register?.message, type: 'danger' });
+        send({ message: error?.value?.register?.message, type: "danger" });
         return;
       }
       if (isForgottenPassword.value) {
         send({
           message: `Thanks! If there is an account registered with the ${form.value.email} email, you will find message with a password reset link in your inbox. If the message is not arriving in your inbox, try another email address you might’ve used to register.`,
-          type: 'info'
+          type: "info",
         });
       }
 
@@ -280,12 +280,12 @@ export default {
     const handleLogin = async () =>
       handleForm(login, {
         username: form.value.email,
-        password: form.value.password
+        password: form.value.password,
       })();
 
     const handlePasswordRecovery = async () =>
       handleForm(sendResetPassword, {
-        email: form.value.email
+        email: form.value.email,
       })();
 
     return {
@@ -304,9 +304,9 @@ export default {
       handleRegister,
       displayChoosedTrue,
       isCreateAccount,
-      showIsForgottenPassword
+      showIsForgottenPassword,
     };
-  }
+  },
 };
 </script>
 

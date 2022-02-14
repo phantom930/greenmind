@@ -60,7 +60,8 @@
       <SfButton
         class="promo-code__button"
         @click="() => applyCoupon({ couponCode: promoCode })"
-      >{{ $t('Apply') }}</SfButton>
+        >{{ $t("Apply") }}</SfButton
+      >
     </div>
     <div class="highlighted">
       <SfCharacteristic
@@ -82,13 +83,13 @@ import {
   SfProperty,
   SfCharacteristic,
   SfInput,
-  SfCircleIcon
-} from '@storefront-ui/vue';
-import { computed, ref } from '@vue/composition-api';
-import { useCart, checkoutGetters, cartGetters } from '@vue-storefront/odoo';
+  SfCircleIcon,
+} from "@storefront-ui/vue";
+import { computed, ref } from "@nuxtjs/composition-api";
+import { useCart, checkoutGetters, cartGetters } from "@vue-storefront/odoo";
 
 export default {
-  name: 'CartPreview',
+  name: "CartPreview",
   components: {
     SfHeading,
     SfButton,
@@ -96,18 +97,20 @@ export default {
     SfProperty,
     SfCharacteristic,
     SfInput,
-    SfCircleIcon
+    SfCircleIcon,
   },
-  setup () {
+  setup() {
     const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
     const listIsHidden = ref(false);
-    const promoCode = ref('');
+    const promoCode = ref("");
     const showPromoCode = ref(false);
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const discounts = computed(() => cartGetters.getDiscounts(cart.value));
-    const shippingMethodPrice = computed(() => checkoutGetters.getShippingMethodPrice(cart.value));
+    const shippingMethodPrice = computed(() =>
+      checkoutGetters.getShippingMethodPrice(cart.value)
+    );
 
     return {
       shippingMethodPrice,
@@ -125,24 +128,24 @@ export default {
       applyCoupon,
       characteristics: [
         {
-          title: 'Safety',
-          description: 'It carefully packaged with a personal touch',
-          icon: 'safety'
+          title: "Safety",
+          description: "It carefully packaged with a personal touch",
+          icon: "safety",
         },
         {
-          title: 'Easy shipping',
+          title: "Easy shipping",
           description:
-            'You’ll receive dispatch confirmation and an arrival date',
-          icon: 'shipping'
+            "You’ll receive dispatch confirmation and an arrival date",
+          icon: "shipping",
         },
         {
-          title: 'Changed your mind?',
-          description: 'Rest assured, we offer free returns within 30 days',
-          icon: 'return'
-        }
-      ]
+          title: "Changed your mind?",
+          description: "Rest assured, we offer free returns within 30 days",
+          icon: "return",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

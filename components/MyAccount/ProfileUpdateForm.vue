@@ -40,7 +40,7 @@
         @close="requirePassword = false"
       >
         {{
-          $t('Please type your current password to change your email address.')
+          $t("Please type your current password to change your email address.")
         }}
         <SfInput
           v-model="currentPassword"
@@ -53,49 +53,49 @@
           @keypress.enter="handleSubmit(submitForm(reset))"
         />
         <SfButton class="form__button" type="submit">
-          {{ $t('Update personal data') }}
+          {{ $t("Update personal data") }}
         </SfButton>
       </SfModal>
       <SfButton class="form__button">
-        {{ $t('Update personal data') }}
+        {{ $t("Update personal data") }}
       </SfButton>
     </form>
   </ValidationObserver>
 </template>
 
 <script>
-import { ref } from '@vue/composition-api';
-import { useUiNotification } from '~/composables';
-import { ValidationProvider, ValidationObserver } from 'vee-validate';
-import { useUser, userGetters } from '@vue-storefront/odoo';
-import { SfInput, SfButton, SfModal } from '@storefront-ui/vue';
+import { ref } from "@nuxtjs/composition-api";
+import { useUiNotification } from "~/composables";
+import { ValidationProvider, ValidationObserver } from "vee-validate";
+import { useUser, userGetters } from "@vue-storefront/odoo";
+import { SfInput, SfButton, SfModal } from "@storefront-ui/vue";
 export default {
-  name: 'ProfileUpdateForm',
+  name: "ProfileUpdateForm",
   components: {
     SfInput,
     SfButton,
     SfModal,
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   props: {
     loading: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
-  emits: ['submit'],
+  emits: ["submit"],
   setup(props, { emit }) {
     const { send } = useUiNotification();
     const { user } = useUser();
 
-    const currentPassword = ref('');
+    const currentPassword = ref("");
     const requirePassword = ref(false);
 
     const resetForm = () => ({
       name: userGetters.getFirstName(user.value),
-      email: userGetters.getEmailAddress(user.value)
+      email: userGetters.getEmailAddress(user.value),
     });
     const form = ref(resetForm());
 
@@ -103,19 +103,19 @@ export default {
       const onComplete = () => {
         form.value = resetForm();
         requirePassword.value = false;
-        currentPassword.value = '';
+        currentPassword.value = "";
         resetValidationFn();
 
-        send({ message: 'Update Succefully.', type: 'success' });
+        send({ message: "Update Succefully.", type: "success" });
       };
       const onError = (error) => {
         form.value = resetForm();
         requirePassword.value = false;
-        currentPassword.value = '';
-        send({ message: error?.value, type: 'danger' });
+        currentPassword.value = "";
+        send({ message: error?.value, type: "danger" });
       };
 
-      emit('submit', { form, onComplete, onError });
+      emit("submit", { form, onComplete, onError });
     };
 
     return {
@@ -123,9 +123,9 @@ export default {
       user,
       requirePassword,
       currentPassword,
-      form
+      form,
     };
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>

@@ -118,35 +118,41 @@
           />
         </div>
         <div class="usp_banner_products">
-          <div style="display:grid; padding-left: 8%;">
+          <div style="display: grid; padding-left: 8%">
             <SfImage
               :src="require('/assets/images/productsUspBanner/banner_1.svg')"
-              width="63"
-              height="71"
+              :width="63"
+              :height="71"
               alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto;"
+              style="margin-left: auto; margin-right: auto"
             />
-            <span class="usp_text_product">Produkter er testet af egne eksperter</span>
+            <span class="usp_text_product"
+              >Produkter er testet af egne eksperter</span
+            >
           </div>
-          <div style="display:grid; padding-left: 8%;">
+          <div style="display: grid; padding-left: 8%">
             <SfImage
               :src="require('/assets/images/productsUspBanner/banner_2.svg')"
               width="63"
               height="71"
               alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto;"
+              style="margin-left: auto; margin-right: auto"
             />
-            <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
+            <span class="usp_text_product"
+              >14 dages returret <br />2 års garanti</span
+            >
           </div>
-          <div style="display:grid; padding-left: 8%;">
+          <div style="display: grid; padding-left: 8%">
             <SfImage
               :src="require('/assets/images/productsUspBanner/banner_3.svg')"
               width="63"
               height="71"
               alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto;"
+              style="margin-left: auto; margin-right: auto"
             />
-            <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
+            <span class="usp_text_product"
+              >Ombyt i én af vores<br />10 butikker</span
+            >
           </div>
         </div>
 
@@ -225,15 +231,15 @@
       </div>
     </div>
     <div class="product_carousel">
-    <GreenCarousel
-    :item="item"
-    :feature1="storage"
-    :feature2="color"
-    :price="price"
-    :currency="currency"
-    :carousel_title="$t('Populære produkter')"
-    style="padding-top: 5%;"
-    />
+      <GreenCarousel
+        :item="item"
+        :feature1="storage"
+        :feature2="color"
+        :price="price"
+        :currency="currency"
+        :carousel_title="$t('Populære produkter')"
+        style="padding-top: 5%"
+      />
     </div>
   </div>
 </template>
@@ -276,6 +282,7 @@ import {
 } from "@vue-storefront/odoo";
 
 import { onSSR } from "@vue-storefront/core";
+import { useRoute } from "@nuxtjs/composition-api";
 
 import MobileStoreBanner from "~/components/MobileStoreBanner.vue";
 import LazyHydrate from "vue-lazy-hydration";
@@ -283,8 +290,10 @@ export default {
   name: "Product",
   transition: "fade",
   setup(props, { root }) {
+    const route = useRoute();
+
     const qty = ref(1);
-    const { id } = root.$route.params;
+    const { id } = route.value.params;
     const { query } = root.$route;
     const { size, color } = root.$route.query;
     const configuration = reactive({ size, color });
@@ -439,9 +448,9 @@ export default {
         "Brand name is the perfect pairing of quality and design. This label creates major everyday vibes with its collection of modern brooches, silver and gold jewellery, or clips it back with hair accessories in geo styles.",
       careInstructions: "Do not wash!",
       item: ["iPhone8", "iPhone13", "iPhone8", "iPhone8", "iPhone8"],
-      storage: ["128 Gb","128 Gb","128 Gb","128 Gb","128 Gb"],
+      storage: ["128 Gb", "128 Gb", "128 Gb", "128 Gb", "128 Gb"],
       color: ["Gold", "Red", "Silver", "Black", "Gold"],
-      price: ["2,999", "2,999", "2,999", "2,999", "2,999",],
+      price: ["2,999", "2,999", "2,999", "2,999", "2,999"],
       currency: ["$"],
     };
   },
@@ -642,15 +651,15 @@ export default {
 ::v-deep .product_carousel .sf-carousel {
   background-color: transparent;
 }
-.usp_banner_products{
+.usp_banner_products {
   height: 120px;
   width: 531px;
   border-radius: 10px;
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
   display: flex;
   margin-top: 7%;
 }
-.usp_text_product{
+.usp_text_product {
   width: 122px;
   font-family: var(--font-family--primary);
   font-size: 12px;

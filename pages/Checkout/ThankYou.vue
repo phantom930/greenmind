@@ -11,11 +11,11 @@
     >
       <template #description>
         <div class="banner__order-number">
-          <span>{{ $t('Order No.') }}</span>
+          <span>{{ $t("Order No.") }}</span>
           <strong>{{ cartGetters.getOrderNumber(cart) }}</strong>
         </div>
         <div class="banner__order-number">
-          <span>{{ $t('Payment status.') }}</span>
+          <span>{{ $t("Payment status.") }}</span>
           <strong>{{ cartGetters.getStage(cart) }}</strong>
         </div>
 
@@ -37,7 +37,7 @@
           :level="3"
         />
         <p class="order__paragraph paragraph">
-          {{ $t('Successful placed order') }}
+          {{ $t("Successful placed order") }}
         </p>
         <div class="order__contact">
           <SfHeading
@@ -53,7 +53,7 @@
           </div>
         </div>
         <SfButton class="order__notifications-button button-size">{{
-          $t('Allow order notifications')
+          $t("Allow order notifications")
         }}</SfButton>
       </div>
       <div class="additional-info">
@@ -64,7 +64,7 @@
             :level="3"
           />
           <p class="paragraph">
-            {{ $t('Info after order') }}
+            {{ $t("Info after order") }}
           </p>
         </div>
         <div>
@@ -74,7 +74,7 @@
             :level="3"
           />
           <p class="paragraph">
-            {{ $t('Feedback') }}
+            {{ $t("Feedback") }}
           </p>
           <SfButton
             class="
@@ -83,38 +83,38 @@
               sf-button--full-width
               button-size
             "
-            >{{ $t('Send my feedback') }}</SfButton
+            >{{ $t("Send my feedback") }}</SfButton
           >
         </div>
       </div>
     </section>
     <SfButton class="back-button color-secondary button-size">{{
-      $t('Go back to shop')
+      $t("Go back to shop")
     }}</SfButton>
   </div>
 </template>
 
 <script>
-import { SfHeading, SfButton, SfCallToAction } from '@storefront-ui/vue';
-import { ref, onMounted } from '@vue/composition-api';
-import { usePayment, useCart, cartGetters } from '@vue-storefront/odoo';
+import { SfHeading, SfButton, SfCallToAction } from "@storefront-ui/vue";
+import { ref, onMounted } from "@nuxtjs/composition-api";
+import { usePayment, useCart, cartGetters } from "@vue-storefront/odoo";
 export default {
   components: {
     SfHeading,
     SfButton,
-    SfCallToAction
+    SfCallToAction,
   },
   setup(props, { root, emit }) {
-    emit('changeStep', 4);
+    emit("changeStep", 4);
 
     const { getPaymentConfirmation } = usePayment();
     const { cart } = useCart();
 
     const companyDetails = ref({
-      name: 'Divante Headquarter',
-      street: 'St. Dmowskiego 17, 53-534',
-      city: 'Wroclaw, Poland',
-      email: 'demo@vuestorefront.io'
+      name: "Divante Headquarter",
+      street: "St. Dmowskiego 17, 53-534",
+      city: "Wroclaw, Poland",
+      email: "demo@vuestorefront.io",
     });
 
     onMounted(async () => {
@@ -122,16 +122,16 @@ export default {
     });
 
     const redirectToPayment = () => {
-      return root.$router.push('/checkout/payment');
+      return root.$router.push("/checkout/payment");
     };
 
     return {
       cartGetters,
       cart,
       redirectToPayment,
-      companyDetails
+      companyDetails,
     };
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
