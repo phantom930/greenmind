@@ -1,5 +1,37 @@
 <template>
   <div id="category">
+    <div class="usp_banner_products">
+          <div style="display:flex; margin-left: auto; align-items: center;">
+            <SfImage
+              :src="require('/assets/images/productsUspBanner/banner_1.svg')"
+              width="63"
+              height="71"
+              alt="Vue Storefront Next"
+              style="margin-left: auto; margin-right: auto;"
+            />
+            <span class="usp_text_product">Produkter er testet af egne eksperter</span>
+          </div>
+          <div style="display:flex; padding-left: 8%; align-items: center;">
+            <SfImage
+              :src="require('/assets/images/productsUspBanner/banner_2.svg')"
+              width="63"
+              height="71"
+              alt="Vue Storefront Next"
+              style="margin-left: auto; margin-right: auto;"
+            />
+            <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
+          </div>
+          <div style="display:flex; padding-left: 8%; margin-right: auto; align-items: center;">
+            <SfImage
+              :src="require('/assets/images/productsUspBanner/banner_3.svg')"
+              width="63"
+              height="71"
+              alt="Vue Storefront Next"
+              style="margin-left: auto; margin-right: auto;"
+            />
+            <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
+          </div>
+        </div>
     <div class="navbar section">
       <div class="navbar__aside desktop-only">
         <SfBreadcrumbs
@@ -594,7 +626,7 @@ export default {
   &__title {
     display: flex;
     align-items: center;
-    margin: 0 auto 0 auto;
+    margin: 0 16% 0 auto;
   }
   &__label {
     font-family: var(--font-family--primary);
@@ -926,5 +958,19 @@ export default {
 }
 ::v-deep .sf-breadcrumbs__breadcrumb.current{
   text-transform: capitalize;
+}
+.usp_banner_products{
+  height: 80px;
+  border-radius: 10px;
+  background-color: #F3F3F3;
+  display: flex;
+}
+.usp_text_product{
+  width: 165px;
+  font-family: var(--font-family--primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-left: 15%;
 }
 </style>
