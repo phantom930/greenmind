@@ -4,6 +4,15 @@ import { getRoutes } from './routes';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
+const localesMap = {
+  'en-EN': 'en',
+  'de-DE': 'de'
+};
+
+
+const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
+
+
 export default {
   css: ['@/assets/styles.scss'],
   components: [
@@ -190,39 +199,22 @@ export default {
       {
         code: 'en',
         label: 'English',
-        file: 'en.js',
-        iso: 'en'
+        file: 'en.json',
+        iso: 'nl-NL',
       },
       {
         code: 'de',
-        label: 'German',
-        file: 'de.js',
-        iso: 'de'
+        label: 'Deutsch',
+        file: 'de.json',
+        iso: 'de-DE',
       }
     ],
-    defaultLocale: 'en',
+    fallbackLocale: localeIndex,
+    defaultLocale: localeIndex,
     lazy: true,
     seo: true,
-    langDir: 'lang/',
-    vueI18n: {
-      fallbackLocale: 'en',
-      numberFormats: {
-        en: {
-          currency: {
-            style: 'currency',
-            currency: 'USD',
-            currencyDisplay: 'symbol'
-          }
-        },
-        de: {
-          currency: {
-            style: 'currency',
-            currency: 'EUR',
-            currencyDisplay: 'symbol'
-          }
-        }
-      }
-    },
+    langDir: 'lang',
+
     detectBrowserLanguage: {
       cookieKey: 'vsf-locale'
     }
