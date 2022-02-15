@@ -43,14 +43,16 @@
           </div>
         </div>
         <div>
-          <SfButton
+          <!-- <SfButton
             data-cy="product-btn_size-guide"
             class="sf-button--text desktop-only product__guide"
           >
             {{ $t("Size guide") }}
-          </SfButton>
+          </SfButton> -->
 
-          <div v-if="options.select">
+          <ProductDetails />
+
+          <!-- <div v-if="options.select">
             <SfSelect
               v-for="(select, selectKey) in options.select"
               :key="selectKey"
@@ -68,9 +70,9 @@
               >
               </SfSelectOption>
             </SfSelect>
-          </div>
+          </div> -->
 
-          <div v-if="options.radio">
+          <!-- <div v-if="options.radio">
             <template v-for="(radio, radioKey) in options.radio">
               <p class="product__radio-label" :key="radioKey">
                 {{ radio.label }}:
@@ -87,7 +89,7 @@
                 @change="updateFilter({ [radio.label]: item.value })"
               />
             </template>
-          </div>
+          </div> -->
 
           <div v-if="options.color" class="product__colors desktop-only">
             <template v-for="(option, colorKey) in options.color">
@@ -107,7 +109,7 @@
               </SfColor>
             </template>
           </div>
-          <SfAddToCart
+          <!-- <SfAddToCart
             data-cy="product-cart_add"
             :stock="stock"
             v-model="qty"
@@ -115,7 +117,7 @@
             :canAddToCart="stock > 0"
             class="product__add-to-cart"
             @click="addItem({ product, quantity: parseInt(qty) })"
-          />
+          /> -->
         </div>
         <div class="usp_banner_products">
           <div style="display: grid; padding-left: 8%">
