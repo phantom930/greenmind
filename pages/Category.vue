@@ -25,14 +25,7 @@
           >14 dages returret <br />2 års garanti</span
         >
       </div>
-      <div
-        style="
-          display: flex;
-          padding-left: 8%;
-          margin-right: auto;
-          align-items: center;
-        "
-      >
+      <div style="display: flex; padding-left: 8%; margin-right: auto; align-items: center;">
         <SfImage
           :src="require('/assets/images/productsUspBanner/banner_3.svg')"
           :width="63"
