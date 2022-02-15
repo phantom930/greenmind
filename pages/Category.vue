@@ -131,38 +131,10 @@
             tag="div"
             class="products__grid"
           >
-            <SfProductCard
-              data-cy="category-product-card"
-              v-for="(product, i) in products"
+            <LazyGreenProductCard
+              :product="product"
+              v-for="product in products"
               :key="product.id"
-              :style="{ '--index': i }"
-              :imageWidth="216"
-              :imageHeight="288"
-              :title="productGetters.getName(product)"
-              :image="$image(productGetters.getCoverImage(product))"
-              :nuxtImgConfig="{ fit: 'cover' }"
-              image-tag="nuxt-img"
-              :regular-price="
-                $n(productGetters.getPrice(product).regular, 'currency')
-              "
-              :special-price="
-                productGetters.getPrice(product).special &&
-                $n(productGetters.getPrice(product).special, 'currency')
-              "
-              :score-rating="false"
-              wishlistIcon="false"
-              :show-add-to-cart-button="false"
-              :link="
-                localePath(
-                  `/p/${productGetters.getId(product)}/${productGetters.getSlug(
-                    product
-                  )}`
-                )
-              "
-              class="products__product-card"
-              description="128 GB | Gold"
-              price_helper="Fra"
-              discount="$ 50.00"
             />
           </transition-group>
           <transition-group
@@ -925,17 +897,6 @@ export default {
   margin: 20px 0px 35px 15px;
   width: 85%;
 }
-::v-deep .sf-range .noUi-tooltip {
-  bottom: -200%;
-}
-::v-deep .sf-range .noUi-handle {
-  width: 16px;
-  height: 16px;
-  transform: translate3d(-5px, 5%, 0);
-}
-::v-deep .sf-range .noUi-touch-area {
-  background-color: var(--c-primary);
-}
 ::v-deep .sf-color-picker {
   position: relative;
   width: 115%;
@@ -947,38 +908,7 @@ export default {
   font-size: 20px;
   font-weight: 500;
 }
-::v-deep .main_title {
-  font-family: "Josefin Sans", sans-serif;
-  line-height: 24px;
-  font-size: 26px;
-  font-weight: 500;
-  margin-bottom: 20%;
-}
-::v-deep .sf-product-card::after {
-  border-radius: 14px;
-  cursor: pointer;
-}
-::v-deep .sf-product-card__title {
-  font-family: var(--font-family--primary);
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #1d1f22;
-  margin-left: auto;
-  margin-right: auto;
-}
-::v-deep .sf-price__old {
-  display: none;
-}
-::v-deep .sf-price__special {
-  font-family: var(--font-family--primary);
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #1d1f22;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 ::v-deep .sf-breadcrumbs__breadcrumb.current {
   text-transform: capitalize;
 }
@@ -995,5 +925,9 @@ export default {
   font-weight: 400;
   line-height: 20px;
   padding-left: 15%;
+}
+
+.products__grid {
+  gap: 20px;
 }
 </style>
