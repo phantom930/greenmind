@@ -553,15 +553,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-:root {
-  --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7ba393);
-  @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary);
-}
-</style>
-
 <style lang="scss" scoped>
 #category {
   box-sizing: border-box;
