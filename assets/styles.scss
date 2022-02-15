@@ -2,6 +2,14 @@
   z-index: 1 !important;
 }
 
+.layout {
+  box-sizing: border-box;
+  @include for-desktop {
+    max-width: 1240px;
+    margin: auto;
+  }
+}
+
 :root {
 
 --font-family--primary: "Josefin Sans"

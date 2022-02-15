@@ -1,98 +1,110 @@
 <template>
-  <div>
+  <div class="layout">
     <SfHero>
       <SfHeroItem
-      title="Colorful summer dresses are already in store"
-      buttonText="SE MERE"
-      background="none"
-      :image="require('/assets/images/homeHero/homeHero_1.svg')"
-      style="background-size: auto; background-position-y: center;"
+        title="Colorful summer dresses are already in store"
+        buttonText="SE MERE"
+        background="none"
+        :image="require('/assets/images/homeHero/homeHero_1.svg')"
+        style="background-size: auto; background-position-y: center"
       />
       <SfHeroItem
-      title="Colorful summer dresses are already in store"
-      buttonText="SE MERE"
-      background="none"
-      :image="require('/assets/images/homeHero/homeHero_1.svg')"
-      style="background-size: auto; background-position-y: center;"
+        title="Colorful summer dresses are already in store"
+        buttonText="SE MERE"
+        background="none"
+        :image="require('/assets/images/homeHero/homeHero_1.svg')"
+        style="background-size: auto; background-position-y: center"
       />
       <SfHeroItem
-      title="Colorful summer dresses are already in store"
-      buttonText="SE MERE"
-      background="none"
-      :image="require('/assets/images/homeHero/homeHero_1.svg')"
-      style="background-size: auto; background-position-y: center;"
+        title="Colorful summer dresses are already in store"
+        buttonText="SE MERE"
+        background="none"
+        :image="require('/assets/images/homeHero/homeHero_1.svg')"
+        style="background-size: auto; background-position-y: center"
       />
     </SfHero>
-     <SfBanner
+    <SfBanner
       title=""
       subtitle=""
       description=""
       buttonText=""
       background=""
       :image="require('/assets/images/homeUspBanner/banner_1.svg')"
-      style="background-size: auto; background-position-y: center; margin-top: -10%;"
+      style="
+        background-size: auto;
+        background-position-y: center;
+        margin-top: -10%;
+      "
     />
     <div style="display: flex" class="category_card">
       <SfCategoryCard
         label="iPhones"
-        :background="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
-        style="background-repeat: no-repeat; background-position-x: center;"
+        :background="
+          require('/assets/images/categoryCards/homeCategoryCard_1.svg')
+        "
+        style="background-repeat: no-repeat; background-position-x: center"
         link="#"
       />
-      <div style="padding-right: 25px"/>
+      <div style="padding-right: 25px" />
       <SfCategoryCard
         label="Smartphones"
-        :background="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
-        style="background-repeat: no-repeat; background-position-x: center;"
+        :background="
+          require('/assets/images/categoryCards/homeCategoryCard_2.svg')
+        "
+        style="background-repeat: no-repeat; background-position-x: center"
         link="#"
       />
-      <div style="padding-right: 25px"/>
+      <div style="padding-right: 25px" />
       <SfCategoryCard
         label="Tablets"
-        :background="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
-        style="background-repeat: no-repeat; background-position-x: center;"
+        :background="
+          require('/assets/images/categoryCards/homeCategoryCard_3.svg')
+        "
+        style="background-repeat: no-repeat; background-position-x: center"
         link="#"
       />
-      <div style="padding-right: 25px"/>
+      <div style="padding-right: 25px" />
       <SfCategoryCard
         label="Computere"
-        :background="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
-        style="background-repeat: no-repeat; background-position-x: center;"
+        :background="
+          require('/assets/images/categoryCards/homeCategoryCard_4.svg')
+        "
+        style="background-repeat: no-repeat; background-position-x: center"
         link="#"
       />
     </div>
-    <div style="display: flex; padding-top: 5%;">
+    <div style="display: flex; padding-top: 5%">
       <GreenBannerVertical
-      banner_title="Stand"
-      banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
-      banner_button="SE MERE"
-      background= "#CABDBD"
-      banner_image="banner_1"
+        banner_title="Stand"
+        banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+        banner_button="SE MERE"
+        background="#CABDBD"
+        banner_image="banner_1"
       />
       <GreenBannerVertical
-      banner_title="Stand"
-      banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
-      banner_button="SE MERE"
-      banner_image="banner_2"
-      background= "#D6D4D4"
-      style="padding: 0 41px;"
+        banner_title="Stand"
+        banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+        banner_button="SE MERE"
+        banner_image="banner_2"
+        background="#D6D4D4"
+        style="padding: 0 41px"
       />
       <GreenBannerVertical
-      banner_title="Stand"
-      banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
-      banner_button="SE MERE"
-      banner_image="banner_3"
-      background= "#E0D6C9"
+        banner_title="Stand"
+        banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+        banner_button="SE MERE"
+        banner_image="banner_3"
+        background="#E0D6C9"
       />
     </div>
     <GreenCarousel
-    :item="item"
-    :feature1="storage"
-    :feature2="color"
-    :price="price"
-    :currency="currency"
-    :carousel_title="$t('Populære produkter')"
-    style="padding-top: 5%;"
+      :item="item"
+      :feature1="storage"
+      :feature2="color"
+      :price="price"
+      :currency="currency"
+      :carousel_title="$t('Populære produkter')"
+      style="padding-top: 5%"
     />
     <div class="bottom_hero">
       <SfHero>
@@ -102,7 +114,11 @@
           buttonText="SE MERE"
           background="none"
           :image="require('/assets/images/homeHero/homeHero_2.svg')"
-          style="background-size: auto; background-position-y: center; margin-top: -15%;"
+          style="
+            background-size: auto;
+            background-position-y: center;
+            margin-top: -15%;
+          "
         />
       </SfHero>
     </div>
@@ -110,47 +126,53 @@
 </template>
 
 <script>
-import { SfBreadcrumbs, SfButton, SfHero, SfBanner, SfCategoryCard } from '@storefront-ui/vue'
+import {
+  SfBreadcrumbs,
+  SfButton,
+  SfHero,
+  SfBanner,
+  SfCategoryCard,
+} from "@storefront-ui/vue";
 export default {
   components: {
     SfBreadcrumbs,
     SfButton,
     SfHero,
     SfBanner,
-    SfCategoryCard
+    SfCategoryCard,
   },
   data() {
     return {
-        item: ["iPhone8", "iPhone13", "iPhone8", "iPhone8", "iPhone8"],
-        storage: ["128 Gb","128 Gb","128 Gb","128 Gb","128 Gb"],
-        color: ["Gold", "Red", "Silver", "Black", "Gold"],
-        price: ["2,999", "2,999", "2,999", "2,999", "2,999",],
-        currency: ["$"],
-        breadcrumb: [
+      item: ["iPhone8", "iPhone13", "iPhone8", "iPhone8", "iPhone8"],
+      storage: ["128 Gb", "128 Gb", "128 Gb", "128 Gb", "128 Gb"],
+      color: ["Gold", "Red", "Silver", "Black", "Gold"],
+      price: ["2,999", "2,999", "2,999", "2,999", "2,999"],
+      currency: ["$"],
+      breadcrumb: [
         {
-          "text": "Home",
-          "link": "#"
+          text: "Home",
+          link: "#",
         },
         {
-          "text": "Category",
-          "link": "#"
+          text: "Category",
+          link: "#",
         },
         {
-          "text": "Pants",
-          "link": "#"
-        }
-      ]
-    }
-  }
-}
+          text: "Pants",
+          link: "#",
+        },
+      ],
+    };
+  },
+};
 </script>
 
 <style lang="scss">
 :root {
   --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7BA393);
+  @include generate-color-variants(--_c-green-primary, #7ba393);
   @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary); 
+  @include assign-color-variants(--c-secondary, --_c-green-secondary);
 }
 </style>
 
@@ -159,9 +181,9 @@ export default {
   height: 480px;
   margin-top: -75px;
 }
-::v-deep .sf-hero-item__title{
+::v-deep .sf-hero-item__title {
   font: var(--font-family--primary);
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 46px;
   font-weight: 700;
   line-height: 48px;
@@ -169,35 +191,37 @@ export default {
   margin-top: 0;
 }
 ::v-deep .sf-hero-item__button .sf-button {
-    border-radius: 40px;
-    --button-background: #F1F2F3;
-    --button-color: #72757E;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 18px 52px;
-    padding-top: 20px;
-    transform: translate(0%, -50%);
+  border-radius: 40px;
+  --button-background: #f1f2f3;
+  --button-color: #72757e;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 18px 52px;
+  padding-top: 20px;
+  transform: translate(0%, -50%);
 }
-::v-deep .sf-hero-item__button .sf-button:hover{
-    --button-background: #E0E0E1;
-    --button-box-shadow-opacity: 0.25;
-    --button-background: #E0E0E1 radial-gradient(circle, transparent 1%, #E0E0E1 1%) center/15000%;
+::v-deep .sf-hero-item__button .sf-button:hover {
+  --button-background: #e0e0e1;
+  --button-box-shadow-opacity: 0.25;
+  --button-background: #e0e0e1
+    radial-gradient(circle, transparent 1%, #e0e0e1 1%) center/15000%;
 }
 ::v-deep .sf-hero-item__button .sf-button:active {
-    --button-box-shadow: none;
-    --button-background: #F1F2F3 radial-gradient(circle, transparent 40%, #E0E0E1 1%) center/15000%;
-    --button-transition: background 0s ;
-    --button-text-decoration: underline;
+  --button-box-shadow: none;
+  --button-background: #f1f2f3
+    radial-gradient(circle, transparent 40%, #e0e0e1 1%) center/15000%;
+  --button-transition: background 0s;
+  --button-text-decoration: underline;
   background-size: 100%;
 }
 ::v-deep .sf-hero__bullets {
   transform: translate3d(-50%, -55px, 0);
-  --bullet-background: #A5CEBE;
+  --bullet-background: #a5cebe;
 }
 ::v-deep .sf-bullet.is-active {
-  --bullet-background: #32463D;
+  --bullet-background: #32463d;
 }
 ::v-deep .sf-hero__control--left {
   display: none;
@@ -205,19 +229,19 @@ export default {
 ::v-deep .sf-hero__control--right {
   display: none;
 }
-::v-deep .bottom_hero .sf-hero-item__title{
+::v-deep .bottom_hero .sf-hero-item__title {
   transform: translate(70%, 100%);
   line-height: 35px;
   font-weight: 700;
   font-size: 34px;
 }
-::v-deep .bottom_hero .sf-hero-item__subtitle{
+::v-deep .bottom_hero .sf-hero-item__subtitle {
   transform: translate(86%, 256%);
   font-family: var(--font-family--primary);
   font-weight: 400;
   line-height: 22px;
   font-size: 18px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: none;
 }
 ::v-deep .bottom_hero .sf-button {
@@ -226,7 +250,7 @@ export default {
 ::v-deep .bottom_hero .sf-hero {
   height: 250px;
 }
-::v-deep .category_card .sf-category-card__label{
+::v-deep .category_card .sf-category-card__label {
   font: var(--font-family--primary);
   font-size: 20px;
   font-weight: 500;
@@ -235,10 +259,10 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
-::v-deep .category_card .sf-category-card__details{
-  background:none;
+::v-deep .category_card .sf-category-card__details {
+  background: none;
 }
-::v-deep .category_card .sf-category-card{
-  height:270px;
+::v-deep .category_card .sf-category-card {
+  height: 270px;
 }
 </style>

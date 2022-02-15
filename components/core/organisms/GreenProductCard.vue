@@ -2,7 +2,7 @@
   <SfProductCard
     data-cy="category-product-card"
     :key="product.id"
-    :style="{ '--index': i }"
+    :style="{ '--index': product.id }"
     :imageWidth="248"
     :imageHeight="375"
     :title="productGetters.getName(product)"

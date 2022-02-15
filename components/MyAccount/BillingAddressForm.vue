@@ -156,7 +156,7 @@ import { useCountrySearch } from "@vue-storefront/odoo";
 import { required, min, digits } from "vee-validate/dist/rules";
 import { watch } from "@nuxtjs/composition-api";
 import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import {n-api';
+import {
   reactive,
   onBeforeMount,
   defineComponent,

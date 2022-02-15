@@ -16,6 +16,7 @@ const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
 export default {
   css: ['@/assets/styles.scss'],
   components: [
+    '~/components/',
     '~/components/core/atoms',
     '~/components/core/organisms',
     '~/components/core/molecules'
