@@ -593,10 +593,7 @@ export default {
   font-size: 20px;
   font-weight: 500;
 }
-::v-deep .sf-range {
-  margin: 20px 0px 35px 15px;
-  width: 85%;
-}
+
 ::v-deep .sf-color-picker {
   position: relative;
   width: 115%;

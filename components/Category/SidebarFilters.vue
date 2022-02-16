@@ -7,6 +7,15 @@
         class="filters-title pt-5 sf-heading--left"
       />
       <div class="filters desktop-only">
+        <SfHeading
+          :level="4"
+          title="Price"
+          class="filters__title sf-heading--left"
+          :key="`filter-title-price`"
+        />
+
+        <LazyGreenRange />
+
         <div v-for="(facet, i) in facets" :key="i">
           <template v-if="facetHasMoreThanOneOption(facet)">
             <SfHeading
