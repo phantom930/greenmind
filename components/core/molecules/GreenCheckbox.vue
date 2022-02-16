@@ -16,7 +16,7 @@
       slot="label"
     >
     <div class="img-description-wrap">
-        <img :src="require('/assets/images/product/productimg.jpg')">
+        <img :src="require('/assets/images/product/' + img + '.jpg')">
         <div class="description-wrap">
             <div class="title-link">
                 <div class="product-title">{{ title }}</div>
@@ -61,6 +61,10 @@
             type: String,
             default: ''
         },
+        img: {
+            type: String,
+            default: ''
+        }
     }
   };
 </script>

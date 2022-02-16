@@ -50,12 +50,14 @@
         link_title="Læs mere"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         price="149,-"
+        img="productimg"
         />
         <GreenCheckbox
         title="Adapter"
         link_title=""
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         price="99,-"
+        img="productimg"
         />      
     </div>
     </div>
@@ -81,17 +83,6 @@
 </script>
 
 <style scoped>
-::v-deep .sf-add-to-cart__select-quantity {
-  display: none;
-}
-::v-deep .sf-add-to-cart__button {
-    background: none;
-    padding: 0;
-}
-::v-deep .add-to-cart .sf-button {
-    font-size: 14px;
-    font-family: var(--font-family--primary);
-}
 .link-prices-wrap .links p {
     color: #1D1F22;
     font-size: 20px;
@@ -211,18 +202,6 @@
     align-items: center;
     width: 100%;
     max-width: 280px;
-}
-
-.total-price-buttons .buttons .add-to-cart {
-    font-size: 14px;
-    color: #fff;
-    background: #32463D;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    margin-bottom: 8px;
 }
 
 .total-price-buttons .buttons .status {

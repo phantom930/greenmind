@@ -13,7 +13,7 @@
           <SfHeading
             :title="productGetters.getName(product)"
             :level="3"
-            class="sf-heading--no-underline sf-heading--left"
+            class="sf-heading--no-underline sf-heading--left product_title"
           />
           <SfIcon
             icon="drag"
@@ -22,6 +22,11 @@
             class="product__drag-icon smartphone-only"
           />
         </div>
+        <SfHeading
+            title="128GB | Space Grey"
+            :level="3"
+            class="sf-heading--no-underline sf-heading--left product_variants"
+          />
         <div class="product__price-and-rating">
         </div>
         <div>
@@ -681,5 +686,18 @@ export default {
 ::v-deep .add-to-cart .sf-button {
     font-size: 14px;
     font-family: var(--font-family--primary);
+}
+.product_variants {
+  text-align: left;
+  --heading-title-color: var(--_c-greenmind-secondary-black);
+  --heading-title-font-size: 26px;
+  --heading-title-font-weight: 500;
+}
+.product_title {
+  --heading-title-color: var(--_c-greenmind-primary-black);
+  --heading-title-font-weight: 700;
+  --heading-title-font-size: 34px;
+  --heading-title-font-line-height: 48px;
+  margin-bottom: -10px;
 }
 </style>
