@@ -23,24 +23,13 @@
           />
         </div>
         <div class="product__price-and-rating">
-          <SfPrice
+          <!-- <SfPrice
             :regular="$n(productGetters.getPrice(product).regular, 'currency')"
             :special="
               productGetters.getPrice(product).special &&
               $n(productGetters.getPrice(product).special, 'currency')
             "
-          />
-          <div>
-            <div class="product__rating">
-              <SfRating :score="averageRating" :max="5" />
-              <a v-if="!!totalReviews" href="#" class="product__count">
-                ({{ totalReviews }})
-              </a>
-            </div>
-            <SfButton data-cy="product-btn_read-all" class="sf-button--text">{{
-              $t("Read all reviews")
-            }}</SfButton>
-          </div>
+          /> -->
         </div>
         <div>
           <!-- <SfButton
@@ -213,7 +202,7 @@
                 <p>{{ careInstructions }}</p>
               </div>
             </SfTab>
-            <SfTab :title="$t('Reviews')" data-cy="product-tab_reviews">
+            <!-- <SfTab :title="$t('Reviews')" data-cy="product-tab_reviews">
               <SfReview
                 v-for="review in reviews"
                 :key="reviewGetters.getReviewId(review)"
@@ -227,7 +216,7 @@
                 hide-full-text="Read less"
                 class="product__review"
               />
-            </SfTab>
+            </SfTab> -->
           </SfTabs>
         </LazyHydrate>
       </div>
@@ -267,6 +256,7 @@ import {
   SfColor,
   SfColorPicker,
   SfLoader,
+  SfCheckbox,
 } from "@storefront-ui/vue";
 
 import InstagramFeed from "~/components/InstagramFeed.vue";
@@ -441,6 +431,7 @@ export default {
     MobileStoreBanner,
     SfColorPicker,
     LazyHydrate,
+    SfCheckbox
   },
   data() {
     return {

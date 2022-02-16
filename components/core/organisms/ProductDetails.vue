@@ -45,39 +45,18 @@
     </div>
     <div class="checkbox-title-wrap">
         <div class="title">Tilkøb</div>
-        <div class="checkbox-wrap">
-            <label class="container">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-            </label>
-            <div class="img-description-wrap">
-                <img :src="require('/assets/images/product/productimg.jpg')">
-                <div class="description-wrap">
-                    <div class="title-link">
-                        <div class="product-title">Screenprotection</div>
-                        <a href="#">Læs mere</a>
-                    </div>
-                    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="price">149,-</div>
-        </div>
-        <div class="checkbox-wrap">
-            <label class="container">
-            <input type="checkbox" checked="checked">
-            <span class="checkmark"></span>
-            </label>
-            <div class="img-description-wrap">
-                <img :src="require('/assets/images/product/productimg.jpg')">
-                <div class="description-wrap">
-                    <div class="title-link">
-                        <div class="product-title">Adapter</div>
-                    </div>
-                    <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-            <div class="price">99,-</div>
-        </div>       
+        <GreenCheckbox
+        title="Screenprotection"
+        link_title="Læs mere"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        price="149,-"
+        />
+        <GreenCheckbox
+        title="Adapter"
+        link_title=""
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        price="99,-"
+        />      
     </div>
     <div class="total-price-buttons">
         <p class="total-price">2.395,-</p>
@@ -90,6 +69,14 @@
     
 </template>
 
+<script>
+  import SfCheckbox from "@storefront-ui/vue";
+  export default {
+    components: {
+      SfCheckbox
+    }
+  }  
+</script>
 
 <style scoped>
 .link-prices-wrap .links p {
@@ -186,56 +173,6 @@
     color: #1D1F22;
     font-weight: 500;
     margin-bottom: 25px;
-}
-
-.checkbox-wrap {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-bottom: 16px;
-}
-
-.checkbox-wrap .price {
-    position: absolute;
-    top: 3px;
-    right: 0;
-    font-size: 20px;
-    font-weight: 500;
-    color: #43464E;
-}
-
-.checkbox-wrap .img-description-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-wrap .title-link {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-wrap .product-title {
-    font-size: 20px;
-    font-weight: 500;
-    color: #43464E;
-    margin-right: 16px;
-}
-
-.checkbox-wrap .description-wrap {
-    margin-left: 16px;
-}
-
-.checkbox-wrap .title-link a {
-    color: #0468DB;
-    border-bottom: 1px solid #0468DB;
-    line-height: 12px;
-}
-
-.checkbox-wrap .product-description {
-    font-size: 14px;
-    font-weight: 400;
-    color: #72757E;
-    max-width: 260px;
 }
 
 .checkbox-title-wrap {
