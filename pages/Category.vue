@@ -38,48 +38,8 @@
       </div>
 
       <div class="main section">
-        <div class="sidebar desktop-only">
-          <SfLoader :class="{ loading }" :loading="loading">
-            <SfAccordion
-              :open="currentCategoryNameForAccordion"
-              showChevron
-              transition="sf-expand"
-            >
-              <SfAccordionItem
-                v-for="(cat, i) in categoryTree.items"
-                :key="i"
-                :header="cat.label"
-              >
-                <template>
-                  <SfList class="list">
-                    <SfListItem
-                      class="list__item"
-                      v-for="(subCat, j) in cat.items"
-                      :key="j"
-                    >
-                      <SfMenuItem
-                        :count="subCat.count || ''"
-                        :data-cy="`category-link_subcategory_${subCat.slug}`"
-                        :label="subCat.label"
-                      >
-                        <template #label="{ label }">
-                          <nuxt-link
-                            :to="localePath(th.getCatLink(subCat))"
-                            :class="
-                              subCat.isCurrent ? 'sidebar--cat-selected' : ''
-                            "
-                          >
-                            {{ label }}
-                          </nuxt-link>
-                        </template>
-                      </SfMenuItem>
-                    </SfListItem>
-                  </SfList>
-                </template>
-              </SfAccordionItem>
-            </SfAccordion>
-          </SfLoader>
-        </div>
+        <CategorySidebarFilters :facets="facets" />
+
         <SfLoader :class="{ loading }" :loading="loading">
           <div class="products" v-if="showProducts">
             <transition-group
@@ -217,108 +177,23 @@
           </div>
         </SfLoader>
       </div>
-
-      <LazyHydrate when-idle>
-        <SfSidebar
-          :visible="isFilterSidebarOpen"
-          title="Filters"
-          class="sidebar-filters"
-          @close="toggleFilterSidebar"
-        >
-          <div class="filters desktop-only">
-            <div v-for="(facet, i) in facets" :key="i">
-              <template v-if="facetHasMoreThanOneOption(facet)">
-                <SfHeading
-                  :level="4"
-                  :title="facet.label"
-                  class="filters__title sf-heading--left"
-                  :key="`filter-title-${facet.value}`"
-                />
-                <div
-                  v-if="isFacetColor(facet)"
-                  class="filters__colors"
-                  :key="`${facet.value}-colors`"
-                >
-                  <SfColor
-                    v-for="option in facet.options"
-                    :key="`${facet.id}-${option.value}`"
-                    :data-cy="`category-filter_color_${option.value}`"
-                    :color="option.value"
-                    :selected="isFilterSelected(facet, option)"
-                    class="filters__color"
-                    @click="() => selectFilter(facet, option)"
-                  />
-                </div>
-                <div v-else>
-                  <SfFilter
-                    v-for="option in facet.options"
-                    :key="`${facet.id}-${option.value}`"
-                    :data-cy="`category-filter_${facet.id}_${option.value}`"
-                    :label="
-                      option.label +
-                      `${option.count ? ` (${option.count})` : ''}`
-                    "
-                    :selected="isFilterSelected(facet, option)"
-                    class="filters__item"
-                    @change="() => selectFilter(facet, option)"
-                  />
-                </div>
-              </template>
-            </div>
-          </div>
-          <SfAccordion class="filters smartphone-only">
-            <div v-for="(facet, i) in facets" :key="i">
-              <SfAccordionItem
-                :key="`filter-title-${facet.id}`"
-                :header="facet.label"
-                class="filters__accordion-item"
-              >
-                <SfFilter
-                  v-for="option in facet.options"
-                  :key="`${facet.id}-${option.id}`"
-                  :label="option.label"
-                  :selected="isFilterSelected(facet, option)"
-                  class="filters__item"
-                  @change="() => selectFilter(facet, option)"
-                />
-              </SfAccordionItem>
-            </div>
-          </SfAccordion>
-          <template #content-bottom>
-            <div class="filters__buttons">
-              <SfButton class="sf-button--full-width" @click="applyFilters">{{
-                $t("Done")
-              }}</SfButton>
-              <SfButton
-                class="sf-button--full-width filters__button-clear"
-                @click="clearFilters"
-                >{{ $t("Clear all") }}</SfButton
-              >
-            </div>
-          </template>
-        </SfSidebar>
-      </LazyHydrate>
     </div>
   </div>
 </template>
 
 <script>
 import {
-  SfSidebar,
   SfButton,
   SfList,
   SfIcon,
   SfHeading,
   SfMenuItem,
-  SfFilter,
   SfProductCard,
   SfProductCardHorizontal,
   SfPagination,
-  SfAccordion,
   SfSelect,
   SfBreadcrumbs,
   SfLoader,
-  SfColor,
   SfProperty,
   SfImage,
 } from "@storefront-ui/vue";
@@ -340,7 +215,6 @@ export default {
   transition: "fade",
   setup(props, { root }) {
     const th = useUiHelpers();
-    const selectedFilters = ref([]);
 
     const { addTags } = useCache();
     const uiState = useUiState();
@@ -416,50 +290,9 @@ export default {
       ]);
     });
 
-    const { changeFilters, isFacetColor } = useUiHelpers();
-    const { toggleFilterSidebar } = useUiState();
     onMounted(() => {
       root.$scrollTo(root.$el, 2000);
-      selectedFilters.value = th.facetsFromUrlToFilter();
     });
-
-    const isFilterSelected = (facet, option) => {
-      return selectedFilters.value.some(
-        (filter) => String(filter.id) === String(option.value)
-      );
-    };
-
-    const selectFilter = (facet, option) => {
-      const alreadySelectedIndex = selectedFilters.value.findIndex(
-        (filter) => String(filter.id) === String(option.value)
-      );
-
-      if (alreadySelectedIndex === -1) {
-        selectedFilters.value.push({
-          filterName: facet.label,
-          label: option.label,
-          id: option.value,
-        });
-
-        return;
-      }
-
-      selectedFilters.value.splice(alreadySelectedIndex, 1);
-    };
-
-    const clearFilters = () => {
-      toggleFilterSidebar();
-      selectedFilters.value = [];
-      changeFilters(selectedFilters.value);
-    };
-
-    const applyFilters = () => {
-      toggleFilterSidebar();
-      changeFilters(selectedFilters.value);
-    };
-
-    const facetHasMoreThanOneOption = (facet) =>
-      facet?.options?.length > 1 || false;
 
     return {
       ...uiState,
@@ -474,37 +307,26 @@ export default {
       sortBy,
       facets,
       breadcrumbs,
-      applyFilters,
       addItemToWishlist,
       removeItemFromWishList,
       addItemToCart,
       isInWishlist,
       isInCart,
-      isFacetColor,
-      selectFilter,
-      isFilterSelected,
-      selectedFilters,
-      clearFilters,
-      facetHasMoreThanOneOption,
       showProducts,
       currentCategoryNameForAccordion,
     };
   },
   components: {
     SfButton,
-    SfSidebar,
     SfIcon,
     SfList,
-    SfFilter,
     SfProductCard,
     SfProductCardHorizontal,
     SfPagination,
     SfMenuItem,
-    SfAccordion,
     SfSelect,
     SfBreadcrumbs,
     SfLoader,
-    SfColor,
     SfHeading,
     SfProperty,
     LazyHydrate,
@@ -533,11 +355,7 @@ export default {
   --breadcrumbs-font: var(--font-family--primary);
   margin-top: auto;
 }
-::v-deep .sf-heading__title {
-  --heading-title-font: var(--font-family--primary);
-  --heading-title-font-weight: 700;
-  --heading-title-font-size: 34px;
-}
+
 .navbar {
   position: relative;
   display: flex;
@@ -558,9 +376,7 @@ export default {
     align-items: center;
     padding: var(--spacer-sm) 0;
   }
-  &__aside {
-    padding: var(--spacer-sm) var(--spacer-sm);
-  }
+
   &__main {
     flex: 1;
     padding: 0;
@@ -573,6 +389,9 @@ export default {
     display: flex;
     align-items: center;
     margin: 0 16% 0 auto;
+  }
+  &__title .sf-heading__title {
+    font-weight: bold;
   }
   &__label {
     font-family: var(--font-family--primary);
@@ -646,20 +465,7 @@ export default {
 .main {
   display: flex;
 }
-.sidebar {
-  flex: 0 0 18%;
-  padding: var(--spacer-sm);
-  border: 1px solid var(--c-light);
-  border-width: 0 1px 0 0;
-}
-.sidebar-filters {
-  --sidebar-title-display: none;
-  --sidebar-top-padding: 0;
-  @include for-desktop {
-    --sidebar-content-padding: 0 var(--spacer-xl);
-    --sidebar-bottom-padding: 0 var(--spacer-xl);
-  }
-}
+
 .list {
   --menu-item-font-size: var(--font-size--sm);
   &__item {
@@ -679,6 +485,8 @@ export default {
   &__grid {
     justify-content: space-between;
     @include for-desktop {
+      gap: 20px;
+      margin: 20px;
       justify-content: flex-start;
     }
   }
@@ -710,9 +518,6 @@ export default {
     transition-delay: calc(0.1s * var(--index));
   }
   @include for-desktop {
-    &__grid {
-      margin: var(--spacer-sm) 0 0 var(--spacer-sm);
-    }
     &__pagination {
       display: flex;
       justify-content: flex-start;
@@ -747,63 +552,7 @@ export default {
 ::v-deep .sf-sidebar__aside {
   --sidebar-z-index: 3;
 }
-.filters {
-  &__title {
-    --heading-title-font-size: var(--font-size--xl);
-    margin: var(--spacer-xl) 0 var(--spacer-base) 0;
-    &:first-child {
-      margin: calc(var(--spacer-xl) + var(--spacer-base)) 0 var(--spacer-xs) 0;
-    }
-  }
-  &__colors {
-    display: flex;
-  }
-  &__color {
-    margin: var(--spacer-xs) var(--spacer-xs) var(--spacer-xs) 0;
-  }
-  &__chosen {
-    color: var(--c-text-muted);
-    font-weight: var(--font-weight--normal);
-    font-family: var(--font-family--secondary);
-    position: absolute;
-    right: var(--spacer-xl);
-  }
-  &__item {
-    --radio-container-padding: 0 var(--spacer-sm) 0 var(--spacer-xl);
-    --radio-background: transparent;
-    --filter-label-color: var(--c-secondary-variant);
-    --filter-count-color: var(--c-secondary-variant);
-    --checkbox-padding: 0 var(--spacer-sm) 0 var(--spacer-xl);
-    padding: var(--spacer-sm) 0;
-    border-bottom: 1px solid var(--c-light);
-    &:last-child {
-      border-bottom: 0;
-    }
-    @include for-desktop {
-      --checkbox-padding: 0;
-      margin: var(--spacer-sm) 0;
-      border: 0;
-      padding: 0;
-    }
-  }
-  &__accordion-item {
-    --accordion-item-content-padding: 0;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-  }
-  &__buttons {
-    margin: var(--spacer-sm) 0;
-  }
-  &__button-clear {
-    --button-background: var(--c-light);
-    --button-color: var(--c-dark-variant);
-    margin: var(--spacer-xs) 0 0 0;
-  }
-}
+
 .before-results {
   box-sizing: border-box;
   padding: var(--spacer-lg) var(--spacer-sm) var(--spacer-2xl);
@@ -855,15 +604,12 @@ export default {
 }
 ::v-deep .range-label {
   font-family: "Josefin Sans", sans-serif;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
   font-size: 20px;
   font-weight: 500;
 }
 
 ::v-deep .sf-breadcrumbs__breadcrumb.current {
   text-transform: capitalize;
-}
-.products__grid {
-  gap: 20px;
 }
 </style>

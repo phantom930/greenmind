@@ -100,7 +100,7 @@ const useUiHelpers = (): any => {
   const changeSearchTerm = (term: string) => term;
 
   const isFacetColor = (facet): boolean => {
-    return facet.display_type === 'color';
+    return facet.type === 'color';
   };
 
   const isFacetCheckbox = (facet): boolean => {

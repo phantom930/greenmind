@@ -217,7 +217,7 @@ export default {
   font-family: "Josefin Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
 }
 
 .footer {

@@ -68,6 +68,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@media (min-width: 1024px) {
+  .sf-product-card {
+    --product-card-max-width: 18.5rem;
+  }
+}
 ::v-deep .sf-image {
   left: 7.81%;
   right: 7.81%;
@@ -95,7 +100,7 @@ export default defineComponent({
   font-family: var(--font-family--primary);
   font-size: 26px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
   color: var(--_c-greenmind-black-primary);
 }
 
@@ -104,7 +109,7 @@ export default defineComponent({
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
   color: var(--_c-greenmind-primary-grey);
   padding-top: 2.3px;
 }
@@ -113,7 +118,7 @@ export default defineComponent({
   font-style: normal;
   font-weight: 500;
   font-size: 26px;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
 }
 
 .green-product-card__fra {
@@ -124,6 +129,6 @@ export default defineComponent({
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
 }
 </style>

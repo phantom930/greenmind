@@ -254,7 +254,7 @@ export default {
   font: var(--font-family--primary);
   font-size: 20px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: var(--line-height--primary);
   color: #000000;
   margin-left: auto;
   margin-right: auto;

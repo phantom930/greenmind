@@ -600,7 +600,7 @@ export default {
     }
   }
   &__review {
-    padding-bottom: 24px;
+    line-height: var(--line-height--primary);
     border-bottom: var(--c-light) solid 1px;
     margin-bottom: var(--spacer-base);
   }
