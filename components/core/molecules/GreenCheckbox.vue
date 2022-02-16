@@ -8,7 +8,9 @@
     errorMessage=""
     valid
     :disabled="false"
-    selected
+    :selected="false"
+    style="--checkbox-border-radius:100px"
+    v-model="checked"
   >
     <div
       slot="label"
@@ -30,7 +32,15 @@
 
 <script>
   import { SfCheckbox } from "@storefront-ui/vue";
+  import { ref } from "@vue/composition-api";
   export default {
+    setup(props) {
+      const checked = ref(false)  
+
+      return {
+          checked
+      }
+    },
     components: {
       SfCheckbox
     },
