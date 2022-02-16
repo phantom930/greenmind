@@ -183,7 +183,7 @@ export default {
 }
 
 ::v-deep .dropdown {
-  /* display: none; */
+  display: none;
   position: absolute;
   top: 80px;
   left: 0;
