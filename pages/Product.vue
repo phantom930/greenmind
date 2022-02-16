@@ -23,63 +23,9 @@
           />
         </div>
         <div class="product__price-and-rating">
-          <!-- <SfPrice
-            :regular="$n(productGetters.getPrice(product).regular, 'currency')"
-            :special="
-              productGetters.getPrice(product).special &&
-              $n(productGetters.getPrice(product).special, 'currency')
-            "
-          /> -->
         </div>
         <div>
-          <!-- <SfButton
-            data-cy="product-btn_size-guide"
-            class="sf-button--text desktop-only product__guide"
-          >
-            {{ $t("Size guide") }}
-          </SfButton> -->
-
           <ProductDetails />
-
-          <!-- <div v-if="options.select">
-            <SfSelect
-              v-for="(select, selectKey) in options.select"
-              :key="selectKey"
-              class="sf-select--underlined"
-              :value="$route.query[select.label]"
-              :label="select.label"
-              required
-              @input="(selected) => updateFilter({ [select.label]: selected })"
-            >
-              <SfSelectOption
-                :key="`${selectKey}_${itemKey}`"
-                :value="item.value"
-                :label="item.label"
-                v-for="(item, itemKey) in select.values"
-              >
-              </SfSelectOption>
-            </SfSelect>
-          </div> -->
-
-          <!-- <div v-if="options.radio">
-            <template v-for="(radio, radioKey) in options.radio">
-              <p class="product__radio-label" :key="radioKey">
-                {{ radio.label }}:
-              </p>
-              <SfRadio
-                class="sf-radio--transparent"
-                v-for="(item, itemKey) in radio.values"
-                required
-                :key="`${radioKey}_${itemKey}`"
-                :selected="$route.query[radio.label]"
-                :name="radio.label"
-                :value="item.value"
-                :label="item.label"
-                @change="updateFilter({ [radio.label]: item.value })"
-              />
-            </template>
-          </div> -->
-
           <div v-if="options.color" class="product__colors desktop-only">
             <template v-for="(option, colorKey) in options.color">
               <p class="product__color-label" :key="colorKey">
@@ -465,15 +411,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-:root {
-  --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7ba393);
-  @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary);
-}
-</style>
-
 <style lang="scss" scoped>
 #product {
   box-sizing: border-box;
@@ -703,7 +640,7 @@ export default {
 .total-price-buttons .buttons .add-to-cart {
     font-size: 14px;
     color: #fff;
-    background: #32463D;
+    background: var(--_c-greenmind-pine-primary-dark-green);
     padding-top: 18px;
     padding-bottom: 18px;
     width: 100%;
@@ -727,7 +664,7 @@ export default {
 .total-price-buttons .buttons .status {
     font-size: 14px;
     color: #fff;
-    background: #7BA393;;
+    background: var(--_c-greenmind-fern-primary-medium-green);
     padding-top: 18px;
     padding-bottom: 18px;
     width: 100%;
