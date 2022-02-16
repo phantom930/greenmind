@@ -58,27 +58,40 @@
         price="99,-"
         />      
     </div>
-    <div class="total-price-buttons">
-        <p class="total-price">2.395,-</p>
-        <div class="buttons">
-            <a href="#" class="add-to-cart">ADD TO CART</a>
-            <a href="#" class="status">SE LAGERSTATUS I BUTIK</a>
-        </div>
-    </div>
     </div>
     
 </template>
 
 <script>
-  import SfCheckbox from "@storefront-ui/vue";
+  import { SfAddToCart } from "@storefront-ui/vue";
+  import { ref } from "@vue/composition-api";
   export default {
-    components: {
-      SfCheckbox
-    }
+      setup() {
+          const qty = ref(1);
+      },
+      components: {
+          SfAddToCart
+      },
+      data() {
+          return {
+              stock: 5,
+          }
+      }
   }  
 </script>
 
 <style scoped>
+::v-deep .sf-add-to-cart__select-quantity {
+  display: none;
+}
+::v-deep .sf-add-to-cart__button {
+    background: none;
+    padding: 0;
+}
+::v-deep .add-to-cart .sf-button {
+    font-size: 14px;
+    font-family: var(--font-family--primary);
+}
 .link-prices-wrap .links p {
     color: #1D1F22;
     font-size: 20px;

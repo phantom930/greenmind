@@ -98,15 +98,30 @@
               </SfColor>
             </template>
           </div>
-          <!-- <SfAddToCart
-            data-cy="product-cart_add"
-            :stock="stock"
-            v-model="qty"
-            :disabled="loading || !allOptionsSelected"
-            :canAddToCart="stock > 0"
-            class="product__add-to-cart"
-            @click="addItem({ product, quantity: parseInt(qty) })"
-          /> -->
+          <div class="total-price-buttons">
+            <!-- This is not working, maybe due to the price getting overwritten on category page (?) -->
+            <!-- <SfPrice
+              :regular="$n(productGetters.getPrice(product).regular, 'currency')"
+              :special="
+                productGetters.getPrice(product).special &&
+                $n(productGetters.getPrice(product).special, 'currency')
+              "
+              class="total-price"
+            /> --> 
+            <p class="total-price">2.395,-</p>
+            <div class="buttons">
+                <SfAddToCart
+                    data-cy="product-cart_add"
+                    :stock="stock"
+                    v-model="qty"
+                    :disabled="loading || !allOptionsSelected"
+                    :canAddToCart="stock > 0"
+                    v-bind:class="{ 'add-to-cart': allOptionsSelected, 'add-to-cart-disabled': !allOptionsSelected}"
+                    @click="addItem({ product, quantity: parseInt(qty) })"
+                />
+                <a href="#" class="status">SE LAGERSTATUS I BUTIK</a>
+            </div>
+          </div>
         </div>
         <div class="usp_banner_products">
           <div style="display: grid; padding-left: 8%">
@@ -666,7 +681,68 @@ export default {
 ::v-deep .sf-tabs__title {
   margin-right: 15%;
 }
+.total-price-buttons .total-price {
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.total-price-buttons {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.total-price-buttons .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+}
+
+.total-price-buttons .buttons .add-to-cart {
+    font-size: 14px;
+    color: #fff;
+    background: #32463D;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    width: 100%;
+    border-radius: 100px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+.total-price-buttons .buttons .add-to-cart-disabled {
+    font-size: 14px;
+    color: var(--_c-greenmind-dark-grey-accent);
+    background: var(--_c-greenmind-light-grey-accent);
+    padding-top: 18px;
+    padding-bottom: 18px;
+    width: 100%;
+    border-radius: 100px;
+    text-align: center;
+    margin-bottom: 8px;
+    cursor: not-allowed;
+}
+
+.total-price-buttons .buttons .status {
+    font-size: 14px;
+    color: #fff;
+    background: #7BA393;;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    width: 100%;
+    border-radius: 100px;
+    text-align: center;
+}
 ::v-deep .sf-add-to-cart__select-quantity {
   display: none;
+}
+::v-deep .sf-add-to-cart__button {
+    background: none;
+    padding: 0;
+}
+::v-deep .add-to-cart .sf-button {
+    font-size: 14px;
+    font-family: var(--font-family--primary);
 }
 </style>
