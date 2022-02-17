@@ -25,7 +25,7 @@ const useUiHelpers = (): any => {
       filters = filters.map((filter) => filter.split(',')).flat();
     }
 
-    const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 10;
+    const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 6;
     const sort = query?.sort?.split(',') || [];
     const page = query?.page || 1;
     const categoryId = parseInt(params.slug_3) || parseInt(params.slug_2);
