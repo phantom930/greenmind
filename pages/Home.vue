@@ -98,10 +98,9 @@
       />
     </div>
     <GreenCarousel
-      :item="item"
+      :item="products"
       :feature1="storage"
       :feature2="color"
-      :price="price"
       :currency="currency"
       :carousel_title="$t('Populære produkter')"
       style="padding-top: 5%"
@@ -133,6 +132,13 @@ import {
   SfBanner,
   SfCategoryCard,
 } from "@storefront-ui/vue";
+import { ref, computed, onMounted } from "@vue/composition-api";
+import {
+  productGetters,
+  useFacet,
+  facetGetters,
+} from "@vue-storefront/odoo";
+import { onSSR } from "@vue-storefront/core";
 export default {
   components: {
     SfBreadcrumbs,
@@ -141,27 +147,27 @@ export default {
     SfBanner,
     SfCategoryCard,
   },
+  setup(props, {root}) {
+    const { result, search } = useFacet();
+    const { params } = root.$router.history.current;
+    const products = computed(() => facetGetters.getProducts(result.value));
+
+    onSSR(async () => {
+      await search(params);
+    });
+
+    return {
+      productGetters,
+      useFacet,
+      facetGetters,
+      products
+    }
+  },
   data() {
     return {
-      item: ["iPhone8", "iPhone13", "iPhone8", "iPhone8", "iPhone8"],
       storage: ["128 Gb", "128 Gb", "128 Gb", "128 Gb", "128 Gb"],
       color: ["Gold", "Red", "Silver", "Black", "Gold"],
-      price: ["2,999", "2,999", "2,999", "2,999", "2,999"],
       currency: ["$"],
-      breadcrumb: [
-        {
-          text: "Home",
-          link: "#",
-        },
-        {
-          text: "Category",
-          link: "#",
-        },
-        {
-          text: "Pants",
-          link: "#",
-        },
-      ],
     };
   },
 };

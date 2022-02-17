@@ -20,50 +20,30 @@
         },
       }"
     >
-      <SfCarouselItem v-for="(item, i) in item" :key="i">
+      <SfCarouselItem v-for="(item, i) in item.slice(0,10) " :key="i">
         <div class="carousel-item">
           <div>
             <SfImage
-              :key="item"
-              :src="require('/assets/images/carousel/' + item + '.svg')"
-              :alt="item"
+              :key="item.id"
+              :src="$image(productGetters.getCoverImage(item))"
+              :alt="item.id"
               :width="136"
               :height="266"
               class="carousel-image"
             />
           </div>
           <div class="carousel-item__title">
-            {{ item }}
+            {{ item.name }}
           </div>
-          <div>
-            <div
-              class="carousel-item__features"
-              v-if="feature1[i] != undefined && feature2[i] != undefined"
-            >
+          <div class="carousel-item__features">
               {{ feature1[i] + " | " + feature2[i] }}
             </div>
-            <div
-              class="carousel-item__features"
-              v-else-if="feature1[i] == undefined && feature2[i] != undefined"
-            >
-              {{ "unspecified" + " | " + feature2[i] }}
-            </div>
-            <div
-              class="carousel-item__features"
-              v-else-if="feature1[i] != undefined && feature2[i] == undefined"
-            >
-              {{ feature1[i] + " | " + "unspecified" }}
-            </div>
-            <div class="carousel-item__features" v-else>
-              {{ "unspecified" + " | " + "unspecified" }}
-            </div>
-          </div>
           <div class="carousel-item-price__wrapper">
             <div class="carousel-item-bfr__price">
               {{ $t("Fra") }}
             </div>
             <div class="carousel-item__price">
-              {{ price[i] + currency }}
+              {{ item.price + currency }}
             </div>
           </div>
         </div>
@@ -74,7 +54,9 @@
 
 <script>
 import { SfCarousel, SfImage, SfHeading } from "@storefront-ui/vue";
-export default {
+import { productGetters } from "@vue-storefront/odoo";
+import { defineComponent } from "@vue/composition-api";
+export default defineComponent({
   components: {
     SfCarousel,
     SfImage,
@@ -93,10 +75,6 @@ export default {
       type: Array,
       default: [""],
     },
-    price: {
-      type: [String, Array],
-      default: "",
-    },
     currency: {
       type: [String, Array],
       default: "",
@@ -106,7 +84,12 @@ export default {
       default: "",
     },
   },
-};
+  setup() {
+    return {
+      productGetters,
+    }
+  },
+});
 </script>
 
 <style lang="scss" scoped>
@@ -136,7 +119,7 @@ export default {
   cursor: pointer;
 }
 .carousel-image {
-  transform: translate(25px, -10px);
+  transform: translate(0px, -10px);
 }
 .carousel-item__title {
   display: flex;
@@ -144,6 +127,7 @@ export default {
   color: #1d1f22;
   font-size: 26px;
   font-weight: 500;
+  text-align: center;
   // line-height: 24;
 }
 .carousel-item__features {
