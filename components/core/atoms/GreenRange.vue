@@ -61,6 +61,7 @@ export default {
   top: -3px;
   background-color: var(--_c-greenmind-fern-primary-medium-green);
   border: none;
+  cursor: pointer;
 }
 ::v-deep .noUi-handle:hover {
   background-color: var(--_c-greenmind-mint-primary-light-green);

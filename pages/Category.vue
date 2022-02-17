@@ -118,43 +118,6 @@
                 </template>
               </SfProductCardHorizontal>
             </transition-group>
-
-            <LazyHydrate on-interaction>
-              <SfPagination
-                v-if="!loading"
-                data-cy="category-pagination"
-                class="products__pagination desktop-only"
-                v-show="pagination.totalPages > 1"
-                :current="pagination.currentPage"
-                :total="pagination.totalPages"
-                :visible="5"
-              />
-            </LazyHydrate>
-
-            <div
-              v-show="pagination.totalPages > 1"
-              class="products__show-on-page"
-            >
-              <span class="products__show-on-page__label">{{
-                $t("Show on page")
-              }}</span>
-              <LazyHydrate on-interaction>
-                <SfSelect
-                  :value="pagination.itemsPerPage.toString()"
-                  class="products__items-per-page"
-                  @input="th.changeItemsPerPage"
-                >
-                  <SfSelectOption
-                    v-for="option in pagination.pageOptions"
-                    :key="option"
-                    :value="option"
-                    class="products__items-per-page__option"
-                  >
-                    {{ option }}
-                  </SfSelectOption>
-                </SfSelect>
-              </LazyHydrate>
-            </div>
           </div>
           <div v-else key="no-results" class="before-results">
             <SfImage
