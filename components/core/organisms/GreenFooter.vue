@@ -1,33 +1,33 @@
 <template>
   <SfFooter :column="4" multiple class="footer">
-    <SfFooterColumn :title="$t('PRODUKTER')">
+    <SfFooterColumn :title="$t('Product')">
       <SfList>
         <SfListItem v-for="item in produkter" :key="item">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
-    <SfFooterColumn :title="$t('OM OS')">
+    <SfFooterColumn :title="$t('')">
       <SfList>
         <SfListItem v-for="item in OmOs" :key="item">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
-    <SfFooterColumn :title="$t('HJÆLP')">
+    <SfFooterColumn :title="$t('')">
       <SfList>
         <SfListItem v-for="item in hjaelp" :key="item">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
-    <SfFooterColumn :title="$t('BUTIKKER')">
+    <SfFooterColumn :title="$t('')">
       <SfList>
         <SfListItem v-for="item in butikker" :key="item">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
-      <SfFooterColumn :title="$t('KONTAKT')">
+      <SfFooterColumn :title="$t('Contact')">
         <SfList>
           <SfListItem v-for="item in kontakt" :key="item">
             <SfMenuItem :label="$t(item)" />
@@ -114,22 +114,22 @@ export default {
         this.$i18n.t("iPhones"),
         this.$i18n.t("Smartphones"),
         this.$i18n.t("Tablets"),
-        this.$i18n.t("Computere"),
-        this.$i18n.t("Tilbehør"),
-        this.$i18n.t("Andre produkter"),
+        this.$i18n.t("Computer"),
+        this.$i18n.t(""),
+        this.$i18n.t(""),
       ],
       OmOs: [
-        this.$i18n.t("Hvorfor vælge Greenmind?"),
-        this.$i18n.t("Sådan sæelger du?"),
-        this.$i18n.t("Sådan køber du?"),
+        this.$i18n.t(""),
+        this.$i18n.t(""),
+        this.$i18n.t(""),
         this.$i18n.t("Reparation"),
         this.$i18n.t("Blog"),
       ],
       hjaelp: [
-        this.$i18n.t("Kundeservice"),
-        this.$i18n.t("Fragt og retur"),
-        this.$i18n.t("Handelsbetingelser"),
-        this.$i18n.t("GDPR"),
+        this.$i18n.t(""),
+        this.$i18n.t(""),
+        this.$i18n.t(""),
+        this.$i18n.t(""),
         this.$i18n.t("Cookies"),
         this.$i18n.t("FAQ"),
       ],

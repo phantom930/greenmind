@@ -1,27 +1,26 @@
 <template>
   <SfTopBar class="topbar">
     <template #center>
-      <SfButton>{{ $t('SE TILBUD') }}</SfButton>
+      <SfButton>{{ $t("") }}</SfButton>
     </template>
   </SfTopBar>
 </template>
 
 <script>
-import { SfButton, SfTopBar } from '@storefront-ui/vue';
+import { SfButton, SfTopBar } from "@storefront-ui/vue";
 
 export default {
   components: {
     SfTopBar,
     SfButton,
-  }
+  },
 };
-
 </script>
 <style lang="scss" scoped>
 .topbar {
   position: relative;
   z-index: 2;
-  background: #32463D;
+  background: #32463d;
   color: #fff;
   &__button {
     margin: 0 0 0 var(--spacer-xs);

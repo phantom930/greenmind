@@ -37,12 +37,11 @@
 
   /* start storefront ui components customization */
 
-  /* sf-filter */
-  --filter-label-font:var(--font-family--primary);
-  --filter-label-font-weight: normal;	
-  --filter-label-font-size: 16px;	
-  --filter-label-font-line-height: 22px;
 
+  /* sf-accordion-item */
+  --accordion-item-header-font: var(--font-family--primary);
+  --accordion-item-header-font-size: 20px;
+  --accordion-item-header-font-line-height: var(--line-height--primary);
   /* sf-heading */
   --heading-title-font: var(--font-family--primary);
 
