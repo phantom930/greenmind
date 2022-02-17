@@ -2,34 +2,34 @@
   <SfFooter :column="4" multiple class="footer">
     <SfFooterColumn :title="$t('Product')">
       <SfList>
-        <SfListItem v-for="item in produkter" :key="item">
+        <SfListItem v-for="(item, index) in produkter" :key="index">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('')">
       <SfList>
-        <SfListItem v-for="item in OmOs" :key="item">
+        <SfListItem v-for="(item, index) in OmOs" :key="index">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('')">
       <SfList>
-        <SfListItem v-for="item in hjaelp" :key="item">
+        <SfListItem v-for="(item, index) in hjaelp" :key="index">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('')">
       <SfList>
-        <SfListItem v-for="item in butikker" :key="item">
+        <SfListItem v-for="(item, index) in butikker" :key="index">
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
       <SfFooterColumn :title="$t('Contact')">
         <SfList>
-          <SfListItem v-for="item in kontakt" :key="item">
+          <SfListItem v-for="(item, index) in kontakt" :key="index">
             <SfMenuItem :label="$t(item)" />
           </SfListItem>
         </SfList>

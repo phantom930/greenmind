@@ -2,6 +2,11 @@ const path = require('path');
 
 export function getRoutes(themeDir = __dirname) {
   return [
+    {
+      name: 'test',
+      path: '/test',
+      component: path.resolve(themeDir, 'pages/Test.vue')
+  },
   {
       name: 'home',
       path: '/',

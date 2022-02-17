@@ -16,80 +16,60 @@
 
         <LazyGreenRange />
 
-        <div v-for="(facet, i) in facets" :key="i">
-          <template v-if="facetHasMoreThanOneOption(facet)">
-            <SfHeading
-              :level="4"
-              :title="facet.label"
-              class="filters__title sf-heading--left"
-              :key="`filter-title-${facet.value}`"
-            />
-            <div
-              v-if="isFacetColor(facet)"
-              class="filters__colors"
-              :key="`${facet.value}-colors`"
-            >
+        <SfAccordion :multiple="true" transition="sf-expand">
+          <SfAccordionItem
+            v-for="(facet, i) in facets"
+            :header="facet.label"
+            class="mt-10"
+            :key="i"
+          >
+            <template #header="{ header, isOpen, accordionClick }">
+              <div
+                @click="accordionClick"
+                :style="{ cursor: 'pointer' }"
+                class="flex justify-between"
+              >
+                <h4 class="sf-heading__title h4">{{ header }}</h4>
+
+                <img
+                  :src="require('/assets/images/category/arrow-down.svg')"
+                  v-if="isOpen"
+                  class="pr-5"
+                />
+                <img
+                  :src="require('/assets/images/category/arrow-up.svg')"
+                  v-else
+                  class="pr-3.5"
+                />
+              </div>
+            </template>
+            <div v-if="isFacetColor(facet)" class="flex">
               <SfColor
                 v-for="option in facet.options"
                 :key="`${facet.id}-${option.value}`"
                 :data-cy="`category-filter_color_${option.value}`"
                 :color="option.htmlColor"
-                :selected="isFilterSelected(facet, option)"
                 class="filters__color mr-3"
                 @click="() => selectFilter(facet, option)"
               />
             </div>
-            <div v-else>
-              <SfFilter
+            <template v-else>
+              <div
                 v-for="option in facet.options"
                 :key="`${facet.id}-${option.value}`"
-                :data-cy="`category-filter_${facet.id}_${option.value}`"
-                :label="
-                  option.label + `${option.count ? ` (${option.count})` : ''}`
-                "
-                :selected="isFilterSelected(facet, option)"
-                class="filters__item"
-                @change="() => selectFilter(facet, option)"
-              />
-            </div>
-          </template>
-        </div>
-      </div>
-      <SfAccordion class="filters smartphone-only">
-        <div v-for="(facet, i) in facets" :key="i">
-          <SfAccordionItem
-            :key="`filter-title-${facet.id}`"
-            :header="facet.label"
-            class="filters__accordion-item"
-          >
-            <SfFilter
-              v-for="option in facet.options"
-              :key="`${facet.id}-${option.id}`"
-              :label="option.label"
-              :selected="isFilterSelected(facet, option)"
-              class="filters__item"
-              @change="() => selectFilter(facet, option)"
-            />
+              >
+                <SfCheckbox
+                  class="mt-3"
+                  :label="option.label"
+                  :selected="isFilterSelected(option)"
+                  @change="() => selectFilter(facet, option)"
+                />
+              </div>
+            </template>
           </SfAccordionItem>
-        </div>
-      </SfAccordion>
+        </SfAccordion>
+      </div>
     </div>
-    <LazyHydrate when-idle>
-      <SfSidebar :visible="false" title="Filters" class="sidebar-filters">
-        <template #content-bottom>
-          <div class="filters__buttons">
-            <SfButton class="sf-button--full-width" @click="applyFilters">{{
-              $t("Done")
-            }}</SfButton>
-            <SfButton
-              class="sf-button--full-width filters__button-clear"
-              @click="clearFilters"
-              >{{ $t("Clear all") }}</SfButton
-            >
-          </div>
-        </template>
-      </SfSidebar>
-    </LazyHydrate>
   </div>
 </template>
 
@@ -99,8 +79,11 @@ import {
   SfAccordion,
   SfColor,
   SfFilter,
+  SfMenuItem,
   SfHeading,
   SfSidebar,
+  SfList,
+  SfCheckbox,
 } from "@storefront-ui/vue";
 import LazyHydrate from "vue-lazy-hydration";
 import { useUiHelpers } from "~/composables";
@@ -109,15 +92,18 @@ export default defineComponent({
   props: {
     facets: {
       type: Array,
-      defualt: () => [],
+      default: () => [],
     },
   },
   components: {
     SfSidebar,
-    SfAccordion,
     SfColor,
     SfFilter,
+    SfMenuItem,
     SfHeading,
+    SfAccordion,
+    SfList,
+    SfCheckbox,
     LazyHydrate,
   },
   setup() {
@@ -141,10 +127,8 @@ export default defineComponent({
       changeFilters(selectedFilters.value);
     };
 
-    const isFilterSelected = (facet, option) => {
-      return selectedFilters.value.some(
-        (filter) => String(filter.id) === String(option.value)
-      );
+    const isFilterSelected = (option) => {
+      return selectedFilters.value?.some((filter) => filter.id == option.value);
     };
 
     const selectFilter = (facet, option) => {
@@ -271,5 +255,8 @@ export default defineComponent({
 }
 ::v-deep .sf-checkbox__checkmark.is-active {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+::v-deep .sf-accordion-item__content {
+  margin-top: 25px;
 }
 </style>

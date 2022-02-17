@@ -1,7 +1,6 @@
 <template>
   <div>
     <CategoryTopBanner />
-
     <div id="category">
       <div class="navbar section">
         <div class="navbar__aside desktop-only">
@@ -159,6 +158,7 @@ import {
   SfLoader,
   SfProperty,
   SfImage,
+  SfAccordion,
 } from "@storefront-ui/vue";
 import { ref, computed, onMounted } from "@vue/composition-api";
 import {
@@ -282,13 +282,14 @@ export default {
   components: {
     SfButton,
     SfIcon,
-    SfList,
     SfProductCard,
     SfProductCardHorizontal,
     SfPagination,
     SfMenuItem,
     SfSelect,
     SfBreadcrumbs,
+    SfAccordion,
+    SfList,
     SfLoader,
     SfHeading,
     SfProperty,
