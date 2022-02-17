@@ -93,6 +93,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+::v-deep .sf-image {
+  object-fit: contain;
+}
 ::v-deep .sf-heading {
   padding: 3% 0;
   background-color: #f3f3f3;

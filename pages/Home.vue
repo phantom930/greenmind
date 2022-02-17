@@ -150,7 +150,7 @@ export default {
   setup(props, {root}) {
     const { result, search } = useFacet();
     const { params } = root.$router.history.current;
-    const products = computed(() => facetGetters.getProducts(result.value));
+    const products = computed(() => facetGetters.getProducts(result.value).slice(0,10));
 
     onSSR(async () => {
       await search(params);

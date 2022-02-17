@@ -189,14 +189,13 @@
     </div>
     <div class="product_carousel">
       <GreenCarousel
-        :item="item"
-        :feature1="storage"
-        :feature2="color"
-        :price="price"
-        :currency="currency"
-        :carousel_title="$t('Populære produkter')"
-        style="padding-top: 5%"
-      />
+      :item="slider_products"
+      :feature1="storage"
+      :feature2="color"
+      :currency="currency"
+      :carousel_title="$t('Populære produkter')"
+      style="padding-top: 5%"
+    />
     </div>
   </div>
 </template>
@@ -237,6 +236,7 @@ import {
   useProductVariant,
   reviewGetters,
   facetGetters,
+  useFacet,
 } from "@vue-storefront/odoo";
 
 import { onSSR } from "@vue-storefront/core";
@@ -304,12 +304,17 @@ export default {
       }))
     );
 
+    const { result, search:search_facet } = useFacet();
+    const { params } = root.$router.history.current;
+    const slider_products = computed(() => facetGetters.getProducts(result.value).slice(0,10));
+
     onSSR(async () => {
       await searchRealProduct({
         productTemplateId: parseInt(id),
         combinationIds: Object.values(root.$route.query),
       });
       await search({ id: parseInt(id) });
+      await search_facet(params);
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
       // await searchRelatedProducts({ catId: [categories.value[0]], limit: 8 });
       // await searchReviews({ productId: id });
@@ -370,6 +375,9 @@ export default {
       productGetters,
       productVariants,
       productGallery,
+      useFacet,
+      facetGetters,
+      slider_products
     };
   },
   components: {
@@ -406,10 +414,8 @@ export default {
       brand:
         "Brand name is the perfect pairing of quality and design. This label creates major everyday vibes with its collection of modern brooches, silver and gold jewellery, or clips it back with hair accessories in geo styles.",
       careInstructions: "Do not wash!",
-      item: ["iPhone8", "iPhone13", "iPhone8", "iPhone8", "iPhone8"],
       storage: ["128 Gb", "128 Gb", "128 Gb", "128 Gb", "128 Gb"],
       color: ["Gold", "Red", "Silver", "Black", "Gold"],
-      price: ["2,999", "2,999", "2,999", "2,999", "2,999"],
       currency: ["$"],
     };
   },
