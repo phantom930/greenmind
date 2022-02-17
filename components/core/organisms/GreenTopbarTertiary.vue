@@ -1,22 +1,14 @@
 <template>
-  <div class="dropdown-wrap">
     <SfHeader>
       <template #navigation>
         <div class="header-links">
-          <SfHeaderNavigationItem
-            v-for="(category, index) in sbCategories"
-            :key="index"
-            data-cy="app-header-top-categories"
-            class="nav-item"
-            :label="category.name"
-            :link="localePath(`/c/${category.slug}/${category.id}`)"
-          />
-        </div>
-  <div class="dropdown">
+  <div class="dropdown-wrap">
+          <a href="#" class="custom-link">IPHONES</a>
+          <div class="dropdown">
     <SfMegaMenu title="Man" visible>
     <SfMegaMenuColumn title="Samsung">
       <SfList>
-        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
         <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
         <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
         <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
@@ -91,43 +83,432 @@
         <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
       </SfList>
     </SfMegaMenuColumn>
-    <!-- <SfMegaMenuColumn
-      class="
-        sf-mega-menu-column--pined-content-on-mobile
-        sf-mega-menu-column--hide-header-on-mobile
-      "
-      title="Featured"
-    >
-      <div class="smartphone-only">
-        <SfBanner
-          title="THE OFFICE LIFE"
-          subtitle="T-shirts"
-          :image='{"mobile":"/assets/storybook/SfMegaMenu/bannerSandals.jpg","desktop":"/assets/storybook/SfMegaMenu/bannerSandals.jpg"}'
-        />
-        <SfBanner
-          title="ECO SANDALS"
-          subtitle="T-shirts"
-          :image='{"mobile":"/assets/storybook/SfMegaMenu/bannerBeachBag.jpg","desktop":"/assets/storybook/SfMegaMenu/bannerBeachBag.jpg"}'
-        />
-      </div>
-      <div class="desktop-only">
-        <SfBanner
-          title="THE OFFICE LIFE"
-          subtitle="T-shirts"
-          :image='{"mobile":"/assets/storybook/SfMegaMenu/bannerSandals.jpg","desktop":"/assets/storybook/SfMegaMenu/bannerSandals.jpg"}'
-        />
-        <SfBanner
-          title="ECO SANDALS"
-          subtitle="T-shirts"
-          :image='{"mobile":"/assets/storybook/SfMegaMenu/bannerBeachBag.jpg","desktop":"/assets/storybook/SfMegaMenu/bannerBeachBag.jpg"}'
-        />
-      </div>
-    </SfMegaMenuColumn> -->
   </SfMegaMenu>
   </div>
+  </div>
+  <div class="dropdown-wrap">
+          <a href="#" class="custom-link">SMARTPHONES</a>
+          <div class="dropdown">
+    <SfMegaMenu title="Man" visible>
+    <SfMegaMenuColumn title="Samsung">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Huawei">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Sony">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="One Plus">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+  </SfMegaMenu>
+  </div>
+  </div>
+  <div class="dropdown-wrap">
+          <a href="#" class="custom-link">TABLETS</a>
+          <div class="dropdown">
+    <SfMegaMenu title="Man" visible>
+    <SfMegaMenuColumn title="Samsung">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Huawei">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Sony">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="One Plus">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+  </SfMegaMenu>
+  </div>
+  </div>
+  <div class="dropdown-wrap">
+          <a href="#" class="custom-link">COMPUTERE</a>
+          <div class="dropdown">
+    <SfMegaMenu title="Man" visible>
+    <SfMegaMenuColumn title="Samsung">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Huawei">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Sony">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="One Plus">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+  </SfMegaMenu>
+  </div>
+  </div>
+  <div class="dropdown-wrap">
+          <a href="#" class="custom-link">ANDRE PRODUKTER</a>
+          <div class="dropdown">
+    <SfMegaMenu title="Man" visible>
+    <SfMegaMenuColumn title="Samsung">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Huawei">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Sony">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="One Plus">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+  </SfMegaMenu>
+  </div>
+  </div>
+  <div class="dropdown-wrap">
+          <a href="#" class="custom-link">TILBEHØR</a>
+          <div class="dropdown">
+    <SfMegaMenu title="Man" visible>
+    <SfMegaMenuColumn title="Samsung">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Huawei">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Sony">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="One Plus">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Test</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+    <SfMegaMenuColumn title="Category">
+      <SfList>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+        <a href="#"><SfListItem><SfMenuItem label="Skirts" />Boots</SfListItem></a>
+      </SfList>
+    </SfMegaMenuColumn>
+  </SfMegaMenu>
+  </div>
+  </div>
+        </div>
       </template>
   </SfHeader>
-  </div>
 </template>
 
 <script>
@@ -185,23 +566,31 @@ export default {
 ::v-deep .dropdown {
   display: none;
   position: absolute;
-  top: 80px;
+  top: 69px;
   left: 0;
   width: 100%;
   background: #fff;
 }
 
-::v-deep .sf-header:hover .dropdown {
+.dropdown-wrap:hover .dropdown {
   display: block;
+  background: #1D1F22;
+}
+
+.dropdown-wrap:hover .custom-link {
+  border-bottom: 2px solid #78a495;
 }
 
 .dropdown-wrap {
-  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 ::v-deep .sf-mega-menu__content {
   max-width: 1208px;
   width: 100%;
+  padding-top: 20px;
   padding-bottom: 80px;
 }
 
@@ -242,6 +631,23 @@ export default {
 
 ::v-deep .sf-mega-menu-column:hover .sf-menu-item__label {
   color: #7BA393;
+}
+
+.custom-link {
+  font-weight: 500;
+  font-size: 14px;
+  color: #1D1F22;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 31px;
+  padding-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+  transition: border 0.3s;
+}
+
+.custom-link:hover {
+  border-bottom: 2px solid #78a495;
 }
 
 </style>
