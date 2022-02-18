@@ -321,9 +321,6 @@ export default {
   column-gap: 15px;
 }
 
-::v-deep .sf-overlay {
-  z-index: var(--overlay-z-index, 3);
-}
 
 ::v-deep .sf-sidebar__aside {
   z-index: var(--sidebar-z-index, 4);

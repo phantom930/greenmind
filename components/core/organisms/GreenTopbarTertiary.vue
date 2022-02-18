@@ -650,4 +650,8 @@ export default {
   border-bottom: 2px solid #78a495;
 }
 
+.sf-header {
+  z-index: 50;
+}
+
 </style>

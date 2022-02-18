@@ -264,4 +264,12 @@ export default {
     }
   }
 }
+
+::v-deep .sf-overlay {
+  z-index: 60;
+}
+
+::v-deep .sf-sidebar__aside {
+  z-index: 61;
+}
 </style>
