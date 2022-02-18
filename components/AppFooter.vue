@@ -35,7 +35,7 @@
           v-for="item in social"
           :key="item"
           :src="'/icons/' + item + '.svg'"
-          :alt="item"
+          alt="social image"
           :width="32"
           :height="32"
         />

@@ -20,13 +20,13 @@
         },
       }"
     >
-      <SfCarouselItem v-for="(item, i) in item.slice(0,10) " :key="i">
+      <SfCarouselItem v-for="(item, i) in item.slice(0, 10)" :key="i">
         <div class="carousel-item">
           <div>
             <SfImage
               :key="item.id"
               :src="$image(productGetters.getCoverImage(item))"
-              :alt="item.id"
+              alt="product image"
               :width="136"
               :height="266"
               class="carousel-image"
@@ -36,8 +36,8 @@
             {{ item.name }}
           </div>
           <div class="carousel-item__features">
-              {{ feature1[i] + " | " + feature2[i] }}
-            </div>
+            {{ feature1[i] + " | " + feature2[i] }}
+          </div>
           <div class="carousel-item-price__wrapper">
             <div class="carousel-item-bfr__price">
               {{ $t("Fra") }}
@@ -87,7 +87,7 @@ export default defineComponent({
   setup() {
     return {
       productGetters,
-    }
+    };
   },
 });
 </script>
