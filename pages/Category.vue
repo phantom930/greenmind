@@ -1,6 +1,7 @@
 <template>
   <div>
     <CategoryTopBanner />
+
     <div id="category">
       <div class="navbar section">
         <div class="navbar__aside desktop-only">

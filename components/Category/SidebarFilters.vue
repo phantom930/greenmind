@@ -54,17 +54,19 @@
               />
             </div>
             <template v-else>
-              <div
-                v-for="option in facet.options"
-                :key="`${facet.id}-${option.value}`"
-              >
-                <SfCheckbox
-                  class="mt-3"
-                  :label="option.label"
-                  :selected="isFilterSelected(option)"
-                  @change="() => selectFilter(facet, option)"
-                />
-              </div>
+              <SfList>
+                <SfListItem
+                  v-for="option in facet.options"
+                  :key="`${facet.id}-${option.value}`"
+                >
+                  <SfCheckbox
+                    class="mt-3"
+                    :label="option.label"
+                    :selected="isFilterSelected(option)"
+                    @change="() => selectFilter(facet, option)"
+                  />
+                </SfListItem>
+              </SfList>
             </template>
           </SfAccordionItem>
         </SfAccordion>
