@@ -29,7 +29,7 @@
             :width="256"
             :height="176"
             :src="$image(cartGetters.getItemImage(product))"
-            :alt="$image(cartGetters.getItemName(product))"
+            alt="product image"
           />
         </SfTableData>
         <SfTableData class="table__data table__description table__data">

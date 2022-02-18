@@ -121,6 +121,7 @@
         />
       </SfHero>
     </div>
+    <NewsletterModal @email-submitted="onSubscribe" />
   </div>
 </template>
 
@@ -137,31 +138,61 @@ import {
   productGetters,
   useFacet,
   facetGetters,
+  useNewsLetter,
 } from "@vue-storefront/odoo";
 import { onSSR } from "@vue-storefront/core";
+import { useUiState } from "~/composables";
+import NewsletterModal from "~/components/NewsletterModal.vue";
+import LazyHydrate from "vue-lazy-hydration";
+import { useUiNotification } from "~/composables";
+
 export default {
   components: {
+    NewsletterModal,
     SfBreadcrumbs,
     SfButton,
     SfHero,
     SfBanner,
     SfCategoryCard,
+    LazyHydrate,
   },
-  setup(props, {root}) {
+  setup(props, { root }) {
     const { result, search } = useFacet();
     const { params } = root.$router.history.current;
     const products = computed(() => facetGetters.getProducts(result.value).slice(0,10));
+    const { toggleNewsletterModal } = useUiState();
+    const { sendSubscription } = useNewsLetter();
+    const { send } = useUiNotification();
 
     onSSR(async () => {
       await search(params);
     });
 
+    const onSubscribe = (emailAddress) => {
+      const data = sendSubscription({ email: emailAddress });
+      if (data.subscribed) {
+        send({
+          message: "Subscribe successfull!",
+          type: "success",
+        });
+      }
+      if (!data.subscribed) {
+        send({
+          message: "Something wrong!",
+          type: "danger",
+        });
+      }
+      toggleNewsletterModal();
+    };
+
     return {
+      onSubscribe,
+      toggleNewsletterModal,
       productGetters,
       useFacet,
       facetGetters,
-      products
-    }
+      products,
+    };
   },
   data() {
     return {
@@ -173,14 +204,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
-:root {
-  --font-family--primary: "Josefin Sans";
-  @include generate-color-variants(--_c-green-primary, #7ba393);
-  @include assign-color-variants(--c-primary, --_c-green-primary);
-  @include assign-color-variants(--c-secondary, --_c-green-secondary);
-}
-</style>
 
 <style lang="scss" scoped>
 ::v-deep .sf-hero {
