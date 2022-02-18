@@ -77,11 +77,7 @@
     </SfFooterColumn>
     <SfFooterColumn> </SfFooterColumn>
     <SfFooterColumn class="bottom-columns-email">
-      <GreenEmailForm
-        :inputPlaceholder="$t('Type your email')"
-        type="email"
-        :buttonPlaceholder="$t('SUBSCRIBE')"
-      />
+      <GreenEmailForm />
     </SfFooterColumn>
     <!-- Column with icons missing here -->
   </SfFooter>
