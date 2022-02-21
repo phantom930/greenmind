@@ -21,39 +21,46 @@
       }"
     >
       <SfCarouselItem v-for="(item, i) in item.slice(0, 10)" :key="i">
-        <div class="carousel-item">
-          <div>
-            <SfImage
-              :key="item.id"
-              :src="$image(productGetters.getCoverImage(item))"
-              alt="product image"
-              :width="136"
-              :height="266"
-              class="carousel-image"
-            />
-          </div>
-          <div class="carousel-item__title">
-            {{ item.name }}
-          </div>
-          <div class="carousel-item__features">
-            {{ feature1[i] + " | " + feature2[i] }}
-          </div>
-          <div class="carousel-item-price__wrapper">
-            <div class="carousel-item-bfr__price">
-              {{ $t("Fra") }}
+        <SfLink
+          :link="localePath(
+            `/p/${productGetters.getId(item)}/${productGetters.getSlug(item)}`
+          )"
+          data-testid="product-link"
+        >
+          <div class="carousel-item">
+            <div>
+              <SfImage
+                :key="item.id"
+                :src="$image(productGetters.getCoverImage(item))"
+                alt="product image"
+                :width="136"
+                :height="266"
+                class="carousel-image"
+              />
             </div>
-            <div class="carousel-item__price">
-              {{ item.price + currency }}
+            <div class="carousel-item__title">
+              {{ item.name }}
+            </div>
+            <div class="carousel-item__features">
+              {{ feature1[i] + " | " + feature2[i] }}
+            </div>
+            <div class="carousel-item-price__wrapper">
+              <div class="carousel-item-bfr__price">
+                {{ $t("Fra") }}
+              </div>
+              <div class="carousel-item__price">
+                {{ item.price + currency }}
+              </div>
             </div>
           </div>
-        </div>
+        </SfLink>
       </SfCarouselItem>
     </SfCarousel>
   </div>
 </template>
 
 <script>
-import { SfCarousel, SfImage, SfHeading } from "@storefront-ui/vue";
+import { SfCarousel, SfImage, SfHeading, SfButton, SfLink } from "@storefront-ui/vue";
 import { productGetters } from "@vue-storefront/odoo";
 import { defineComponent } from "@vue/composition-api";
 export default defineComponent({
@@ -61,6 +68,8 @@ export default defineComponent({
     SfCarousel,
     SfImage,
     SfHeading,
+    SfButton,
+    SfLink
   },
   props: {
     item: {
@@ -185,5 +194,8 @@ export default defineComponent({
 }
 ::v-deep .sf-carousel {
   background-color: #f3f3f3;
+}
+::v-deep .sf-link {
+  text-decoration: none;
 }
 </style>
