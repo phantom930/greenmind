@@ -293,6 +293,7 @@ export default {
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
+  width: 65%;
 }
 .empty-cart__button:hover {
   --button-background: var(--_c-greenmind-fern-secondary-medium-green);
