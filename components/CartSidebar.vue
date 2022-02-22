@@ -309,4 +309,24 @@ export default {
 .empty-cart__image {
   margin: 0 0 var(--spacer-2xl) 0;
 }
+::v-deep .sf-property__name {
+  font-family: var(--font-family--primary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--_c-greenmind-secondary-black);
+}
+::v-deep .sf-value {
+  font-family: var(--font-family--primary);
+    font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--_c-greenmind-primary-black);
+}
+::v-deep .sf-collected-product__remove--circle-icon {
+  background: var(--_c-greenmind-fern-primary-medium-green);
+}
+::v-deep .sf-button--text {
+  display: none;
+}
 </style>

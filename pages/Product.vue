@@ -84,7 +84,7 @@
             </template>
           </div>
           <div class="total-price-buttons">
-            <!-- This is not working, maybe due to the price getting overwritten on category page (?) -->
+            <!-- This is not working -->
             <!-- <SfPrice
               :regular="$n(productGetters.getPrice(product).regular, 'currency')"
               :special="
