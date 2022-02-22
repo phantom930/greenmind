@@ -60,8 +60,8 @@
               alt="Empty bag"
               class="empty-cart__image"
               src="/icons/empty-cart.svg"
-              :width="240"
-              :height="162"
+              :width="373"
+              :height="253"
             />
             <SfHeading
               title="Your cart is empty"
@@ -98,7 +98,7 @@
           </div>
           <div v-else>
             <SfButton
-              class="sf-button--full-width color-primary"
+              class="sf-button--full-width empty-cart__button"
               @click="toggleCartSidebar"
               >{{ $t("Go back shopping") }}</SfButton
             >
@@ -271,5 +271,41 @@ export default {
 
 ::v-deep .sf-sidebar__aside {
   z-index: 61;
+  width: 25%;
+}
+.empty-cart__heading {
+  --heading-title-color: var(--_c-greenmind-fern-primary-medium-green);
+  font-family: var(--font-family--primary);
+  --heading-title-font-size: 46px;
+  --heading-title-font-line-height: 48px;
+  --heading-title-font-weight: 700;
+  --heading-description-color: var(--_c-greenmind-secondary-black);
+  --heading-description-font-family: var(--font-family--primary);
+  --heading-description-font-size: 16px;
+  --heading-description-font-weight: 400;
+  padding: 0 0;
+}
+.empty-cart__button {
+  --button-background: var(--_c-greenmind-pine-primary-dark-green)
+    radial-gradient(circle, transparent 1%, var(--_c-greenmind-pine-primary-dark-green) 1%) center/15000%;;
+  --button-border-radius: 100px;
+  font-family: var(--font-family--primary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.empty-cart__button:hover {
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green);
+}
+.empty-cart__button:active {
+  --button-box-shadow: none;
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+  --button-transition: background 0s;
+  --button-text-decoration: underline;
+  background-size: 100%;
+}
+.empty-cart__image {
+  margin: 0 0 var(--spacer-2xl) 0;
 }
 </style>
