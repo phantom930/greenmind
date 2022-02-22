@@ -137,7 +137,7 @@ export default defineComponent({
   display: flex;
   font-family: "Josefin Sans", sans-serif;
   color: #1d1f22;
-  font-size: 26px;
+  font-size: 16px;
   font-weight: 500;
   text-align: center;
   // line-height: 24;
@@ -168,7 +168,7 @@ export default defineComponent({
   display: flex;
   font-family: "Josefin Sans", sans-serif;
   color: #1d1f22;
-  font-size: 26px;
+  font-size: 16px;
   font-weight: 500;
 }
 ::v-deep .sf-carousel__wrapper {
