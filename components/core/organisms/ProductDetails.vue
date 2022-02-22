@@ -43,23 +43,6 @@
         <div class="title-main">Meget flot</div>
         <p class="description-main">Screen: May have micro-scratches which are not noticeable when<br> the screen is turned on. Body: Has visible scratches and/or dents</p>
     </div>
-    <div class="checkbox-title-wrap">
-        <div class="title">Tilkøb</div>
-        <GreenCheckbox
-        title="Screenprotection"
-        link_title="Læs mere"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        price="149,-"
-        img="productimg"
-        />
-        <GreenCheckbox
-        title="Adapter"
-        link_title=""
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        price="99,-"
-        img="productimg"
-        />      
-    </div>
     </div>
     
 </template>
@@ -170,19 +153,6 @@
     padding-bottom: 16px;
     border-bottom: 1px solid #F1F2F3;
     margin-bottom: 26px;
-}
-
-.checkbox-title-wrap .title {
-    font-size: 20px;
-    color: #1D1F22;
-    font-weight: 500;
-    margin-bottom: 25px;
-}
-
-.checkbox-title-wrap {
-    padding-bottom: 8px;
-    border-bottom: 1px solid #F1F2F3;
-    margin-bottom: 40px;
 }
 
 .total-price-buttons .total-price {

@@ -31,6 +31,40 @@
         </div>
         <div>
           <ProductDetails />
+          <div class="checkbox-title-wrap">
+            <div class="title">Tilkøb</div>
+            <GreenCheckbox
+              title="Screenprotection"
+              link_title="Læs mere"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              price="149,-"
+              img="productimg"
+            />
+            <GreenCheckbox
+              title="Adapter"
+              link_title=""
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              price="99,-"
+              img="productimg"
+            />      
+          </div>
+          <div v-if="accessoryProducts.length > 0" class="checkbox-title-wrap">
+            <div class="title">Tilkøb</div>
+            <GreenCheckbox
+              title="Screenprotection"
+              link_title="Læs mere"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              price="149,-"
+              img="productimg"
+            />
+            <GreenCheckbox
+              title="Adapter"
+              link_title=""
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              price="99,-"
+              img="productimg"
+            />      
+          </div>
           <div v-if="options.color" class="product__colors desktop-only">
             <template v-for="(option, colorKey) in options.color">
               <p class="product__color-label" :key="colorKey">
@@ -287,12 +321,19 @@ export default {
         productTemplateId: parseInt(id),
         combinationIds: Object.values(root.$route.query),
       });
-      await search({ id: parseInt(id) });
+      await search({
+        id: parseInt(id),
+        customQuery: { getRealProduct: 'greenGetProductAccessories' }
+      });
+
+      console.log(products.value)
       await search_facet(params);
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
       // await searchRelatedProducts({ catId: [categories.value[0]], limit: 8 });
       // await searchReviews({ productId: id });
     });
+
+    const accessoryProducts = computed(() => products?.value?.accessoryProducts || [])
 
     const updateFilter = (filter) => {
       root.$router.push({
@@ -351,7 +392,8 @@ export default {
       productGallery,
       useFacet,
       facetGetters,
-      slider_products
+      slider_products,
+      accessoryProducts
     };
   },
   components: {
@@ -678,6 +720,18 @@ export default {
   --heading-title-font-weight: 700;
   --heading-title-font-size: 34px;
   --heading-title-font-line-height: 48px;
-  margin-bottom: -10px;
+  margin-bottom:-10px;
+}
+.checkbox-title-wrap .title {
+    font-size: 20px;
+    color: #1D1F22;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.checkbox-title-wrap {
+    padding-bottom: 8px;
+    border-bottom: 1px solid #F1F2F3;
+    margin-bottom: 40px;
 }
 </style>
