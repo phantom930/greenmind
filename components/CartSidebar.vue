@@ -18,7 +18,7 @@
         <div v-if="totalItems" key="my-cart" class="my-cart">
           <div class="collected-product-list">
             <transition-group name="sf-fade" tag="div">
-              <SfCollectedProduct
+              <!-- <SfCollectedProduct
                 data-cy="collected-product-cart-sidebar"
                 v-for="product in products"
                 :key="cartGetters.getItemSku(product)"
@@ -50,7 +50,12 @@
                     />
                   </div>
                 </template>
-              </SfCollectedProduct>
+              </SfCollectedProduct> -->
+              <LazyGreenCollectedProduct 
+                :product="product"
+                v-for="product in products"
+                :key="product.id"
+              />
             </transition-group>
           </div>
         </div>
