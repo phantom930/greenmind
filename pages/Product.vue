@@ -92,7 +92,7 @@
                 $n(productGetters.getPrice(product).special, 'currency')
               "
               class="total-price"
-            /> --> 
+            />  -->
             <p class="total-price">2.395,-</p>
             <div class="buttons">
                 <SfAddToCart
@@ -327,7 +327,7 @@ export default {
       });
       await search({
         id: parseInt(id),
-        customQuery: { getRealProduct: 'greenGetProductAccessories' }
+        customQuery: { getProductTemplate: 'greenGetProductAccessories' }
       });
 
       console.log(products.value)
@@ -689,6 +689,9 @@ export default {
     radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
   --button-transition: background 0s;
   background-size: 100%;
+}
+::v-deep .sf-add-to-cart__button {
+  text-decoration: none;
 }
 .total-price-buttons .buttons .add-to-cart-disabled {
     font-size: 14px;

@@ -7,7 +7,8 @@ module.exports = {
       location: '@vue-storefront/odoo-api/server',
       configuration: {
         odooBaseUrl,
-        graphqlBaseUrl
+        graphqlBaseUrl,
+        customQueries
       }
     }
   }

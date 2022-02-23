@@ -9,6 +9,11 @@ module.exports = {
                     description
                     smallImage
                     slug
+                    currency {
+                        id
+                        name
+                        symbol
+                      }
                     categories{
                         id
                         slug

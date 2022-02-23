@@ -271,7 +271,6 @@ export default {
 
 ::v-deep .sf-sidebar__aside {
   z-index: 61;
-  width: 25%;
 }
 .empty-cart__heading {
   --heading-title-color: var(--_c-greenmind-fern-primary-medium-green);
