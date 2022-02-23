@@ -104,7 +104,11 @@
                     v-bind:class="{ 'add-to-cart': allOptionsSelected, 'add-to-cart-disabled': !allOptionsSelected}"
                     @click="addItem({ product, quantity: parseInt(qty) })"
                 />
-                <a href="#" class="status">SE LAGERSTATUS I BUTIK</a>
+                <SfButton
+                  class="status"
+                >
+                  {{ $t("SEE STOCK STATUS IN STORE") }}
+                </SfButton>
             </div>
           </div>
         </div>
@@ -674,6 +678,17 @@ export default {
     border-radius: 100px;
     text-align: center;
     margin-bottom: 8px;
+    cursor: pointer;
+}
+.total-price-buttons .buttons .add-to-cart:hover {
+    background: var(--_c-greenmind-fern-secondary-medium-green);
+}
+.total-price-buttons .buttons .add-to-cart:active {
+  --button-box-shadow: none;
+  background: var(--_c-greenmind-fern-secondary-medium-green)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+  --button-transition: background 0s;
+  background-size: 100%;
 }
 .total-price-buttons .buttons .add-to-cart-disabled {
     font-size: 14px;
@@ -691,12 +706,24 @@ export default {
 .total-price-buttons .buttons .status {
     font-size: 14px;
     color: #fff;
-    background: var(--_c-greenmind-fern-primary-medium-green);
+    --button-background: var(--_c-greenmind-fern-primary-medium-green);
     padding-top: 18px;
     padding-bottom: 18px;
     width: 100%;
     border-radius: 100px;
     text-align: center;
+    text-decoration: none;
+}
+.total-price-buttons .buttons .status:hover {
+  --button-background: var(--_c-greenmind-mint-secondary-light-green);
+}
+
+.total-price-buttons .buttons .status:active {
+  --button-box-shadow: none;
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+  --button-transition: background 0s;
+  background-size: 100%;
 }
 ::v-deep .sf-add-to-cart__select-quantity {
   display: none;
