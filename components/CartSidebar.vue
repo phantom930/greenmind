@@ -55,6 +55,7 @@
                 :product="product"
                 v-for="product in products"
                 :key="product.id"
+                :checkbox_title="$t('Purchases')"
               />
             </transition-group>
           </div>

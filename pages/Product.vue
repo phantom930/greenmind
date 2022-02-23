@@ -38,6 +38,7 @@
               link_title="Læs mere"
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               price="149,-"
+              has_image="true"
               img="productimg"
             />
             <GreenCheckbox
@@ -45,6 +46,7 @@
               link_title=""
               description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
               price="99,-"
+              has_image="true"
               img="productimg"
             />      
           </div>
@@ -329,8 +331,6 @@ export default {
         id: parseInt(id),
         customQuery: { getProductTemplate: 'greenGetProductAccessories' }
       });
-
-      console.log(products.value)
       await search_facet(params);
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
       // await searchRelatedProducts({ catId: [categories.value[0]], limit: 8 });

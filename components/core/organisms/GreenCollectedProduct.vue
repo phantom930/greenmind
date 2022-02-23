@@ -13,7 +13,9 @@
     "
     :stock="99999"
     :qty="cartGetters.getItemQty(product)"
-    :currency=currency
+    :currency="currency"
+    :checkbox_title="checkbox_title"
+
     @input="updateItemQty({ product, quantity: $event })"
     @click:remove="removeItem({ product })"
     class="collected-product"
@@ -21,10 +23,30 @@
     <div
       slot="price"
     >
-    <SfCheckbox 
-      label="teste"
-      :selected="false"
-      :disabled="false"
+    <span class="green-collected-product__checkbox-title">
+        {{ checkbox_title }}
+    </span>
+    <GreenCheckbox
+      v-for="accessoryProducts in product.accessoryProducts"
+      :key="accessoryProducts.id"
+      :title="accessoryProducts.name"
+      :price="accessoryProducts.price"
+    />
+    <GreenCheckbox
+      title="Screenprotection"
+      price="149,-"
+    />
+    <GreenCheckbox
+      title="Adapter"
+      price="99,-"
+    />
+    <GreenCheckbox
+      title="Forsikring All Risk"
+      price="fra 599,-"
+    />
+    <GreenCheckbox
+      title="Forsikring skærm"
+      price="fra 299,-"
     />
     <span class="green-collected-product__price">
         {{ $n(cartGetters.getItemPrice(product).regular) + ' ' + currency}}
@@ -55,7 +77,7 @@ export default defineComponent({
     components: {
         SfCollectedProduct,
         SfProperty,
-        SfCheckbox
+        SfCheckbox,
     },
     props: {
         product: {
@@ -65,10 +87,15 @@ export default defineComponent({
         currency: {
             type: String,
             default: ',-'
+        },
+        checkbox_title: {
+            type: String,
+            default: ''
         }
     },
     setup() {
         const { removeItem, updateItemQty } = useCart();
+        console.log(cartGetters.getItemSku(product))
         return {
             cartGetters,
             removeItem,
@@ -77,3 +104,38 @@ export default defineComponent({
     },
 })
 </script>
+
+<style scoped>
+::v-deep .description-wrap {
+    margin-left: 0 !important;
+}
+::v-deep .product-title {
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    color: var(--_c-greenmind-primary-grey) !important;
+    margin-right: 5px !important;
+}
+::v-deep .sf-checkbox__checkmark {
+    width: 16px !important;
+    height: 16px !important;
+}
+::v-deep .price {
+    font-size: 12px !important;
+    font-weight: 300 !important;
+    color: var(--_c-greenmind-fern-primary-medium-green) !important;
+    position: inherit !important;
+}
+::v-deep .general_wrapper {
+    display: flex;
+    width: 100%;
+}
+.green-collected-product__price {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-family: var(--font-family--primary);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--_c-greenmind-primary-black);
+}
+</style>

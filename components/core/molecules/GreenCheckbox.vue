@@ -15,17 +15,28 @@
     <div
       slot="label"
     >
-    <div class="img-description-wrap">
-        <img :src="require('/assets/images/product/' + img + '.jpg')">
-        <div class="description-wrap">
-            <div class="title-link">
-                <div class="product-title">{{ title }}</div>
-                <a href="#">{{ link_title }}</a>
+    <div class="general_wrapper">
+        <div v-if="has_image" class="img-description-wrap">
+            <img :src="require('/assets/images/product/' + img + '.jpg')">
+            <div class="description-wrap">
+                <div class="title-link">
+                    <div class="product-title">{{ title }}</div>
+                    <a href="#">{{ link_title }}</a>
+                </div>
+                <p class="product-description">{{ description }}</p>
             </div>
-            <p class="product-description">{{ description }}</p>
         </div>
+        <div v-else class="img-description-wrap">
+            <div class="description-wrap">
+                <div class="title-link">
+                    <div class="product-title">{{ title }}</div>
+                    <a href="#">{{ link_title }}</a>
+                </div>
+                <p class="product-description">{{ description }}</p>
+            </div>
+        </div>
+        <div class="price">{{ price }}</div>
     </div>
-    <div class="price">{{ price }}</div>
     </div>
   </SfCheckbox>
 </template>
@@ -64,6 +75,10 @@
         img: {
             type: String,
             default: ''
+        },
+        has_image: {
+            type: Boolean,
+            default: false
         }
     }
   };
@@ -106,5 +121,8 @@
     font-size: 20px;
     font-weight: 500;
     color: var(--_c-greenmind-secondary-black);
+}
+::v-deep .sf-checkbox__checkmark.is-active {
+    background: var(--_c-greenmind-fern-primary-medium-green, transparent);
 }
 </style>
