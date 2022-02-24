@@ -73,7 +73,7 @@
         link="#"
       />
     </div>
-    <div style="display: flex; padding-top: 5%">
+    <!-- <div style="display: flex; padding-top: 5%">
       <GreenBannerVertical
         banner_title="Stand"
         banner_description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
@@ -96,7 +96,7 @@
         banner_image="banner_3"
         background="#E0D6C9"
       />
-    </div>
+    </div> -->
     <GreenCarousel
       :item="products"
       :feature1="storage"

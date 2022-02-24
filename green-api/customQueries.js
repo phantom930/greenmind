@@ -9,6 +9,10 @@ module.exports = {
                     description
                     smallImage
                     slug
+                    qty
+                    typeId
+                    sku
+                    status
                     currency {
                         id
                         name
