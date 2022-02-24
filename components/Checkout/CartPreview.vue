@@ -3,7 +3,7 @@
     <div class="highlighted">
       <SfHeading
         :level="3"
-        title="Order summary"
+        title="Totals"
         class="sf-heading--left sf-heading--no-underline title"
       />
     </div>
@@ -18,7 +18,7 @@
         :value="$n(totals.subtotal, 'currency')"
         :class="[
           'sf-property--full-width',
-          'sf-property--large',
+          'sf-property--large property',
           { discounted: totals.special > 0 },
         ]"
       />
@@ -44,9 +44,9 @@
         class="sf-property--full-width sf-property--large property"
       />
       <SfProperty
-        name="Total"
+        name="Total price"
         :value="$n(totals.total, 'currency')"
-        class="sf-property--full-width sf-property--large property-total"
+        class="sf-property--full-width sf-property--large property-total total-price"
       />
     </div>
     <div class="highlighted promo-code">
@@ -55,7 +55,7 @@
         v-model="promoCode"
         name="promoCode"
         :label="$t('Enter promo code')"
-        class="sf-input--filled promo-code__input"
+        class="sf-input--filled promo-code__input total-input"
       />
       <SfButton
         class="promo-code__button"
@@ -183,8 +183,8 @@ export default {
   }
 }
 .promo-code {
-  display: flex;
-  align-items: flex-start;
+  // display: flex;
+  // align-items: flex-start;
   &__button {
     --button-width: 6.3125rem;
     --button-height: var(--spacer-lg);
@@ -192,7 +192,36 @@ export default {
   &__input {
     --input-background: var(--c-white);
     flex: 1;
+    border-radius: 100px !important;
   }
+  position: relative;
+}
+
+.promo-code__button {
+  position: absolute;
+  top: 44px;
+  right: 45px;
+  background: #7BA393;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 100px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+::v-deep .promo-code input {
+  border-radius: 100px;
+  padding-top: 15px;
+  padding-bottom: 11px;
+}
+
+::v-deep .promo-code .sf-input__label {
+  font-weight: 400;
+  font-size: 16px;
+  color: #43464E;
+  font-family: "Josefin Sans";
+  padding-left: 22px;
 }
 
 .discounted {

@@ -28,8 +28,10 @@ import { SfSteps, SfButton } from "@storefront-ui/vue";
 import CartPreview from "~/components/Checkout/CartPreview";
 import { computed } from "@nuxtjs/composition-api";
 const STEPS = {
+  personaldetails: "Personal details",
   shipping: "Shipping",
-  billing: "Billing",
+  // billing: "Billing",
+  revieworder: "Review Order",
   payment: "Payment",
 };
 export default {
@@ -95,5 +97,52 @@ export default {
       --steps-step-color: #e8e4e4;
     }
   }
+}
+
+::v-deep .sf-steps__step {
+  color: #8D8F9A;
+  font-size: 18px;
+  font-family: "Josefin Sans";
+}
+
+::v-deep .checkout__aside div {
+  background: #F1F2F3;
+  border-radius: 14px;
+}
+
+::v-deep .checkout__aside .sf-property__name {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Josefin Sans";
+}
+
+::v-deep .checkout__aside .sf-property__value {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+::v-deep .checkout__aside .total-price .sf-property__name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+::v-deep .checkout__aside .sf-characteristic__title {
+  font-size: 18px;
+  font-weight: 400px;
+  font-family: "Josefin Sans";
+}
+
+::v-deep .checkout__aside .sf-characteristic__description {
+  font-size: 14px;
+  font-weight: 400;
+  color: #72757E;
+  font-family: "Josefin Sans";
+}
+
+::v-deep .checkout__aside {
+  max-width: 452px;
+  width: 100%;
+  margin-left: 20px;
+  margin-top: 42px;
 }
 </style>

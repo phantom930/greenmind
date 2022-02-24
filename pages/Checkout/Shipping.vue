@@ -13,7 +13,8 @@
         @setCurrentAddress="handleSetCurrentAddress"
       />
       <div class="form" v-if="canAddNewAddress">
-        <ValidationProvider
+        <div class="first-name-last-name">
+          <ValidationProvider
           name="firstName"
           rules="required|min:2"
           v-slot="{ errors }"
@@ -29,6 +30,25 @@
             :errorMessage="errors[0]"
           />
         </ValidationProvider>
+          <div class="lastname">
+            <ValidationProvider
+          name="lastname"
+          rules="required|min:2"
+          v-slot="{ errors }"
+          slim
+        >
+          <SfInput
+            v-model="form.name"
+            label="Last Name"
+            name="lastName"
+            class="form__element"
+            required
+            :valid="!errors[0]"
+            :errorMessage="errors[0]"
+          />
+        </ValidationProvider>
+          </div>
+        </div>
         <ValidationProvider
           name="streetName"
           rules="required|min:2"
@@ -45,23 +65,6 @@
             :errorMessage="errors[0]"
           />
         </ValidationProvider>
-
-        <ValidationProvider
-          name="city"
-          rules="required|min:2"
-          v-slot="{ errors }"
-          slim
-        >
-          <SfInput
-            v-model="form.city"
-            label="City"
-            name="city"
-            class="form__element form__element--half"
-            required
-            :valid="!errors[0]"
-            :errorMessage="errors[0]"
-          />
-        </ValidationProvider>
         <ValidationProvider
           name="zipCode"
           rules="required|min:2"
@@ -72,7 +75,23 @@
             v-model="form.zip"
             label="Zip-code"
             name="zipCode"
-            class="form__element form__element--half form__element--half-even"
+            class="form__element form__element--half form__element--half"
+            required
+            :valid="!errors[0]"
+            :errorMessage="errors[0]"
+          />
+        </ValidationProvider>
+        <ValidationProvider
+          name="city"
+          rules="required|min:2"
+          v-slot="{ errors }"
+          slim
+        >
+          <SfInput
+            v-model="form.city"
+            label="City"
+            name="city"
+            class="form__element form__element--half-even form__element--half"
             required
             :valid="!errors[0]"
             :errorMessage="errors[0]"
@@ -106,7 +125,7 @@
           </SfSelect>
         </ValidationProvider>
 
-        <ValidationProvider
+        <!-- <ValidationProvider
           name="state"
           rules="required"
           v-slot="{ errors }"
@@ -133,7 +152,7 @@
               {{ countryStateOption.name }}
             </SfSelectOption>
           </SfSelect>
-        </ValidationProvider>
+        </ValidationProvider> -->
 
         <ValidationProvider
           name="phone"
@@ -145,7 +164,7 @@
             v-model="form.phone"
             label="Phone number"
             name="phone"
-            class="form__element form__element--half"
+            class="form__element form__element--half form__element--half-even"
             required
             :valid="!errors[0]"
             :errorMessage="errors[0]"
@@ -172,10 +191,35 @@
         @submit="$router.push('/checkout/billing')"
         @selectedMethod="handleSelectedMethodShipping"
       />
+      <VsfShippingProvider
+        name="selectedMethodShipping"
+        :selectedMethodShipping="form.selectedMethodShipping"
+        @submit="$router.push('/checkout/billing')"
+        @selectedMethod="handleSelectedMethodShipping"
+      />
+      <VsfShippingProvider
+        name="selectedMethodShipping"
+        :selectedMethodShipping="form.selectedMethodShipping"
+        @submit="$router.push('/checkout/billing')"
+        @selectedMethod="handleSelectedMethodShipping"
+      />
+      <VsfShippingProvider
+        name="selectedMethodShipping"
+        :selectedMethodShipping="form.selectedMethodShipping"
+        @submit="$router.push('/checkout/billing')"
+        @selectedMethod="handleSelectedMethodShipping"
+      />
+      <VsfShippingProvider
+        name="selectedMethodShipping"
+        :selectedMethodShipping="form.selectedMethodShipping"
+        @submit="$router.push('/checkout/billing')"
+        @selectedMethod="handleSelectedMethodShipping"
+      />
       <SfButton type="submit" :disabled="invalid">
         {{ $t("Continue to billing") }}
       </SfButton>
     </form>
+    <ShippingTab />
   </ValidationObserver>
 </template>
 
@@ -401,5 +445,43 @@ export default {
 }
 .title {
   margin: var(--spacer-xl) 0 var(--spacer-base) 0;
+}
+
+::v-deep .first-name-last-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+::v-deep .first-name-last-name .form__element {
+  flex: 1 1 50%;
+}
+
+::v-deep .first-name-last-name .lastname {
+  flex:  1 1 50%;
+  padding-left: 20px;
+}
+
+::v-deep .sf-input__label {
+  font-size: 18px;
+  font-weight: 300;
+  color: #43464E;
+  font-family: "Josefin Sans";
+  padding-left: 5px;
+}
+
+::v-deep .sf-heading__title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1D1F22;
+}
+
+::v-deep .form__element--half-even {
+  padding-left: 20px;
+}
+
+::v-deep .sf-button.is-disabled--button {
+  display: none;
 }
 </style>
