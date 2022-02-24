@@ -95,7 +95,6 @@ export default defineComponent({
     },
     setup() {
         const { removeItem, updateItemQty } = useCart();
-        console.log(cartGetters.getItemSku(product))
         return {
             cartGetters,
             removeItem,
