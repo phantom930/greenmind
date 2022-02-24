@@ -13,7 +13,12 @@ module.exports = {
                         id
                         name
                         symbol
-                      }
+                    }
+                    mediaGallery {
+                        id
+                        name
+                        image
+                    }
                     categories{
                         id
                         slug
@@ -24,9 +29,16 @@ module.exports = {
                         name
                         description
                         image
+                        currency {
+                            id
+                            name
+                            symbol
+                        }
+                        price
                     }
                 }
             }
-        `
+        `,
+        variables
     })
 }

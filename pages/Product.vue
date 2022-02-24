@@ -31,41 +31,17 @@
         </div>
         <div>
           <ProductDetails />
-          <div class="checkbox-title-wrap">
-            <div class="title">Tilkøb</div>
-            <GreenCheckbox
-              title="Screenprotection"
-              link_title="Læs mere"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              price="149,-"
-              has_image="true"
-              img="productimg"
-            />
-            <GreenCheckbox
-              title="Adapter"
-              link_title=""
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              price="99,-"
-              has_image="true"
-              img="productimg"
-            />      
-          </div>
           <div v-if="accessoryProducts.length > 0" class="checkbox-title-wrap">
             <div class="title">Tilkøb</div>
             <GreenCheckbox
-              title="Screenprotection"
-              link_title="Læs mere"
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              price="149,-"
-              img="productimg"
-            />
-            <GreenCheckbox
-              title="Adapter"
-              link_title=""
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              price="99,-"
-              img="productimg"
-            />      
+              v-for="accessoryProducts in product.accessoryProducts"
+              :key="accessoryProducts.id"
+              :title="accessoryProducts.name"
+              :description="accessoryProducts.description"
+              :price="accessoryProducts.price"
+              :has_image = true
+              :image="$image(accessoryProducts.image)"
+            />     
           </div>
           <div v-if="options.color" class="product__colors desktop-only">
             <template v-for="(option, colorKey) in options.color">

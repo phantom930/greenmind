@@ -17,7 +17,7 @@
     >
     <div class="general_wrapper">
         <div v-if="has_image" class="img-description-wrap">
-            <img :src="require('/assets/images/product/' + img + '.jpg')">
+            <img :src="image" class="checkbox_image">
             <div class="description-wrap">
                 <div class="title-link">
                     <div class="product-title">{{ title }}</div>
@@ -79,6 +79,10 @@
         has_image: {
             type: Boolean,
             default: false
+        },
+        image: {
+            type: String,
+            default: ''
         }
     }
   };
@@ -124,5 +128,9 @@
 }
 ::v-deep .sf-checkbox__checkmark.is-active {
     background: var(--_c-greenmind-fern-primary-medium-green, transparent);
+}
+.checkbox_image {
+    max-width: 82px;
+    max-height: 70px;
 }
 </style>
