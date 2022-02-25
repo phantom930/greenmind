@@ -51,8 +51,8 @@
     </div>
     <div class="highlighted promo-code">
       <SfInput
-        data-cy="cart-preview-input_promoCode"
         v-model="promoCode"
+        data-cy="cart-preview-input_promoCode"
         name="promoCode"
         :label="$t('Enter promo code')"
         class="sf-input--filled promo-code__input total-input"
@@ -60,8 +60,9 @@
       <SfButton
         class="promo-code__button"
         @click="() => applyCoupon({ couponCode: promoCode })"
-        >{{ $t("Apply") }}</SfButton
       >
+        {{ $t("Apply") }}
+      </SfButton>
     </div>
     <div class="highlighted">
       <SfCharacteristic
@@ -83,13 +84,13 @@ import {
   SfProperty,
   SfCharacteristic,
   SfInput,
-  SfCircleIcon,
-} from "@storefront-ui/vue";
-import { computed, ref } from "@nuxtjs/composition-api";
-import { useCart, checkoutGetters, cartGetters } from "@vue-storefront/odoo";
+  SfCircleIcon
+} from '@storefront-ui/vue';
+import { computed, ref } from '@nuxtjs/composition-api';
+import { useCart, checkoutGetters, cartGetters } from '@vue-storefront/odoo';
 
 export default {
-  name: "CartPreview",
+  name: 'CartPreview',
   components: {
     SfHeading,
     SfButton,
@@ -97,12 +98,12 @@ export default {
     SfProperty,
     SfCharacteristic,
     SfInput,
-    SfCircleIcon,
+    SfCircleIcon
   },
   setup() {
     const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
     const listIsHidden = ref(false);
-    const promoCode = ref("");
+    const promoCode = ref('');
     const showPromoCode = ref(false);
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
@@ -128,24 +129,24 @@ export default {
       applyCoupon,
       characteristics: [
         {
-          title: "Safety",
-          description: "It carefully packaged with a personal touch",
-          icon: "safety",
+          title: 'Safety',
+          description: 'It carefully packaged with a personal touch',
+          icon: 'safety'
         },
         {
-          title: "Easy shipping",
+          title: 'Easy shipping',
           description:
-            "You’ll receive dispatch confirmation and an arrival date",
-          icon: "shipping",
+            'You’ll receive dispatch confirmation and an arrival date',
+          icon: 'shipping'
         },
         {
-          title: "Changed your mind?",
-          description: "Rest assured, we offer free returns within 30 days",
-          icon: "return",
-        },
-      ],
+          title: 'Changed your mind?',
+          description: 'Rest assured, we offer free returns within 30 days',
+          icon: 'return'
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 

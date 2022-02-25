@@ -1,36 +1,60 @@
 <template>
-    <div class="billing-details-wrap">
-        <h3 class="sf-heading__title h3">Billing details</h3>
-        <div class="billing-details-card">
-            <p class="name info">Jack Smith</p>
-            <p class="address info">Mazowiecka 34</p>
-            <p class="number info">02-020</p>
-            <p class="city info">Warszawa, Mazowieckie</p>
-            <p class="state info">Poland</p>
-            <p class="phone info">+48 777 777 777</p>
-            <img :src="require('/assets/images/checkout/checkmark.svg')">
-        </div>
-        <div class="checkbox-button-wrap">
-            <div class="checkbox-group">
-               <div class="checkbox-wrap">
-                   <GreenCheckboxSecond />
-               <p class="label">Copy address data from shipping</p>
-               </div>
-               <div class="checkbox-wrap">
-                   <GreenCheckboxSecond />
-               <p class="label">I want to generate invoice<br> for the company</p>
-               </div>
-            </div>
-        </div>
+  <div class="billing-details-wrap">
+    <h3 class="sf-heading__title h3">
+      Billing details
+    </h3>
+    <div class="billing-details-card">
+      <p class="name info">
+        Jack Smith
+      </p>
+      <p class="address info">
+        Mazowiecka 34
+      </p>
+      <p class="number info">
+        02-020
+      </p>
+      <p class="city info">
+        Warszawa, Mazowieckie
+      </p>
+      <p class="state info">
+        Poland
+      </p>
+      <p class="phone info">
+        +48 777 777 777
+      </p>
+      <img :src="require('/assets/images/checkout/checkmark.svg')">
     </div>
-
+    <div class="checkbox-button-wrap">
+      <div class="checkbox-group">
+        <div class="checkbox-wrap">
+          <GreenCheckboxSecond />
+          <p class="label">
+            Copy address data from shipping
+          </p>
+        </div>
+        <div class="checkbox-wrap">
+          <GreenCheckboxSecond />
+          <p class="label">
+            I want to generate invoice<br> for the company
+          </p>
+        </div>
+      </div>
+      <button
+        class="color-primary sf-button"
+        :aria-disabled="false"
+        :link="null"
+        type="button"
+      >
+        GO TO REVIEW ORDER
+      </button>
+    </div>
+  </div>
 </template>
-
-
 
 <style scoped>
 .billing-details-wrap {
     padding-top: 66px;
+    margin-bottom: 185px;
 }
 
 .billing-details-wrap .sf-heading__title {

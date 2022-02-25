@@ -7,9 +7,11 @@
     />
     <SfTable class="sf-table--bordered table desktop-only">
       <SfTableHeading class="table__row">
-        <SfTableHeader class="table__header table__image">{{
-          $t("Item")
-        }}</SfTableHeader>
+        <SfTableHeader class="table__header table__image">
+          {{
+            $t("Item")
+          }}
+        </SfTableHeader>
         <SfTableHeader
           v-for="tableHeader in tableHeaders"
           :key="tableHeader"
@@ -36,27 +38,31 @@
           <div class="product-title">
             {{ cartGetters.getItemName(product) }}
           </div>
-          <div class="product-sku">{{ cartGetters.getItemSku(product) }}</div>
+          <div class="product-sku">
+            {{ cartGetters.getItemSku(product) }}
+          </div>
         </SfTableData>
         <SfTableData
-          class="table__data"
           v-for="(value, key) in cartGetters.getItemAttributes(product, [
             'size',
             'color',
           ])"
           :key="key"
+          class="table__data"
         >
           {{ value }}
         </SfTableData>
-        <SfTableData class="table__data">{{
-          cartGetters.getItemQty(product)
-        }}</SfTableData>
+        <SfTableData class="table__data">
+          {{
+            cartGetters.getItemQty(product)
+          }}
+        </SfTableData>
         <SfTableData class="table__data price">
           <SfPrice
             :regular="$n(cartGetters.getItemPrice(product).regular, 'currency')"
             :special="
               cartGetters.getItemPrice(product).special &&
-              $n(cartGetters.getItemPrice(product).special, 'currency')
+                $n(cartGetters.getItemPrice(product).special, 'currency')
             "
             class="product-price"
           />
@@ -116,11 +122,11 @@
 
         <abstract-payment-observer v-if="selectedProvider.name">
           <component
+            :is="getComponentProviderByName(selectedProvider.name)"
             class="py-8"
+            :provider="selectedProvider"
             @isPaymentReady="isPaymentReady = arguments[0]"
             @providerPaymentHandler="providerPaymentHandler = arguments[0]"
-            :provider="selectedProvider"
-            :is="getComponentProviderByName(selectedProvider.name)"
           />
         </abstract-payment-observer>
 
@@ -144,15 +150,17 @@
         /> -->
 
         <SfCheckbox
-          v-e2e="'terms'"
           v-model="terms"
+          v-e2e="'terms'"
           name="terms"
           class="summary__terms"
         >
           <template #label>
             <div class="sf-checkbox__label">
               {{ $t("I agree to") }}
-              <SfLink href="#"> {{ $t("Terms and conditions") }}</SfLink>
+              <SfLink href="#">
+                {{ $t("Terms and conditions") }}
+              </SfLink>
             </div>
           </template>
         </SfCheckbox>
@@ -192,22 +200,22 @@ import {
   SfProperty,
   SfAccordion,
   SfLink,
-  SfRadio,
-} from "@storefront-ui/vue";
-import { onSSR } from "@vue-storefront/core";
-import { useUiHelpers } from "~/composables";
+  SfRadio
+} from '@storefront-ui/vue';
+import { onSSR } from '@vue-storefront/core';
+import { useUiHelpers } from '~/composables';
 
-import { ref, computed } from "@vue/composition-api";
+import { ref, computed } from '@vue/composition-api';
 import {
   useMakeOrder,
   useCart,
   cartGetters,
   orderGetters,
-  usePayment,
-} from "@vue-storefront/odoo";
+  usePayment
+} from '@vue-storefront/odoo';
 
 export default {
-  name: "ReviewOrder",
+  name: 'ReviewOrder',
   components: {
     SfHeading,
     SfTable,
@@ -222,15 +230,15 @@ export default {
     SfLink,
     SfRadio,
     VsfPaymentProvider: () =>
-      import("~/components/Checkout/VsfPaymentProvider"),
+      import('~/components/Checkout/VsfPaymentProvider'),
     AdyenPaymentProvider: () =>
-      import("~/components/Checkout/AdyenPaymentProvider"),
+      import('~/components/Checkout/AdyenPaymentProvider'),
     AdyenExternalPaymentProvider: () =>
-      import("~/components/Checkout/AdyenExternalPaymentProvider"),
+      import('~/components/Checkout/AdyenExternalPaymentProvider'),
     WireTransferPaymentProvider: () =>
-      import("~/components/Checkout/WireTransferPaymentProvider"),
+      import('~/components/Checkout/WireTransferPaymentProvider'),
     AbstractPaymentObserver: () =>
-      import("~/components/Checkout/AbstractPaymentObserver"),
+      import('~/components/Checkout/AbstractPaymentObserver')
   },
   setup(props, context) {
     const { cart, load, setCart } = useCart();
@@ -245,7 +253,7 @@ export default {
     const selectProvider = (provider) => {
       isPaymentReady.value = false;
       selectedProvider.value = provider;
-      context.emit("status");
+      context.emit('status');
     };
 
     onSSR(async () => {
@@ -257,8 +265,8 @@ export default {
       await make();
 
       const thankYouPath = {
-        name: "thank-you",
-        query: { order: orderGetters.getId(order.value) },
+        name: 'thank-you',
+        query: { order: orderGetters.getId(order.value) }
       };
       context.root.$router.push(context.root.localePath(thankYouPath));
       setCart(null);
@@ -276,7 +284,7 @@ export default {
       loading,
       products: computed(() => cartGetters.getItems(cart.value)),
       totals: computed(() => cartGetters.getTotals(cart.value)),
-      tableHeaders: ["Description", "Size", "Color", "Quantity", "Amount"],
+      tableHeaders: ['Description', 'Size', 'Color', 'Quantity', 'Amount'],
       cartGetters,
       processOrder,
       providerList,
@@ -284,9 +292,9 @@ export default {
       selectedProvider,
       providerListHasMoreThanOne,
       providerPaymentHandler,
-      getComponentProviderByName: th.getComponentProviderByName,
+      getComponentProviderByName: th.getComponentProviderByName
     };
-  },
+  }
 };
 </script>
 

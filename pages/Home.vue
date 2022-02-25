@@ -3,21 +3,21 @@
     <SfHero>
       <SfHeroItem
         title="Colorful summer dresses are already in store"
-        buttonText="SE MERE"
+        button-text="SE MERE"
         background="none"
         :image="require('/assets/images/homeHero/homeHero_1.svg')"
         style="background-size: auto; background-position-y: center"
       />
       <SfHeroItem
         title="Colorful summer dresses are already in store"
-        buttonText="SE MERE"
+        button-text="SE MERE"
         background="none"
         :image="require('/assets/images/homeHero/homeHero_1.svg')"
         style="background-size: auto; background-position-y: center"
       />
       <SfHeroItem
         title="Colorful summer dresses are already in store"
-        buttonText="SE MERE"
+        button-text="SE MERE"
         background="none"
         :image="require('/assets/images/homeHero/homeHero_1.svg')"
         style="background-size: auto; background-position-y: center"
@@ -27,7 +27,7 @@
       title=""
       subtitle=""
       description=""
-      buttonText=""
+      button-text=""
       background=""
       :image="require('/assets/images/homeUspBanner/banner_1.svg')"
       style="
@@ -36,7 +36,10 @@
         margin-top: -10%;
       "
     />
-    <div style="display: flex" class="category_card">
+    <div
+      style="display: flex"
+      class="category_card"
+    >
       <SfCategoryCard
         label="iPhones"
         :background="
@@ -110,7 +113,7 @@
         <SfHeroItem
           title="Subscribe to Newsletters"
           subtitle="Be aware of upcoming sales and events. Receive gifts and special offers!"
-          buttonText="SE MERE"
+          button-text="SE MERE"
           background="none"
           :image="require('/assets/images/homeHero/homeHero_2.svg')"
           style="
@@ -131,20 +134,20 @@ import {
   SfButton,
   SfHero,
   SfBanner,
-  SfCategoryCard,
-} from "@storefront-ui/vue";
-import { ref, computed, onMounted } from "@vue/composition-api";
+  SfCategoryCard
+} from '@storefront-ui/vue';
+import { ref, computed, onMounted } from '@vue/composition-api';
 import {
   productGetters,
   useFacet,
   facetGetters,
-  useNewsLetter,
-} from "@vue-storefront/odoo";
-import { onSSR } from "@vue-storefront/core";
-import { useUiState } from "~/composables";
-import NewsletterModal from "~/components/NewsletterModal.vue";
-import LazyHydrate from "vue-lazy-hydration";
-import { useUiNotification } from "~/composables";
+  useNewsLetter
+} from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
+import { useUiState } from '~/composables';
+import NewsletterModal from '~/components/NewsletterModal.vue';
+import LazyHydrate from 'vue-lazy-hydration';
+import { useUiNotification } from '~/composables';
 
 export default {
   components: {
@@ -154,12 +157,12 @@ export default {
     SfHero,
     SfBanner,
     SfCategoryCard,
-    LazyHydrate,
+    LazyHydrate
   },
   setup(props, { root }) {
     const { result, search } = useFacet();
     const { params } = root.$router.history.current;
-    const products = computed(() => facetGetters.getProducts(result.value).slice(0,10));
+    const products = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
     const { toggleNewsletterModal } = useUiState();
     const { sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
@@ -172,14 +175,14 @@ export default {
       const data = sendSubscription({ email: emailAddress });
       if (data.subscribed) {
         send({
-          message: "Subscribe successfull!",
-          type: "success",
+          message: 'Subscribe successfull!',
+          type: 'success'
         });
       }
       if (!data.subscribed) {
         send({
-          message: "Something wrong!",
-          type: "danger",
+          message: 'Something wrong!',
+          type: 'danger'
         });
       }
       toggleNewsletterModal();
@@ -191,19 +194,18 @@ export default {
       productGetters,
       useFacet,
       facetGetters,
-      products,
+      products
     };
   },
   data() {
     return {
-      storage: ["128 Gb", "128 Gb", "128 Gb", "128 Gb", "128 Gb"],
-      color: ["Gold", "Red", "Silver", "Black", "Gold"],
-      currency: ["$"],
+      storage: ['128 Gb', '128 Gb', '128 Gb', '128 Gb', '128 Gb'],
+      color: ['Gold', 'Red', 'Silver', 'Black', 'Gold'],
+      currency: ['$']
     };
-  },
+  }
 };
 </script>
-
 
 <style lang="scss" scoped>
 ::v-deep .sf-hero {

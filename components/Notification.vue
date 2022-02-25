@@ -1,17 +1,27 @@
 <template>
-  <transition-group tag="div" class="notifications" name="slide-fade">
+  <transition-group
+    tag="div"
+    class="notifications"
+    name="slide-fade"
+  >
     <SfNotification
       v-for="notification in notifications"
       :key="notification.id"
       :message="notification.message"
       :action="notification.action && notification.action.text"
       :type="notification.type"
+      visible
       @click:close="notification.dismiss"
       @click:action="notification.action && notification.action.onClick()"
-      visible
     >
-      <template #icon v-if="notification.icon">
-        <SfIcon :icon="notification.icon" color="white"/>
+      <template
+        v-if="notification.icon"
+        #icon
+      >
+        <SfIcon
+          :icon="notification.icon"
+          color="white"
+        />
       </template>
     </SfNotification>
   </transition-group>

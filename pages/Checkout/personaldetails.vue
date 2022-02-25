@@ -1,16 +1,19 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
-      <div class="button-wrap">
-          <button
-    class="color-primary sf-button login-btn"
-    :aria-disabled="false"
-    :link="null"
-    type="button"
+  <ValidationObserver
+    v-slot="{ handleSubmit, invalid }"
+    ref="formRef"
   >
-    LOG INTO YOUR ACCOUNT
-  </button>
-  <p>or fill the details below:</p>
-      </div>
+    <div class="button-wrap">
+      <button
+        class="color-primary sf-button login-btn"
+        :aria-disabled="false"
+        :link="null"
+        type="button"
+      >
+        LOG INTO YOUR ACCOUNT
+      </button>
+      <p>or fill the details below:</p>
+    </div>
     <SfHeading
       :level="3"
       :title="$t('Shipping Details')"
@@ -23,47 +26,50 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div class="form" v-if="canAddNewAddress">
+      <div
+        v-if="canAddNewAddress"
+        class="form"
+      >
         <div class="first-name-last-name">
           <ValidationProvider
-          name="firstName"
-          rules="required|min:2"
-          v-slot="{ errors }"
-          slim
-        >
-          <SfInput
-            v-model="form.name"
-            label="First name"
+            v-slot="{ errors }"
             name="firstName"
-            class="form__element"
-            required
-            :valid="!errors[0]"
-            :errorMessage="errors[0]"
-          />
-        </ValidationProvider>
+            rules="required|min:2"
+            slim
+          >
+            <SfInput
+              v-model="form.name"
+              label="First name"
+              name="firstName"
+              class="form__element"
+              required
+              :valid="!errors[0]"
+              :error-message="errors[0]"
+            />
+          </ValidationProvider>
           <div class="lastname">
             <ValidationProvider
-          name="lastname"
-          rules="required|min:2"
-          v-slot="{ errors }"
-          slim
-        >
-          <SfInput
-            v-model="form.name"
-            label="Last Name"
-            name="lastName"
-            class="form__element"
-            required
-            :valid="!errors[0]"
-            :errorMessage="errors[0]"
-          />
-        </ValidationProvider>
+              v-slot="{ errors }"
+              name="lastname"
+              rules="required|min:2"
+              slim
+            >
+              <SfInput
+                v-model="form.name"
+                label="Last Name"
+                name="lastName"
+                class="form__element"
+                required
+                :valid="!errors[0]"
+                :error-message="errors[0]"
+              />
+            </ValidationProvider>
           </div>
         </div>
         <ValidationProvider
+          v-slot="{ errors }"
           name="streetName"
           rules="required|min:2"
-          v-slot="{ errors }"
           slim
         >
           <SfInput
@@ -73,10 +79,9 @@
             class="form__element email-input"
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           />
         </ValidationProvider>
-        
       </div>
       <SfButton
         v-if="!canAddNewAddress"
@@ -87,82 +92,86 @@
         {{ $t("Add new address") }}
       </SfButton>
 
-      <SfButton type="submit" :disabled="invalid">
+      <SfButton
+        type="submit"
+        :disabled="invalid"
+      >
         {{ $t("Continue to billing") }}
       </SfButton>
     </form>
 
     <div class="checkbox-wrap">
-        <GreenCheckbox 
-          :has_GeneralWrapper = false
-        />
-        <p class="label">Join newsletter</p>
+      <GreenCheckboxSecond />
+      <p class="label">
+        Join newsletter
+      </p>
     </div>
 
     <div class="perks-wrap">
-        <p class="title">Enjoy these perks with your free account!</p>
-        <div class="perks">
-            <div class="perk">
-            <img :src="require('/assets/images/personaldetails/clock.svg')">
-            <p class="label">Faster<br>checkout</p>
-            </div>
-            <div class="perk">
-            <img :src="require('/assets/images/personaldetails/coins.svg')">
-            <p class="label">Earn credits with every<br> purchase</p>
-            </div>
-            <div class="perk">
-            <img :src="require('/assets/images/personaldetails/award.svg')">
-            <p class="label">Full rewards program<br> benefits</p>
-            </div>
+      <p class="title">
+        Enjoy these perks with your free account!
+      </p>
+      <div class="perks">
+        <div class="perk">
+          <img :src="require('/assets/images/personaldetails/clock.svg')">
+          <p class="label">
+            Faster<br>checkout
+          </p>
         </div>
+        <div class="perk">
+          <img :src="require('/assets/images/personaldetails/clock.svg')">
+          <p class="label">
+            Earn credits with every<br> purchase
+          </p>
+        </div>
+        <div class="perk">
+          <img :src="require('/assets/images/personaldetails/clock.svg')">
+          <p class="label">
+            Full rewards program<br> benefits
+          </p>
+        </div>
+      </div>
     </div>
     <div class="checkbox-button-wrap">
-        <div class="checkbox-wrap">
-        <GreenCheckbox 
-          :has_GeneralWrapper = false
-        />
-        <p class="label">I want to create an account.</p>
-    </div>
-    <nuxt-link to="/">
-        <SfButton
+      <div class="checkbox-wrap">
+        <GreenCheckboxSecond />
+        <p class="label">
+          I want to create an account.
+        </p>
+      </div>
+      <button
         class="color-primary sf-button shipping-btn"
-        >
-        {{ $t("Go back") }}
-        </SfButton>
-    </nuxt-link>
-    <nuxt-link to="/checkout/shipping">
-        <SfButton
-        class="color-primary sf-button shipping-btn"
-        >
-        {{ $t("GO TO SHIPPING") }}
-        </SfButton>
-    </nuxt-link>
+        :aria-disabled="false"
+        :link="null"
+        type="button"
+      >
+        GO TO SHIPPING
+      </button>
     </div>
   </ValidationObserver>
-  
 </template>
 
 <script>
-import { SfHeading, SfInput, SfButton, SfSelect } from "@storefront-ui/vue";
-import { ref, watch, onMounted, computed } from "@nuxtjs/composition-api";
+import { SfHeading, SfInput, SfButton, SfSelect } from '@storefront-ui/vue';
+import { ref, watch, onMounted, computed } from '@nuxtjs/composition-api';
 import {
   useCountrySearch,
   useUser,
   userShippingGetters,
-  useShipping,
-} from "@vue-storefront/odoo";
-import { required, min, digits } from "vee-validate/dist/rules";
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+  useShipping
+} from '@vue-storefront/odoo';
+import { required, min, digits } from 'vee-validate/dist/rules';
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 
-extend("required", { ...required, message: "This field is required" });
-extend("min", {
+extend('required', { ...required, message: 'This field is required' });
+extend('min', {
   ...min,
-  message: "The field should have at least {length} characters",
+  message: 'The field should have at least {length} characters'
 });
-extend("digits", { ...digits, message: "Please provide a valid phone number" });
+extend('digits', { ...digits, message: 'Please provide a valid phone number' });
 
 export default {
-  name: "Shipping",
+  name: 'Shipping',
   components: {
     SfHeading,
     SfInput,
@@ -171,14 +180,14 @@ export default {
     ValidationProvider,
     ValidationObserver,
     UserShippingAddresses: () =>
-      import("~/components/Checkout/UserShippingAddresses.vue"),
+      import('~/components/Checkout/UserShippingAddresses.vue'),
     VsfShippingProvider: () =>
-      import("~/components/Checkout/VsfShippingProvider"),
+      import('~/components/Checkout/VsfShippingProvider')
   },
   setup(props, { root, emit }) {
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
-    const currentAddressId = ref("");
+    const currentAddressId = ref('');
     const defaultShippingAddress = ref(false);
     const isShippingDetailsStepCompleted = ref(false);
     const canAddNewAddress = ref(true);
@@ -191,25 +200,25 @@ export default {
       useCountrySearch();
 
     const form = ref({
-      name: "",
-      street: "",
-      city: "",
+      name: '',
+      street: '',
+      city: '',
       state: { id: null },
       country: { id: null },
-      zip: "",
+      zip: '',
       phone: null,
-      selectedMethodShipping: null,
+      selectedMethodShipping: null
     });
 
     const handleFormSubmit = async () => {
       await save({ shippingDetails: form.value });
       isFormSubmitted.value = true;
 
-      if (root.$router.history.current.path !== "/my-account/shipping-details")
-        root.$router.push("/checkout/billing");
-      else root.$router.push("/my-account/shipping-details");
+      if (root.$router.history.current.path !== '/my-account/shipping-details')
+        root.$router.push('/checkout/billing');
+      else root.$router.push('/my-account/shipping-details');
 
-      emit("finish", true);
+      emit('finish', true);
     };
 
     const hasSavedShippingAddress = computed(() => {
@@ -222,7 +231,7 @@ export default {
     });
 
     const handleAddNewAddressBtnClick = () => {
-      currentAddressId.value = "";
+      currentAddressId.value = '';
       form.value = {};
       canAddNewAddress.value = true;
       isShippingDetailsStepCompleted.value = false;
@@ -274,9 +283,9 @@ export default {
       form,
       countries,
       countryStates,
-      handleFormSubmit,
+      handleFormSubmit
     };
-  },
+  }
 };
 </script>
 
@@ -403,7 +412,6 @@ export default {
 ::v-deep .sf-button.is-disabled--button {
   display: none;
 }
-
 
 ::v-deep .login-btn {
     font-size: 14px;

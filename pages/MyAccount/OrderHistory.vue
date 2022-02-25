@@ -5,8 +5,9 @@
         <SfButton
           class="sf-button--text all-orders"
           @click="currentOrder = null"
-          >All Orders</SfButton
         >
+          All Orders
+        </SfButton>
         <div class="highlighted highlighted--total">
           <SfProperty
             name="Order ID"
@@ -31,9 +32,11 @@
         </div>
         <SfTable class="products">
           <SfTableHeading>
-            <SfTableHeader class="products__name">{{
-              $t("Product")
-            }}</SfTableHeader>
+            <SfTableHeader class="products__name">
+              {{
+                $t("Product")
+              }}
+            </SfTableHeader>
             <SfTableHeader>{{ $t("Quantity") }}</SfTableHeader>
             <SfTableHeader>{{ $t("Price") }}</SfTableHeader>
           </SfTableHeading>
@@ -45,18 +48,20 @@
               <nuxt-link
                 :to="
                   '/p/' +
-                  orderGetters.getItemSku(item) +
-                  '/' +
-                  orderGetters.getItemSku(item)
+                    orderGetters.getItemSku(item) +
+                    '/' +
+                    orderGetters.getItemSku(item)
                 "
               >
                 {{ orderGetters.getItemName(item) }}
               </nuxt-link>
             </SfTableData>
             <SfTableData>{{ orderGetters.getItemQty(item) }}</SfTableData>
-            <SfTableData>{{
-              $n(orderGetters.getItemPrice(item), "currency")
-            }}</SfTableData>
+            <SfTableData>
+              {{
+                $n(orderGetters.getItemPrice(item), "currency")
+              }}
+            </SfTableData>
           </SfTableRow>
         </SfTable>
       </div>
@@ -64,21 +69,30 @@
         <p class="message">
           {{ $t("Details and status orders") }}
         </p>
-        <div v-if="orders.length === 0" class="no-orders">
+        <div
+          v-if="orders.length === 0"
+          class="no-orders"
+        >
           <p class="no-orders__title">
             {{ $t("You currently have no orders") }}
           </p>
-          <SfButton class="no-orders__button">{{
-            $t("Start shopping")
-          }}</SfButton>
+          <SfButton class="no-orders__button">
+            {{
+              $t("Start shopping")
+            }}
+          </SfButton>
         </div>
-        <SfTable v-else class="orders">
+        <SfTable
+          v-else
+          class="orders"
+        >
           <SfTableHeading>
             <SfTableHeader
               v-for="tableHeader in tableHeaders"
               :key="tableHeader"
-              >{{ tableHeader }}</SfTableHeader
             >
+              {{ tableHeader }}
+            </SfTableHeader>
             <SfTableHeader class="orders__element--right">
               <span class="smartphone-only">{{ $t("Download") }}</span>
               <SfButton
@@ -89,12 +103,17 @@
               </SfButton>
             </SfTableHeader>
           </SfTableHeading>
-          <SfTableRow v-for="order in orders" :key="orderGetters.getId(order)">
+          <SfTableRow
+            v-for="order in orders"
+            :key="orderGetters.getId(order)"
+          >
             <SfTableData>{{ orderGetters.getId(order) }}</SfTableData>
             <SfTableData>{{ orderGetters.getDate(order) }}</SfTableData>
-            <SfTableData>{{
-              $n(orderGetters.getPrice(order), "currency")
-            }}</SfTableData>
+            <SfTableData>
+              {{
+                $n(orderGetters.getPrice(order), "currency")
+              }}
+            </SfTableData>
             <SfTableData>
               <span :class="getStatusTextClass(order)">{{
                 orderGetters.getStatus(order)
@@ -122,10 +141,13 @@
     <SfTab title="Returns">
       <p class="message">
         This feature is not implemented yet! Please take a look at
-        <br />
-        <SfLink class="message__link" href="#"
-          >https://github.com/DivanteLtd/vue-storefront/issues</SfLink
+        <br>
+        <SfLink
+          class="message__link"
+          href="#"
         >
+          https://github.com/DivanteLtd/vue-storefront/issues
+        </SfLink>
         for our Roadmap!
       </p>
     </SfTab>
@@ -133,19 +155,19 @@
 </template>
 
 <script>
-import { SfTabs, SfTable, SfButton, SfProperty } from "@storefront-ui/vue";
-import { computed, ref } from "@nuxtjs/composition-api";
-import { useUserOrder, orderGetters } from "@vue-storefront/odoo";
-import { AgnosticOrderStatus } from "@vue-storefront/core";
-import { onSSR } from "@vue-storefront/core";
+import { SfTabs, SfTable, SfButton, SfProperty } from '@storefront-ui/vue';
+import { computed, ref } from '@nuxtjs/composition-api';
+import { useUserOrder, orderGetters } from '@vue-storefront/odoo';
+import { AgnosticOrderStatus } from '@vue-storefront/core';
+import { onSSR } from '@vue-storefront/core';
 
 export default {
-  name: "PersonalDetails",
+  name: 'PersonalDetails',
   components: {
     SfTabs,
     SfTable,
     SfButton,
-    SfProperty,
+    SfProperty
   },
   setup() {
     const { orders, search } = useUserOrder();
@@ -155,24 +177,24 @@ export default {
       await search();
     });
 
-    const tableHeaders = ["Order ID", "Payment date", "Amount", "Status"];
+    const tableHeaders = ['Order ID', 'Payment date', 'Amount', 'Status'];
 
     const getStatusTextClass = (order) => {
       const status = orderGetters.getStatus(order);
       switch (status) {
         case AgnosticOrderStatus.Open:
-          return "text-warning";
+          return 'text-warning';
         case AgnosticOrderStatus.Complete:
-          return "text-success";
+          return 'text-success';
         default:
-          return "";
+          return '';
       }
     };
 
     const downloadFile = (file, name) => {
-      const a = document.createElement("a");
+      const a = document.createElement('a');
       document.body.appendChild(a);
-      a.style = "display: none";
+      a.style = 'display: none';
 
       const url = window.URL.createObjectURL(file);
       a.href = url;
@@ -183,15 +205,15 @@ export default {
 
     const downloadOrders = async () => {
       downloadFile(
-        new Blob([JSON.stringify(orders.value)], { type: "application/json" }),
-        "orders.json"
+        new Blob([JSON.stringify(orders.value)], { type: 'application/json' }),
+        'orders.json'
       );
     };
 
     const downloadOrder = async (order) => {
       downloadFile(
-        new Blob([JSON.stringify(order)], { type: "application/json" }),
-        "order " + orderGetters.getId(order) + ".json"
+        new Blob([JSON.stringify(order)], { type: 'application/json' }),
+        'order ' + orderGetters.getId(order) + '.json'
       );
     };
 
@@ -203,9 +225,9 @@ export default {
       orderGetters,
       downloadOrder,
       downloadOrders,
-      currentOrder,
+      currentOrder
     };
-  },
+  }
 };
 </script>
 

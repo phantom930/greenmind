@@ -2,25 +2,27 @@
   <form @submit.prevent="subscribe">
     <div class="sf-div--email">
       <SfInput
+        v-model="email"
         class="sf-input--outline sf-input--email"
         type="email"
-        v-model="email"
         :placeholder="$t('Type your email')"
       />
-      <SfButton class="sf-button--email">{{ $t("SUBSCRIBE") }}</SfButton>
+      <SfButton class="sf-button--email">
+        {{ $t("SUBSCRIBE") }}
+      </SfButton>
     </div>
   </form>
-</template> 
+</template>
 
 <script>
-import { SfInput, SfButton } from "@storefront-ui/vue";
-import { useUiNotification } from "~/composables";
-import { useNewsLetter } from "@vue-storefront/odoo";
-import { ref } from "@nuxtjs/composition-api";
+import { SfInput, SfButton } from '@storefront-ui/vue';
+import { useUiNotification } from '~/composables';
+import { useNewsLetter } from '@vue-storefront/odoo';
+import { ref } from '@nuxtjs/composition-api';
 export default {
   components: {
     SfInput,
-    SfButton,
+    SfButton
   },
   setup() {
     const { sendSubscription } = useNewsLetter();
@@ -32,23 +34,23 @@ export default {
       const data = sendSubscription({ email: email.value });
       if (data.subscribed) {
         send({
-          message: "Subscribe successfull!",
-          type: "success",
+          message: 'Subscribe successfull!',
+          type: 'success'
         });
       }
       if (!data.subscribed) {
         send({
-          message: "Something wrong!",
-          type: "danger",
+          message: 'Something wrong!',
+          type: 'danger'
         });
       }
     };
 
     return {
       subscribe,
-      email,
+      email
     };
-  },
+  }
 };
 </script>
 

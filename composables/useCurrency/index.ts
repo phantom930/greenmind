@@ -1,7 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 import currency from 'currency.js';
 const euro = value => currency(value, { separator: '.', decimal: ',', symbol: '€' });
-const dolar = value => currency(value, { separator: ',', decimal: '.', symbol: '$', pattern: `#!`, precision: 0 });
+const dolar = value => currency(value, { separator: ',', decimal: '.', symbol: '$', pattern: '#!', precision: 0 });
 const euroWithDotDecimal = value => currency(value, { separator: '.', decimal: ',', symbol: '€'});
 
 const useNumber = (): any => {

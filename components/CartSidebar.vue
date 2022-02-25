@@ -14,20 +14,67 @@
           :value="totalItems"
         />
       </template>
-      <transition name="sf-fade" mode="out-in">
-        <div v-if="totalItems" key="my-cart" class="my-cart">
+      <transition
+        name="sf-fade"
+        mode="out-in"
+      >
+        <div
+          v-if="totalItems"
+          key="my-cart"
+          class="my-cart"
+        >
           <div class="collected-product-list">
-            <transition-group name="sf-fade" tag="div">
-              <LazyGreenCollectedProduct 
-                :product="product"
+            <transition-group
+              name="sf-fade"
+              tag="div"
+            >
+              <!-- <SfCollectedProduct
+                data-cy="collected-product-cart-sidebar"
+                v-for="product in products"
+                :key="cartGetters.getItemSku(product)"
+                :image="$image(cartGetters.getItemImage(product))"
+                :title="cartGetters.getItemName(product)"
+                :regular-price="
+                  $n(cartGetters.getItemPrice(product).regular, 'currency')
+                "
+                :special-price="
+                  cartGetters.getItemPrice(product).special &&
+                  $n(cartGetters.getItemPrice(product).special, 'currency')
+                "
+                :stock="99999"
+                :qty="cartGetters.getItemQty(product)"
+                @input="updateItemQty({ product, quantity: $event })"
+                @click:remove="removeItem({ product })"
+                class="collected-product"
+              >
+                <template #configuration>
+                  <div class="collected-product__properties">
+                    <SfProperty
+                      v-for="(attribute, key) in cartGetters.getItemAttributes(
+                        product,
+                        ['color', 'size']
+                      )"
+                      :key="key"
+                      :name="key"
+                      :value="attribute"
+                    />
+                  </div>
+                </template>
+              </SfCollectedProduct> -->
+              <LazyGreenCollectedProduct
                 v-for="product in products"
                 :key="product.id"
+                :product="product"
                 :checkbox_title="$t('Purchases')"
               />
             </transition-group>
           </div>
         </div>
-        <div v-else key="empty-cart" class="empty-cart">
+        <div
+          v-else
+          key="empty-cart"
+          class="empty-cart"
+        >
           <div class="empty-cart__banner">
             <SfImage
               alt="Empty bag"
@@ -60,7 +107,7 @@
                 <SfPrice :regular="$n(totals.subtotal, 'currency')" />
               </template>
             </SfProperty>
-            <nuxt-link to="/checkout/personaldetails">
+            <nuxt-link to="/checkout/shipping">
               <SfButton
                 class="sf-button--full-width checkout_button"
                 @click="toggleCartSidebar"
@@ -81,8 +128,9 @@
             <SfButton
               class="sf-button--full-width empty-cart__button"
               @click="toggleCartSidebar"
-              >{{ $t("Go back shopping") }}</SfButton
             >
+              {{ $t("Go back shopping") }}
+            </SfButton>
           </div>
         </transition>
       </template>
@@ -98,15 +146,15 @@ import {
   SfProperty,
   SfPrice,
   SfCollectedProduct,
-  SfImage,
-} from "@storefront-ui/vue";
-import { computed } from "@vue/composition-api";
-import { useCart, useUser, cartGetters } from "@vue-storefront/odoo";
-import { useUiState } from "~/composables";
-import { onSSR } from "@vue-storefront/core";
+  SfImage
+} from '@storefront-ui/vue';
+import { computed } from '@vue/composition-api';
+import { useCart, useUser, cartGetters } from '@vue-storefront/odoo';
+import { useUiState } from '~/composables';
+import { onSSR } from '@vue-storefront/core';
 
 export default {
-  name: "Cart",
+  name: 'Cart',
   components: {
     SfSidebar,
     SfButton,
@@ -115,7 +163,7 @@ export default {
     SfProperty,
     SfPrice,
     SfCollectedProduct,
-    SfImage,
+    SfImage
   },
   setup() {
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
@@ -138,9 +186,9 @@ export default {
       toggleCartSidebar,
       totals,
       totalItems,
-      cartGetters,
+      cartGetters
     };
-  },
+  }
 };
 </script>
 

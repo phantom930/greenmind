@@ -1,25 +1,25 @@
 <template>
-<div>
-    <SfButton class="btn_primary__pine">{{ buttonPlaceholder }}</SfButton>
-</div>
+  <div>
+    <SfButton class="btn_primary__pine">
+      {{ buttonPlaceholder }}
+    </SfButton>
+  </div>
 </template>
 
-
 <script>
-import { SfButton } from '@storefront-ui/vue'
+import { SfButton } from '@storefront-ui/vue';
 export default {
-    props: {
-        buttonPlaceholder: {
-            type: String,
-            default: ''
-        }
-    },
-    components: {
-        SfButton
+  components: {
+    SfButton
+  },
+  props: {
+    buttonPlaceholder: {
+      type: String,
+      default: ''
     }
+  }
 };
 </script>
-
 
 <style lang="scss" scoped>
 .btn_primary__pine{

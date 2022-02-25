@@ -1,6 +1,9 @@
 <template>
   <div>
-    <SfHeading :title="carousel_title" :level="2" />
+    <SfHeading
+      :title="carousel_title"
+      :level="2"
+    />
     <SfCarousel
       :style="{ maxWidth: '1312px', margin: 'auto' }"
       :settings="{
@@ -20,7 +23,10 @@
         },
       }"
     >
-      <SfCarouselItem v-for="(item, i) in item.slice(0, 10)" :key="i">
+      <SfCarouselItem
+        v-for="(item, i) in item.slice(0, 10)"
+        :key="i"
+      >
         <SfLink
           :link="localePath(
             `/p/${productGetters.getId(item)}/${productGetters.getSlug(item)}`
@@ -60,9 +66,9 @@
 </template>
 
 <script>
-import { SfCarousel, SfImage, SfHeading, SfButton, SfLink } from "@storefront-ui/vue";
-import { productGetters } from "@vue-storefront/odoo";
-import { defineComponent } from "@vue/composition-api";
+import { SfCarousel, SfImage, SfHeading, SfButton, SfLink } from '@storefront-ui/vue';
+import { productGetters } from '@vue-storefront/odoo';
+import { defineComponent } from '@vue/composition-api';
 export default defineComponent({
   components: {
     SfCarousel,
@@ -74,30 +80,30 @@ export default defineComponent({
   props: {
     item: {
       type: Array,
-      default: [""],
+      default: ['']
     },
     feature1: {
       type: Array,
-      default: [""],
+      default: ['']
     },
     feature2: {
       type: Array,
-      default: [""],
+      default: ['']
     },
     currency: {
       type: [String, Array],
-      default: "",
+      default: ''
     },
     carousel_title: {
       type: String,
-      default: "",
-    },
+      default: ''
+    }
   },
   setup() {
     return {
-      productGetters,
+      productGetters
     };
-  },
+  }
 });
 </script>
 

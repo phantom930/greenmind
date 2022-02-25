@@ -1,61 +1,60 @@
 <template>
   <SfCheckbox
+    v-model="checked"
     name="shipping"
     label="I want to create an account"
-    hintMessage=""
+    hint-message=""
     :required="false"
-    infoMessage=""
-    errorMessage=""
+    info-message=""
+    error-message=""
     valid
     :disabled="false"
     :selected="false"
     style="--checkbox-border-radius:100px"
-    v-model="checked"
   >
     <div
       slot="label"
-    >
-    </div>
+    />
   </SfCheckbox>
 </template>
 
 <script>
-  import { SfCheckbox } from "@storefront-ui/vue";
-  import { ref } from "@vue/composition-api";
-  export default {
-    setup(props) {
-      const checked = ref(false)  
-
-      return {
-          checked
-      }
+import { SfCheckbox } from '@storefront-ui/vue';
+import { ref } from '@vue/composition-api';
+export default {
+  components: {
+    SfCheckbox
+  },
+  props: {
+    title: {
+      type: String,
+      default: ''
     },
-    components: {
-      SfCheckbox
+    link_title: {
+      type: String,
+      default: ''
     },
-    props: {
-        title: {
-            type: String,
-            default: ''
-        },
-        link_title: {
-            type: String,
-            default: ''
-        },
-        description: {
-            type: String,
-            default: ''
-        },
-        price: {
-            type: String,
-            default: ''
-        },
-        img: {
-            type: String,
-            default: ''
-        }
+    description: {
+      type: String,
+      default: ''
+    },
+    price: {
+      type: String,
+      default: ''
+    },
+    img: {
+      type: String,
+      default: ''
     }
-  };
+  },
+  setup(props) {
+    const checked = ref(false);
+
+    return {
+      checked
+    };
+  }
+};
 </script>
 
 <style scoped>

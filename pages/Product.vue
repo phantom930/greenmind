@@ -6,7 +6,10 @@
     />
     <div class="product">
       <LazyHydrate when-idle>
-        <SfGallery :images="productGallery" class="product__gallery" />
+        <SfGallery
+          :images="productGallery"
+          class="product__gallery"
+        />
       </LazyHydrate>
       <div class="product__info">
         <div class="product__header">
@@ -23,42 +26,51 @@
           />
         </div>
         <SfHeading
-            title="128GB | Space Grey"
-            :level="3"
-            class="sf-heading--no-underline sf-heading--left product_variants"
-          />
-        <div class="product__price-and-rating">
-        </div>
+          title="128GB | Space Grey"
+          :level="3"
+          class="sf-heading--no-underline sf-heading--left product_variants"
+        />
+        <div class="product__price-and-rating" />
         <div>
           <ProductDetails />
-          <div v-if="accessoryProducts.length > 0" class="checkbox-title-wrap">
-            <div class="title">Tilkøb</div>
+          <div
+            v-if="accessoryProducts.length > 0"
+            class="checkbox-title-wrap"
+          >
+            <div class="title">
+              Tilkøb
+            </div>
             <GreenCheckbox
               v-for="accessoryProducts in product.accessoryProducts"
               :key="accessoryProducts.id"
               :title="accessoryProducts.name"
               :description="accessoryProducts.description"
               :price="accessoryProducts.price"
-              :has_image = true
+              :has_image="true"
               :image="$image(accessoryProducts.image)"
-            />     
+            />
           </div>
-          <div v-if="options.color" class="product__colors desktop-only">
+          <div
+            v-if="options.color"
+            class="product__colors desktop-only"
+          >
             <template v-for="(option, colorKey) in options.color">
-              <p class="product__color-label" :key="colorKey">
+              <p
+                :key="colorKey"
+                class="product__color-label"
+              >
                 {{ $t("Color") }}:
               </p>
 
               <SfColor
-                required
                 v-for="(color, itemKey) in option.values"
                 :key="`${colorKey}_${itemKey}`"
+                required
                 :color="color.label"
                 class="product__color"
                 :selected="checkSelected(option.label, color.value)"
                 @click="updateFilter({ [option.label]: color.value })"
-              >
-              </SfColor>
+              />
             </template>
           </div>
           <div class="total-price-buttons">
@@ -71,22 +83,24 @@
               "
               class="total-price"
             />  -->
-            <p class="total-price">2.395,-</p>
+            <p class="total-price">
+              2.395,-
+            </p>
             <div class="buttons">
-                <SfAddToCart
-                    data-cy="product-cart_add"
-                    :stock="stock"
-                    v-model="qty"
-                    :disabled="loading || !allOptionsSelected"
-                    :canAddToCart="stock > 0"
-                    v-bind:class="{ 'add-to-cart': allOptionsSelected, 'add-to-cart-disabled': !allOptionsSelected}"
-                    @click="addItem({ product, quantity: parseInt(qty) })"
-                />
-                <SfButton
-                  class="status"
-                >
-                  {{ $t("SEE STOCK STATUS IN STORE") }}
-                </SfButton>
+              <SfAddToCart
+                v-model="qty"
+                data-cy="product-cart_add"
+                :stock="stock"
+                :disabled="loading || !allOptionsSelected"
+                :can-add-to-cart="stock > 0"
+                :class="{ 'add-to-cart': allOptionsSelected, 'add-to-cart-disabled': !allOptionsSelected}"
+                @click="addItem({ product, quantity: parseInt(qty) })"
+              />
+              <SfButton
+                class="status"
+              >
+                {{ $t("SEE STOCK STATUS IN STORE") }}
+              </SfButton>
             </div>
           </div>
         </div>
@@ -99,9 +113,7 @@
               alt="Vue Storefront Next"
               style="margin-left: auto; margin-right: auto"
             />
-            <span class="usp_text_product"
-              >Produkter er testet af egne eksperter</span
-            >
+            <span class="usp_text_product">Produkter er testet af egne eksperter</span>
           </div>
           <div style="display: grid; padding-left: 8%">
             <SfImage
@@ -111,9 +123,7 @@
               alt="Vue Storefront Next"
               style="margin-left: auto; margin-right: auto"
             />
-            <span class="usp_text_product"
-              >14 dages returret <br />2 års garanti</span
-            >
+            <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
           </div>
           <div style="display: grid; padding-left: 8%">
             <SfImage
@@ -123,15 +133,19 @@
               alt="Vue Storefront Next"
               style="margin-left: auto; margin-right: auto"
             />
-            <span class="usp_text_product"
-              >Ombyt i én af vores<br />10 butikker</span
-            >
+            <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
           </div>
         </div>
 
         <LazyHydrate when-idle>
-          <SfTabs :open-tab="1" class="product__tabs">
-            <SfTab data-cy="product-tab_description" title="Description">
+          <SfTabs
+            :open-tab="1"
+            class="product__tabs"
+          >
+            <SfTab
+              data-cy="product-tab_description"
+              title="Description"
+            >
               <div class="product__description">
                 {{ description }}
               </div>
@@ -164,13 +178,13 @@
     </div>
     <div class="product_carousel">
       <GreenCarousel
-      :item="slider_products"
-      :feature1="storage"
-      :feature2="color"
-      :currency="currency"
-      :carousel_title="$t('Populære produkter')"
-      style="padding-top: 5%"
-    />
+        :item="slider_products"
+        :feature1="storage"
+        :feature2="color"
+        :currency="currency"
+        :carousel_title="$t('Populære produkter')"
+        style="padding-top: 5%"
+      />
     </div>
   </div>
 </template>
@@ -196,13 +210,13 @@ import {
   SfColor,
   SfColorPicker,
   SfLoader,
-  SfCheckbox,
-} from "@storefront-ui/vue";
+  SfCheckbox
+} from '@storefront-ui/vue';
 
-import InstagramFeed from "~/components/InstagramFeed.vue";
-import RelatedProducts from "~/components/RelatedProducts.vue";
-import { ref, computed, reactive } from "@vue/composition-api";
-import { useCache, CacheTagPrefix } from "@vue-storefront/cache";
+import InstagramFeed from '~/components/InstagramFeed.vue';
+import RelatedProducts from '~/components/RelatedProducts.vue';
+import { ref, computed, reactive } from '@vue/composition-api';
+import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import {
   useProduct,
   useCart,
@@ -211,17 +225,44 @@ import {
   useProductVariant,
   reviewGetters,
   facetGetters,
-  useFacet,
-} from "@vue-storefront/odoo";
+  useFacet
+} from '@vue-storefront/odoo';
 
-import { onSSR } from "@vue-storefront/core";
-import { useRoute } from "@nuxtjs/composition-api";
+import { onSSR } from '@vue-storefront/core';
+import { useRoute } from '@nuxtjs/composition-api';
 
-import MobileStoreBanner from "~/components/MobileStoreBanner.vue";
-import LazyHydrate from "vue-lazy-hydration";
+import MobileStoreBanner from '~/components/MobileStoreBanner.vue';
+import LazyHydrate from 'vue-lazy-hydration';
 export default {
-  name: "Product",
-  transition: "fade",
+  name: 'Product',
+  components: {
+    SfAlert,
+    SfColor,
+    SfProperty,
+    SfRadio,
+    SfHeading,
+    SfPrice,
+    SfRating,
+    SfSelect,
+    SfAddToCart,
+    SfTabs,
+    SfGallery,
+    SfIcon,
+    SfImage,
+    SfBanner,
+    SfSticky,
+    SfReview,
+    SfBreadcrumbs,
+    SfButton,
+    InstagramFeed,
+    SfLoader,
+    RelatedProducts,
+    MobileStoreBanner,
+    SfColorPicker,
+    LazyHydrate,
+    SfCheckbox
+  },
+  transition: 'fade',
   setup(props, { root }) {
     const route = useRoute();
 
@@ -233,26 +274,26 @@ export default {
     const {
       products,
       search,
-      loading: productloading,
+      loading: productloading
     } = useProduct(`products-${id}`);
     const { searchRealProduct, productVariants, realProduct, elementNames } =
       useProductVariant(query);
     const { products: relatedProducts, loading: relatedLoading } =
-      useProduct("relatedProducts");
+      useProduct('relatedProducts');
     const { addItem, loading } = useCart();
     const { addTags } = useCache();
 
-    const { reviews: productReviews } = useReview("productReviews");
+    const { reviews: productReviews } = useReview('productReviews');
 
     const product = computed(() => {
       return {
         ...products.value,
-        realProduct: realProduct.value,
+        realProduct: realProduct.value
       };
     });
 
     const options = computed(() =>
-      productGetters.getAttributes(product.value, ["color", "size"])
+      productGetters.getAttributes(product.value, ['color', 'size'])
     );
     const description = computed(() =>
       productGetters.getDescription(product.value)
@@ -275,18 +316,18 @@ export default {
         mobile: { url: root.$image(img.small) },
         desktop: { url: root.$image(img.normal) },
         big: { url: root.$image(img.big) },
-        alt: product.value.name || "alt",
+        alt: product.value.name || 'alt'
       }))
     );
 
-    const { result, search:search_facet } = useFacet();
+    const { result, search: search_facet } = useFacet();
     const { params } = root.$router.history.current;
-    const slider_products = computed(() => facetGetters.getProducts(result.value).slice(0,10));
+    const slider_products = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
 
     onSSR(async () => {
       await searchRealProduct({
         productTemplateId: parseInt(id),
-        combinationIds: Object.values(root.$route.query),
+        combinationIds: Object.values(root.$route.query)
       });
       await search({
         id: parseInt(id),
@@ -298,12 +339,12 @@ export default {
       // await searchReviews({ productId: id });
     });
 
-    const accessoryProducts = computed(() => products?.value?.accessoryProducts || [])
+    const accessoryProducts = computed(() => products?.value?.accessoryProducts || []);
 
     const updateFilter = (filter) => {
       root.$router.push({
         path: root.$route.path,
-        query: { ...root.$route.query, ...filter },
+        query: { ...root.$route.query, ...filter }
       });
     };
 
@@ -312,7 +353,7 @@ export default {
       Object.keys(options.value).forEach((item) => {
         keys = [
           ...options.value[item].map((element) => element.label),
-          ...keys,
+          ...keys
         ];
       });
       const queryParams = Object.keys(root.$route.query);
@@ -361,45 +402,18 @@ export default {
       accessoryProducts
     };
   },
-  components: {
-    SfAlert,
-    SfColor,
-    SfProperty,
-    SfRadio,
-    SfHeading,
-    SfPrice,
-    SfRating,
-    SfSelect,
-    SfAddToCart,
-    SfTabs,
-    SfGallery,
-    SfIcon,
-    SfImage,
-    SfBanner,
-    SfSticky,
-    SfReview,
-    SfBreadcrumbs,
-    SfButton,
-    InstagramFeed,
-    SfLoader,
-    RelatedProducts,
-    MobileStoreBanner,
-    SfColorPicker,
-    LazyHydrate,
-    SfCheckbox
-  },
   data() {
     return {
       stock: 5,
       detailsIsActive: false,
       brand:
-        "Brand name is the perfect pairing of quality and design. This label creates major everyday vibes with its collection of modern brooches, silver and gold jewellery, or clips it back with hair accessories in geo styles.",
-      careInstructions: "Do not wash!",
-      storage: ["128 Gb", "128 Gb", "128 Gb", "128 Gb", "128 Gb"],
-      color: ["Gold", "Red", "Silver", "Black", "Gold"],
-      currency: ["$"],
+        'Brand name is the perfect pairing of quality and design. This label creates major everyday vibes with its collection of modern brooches, silver and gold jewellery, or clips it back with hair accessories in geo styles.',
+      careInstructions: 'Do not wash!',
+      storage: ['128 Gb', '128 Gb', '128 Gb', '128 Gb', '128 Gb'],
+      color: ['Gold', 'Red', 'Silver', 'Black', 'Gold'],
+      currency: ['$']
     };
-  },
+  }
 };
 </script>
 

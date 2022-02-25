@@ -23,28 +23,28 @@
 </template>
 
 <script>
-import { SfButton, SfRadio } from "@storefront-ui/vue";
-import { ref, onMounted, watch } from "@nuxtjs/composition-api";
-import { useShippingMethods } from "@vue-storefront/odoo";
+import { SfButton, SfRadio } from '@storefront-ui/vue';
+import { ref, onMounted, watch } from '@nuxtjs/composition-api';
+import { useShippingMethods } from '@vue-storefront/odoo';
 
 export default {
-  name: "VsfShippingProvider",
+  name: 'VsfShippingProvider',
+  components: {
+    SfButton,
+    SfRadio
+  },
   props: {
     selectedMethodShipping: {
       type: [String, Number],
-      default: "",
-    },
-  },
-  components: {
-    SfButton,
-    SfRadio,
+      default: ''
+    }
   },
   setup(props, context) {
     const selectedMethod = ref(null);
     const { searchShippingMethods, shippingMethods } = useShippingMethods();
     const selectMethod = (method) => {
       selectedMethod.value = method;
-      context.emit("selectedMethod", method);
+      context.emit('selectedMethod', method);
     };
 
     watch(
@@ -61,9 +61,9 @@ export default {
     return {
       shippingMethods,
       selectedMethod,
-      selectMethod,
+      selectMethod
     };
-  },
+  }
 };
 </script>
 

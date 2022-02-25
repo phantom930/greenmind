@@ -4,28 +4,46 @@
       :visible="isWishlistSidebarOpen"
       :button="false"
       title="My Wishlist"
-      @close="toggleWishlistSidebar"
       class="sidebar sf-sidebar--right"
+      @close="toggleWishlistSidebar"
     >
       <template #title>
         <div class="heading__wrapper">
-          <SfHeading :level="3" title="My wishlist" class="sf-heading--left" />
+          <SfHeading
+            :level="3"
+            title="My wishlist"
+            class="sf-heading--left"
+          />
           <SfButton
             class="heading__close-button sf-button--pure"
             aria-label="Wishlist sidebar close button"
             @click="toggleWishlistSidebar"
           >
-            <SfIcon icon="cross" size="14px" color="gray-primary" />
+            <SfIcon
+              icon="cross"
+              size="14px"
+              color="gray-primary"
+            />
           </SfButton>
         </div>
       </template>
-      <transition name="fade" mode="out-in">
-        <div v-if="totalItems" class="my-wishlist" key="my-wishlist">
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <div
+          v-if="totalItems"
+          key="my-wishlist"
+          class="my-wishlist"
+        >
           <div class="my-wishlist__total-items">
             Total items: <strong>{{ totalItems }}</strong>
           </div>
           <div class="collected-product-list">
-            <transition-group name="fade" tag="div">
+            <transition-group
+              name="fade"
+              tag="div"
+            >
               <SfCollectedProduct
                 v-for="product in products"
                 :key="wishlistGetters.getItemSku(product)"
@@ -36,14 +54,14 @@
                 "
                 :special-price="
                   wishlistGetters.getItemPrice(product).special &&
-                  $n(wishlistGetters.getItemPrice(product).special, 'currency')
+                    $n(wishlistGetters.getItemPrice(product).special, 'currency')
                 "
                 :stock="99999"
                 :link="localePath(getLocalPathFromWishListItem(product))"
                 :image-width="180"
                 :image-height="200"
-                @click:remove="removeItem({ product })"
                 class="collected-product"
+                @click:remove="removeItem({ product })"
               >
                 <template #configuration>
                   <div class="collected-product__properties">
@@ -60,7 +78,9 @@
                     />
                   </div>
                 </template>
-                <template #input="{}">&nbsp;</template>
+                <template #input="{}">
+&nbsp;
+                </template>
               </SfCollectedProduct>
             </transition-group>
           </div>
@@ -77,7 +97,11 @@
             </SfProperty>
           </div>
         </div>
-        <div v-else class="empty-wishlist" key="empty-wishlist">
+        <div
+          v-else
+          key="empty-wishlist"
+          class="empty-wishlist"
+        >
           <div class="empty-wishlist__banner">
             <SfImage
               :width="256"
@@ -97,8 +121,8 @@
       </transition>
       <template #content-bottom>
         <SfButton
-          @click="toggleWishlistSidebar"
           class="sf-button--full-width color-secondary"
+          @click="toggleWishlistSidebar"
         >
           {{ $t("Start shopping") }}
         </SfButton>
@@ -115,20 +139,20 @@ import {
   SfProperty,
   SfPrice,
   SfCollectedProduct,
-  SfImage,
-} from "@storefront-ui/vue";
-import { computed } from "@vue/composition-api";
+  SfImage
+} from '@storefront-ui/vue';
+import { computed } from '@vue/composition-api';
 import {
   useWishlist,
   useUser,
   wishlistGetters,
-  productGetters,
-} from "@vue-storefront/odoo";
-import { onSSR } from "@vue-storefront/core";
-import { useUiState } from "~/composables";
+  productGetters
+} from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
+import { useUiState } from '~/composables';
 
 export default {
-  name: "Wishlist",
+  name: 'Wishlist',
   components: {
     SfSidebar,
     SfButton,
@@ -137,7 +161,7 @@ export default {
     SfProperty,
     SfPrice,
     SfCollectedProduct,
-    SfImage,
+    SfImage
   },
   setup() {
     const { isWishlistSidebarOpen, toggleWishlistSidebar } = useUiState();
@@ -169,9 +193,9 @@ export default {
       totals,
       totalItems,
       wishlistGetters,
-      productGetters,
+      productGetters
     };
-  },
+  }
 };
 </script>
 

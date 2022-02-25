@@ -2,7 +2,6 @@ import VueCompositionAPI from '@vue/composition-api';
 import { computed, reactive } from '@nuxtjs/composition-api';
 import Vue from 'vue';
 
-
 // We need to register it again because of Vue instance instantiation issues
 Vue.use(VueCompositionAPI);
 interface UiNotification {

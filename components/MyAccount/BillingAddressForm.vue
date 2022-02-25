@@ -6,9 +6,9 @@
       @submit.prevent="handleSubmit(submitForm)"
     >
       <ValidationProvider
+        v-slot="{ errors }"
         name="firstName"
         rules="required|min:2"
-        v-slot="{ errors }"
         slim
       >
         <SfInput
@@ -18,13 +18,13 @@
           class="form__element"
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         />
       </ValidationProvider>
       <ValidationProvider
+        v-slot="{ errors }"
         name="streetName"
         rules="required|min:2"
-        v-slot="{ errors }"
         slim
       >
         <SfInput
@@ -34,14 +34,14 @@
           class="form__element"
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         />
       </ValidationProvider>
 
       <ValidationProvider
+        v-slot="{ errors }"
         name="city"
         rules="required|min:2"
-        v-slot="{ errors }"
         slim
       >
         <SfInput
@@ -51,13 +51,13 @@
           class="form__element form__element--half"
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         />
       </ValidationProvider>
       <ValidationProvider
+        v-slot="{ errors }"
         name="zipCode"
         rules="required|min:2"
-        v-slot="{ errors }"
         slim
       >
         <SfInput
@@ -67,13 +67,13 @@
           class="form__element form__element--half form__element--half-even"
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         />
       </ValidationProvider>
       <ValidationProvider
+        v-slot="{ errors }"
         name="country"
         rules="required"
-        v-slot="{ errors }"
         slim
       >
         <SfSelect
@@ -86,7 +86,7 @@
           "
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         >
           <SfSelectOption
             v-for="countryOption in countries"
@@ -99,9 +99,9 @@
       </ValidationProvider>
 
       <ValidationProvider
+        v-slot="{ errors }"
         name="state"
         rules="required"
-        v-slot="{ errors }"
         slim
       >
         <SfSelect
@@ -115,7 +115,7 @@
           "
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         >
           <SfSelectOption
             v-for="countryStateOption in countryStates"
@@ -128,9 +128,9 @@
       </ValidationProvider>
 
       <ValidationProvider
+        v-slot="{ errors }"
         name="phone"
         rules="required|digits:9"
-        v-slot="{ errors }"
         slim
       >
         <SfInput
@@ -140,10 +140,13 @@
           class="form__element form__element--half"
           required
           :valid="!errors[0]"
-          :errorMessage="errors[0]"
+          :error-message="errors[0]"
         />
       </ValidationProvider>
-      <SfButton class="form__button" :disabled="invalid">
+      <SfButton
+        class="form__button"
+        :disabled="invalid"
+      >
         {{ isNew ? "Add the address" : "Update the address" }}
       </SfButton>
     </form>
@@ -151,49 +154,49 @@
 </template>
 
 <script type="module">
-import { SfInput, SfButton, SfSelect, SfCheckbox } from "@storefront-ui/vue";
-import { useCountrySearch } from "@vue-storefront/odoo";
-import { required, min, digits } from "vee-validate/dist/rules";
-import { watch } from "@nuxtjs/composition-api";
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+import { SfInput, SfButton, SfSelect, SfCheckbox } from '@storefront-ui/vue';
+import { useCountrySearch } from '@vue-storefront/odoo';
+import { required, min, digits } from 'vee-validate/dist/rules';
+import { watch } from '@nuxtjs/composition-api';
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import {
   reactive,
   onBeforeMount,
-  defineComponent,
-} from "@nuxtjs/composition-api";
-extend("required", { ...required, message: "This field is required" });
-extend("min", {
+  defineComponent
+} from '@nuxtjs/composition-api';
+extend('required', { ...required, message: 'This field is required' });
+extend('min', {
   ...min,
-  message: "The field should have at least {length} characters",
+  message: 'The field should have at least {length} characters'
 });
-extend("digits", { ...digits, message: "Please provide a valid phone number" });
+extend('digits', { ...digits, message: 'Please provide a valid phone number' });
 
 export default defineComponent({
-  name: "AddressForm",
+  name: 'AddressForm',
   components: {
     SfInput,
     SfButton,
     SfSelect,
     SfCheckbox,
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
   props: {
     address: {
       type: Object,
       default: () => ({
         state: { id: null },
-        country: { id: null },
-      }),
+        country: { id: null }
+      })
     },
     isNew: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props, { emit }) {
     const { search, searchCountryStates, countries, countryStates } =
-      useCountrySearch("my-account-billing");
+      useCountrySearch('my-account-billing');
 
     const form = reactive({
       name: props.address.name,
@@ -203,19 +206,19 @@ export default defineComponent({
       country: { id: String(props.address.country.id) },
       zip: props.address.zip,
       phone: props.address.phone,
-      ...(props.isNew ? {} : { id: props.address.id }),
+      ...(props.isNew ? {} : { id: props.address.id })
     });
 
     const submitForm = () => {
-      emit("submit", {
+      emit('submit', {
         form: form,
         onComplete: () => {},
-        onError: () => {},
+        onError: () => {}
       });
     };
     onBeforeMount(async () => {
       await search();
-      if (form?.country?.id && form.country.id !== "null") {
+      if (form?.country?.id && form.country.id !== 'null') {
         await searchCountryStates(form.country.id);
       }
     });
@@ -233,9 +236,9 @@ export default defineComponent({
       form,
       submitForm,
       countries,
-      countryStates,
+      countryStates
     };
-  },
+  }
 });
 </script>
 

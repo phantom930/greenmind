@@ -17,7 +17,10 @@
       @click:close="isLangModalOpen = !isLangModalOpen"
     >
       <SfList>
-        <SfListItem v-for="lang in availableLocales" :key="lang.code">
+        <SfListItem
+          v-for="lang in availableLocales"
+          :key="lang.code"
+        >
           <a :href="switchLocalePath(lang.code)">
             <SfCharacteristic class="language">
               <template #title>
@@ -47,9 +50,9 @@ import {
   SfButton,
   SfList,
   SfBottomModal,
-  SfCharacteristic,
-} from "@storefront-ui/vue";
-import { ref, computed } from "@nuxtjs/composition-api";
+  SfCharacteristic
+} from '@storefront-ui/vue';
+import { ref, computed } from '@nuxtjs/composition-api';
 export default {
   components: {
     SfImage,
@@ -57,7 +60,7 @@ export default {
     SfButton,
     SfList,
     SfBottomModal,
-    SfCharacteristic,
+    SfCharacteristic
   },
   setup(props, context) {
     const { locales, locale } = context.root.$i18n;
@@ -68,9 +71,9 @@ export default {
     return {
       availableLocales,
       locale,
-      isLangModalOpen,
+      isLangModalOpen
     };
-  },
+  }
 };
 </script>
 

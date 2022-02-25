@@ -1,5 +1,8 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
+  <ValidationObserver
+    v-slot="{ handleSubmit, invalid }"
+    ref="formRef"
+  >
     <SfHeading
       :level="3"
       :title="$t('Billing')"
@@ -15,9 +18,9 @@
           @change="handleCheckSameAddress"
         />
         <ValidationProvider
+          v-slot="{ errors }"
           name="firstName"
           rules="required|min:2"
-          v-slot="{ errors }"
           slim
         >
           <SfInput
@@ -27,13 +30,13 @@
             class="form__element"
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           />
         </ValidationProvider>
         <ValidationProvider
+          v-slot="{ errors }"
           name="streetName"
           rules="required|min:2"
-          v-slot="{ errors }"
           slim
         >
           <SfInput
@@ -43,13 +46,13 @@
             class="form__element"
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           />
         </ValidationProvider>
         <ValidationProvider
+          v-slot="{ errors }"
           name="city"
           rules="required|min:2"
-          v-slot="{ errors }"
           slim
         >
           <SfInput
@@ -59,13 +62,13 @@
             class="form__element form__element--half"
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           />
         </ValidationProvider>
         <ValidationProvider
+          v-slot="{ errors }"
           name="zipCode"
           rules="required|min:2"
-          v-slot="{ errors }"
           slim
         >
           <SfInput
@@ -75,13 +78,13 @@
             class="form__element form__element--half form__element--half-even"
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           />
         </ValidationProvider>
         <ValidationProvider
+          v-slot="{ errors }"
           name="country"
           rules="required"
-          v-slot="{ errors }"
           slim
         >
           <SfSelect
@@ -94,7 +97,7 @@
             "
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           >
             <SfSelectOption
               v-for="countryOption in countries"
@@ -107,9 +110,9 @@
         </ValidationProvider>
 
         <ValidationProvider
+          v-slot="{ errors, validate }"
           name="state"
           rules="required"
-          v-slot="{ errors, validate }"
           slim
         >
           <SfSelect
@@ -122,9 +125,9 @@
               form__element--half-even
             "
             required
-            @change="validate"
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
+            @change="validate"
           >
             <SfSelectOption
               v-for="countryStateOption in countryStates"
@@ -137,9 +140,9 @@
         </ValidationProvider>
 
         <ValidationProvider
+          v-slot="{ errors }"
           name="phone"
           rules="required|digits:9"
-          v-slot="{ errors }"
           slim
         >
           <SfInput
@@ -149,7 +152,7 @@
             class="form__element form__element--half"
             required
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
           />
         </ValidationProvider>
       </div>
@@ -175,32 +178,32 @@ import {
   SfButton,
   SfSelect,
   SfRadio,
-  SfCheckbox,
-} from "@storefront-ui/vue";
-import { ref, onMounted, watch } from "@nuxtjs/composition-api";
-import { onSSR } from "@vue-storefront/core";
+  SfCheckbox
+} from '@storefront-ui/vue';
+import { ref, onMounted, watch } from '@nuxtjs/composition-api';
+import { onSSR } from '@vue-storefront/core';
 import {
   useBilling,
   useCountrySearch,
-  useShippingAsBillingAddress,
-} from "@vue-storefront/odoo";
-import { required, min, digits } from "vee-validate/dist/rules";
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+  useShippingAsBillingAddress
+} from '@vue-storefront/odoo';
+import { required, min, digits } from 'vee-validate/dist/rules';
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 
-extend("required", {
+extend('required', {
   ...required,
-  message: "This field is required",
+  message: 'This field is required'
 });
-extend("min", {
+extend('min', {
   ...min,
-  message: "The field should have at least {length} characters",
+  message: 'The field should have at least {length} characters'
 });
-extend("digits", {
+extend('digits', {
   ...digits,
-  message: "Please provide a valid phone number",
+  message: 'Please provide a valid phone number'
 });
 export default {
-  name: "Billing",
+  name: 'Billing',
   components: {
     SfHeading,
     SfInput,
@@ -209,7 +212,7 @@ export default {
     SfRadio,
     SfCheckbox,
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
   setup(props, { root }) {
     const { search, searchCountryStates, countries, countryStates } =
@@ -223,13 +226,13 @@ export default {
     const formRef = ref(false);
 
     const form = ref({
-      name: "",
-      street: "",
-      city: "",
+      name: '',
+      street: '',
+      city: '',
       state: { id: null },
       country: { id: null },
-      zip: "",
-      phone: null,
+      zip: '',
+      phone: null
     });
 
     const handleCheckSameAddress = async () => {
@@ -248,7 +251,7 @@ export default {
       isFormSubmitted.value = true;
 
       if (!error.save) {
-        root.$router.push("/checkout/payment");
+        root.$router.push('/checkout/payment');
       }
     };
 
@@ -281,9 +284,9 @@ export default {
       handleCheckSameAddress,
       sameAsShipping,
       form,
-      handleFormSubmit,
+      handleFormSubmit
     };
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

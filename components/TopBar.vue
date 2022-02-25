@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import { SfButton, SfTopBar } from "@storefront-ui/vue";
+import { SfButton, SfTopBar } from '@storefront-ui/vue';
 
 export default {
   components: {
     SfTopBar,
-    SfButton,
-  },
+    SfButton
+  }
 };
 </script>
 <style lang="scss" scoped>

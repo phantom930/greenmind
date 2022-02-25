@@ -8,42 +8,50 @@
       />
       <div class="filters desktop-only">
         <SfHeading
+          :key="`filter-title-price`"
           :level="4"
           title="Price"
           class="filters__title sf-heading--left"
-          :key="`filter-title-price`"
         />
 
         <LazyGreenRange />
 
-        <SfAccordion :multiple="true" transition="sf-expand">
+        <SfAccordion
+          :multiple="true"
+          transition="sf-expand"
+        >
           <SfAccordionItem
             v-for="(facet, i) in facets"
+            :key="i"
             :header="facet.label"
             class="mt-10"
-            :key="i"
           >
             <template #header="{ header, isOpen, accordionClick }">
               <div
-                @click="accordionClick"
                 :style="{ cursor: 'pointer' }"
                 class="flex justify-between"
+                @click="accordionClick"
               >
-                <h4 class="sf-heading__title h4">{{ header }}</h4>
+                <h4 class="sf-heading__title h4">
+                  {{ header }}
+                </h4>
 
                 <img
-                  :src="require('/assets/images/category/arrow-down.svg')"
                   v-if="isOpen"
+                  :src="require('/assets/images/category/arrow-down.svg')"
                   class="pr-5"
-                />
+                >
                 <img
-                  :src="require('/assets/images/category/arrow-up.svg')"
                   v-else
+                  :src="require('/assets/images/category/arrow-up.svg')"
                   class="pr-3.5"
-                />
+                >
               </div>
             </template>
-            <div v-if="isFacetColor(facet)" class="flex">
+            <div
+              v-if="isFacetColor(facet)"
+              class="flex"
+            >
               <SfColor
                 v-for="option in facet.options"
                 :key="`${facet.id}-${option.value}`"
@@ -76,7 +84,7 @@
 </template>
 
 <script>
-import { ref, onMounted, defineComponent } from "@nuxtjs/composition-api";
+import { ref, onMounted, defineComponent } from '@nuxtjs/composition-api';
 import {
   SfAccordion,
   SfColor,
@@ -85,18 +93,12 @@ import {
   SfHeading,
   SfSidebar,
   SfList,
-  SfCheckbox,
-} from "@storefront-ui/vue";
-import LazyHydrate from "vue-lazy-hydration";
-import { useUiHelpers } from "~/composables";
+  SfCheckbox
+} from '@storefront-ui/vue';
+import LazyHydrate from 'vue-lazy-hydration';
+import { useUiHelpers } from '~/composables';
 
 export default defineComponent({
-  props: {
-    facets: {
-      type: Array,
-      default: () => [],
-    },
-  },
   components: {
     SfSidebar,
     SfColor,
@@ -106,7 +108,13 @@ export default defineComponent({
     SfAccordion,
     SfList,
     SfCheckbox,
-    LazyHydrate,
+    LazyHydrate
+  },
+  props: {
+    facets: {
+      type: Array,
+      default: () => []
+    }
   },
   setup() {
     const selectedFilters = ref([]);
@@ -142,7 +150,7 @@ export default defineComponent({
         selectedFilters.value.push({
           filterName: facet.label,
           label: option.label,
-          id: option.value,
+          id: option.value
         });
 
         return;
@@ -156,9 +164,9 @@ export default defineComponent({
       selectedFilters,
       facetHasMoreThanOneOption,
       isFilterSelected,
-      isFacetColor,
+      isFacetColor
     };
-  },
+  }
 });
 </script>
 

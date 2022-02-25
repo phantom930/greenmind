@@ -1,21 +1,21 @@
 <template>
   <SfProductCard
-    data-cy="category-product-card"
     :key="product.id"
+    data-cy="category-product-card"
     :style="{ '--index': product.id }"
-    :imageWidth="248"
-    :imageHeight="375"
+    :image-width="248"
+    :image-height="375"
     :title="productGetters.getName(product)"
     :image="$image(productGetters.getCoverImage(product))"
-    :nuxtImgConfig="{ fit: 'cover' }"
+    :nuxt-img-config="{ fit: 'cover' }"
     image-tag="nuxt-img"
     :regular-price="$n(productGetters.getPrice(product).regular, 'currency')"
     :special-price="
       productGetters.getPrice(product).special &&
-      $n(productGetters.getPrice(product).special, 'currency')
+        $n(productGetters.getPrice(product).special, 'currency')
     "
     :score-rating="false"
-    wishlistIcon="false"
+    wishlist-icon="false"
     :show-add-to-cart-button="false"
     :link="
       localePath(
@@ -37,7 +37,10 @@
       <span class="green-product-card__description"> {{ description }} </span>
     </div>
 
-    <div slot="price" class="price-flex flex justify-center items-baseline">
+    <div
+      slot="price"
+      class="price-flex flex justify-center items-baseline"
+    >
       <span class="green-product-card__fra">Fra</span>
       <span class="green-product-card__price">$3.99 - $19.09</span>
     </div>
@@ -45,25 +48,25 @@
 </template>
 
 <script>
-import { SfProductCard } from "@storefront-ui/vue";
-import { productGetters } from "@vue-storefront/odoo";
-import { defineComponent } from "@vue/composition-api";
+import { SfProductCard } from '@storefront-ui/vue';
+import { productGetters } from '@vue-storefront/odoo';
+import { defineComponent } from '@vue/composition-api';
 export default defineComponent({
   components: {
-    SfProductCard,
+    SfProductCard
   },
   props: {
     product: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   setup() {
     return {
-      description: "128 GB  I  Gold",
-      productGetters,
+      description: '128 GB  I  Gold',
+      productGetters
     };
-  },
+  }
 });
 </script>
 

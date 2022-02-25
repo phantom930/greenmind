@@ -1,6 +1,9 @@
 <template>
   <ValidationObserver v-slot="{ handleSubmit, reset }">
-    <form class="form" @submit.prevent="handleSubmit(submitForm(reset))">
+    <form
+      class="form"
+      @submit.prevent="handleSubmit(submitForm(reset))"
+    >
       <ValidationProvider
         v-slot="{ errors }"
         rules="required"
@@ -57,22 +60,22 @@
 </template>
 
 <script>
-import { ref } from "@nuxtjs/composition-api";
-import { ValidationProvider, ValidationObserver } from "vee-validate";
-import { SfInput, SfButton } from "@storefront-ui/vue";
+import { ref } from '@nuxtjs/composition-api';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { SfInput, SfButton } from '@storefront-ui/vue';
 export default {
-  name: "PasswordResetForm",
+  name: 'PasswordResetForm',
   components: {
     SfInput,
     SfButton,
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
   setup(_, { emit }) {
     const resetForm = () => ({
-      currentPassword: "",
-      newPassword: "",
-      repeatPassword: "",
+      currentPassword: '',
+      newPassword: '',
+      repeatPassword: ''
     });
     const form = ref(resetForm());
     const submitForm = (resetValidationFn) => () => {
@@ -83,13 +86,13 @@ export default {
       const onError = () => {
         // TODO: Handle error
       };
-      emit("submit", { form, onComplete, onError });
+      emit('submit', { form, onComplete, onError });
     };
     return {
       form,
-      submitForm,
+      submitForm
     };
-  },
+  }
 };
 </script>
 

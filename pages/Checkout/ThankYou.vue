@@ -19,7 +19,10 @@
           <strong>{{ cartGetters.getStage(cart) }}</strong>
         </div>
 
-        <div class="banner__order-number" v-if="paymentRefused">
+        <div
+          v-if="paymentRefused"
+          class="banner__order-number"
+        >
           <SfButton
             class="sf-button--pure sf-header__action"
             @click="redirectToPayment"
@@ -44,17 +47,27 @@
             :level="6"
             class="heading sf-heading--left sf-heading--no-underline"
             title="Primary contacts for any questions"
-          ></SfHeading>
+          />
           <div class="contact">
-            <p class="contact__name">{{ companyDetails.name }}</p>
-            <p class="contact__street">{{ companyDetails.street }}</p>
-            <p class="contact__city">{{ companyDetails.city }}</p>
-            <p class="contact__email">{{ companyDetails.email }}</p>
+            <p class="contact__name">
+              {{ companyDetails.name }}
+            </p>
+            <p class="contact__street">
+              {{ companyDetails.street }}
+            </p>
+            <p class="contact__city">
+              {{ companyDetails.city }}
+            </p>
+            <p class="contact__email">
+              {{ companyDetails.email }}
+            </p>
           </div>
         </div>
-        <SfButton class="order__notifications-button button-size">{{
-          $t("Allow order notifications")
-        }}</SfButton>
+        <SfButton class="order__notifications-button button-size">
+          {{
+            $t("Allow order notifications")
+          }}
+        </SfButton>
       </div>
       <div class="additional-info">
         <div>
@@ -83,38 +96,41 @@
               sf-button--full-width
               button-size
             "
-            >{{ $t("Send my feedback") }}</SfButton
           >
+            {{ $t("Send my feedback") }}
+          </SfButton>
         </div>
       </div>
     </section>
-    <SfButton class="back-button color-secondary button-size">{{
-      $t("Go back to shop")
-    }}</SfButton>
+    <SfButton class="back-button color-secondary button-size">
+      {{
+        $t("Go back to shop")
+      }}
+    </SfButton>
   </div>
 </template>
 
 <script>
-import { SfHeading, SfButton, SfCallToAction } from "@storefront-ui/vue";
-import { ref, onMounted } from "@nuxtjs/composition-api";
-import { usePayment, useCart, cartGetters } from "@vue-storefront/odoo";
+import { SfHeading, SfButton, SfCallToAction } from '@storefront-ui/vue';
+import { ref, onMounted } from '@nuxtjs/composition-api';
+import { usePayment, useCart, cartGetters } from '@vue-storefront/odoo';
 export default {
   components: {
     SfHeading,
     SfButton,
-    SfCallToAction,
+    SfCallToAction
   },
   setup(props, { root, emit }) {
-    emit("changeStep", 4);
+    emit('changeStep', 4);
 
     const { getPaymentConfirmation } = usePayment();
     const { cart } = useCart();
 
     const companyDetails = ref({
-      name: "Divante Headquarter",
-      street: "St. Dmowskiego 17, 53-534",
-      city: "Wroclaw, Poland",
-      email: "demo@vuestorefront.io",
+      name: 'Divante Headquarter',
+      street: 'St. Dmowskiego 17, 53-534',
+      city: 'Wroclaw, Poland',
+      email: 'demo@vuestorefront.io'
     });
 
     onMounted(async () => {
@@ -122,16 +138,16 @@ export default {
     });
 
     const redirectToPayment = () => {
-      return root.$router.push("/checkout/payment");
+      return root.$router.push('/checkout/payment');
     };
 
     return {
       cartGetters,
       cart,
       redirectToPayment,
-      companyDetails,
+      companyDetails
     };
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>

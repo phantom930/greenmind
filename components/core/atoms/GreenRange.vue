@@ -1,14 +1,18 @@
 <template>
-  <SfRange :value="[20, 600]" :disabled="false" :config="config" />
+  <SfRange
+    :value="[20, 600]"
+    :disabled="false"
+    :config="config"
+  />
 </template>
 
 <script>
-import { SfRange } from "@storefront-ui/vue";
-import { useCurrency } from "~/composables";
-import { reactive } from "@nuxtjs/composition-api";
+import { SfRange } from '@storefront-ui/vue';
+import { useCurrency } from '~/composables';
+import { reactive } from '@nuxtjs/composition-api';
 export default {
   components: {
-    SfRange,
+    SfRange
   },
   setup() {
     const { formatDolar } = useCurrency();
@@ -18,21 +22,21 @@ export default {
       range: { min: 20, max: 600 },
       step: 1,
       connect: true,
-      direction: "ltr",
-      orientation: "horizontal",
-      behaviour: "tap-drag",
+      direction: 'ltr',
+      orientation: 'horizontal',
+      behaviour: 'tap-drag',
       tooltips: true,
       keyboardSupport: true,
       format: {
         to: (value) => formatDolar(value),
-        from: (value) => value,
-      },
+        from: (value) => value
+      }
     });
 
     return {
-      config,
+      config
     };
-  },
+  }
 };
 </script>
 

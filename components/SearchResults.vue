@@ -5,7 +5,10 @@
       :title="$t('Search results')"
       class="search"
     >
-      <transition name="sf-fade" mode="out-in">
+      <transition
+        name="sf-fade"
+        mode="out-in"
+      >
         <div
           v-if="products && products.length > 0"
           key="results"
@@ -19,17 +22,27 @@
             "
           >
             <template #title="{ title }">
-              <SfMenuItem :label="title" @click="megaMenu.changeActive(title)">
-                <template #mobile-nav-icon> &#8203; </template>
+              <SfMenuItem
+                :label="title"
+                @click="megaMenu.changeActive(title)"
+              >
+                <template #mobile-nav-icon>
+                  &#8203;
+                </template>
               </SfMenuItem>
             </template>
             <SfList v-if="categories.length">
-              <SfListItem v-for="(category, key) in categories" :key="key">
+              <SfListItem
+                v-for="(category, key) in categories"
+                :key="key"
+              >
                 <SfMenuItem
                   :label="category.label"
                   :link="uiHelper.getCatLinkForSearch(category)"
                 >
-                  <template #mobile-nav-icon> &#8203; </template>
+                  <template #mobile-nav-icon>
+                    &#8203;
+                  </template>
                 </SfMenuItem>
               </SfListItem>
             </SfList>
@@ -43,7 +56,9 @@
                 :label="title"
                 class="sf-mega-menu-column__header search__header"
               >
-                <template #mobile-nav-icon> &#8203; </template>
+                <template #mobile-nav-icon>
+                  &#8203;
+                </template>
               </SfMenuItem>
             </template>
             <SfScrollable
@@ -97,7 +112,11 @@
             </SfButton>
           </div>
         </div>
-        <div v-else key="no-results" class="before-results">
+        <div
+          v-else
+          key="no-results"
+          class="before-results"
+        >
           <SfImage
             :width="256"
             :height="176"
@@ -132,18 +151,18 @@ import {
   SfScrollable,
   SfMenuItem,
   SfButton,
-  SfImage,
-} from "@storefront-ui/vue";
-import { ref, watch, computed } from "@vue/composition-api";
+  SfImage
+} from '@storefront-ui/vue';
+import { ref, watch, computed } from '@vue/composition-api';
 import {
   productGetters,
   categoryGetters,
-  useWishlist,
-} from "@vue-storefront/odoo";
-import { useUiHelpers } from "~/composables";
+  useWishlist
+} from '@vue-storefront/odoo';
+import { useUiHelpers } from '~/composables';
 
 export default {
-  name: "SearchResults",
+  name: 'SearchResults',
   components: {
     SfMegaMenu,
     SfList,
@@ -152,22 +171,16 @@ export default {
     SfScrollable,
     SfMenuItem,
     SfButton,
-    SfImage,
+    SfImage
   },
   props: {
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     result: {
-      type: Object,
-    },
-  },
-  watch: {
-    $route() {
-      this.$emit("close");
-      this.$emit("removeSearchResults");
-    },
+      type: Object
+    }
   },
   setup(props, { emit }) {
     const uiHelper = useUiHelpers();
@@ -186,10 +199,10 @@ export default {
       (newVal) => {
         isSearchOpen.value = newVal;
         if (isSearchOpen.value) {
-          document.body.classList.add("no-scroll");
+          document.body.classList.add('no-scroll');
         } else {
-          document.body.classList.remove("no-scroll");
-          emit("removeSearchResults");
+          document.body.classList.remove('no-scroll');
+          emit('removeSearchResults');
         }
       }
     );
@@ -201,9 +214,15 @@ export default {
       categoryGetters,
       productGetters,
       products,
-      categories,
+      categories
     };
   },
+  watch: {
+    $route() {
+      this.$emit('close');
+      this.$emit('removeSearchResults');
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

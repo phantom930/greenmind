@@ -1,52 +1,73 @@
 <template>
-  <SfFooter :column="4" multiple class="footer">
+  <SfFooter
+    :column="4"
+    multiple
+    class="footer"
+  >
     <SfFooterColumn :title="$t('Product')">
       <SfList>
-        <SfListItem v-for="(item, index) in produkter" :key="index">
+        <SfListItem
+          v-for="(item, index) in produkter"
+          :key="index"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('')">
       <SfList>
-        <SfListItem v-for="(item, index) in OmOs" :key="index">
+        <SfListItem
+          v-for="(item, index) in OmOs"
+          :key="index"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('')">
       <SfList>
-        <SfListItem v-for="(item, index) in hjaelp" :key="index">
+        <SfListItem
+          v-for="(item, index) in hjaelp"
+          :key="index"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('')">
       <SfList>
-        <SfListItem v-for="(item, index) in butikker" :key="index">
+        <SfListItem
+          v-for="(item, index) in butikker"
+          :key="index"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
       <SfFooterColumn :title="$t('Contact')">
         <SfList>
-          <SfListItem v-for="(item, index) in kontakt" :key="index">
+          <SfListItem
+            v-for="(item, index) in kontakt"
+            :key="index"
+          >
             <SfMenuItem :label="$t(item)" />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
     </SfFooterColumn>
-    <SfFooterColumn title="Social" class="bottom-columns-social">
+    <SfFooterColumn
+      title="Social"
+      class="bottom-columns-social"
+    >
       <div class="footer__socials">
         <SfImage
-          class="footer__social-image"
           v-for="item in social"
           :key="item"
+          class="footer__social-image"
           :src="require('/assets/images/icons/' + item + '.svg')"
           :alt="item"
           :width="32"
           :height="32"
-        >
-        </SfImage>
+        />
       </div>
     </SfFooterColumn>
     <SfFooterColumn class="bottom-columns-emarket">
@@ -56,26 +77,23 @@
         alt="emarket"
         :width="58"
         :height="58"
-      >
-      </SfImage>
+      />
       <SfImage
         class="footer__social-image"
         :src="require('/assets/images/footer/emarket.svg')"
         alt="emarket"
         :width="58"
         :height="58"
-      >
-      </SfImage>
+      />
       <SfImage
         class="footer__social-image"
         :src="require('/assets/images/footer/emarket.svg')"
         alt="emarket"
         :width="58"
         :height="58"
-      >
-      </SfImage>
+      />
     </SfFooterColumn>
-    <SfFooterColumn> </SfFooterColumn>
+    <SfFooterColumn />
     <SfFooterColumn class="bottom-columns-email">
       <GreenEmailForm />
     </SfFooterColumn>
@@ -91,8 +109,8 @@ import {
   SfInput,
   SfButton,
   SfImage,
-  SfLink,
-} from "@storefront-ui/vue";
+  SfLink
+} from '@storefront-ui/vue';
 
 export default {
   components: {
@@ -102,41 +120,41 @@ export default {
     SfInput,
     SfButton,
     SfImage,
-    SfLink,
+    SfLink
   },
   data() {
     return {
       produkter: [
-        this.$i18n.t("iPhones"),
-        this.$i18n.t("Smartphones"),
-        this.$i18n.t("Tablets"),
-        this.$i18n.t("Computer"),
-        this.$i18n.t(""),
-        this.$i18n.t(""),
+        this.$i18n.t('iPhones'),
+        this.$i18n.t('Smartphones'),
+        this.$i18n.t('Tablets'),
+        this.$i18n.t('Computer'),
+        this.$i18n.t(''),
+        this.$i18n.t('')
       ],
       OmOs: [
-        this.$i18n.t(""),
-        this.$i18n.t(""),
-        this.$i18n.t(""),
-        this.$i18n.t("Reparation"),
-        this.$i18n.t("Blog"),
+        this.$i18n.t(''),
+        this.$i18n.t(''),
+        this.$i18n.t(''),
+        this.$i18n.t('Reparation'),
+        this.$i18n.t('Blog')
       ],
       hjaelp: [
-        this.$i18n.t(""),
-        this.$i18n.t(""),
-        this.$i18n.t(""),
-        this.$i18n.t(""),
-        this.$i18n.t("Cookies"),
-        this.$i18n.t("FAQ"),
+        this.$i18n.t(''),
+        this.$i18n.t(''),
+        this.$i18n.t(''),
+        this.$i18n.t(''),
+        this.$i18n.t('Cookies'),
+        this.$i18n.t('FAQ')
       ],
-      butikker: [this.$i18n.t("Find butik")],
+      butikker: [this.$i18n.t('Find butik')],
       kontakt: [
-        this.$i18n.t("Tlf: 78756535"),
-        this.$i18n.t("email: hans@greenmind.dk"),
+        this.$i18n.t('Tlf: 78756535'),
+        this.$i18n.t('email: hans@greenmind.dk')
       ],
-      social: ["facebook", "pinterest", "google", "twitter", "youtube"],
+      social: ['facebook', 'pinterest', 'google', 'twitter', 'youtube']
     };
-  },
+  }
 };
 </script>
 

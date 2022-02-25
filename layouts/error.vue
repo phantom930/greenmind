@@ -18,7 +18,10 @@
       class="heading sf-heading--no-underline"
     />
     <div class="actions">
-      <SfButton link="/" class="sf-button--full-width actions__button">
+      <SfButton
+        link="/"
+        class="sf-button--full-width actions__button"
+      >
         Return home
       </SfButton>
       <SfButton
@@ -31,13 +34,13 @@
   </div>
 </template>
 <script>
-import { SfButton, SfImage, SfHeading } from "@storefront-ui/vue";
+import { SfButton, SfImage, SfHeading } from '@storefront-ui/vue';
 export default {
-  name: "ErrorLayout",
-
-  props: ["error"],
+  name: 'ErrorLayout',
 
   components: { SfButton, SfImage, SfHeading },
+
+  props: ['error']
 };
 </script>
 <style lang="scss" scoped>

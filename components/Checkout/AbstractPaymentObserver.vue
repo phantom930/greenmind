@@ -1,6 +1,7 @@
 <script >
 export default {
   abstract: true,
+  updated() {},
   render() {
     if (this.$slots?.default?.length > 1) {
       throw new Error(
@@ -15,7 +16,6 @@ export default {
         'AbstractPaymentObserver must have one payment provider.'
       );
     }
-  },
-  updated() {}
+  }
 };
 </script>

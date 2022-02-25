@@ -2,37 +2,31 @@
   <div>
     <SfAddressPicker
       :selected="String(currentAddressId)"
-      @input="setCurrentAddress($event)"
       class="billing__addresses"
+      @input="setCurrentAddress($event)"
     >
       <SfAddress
         v-for="billingAddress in billingAddresses"
         :key="userBillingGetters.getId(billingAddress)"
         :name="String(userBillingGetters.getId(billingAddress))"
       >
-        <span
-          >{{ userBillingGetters.getFirstName(billingAddress) }} {{ userBillingGetters.getLastName(billingAddress) }}</span
-        >
-        <span
-          >{{ userBillingGetters.getStreetName(billingAddress) }}
-          {{ userBillingGetters.getApartmentNumber(billingAddress) }}</span
-        >
+        <span>{{ userBillingGetters.getFirstName(billingAddress) }} {{ userBillingGetters.getLastName(billingAddress) }}</span>
+        <span>{{ userBillingGetters.getStreetName(billingAddress) }}
+          {{ userBillingGetters.getApartmentNumber(billingAddress) }}</span>
         <span>{{ userBillingGetters.getPostCode(billingAddress) }}</span>
-        <span
-          >{{ userBillingGetters.getCity(billingAddress)
-          }}{{ userBillingGetters.getProvince(billingAddress) ? `, ${userBillingGetters.getProvince(billingAddress)}` : '' }}</span
-        >
-        <span>{{ userBillingGetters.getCountry(billingAddress)}}</span>
+        <span>{{ userBillingGetters.getCity(billingAddress)
+        }}{{ userBillingGetters.getProvince(billingAddress) ? `, ${userBillingGetters.getProvince(billingAddress)}` : '' }}</span>
+        <span>{{ userBillingGetters.getCountry(billingAddress) }}</span>
         <span>{{ userBillingGetters.getPhone(billingAddress) }}</span>
       </SfAddress>
     </SfAddressPicker>
     <SfCheckbox
       data-cy="billing-details-checkbox_isDefault"
       :selected="setAsDefault"
-      @change="$emit('changeSetAsDefault', $event)"
       name="setAsDefault"
       label="Use this address as my default one."
       class="billing-address-setAsDefault"
+      @change="$emit('changeSetAsDefault', $event)"
     />
   </div>
 </template>
@@ -46,6 +40,10 @@ import { userBillingGetters } from '@vue-storefront/odoo';
 
 export default {
   name: 'UserBillingAddresses',
+  components: {
+    SfCheckbox,
+    SfAddressPicker
+  },
   props: {
     currentAddressId: {
       type: Number,
@@ -59,10 +57,6 @@ export default {
       type: Array,
       required: true
     }
-  },
-  components: {
-    SfCheckbox,
-    SfAddressPicker
   },
   setup (_, { emit }) {
     const setCurrentAddress = $event => emit('setCurrentAddress', $event);

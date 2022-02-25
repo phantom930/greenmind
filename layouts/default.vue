@@ -26,18 +26,18 @@
 </template>
 
 <script>
-import AppHeader from "~/components/AppHeader.vue";
-import BottomNavigation from "~/components/BottomNavigation.vue";
-import AppFooter from "~/components/AppFooter.vue";
-import TopBar from "~/components/TopBar.vue";
-import CartSidebar from "~/components/CartSidebar.vue";
-import WishlistSidebar from "~/components/WishlistSidebar.vue";
-import LoginModal from "~/components/LoginModal.vue";
-import LazyHydrate from "vue-lazy-hydration";
-import Notification from "~/components/Notification";
+import AppHeader from '~/components/AppHeader.vue';
+import BottomNavigation from '~/components/BottomNavigation.vue';
+import AppFooter from '~/components/AppFooter.vue';
+import TopBar from '~/components/TopBar.vue';
+import CartSidebar from '~/components/CartSidebar.vue';
+import WishlistSidebar from '~/components/WishlistSidebar.vue';
+import LoginModal from '~/components/LoginModal.vue';
+import LazyHydrate from 'vue-lazy-hydration';
+import Notification from '~/components/Notification';
 
 export default {
-  name: "DefaultLayout",
+  name: 'DefaultLayout',
 
   components: {
     LazyHydrate,
@@ -48,8 +48,8 @@ export default {
     CartSidebar,
     WishlistSidebar,
     LoginModal,
-    Notification,
-  },
+    Notification
+  }
 };
 </script>
 

@@ -1,29 +1,45 @@
 <template>
-  <SfFooter :column="4" multiple class="footer">
+  <SfFooter
+    :column="4"
+    multiple
+    class="footer"
+  >
     <SfFooterColumn :title="$t('About us')">
       <SfList>
-        <SfListItem v-for="item in aboutUs" :key="item">
+        <SfListItem
+          v-for="item in aboutUs"
+          :key="item"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('Departments')">
       <SfList>
-        <SfListItem v-for="item in departments" :key="item">
+        <SfListItem
+          v-for="item in departments"
+          :key="item"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('Help')">
       <SfList>
-        <SfListItem v-for="item in help" :key="item">
+        <SfListItem
+          v-for="item in help"
+          :key="item"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
     </SfFooterColumn>
     <SfFooterColumn :title="$t('Payment & Delivery')">
       <SfList>
-        <SfListItem v-for="item in paymentsDelivery" :key="item">
+        <SfListItem
+          v-for="item in paymentsDelivery"
+          :key="item"
+        >
           <SfMenuItem :label="$t(item)" />
         </SfListItem>
       </SfList>
@@ -31,9 +47,9 @@
     <SfFooterColumn title="Social">
       <div class="footer__socials">
         <SfImage
-          class="footer__social-image"
           v-for="item in social"
           :key="item"
+          class="footer__social-image"
           :src="'/icons/' + item + '.svg'"
           alt="social image"
           :width="32"
@@ -45,26 +61,26 @@
 </template>
 
 <script>
-import { SfFooter, SfList, SfImage, SfMenuItem } from "@storefront-ui/vue";
+import { SfFooter, SfList, SfImage, SfMenuItem } from '@storefront-ui/vue';
 
 export default {
   components: {
     SfFooter,
     SfList,
     SfImage,
-    SfMenuItem,
+    SfMenuItem
   },
   data() {
     return {
-      aboutUs: ["Who we are", "Quality in the details", "Customer Reviews"],
-      departments: ["Women fashion", "Men fashion", "Kidswear", "Home"],
-      help: ["Customer service", "Size guide", "Contact us"],
-      paymentsDelivery: ["Purchase terms", "Guarantee"],
-      social: ["facebook", "pinterest", "google", "twitter", "youtube"],
+      aboutUs: ['Who we are', 'Quality in the details', 'Customer Reviews'],
+      departments: ['Women fashion', 'Men fashion', 'Kidswear', 'Home'],
+      help: ['Customer service', 'Size guide', 'Contact us'],
+      paymentsDelivery: ['Purchase terms', 'Guarantee'],
+      social: ['facebook', 'pinterest', 'google', 'twitter', 'youtube'],
       isMobile: false,
-      desktopMin: 1024,
+      desktopMin: 1024
     };
-  },
+  }
 };
 </script>
 

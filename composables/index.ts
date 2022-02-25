@@ -4,8 +4,8 @@ import useUiState from './useUiState';
 import useCurrency from './useCurrency';
 
 export {
-    useUiHelpers,
-    useUiNotification,
-    useUiState,
-    useCurrency
-}
+  useUiHelpers,
+  useUiNotification,
+  useUiState,
+  useCurrency
+};

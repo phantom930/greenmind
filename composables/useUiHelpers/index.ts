@@ -5,7 +5,6 @@ import { useRoute, useRouter } from '@nuxtjs/composition-api';
 
 import { Category } from '@vue-storefront/odoo-api/server';
 
-
 const queryParamsNotFilters = ['page', 'sort', 'itemsPerPage'];
 
 const useUiHelpers = (): any => {

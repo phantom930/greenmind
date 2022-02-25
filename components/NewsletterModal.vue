@@ -1,5 +1,9 @@
 <template>
-  <SfModal :visible="isNewsletterModalOpen" class="modal" @close="closeModal">
+  <SfModal
+    :visible="isNewsletterModalOpen"
+    class="modal"
+    @close="closeModal"
+  >
     <template #modal-bar>
       <SfBar
         class="modal__title smartphone-only"
@@ -8,7 +12,10 @@
         @click:close="closeModal"
       />
     </template>
-    <transition name="sf-fade" mode="out-in">
+    <transition
+      name="sf-fade"
+      mode="out-in"
+    >
       <div>
         <SfHeading
           :level="3"
@@ -17,12 +24,15 @@
         />
         <form @submit.prevent="$emit('email-submitted', emailAddress)">
           <SfInput
+            v-model="emailAddress"
             type="email"
             :label="$t('Email address')"
-            v-model="emailAddress"
             class="modal__input"
           />
-          <SfButton class="modal__button" type="submit">
+          <SfButton
+            class="modal__button"
+            type="submit"
+          >
             {{ $t("I confirm subscription") }}
           </SfButton>
         </form>
@@ -31,7 +41,7 @@
           :level="3"
         />
         <SfScrollable
-          maxContentHeight="3.75rem"
+          max-content-height="3.75rem"
           :class="{ 'is-open': !isHidden }"
         >
           <template #view-all>
@@ -55,13 +65,13 @@ import {
   SfButton,
   SfScrollable,
   SfBar,
-  SfLink,
-} from "@storefront-ui/vue";
-import { ref } from "@nuxtjs/composition-api";
-import { useUiState } from "~/composables";
+  SfLink
+} from '@storefront-ui/vue';
+import { ref } from '@nuxtjs/composition-api';
+import { useUiState } from '~/composables';
 
 export default {
-  name: "NewsletterModal",
+  name: 'NewsletterModal',
   components: {
     SfModal,
     SfHeading,
@@ -69,13 +79,13 @@ export default {
     SfButton,
     SfScrollable,
     SfBar,
-    SfLink,
+    SfLink
   },
   setup() {
     const { isNewsletterModalOpen, toggleNewsletterModal } = useUiState();
 
     const isHidden = ref(true);
-    const emailAddress = ref("");
+    const emailAddress = ref('');
 
     const closeModal = () => {
       toggleNewsletterModal();
@@ -86,9 +96,9 @@ export default {
       toggleNewsletterModal,
       isHidden,
       emailAddress,
-      closeModal,
+      closeModal
     };
-  },
+  }
 };
 </script>
 

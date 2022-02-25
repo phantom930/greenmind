@@ -1,5 +1,9 @@
 <template>
-  <SfModal :visible="isLoginModalOpen" class="modal" @close="toggleLoginModal">
+  <SfModal
+    :visible="isLoginModalOpen"
+    class="modal"
+    @close="toggleLoginModal"
+  >
     <template #modal-bar>
       <SfBar
         class="sf-modal__bar smartphone-only"
@@ -8,16 +12,25 @@
         @click:close="toggleLoginModal"
       />
     </template>
-    <transition name="sf-fade" mode="out-in">
+    <transition
+      name="sf-fade"
+      mode="out-in"
+    >
       <div v-if="isLogin">
-        <p class="reset-pass-text" v-show="isForgottenPassword">
+        <p
+          v-show="isForgottenPassword"
+          class="reset-pass-text"
+        >
           {{
             $t(
               "Enter your email to receive instructions on how to reset your password"
             )
           }}
         </p>
-        <ValidationObserver v-slot="{ handleSubmit }" key="log-in">
+        <ValidationObserver
+          v-slot="{ handleSubmit }"
+          key="log-in"
+        >
           <form
             class="form"
             @submit.prevent="
@@ -26,24 +39,30 @@
               )
             "
           >
-            <ValidationProvider rules="required|email" v-slot="{ errors }">
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required|email"
+            >
               <SfInput
-                data-cy="login-input_email"
                 v-model="form.email"
+                data-cy="login-input_email"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="email"
                 label="Your email"
                 class="form__element"
               />
             </ValidationProvider>
             <template v-if="!isForgottenPassword">
-              <ValidationProvider rules="required" v-slot="{ errors }">
+              <ValidationProvider
+                v-slot="{ errors }"
+                rules="required"
+              >
                 <SfInput
-                  data-cy="login-input_password"
                   v-model="form.password"
+                  data-cy="login-input_password"
                   :valid="!errors[0]"
-                  :errorMessage="errors[0]"
+                  :error-message="errors[0]"
                   name="password"
                   label="Password"
                   type="password"
@@ -51,8 +70,8 @@
                 />
               </ValidationProvider>
               <SfCheckbox
-                data-cy="login-checkbox-remember-me"
                 v-model="rememberMe"
+                data-cy="login-checkbox-remember-me"
                 name="remember-me"
                 label="Remember me"
                 class="form__element checkbox"
@@ -65,7 +84,10 @@
               class="sf-button--full-width form__button"
               :disabled="loading"
             >
-              <SfLoader :class="{ loader: loading }" :loading="loading">
+              <SfLoader
+                :class="{ loader: loading }"
+                :loading="loading"
+              >
                 <div>
                   {{ isForgottenPassword ? $t("Reset password") : $t("Login") }}
                 </div>
@@ -83,7 +105,9 @@
           </SfButton>
         </div>
         <div class="bottom">
-          <p class="bottom__paragraph">{{ $t("No account") }}</p>
+          <p class="bottom__paragraph">
+            {{ $t("No account") }}
+          </p>
           <SfButton
             data-cy="login-btn_sign-up"
             class="sf-button--text"
@@ -93,41 +117,56 @@
           </SfButton>
         </div>
       </div>
-      <div v-else class="form">
-        <ValidationObserver v-slot="{ handleSubmit }" key="sign-up">
+      <div
+        v-else
+        class="form"
+      >
+        <ValidationObserver
+          v-slot="{ handleSubmit }"
+          key="sign-up"
+        >
           <form
             class="form"
-            @submit.prevent="handleSubmit(handleRegister)"
             autocomplete="off"
+            @submit.prevent="handleSubmit(handleRegister)"
           >
-            <ValidationProvider rules="required|email" v-slot="{ errors }">
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required|email"
+            >
               <SfInput
-                data-cy="login-input_email"
                 v-model="form.email"
+                data-cy="login-input_email"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="email"
                 label="Your email"
                 class="form__element"
               />
             </ValidationProvider>
-            <ValidationProvider rules="required" v-slot="{ errors }">
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+            >
               <SfInput
-                data-cy="login-input_name"
                 v-model="form.name"
+                data-cy="login-input_name"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="name"
                 label="Name"
                 class="form__element"
               />
             </ValidationProvider>
-            <ValidationProvider rules="required" v-slot="{ errors }">
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+            >
               <SfInput
-                data-cy="login-input_password"
                 v-model="form.password"
+                data-cy="login-input_password"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="password"
                 label="Password"
                 type="password"
@@ -135,13 +174,13 @@
               />
             </ValidationProvider>
             <ValidationProvider
-              :rules="{ required: { allowFalse: false } }"
               v-slot="{ errors }"
+              :rules="{ required: { allowFalse: false } }"
             >
               <SfCheckbox
                 v-model="createAccount"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="create-account"
                 label="I want to create an account"
                 class="form__element"
@@ -154,7 +193,10 @@
               class="sf-button--full-width form__button"
               :disabled="loading"
             >
-              <SfLoader :class="{ loader: loading }" :loading="loading">
+              <SfLoader
+                :class="{ loader: loading }"
+                :loading="loading"
+              >
                 <div>{{ $t("Create an account") }}</div>
               </SfLoader>
             </SfButton>
@@ -175,8 +217,8 @@
   </SfModal>
 </template>
 <script>
-import { ref, watch } from "@nuxtjs/composition-api";
-import { useUiNotification } from "~/composables";
+import { ref, watch } from '@nuxtjs/composition-api';
+import { useUiNotification } from '~/composables';
 
 import {
   SfModal,
@@ -185,25 +227,25 @@ import {
   SfCheckbox,
   SfLoader,
   SfAlert,
-  SfBar,
-} from "@storefront-ui/vue";
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
-import { required, email } from "vee-validate/dist/rules";
-import { useUser, usePassword } from "@vue-storefront/odoo";
-import { useUiState } from "~/composables";
+  SfBar
+} from '@storefront-ui/vue';
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+import { required, email } from 'vee-validate/dist/rules';
+import { useUser, usePassword } from '@vue-storefront/odoo';
+import { useUiState } from '~/composables';
 
-extend("email", {
+extend('email', {
   ...email,
-  message: "Invalid email",
+  message: 'Invalid email'
 });
 
-extend("required", {
+extend('required', {
   ...required,
-  message: "This field is required",
+  message: 'This field is required'
 });
 
 export default {
-  name: "LoginModal",
+  name: 'LoginModal',
   components: {
     SfModal,
     SfInput,
@@ -213,7 +255,7 @@ export default {
     SfAlert,
     ValidationProvider,
     ValidationObserver,
-    SfBar,
+    SfBar
   },
   setup() {
     const { isLoginModalOpen, toggleLoginModal } = useUiState();
@@ -230,7 +272,7 @@ export default {
     const {
       sendResetPassword,
       errors: errorPassword,
-      resetPasswordErrors,
+      resetPasswordErrors
     } = usePassword();
 
     watch(isLoginModalOpen, () => {
@@ -244,17 +286,17 @@ export default {
       await fn({ user: params, customQuery });
 
       if (error.value.login) {
-        send({ message: error?.value?.login?.message, type: "danger" });
+        send({ message: error?.value?.login?.message, type: 'danger' });
         return;
       }
       if (error.value.register) {
-        send({ message: error?.value?.register?.message, type: "danger" });
+        send({ message: error?.value?.register?.message, type: 'danger' });
         return;
       }
       if (isForgottenPassword.value) {
         send({
           message: `Thanks! If there is an account registered with the ${form.value.email} email, you will find message with a password reset link in your inbox. If the message is not arriving in your inbox, try another email address you might’ve used to register.`,
-          type: "info",
+          type: 'info'
         });
       }
 
@@ -280,12 +322,12 @@ export default {
     const handleLogin = async () =>
       handleForm(login, {
         username: form.value.email,
-        password: form.value.password,
+        password: form.value.password
       })();
 
     const handlePasswordRecovery = async () =>
       handleForm(sendResetPassword, {
-        email: form.value.email,
+        email: form.value.email
       })();
 
     return {
@@ -304,9 +346,9 @@ export default {
       handleRegister,
       displayChoosedTrue,
       isCreateAccount,
-      showIsForgottenPassword,
+      showIsForgottenPassword
     };
-  },
+  }
 };
 </script>
 

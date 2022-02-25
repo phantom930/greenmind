@@ -1,39 +1,89 @@
 <template>
-  <SfAccordion open="" :multiple="false" transition="" showChevron>
+  <SfAccordion
+    open=""
+    :multiple="false"
+    transition=""
+    show-chevron
+  >
     <SfAccordionItem header="Clothing">
       <SfList>
-        <SfListItem><SfMenuItem label="All" count="280" /></SfListItem>
-        <SfListItem><SfMenuItem label="Skirts" count="11" /></SfListItem>
-        <SfListItem><SfMenuItem label="Dresses" count="32" /></SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="All"
+            count="280"
+          />
+        </SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="Skirts"
+            count="11"
+          />
+        </SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="Dresses"
+            count="32"
+          />
+        </SfListItem>
       </SfList>
     </SfAccordionItem>
     <SfAccordionItem header="Accessories">
       <SfList>
-        <SfListItem><SfMenuItem label="All" count="80" /></SfListItem>
-        <SfListItem><SfMenuItem label="Belts" count="101" /></SfListItem>
-        <SfListItem><SfMenuItem label="Bag" count="2" /></SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="All"
+            count="80"
+          />
+        </SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="Belts"
+            count="101"
+          />
+        </SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="Bag"
+            count="2"
+          />
+        </SfListItem>
       </SfList>
     </SfAccordionItem>
     <SfAccordionItem header="Shoes">
       <SfList>
-        <SfListItem><SfMenuItem label="All" count="2" /></SfListItem>
-        <SfListItem><SfMenuItem label="Trainers" count="22" /></SfListItem>
-        <SfListItem><SfMenuItem label="Sandals" count="55" /></SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="All"
+            count="2"
+          />
+        </SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="Trainers"
+            count="22"
+          />
+        </SfListItem>
+        <SfListItem>
+          <SfMenuItem
+            label="Sandals"
+            count="55"
+          />
+        </SfListItem>
       </SfList>
     </SfAccordionItem>
   </SfAccordion>
 </template>
 
 <script>
-import { SfAccordion, SfList } from "@storefront-ui/vue";
+import { SfAccordion, SfList } from '@storefront-ui/vue';
 export default {
   components: {
     SfAccordion,
-    SfList,
+    SfList
   },
   data() {
     return {};
-  },
+  }
 };
 </script>
 
