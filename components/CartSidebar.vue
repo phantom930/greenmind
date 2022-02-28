@@ -95,10 +95,18 @@
             </SfProperty>
             <nuxt-link to="/checkout/shipping">
               <SfButton
-                class="sf-button--full-width color-secondary"
+                class="sf-button--full-width checkout_button"
                 @click="toggleCartSidebar"
               >
-                {{ $t("Go to checkout") }}
+                {{ $t("checkout") }}
+              </SfButton>
+            </nuxt-link>
+            <nuxt-link to="/cart_details">
+              <SfButton
+                class="sf-button--full-width details_button"
+                @click="toggleCartSidebar"
+              >
+                {{ $t("see details") }}
               </SfButton>
             </nuxt-link>
           </div>
@@ -333,5 +341,20 @@ export default {
 }
 ::v-deep .sf-button--text {
   display: none;
+}
+.checkout_button {
+  border-radius: 100px;
+  --button-background: var(--_c-greenmind-pine-primary-dark-green);
+  font-family: var(--font-family--primary);
+  font-size: 14px;
+  font-weight: 500;
+}
+.details_button {
+  border-radius: 100px;
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green);
+  font-family: var(--font-family--primary);
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5%;
 }
 </style>
