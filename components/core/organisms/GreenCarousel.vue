@@ -136,8 +136,8 @@ export default defineComponent({
 .carousel-item__title {
   display: flex;
   font-family: "Josefin Sans", sans-serif;
-  color: #1d1f22;
-  font-size: 16px;
+  color: var(--_c-greenmind-primary-black);
+  font-size: 26px;
   font-weight: 500;
   text-align: center;
   // line-height: 24;
@@ -161,14 +161,14 @@ export default defineComponent({
   font-size: 18px;
   font-weight: 400;
   padding-right: 5px;
-  margin-bottom: auto;
+  margin-bottom: 5%;
   margin-top: auto;
 }
 .carousel-item__price {
   display: flex;
   font-family: "Josefin Sans", sans-serif;
-  color: #1d1f22;
-  font-size: 16px;
+  color: var(--_c-greenmind-primary-black);
+  font-size: 26px;
   font-weight: 500;
 }
 ::v-deep .sf-carousel__wrapper {
