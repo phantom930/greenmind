@@ -13,6 +13,9 @@ module.exports = {
                     typeId
                     sku
                     status
+                    price
+                    isInWishlist
+                    firstVariant
                     currency {
                         id
                         name
@@ -39,6 +42,10 @@ module.exports = {
                             symbol
                         }
                         price
+                    }
+                    attributeValues {
+                        id
+                        name
                     }
                 }
             }
