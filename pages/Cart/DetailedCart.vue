@@ -8,7 +8,7 @@
       <div v-if="totalItems" class="detailed-cart__aside">
         <SfOrderSummary
           :products="products"
-          orderTitle="totals"
+          orderTitle="Totals"
           :total-items="totalItems"
         >
           <template #summary>
@@ -49,32 +49,19 @@
           <template #promo>
             <div>
               <div>
-                <nuxt-link to="/checkout/shipping">
-                  <SfButton class="color-primary custom__width">{{
-                    $t("GO TO CHECKOUT")
+                <nuxt-link to="/checkout/personaldetails">
+                  <SfButton class="custom__width detailed_cart-checkout_button">{{
+                    $t("CHECKOUT")
                   }}</SfButton>
                 </nuxt-link>
               </div>
               <div class="my-5">
                 <SfButton
-                  class="color-black custom__width"
+                  class="custom__width detailed_cart-shopping_button"
                   @click="$router.go(-1)"
-                  >{{ $t("GO BACK SHOPPING") }}</SfButton
+                  >{{ $t("BACK TO SHOPPING") }}</SfButton
                 >
               </div>
-              <!-- <div class="mb-3">
-                <div class="custom__row">
-                  <div class="mr-4">
-                    <img src="../assets/email.svg" />
-                  </div>
-                  <div>
-                    <SfButton class="sf-button--text">
-                      Send my basket to email</SfButton
-                    >
-                  </div>
-                </div>
-              </div> -->
-
               <div class="custom__con">
                 <div class="bottom__text">
                   Helpful information: <br />
@@ -364,19 +351,12 @@ hr {
 .bottom__text {
   width: 400px;
   height: 146px;
-
-  /* Desktop Bullet Text */
-
-  font-family: Roboto;
+  font-family: var(--font-family--primary);
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
-  line-height: 35px;
-  /* or 137% */
-
-  /* Black Secondary */
-
-  color: #43464e;
+  color: var(--_c-greenmind-secondary-black);
+  margin-top: 10%;
 }
 
 .custom__col {
@@ -411,5 +391,43 @@ hr {
       --button-width: 20.9375rem;
     }
   }
+}
+.detailed_cart-checkout_button {
+    border-radius: 100px;
+    --button-background: var(--_c-greenmind-pine-primary-dark-green);
+}
+.detailed_cart-checkout_button:hover {
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green);
+}
+
+.detailed_cart-checkout_button:active {
+  --button-box-shadow: none;
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+  --button-transition: background 0s;
+  background-size: 100%;
+}
+.detailed_cart-shopping_button {
+    border-radius: 100px;
+    --button-background: var(--_c-greenmind-dark-grey-accent);
+    --button-color: var(--_c-greenmind-primary-grey);
+}
+.detailed_cart-shopping_button:hover {
+  --button-background: var(--_c-greenmind-dark-grey-accent);
+}
+
+.detailed_cart-shopping_button:active {
+  --button-box-shadow: none;
+  --button-background: var(--_c-greenmind-dark-grey-accent)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-light-grey-accent) 1%) center/15000%;
+  --button-transition: background 0s;
+  background-size: 100%;
+}
+::v-deep .detailed-cart__aside{
+    margin-bottom: 5%;
+    border-radius: 14px;
+}
+::v-deep .sf-collected-product__title {
+    font-family: var(--font-family--primary);
 }
 </style>
