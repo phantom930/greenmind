@@ -98,18 +98,30 @@
               :src="require('@storefront-ui/shared/icons/empty_cart.svg')"
               alt="Empty cart"
               class="empty-cart__image"
-              :width="140"
-              :height="200"
+              :width="531"
+              :height="361"
+              style="margin-left: 25%; margin-top: 0%"
             />
             <SfHeading
               title="Your cart is empty"
               :level="2"
               description="Looks like you haven’t added any items to the cart yet. Start
                 shopping to fill it in."
+              style="
+                --heading-title-color: var(--_c-greenmind-fern-primary-medium-green);
+                --heading-title-font-size: 46px;
+                --heading-title-font-weight: 700;
+                --heading-title-font-line-height: 48px;
+                --heading-description-font-family: var(--font-family--primary);
+                --heading-description-font-weight: 400;
+                --heading-description-font-size: 16px;
+                --heading-description-color: var(--_c-greenmind-secondary-black);
+                "
             />
             <SfButton
-              class="sf-button--full-width color-primary empty-cart__button"
-              >Start shopping</SfButton
+              class="sf-button--full-width empty-cart__button"
+              @click="$router.go(-2)"
+              >{{ $t('go back to shopping') }}</SfButton
             >
           </div>
         </transition>
@@ -399,7 +411,6 @@ hr {
 .detailed_cart-checkout_button:hover {
   --button-background: var(--_c-greenmind-fern-secondary-medium-green);
 }
-
 .detailed_cart-checkout_button:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-fern-secondary-medium-green)
@@ -415,7 +426,6 @@ hr {
 .detailed_cart-shopping_button:hover {
   --button-background: var(--_c-greenmind-dark-grey-accent);
 }
-
 .detailed_cart-shopping_button:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-dark-grey-accent)
@@ -429,5 +439,22 @@ hr {
 }
 ::v-deep .sf-collected-product__title {
     font-family: var(--font-family--primary);
+}
+.empty-cart__button {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 100px;
+    --button-background: var(--_c-greenmind-pine-primary-dark-green);
+    text-decoration: none;
+}
+.empty-cart__button:hover {
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green);
+}
+.empty-cart__button:active {
+  --button-box-shadow: none;
+  --button-background: var(--_c-greenmind-fern-secondary-medium-green)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+  --button-transition: background 0s;
+  background-size: 100%;
 }
 </style>
