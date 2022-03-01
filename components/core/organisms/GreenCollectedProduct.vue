@@ -133,7 +133,7 @@ export default defineComponent({
 }
 .green-collected-product__price {
     position: absolute;
-    right: 0;
+    right: 12px;
     bottom: 0;
     font-family: var(--font-family--primary);
     font-size: 20px;
@@ -169,5 +169,14 @@ export default defineComponent({
 
 ::v-deep .general_wrapper .img-description-wrap {
   padding-left: 8px;
+}
+
+::v-deep .sf-checkbox__checkmark.is-active {
+  border: none;
+}
+
+.collected-product {
+  padding-bottom: 16px;
+  margin-bottom: 0;
 }
 </style>
