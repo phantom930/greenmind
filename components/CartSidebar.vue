@@ -101,7 +101,7 @@
                 {{ $t("checkout") }}
               </SfButton>
             </nuxt-link>
-            <nuxt-link to="/cart_details">
+            <nuxt-link to="/Cart/DetailedCart">
               <SfButton
                 class="sf-button--full-width details_button"
                 @click="toggleCartSidebar"
