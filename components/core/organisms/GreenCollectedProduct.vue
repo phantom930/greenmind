@@ -112,7 +112,7 @@ export default defineComponent({
 }
 ::v-deep .product-title {
     font-size: 12px !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     color: var(--_c-greenmind-primary-grey) !important;
     margin-right: 5px !important;
 }
@@ -140,7 +140,34 @@ export default defineComponent({
     font-weight: 500;
     color: var(--_c-greenmind-primary-black);
 }
-::v-deep .img-description-wrap {
-    padding-left: 0% !important;
+
+.checkbox-info-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox-info-wrap .info {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-info-wrap .product-title {
+  padding-left: 8px;
+  padding-top: 3px;
+}
+
+.checkbox-info-wrap .sf-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-info-wrap .price {
+  padding-top: 3px;
+}
+
+::v-deep .general_wrapper .img-description-wrap {
+  padding-left: 8px;
 }
 </style>
