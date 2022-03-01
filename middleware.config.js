@@ -1,4 +1,4 @@
-const odooBaseUrl = process.env.BACKEND_BASE_URL || process.env.BASE_URL || 'https://vsfdemo.labs.odoogap.com/';
+const odooBaseUrl = process.env.BACKEND_BASE_URL || process.env.BASE_URL || 'https://web-dev.greenmind.space/';
 const graphqlBaseUrl = `${odooBaseUrl}graphql/vsf`;
 const customQueries = require('./green-api/customQueries');
 
@@ -11,7 +11,7 @@ module.exports = {
         graphqlBaseUrl
       },
       customQueries
-      
+
     }
   }
 };

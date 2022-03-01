@@ -10,7 +10,7 @@ const queryParamsNotFilters = ['page', 'sort', 'itemsPerPage'];
 const useUiHelpers = (): any => {
   const route = useRoute();
   const router = useRouter();
-  const { params, query } = route?.value;
+  const { params, query } = route.value;
 
   const getFacetsFromURL = () => {
     let filters: string[] = [];

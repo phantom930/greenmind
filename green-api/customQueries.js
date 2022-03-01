@@ -1,6 +1,6 @@
 module.exports = {
-    greenGetProductAccessories: ({variables}) => ({
-        query: `
+  greenGetProductAccessories: ({variables}) => ({
+    query: `
             query ($id: Int) {
                 product(id: $id) {
                     id
@@ -50,6 +50,6 @@ module.exports = {
                 }
             }
         `,
-        variables
-    })
-}
+    variables
+  })
+};

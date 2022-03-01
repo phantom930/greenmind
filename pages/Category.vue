@@ -3,40 +3,7 @@
     <CategoryTopBanner />
 
     <div id="category">
-      <div class="navbar section">
-        <div class="navbar__aside desktop-only">
-          <SfBreadcrumbs
-            class="breadcrumbs desktop-only"
-            :breadcrumbs="breadcrumbs"
-          />
-        </div>
-        <div class="navbar__main">
-          <div class="navbar__title desktop-only">
-            <SfHeading :title="$t('iPhones')" />
-          </div>
-          <div class="navbar__sort desktop-only">
-            <span class="navbar__label">{{ $t("Sort by") }}:</span>
-            <LazyHydrate on-interaction>
-              <SfSelect
-                :value="sortBy.selected"
-                placeholder="Select sorting"
-                data-cy="category-select_sortBy"
-                class="navbar__select"
-                @input="th.changeSorting"
-              >
-                <SfSelectOption
-                  v-for="(option, index) in sortBy.options"
-                  :key="index"
-                  :value="option.value"
-                  class="sort-by__option"
-                >
-                  {{ option.attrName }}
-                </SfSelectOption>
-              </SfSelect>
-            </LazyHydrate>
-          </div>
-        </div>
-      </div>
+      <CategoryNavbar />
 
       <div class="main section">
         <CategorySidebarFilters :facets="facets" />
@@ -160,121 +127,50 @@
 </template>
 
 <script>
-import {
-  SfButton,
-  SfList,
-  SfIcon,
-  SfHeading,
-  SfMenuItem,
-  SfProductCard,
-  SfProductCardHorizontal,
-  SfPagination,
-  SfSelect,
-  SfBreadcrumbs,
-  SfLoader,
-  SfProperty,
-  SfImage,
-  SfAccordion
-} from '@storefront-ui/vue';
-import { ref, computed, onMounted } from '@vue/composition-api';
-import {
-  useCart,
-  useWishlist,
-  productGetters,
-  useFacet,
-  facetGetters
-} from '@vue-storefront/odoo';
-import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import { useUiHelpers, useUiState } from '~/composables';
+import { SfButton, SfImage, SfLoader, SfProductCardHorizontal, SfProperty } from '@storefront-ui/vue';
+import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
+import { facetGetters, productGetters, useCart, useFacet, useWishlist} from '@vue-storefront/odoo';
+import { computed, onMounted } from '@nuxtjs/composition-api';
+import { useUiHelpers, useUiState, useUiCategoryHelpers } from '~/composables';
 import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
   name: 'Category',
   components: {
     SfButton,
-    SfIcon,
-    SfProductCard,
     SfProductCardHorizontal,
-    SfPagination,
-    SfMenuItem,
-    SfSelect,
-    SfBreadcrumbs,
-    SfAccordion,
-    SfList,
     SfLoader,
-    SfHeading,
     SfProperty,
     LazyHydrate,
     SfImage
   },
   transition: 'fade',
+  emits: ['close'],
   setup(props, { root }) {
     const th = useUiHelpers();
-
-    const { addTags } = useCache();
     const uiState = useUiState();
-    const { addItem: addItemToCart, isInCart } = useCart();
-    const {
-      addItem: addItemToWishlist,
-      removeItem: removeItemFromWishList,
-      isInWishlist
-    } = useWishlist();
+
     const { result, search, loading } = useFacet();
-    const { params, query } = root.$router.history.current;
+    const { categoryTree, currentRootCategory } = useUiCategoryHelpers(result);
+    const { addTags } = useCache();
+    const { addItem: addItemToCart, isInCart } = useCart();
+    const { addItem: addItemToWishlist, removeItem: removeItemFromWishList, isInWishlist } = useWishlist();
 
     const products = computed(() => facetGetters.getProducts(result.value));
-    const categoryTree = computed(() =>
-      facetGetters.getCategoryTree(result.value)
-    );
-    const sortBy = computed(() =>
-      facetGetters.getSortOptions({ input: { sort: query?.sort } } || '')
-    );
+
     const facets = computed(() =>
       facetGetters.getGrouped(result.value, ['color', 'size'])
     );
-    const pagination = computed(() => facetGetters.getPagination(result.value));
+    const pagination = computed(() =>
+      facetGetters.getPagination(result.value)
+    );
     const showProducts = computed(
       () => !loading.value && products.value?.length > 0
     );
 
-    const currentCategory = computed(() => {
-      const categories = result.value?.data?.categories || [];
-      return categories[0] || {};
-    });
-
-    const currentCategoryNameForAccordion = computed(() => {
-      const name =
-        currentCategory.value?.parent?.name ||
-        categoryTree.value?.items[0]?.label ||
-        '';
-      return name;
-    });
-
-    const currentRootCategory = computed(() => {
-      const categories = result.value?.data?.categories || [];
-      const category = categories.find((category) => {
-        return category.slug === params.slug_1;
-      });
-
-      const categoryFromParent = currentCategory.value?.parent?.parent;
-
-      return category || categoryFromParent || {};
-    });
-
-    const breadcrumbs = computed(() =>
-      facetGetters.getBreadcrumbs({
-        input: {
-          params,
-          currentRootCategory: currentRootCategory.value
-        }
-      })
-    );
-
     onSSR(async () => {
-      const params = {
-        ...th.getFacetsFromURL()
-      };
+      const params = { ...th.getFacetsFromURL() };
 
       await search(params);
 
@@ -293,23 +189,20 @@ export default {
     return {
       ...uiState,
       currentRootCategory,
-      currentCategory,
       th,
       products,
       categoryTree,
       loading,
       productGetters,
       pagination,
-      sortBy,
+
       facets,
-      breadcrumbs,
       addItemToWishlist,
       removeItemFromWishList,
       addItemToCart,
       isInWishlist,
       isInCart,
-      showProducts,
-      currentCategoryNameForAccordion
+      showProducts
     };
   }
 };
