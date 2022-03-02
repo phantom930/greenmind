@@ -1,0 +1,30 @@
+{
+  "editor.codeActionsOnSave": {
+      "source.fixAll": true
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+  "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "typescript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+  "typescript.format.placeOpenBraceOnNewLineForFunctions": false,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.validation.interpolation": true,
+  "editor.defaultFormatter": "octref.vetur",
+  "timeline.excludeSources": [
+    "git-history"
+  ],
+  "search.exclude": {
+    "**/docs/**": true,
+    "**/odoo-addons/**": true,
+  },
+  "debug.javascript.autoAttachFilter": "disabled",
+  "bracketPairColorizer.depreciation-notice": false,
+  "terminal.explorerKind": "external",
+}
