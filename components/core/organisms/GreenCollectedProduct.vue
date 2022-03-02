@@ -23,31 +23,33 @@
     <div
       slot="price"
     >
-      <span class="green-collected-product__checkbox-title">
-        {{ checkbox_title }}
-      </span>
-      <GreenCheckbox
-        v-for="accessoryProducts in product.accessoryProducts"
-        :key="accessoryProducts.id"
-        :title="accessoryProducts.name"
-        :price="accessoryProducts.price"
-      />
-      <GreenCheckbox
-        title="Screenprotection"
-        price="149,-"
-      />
-      <GreenCheckbox
-        title="Adapter"
-        price="99,-"
-      />
-      <GreenCheckbox
-        title="Forsikring All Risk"
-        price="fra 599,-"
-      />
-      <GreenCheckbox
-        title="Forsikring skærm"
-        price="fra 299,-"
-      />
+      <div class="collected_product_checkbox_wrapper">
+        <span class="green-collected-product__checkbox-title">
+          {{ checkbox_title }}
+        </span>
+        <GreenCheckbox
+          v-for="accessoryProducts in product.accessoryProducts"
+          :key="accessoryProducts.id"
+          :title="accessoryProducts.name"
+          :price="accessoryProducts.price"
+        />
+        <GreenCheckbox
+          title="Screenprotection"
+          price="149,-"
+        />
+        <GreenCheckbox
+          title="Adapter"
+          price="99,-"
+        />
+        <GreenCheckbox
+          title="Forsikring All Risk"
+          price="fra 599,-"
+        />
+        <GreenCheckbox
+          title="Forsikring skærm"
+          price="fra 299,-"
+        />
+      </div>
       <span class="green-collected-product__price">
         {{ $n(cartGetters.getItemPrice(product).regular) + ' ' + currency }}
       </span>
@@ -110,13 +112,14 @@ export default defineComponent({
 }
 ::v-deep .product-title {
     font-size: 12px !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     color: var(--_c-greenmind-primary-grey) !important;
     margin-right: 5px !important;
 }
 ::v-deep .sf-checkbox__checkmark {
     width: 16px !important;
     height: 16px !important;
+    margin-right: 2% !important;
 }
 ::v-deep .price {
     font-size: 12px !important;
@@ -130,11 +133,50 @@ export default defineComponent({
 }
 .green-collected-product__price {
     position: absolute;
-    right: 0;
+    right: 12px;
     bottom: 0;
     font-family: var(--font-family--primary);
     font-size: 20px;
     font-weight: 500;
     color: var(--_c-greenmind-primary-black);
+}
+
+.checkbox-info-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkbox-info-wrap .info {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-info-wrap .product-title {
+  padding-left: 8px;
+  padding-top: 3px;
+}
+
+.checkbox-info-wrap .sf-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-info-wrap .price {
+  padding-top: 3px;
+}
+
+::v-deep .general_wrapper .img-description-wrap {
+  padding-left: 8px;
+}
+
+::v-deep .sf-checkbox__checkmark.is-active {
+  border: none;
+}
+
+.collected-product {
+  padding-bottom: 16px;
+  margin-bottom: 0;
 }
 </style>

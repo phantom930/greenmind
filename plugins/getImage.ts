@@ -1,4 +1,4 @@
-export default ({ app }, inject) => {
+export default ({ app }, inject) : void => {
   const getImage = (imagePath: string) => {
     return `${app.$config.baseURL}${imagePath?.replace('/', '')}`;
   };

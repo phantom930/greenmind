@@ -119,13 +119,13 @@
           </p>
         </div>
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/clock.svg')">
+          <img :src="require('/assets/images/personaldetails/coins.svg')">
           <p class="label">
             Earn credits with every<br> purchase
           </p>
         </div>
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/clock.svg')">
+          <img :src="require('/assets/images/personaldetails/award.svg')">
           <p class="label">
             Full rewards program<br> benefits
           </p>
