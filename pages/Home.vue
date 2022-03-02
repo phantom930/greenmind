@@ -40,41 +40,54 @@
       style="display: flex"
       class="category_card"
     >
-      <SfCategoryCard
-        label="iPhones"
-        :background="
-          require('/assets/images/categoryCards/homeCategoryCard_1.svg')
-        "
-        style="background-repeat: no-repeat; background-position-x: center"
-        link="#"
-      />
-      <div style="padding-right: 25px" />
-      <SfCategoryCard
-        label="Smartphones"
-        :background="
-          require('/assets/images/categoryCards/homeCategoryCard_2.svg')
-        "
-        style="background-repeat: no-repeat; background-position-x: center"
-        link="#"
-      />
-      <div style="padding-right: 25px" />
-      <SfCategoryCard
-        label="Tablets"
-        :background="
-          require('/assets/images/categoryCards/homeCategoryCard_3.svg')
-        "
-        style="background-repeat: no-repeat; background-position-x: center"
-        link="#"
-      />
-      <div style="padding-right: 25px" />
-      <SfCategoryCard
-        label="Computere"
-        :background="
-          require('/assets/images/categoryCards/homeCategoryCard_4.svg')
-        "
-        style="background-repeat: no-repeat; background-position-x: center"
-        link="#"
-      />
+      <SfButton style="display: initial; background: none; border-radius: 14px">
+        <SfImage
+          :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
+          alt="iPhones"
+          :width="295"
+          :height="223"
+          class="categoryCardImage"
+        />
+        <p style="color: #000">
+          iPhones
+        </p>
+      </SfButton>
+      <SfButton style="display: initial; background: none; border-radius: 14px">
+        <SfImage
+          :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
+          alt="iPhones"
+          :width="295"
+          :height="223"
+          class="categoryCardImage"
+        />
+        <p style="color: #000">
+          Smartphones
+        </p>
+      </SfButton>
+      <SfButton style="display: initial; background: none; border-radius: 14px">
+        <SfImage
+          :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
+          alt="iPhones"
+          :width="295"
+          :height="223"
+          class="categoryCardImage"
+        />
+        <p style="color: #000">
+          Smartphones
+        </p>
+      </SfButton>
+      <SfButton style="display: initial; background: none; border-radius: 14px">
+        <SfImage
+          :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
+          alt="iPhones"
+          :width="295"
+          :height="223"
+          class="categoryCardImage"
+        />
+        <p style="color: #000">
+          Smartphones
+        </p>
+      </SfButton>
     </div>
     <!-- <div style="display: flex; padding-top: 5%">
       <GreenBannerVertical
@@ -132,7 +145,8 @@
 import {
   SfHero,
   SfBanner,
-  SfCategoryCard
+  SfButton,
+  SfImage
 } from '@storefront-ui/vue';
 import { computed } from '@vue/composition-api';
 import {
@@ -151,7 +165,8 @@ export default {
     NewsletterModal,
     SfHero,
     SfBanner,
-    SfCategoryCard
+    SfButton,
+    SfImage
   },
   setup(props, { root }) {
     const { result, search } = useFacet();
@@ -289,5 +304,8 @@ export default {
 }
 ::v-deep .category_card .sf-category-card {
   height: 270px;
+}
+::v-deep .categoryCardImage .sf-image{
+  object-fit: fill
 }
 </style>
