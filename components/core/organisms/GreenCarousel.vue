@@ -1,7 +1,7 @@
 <template>
   <div>
     <SfHeading
-      :title="carousel_title"
+      :title="carouselTitle"
       :level="2"
     />
     <SfCarousel
@@ -24,20 +24,24 @@
       }"
     >
       <SfCarouselItem
-        v-for="(item, i) in item.slice(0, 10)"
+        v-for="(items, i) in item.slice(0, 10)"
         :key="i"
       >
         <SfLink
-          :link="localePath(
-            `/p/${productGetters.getId(item)}/${productGetters.getSlug(item)}`
-          )"
+          :link="
+            localePath(
+              `/p/${productGetters.getId(items)}/${productGetters.getSlug(
+                items
+              )}`
+            )
+          "
           data-testid="product-link"
         >
           <div class="carousel-item">
             <div>
               <SfImage
-                :key="item.id"
-                :src="$image(productGetters.getCoverImage(item))"
+                :key="items.id"
+                :src="$image(productGetters.getCoverImage(items))"
                 alt="product image"
                 :width="136"
                 :height="266"
@@ -45,7 +49,7 @@
               />
             </div>
             <div class="carousel-item__title">
-              {{ item.name }}
+              {{ items.name }}
             </div>
             <div class="carousel-item__features">
               {{ feature1[i] + " | " + feature2[i] }}
@@ -55,7 +59,7 @@
                 {{ $t("Fra") }}
               </div>
               <div class="carousel-item__price">
-                {{ item.price + currency }}
+                {{ items.price + currency }}
               </div>
             </div>
           </div>
@@ -66,7 +70,7 @@
 </template>
 
 <script>
-import { SfCarousel, SfImage, SfHeading, SfButton, SfLink } from '@storefront-ui/vue';
+import { SfCarousel, SfImage, SfHeading, SfLink } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
 import { defineComponent } from '@vue/composition-api';
 export default defineComponent({
@@ -74,27 +78,32 @@ export default defineComponent({
     SfCarousel,
     SfImage,
     SfHeading,
-    SfButton,
     SfLink
   },
   props: {
     item: {
       type: Array,
-      default: ['']
+      default() {
+        return [''];
+      }
     },
     feature1: {
       type: Array,
-      default: ['']
+      default() {
+        return [''];
+      }
     },
     feature2: {
       type: Array,
-      default: ['']
+      default() {
+        return [''];
+      }
     },
     currency: {
       type: [String, Array],
       default: ''
     },
-    carousel_title: {
+    carouselTitle: {
       type: String,
       default: ''
     }

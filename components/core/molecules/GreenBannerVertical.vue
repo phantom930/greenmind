@@ -1,36 +1,35 @@
 <template>
   <div>
     <SfBanner
-      :title="banner_title"
-      :description="banner_description"
-      :button-text="banner_button"
+      :title="bannerTitle"
+      :description="bannerDescription"
+      :button-text="bannerButton"
       :background="background"
-      :image="require('/assets/images/banner/'+banner_image+'.svg')"
+      :image="require('/assets/images/banner/'+bannerImage+'.svg')"
     />
   </div>
 </template>
 
 <script>
-import { SfBanner, SfImage } from '@storefront-ui/vue';
+import { SfBanner } from '@storefront-ui/vue';
 export default {
   components: {
-    SfBanner,
-    SfImage
+    SfBanner
   },
   props: {
-    banner_title: {
+    bannerTitle: {
       type: String,
       default: ''
     },
-    banner_description: {
+    bannerDescription: {
       type: String,
       default: ''
     },
-    banner_button: {
+    bannerButton: {
       type: String,
       default: ''
     },
-    banner_image: {
+    bannerImage: {
       type: String,
       default: ''
     },

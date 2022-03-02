@@ -12,15 +12,13 @@
     :selected="false"
     style="--checkbox-border-radius:100px"
   >
-    <div
-      slot="label"
-    >
+    <div slot="label">
       <div
-        v-if="has_GeneralWrapper"
+        v-if="hasGeneralWrapper"
         class="general_wrapper"
       >
         <div
-          v-if="has_image"
+          v-if="hasImage"
           class="img-description-wrap"
         >
           <img
@@ -32,7 +30,7 @@
               <div class="product-title">
                 {{ title }}
               </div>
-              <a href="#">{{ link_title }}</a>
+              <a href="#">{{ linkTitle }}</a>
             </div>
             <p class="product-description">
               {{ description }}
@@ -75,7 +73,7 @@ export default {
       type: String,
       default: ''
     },
-    link_title: {
+    linkTitle: {
       type: String,
       default: ''
     },
@@ -91,7 +89,7 @@ export default {
       type: String,
       default: ''
     },
-    has_image: {
+    hasImage: {
       type: Boolean,
       default: false
     },
@@ -99,12 +97,12 @@ export default {
       type: String,
       default: ''
     },
-    has_GeneralWrapper: {
+    hasGeneralWrapper: {
       type: Boolean,
       default: true
     }
   },
-  setup(props) {
+  setup() {
     const checked = ref(false);
 
     return {

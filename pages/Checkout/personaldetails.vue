@@ -101,9 +101,7 @@
     </form>
 
     <div class="checkbox-wrap">
-      <GreenCheckbox
-        :has-general-wrapper="false"
-      />
+      <GreenCheckbox :has-general-wrapper="false" />
       <p class="label">
         Join newsletter
       </p>
@@ -123,37 +121,33 @@
         <div class="perk">
           <img :src="require('/assets/images/personaldetails/coins.svg')">
           <p class="label">
-            Earn credits with every<br> purchase
+            Earn credits with every<br>
+            purchase
           </p>
         </div>
         <div class="perk">
           <img :src="require('/assets/images/personaldetails/award.svg')">
           <p class="label">
-            Full rewards program<br> benefits
+            Full rewards program<br>
+            benefits
           </p>
         </div>
       </div>
     </div>
     <div class="checkbox-button-wrap">
       <div class="checkbox-wrap">
-        <GreenCheckbox
-          :has-general-wrapper="false"
-        />
+        <GreenCheckbox :has-general-wrapper="false" />
         <p class="label">
           I want to create an account.
         </p>
       </div>
       <nuxt-link to="/">
-        <SfButton
-          class="color-primary sf-button shipping-btn"
-        >
+        <SfButton class="color-primary sf-button shipping-btn">
           {{ $t("Go back") }}
         </SfButton>
       </nuxt-link>
       <nuxt-link to="/checkout/shipping">
-        <SfButton
-          class="color-primary sf-button shipping-btn"
-        >
+        <SfButton class="color-primary sf-button shipping-btn">
           {{ $t("GO TO SHIPPING") }}
         </SfButton>
       </nuxt-link>
@@ -162,7 +156,7 @@
 </template>
 
 <script>
-import { SfHeading, SfInput, SfButton, SfSelect } from '@storefront-ui/vue';
+import { SfHeading, SfInput, SfButton } from '@storefront-ui/vue';
 import { ref, watch, onMounted, computed } from '@nuxtjs/composition-api';
 import {
   useCountrySearch,
@@ -186,14 +180,14 @@ export default {
     SfHeading,
     SfInput,
     SfButton,
-    SfSelect,
     ValidationProvider,
     ValidationObserver,
     UserShippingAddresses: () =>
-      import('~/components/Checkout/UserShippingAddresses.vue'),
-    VsfShippingProvider: () =>
-      import('~/components/Checkout/VsfShippingProvider')
+      import('~/components/Checkout/UserShippingAddresses.vue')
+    // VsfShippingProvider: () =>
+    //   import('~/components/Checkout/VsfShippingProvider')
   },
+  emits: ['finish'],
   setup(props, { root, emit }) {
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
@@ -397,14 +391,14 @@ export default {
 }
 
 ::v-deep .first-name-last-name .lastname {
-  flex:  1 1 50%;
+  flex: 1 1 50%;
   padding-left: 20px;
 }
 
 ::v-deep .sf-input__label {
   font-size: 18px;
   font-weight: 300;
-  color: #43464E;
+  color: #43464e;
   font-family: "Josefin Sans";
   padding-left: 5px;
 }
@@ -412,7 +406,7 @@ export default {
 ::v-deep .sf-heading__title {
   font-size: 34px;
   font-weight: 700;
-  color: #1D1F22;
+  color: #1d1f22;
 }
 
 ::v-deep .form__element--half-even {
@@ -424,73 +418,73 @@ export default {
 }
 
 ::v-deep .login-btn {
-    font-size: 14px;
-    background: #32463D;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 100px;
-    font-family: "Josefin Sans";
-    max-width: 296px;
-    width: 100%;
-    padding-top: 20px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+  font-size: 14px;
+  background: #32463d;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 100px;
+  font-family: "Josefin Sans";
+  max-width: 296px;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 ::v-deep .shipping-btn {
-    font-size: 14px;
-    background: #32463D;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 100px;
-    font-family: "Josefin Sans";
-    max-width: 223px;
-    width: 100%;
-    padding-top: 20px;
-    margin-top: 42px;
+  font-size: 14px;
+  background: #32463d;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 100px;
+  font-family: "Josefin Sans";
+  max-width: 223px;
+  width: 100%;
+  padding-top: 20px;
+  margin-top: 42px;
 }
 
 ::v-deep .button-wrap p {
-    color: #43464E;
-    font-size: 20px;
-    font-weight: 500;
+  color: #43464e;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 ::v-deep .email-input {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 ::v-deep .checkbox-wrap {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 ::v-deep .checkbox-wrap p {
-    padding-left: 8px;
+  padding-left: 8px;
 }
 
 ::v-deep .perks-wrap .perk {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 ::v-deep .perks {
-    max-width: 578px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 68px;
+  max-width: 578px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 68px;
 }
 
 ::v-deep .perk .label {
-    font-size: 18px;
-    color: #72757E;
-    font-weight: 400;
-    padding-left: 8px;
+  font-size: 18px;
+  color: #72757e;
+  font-weight: 400;
+  padding-left: 8px;
 }
 
 ::v-deep .checkbox-button-wrap {
-    margin-bottom: 86px;
+  margin-bottom: 86px;
 }
 </style>

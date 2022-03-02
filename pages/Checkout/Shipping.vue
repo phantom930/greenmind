@@ -113,10 +113,7 @@
             v-model="form.country.id"
             label="Country"
             name="country"
-            class="
-              form__element form__element--half form__select
-              sf-select--underlined
-            "
+            class="form__element form__element--half form__select sf-select--underlined"
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -213,6 +210,7 @@ export default {
     VsfShippingProvider: () =>
       import('~/components/Checkout/VsfShippingProvider')
   },
+  emits: ['finish'],
   setup(props, { root, emit }) {
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
@@ -417,14 +415,14 @@ export default {
 }
 
 ::v-deep .first-name-last-name .lastname {
-  flex:  1 1 50%;
+  flex: 1 1 50%;
   padding-left: 20px;
 }
 
 ::v-deep .sf-input__label {
   font-size: 18px;
   font-weight: 300;
-  color: #43464E;
+  color: #43464e;
   font-family: "Josefin Sans";
   padding-left: 5px;
 }
@@ -432,7 +430,7 @@ export default {
 ::v-deep .sf-heading__title {
   font-size: 34px;
   font-weight: 700;
-  color: #1D1F22;
+  color: #1d1f22;
 }
 
 ::v-deep .form__element--half-even {
@@ -443,15 +441,15 @@ export default {
   display: none;
 }
 .revieworder_button {
-    font-size: 14px;
-    background: #32463D;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 100px;
-    font-family: "Josefin Sans";
-    max-width: 267px;
-    width: 100%;
-    padding-top: 20px;
-    margin-bottom: 185px;
+  font-size: 14px;
+  background: #32463d;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 100px;
+  font-family: "Josefin Sans";
+  max-width: 267px;
+  width: 100%;
+  padding-top: 20px;
+  margin-bottom: 185px;
 }
 </style>

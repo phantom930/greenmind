@@ -106,10 +106,7 @@ import {
   SfFooter,
   SfList,
   SfMenuItem,
-  SfInput,
-  SfButton,
-  SfImage,
-  SfLink
+  SfImage
 } from '@storefront-ui/vue';
 
 export default {
@@ -117,10 +114,7 @@ export default {
     SfFooter,
     SfList,
     SfMenuItem,
-    SfInput,
-    SfButton,
-    SfImage,
-    SfLink
+    SfImage
   },
   data() {
     return {

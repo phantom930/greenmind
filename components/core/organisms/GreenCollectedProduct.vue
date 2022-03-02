@@ -4,9 +4,7 @@
     data-cy="collected-product-cart-sidebar"
     :image="$image(cartGetters.getItemImage(product))"
     :title="cartGetters.getItemName(product)"
-    :regular-price="
-      $n(cartGetters.getItemPrice(product).regular)
-    "
+    :regular-price="$n(cartGetters.getItemPrice(product).regular)"
     :special-price="
       cartGetters.getItemPrice(product).special &&
         $n(cartGetters.getItemPrice(product).special, 'currency')
@@ -14,18 +12,15 @@
     :stock="99999"
     :qty="cartGetters.getItemQty(product)"
     :currency="currency"
-    :checkbox_title="checkbox_title"
-
+    :checkbox-title="checkboxTitle"
     class="collected-product"
     @input="updateItemQty({ product, quantity: $event })"
     @click:remove="removeItem({ product })"
   >
-    <div
-      slot="price"
-    >
+    <div slot="price">
       <div class="collected_product_checkbox_wrapper">
         <span class="green-collected-product__checkbox-title">
-          {{ checkbox_title }}
+          {{ checkboxTitle }}
         </span>
         <GreenCheckbox
           v-for="accessoryProducts in product.accessoryProducts"
@@ -51,16 +46,16 @@
         />
       </div>
       <span class="green-collected-product__price">
-        {{ $n(cartGetters.getItemPrice(product).regular) + ' ' + currency }}
+        {{ $n(cartGetters.getItemPrice(product).regular) + " " + currency }}
       </span>
     </div>
     <template #configuration>
       <div class="collected-product__properties">
         <SfProperty
-          v-for="(attribute, key) in cartGetters.getItemAttributes(
-            product,
-            ['color', 'size']
-          )"
+          v-for="(attribute, key) in cartGetters.getItemAttributes(product, [
+            'color',
+            'size',
+          ])"
           :key="key"
           :name="key"
           :value="attribute"
@@ -71,15 +66,14 @@
 </template>
 
 <script>
-import { SfCollectedProduct, SfProperty, SfCheckbox } from '@storefront-ui/vue';
+import { SfCollectedProduct, SfProperty } from '@storefront-ui/vue';
 import { useCart, cartGetters } from '@vue-storefront/odoo';
 import { defineComponent } from '@vue/composition-api';
 
 export default defineComponent({
   components: {
     SfCollectedProduct,
-    SfProperty,
-    SfCheckbox
+    SfProperty
   },
   props: {
     product: {
@@ -90,7 +84,7 @@ export default defineComponent({
       type: String,
       default: ',-'
     },
-    checkbox_title: {
+    checkboxTitle: {
       type: String,
       default: ''
     }
@@ -108,37 +102,37 @@ export default defineComponent({
 
 <style scoped>
 ::v-deep .description-wrap {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 }
 ::v-deep .product-title {
-    font-size: 12px !important;
-    font-weight: 400 !important;
-    color: var(--_c-greenmind-primary-grey) !important;
-    margin-right: 5px !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: var(--_c-greenmind-primary-grey) !important;
+  margin-right: 5px !important;
 }
 ::v-deep .sf-checkbox__checkmark {
-    width: 16px !important;
-    height: 16px !important;
-    margin-right: 2% !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 2% !important;
 }
 ::v-deep .price {
-    font-size: 12px !important;
-    font-weight: 300 !important;
-    color: var(--_c-greenmind-fern-primary-medium-green) !important;
-    position: inherit !important;
+  font-size: 12px !important;
+  font-weight: 300 !important;
+  color: var(--_c-greenmind-fern-primary-medium-green) !important;
+  position: inherit !important;
 }
 ::v-deep .general_wrapper {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 .green-collected-product__price {
-    position: absolute;
-    right: 12px;
-    bottom: 0;
-    font-family: var(--font-family--primary);
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--_c-greenmind-primary-black);
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+  font-family: var(--font-family--primary);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--_c-greenmind-primary-black);
 }
 
 .checkbox-info-wrap {

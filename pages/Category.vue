@@ -133,7 +133,6 @@ import { onSSR } from '@vue-storefront/core';
 import { facetGetters, productGetters, useCart, useFacet, useWishlist} from '@vue-storefront/odoo';
 import { computed, onMounted } from '@nuxtjs/composition-api';
 import { useUiHelpers, useUiState, useUiCategoryHelpers } from '~/composables';
-import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
   name: 'Category',
@@ -142,7 +141,6 @@ export default {
     SfProductCardHorizontal,
     SfLoader,
     SfProperty,
-    LazyHydrate,
     SfImage
   },
   transition: 'fade',
@@ -210,5 +208,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "~assets/css/category.scss";
-
 </style>

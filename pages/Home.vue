@@ -130,13 +130,11 @@
 
 <script>
 import {
-  SfBreadcrumbs,
-  SfButton,
   SfHero,
   SfBanner,
   SfCategoryCard
 } from '@storefront-ui/vue';
-import { ref, computed, onMounted } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
 import {
   productGetters,
   useFacet,
@@ -146,18 +144,14 @@ import {
 import { onSSR } from '@vue-storefront/core';
 import { useUiState } from '~/composables';
 import NewsletterModal from '~/components/NewsletterModal.vue';
-import LazyHydrate from 'vue-lazy-hydration';
 import { useUiNotification } from '~/composables';
 
 export default {
   components: {
     NewsletterModal,
-    SfBreadcrumbs,
-    SfButton,
     SfHero,
     SfBanner,
-    SfCategoryCard,
-    LazyHydrate
+    SfCategoryCard
   },
   setup(props, { root }) {
     const { result, search } = useFacet();

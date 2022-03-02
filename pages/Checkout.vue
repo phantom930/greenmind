@@ -31,20 +31,18 @@
   </div>
 </template>
 <script>
-import { SfSteps, SfButton } from '@storefront-ui/vue';
+import { SfSteps } from '@storefront-ui/vue';
 import CartPreview from '~/components/Checkout/CartPreview';
 import { computed } from '@nuxtjs/composition-api';
 const STEPS = {
   personaldetails: 'Personal details',
   shipping: 'Shipping',
-  // billing: "Billing",
   revieworder: 'Review Order',
   payment: 'Payment'
 };
 export default {
   name: 'Checkout',
   components: {
-    SfButton,
     SfSteps,
     CartPreview
   },
@@ -107,13 +105,13 @@ export default {
 }
 
 ::v-deep .sf-steps__step {
-  color: #8D8F9A;
+  color: #8d8f9a;
   font-size: 18px;
   font-family: "Josefin Sans";
 }
 
 ::v-deep .checkout__aside div {
-  background: #F1F2F3;
+  background: #f1f2f3;
   border-radius: 14px;
 }
 
@@ -142,7 +140,7 @@ export default {
 ::v-deep .checkout__aside .sf-characteristic__description {
   font-size: 14px;
   font-weight: 400;
-  color: #72757E;
+  color: #72757e;
   font-family: "Josefin Sans";
 }
 

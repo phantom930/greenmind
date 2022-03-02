@@ -10,9 +10,7 @@
 
     <template #navigation>
       <div @mouseleave="toggleActive(false)">
-        <div
-          class="header-links"
-        >
+        <div class="header-links">
           <div
             v-for="(category, index) in sbCategories"
             :key="index"
@@ -150,5 +148,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import url('~/assets/css/greenTopbarTertiary.scss');
+@import url("~/assets/css/greenTopbarTertiary.scss");
 </style>

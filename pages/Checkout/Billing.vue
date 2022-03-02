@@ -91,10 +91,7 @@
             v-model="form.country.id"
             label="Country"
             name="country"
-            class="
-              form__element form__element--half form__select
-              sf-select--underlined
-            "
+            class="form__element form__element--half form__select sf-select--underlined"
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -119,11 +116,7 @@
             v-model="form.state.id"
             label="State/Province"
             name="state"
-            class="
-              form__element form__element--half form__select
-              sf-select--underlined
-              form__element--half-even
-            "
+            class="form__element form__element--half form__select sf-select--underlined form__element--half-even"
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -177,7 +170,6 @@ import {
   SfInput,
   SfButton,
   SfSelect,
-  SfRadio,
   SfCheckbox
 } from '@storefront-ui/vue';
 import { ref, onMounted, watch } from '@nuxtjs/composition-api';
@@ -209,7 +201,6 @@ export default {
     SfInput,
     SfButton,
     SfSelect,
-    SfRadio,
     SfCheckbox,
     ValidationProvider,
     ValidationObserver

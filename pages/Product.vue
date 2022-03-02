@@ -41,13 +41,13 @@
               Tilkøb
             </div>
             <GreenCheckbox
-              v-for="accessoryProducts in product.accessoryProducts"
-              :key="accessoryProducts.id"
-              :title="accessoryProducts.name"
-              :description="accessoryProducts.description"
-              :price="accessoryProducts.price"
-              :has_image="true"
-              :image="$image(accessoryProducts.image)"
+              v-for="accessoryProduct in product.accessoryProducts"
+              :key="accessoryProduct.id"
+              :title="accessoryProduct.name"
+              :description="accessoryProduct.description"
+              :price="accessoryProduct.price"
+              :has-image="true"
+              :image="$image(accessoryProduct.image)"
             />
           </div>
           <div
@@ -93,12 +93,13 @@
                 :stock="stock"
                 :disabled="loading || !allOptionsSelected"
                 :can-add-to-cart="stock > 0"
-                :class="{ 'add-to-cart': allOptionsSelected, 'add-to-cart-disabled': !allOptionsSelected}"
+                :class="{
+                  'add-to-cart': allOptionsSelected,
+                  'add-to-cart-disabled': !allOptionsSelected,
+                }"
                 @click="addItem({ product, quantity: parseInt(qty) })"
               />
-              <SfButton
-                class="status"
-              >
+              <SfButton class="status">
                 {{ $t("SEE STOCK STATUS IN STORE") }}
               </SfButton>
             </div>
@@ -178,7 +179,7 @@
     </div>
     <div class="product_carousel">
       <GreenCarousel
-        :item="slider_products"
+        :item="sliderProducts"
         :feature1="storage"
         :feature2="color"
         :currency="currency"
@@ -190,31 +191,17 @@
 </template>
 <script>
 import {
-  SfProperty,
   SfHeading,
-  SfPrice,
-  SfRating,
-  SfSelect,
   SfAddToCart,
   SfTabs,
   SfGallery,
-  SfRadio,
   SfIcon,
   SfImage,
-  SfBanner,
-  SfAlert,
-  SfSticky,
-  SfReview,
   SfBreadcrumbs,
   SfButton,
-  SfColor,
-  SfColorPicker,
-  SfLoader,
-  SfCheckbox
+  SfColor
 } from '@storefront-ui/vue';
 
-import InstagramFeed from '~/components/InstagramFeed.vue';
-import RelatedProducts from '~/components/RelatedProducts.vue';
 import { ref, computed, reactive } from '@vue/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import {
@@ -230,37 +217,20 @@ import {
 
 import { onSSR } from '@vue-storefront/core';
 import { useRoute } from '@nuxtjs/composition-api';
-
-import MobileStoreBanner from '~/components/MobileStoreBanner.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 export default {
   name: 'Product',
   components: {
-    SfAlert,
     SfColor,
-    SfProperty,
-    SfRadio,
     SfHeading,
-    SfPrice,
-    SfRating,
-    SfSelect,
     SfAddToCart,
     SfTabs,
     SfGallery,
     SfIcon,
     SfImage,
-    SfBanner,
-    SfSticky,
-    SfReview,
     SfBreadcrumbs,
     SfButton,
-    InstagramFeed,
-    SfLoader,
-    RelatedProducts,
-    MobileStoreBanner,
-    SfColorPicker,
-    LazyHydrate,
-    SfCheckbox
+    LazyHydrate
   },
   transition: 'fade',
   setup(props, { root }) {
@@ -320,9 +290,9 @@ export default {
       }))
     );
 
-    const { result, search: search_facet } = useFacet();
+    const { result, search: searchFacet } = useFacet();
     const { params } = root.$router.history.current;
-    const slider_products = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
+    const sliderProducts = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
 
     onSSR(async () => {
       await searchRealProduct({
@@ -333,7 +303,7 @@ export default {
         id: parseInt(id),
         customQuery: { getProductTemplate: 'greenGetProductAccessories' }
       });
-      await search_facet(params);
+      await searchFacet(params);
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
       // await searchRelatedProducts({ catId: [categories.value[0]], limit: 8 });
       // await searchReviews({ productId: id });
@@ -398,7 +368,7 @@ export default {
       productGallery,
       useFacet,
       facetGetters,
-      slider_products,
+      sliderProducts,
       accessoryProducts
     };
   },
@@ -625,43 +595,48 @@ export default {
   margin-right: 15%;
 }
 .total-price-buttons .total-price {
-    font-size: 34px;
-    font-weight: 700;
+  font-size: 34px;
+  font-weight: 700;
 }
 
 .total-price-buttons {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .total-price-buttons .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
 }
 
 .total-price-buttons .buttons .add-to-cart {
-    font-size: 14px;
-    color: #fff;
-    background: var(--_c-greenmind-pine-primary-dark-green);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    margin-bottom: 8px;
-    cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  background: var(--_c-greenmind-pine-primary-dark-green);
+  padding-top: 18px;
+  padding-bottom: 18px;
+  width: 100%;
+  border-radius: 100px;
+  text-align: center;
+  margin-bottom: 8px;
+  cursor: pointer;
 }
 .total-price-buttons .buttons .add-to-cart:hover {
-    background: var(--_c-greenmind-fern-secondary-medium-green);
+  background: var(--_c-greenmind-fern-secondary-medium-green);
 }
 .total-price-buttons .buttons .add-to-cart:active {
   --button-box-shadow: none;
   background: var(--_c-greenmind-fern-secondary-medium-green)
-    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+    radial-gradient(
+      circle,
+      transparent 40%,
+      var(--_c-greenmind-mint-secondary-light-green) 1%
+    )
+    center/15000%;
   --button-transition: background 0s;
   background-size: 100%;
 }
@@ -669,28 +644,28 @@ export default {
   text-decoration: none;
 }
 .total-price-buttons .buttons .add-to-cart-disabled {
-    font-size: 14px;
-    color: var(--_c-greenmind-dark-grey-accent);
-    background: var(--_c-greenmind-light-grey-accent);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    margin-bottom: 8px;
-    cursor: not-allowed;
+  font-size: 14px;
+  color: var(--_c-greenmind-dark-grey-accent);
+  background: var(--_c-greenmind-light-grey-accent);
+  padding-top: 18px;
+  padding-bottom: 18px;
+  width: 100%;
+  border-radius: 100px;
+  text-align: center;
+  margin-bottom: 8px;
+  cursor: not-allowed;
 }
 
 .total-price-buttons .buttons .status {
-    font-size: 14px;
-    color: #fff;
-    --button-background: var(--_c-greenmind-fern-primary-medium-green);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    text-decoration: none;
+  font-size: 14px;
+  color: #fff;
+  --button-background: var(--_c-greenmind-fern-primary-medium-green);
+  padding-top: 18px;
+  padding-bottom: 18px;
+  width: 100%;
+  border-radius: 100px;
+  text-align: center;
+  text-decoration: none;
 }
 .total-price-buttons .buttons .status:hover {
   --button-background: var(--_c-greenmind-mint-secondary-light-green);
@@ -699,7 +674,12 @@ export default {
 .total-price-buttons .buttons .status:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-fern-secondary-medium-green)
-    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+    radial-gradient(
+      circle,
+      transparent 40%,
+      var(--_c-greenmind-mint-secondary-light-green) 1%
+    )
+    center/15000%;
   --button-transition: background 0s;
   background-size: 100%;
 }
@@ -707,12 +687,12 @@ export default {
   display: none;
 }
 ::v-deep .sf-add-to-cart__button {
-    background: none;
-    padding: 0;
+  background: none;
+  padding: 0;
 }
 ::v-deep .add-to-cart .sf-button {
-    font-size: 14px;
-    font-family: var(--font-family--primary);
+  font-size: 14px;
+  font-family: var(--font-family--primary);
 }
 .product_variants {
   text-align: left;
@@ -725,18 +705,18 @@ export default {
   --heading-title-font-weight: 700;
   --heading-title-font-size: 34px;
   --heading-title-font-line-height: 48px;
-  margin-bottom:-10px;
+  margin-bottom: -10px;
 }
 .checkbox-title-wrap .title {
-    font-size: 20px;
-    color: #1D1F22;
-    font-weight: 500;
-    margin-bottom: 25px;
+  font-size: 20px;
+  color: #1d1f22;
+  font-weight: 500;
+  margin-bottom: 25px;
 }
 
 .checkbox-title-wrap {
-    padding-bottom: 8px;
-    border-bottom: 1px solid #F1F2F3;
-    margin-bottom: 40px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f1f2f3;
+  margin-bottom: 40px;
 }
 </style>

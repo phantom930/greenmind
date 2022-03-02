@@ -59,22 +59,15 @@
         Meget flot
       </div>
       <p class="description-main">
-        Screen: May have micro-scratches which are not noticeable when<br> the screen is turned on. Body: Has visible scratches and/or dents
+        Screen: May have micro-scratches which are not noticeable when<br>
+        the screen is turned on. Body: Has visible scratches and/or dents
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import { SfAddToCart } from '@storefront-ui/vue';
-import { ref } from '@vue/composition-api';
 export default {
-  components: {
-    SfAddToCart
-  },
-  setup() {
-    const qty = ref(1);
-  },
   data() {
     return {
       stock: 5
@@ -85,122 +78,122 @@ export default {
 
 <style scoped>
 .link-prices-wrap .links p {
-    color: #1D1F22;
-    font-size: 20px;
-    font-weight: 500;
+  color: #1d1f22;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .link-prices-wrap .links a {
-    color: #0468DB;
-    border-bottom: 1px solid #0468DB;
-    line-height: 12px;
+  color: #0468db;
+  border-bottom: 1px solid #0468db;
+  line-height: 12px;
 }
 
 .link-prices-wrap .links {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 185px;
-    margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 185px;
+  margin-bottom: 18px;
 }
 
 .prices-wrap .price-discount-wrap {
-    max-width: 102px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 102px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .prices-wrap .price-wrap {
-    background: #F1F2F3;
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    border-radius: 10px;
-    width: 100%;
-    text-decoration: none;
+  background: #f1f2f3;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-radius: 10px;
+  width: 100%;
+  text-decoration: none;
 }
 
 .prices-wrap .price-discount-wrap:hover .price-wrap {
-    background: #7BA393;;
-    color: #fff;
-    box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.1);
+  background: #7ba393;
+  color: #fff;
+  box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.1);
 }
 
 .prices-wrap .price-wrap p {
-    font-size: 12px;
-    font-weight: 500;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .price-discount-wrap .discount {
-    border-radius: 22px;
-    max-width: 80px;
-    width: 100%;
-    text-align: center;
-    background: #32463D;
-    color: #fff;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    text-decoration: line-through;
-    margin-top: -15px;
+  border-radius: 22px;
+  max-width: 80px;
+  width: 100%;
+  text-align: center;
+  background: #32463d;
+  color: #fff;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-decoration: line-through;
+  margin-top: -15px;
 }
 
 .prices-wrap {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
 }
 
 .description-wrap .title-main {
-    text-align: end;
-    color: #1D1F22;
-    margin-bottom: 10px;
+  text-align: end;
+  color: #1d1f22;
+  margin-bottom: 10px;
 }
 
 .description-wrap .description-main {
-    font-size: 14px;
-    color: #72757E;
-    text-align: end;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #F1F2F3;
-    margin-bottom: 26px;
+  font-size: 14px;
+  color: #72757e;
+  text-align: end;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f2f3;
+  margin-bottom: 26px;
 }
 
 .total-price-buttons .total-price {
-    font-size: 34px;
-    font-weight: 700;
+  font-size: 34px;
+  font-weight: 700;
 }
 
 .total-price-buttons {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .total-price-buttons .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 280px;
 }
 
 .total-price-buttons .buttons .status {
-    font-size: 14px;
-    color: #fff;
-    background: #7BA393;;
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
+  font-size: 14px;
+  color: #fff;
+  background: #7ba393;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  width: 100%;
+  border-radius: 100px;
+  text-align: center;
 }
 
 /* Customize the label (the container) */
@@ -216,7 +209,7 @@ export default {
   -ms-user-select: none;
   user-select: none;
   max-width: 45px;
-  width: 100%;;
+  width: 100%;
 }
 
 /* Hide the browser's default radio button */
@@ -237,7 +230,7 @@ export default {
   width: 24px;
   background-color: #fff;
   border-radius: 50%;
-  border: 1px solid #43464E;
+  border: 1px solid #43464e;
 }
 
 /* On mouse-over, add a grey background color */
@@ -247,7 +240,7 @@ export default {
 
 /* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #7BA393;
+  background-color: #7ba393;
   border: none;
 }
 

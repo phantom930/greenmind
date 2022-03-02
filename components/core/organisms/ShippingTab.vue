@@ -35,7 +35,8 @@
         <div class="checkbox-wrap">
           <GreenCheckboxSecond />
           <p class="label">
-            I want to generate invoice<br> for the company
+            I want to generate invoice<br>
+            for the company
           </p>
         </div>
       </div>
@@ -45,65 +46,65 @@
 
 <style scoped>
 .billing-details-wrap {
-    padding-top: 66px;
+  padding-top: 66px;
 }
 
 .billing-details-wrap .sf-heading__title {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .billing-details-wrap .billing-details-card {
-    max-width: 374px;
-    width: 100%;
-    border: 1px solid #7BA393;
-    border-radius: 14px;
-    position: relative;
-    padding-top: 21px;
-    padding-left: 17px;
-    padding-bottom: 21px;
-    margin-bottom: 40px;
+  max-width: 374px;
+  width: 100%;
+  border: 1px solid #7ba393;
+  border-radius: 14px;
+  position: relative;
+  padding-top: 21px;
+  padding-left: 17px;
+  padding-bottom: 21px;
+  margin-bottom: 40px;
 }
 
 .billing-details-card .info {
-    font-size: 18px;
-    font-weight: 300;
-    font-family: "Josefin Sans";
-    color: #43464E;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: "Josefin Sans";
+  color: #43464e;
 }
 
 .billing-details-card img {
-    position: absolute;
-    top: 21px;
-    right: 20px;
+  position: absolute;
+  top: 21px;
+  right: 20px;
 }
 
 .checkbox-group .checkbox-wrap {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .checkbox-wrap .label {
-    padding-left: 8px;
+  padding-left: 8px;
 }
 
 .checkbox-group {
-    display: flex;
-    align-items: center;
-    max-width: 656px;
-    width: 100%;
-    justify-content: space-between;
-    margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  max-width: 656px;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .checkbox-button-wrap .sf-button {
-    font-size: 14px;
-    background: #32463D;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 100px;
-    font-family: "Josefin Sans";
-    max-width: 267px;
-    width: 100%;
-    padding-top: 20px;
+  font-size: 14px;
+  background: #32463d;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 100px;
+  font-family: "Josefin Sans";
+  max-width: 267px;
+  width: 100%;
+  padding-top: 20px;
 }
 </style>
