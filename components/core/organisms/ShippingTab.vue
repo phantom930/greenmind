@@ -39,14 +39,6 @@
           </p>
         </div>
       </div>
-      <button
-        class="color-primary sf-button"
-        :aria-disabled="false"
-        :link="null"
-        type="button"
-      >
-        GO TO REVIEW ORDER
-      </button>
     </div>
   </div>
 </template>
@@ -54,7 +46,6 @@
 <style scoped>
 .billing-details-wrap {
     padding-top: 66px;
-    margin-bottom: 185px;
 }
 
 .billing-details-wrap .sf-heading__title {

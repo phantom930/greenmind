@@ -27,7 +27,7 @@
             slim
           >
             <SfInput
-              v-model="form.name"
+              v-model="form.fname"
               label="First name"
               name="firstName"
               class="form__element"
@@ -44,7 +44,7 @@
               slim
             >
               <SfInput
-                v-model="form.name"
+                v-model="form.lname"
                 label="Last Name"
                 name="lastName"
                 class="form__element"
@@ -130,36 +130,6 @@
             </SfSelectOption>
           </SfSelect>
         </ValidationProvider>
-
-        <!-- <ValidationProvider
-          name="state"
-          rules="required"
-          v-slot="{ errors }"
-          slim
-        >
-          <SfSelect
-            v-model="form.state.id"
-            label="State/Province"
-            name="state"
-            class="
-              form__element form__element--half form__select
-              sf-select--underlined
-              form__element--half-even
-            "
-            required
-            :valid="!errors[0]"
-            :errorMessage="errors[0]"
-          >
-            <SfSelectOption
-              v-for="countryStateOption in countryStates"
-              :key="countryStateOption.id"
-              :value="countryStateOption.id"
-            >
-              {{ countryStateOption.name }}
-            </SfSelectOption>
-          </SfSelect>
-        </ValidationProvider> -->
-
         <ValidationProvider
           v-slot="{ errors }"
           name="phone"
@@ -194,41 +164,19 @@
       <VsfShippingProvider
         name="selectedMethodShipping"
         :selected-method-shipping="form.selectedMethodShipping"
-        @submit="$router.push('/checkout/billing')"
+        @submit="$router.push('/checkout/revieworder')"
         @selectedMethod="handleSelectedMethodShipping"
       />
-      <VsfShippingProvider
-        name="selectedMethodShipping"
-        :selected-method-shipping="form.selectedMethodShipping"
-        @submit="$router.push('/checkout/billing')"
-        @selectedMethod="handleSelectedMethodShipping"
-      />
-      <VsfShippingProvider
-        name="selectedMethodShipping"
-        :selected-method-shipping="form.selectedMethodShipping"
-        @submit="$router.push('/checkout/billing')"
-        @selectedMethod="handleSelectedMethodShipping"
-      />
-      <VsfShippingProvider
-        name="selectedMethodShipping"
-        :selected-method-shipping="form.selectedMethodShipping"
-        @submit="$router.push('/checkout/billing')"
-        @selectedMethod="handleSelectedMethodShipping"
-      />
-      <VsfShippingProvider
-        name="selectedMethodShipping"
-        :selected-method-shipping="form.selectedMethodShipping"
-        @submit="$router.push('/checkout/billing')"
-        @selectedMethod="handleSelectedMethodShipping"
-      />
+      <ShippingTab />
       <SfButton
         type="submit"
         :disabled="invalid"
+        class="revieworder_button"
+        @click="$router.push('/checkout/revieworder')"
       >
-        {{ $t("Continue to billing") }}
+        {{ $t("GO TO REVIEW ORDER") }}
       </SfButton>
     </form>
-    <ShippingTab />
   </ValidationObserver>
 </template>
 
@@ -281,7 +229,8 @@ export default {
       useCountrySearch();
 
     const form = ref({
-      name: '',
+      fname: '',
+      lname: '',
       street: '',
       city: '',
       state: { id: null },
@@ -296,7 +245,7 @@ export default {
       isFormSubmitted.value = true;
 
       if (root.$router.history.current.path !== '/my-account/shipping-details')
-        root.$router.push('/checkout/billing');
+        root.$router.push('/checkout/revieworder');
       else root.$router.push('/my-account/shipping-details');
 
       emit('finish', true);
@@ -492,5 +441,17 @@ export default {
 
 ::v-deep .sf-button.is-disabled--button {
   display: none;
+}
+.revieworder_button {
+    font-size: 14px;
+    background: #32463D;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 100px;
+    font-family: "Josefin Sans";
+    max-width: 267px;
+    width: 100%;
+    padding-top: 20px;
+    margin-bottom: 185px;
 }
 </style>

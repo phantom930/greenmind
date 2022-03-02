@@ -15,7 +15,10 @@
     <div
       slot="label"
     >
-      <div class="general_wrapper">
+      <div
+        v-if="has_GeneralWrapper"
+        class="general_wrapper"
+      >
         <div
           v-if="has_image"
           class="img-description-wrap"
@@ -95,6 +98,10 @@ export default {
     image: {
       type: String,
       default: ''
+    },
+    has_GeneralWrapper: {
+      type: Boolean,
+      default: true
     }
   },
   setup(props) {
