@@ -1,350 +1,196 @@
 <template>
-<<<<<<< HEAD
-  <div>
-    <SfHeading
-      :level="3"
-      title="Payment"
-      class="sf-heading--left sf-heading--no-underline title"
-    />
-    <SfTable class="sf-table--bordered table desktop-only">
-      <SfTableHeading class="table__row">
-        <SfTableHeader class="table__header table__image">
-          {{
-            $t("Item")
-          }}
-        </SfTableHeader>
-        <SfTableHeader
-          v-for="tableHeader in tableHeaders"
-          :key="tableHeader"
-          class="table__header"
-          :class="{ table__description: tableHeader === 'Description' }"
-        >
-          {{ tableHeader }}
-        </SfTableHeader>
-      </SfTableHeading>
-      <SfTableRow
-        v-for="(product, index) in products"
-        :key="index"
-        class="table__row"
-      >
-        <SfTableData class="table__image">
-          <SfImage
-            :width="256"
-            :height="176"
-            :src="$image(cartGetters.getItemImage(product))"
-            alt="product image"
-          />
-        </SfTableData>
-        <SfTableData class="table__data table__description table__data">
-          <div class="product-title">
-            {{ cartGetters.getItemName(product) }}
-          </div>
-          <div class="product-sku">
-            {{ cartGetters.getItemSku(product) }}
-          </div>
-        </SfTableData>
-        <SfTableData
-          v-for="(value, key) in cartGetters.getItemAttributes(product, [
-            'size',
-            'color',
-          ])"
-          :key="key"
-          class="table__data"
-        >
-          {{ value }}
-        </SfTableData>
-        <SfTableData class="table__data">
-          {{
-            cartGetters.getItemQty(product)
-          }}
-        </SfTableData>
-        <SfTableData class="table__data price">
-          <SfPrice
-            :regular="$n(cartGetters.getItemPrice(product).regular, 'currency')"
-            :special="
-              cartGetters.getItemPrice(product).special &&
-                $n(cartGetters.getItemPrice(product).special, 'currency')
-            "
-            class="product-price"
-          />
-        </SfTableData>
-      </SfTableRow>
-    </SfTable>
-    <div class="summary">
-      <div class="summary__group">
-        <div class="summary__total">
-          <SfProperty
-            name="Subtotal"
-            :value="
-              $n(
-                totals.special > 0 ? totals.special : totals.subtotal,
-                'currency'
-              )
-            "
-            class="sf-property--full-width property"
-          />
-        </div>
-
-        <SfDivider />
-
-        <SfProperty
-          name="Total price"
-          :value="$n(totals.total, 'currency')"
-          class="
-            sf-property--full-width sf-property--large
-            summary__property-total
-          "
-        />
-
-        <SfHeading
-          :level="3"
-          title="Choose payment provider"
-          class="sf-heading--left sf-heading--no-underline title"
-        />
-
-        <SfRadio
-          v-for="provider in providerList"
-          :key="provider.id"
-          :label="provider.name"
-          :value="String(provider.id)"
-          :selected="String(selectedProvider.id)"
-          name="shippingMethod"
-          class="form__radio shipping"
-          @change="selectProvider(provider)"
-        >
-          <div class="shipping__label">
-            {{ provider.name }}
-          </div>
-
-          <div class="shipping__description">
-            {{ provider.name }}
-          </div>
-        </SfRadio>
-
-        <abstract-payment-observer v-if="selectedProvider.name">
-          <component
-            :is="getComponentProviderByName(selectedProvider.name)"
-            class="py-8"
-            :provider="selectedProvider"
-            @isPaymentReady="isPaymentReady = arguments[0]"
-            @providerPaymentHandler="providerPaymentHandler = arguments[0]"
-          />
-        </abstract-payment-observer>
-
-        <!-- <SfAccordion
-          transition="sf-expand"
-          showChevron
-          v-if="providerListHasMoreThanOne"
-        >
-          <SfAccordionItem
-            :header="provider.name"
-            v-for="provider in providerList"
-            :key="provider.id"
-          >
-            <component :is="getComponentProviderByName(provider.name)" />
-          </SfAccordionItem>
-        </SfAccordion>
-
-        <component
-          :is="getComponentProviderByName(providerList[0].name)"
-          v-else
-        /> -->
-
-        <SfCheckbox
-          v-model="terms"
-          v-e2e="'terms'"
-          name="terms"
-          class="summary__terms"
-        >
-          <template #label>
-            <div class="sf-checkbox__label">
-              {{ $t("I agree to") }}
-              <SfLink href="#">
-                {{ $t("Terms and conditions") }}
-              </SfLink>
-            </div>
-          </template>
-        </SfCheckbox>
-
-        <div class="summary__action">
-          <SfButton
-            type="button"
-            class="sf-button color-secondary summary__back-button"
-            @click="$router.push('/checkout/billing')"
-          >
-            {{ $t("Go back") }}
-          </SfButton>
-          <SfButton
-            v-e2e="'make-an-order'"
-            :disabled="loading || !isPaymentReady || !terms"
-            class="summary__action-button"
-            @click="providerPaymentHandler"
-          >
-            {{ $t("Make an order") }}
-          </SfButton>
-        </div>
-=======
   <div class="payment-page">
-      <h3 class="title">Payment Methods</h3>
+    <h3 class="title">
+      Payment Methods
+    </h3>
     <div class="payment-method">
       <div class="method">
         <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-  	  </label>
-      <img :src="require('/assets/images/payment/visa.png')">
+          <input
+            type="checkbox"
+            checked="checked"
+          >
+          <span class="checkmark" />
+        </label>
+        <img :src="require('/assets/images/payment/visa.png')">
       </div>
       <div class="method">
         <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-  	  </label>
-      <img :src="require('/assets/images/payment/master.png')">
+          <input
+            type="checkbox"
+            checked="checked"
+          >
+          <span class="checkmark" />
+        </label>
+        <img :src="require('/assets/images/payment/master.png')">
       </div>
       <div class="method">
         <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-  	  </label>
-      <img :src="require('/assets/images/payment/visae.png')">
+          <input
+            type="checkbox"
+            checked="checked"
+          >
+          <span class="checkmark" />
+        </label>
+        <img :src="require('/assets/images/payment/visae.png')">
       </div>
       <div class="method">
         <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-  	  </label>
-      <p>Cash on delivery</p>
+          <input
+            type="checkbox"
+            checked="checked"
+          >
+          <span class="checkmark" />
+        </label>
+        <p>Cash on delivery</p>
       </div>
       <div class="method">
         <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark"></span>
-  	  </label>
-      <p>Check</p>
+          <input
+            type="checkbox"
+            checked="checked"
+          >
+          <span class="checkmark" />
+        </label>
+        <p>Check</p>
       </div>
     </div>
     <div class="form-wrap">
-    <form action="">
-      <SfInput
-    value=""
-    label="Card number"
-    name="number"
-    type="text"
-    :icon='{"icon":"","color":"","size":""}'
-    valid
-    errorMessage="Error message value of form input. It appears if `valid` is `false`."
-    :required="false"
-    :disabled="false"
-    :hasShowPassword="false"
-  />
-      <SfInput
-    value=""
-    label="Card holder"
-    name="name"
-    type="text"
-    :icon='{"icon":"","color":"","size":""}'
-    valid
-    errorMessage="Error message value of form input. It appears if `valid` is `false`."
-    :required="false"
-    :disabled="false"
-    :hasShowPassword="false"
-  />
-    </form>
-    <div class="expire-wrap">
-      <p>Expiry date:</p>
-      <div class="select-wrap">
-        <SfSelect
-    class="sf-select--underlined first"
-    label="Month"
-    :required="false"
-    valid
-    :disabled="false"
-    errorMessage="This field is not correct."
-    value=""
-    placeholder=""
-  >
-    <SfSelectOption value="amaranth">Amaranth</SfSelectOption>
-    <SfSelectOption value="amber">Amber</SfSelectOption>
-    <SfSelectOption value="arctic-lime">Arctic lime</SfSelectOption>
-    <SfSelectOption value="bluetiful">Bluetiful</SfSelectOption>
-    <SfSelectOption value="buff">Buff</SfSelectOption>
-  </SfSelect>
-  <SfSelect
-    class="sf-select--underlined"
-    label="Year"
-    :required="false"
-    valid
-    :disabled="false"
-    errorMessage="This field is not correct."
-    value=""
-    placeholder=""
-  >
-    <SfSelectOption value="amaranth">Amaranth</SfSelectOption>
-    <SfSelectOption value="amber">Amber</SfSelectOption>
-    <SfSelectOption value="arctic-lime">Arctic lime</SfSelectOption>
-    <SfSelectOption value="bluetiful">Bluetiful</SfSelectOption>
-    <SfSelectOption value="buff">Buff</SfSelectOption>
-  </SfSelect>
->>>>>>> payment step
+      <form action="">
+        <SfInput
+          value=""
+          label="Card number"
+          name="number"
+          type="text"
+          :icon="{ icon: '', color: '', size: '' }"
+          valid
+          error-message="Error message value of form input. It appears if `valid` is `false`."
+          :required="false"
+          :disabled="false"
+          :has-show-password="false"
+        />
+        <SfInput
+          value=""
+          label="Card holder"
+          name="name"
+          type="text"
+          :icon="{ icon: '', color: '', size: '' }"
+          valid
+          error-message="Error message value of form input. It appears if `valid` is `false`."
+          :required="false"
+          :disabled="false"
+          :has-show-password="false"
+        />
+      </form>
+      <div class="expire-wrap">
+        <p>Expiry date:</p>
+        <div class="select-wrap">
+          <SfSelect
+            class="sf-select--underlined first"
+            label="Month"
+            :required="false"
+            valid
+            :disabled="false"
+            error-message="This field is not correct."
+            value=""
+            placeholder=""
+          >
+            <SfSelectOption value="amaranth">
+              Amaranth
+            </SfSelectOption>
+            <SfSelectOption value="amber">
+              Amber
+            </SfSelectOption>
+            <SfSelectOption value="arctic-lime">
+              Arctic lime
+            </SfSelectOption>
+            <SfSelectOption value="bluetiful">
+              Bluetiful
+            </SfSelectOption>
+            <SfSelectOption value="buff">
+              Buff
+            </SfSelectOption>
+          </SfSelect>
+          <SfSelect
+            class="sf-select--underlined"
+            label="Year"
+            :required="false"
+            valid
+            :disabled="false"
+            error-message="This field is not correct."
+            value=""
+            placeholder=""
+          >
+            <SfSelectOption value="amaranth">
+              Amaranth
+            </SfSelectOption>
+            <SfSelectOption value="amber">
+              Amber
+            </SfSelectOption>
+            <SfSelectOption value="arctic-lime">
+              Arctic lime
+            </SfSelectOption>
+            <SfSelectOption value="bluetiful">
+              Bluetiful
+            </SfSelectOption>
+            <SfSelectOption value="buff">
+              Buff
+            </SfSelectOption>
+          </SfSelect>
+        </div>
       </div>
-    </div>
       <div class="cvc-code-wrap">
         <SfInput
-    value=""
-    label="Code CVC"
-    name="name"
-    type="text"
-    :icon='{"icon":"","color":"","size":""}'
-    valid
-    errorMessage="Error message value of form input. It appears if `valid` is `false`."
-    :required="false"
-    :disabled="false"
-    :hasShowPassword="false"
-  />
-  <a href="#">WHERE CAN I FIND CVC CODE?</a>
+          value=""
+          label="Code CVC"
+          name="name"
+          type="text"
+          :icon="{ icon: '', color: '', size: '' }"
+          valid
+          error-message="Error message value of form input. It appears if `valid` is `false`."
+          :required="false"
+          :disabled="false"
+          :has-show-password="false"
+        />
+        <a href="#">WHERE CAN I FIND CVC CODE?</a>
       </div>
-  <div class="checkbox-wrap">
-    <GreenCheckbox />
-    <p class="label">Save this card for other purchases.</p>
-  </div>
-  <button
-    class="color-primary sf-button confirm-btn"
-    :aria-disabled="false"
-    :link="null"
-    type="button"
-  >
-    CONFIRM & PAY
-  </button>
+      <div class="checkbox-wrap">
+        <GreenCheckbox />
+        <p class="label">
+          Save this card for other purchases.
+        </p>
+      </div>
+      <button
+        class="color-primary sf-button confirm-btn"
+        :aria-disabled="false"
+        :link="null"
+        type="button"
+      >
+        CONFIRM & PAY
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import {
-  SfHeading,
-  SfTable,
-  SfCheckbox,
-  SfButton,
-  SfDivider,
-  SfImage,
-  SfIcon,
-  SfPrice,
-  SfProperty,
-  SfAccordion,
-  SfLink,
-<<<<<<< HEAD
-  SfRadio
+  // SfHeading,
+  // SfTable,
+  // SfCheckbox,
+  // SfButton,
+  // SfDivider,
+  // SfImage,
+  // SfIcon,
+  // SfPrice,
+  // SfProperty,
+  // SfAccordion,
+  // SfLink,
+  // SfRadio,
+  SfInput,
+  SfSelect
 } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers } from '~/composables';
-=======
-  SfRadio,
-  SfInput,
-  SfSelect,
-} from "@storefront-ui/vue";
-import { onSSR } from "@vue-storefront/core";
-import { useUiHelpers } from "~/composables";
->>>>>>> payment step
 
 import { ref, computed } from '@vue/composition-api';
 import {
@@ -358,31 +204,32 @@ import {
 export default {
   name: 'ReviewOrder',
   components: {
-    SfHeading,
-    SfTable,
-    SfCheckbox,
-    SfButton,
-    SfDivider,
-    SfImage,
-    SfIcon,
-    SfPrice,
-    SfProperty,
-    SfAccordion,
-    SfLink,
-    SfRadio,
+    // SfHeading,
+    // SfTable,
+    // SfCheckbox,
+    // SfButton,
+    // SfDivider,
+    // SfImage,
+    // SfIcon,
+    // SfPrice,
+    // SfProperty,
+    // SfAccordion,
+    // SfLink,
+    // SfRadio,
     SfInput,
-    SfSelect,
-    VsfPaymentProvider: () =>
-      import('~/components/Checkout/VsfPaymentProvider'),
-    AdyenPaymentProvider: () =>
-      import('~/components/Checkout/AdyenPaymentProvider'),
-    AdyenExternalPaymentProvider: () =>
-      import('~/components/Checkout/AdyenExternalPaymentProvider'),
-    WireTransferPaymentProvider: () =>
-      import('~/components/Checkout/WireTransferPaymentProvider'),
-    AbstractPaymentObserver: () =>
-      import('~/components/Checkout/AbstractPaymentObserver')
+    SfSelect
+    // VsfPaymentProvider: () =>
+    //   import('~/components/Checkout/VsfPaymentProvider'),
+    // AdyenPaymentProvider: () =>
+    //   import('~/components/Checkout/AdyenPaymentProvider'),
+    // AdyenExternalPaymentProvider: () =>
+    //   import('~/components/Checkout/AdyenExternalPaymentProvider'),
+    // WireTransferPaymentProvider: () =>
+    //   import('~/components/Checkout/WireTransferPaymentProvider'),
+    // AbstractPaymentObserver: () =>
+    //   import('~/components/Checkout/AbstractPaymentObserver')
   },
+  emits: ['status'],
   setup(props, context) {
     const { cart, load, setCart } = useCart();
     const { providerList, getPaymentProviderList } = usePayment();
@@ -568,21 +415,21 @@ export default {
 ::v-deep .sf-input__wrapper .sf-input__label {
   font-size: 18px;
   font-weight: 300;
-  color: #43464E;
+  color: #43464e;
   padding-left: 5px;
 }
 
 .payment-page .title {
   font-size: 34px;
   font-weight: 700;
-  color: #1D1F22;
+  color: #1d1f22;
   margin-bottom: 40px;
 }
 
 .expire-wrap p {
   font-size: 18px;
   font-weight: 400;
-  color: #43464E;
+  color: #43464e;
   padding-bottom: 8px;
 }
 
@@ -603,10 +450,10 @@ export default {
 ::v-deep .sf-select--underlined label {
   font-weight: 400;
   font-size: 16px;
-  color: #43464E;
+  color: #43464e;
 }
 
-.payment-page  .expire-wrap .select-wrap {
+.payment-page .expire-wrap .select-wrap {
   display: flex;
   align-items: center;
 }
@@ -624,7 +471,7 @@ export default {
 .cvc-code-wrap a {
   font-size: 14px;
   font-weight: 500;
-  color: #0468DB;
+  color: #0468db;
   text-decoration: underline;
 }
 
@@ -647,7 +494,7 @@ export default {
 }
 
 ::v-deep .confirm-btn {
-  background: #32463D;
+  background: #32463d;
   color: #fff;
   border-radius: 100px;
   font-size: 14px;
@@ -703,7 +550,7 @@ export default {
 
 /* When the radio button is checked, add a blue background */
 .container input:checked ~ .checkmark {
-  background-color: #5ECE7B;
+  background-color: #5ece7b;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -739,8 +586,8 @@ export default {
   justify-content: space-between;
   padding-top: 21px;
   padding-bottom: 21px;
-  border-top: 2px solid #F1F2F3;
-  border-bottom: 2px solid #F1F2F3;
+  border-top: 2px solid #f1f2f3;
+  border-bottom: 2px solid #f1f2f3;
   margin-bottom: 40px;
 }
 </style>
