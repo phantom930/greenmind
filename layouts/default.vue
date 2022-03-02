@@ -9,7 +9,7 @@
     <!-- <GreenTopbarTertiary /> -->
 
     <div id="">
-      <nuxt :key="$route.fullPath" />
+      <nuxt />   <!-- :key="$route.fullPath"  -> This doens't let nuxt-link to '/' work nor router.push('/') -->
 
       <LazyHydrate when-visible>
         <BottomNavigation />

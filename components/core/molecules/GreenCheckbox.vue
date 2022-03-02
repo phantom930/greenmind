@@ -15,7 +15,7 @@
     <div
       slot="label"
     >
-    <div class="general_wrapper">
+    <div class="general_wrapper" v-if="has_GeneralWrapper">
         <div v-if="has_image" class="img-description-wrap">
             <img :src="image" class="checkbox_image">
             <div class="description-wrap">
@@ -83,6 +83,10 @@
         image: {
             type: String,
             default: ''
+        },
+        has_GeneralWrapper: {
+            type: Boolean,
+            default: true
         }
     }
   };

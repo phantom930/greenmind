@@ -2,56 +2,26 @@
   <div class="review-order">
       <h3 class="title">Order Details</h3>
       <div class="orders">
-          <a href="#" class="order">
+          <a 
+            v-for="(product, index) in products"
+            class="order"
+            :key="index"
+          >
               <div class="img-info-wrap">
                   <div class="image-container">
-              <img :src="require('/assets/images/revieworder/productimg.jpg')">
+              <img :src="$image(cartGetters.getItemImage(product))">
               </div>
               <div class="product-info">
-                  <div class="product-title">iPhone 8  I  128 GB  I  Space Grey</div>
+                  <div class="product-title">
+                      {{ cartGetters.getItemName(product) }}
+                  </div>
                   <div class="gadget">+ Screenprotection</div>
                   <div class="gadget">+ Forsikring All Risk</div>
                   <div class="code">MSD23-345-324</div>
               </div>
               </div>
               <div class="costs">
-                  <div class="price">2.985,-</div>
-                  <p>149,-</p>
-                  <p>599,-</p>
-              </div>
-          </a>
-          <a href="#" class="order">
-              <div class="img-info-wrap">
-                  <div class="image-container">
-              <img :src="require('/assets/images/revieworder/productimg.jpg')">
-              </div>
-              <div class="product-info">
-                  <div class="product-title">iPhone 8  I  128 GB  I  Space Grey</div>
-                  <div class="gadget">+ Screenprotection</div>
-                  <div class="gadget">+ Forsikring All Risk</div>
-                  <div class="code">MSD23-345-324</div>
-              </div>
-              </div>
-              <div class="costs">
-                  <div class="price">2.985,-</div>
-                  <p>149,-</p>
-                  <p>599,-</p>
-              </div>
-          </a>
-          <a href="#" class="order">
-              <div class="img-info-wrap">
-                  <div class="image-container">
-              <img :src="require('/assets/images/revieworder/productimg.jpg')">
-              </div>
-              <div class="product-info">
-                  <div class="product-title">iPhone 8  I  128 GB  I  Space Grey</div>
-                  <div class="gadget">+ Screenprotection</div>
-                  <div class="gadget">+ Forsikring All Risk</div>
-                  <div class="code">MSD23-345-324</div>
-              </div>
-              </div>
-              <div class="costs">
-                  <div class="price">2.985,-</div>
+                  <div class="price">{{ $n(cartGetters.getItemPrice(product).regular) + ',-'}}</div>
                   <p>149,-</p>
                   <p>599,-</p>
               </div>
@@ -60,7 +30,7 @@
       <div class="total-price-wrap">
           <div class="subtotal">
           <p>Subtotal:</p>
-          <div class="price">5.695,-</div>
+          <div class="price">{{ totals.subtotal + ',-'}}</div>
           </div>
           <div class="shipping">
               <p>Shipping:</p>
@@ -68,26 +38,45 @@
           </div>
           <div class="total-price">
               <p class="total">Total price:</p>
-              <p class="price">5.695,-</p>
+              <p class="price">{{ totals.total + ',-'}}</p>
           </div>
       </div>
       <div class="checkbox-button-wrap">
-          <div class="checkbox-wrap">
-                   <GreenCheckboxSecond />
-               <p class="label">I agree to <a href="#">Terms and Conditions</a></p>
-               </div>
-               <button
-                class="color-primary sf-button payment-btn"
-                :aria-disabled="false"
-                :link="null"
-                type="button"
-                >
-                GO TO PAYMENT
-                </button>
+        <div class="checkbox-wrap">
+            <GreenCheckbox 
+              :has_GeneralWrapper = false
+            />
+            <p class="label">I agree to <a href="#">Terms and Conditions</a></p>
+        </div>
+        <nuxt-link to="/checkout/payment">
+            <SfButton
+            class="color-primary sf-button payment-btn"
+            >
+            {{ $t("GO TO PAYMENT") }}
+            </SfButton>
+        </nuxt-link>
       </div>
   </div>
 </template>
 
+<script>
+import { computed } from "@vue/composition-api";
+import { useCart, cartGetters } from "@vue-storefront/odoo";
+
+export default {
+    setup() {
+        const { cart } = useCart();
+
+        const products = computed(() => cartGetters.getItems(cart.value));
+        const totals = computed(() => cartGetters.getTotals(cart.value));
+        return {
+            cartGetters,
+            totals,
+            products,
+        }
+    }
+}
+</script>
 
 <style scoped>
 .review-order {

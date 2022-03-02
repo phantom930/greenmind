@@ -93,7 +93,9 @@
     </form>
 
     <div class="checkbox-wrap">
-        <GreenCheckboxSecond />
+        <GreenCheckbox 
+          :has_GeneralWrapper = false
+        />
         <p class="label">Join newsletter</p>
     </div>
 
@@ -116,17 +118,25 @@
     </div>
     <div class="checkbox-button-wrap">
         <div class="checkbox-wrap">
-        <GreenCheckboxSecond />
+        <GreenCheckbox 
+          :has_GeneralWrapper = false
+        />
         <p class="label">I want to create an account.</p>
     </div>
-    <button
-    class="color-primary sf-button shipping-btn"
-    :aria-disabled="false"
-    :link="null"
-    type="button"
-  >
-    GO TO SHIPPING
-  </button>
+    <nuxt-link to="/">
+        <SfButton
+        class="color-primary sf-button shipping-btn"
+        >
+        {{ $t("Go back") }}
+        </SfButton>
+    </nuxt-link>
+    <nuxt-link to="/checkout/shipping">
+        <SfButton
+        class="color-primary sf-button shipping-btn"
+        >
+        {{ $t("GO TO SHIPPING") }}
+        </SfButton>
+    </nuxt-link>
     </div>
   </ValidationObserver>
   
