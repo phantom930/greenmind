@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <SfHeading
       :level="3"
@@ -182,7 +183,138 @@
             {{ $t("Make an order") }}
           </SfButton>
         </div>
+=======
+  <div class="payment-page">
+      <h3 class="title">Payment Methods</h3>
+    <div class="payment-method">
+      <div class="method">
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+  	  </label>
+      <img :src="require('/assets/images/payment/visa.png')">
       </div>
+      <div class="method">
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+  	  </label>
+      <img :src="require('/assets/images/payment/master.png')">
+      </div>
+      <div class="method">
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+  	  </label>
+      <img :src="require('/assets/images/payment/visae.png')">
+      </div>
+      <div class="method">
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+  	  </label>
+      <p>Cash on delivery</p>
+      </div>
+      <div class="method">
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+  	  </label>
+      <p>Check</p>
+      </div>
+    </div>
+    <div class="form-wrap">
+    <form action="">
+      <SfInput
+    value=""
+    label="Card number"
+    name="number"
+    type="text"
+    :icon='{"icon":"","color":"","size":""}'
+    valid
+    errorMessage="Error message value of form input. It appears if `valid` is `false`."
+    :required="false"
+    :disabled="false"
+    :hasShowPassword="false"
+  />
+      <SfInput
+    value=""
+    label="Card holder"
+    name="name"
+    type="text"
+    :icon='{"icon":"","color":"","size":""}'
+    valid
+    errorMessage="Error message value of form input. It appears if `valid` is `false`."
+    :required="false"
+    :disabled="false"
+    :hasShowPassword="false"
+  />
+    </form>
+    <div class="expire-wrap">
+      <p>Expiry date:</p>
+      <div class="select-wrap">
+        <SfSelect
+    class="sf-select--underlined first"
+    label="Month"
+    :required="false"
+    valid
+    :disabled="false"
+    errorMessage="This field is not correct."
+    value=""
+    placeholder=""
+  >
+    <SfSelectOption value="amaranth">Amaranth</SfSelectOption>
+    <SfSelectOption value="amber">Amber</SfSelectOption>
+    <SfSelectOption value="arctic-lime">Arctic lime</SfSelectOption>
+    <SfSelectOption value="bluetiful">Bluetiful</SfSelectOption>
+    <SfSelectOption value="buff">Buff</SfSelectOption>
+  </SfSelect>
+  <SfSelect
+    class="sf-select--underlined"
+    label="Year"
+    :required="false"
+    valid
+    :disabled="false"
+    errorMessage="This field is not correct."
+    value=""
+    placeholder=""
+  >
+    <SfSelectOption value="amaranth">Amaranth</SfSelectOption>
+    <SfSelectOption value="amber">Amber</SfSelectOption>
+    <SfSelectOption value="arctic-lime">Arctic lime</SfSelectOption>
+    <SfSelectOption value="bluetiful">Bluetiful</SfSelectOption>
+    <SfSelectOption value="buff">Buff</SfSelectOption>
+  </SfSelect>
+>>>>>>> payment step
+      </div>
+    </div>
+      <div class="cvc-code-wrap">
+        <SfInput
+    value=""
+    label="Code CVC"
+    name="name"
+    type="text"
+    :icon='{"icon":"","color":"","size":""}'
+    valid
+    errorMessage="Error message value of form input. It appears if `valid` is `false`."
+    :required="false"
+    :disabled="false"
+    :hasShowPassword="false"
+  />
+  <a href="#">WHERE CAN I FIND CVC CODE?</a>
+      </div>
+  <div class="checkbox-wrap">
+    <GreenCheckbox />
+    <p class="label">Save this card for other purchases.</p>
+  </div>
+  <button
+    class="color-primary sf-button confirm-btn"
+    :aria-disabled="false"
+    :link="null"
+    type="button"
+  >
+    CONFIRM & PAY
+  </button>
     </div>
   </div>
 </template>
@@ -200,10 +332,19 @@ import {
   SfProperty,
   SfAccordion,
   SfLink,
+<<<<<<< HEAD
   SfRadio
 } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers } from '~/composables';
+=======
+  SfRadio,
+  SfInput,
+  SfSelect,
+} from "@storefront-ui/vue";
+import { onSSR } from "@vue-storefront/core";
+import { useUiHelpers } from "~/composables";
+>>>>>>> payment step
 
 import { ref, computed } from '@vue/composition-api';
 import {
@@ -229,6 +370,8 @@ export default {
     SfAccordion,
     SfLink,
     SfRadio,
+    SfInput,
+    SfSelect,
     VsfPaymentProvider: () =>
       import('~/components/Checkout/VsfPaymentProvider'),
     AdyenPaymentProvider: () =>
@@ -412,5 +555,192 @@ export default {
   &__label {
     font-weight: var(--font-weight--normal);
   }
+}
+
+.payment-page {
+  margin-bottom: 651px;
+}
+
+.payment-page .form-wrap {
+  max-width: 610px;
+}
+
+::v-deep .sf-input__wrapper .sf-input__label {
+  font-size: 18px;
+  font-weight: 300;
+  color: #43464E;
+  padding-left: 5px;
+}
+
+.payment-page .title {
+  font-size: 34px;
+  font-weight: 700;
+  color: #1D1F22;
+  margin-bottom: 40px;
+}
+
+.expire-wrap p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #43464E;
+  padding-bottom: 8px;
+}
+
+.payment-page .expire-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+::v-deep .sf-select__dropdown {
+  width: 216px;
+}
+
+::v-deep .sf-select--underlined.first {
+  padding-right: 20px;
+}
+
+::v-deep .sf-select--underlined label {
+  font-weight: 400;
+  font-size: 16px;
+  color: #43464E;
+}
+
+.payment-page  .expire-wrap .select-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.payment-page .form-wrap .sf-input input {
+  padding-left: 10px;
+}
+
+.cvc-code-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.cvc-code-wrap a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0468DB;
+  text-decoration: underline;
+}
+
+::v-deep .cvc-code-wrap input {
+  width: 216px;
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.checkbox-wrap .label {
+  padding-left: 8px;
+}
+
+.checkbox-wrap .general_wrapper {
+  display: none;
+}
+
+::v-deep .confirm-btn {
+  background: #32463D;
+  color: #fff;
+  border-radius: 100px;
+  font-size: 14px;
+  padding-top: 18px;
+  font-weight: 500;
+  max-width: 218px;
+  width: 100%;
+}
+
+::v-deep .img-description-wrap {
+  display: none;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #5ECE7B;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+.payment-method .method {
+  display: flex;
+  align-items: center;
+}
+
+.payment-method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  border-top: 2px solid #F1F2F3;
+  border-bottom: 2px solid #F1F2F3;
+  margin-bottom: 40px;
 }
 </style>
