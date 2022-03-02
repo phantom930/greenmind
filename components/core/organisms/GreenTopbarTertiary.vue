@@ -30,7 +30,7 @@
         <div class="dropdown">
           <SfMegaMenu
             title="Man"
-            :visible="true"
+            :visible="active"
           >
             <SfMegaMenuColumn
               v-for="(child, indexChildCategories) in childCategories"
