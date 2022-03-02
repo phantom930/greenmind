@@ -1,81 +1,93 @@
 <template>
   <div class="review-order">
-      <h3 class="title">Order Details</h3>
-      <div class="orders">
-          <a 
-            v-for="(product, index) in products"
-            class="order"
-            :key="index"
-          >
-              <div class="img-info-wrap">
-                  <div class="image-container">
-              <img :src="$image(cartGetters.getItemImage(product))">
-              </div>
-              <div class="product-info">
-                  <div class="product-title">
-                      {{ cartGetters.getItemName(product) }}
-                  </div>
-                  <div class="gadget">+ Screenprotection</div>
-                  <div class="gadget">+ Forsikring All Risk</div>
-                  <div class="code">MSD23-345-324</div>
-              </div>
-              </div>
-              <div class="costs">
-                  <div class="price">{{ $n(cartGetters.getItemPrice(product).regular) + ',-'}}</div>
-                  <p>149,-</p>
-                  <p>599,-</p>
-              </div>
-          </a>
-      </div>
-      <div class="total-price-wrap">
-          <div class="subtotal">
-          <p>Subtotal:</p>
-          <div class="price">{{ totals.subtotal + ',-'}}</div>
+    <h3 class="title">
+      Order Details
+    </h3>
+    <div class="orders">
+      <a
+        v-for="(product, index) in products"
+        :key="index"
+        class="order"
+      >
+        <div class="img-info-wrap">
+          <div class="image-container">
+            <img :src="$image(cartGetters.getItemImage(product))">
           </div>
-          <div class="shipping">
-              <p>Shipping:</p>
-              <p class="price">Free</p>
+          <div class="product-info">
+            <div class="product-title">
+              {{ cartGetters.getItemName(product) }}
+            </div>
+            <div class="gadget">+ Screenprotection</div>
+            <div class="gadget">+ Forsikring All Risk</div>
+            <div class="code">MSD23-345-324</div>
           </div>
-          <div class="total-price">
-              <p class="total">Total price:</p>
-              <p class="price">{{ totals.total + ',-'}}</p>
-          </div>
-      </div>
-      <div class="checkbox-button-wrap">
-        <div class="checkbox-wrap">
-            <GreenCheckbox 
-              :has_GeneralWrapper = false
-            />
-            <p class="label">I agree to <a href="#">Terms and Conditions</a></p>
         </div>
-        <nuxt-link to="/checkout/payment">
-            <SfButton
-            class="color-primary sf-button payment-btn"
-            >
-            {{ $t("GO TO PAYMENT") }}
-            </SfButton>
-        </nuxt-link>
+        <div class="costs">
+          <div class="price">{{ $n(cartGetters.getItemPrice(product).regular) + ',-' }}</div>
+          <p>149,-</p>
+          <p>599,-</p>
+        </div>
+      </a>
+    </div>
+    <div class="total-price-wrap">
+      <div class="subtotal">
+        <p>Subtotal:</p>
+        <div class="price">
+          {{ totals.subtotal + ',-' }}
+        </div>
       </div>
+      <div class="shipping">
+        <p>Shipping:</p>
+        <p class="price">
+          Free
+        </p>
+      </div>
+      <div class="total-price">
+        <p class="total">
+          Total price:
+        </p>
+        <p class="price">
+          {{ totals.total + ',-' }}
+        </p>
+      </div>
+    </div>
+    <div class="checkbox-button-wrap">
+      <div class="checkbox-wrap">
+        <GreenCheckbox
+          :has-general-wrapper="false"
+        />
+        <p class="label">
+          I agree to <a href="#">Terms and Conditions</a>
+        </p>
+      </div>
+      <nuxt-link to="/checkout/payment">
+        <SfButton
+          class="color-primary sf-button payment-btn"
+        >
+          {{ $t("GO TO PAYMENT") }}
+        </SfButton>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
-import { computed } from "@vue/composition-api";
-import { useCart, cartGetters } from "@vue-storefront/odoo";
+import { computed } from '@vue/composition-api';
+import { useCart, cartGetters } from '@vue-storefront/odoo';
 
 export default {
-    setup() {
-        const { cart } = useCart();
+  setup() {
+    const { cart } = useCart();
 
-        const products = computed(() => cartGetters.getItems(cart.value));
-        const totals = computed(() => cartGetters.getTotals(cart.value));
-        return {
-            cartGetters,
-            totals,
-            products,
-        }
-    }
-}
+    const products = computed(() => cartGetters.getItems(cart.value));
+    const totals = computed(() => cartGetters.getTotals(cart.value));
+    return {
+      cartGetters,
+      totals,
+      products
+    };
+  }
+};
 </script>
 
 <style scoped>
