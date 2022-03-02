@@ -208,6 +208,17 @@ export default defineComponent({
 
 ::v-deep .sf-checkbox__checkmark.is-active {
   border: none;
+  outline: none;
+}
+
+::v-deep .sf-checkbox__checkmark:focus {
+  border: none;
+  outline: none;
+}
+
+::v-deep .sf-checkbox__checkmark:active {
+  border: none;
+  outline: none;
 }
 
 .collected-product {
