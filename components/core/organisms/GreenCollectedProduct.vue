@@ -23,36 +23,6 @@
     <div
       slot="price"
     >
-    <div class="collected_product_checkbox_wrapper">
-      <span class="green-collected-product__checkbox-title">
-          {{ checkbox_title }}
-      </span>
-      <GreenCheckbox
-        v-for="accessoryProducts in product.accessoryProducts"
-        :key="accessoryProducts.id"
-        :title="accessoryProducts.name"
-        :price="accessoryProducts.price"
-      />
-      <GreenCheckbox
-        title="Screenprotection"
-        price="149,-"
-      />
-      <GreenCheckbox
-        title="Adapter"
-        price="99,-"
-      />
-      <GreenCheckbox
-        title="Forsikring All Risk"
-        price="fra 599,-"
-      />
-      <GreenCheckbox
-        title="Forsikring skærm"
-        price="fra 299,-"
-      />
-    </div>
-      <span class="green-collected-product__price">
-          {{ $n(cartGetters.getItemPrice(product).regular) + ' ' + currency}}
-      </span>
     <span class="green-collected-product__checkbox-title">
         {{ checkbox_title }}
     </span>

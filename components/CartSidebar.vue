@@ -18,39 +18,6 @@
         <div v-if="totalItems" key="my-cart" class="my-cart">
           <div class="collected-product-list">
             <transition-group name="sf-fade" tag="div">
-              <!-- <SfCollectedProduct
-                data-cy="collected-product-cart-sidebar"
-                v-for="product in products"
-                :key="cartGetters.getItemSku(product)"
-                :image="$image(cartGetters.getItemImage(product))"
-                :title="cartGetters.getItemName(product)"
-                :regular-price="
-                  $n(cartGetters.getItemPrice(product).regular, 'currency')
-                "
-                :special-price="
-                  cartGetters.getItemPrice(product).special &&
-                  $n(cartGetters.getItemPrice(product).special, 'currency')
-                "
-                :stock="99999"
-                :qty="cartGetters.getItemQty(product)"
-                @input="updateItemQty({ product, quantity: $event })"
-                @click:remove="removeItem({ product })"
-                class="collected-product"
-              >
-                <template #configuration>
-                  <div class="collected-product__properties">
-                    <SfProperty
-                      v-for="(attribute, key) in cartGetters.getItemAttributes(
-                        product,
-                        ['color', 'size']
-                      )"
-                      :key="key"
-                      :name="key"
-                      :value="attribute"
-                    />
-                  </div>
-                </template>
-              </SfCollectedProduct> -->
               <LazyGreenCollectedProduct 
                 :product="product"
                 v-for="product in products"
@@ -93,7 +60,7 @@
                 <SfPrice :regular="$n(totals.subtotal, 'currency')" />
               </template>
             </SfProperty>
-            <nuxt-link to="/checkout/shipping">
+            <nuxt-link to="/checkout/personaldetails">
               <SfButton
                 class="sf-button--full-width checkout_button"
                 @click="toggleCartSidebar"
