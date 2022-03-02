@@ -17,14 +17,5 @@
   "vetur.format.defaultFormatter.js": "prettier-eslint",
   "vetur.validation.interpolation": true,
   "editor.defaultFormatter": "octref.vetur",
-  "timeline.excludeSources": [
-    "git-history"
-  ],
-  "search.exclude": {
-    "**/docs/**": true,
-    "**/odoo-addons/**": true,
-  },
-  "debug.javascript.autoAttachFilter": "disabled",
-  "bracketPairColorizer.depreciation-notice": false,
-  "terminal.explorerKind": "external",
+  "debug.javascript.autoAttachFilter": "disabled"
 }
