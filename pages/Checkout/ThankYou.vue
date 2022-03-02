@@ -11,14 +11,9 @@
     >
       <template #description>
         <div class="banner__order-number">
-          <span>{{ $t("Order No.") }}</span>
+          <span>{{ $t("Order No. ") }}</span>
           <strong>{{ cartGetters.getOrderNumber(cart) }}</strong>
         </div>
-        <div class="banner__order-number">
-          <span>{{ $t("Payment status.") }}</span>
-          <strong>{{ cartGetters.getStage(cart) }}</strong>
-        </div>
-
         <div
           v-if="paymentRefused"
           class="banner__order-number"
@@ -102,11 +97,13 @@
         </div>
       </div>
     </section>
-    <SfButton class="back-button color-secondary button-size">
-      {{
-        $t("Go back to shop")
-      }}
-    </SfButton>
+    <nuxt-link to="/">
+      <SfButton class="back-button color-secondary button-size">
+        {{
+          $t("Go back to shop")
+        }}
+      </SfButton>
+    </nuxt-link>
   </div>
 </template>
 
@@ -120,6 +117,7 @@ export default {
     SfButton,
     SfCallToAction
   },
+  emits: ['changeStep'],
   setup(props, { root, emit }) {
     emit('changeStep', 4);
 
@@ -189,6 +187,7 @@ export default {
     flex-direction: column;
     font: var(--font-weight--light) var(--font-size--sm) / 1.4
       var(--font-family--primary);
+    font-size: 18px !important;
     @include for-desktop {
       flex-direction: row;
       font-size: var(--font-size--normal);
@@ -306,5 +305,25 @@ export default {
   @include for-desktop {
     --button-width: 25rem;
   }
+}
+::v-deep .sf-call-to-action__title {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--_c-greenmind-primary-black);
+}
+::v-deep .sf-button {
+  border-radius: 100px;
+  background-color: var(--_c-greenmind-pine-primary-dark-green);
+  text-decoration: none;
+}
+::v-deep .sf-button:hover {
+  background-color: var(--_c-greenmind-fern-secondary-medium-green);
+}
+::v-deep .sf-button:active {
+  box-shadow: none;
+  background: var(--_c-greenmind-fern-secondary-medium-green)
+    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+  transition: background 0s;
+  background-size: 100%;
 }
 </style>
