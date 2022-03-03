@@ -12,23 +12,21 @@
       <div @mouseleave="toggleActive(false)">
         <div class="header-links">
           <div
-            v-for="(category, index) in sbCategories"
+            v-for="(category, index) in parentCategories"
             :key="index"
             class="dropdown-wrap"
             @mouseenter="toggleActive(true)"
           >
-            <nuxt-link
-              to=""
-              class="custom-link"
-            >
-              {{ category.name }}
-            </nuxt-link>
+            <SfHeaderNavigationItem
+              :label="category.name"
+              :link="localePath(`/c/${category.slug}/${category.id}`)"
+            />
           </div>
         </div>
         <div class="dropdown">
           <SfMegaMenu
             title="Man"
-            :visible="active"
+            :visible="true"
           >
             <SfMegaMenuColumn
               v-for="(child, indexChildCategories) in childCategories"
@@ -49,7 +47,7 @@
                 >
                   <SfMenuItem
                     :label="link.name"
-                    :link="link.url"
+                    :link="`/c/${link.url}`"
                   />
                 </SfListItem>
               </SfList>
@@ -62,9 +60,12 @@
 </template>
 
 <script>
-import { SfHeader, SfMegaMenu, SfList, SfMenuItem } from '@storefront-ui/vue';
+import { defineComponent, computed } from '@nuxtjs/composition-api';
+import { SfHeader, SfList, SfMegaMenu, SfMenuItem } from '@storefront-ui/vue';
+import { onSSR } from '@vue-storefront/core';
+import { useCart, useCategory, useUser, useWishlist } from '@vue-storefront/odoo';
 import { useUiStyleState } from '~/composables';
-import { defineComponent } from '@nuxtjs/composition-api';
+
 export default defineComponent({
   components: {
     SfHeader,
@@ -73,9 +74,29 @@ export default defineComponent({
     SfMenuItem
   },
   setup () {
+    const { load: loadCart } = useCart();
+    const { load: loadUser } = useUser();
+    const { load: loadWishlist } = useWishlist();
+
     const { active, toggleActive } = useUiStyleState('mega-menu');
+    const { categories: topCategories, search: searchTopCategoryApi } =
+      useCategory('AppHeader:TopCategories');
+
+    onSSR(async () => {
+      await Promise.all([
+        searchTopCategoryApi(),
+        loadUser(),
+        loadWishlist(),
+        loadCart()
+      ]);
+    });
+
+    const parentCategories = computed(() =>
+      topCategories.value.filter((category) => category.childs === null)
+    );
 
     return {
+      parentCategories,
       active,
       toggleActive
     };
@@ -133,14 +154,6 @@ export default defineComponent({
             { name: 'S20', url: 's20' },
             { name: 'Acessories', url: 'acessories' }
           ] }
-      ],
-      sbCategories: [
-        { name: 'IPHONES'},
-        { name: 'SMARTPHONES'},
-        { name: 'TABLETS'},
-        { name: 'COMPUTERE'},
-        { name: 'ANDRE PRODUKTER'},
-        { name: 'TILBEHØR'}
       ]
     };
   }

@@ -33,10 +33,12 @@ import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LoginModal from '~/components/LoginModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
+import { useFacet } from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
+import { useUiHelpers } from '~/composables';
 
 export default {
   name: 'DefaultLayout',
-
   components: {
     LazyHydrate,
     TopBar,
@@ -45,6 +47,17 @@ export default {
     WishlistSidebar,
     LoginModal,
     Notification
+  },
+  setup () {
+    const th = useUiHelpers();
+
+    const { search } = useFacet();
+
+    onSSR(async () => {
+      const params = { ...th.getFacetsFromURL() };
+      await search(params);
+    });
+
   }
 };
 </script>
