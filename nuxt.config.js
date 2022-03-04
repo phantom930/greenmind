@@ -198,16 +198,16 @@ export default {
     ],
     locales: [
       {
-        code: 'en',
-        label: 'English',
-        file: 'en.json',
-        iso: 'nl-NL',
+        code: 'da',
+        label: 'Danish',
+        file: 'da.json',
+        iso: 'da-DK',
       },
       {
-        code: 'de',
-        label: 'Deutsch',
-        file: 'de.json',
-        iso: 'de-DE',
+        code: 'sv',
+        label: 'Swedish',
+        file: 'sv.json',
+        iso: 'sv-SE',
       }
     ],
     fallbackLocale: localeIndex,
