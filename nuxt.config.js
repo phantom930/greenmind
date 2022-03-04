@@ -9,9 +9,7 @@ const localesMap = {
   'de-DE': 'de'
 };
 
-
 const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
-
 
 export default {
   css: ['@/assets/styles.scss'],
@@ -63,7 +61,7 @@ export default {
       getRoutes(`${__dirname}`)
         .forEach((route) => routes.unshift(route));
     },
-    middleware: ['checkout'],
+    middleware: ['checkout']
   },
   pwa: {
     manifest: {
@@ -201,13 +199,19 @@ export default {
         code: 'da',
         label: 'Danish',
         file: 'da.json',
-        iso: 'da-DK',
+        iso: 'da-DK'
       },
       {
         code: 'sv',
         label: 'Swedish',
         file: 'sv.json',
-        iso: 'sv-SE',
+        iso: 'sv-SE'
+      },
+      {
+        code: 'en',
+        label: 'English',
+        file: 'en.json',
+        iso: 'en-EN'
       }
     ],
     fallbackLocale: localeIndex,
