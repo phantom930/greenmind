@@ -114,7 +114,7 @@ export default {
     ['@vue-storefront/odoo/nuxt', {}]
   ],
   publicRuntimeConfig: {
-    baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://vsfdemo.labs.odoogap.com/',
+    baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
     theme
   },
   modules: [

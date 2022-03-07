@@ -50,7 +50,7 @@
             </template>
             <div
               v-if="isFacetColor(facet)"
-              class="flex"
+              class="flex flex-wrap"
             >
               <SfColor
                 v-for="option in facet.options"
