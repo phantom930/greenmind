@@ -169,7 +169,6 @@ export default {
 
     onSSR(async () => {
       const params = { ...th.getFacetsFromURL() };
-
       await search(params);
 
       addTags([

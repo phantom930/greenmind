@@ -4,7 +4,7 @@
       <SfHeading
         :level="4"
         :title="$t('Filters')"
-        class="filters-title pt-5 sf-heading--left"
+        class="filters-title pb-5 sf-heading--left"
       />
       <div class="filters desktop-only">
         <SfHeading
@@ -14,7 +14,11 @@
           class="filters__title sf-heading--left"
         />
 
-        <LazyGreenRange />
+        <LazyGreenRange
+          v-model="price"
+          :initial-price="price"
+          @change="selectPrice"
+        />
 
         <SfAccordion
           :multiple="true"
@@ -96,7 +100,7 @@ import {
   SfCheckbox
 } from '@storefront-ui/vue';
 import LazyHydrate from 'vue-lazy-hydration';
-import { useUiHelpers } from '~/composables';
+import { useCurrency, useUiHelpers } from '~/composables';
 
 export default defineComponent({
   components: {
@@ -118,20 +122,30 @@ export default defineComponent({
   },
   setup() {
     const selectedFilters = ref([]);
+    const { toInteger } = useCurrency();
+    const price = ref([1, 1200]);
     const { changeFilters, isFacetColor, facetsFromUrlToFilter } =
       useUiHelpers();
 
+    const setPrice = () => {
+      const selectedValue = selectedFilters.value.find(
+        (item) => item?.filterName === 'price'
+      );
+
+      if (selectedValue) {
+        const splitedPriceFromUrl = selectedValue?.id?.split('-');
+
+        price.value = splitedPriceFromUrl.map((item) => parseInt(item));
+      }
+    };
+
     onMounted(() => {
       selectedFilters.value = facetsFromUrlToFilter();
+      setPrice();
     });
 
     const facetHasMoreThanOneOption = (facet) =>
       facet?.options?.length > 1 || false;
-
-    const clearFilters = () => {
-      selectedFilters.value = [];
-      changeFilters(selectedFilters.value);
-    };
 
     const applyFilters = () => {
       changeFilters(selectedFilters.value);
@@ -152,14 +166,41 @@ export default defineComponent({
           label: option.label,
           id: option.value
         });
-
+        applyFilters();
         return;
       }
 
       selectedFilters.value.splice(alreadySelectedIndex, 1);
+      applyFilters();
+    };
+
+    const selectPrice = (values) => {
+      const newValue = `${toInteger(values[0])}-${toInteger(values[1])}`;
+      newValue[0];
+      price.value = values;
+      const selectedValue = selectedFilters.value.find(
+        (item) => item?.filterName === 'price'
+      );
+
+      if (selectedValue) {
+        selectedValue.id = newValue;
+        applyFilters();
+
+        return;
+      }
+
+      selectedFilters.value.push({
+        label: 'Price',
+        filterName: 'price',
+        id: newValue
+      });
+
+      applyFilters();
     };
 
     return {
+      price,
+      selectPrice,
       selectFilter,
       selectedFilters,
       facetHasMoreThanOneOption,
@@ -171,102 +212,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.filters {
-  &__title {
-    margin: var(--spacer-xs) 0 var(--spacer-base) 0;
-    &:first-child {
-      margin: calc(var(--spacer-sm) + var(--spacer-base)) 0 var(--spacer-xs) 0;
-    }
-  }
-  &__colors {
-    display: flex;
-  }
-  &__color {
-    margin: var(--spacer-xs) var(--spacer-xs) var(--spacer-xs) 0;
-  }
-  &__chosen {
-    color: var(--c-text-muted);
-    font-weight: var(--font-weight--normal);
-    font-family: var(--font-family--secondary);
-    position: absolute;
-    right: var(--spacer-xl);
-  }
-  &__item {
-    --radio-container-padding: 0 var(--spacer-sm) 0 var(--spacer-xl);
-    --radio-background: transparent;
-    --filter-label-color: var(--c-secondary-variant);
-    --filter-count-color: var(--c-secondary-variant);
-    --checkbox-padding: 0 var(--spacer-sm) 0 var(--spacer-xl);
-    padding: var(--spacer-sm) 0;
-    border-bottom: 1px solid var(--c-light);
-    &:last-child {
-      border-bottom: 0;
-    }
-    @include for-desktop {
-      --checkbox-padding: 0;
-      margin: var(--spacer-sm) 0;
-      border: 0;
-      padding: 0;
-    }
-  }
-  &__accordion-item {
-    --accordion-item-content-padding: 0;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
-  }
-  &__buttons {
-    margin: var(--spacer-sm) 0;
-  }
-  &__button-clear {
-    --button-background: var(--c-light);
-    --button-color: var(--c-dark-variant);
-    margin: var(--spacer-xs) 0 0 0;
-  }
-}
-
-.filters-title .sf-heading__title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: var(--line-height--primary);
-  color: var(--_c-greenmind-primary-black);
-}
-.filters__title .sf-heading__title {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: var(--line-height--primary);
-  color: var(--_c-greenmind-primary-black);
-}
-
-.sidebar {
-  margin-left: 8px;
-  width: 290px;
-  border: 1px solid var(--c-light);
-  border-width: 0 1px 0 0;
-}
-.sidebar-filters {
-  --sidebar-title-display: none;
-  --sidebar-top-padding: 0;
-  @include for-desktop {
-    --sidebar-content-padding: 0 var(--spacer-xl);
-    --sidebar-bottom-padding: 0 var(--spacer-xl);
-  }
-}
-::v-deep .sf-checkbox__checkmark {
-  border-radius: 50%;
-}
-::v-deep .sf-checkbox__checkmark:not(.is-active) {
-  border: var(--_c-greenmind-primary-black) solid 1px;
-}
-::v-deep .sf-checkbox__checkmark.is-active {
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-}
-::v-deep .sf-accordion-item__content {
-  margin-top: 25px;
-}
+@import url('~/assets/css/sidebarFilter.scss');
 </style>

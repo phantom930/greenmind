@@ -1,8 +1,8 @@
 <template>
   <SfRange
-    :value="[20, 600]"
     :disabled="false"
     :config="config"
+    @change="$emit('change', arguments[0])"
   />
 </template>
 
@@ -14,13 +14,20 @@ export default {
   components: {
     SfRange
   },
-  setup() {
+  props: {
+    initialPrice: {
+      type: Array,
+      default: () => ([])
+    }
+  },
+  emits: ['change'],
+  setup(props) {
     const { formatDolar } = useCurrency();
 
     const config = reactive({
-      start: [40, 200],
-      range: { min: 20, max: 600 },
-      step: 1,
+      start: props.initialPrice,
+      range: { min: 0, max: 4000 },
+      step: 10,
       connect: true,
       direction: 'ltr',
       orientation: 'horizontal',
