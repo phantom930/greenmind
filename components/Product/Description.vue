@@ -29,3 +29,19 @@ export default defineComponent({
   }
 });
 </script>
+<style scoped>
+  .description-wrap .title-main {
+    text-align: end;
+    color: #1d1f22;
+    margin-bottom: 10px;
+  }
+
+  .description-wrap .description-main {
+    font-size: 14px;
+    color: #72757e;
+    text-align: end;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f2f3;
+    margin-bottom: 26px;
+  }
+</style>

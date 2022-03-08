@@ -85,15 +85,6 @@
             </template>
           </div>
           <div class="total-price-buttons">
-            <!-- This is not working -->
-            <!-- <SfPrice
-              :regular="$n(productGetters.getPrice(product).regular, 'currency')"
-              :special="
-                productGetters.getPrice(product).special &&
-                $n(productGetters.getPrice(product).special, 'currency')
-              "
-              class="total-price"
-            />  -->
             <p class="total-price">
               2.395,-
             </p>
@@ -734,18 +725,4 @@ export default defineComponent({
     margin-bottom: 40px;
   }
 
-  .description-wrap .title-main {
-    text-align: end;
-    color: #1d1f22;
-    margin-bottom: 10px;
-  }
-
-  .description-wrap .description-main {
-    font-size: 14px;
-    color: #72757e;
-    text-align: end;
-    padding-bottom: 16px;
-    border-bottom: 1px solid #f1f2f3;
-    margin-bottom: 26px;
-  }
 </style>
