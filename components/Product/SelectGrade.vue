@@ -53,11 +53,6 @@ export default defineComponent({
       chooseGrade,
       gradeAttributes
     };
-  },
-  data() {
-    return {
-      stock: 5
-    };
   }
 });
 </script>
