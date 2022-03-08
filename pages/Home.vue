@@ -40,54 +40,62 @@
       style="display: flex"
       class="category_card"
     >
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          iPhones
-        </p>
-      </SfButton>
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          Smartphones
-        </p>
-      </SfButton>
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          Smartphones
-        </p>
-      </SfButton>
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          Smartphones
-        </p>
-      </SfButton>
+      <SfLink :link="localePath(`/c/iphones`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            iPhones
+          </p>
+        </SfButton>
+      </SfLink>
+      <SfLink :link="localePath(`/c/smartphones`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            Smartphones
+          </p>
+        </SfButton>
+      </SfLink>
+      <SfLink :link="localePath(`/c/tablets`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            Tablets
+          </p>
+        </SfButton>
+      </SfLink>
+      <SfLink :link="localePath(`/c/computers`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px;">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            Computers
+          </p>
+        </SfButton>
+      </SfLink>
     </div>
     <!-- <div style="display: flex; padding-top: 5%">
       <GreenBannerVertical
@@ -146,7 +154,8 @@ import {
   SfHero,
   SfBanner,
   SfButton,
-  SfImage
+  SfImage,
+  SfLink
 } from '@storefront-ui/vue';
 import { computed } from '@vue/composition-api';
 import {
@@ -166,7 +175,8 @@ export default {
     SfHero,
     SfBanner,
     SfButton,
-    SfImage
+    SfImage,
+    SfLink
   },
   setup(props, { root }) {
     const { result, search } = useFacet();
@@ -307,5 +317,9 @@ export default {
 }
 ::v-deep .categoryCardImage .sf-image{
   object-fit: fill
+}
+::v-deep .sf-link {
+  --button-width: var(--button-size, var(--button-width));
+  text-decoration: none;
 }
 </style>
