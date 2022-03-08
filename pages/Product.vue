@@ -8,6 +8,10 @@
       <LazyHydrate when-idle>
         <SfGallery
           :images="productGallery"
+          :image-width="422"
+          :image-height="644"
+          :nuxt-img-config="{ fit: 'cover' }"
+          :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
         />
       </LazyHydrate>
