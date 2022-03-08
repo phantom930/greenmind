@@ -56,7 +56,7 @@
             </div>
             <div class="carousel-item-price__wrapper">
               <div class="carousel-item-bfr__price">
-                {{ $t("Fra") }}
+                {{ $t("From") }}
               </div>
               <div class="carousel-item__price">
                 {{ items.price + currency }}

@@ -126,7 +126,7 @@
       :feature1="storage"
       :feature2="color"
       :currency="currency"
-      :carousel_title="$t('Populære produkter')"
+      :carousel_title="$t('Popular products')"
       style="padding-top: 5%"
     />
     <div class="bottom_hero">
