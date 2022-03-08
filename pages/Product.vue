@@ -292,7 +292,7 @@ export default {
 
     const { result, search: searchFacet } = useFacet();
     const { params } = root.$router.history.current;
-    const sliderProducts = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
+    const sliderProducts = computed(() => facetGetters.getProducts(result.value).slice(0, 4));
 
     onSSR(async () => {
       await searchRealProduct({

@@ -24,7 +24,7 @@
       }"
     >
       <SfCarouselItem
-        v-for="(items, i) in item.slice(0, 10)"
+        v-for="(items, i) in item.slice(0, 4)"
         :key="i"
       >
         <SfLink

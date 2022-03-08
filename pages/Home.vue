@@ -181,7 +181,7 @@ export default {
   setup(props, { root }) {
     const { result, search } = useFacet();
     const { params } = root.$router.history.current;
-    const products = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
+    const products = computed(() => facetGetters.getProducts(result.value).slice(0, 4));
     const { toggleNewsletterModal } = useUiState();
     const { sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();

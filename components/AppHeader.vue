@@ -320,4 +320,3 @@ export default {
   left: 40%;
 }
 </style>
-</style>
