@@ -38,7 +38,7 @@
         <div>
           <ProductSelectGrade
             :product-attributes="product.attributeValues"
-            :base-product-price="price.regular"
+            :base-product-price="price"
             @update="updateFilter"
           />
 
@@ -275,7 +275,7 @@ export default defineComponent({
     );
     const code = computed(() => productGetters.getCode(product.value));
 
-    const price = computed(() => productGetters.getPrice(product.value));
+    const price = computed(() => productGetters.getPrice(product.value)?.regular || 0);
 
     const breadcrumbs = computed(() =>
       facetGetters.getBreadcrumbsByProduct(product.value)

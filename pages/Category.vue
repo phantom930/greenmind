@@ -6,7 +6,9 @@
       <CategoryNavbar />
 
       <div class="main section">
-        <CategorySidebarFilters :facets="facets" />
+        <LazyHydrate when-idle>
+          <CategorySidebarFilters :facets="facets" />
+        </LazyHydrate>
 
         <SfLoader
           :class="{ loading }"
@@ -17,9 +19,7 @@
             class="products"
           >
             <transition-group
-              v-if="isCategoryGridView"
               appear
-              name="products__slide"
               tag="div"
               class="products__grid"
             >
@@ -28,73 +28,6 @@
                 :key="product.id"
                 :product="product"
               />
-            </transition-group>
-            <transition-group
-              v-else
-              appear
-              name="products__slide"
-              tag="div"
-              class="products__list"
-            >
-              <SfProductCardHorizontal
-                v-for="(product, i) in products"
-                :key="product.id"
-                v-model="products[i].qty"
-                v-e2e="'category-product-card'"
-                :style="{ '--index': i }"
-                :image-width="216"
-                :image-height="288"
-                :title="productGetters.getName(product)"
-                :description="productGetters.getDescription(product)"
-                :image="$image(productGetters.getCoverImage(product))"
-                :nuxt-img-config="{ fit: 'cover' }"
-                image-tag="nuxt-img"
-                :regular-price="
-                  $n(productGetters.getPrice(product).regular, 'currency')
-                "
-                :special-price="
-                  productGetters.getPrice(product).special &&
-                    $n(productGetters.getPrice(product).special, 'currency')
-                "
-                :max-rating="5"
-                :score-rating="3"
-                :is-in-wishlist="isInWishlist({ product })"
-                class="products__product-card-horizontal"
-                :link="
-                  localePath(
-                    `/p/${productGetters.getId(
-                      product
-                    )}/${productGetters.getSlug(product)}`
-                  )
-                "
-                @click:wishlist="addItemToWishlist({ product })"
-                @click:add-to-cart="
-                  addItemToCart({ product, quantity: product.qty })
-                "
-              >
-                <template #configuration>
-                  <SfProperty
-                    class="desktop-only"
-                    name="Size"
-                    value="XS"
-                    style="margin: 0 0 1rem 0"
-                  />
-                  <SfProperty
-                    class="desktop-only"
-                    name="Color"
-                    value="white"
-                  />
-                </template>
-                <template #actions>
-                  <SfButton
-                    class="sf-button--text desktop-only"
-                    style="margin: 0 0 1rem auto; display: block"
-                    @click="() => {}"
-                  >
-                    {{ $t("Save for later") }}
-                  </SfButton>
-                </template>
-              </SfProductCardHorizontal>
             </transition-group>
           </div>
           <div
@@ -127,21 +60,21 @@
 </template>
 
 <script>
-import { SfButton, SfImage, SfLoader, SfProductCardHorizontal, SfProperty } from '@storefront-ui/vue';
+import { computed, onMounted } from '@nuxtjs/composition-api';
+import { SfButton, SfImage, SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
-import { facetGetters, productGetters, useCart, useFacet, useWishlist} from '@vue-storefront/odoo';
-import { computed, onMounted } from '@nuxtjs/composition-api';
-import { useUiHelpers, useUiState, useUiCategoryHelpers } from '~/composables';
+import { facetGetters, productGetters, useCart, useFacet, useWishlist } from '@vue-storefront/odoo';
+import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
+import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
   name: 'Category',
   components: {
     SfButton,
-    SfProductCardHorizontal,
     SfLoader,
-    SfProperty,
-    SfImage
+    SfImage,
+    LazyHydrate
   },
   transition: 'fade',
   emits: ['close'],
