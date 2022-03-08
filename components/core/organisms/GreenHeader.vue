@@ -15,7 +15,7 @@
             data-cy="app-header-top-categories"
             class="nav-item"
             :label="category.name"
-            :link="localePath(`/c/${category.slug}/${category.id}`)"
+            :link="localePath(`/${category.slug}`)"
           />
         </div>
         <nuxt-link
@@ -275,9 +275,18 @@ export default {
   data() {
     return {
       sbCategories: [
-        { name: 'SÆLG TIL OS' },
-        { name: 'REPARATION' },
-        { name: 'FIND BUTIK' }
+        {
+          name: 'SÆLG TIL OS',
+          slug: 'saelg-til-os'
+        },
+        {
+          name: 'REPARATION',
+          slug: 'reparation'
+        },
+        {
+          name: 'FIND BUTIK',
+          slug: 'find-butik'
+        }
       ]
     };
   }
