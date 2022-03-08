@@ -6,77 +6,53 @@
         <a href="#">Læs mere</a>
       </div>
       <div class="prices-wrap">
-        <a
-          href="#"
+        <span
+          v-for="(attribute, index) in gradeAttributes"
+          :key="index"
           class="price-discount-wrap"
         >
-          <div class="price-wrap">
-            <p>Ny vare</p>
-            <div class="price">2.395,-</div>
+          <div
+            class="price-wrap cursor-pointer"
+            @click="chooseGrade(attribute)"
+          >
+            <p>{{ attribute.name }}</p>
+            <div class="price">{{ baseProductPrice }}</div>
           </div>
-          <div class="discount">2.989,-</div>
-        </a>
-        <a
-          href="#"
-          class="price-discount-wrap"
-        >
-          <div class="price-wrap">
-            <p>Som ny</p>
-            <div class="price">2.395,-</div>
-          </div>
-        </a>
-        <a
-          href="#"
-          class="price-discount-wrap"
-        >
-          <div class="price-wrap">
-            <p>Meget flot</p>
-            <div class="price">2.395,-</div>
-          </div>
-        </a>
-        <a
-          href="#"
-          class="price-discount-wrap"
-        >
-          <div class="price-wrap">
-            <p>Okay</p>
-            <div class="price">2.395,-</div>
-          </div>
-        </a>
-        <a
-          href="#"
-          class="price-discount-wrap"
-        >
-          <div class="price-wrap">
-            <p>Slidt</p>
-            <div class="price">2.395,-</div>
-          </div>
-        </a>
+          <div class="discount">{{ attribute.priceExtra }}</div>
+        </span>
       </div>
-    </div>
-    <div class="description-wrap">
-      <div class="title-main">
-        Meget flot
-      </div>
-      <p class="description-main">
-        Screen: May have micro-scratches which are not noticeable when<br>
-        the screen is turned on. Body: Has visible scratches and/or dents
-      </p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, computed, ComputedRef, PropType } from '@nuxtjs/composition-api';
+import { Attribute } from '@vue-storefront/odoo-api';
+
 export default defineComponent({
   props: {
     productAttributes: {
-      type: Array,
+      type: Array as PropType<Array<Attribute>>,
       default: () => ([])
+    },
+    baseProductPrice: {
+      type: Number,
+      required: true
     }
   },
-  setup () {
+  emits: ['update'],
+  setup (props, {emit}) {
+    const gradeAttributes : ComputedRef<Attribute[]> =
+      computed(() => props.productAttributes?.filter(atribute => atribute.attributeName === 'Grade'));
 
+    const chooseGrade = (attribute : Attribute) => {
+      emit('update', { Grade: attribute.id });
+    };
+
+    return {
+      chooseGrade,
+      gradeAttributes
+    };
   },
   data() {
     return {
