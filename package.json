@@ -9,6 +9,7 @@
     "build:analyze": "nuxt build -a -m",
     "cypress:open": "cypress open",
     "lint": "eslint . --ext .ts,.vue",
+    "lint:ts": "tslint --project tsconfig.json --config tslint.json",
     "lint:fix": "eslint . --ext .ts,.vue --fix",
     "dev": "nuxt",
     "generate": "nuxt generate",
@@ -17,6 +18,15 @@
     "update:check": "ncu",
     "update:update": "ncu -u",
     "test": "jest"
+  },
+  "lint-staged": {
+    "*.ts": "yarn lint:ts",
+    "*.tsx": "yarn lint:ts"
+   },
+   "husky": { 
+    "hooks": {
+       "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "@nuxtjs/amp": "^0.5.4",
@@ -32,6 +42,7 @@
     "currency.js": "^2.0.4",
     "eslint": "^8.9.0",
     "eslint-plugin-vue": "^8.5.0",
+    "husky": "^7.0.4",
     "nuxt": "2.15.6",
     "nuxt-i18n": "^6.5.0",
     "nuxt-precompress": "^0.5.9",
