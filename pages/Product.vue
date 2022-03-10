@@ -39,6 +39,7 @@
           <ProductSelectGrade
             :product-attributes="product.attributeValues"
             :base-product-price="price"
+            :selected-grade="selectedGrade"
             @update="updateFilter"
           />
 
@@ -61,29 +62,7 @@
               :image="$image(accessoryProduct.image)"
             />
           </div>
-          <div
-            v-if="options.color"
-            class="product__colors desktop-only"
-          >
-            <template v-for="(option, colorKey) in options.color">
-              <p
-                :key="colorKey"
-                class="product__color-label"
-              >
-                {{ $t("Color") }}:
-              </p>
 
-              <SfColor
-                v-for="(color, itemKey) in option.values"
-                :key="`${colorKey}_${itemKey}`"
-                required
-                :color="color.label"
-                class="product__color"
-                :selected="checkSelected(option.label, color.value)"
-                @click="updateFilter({ [option.label]: color.value })"
-              />
-            </template>
-          </div>
           <div class="total-price-buttons">
             <p class="total-price">
               2.395,-
@@ -218,7 +197,7 @@ import {
 } from '@vue-storefront/odoo';
 
 import { onSSR } from '@vue-storefront/core';
-import { useRoute } from '@nuxtjs/composition-api';
+import { useRoute, ComputedRef } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
 export default defineComponent({
   name: 'Product',
@@ -339,7 +318,10 @@ export default defineComponent({
       return root.$route.query[attribute] === value;
     };
 
+    const selectedGrade = computed(() => route.value?.query?.Grade);
+
     return {
+      selectedGrade,
       price,
       productloading,
       breadcrumbs,

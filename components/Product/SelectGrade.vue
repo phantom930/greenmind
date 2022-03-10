@@ -13,6 +13,7 @@
         >
           <div
             class="price-wrap cursor-pointer"
+            :class="{'border-solid border-2 border-emerald-200 ': parseInt(selectedGrade) === attribute.id}"
             @click="chooseGrade(attribute)"
           >
             <p>{{ attribute.name }}</p>
@@ -26,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ComputedRef, PropType } from '@nuxtjs/composition-api';
+import { computed, ComputedRef, defineComponent, PropType } from '@nuxtjs/composition-api';
 import { Attribute } from '@vue-storefront/odoo-api';
 
 export default defineComponent({
@@ -38,10 +39,14 @@ export default defineComponent({
     baseProductPrice: {
       type: Number,
       required: true
+    },
+    selectedGrade: {
+      type: String,
+      default: ''
     }
   },
   emits: ['update'],
-  setup (props, {emit}) {
+  setup (props, { emit }) {
     const gradeAttributes : ComputedRef<Attribute[]> =
       computed(() => props.productAttributes?.filter(atribute => atribute.attributeName === 'Grade'));
 

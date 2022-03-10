@@ -91,7 +91,7 @@
 
     <GreenEmailForm class="col-start-3 col-end-5 " />
 
-    <div class="mobile-only mt-12 mb-10 flex justify-center">
+    <div class="mobile-only mt-12 mb-10 flex justify-center smartphone-only">
       <SfImage
         :width="35"
         :height="35"

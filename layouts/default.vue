@@ -6,10 +6,10 @@
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
-    <!-- <GreenTopbarTertiary /> -->
+    <GreenTopbarTertiary />
 
     <div id="">
-      <nuxt />   <!-- :key="$route.fullPath"  -> This doens't let nuxt-link to '/' work nor router.push('/') -->
+      <nuxt :key="$route.fullPath" />   <!-- :key="$route.fullPath"  -> This doens't let nuxt-link to '/' work nor router.push('/') -->
 
       <LazyHydrate when-visible>
         <BottomNavigation />

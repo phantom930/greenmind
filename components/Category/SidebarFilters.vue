@@ -92,10 +92,7 @@ import { ref, onMounted, defineComponent } from '@nuxtjs/composition-api';
 import {
   SfAccordion,
   SfColor,
-  SfFilter,
-  SfMenuItem,
   SfHeading,
-  SfSidebar,
   SfList,
   SfCheckbox
 } from '@storefront-ui/vue';
@@ -104,10 +101,7 @@ import { useCurrency, useUiHelpers } from '~/composables';
 
 export default defineComponent({
   components: {
-    SfSidebar,
     SfColor,
-    SfFilter,
-    SfMenuItem,
     SfHeading,
     SfAccordion,
     SfList,
