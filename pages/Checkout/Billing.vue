@@ -1,8 +1,5 @@
 <template>
-  <ValidationObserver
-    v-slot="{ handleSubmit, invalid }"
-    ref="formRef"
-  >
+  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
     <SfHeading
       :level="3"
       :title="$t('Billing')"
@@ -91,7 +88,10 @@
             v-model="form.country.id"
             label="Country"
             name="country"
-            class="form__element form__element--half form__select sf-select--underlined"
+            class="
+              form__element form__element--half form__select
+              sf-select--underlined
+            "
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -107,29 +107,44 @@
         </ValidationProvider>
 
         <ValidationProvider
-          v-slot="{ errors, validate }"
           name="state"
           rules="required"
+          v-slot="{ errors, validate }"
           slim
         >
           <SfSelect
+            v-if="countryStates && countryStates.length"
             v-model="form.state.id"
             label="State/Province"
             name="state"
-            class="form__element form__element--half form__select sf-select--underlined form__element--half-even"
+            class="
+              form__element form__element--half form__select
+              sf-select--underlined
+              form__element--half-even
+            "
             required
-            :valid="!errors[0]"
-            :error-message="errors[0]"
             @change="validate"
+            :valid="!errors[0]"
+            :errorMessage="errors[0]"
           >
             <SfSelectOption
               v-for="countryStateOption in countryStates"
-              :key="countryStateOption.id"
-              :value="countryStateOption.id"
+              :key="countryStateOption && countryStateOption.id"
+              :value="countryStateOption && countryStateOption.id"
             >
               {{ countryStateOption.name }}
             </SfSelectOption>
           </SfSelect>
+          <SfSelect
+            v-else
+            class="
+              form__element
+              form__element--half
+              form__select
+              form__element--half-even
+              invisible
+            "
+          />
         </ValidationProvider>
 
         <ValidationProvider
@@ -170,32 +185,34 @@ import {
   SfInput,
   SfButton,
   SfSelect,
-  SfCheckbox
-} from '@storefront-ui/vue';
-import { ref, onMounted, watch } from '@nuxtjs/composition-api';
-import { onSSR } from '@vue-storefront/core';
+  SfCheckbox,
+} from "@storefront-ui/vue";
+import { ref, onMounted, watch, computed } from "@nuxtjs/composition-api";
+import { onSSR } from "@vue-storefront/core";
 import {
   useBilling,
   useCountrySearch,
-  useShippingAsBillingAddress
-} from '@vue-storefront/odoo';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+  useShippingAsBillingAddress,
+  useCart,
+  cartGetters,
+} from "@vue-storefront/odoo";
+import { required, min, digits } from "vee-validate/dist/rules";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 
-extend('required', {
+extend("required", {
   ...required,
-  message: 'This field is required'
+  message: "This field is required",
 });
-extend('min', {
+extend("min", {
   ...min,
-  message: 'The field should have at least {length} characters'
+  message: "The field should have at least {length} characters",
 });
-extend('digits', {
+extend("digits", {
   ...digits,
-  message: 'Please provide a valid phone number'
+  message: "Please provide a valid phone number",
 });
 export default {
-  name: 'Billing',
+  name: "Billing",
   components: {
     SfHeading,
     SfInput,
@@ -203,9 +220,13 @@ export default {
     SfSelect,
     SfCheckbox,
     ValidationProvider,
-    ValidationObserver
+    ValidationObserver,
   },
   setup(props, { root }) {
+    const { cart } = useCart();
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    if (totalItems.value === 0) root.$router.push("/cart");
+
     const { search, searchCountryStates, countries, countryStates } =
       useCountrySearch();
     const { load: loadBillingAddress, billing, save, error } = useBilling();
@@ -217,13 +238,13 @@ export default {
     const formRef = ref(false);
 
     const form = ref({
-      name: '',
-      street: '',
-      city: '',
+      name: "",
+      street: "",
+      city: "",
       state: { id: null },
       country: { id: null },
-      zip: '',
-      phone: null
+      zip: "",
+      phone: null,
     });
 
     const handleCheckSameAddress = async () => {
@@ -242,7 +263,7 @@ export default {
       isFormSubmitted.value = true;
 
       if (!error.save) {
-        root.$router.push('/checkout/payment');
+        root.$router.push("/checkout/payment");
       }
     };
 
@@ -262,8 +283,15 @@ export default {
       async () => {
         await searchCountryStates(form?.value?.country?.id || null);
         if (!countryStates.value || countryStates.value.length === 0) {
-          form.value.state.id = null;
+          form.value.state.id = 1;
         }
+      }
+    );
+
+    watch(
+      () => totalItems.value,
+      () => {
+        if (totalItems.value === 0) root.$router.push("/cart");
       }
     );
 
@@ -275,9 +303,9 @@ export default {
       handleCheckSameAddress,
       sameAsShipping,
       form,
-      handleFormSubmit
+      handleFormSubmit,
     };
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>

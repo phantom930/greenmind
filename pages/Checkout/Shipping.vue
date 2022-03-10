@@ -1,8 +1,5 @@
 <template>
-  <ValidationObserver
-    v-slot="{ handleSubmit, invalid }"
-    ref="formRef"
-  >
+  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
     <SfHeading
       :level="3"
       :title="$t('Shipping Details')"
@@ -15,10 +12,7 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div
-        v-if="canAddNewAddress"
-        class="form"
-      >
+      <div v-if="canAddNewAddress" class="form">
         <div class="first-name-last-name">
           <ValidationProvider
             v-slot="{ errors }"
@@ -113,7 +107,10 @@
             v-model="form.country.id"
             label="Country"
             name="country"
-            class="form__element form__element--half form__select sf-select--underlined"
+            class="
+              form__element form__element--half form__select
+              sf-select--underlined
+            "
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -126,6 +123,45 @@
               {{ countryOption.name }}
             </SfSelectOption>
           </SfSelect>
+        </ValidationProvider>
+        <ValidationProvider
+          name="state"
+          rules="required"
+          v-slot="{ errors }"
+          slim
+        >
+          <SfSelect
+            v-if="countryStates && countryStates.length"
+            v-model="form.state.id"
+            label="State/Province"
+            name="state"
+            class="
+              form__element form__element--half form__select
+              sf-select--underlined
+              form__element--half-even
+            "
+            required
+            :valid="!errors[0]"
+            :errorMessage="errors[0]"
+          >
+            <SfSelectOption
+              v-for="countryStateOption in countryStates"
+              :key="countryStateOption && countryStateOption.id"
+              :value="countryStateOption && countryStateOption.id"
+            >
+              {{ countryStateOption.name }}
+            </SfSelectOption>
+          </SfSelect>
+          <SfSelect
+            v-else
+            class="
+              form__element
+              form__element--half
+              form__select
+              form__element--half-even
+              invisible
+            "
+          />
         </ValidationProvider>
         <ValidationProvider
           v-slot="{ errors }"
@@ -167,7 +203,7 @@
       <ShippingTab />
       <SfButton
         type="submit"
-        :disabled="invalid"
+        :disabled="!form.selectedMethodShipping || invalid"
         class="revieworder_button"
         @click="$router.push('/checkout/revieworder')"
       >
@@ -178,26 +214,28 @@
 </template>
 
 <script>
-import { SfHeading, SfInput, SfButton, SfSelect } from '@storefront-ui/vue';
-import { ref, watch, onMounted, computed } from '@nuxtjs/composition-api';
+import { SfHeading, SfInput, SfButton, SfSelect } from "@storefront-ui/vue";
+import { ref, watch, onMounted, computed } from "@nuxtjs/composition-api";
 import {
   useCountrySearch,
   useUser,
+  useCart,
+  cartGetters,
   userShippingGetters,
-  useShipping
-} from '@vue-storefront/odoo';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+  useShipping,
+} from "@vue-storefront/odoo";
+import { required, min, digits } from "vee-validate/dist/rules";
+import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
 
-extend('required', { ...required, message: 'This field is required' });
-extend('min', {
+extend("required", { ...required, message: "This field is required" });
+extend("min", {
   ...min,
-  message: 'The field should have at least {length} characters'
+  message: "The field should have at least {length} characters",
 });
-extend('digits', { ...digits, message: 'Please provide a valid phone number' });
+extend("digits", { ...digits, message: "Please provide a valid phone number" });
 
 export default {
-  name: 'Shipping',
+  name: "Shipping",
   components: {
     SfHeading,
     SfInput,
@@ -206,15 +244,18 @@ export default {
     ValidationProvider,
     ValidationObserver,
     UserShippingAddresses: () =>
-      import('~/components/Checkout/UserShippingAddresses.vue'),
+      import("~/components/Checkout/UserShippingAddresses.vue"),
     VsfShippingProvider: () =>
-      import('~/components/Checkout/VsfShippingProvider')
+      import("~/components/Checkout/VsfShippingProvider"),
   },
-  emits: ['finish'],
+  emits: ["finish"],
   setup(props, { root, emit }) {
+    const { cart } = useCart();
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    if (totalItems.value === 0) root.$router.push('/cart');
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
-    const currentAddressId = ref('');
+    const currentAddressId = ref("");
     const defaultShippingAddress = ref(false);
     const isShippingDetailsStepCompleted = ref(false);
     const canAddNewAddress = ref(true);
@@ -227,26 +268,26 @@ export default {
       useCountrySearch();
 
     const form = ref({
-      fname: '',
-      lname: '',
-      street: '',
-      city: '',
+      fname: "",
+      lname: "",
+      street: "",
+      city: "",
       state: { id: null },
       country: { id: null },
-      zip: '',
+      zip: "",
       phone: null,
-      selectedMethodShipping: null
+      selectedMethodShipping: null,
     });
 
     const handleFormSubmit = async () => {
       await save({ shippingDetails: form.value });
       isFormSubmitted.value = true;
 
-      if (root.$router.history.current.path !== '/my-account/shipping-details')
-        root.$router.push('/checkout/revieworder');
-      else root.$router.push('/my-account/shipping-details');
+      if (root.$router.history.current.path !== "/my-account/shipping-details")
+        root.$router.push("/checkout/revieworder");
+      else root.$router.push("/my-account/shipping-details");
 
-      emit('finish', true);
+      emit("finish", true);
     };
 
     const hasSavedShippingAddress = computed(() => {
@@ -259,7 +300,7 @@ export default {
     });
 
     const handleAddNewAddressBtnClick = () => {
-      currentAddressId.value = '';
+      currentAddressId.value = "";
       form.value = {};
       canAddNewAddress.value = true;
       isShippingDetailsStepCompleted.value = false;
@@ -290,11 +331,16 @@ export default {
       async () => {
         await searchCountryStates(form.value.country.id);
         if (!countryStates.value || countryStates.value.length === 0) {
-          form.value.state.id = null;
+          form.value.state.id = 1;
         }
       }
     );
-
+    watch(
+      () => totalItems.value,
+      () => {
+        if (totalItems.value === 0) root.$router.push("/cart");
+      }
+    );
     return {
       formRef,
       handleSelectedMethodShipping,
@@ -311,9 +357,9 @@ export default {
       form,
       countries,
       countryStates,
-      handleFormSubmit
+      handleFormSubmit,
     };
-  }
+  },
 };
 </script>
 

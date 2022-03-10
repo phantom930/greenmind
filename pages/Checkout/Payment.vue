@@ -1,55 +1,38 @@
 <template>
   <div class="payment-page">
-    <h3 class="title">
-      Payment Methods
-    </h3>
+    <h3 class="title">Payment Methods</h3>
     <div class="payment-method">
       <div class="method">
         <label class="container">
-          <input
-            type="checkbox"
-            checked="checked"
-          >
+          <input type="checkbox" checked="checked" />
           <span class="checkmark" />
         </label>
-        <img :src="require('/assets/images/payment/visa.png')">
+        <img :src="require('/assets/images/payment/visa.png')" />
       </div>
       <div class="method">
         <label class="container">
-          <input
-            type="checkbox"
-            checked="checked"
-          >
+          <input type="checkbox" checked="checked" />
           <span class="checkmark" />
         </label>
-        <img :src="require('/assets/images/payment/master.png')">
+        <img :src="require('/assets/images/payment/master.png')" />
       </div>
       <div class="method">
         <label class="container">
-          <input
-            type="checkbox"
-            checked="checked"
-          >
+          <input type="checkbox" checked="checked" />
           <span class="checkmark" />
         </label>
-        <img :src="require('/assets/images/payment/visae.png')">
+        <img :src="require('/assets/images/payment/visae.png')" />
       </div>
       <div class="method">
         <label class="container">
-          <input
-            type="checkbox"
-            checked="checked"
-          >
+          <input type="checkbox" checked="checked" />
           <span class="checkmark" />
         </label>
         <p>Cash on delivery</p>
       </div>
       <div class="method">
         <label class="container">
-          <input
-            type="checkbox"
-            checked="checked"
-          >
+          <input type="checkbox" checked="checked" />
           <span class="checkmark" />
         </label>
         <p>Check</p>
@@ -95,21 +78,11 @@
             value=""
             placeholder=""
           >
-            <SfSelectOption value="amaranth">
-              Amaranth
-            </SfSelectOption>
-            <SfSelectOption value="amber">
-              Amber
-            </SfSelectOption>
-            <SfSelectOption value="arctic-lime">
-              Arctic lime
-            </SfSelectOption>
-            <SfSelectOption value="bluetiful">
-              Bluetiful
-            </SfSelectOption>
-            <SfSelectOption value="buff">
-              Buff
-            </SfSelectOption>
+            <SfSelectOption value="amaranth"> Amaranth </SfSelectOption>
+            <SfSelectOption value="amber"> Amber </SfSelectOption>
+            <SfSelectOption value="arctic-lime"> Arctic lime </SfSelectOption>
+            <SfSelectOption value="bluetiful"> Bluetiful </SfSelectOption>
+            <SfSelectOption value="buff"> Buff </SfSelectOption>
           </SfSelect>
           <SfSelect
             class="sf-select--underlined"
@@ -121,21 +94,11 @@
             value=""
             placeholder=""
           >
-            <SfSelectOption value="amaranth">
-              Amaranth
-            </SfSelectOption>
-            <SfSelectOption value="amber">
-              Amber
-            </SfSelectOption>
-            <SfSelectOption value="arctic-lime">
-              Arctic lime
-            </SfSelectOption>
-            <SfSelectOption value="bluetiful">
-              Bluetiful
-            </SfSelectOption>
-            <SfSelectOption value="buff">
-              Buff
-            </SfSelectOption>
+            <SfSelectOption value="amaranth"> Amaranth </SfSelectOption>
+            <SfSelectOption value="amber"> Amber </SfSelectOption>
+            <SfSelectOption value="arctic-lime"> Arctic lime </SfSelectOption>
+            <SfSelectOption value="bluetiful"> Bluetiful </SfSelectOption>
+            <SfSelectOption value="buff"> Buff </SfSelectOption>
           </SfSelect>
         </div>
       </div>
@@ -156,9 +119,7 @@
       </div>
       <div class="checkbox-wrap">
         <GreenCheckbox />
-        <p class="label">
-          Save this card for other purchases.
-        </p>
+        <p class="label">Save this card for other purchases.</p>
       </div>
       <button
         class="color-primary sf-button confirm-btn"
@@ -187,22 +148,22 @@ import {
   // SfLink,
   // SfRadio,
   SfInput,
-  SfSelect
-} from '@storefront-ui/vue';
-import { onSSR } from '@vue-storefront/core';
-import { useUiHelpers } from '~/composables';
+  SfSelect,
+} from "@storefront-ui/vue";
+import { onSSR } from "@vue-storefront/core";
+import { useUiHelpers } from "~/composables";
 
-import { ref, computed } from '@vue/composition-api';
+import { ref, computed, watch } from "@vue/composition-api";
 import {
   useMakeOrder,
   useCart,
   cartGetters,
   orderGetters,
-  usePayment
-} from '@vue-storefront/odoo';
+  usePayment,
+} from "@vue-storefront/odoo";
 
 export default {
-  name: 'ReviewOrder',
+  name: "ReviewOrder",
   components: {
     // SfHeading,
     // SfTable,
@@ -217,7 +178,7 @@ export default {
     // SfLink,
     // SfRadio,
     SfInput,
-    SfSelect
+    SfSelect,
     // VsfPaymentProvider: () =>
     //   import('~/components/Checkout/VsfPaymentProvider'),
     // AdyenPaymentProvider: () =>
@@ -229,9 +190,12 @@ export default {
     // AbstractPaymentObserver: () =>
     //   import('~/components/Checkout/AbstractPaymentObserver')
   },
-  emits: ['status'],
+  emits: ["status"],
   setup(props, context) {
     const { cart, load, setCart } = useCart();
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    if (totalItems.value === 0) context.root.$router.push("/cart");
+
     const { providerList, getPaymentProviderList } = usePayment();
     const { order, make, loading } = useMakeOrder();
     const th = useUiHelpers();
@@ -243,7 +207,7 @@ export default {
     const selectProvider = (provider) => {
       isPaymentReady.value = false;
       selectedProvider.value = provider;
-      context.emit('status');
+      context.emit("status");
     };
 
     onSSR(async () => {
@@ -255,12 +219,19 @@ export default {
       await make();
 
       const thankYouPath = {
-        name: 'thank-you',
-        query: { order: orderGetters.getId(order.value) }
+        name: "thank-you",
+        query: { order: orderGetters.getId(order.value) },
       };
       context.root.$router.push(context.root.localePath(thankYouPath));
       setCart(null);
     };
+
+    watch(
+      () => totalItems.value,
+      () => {
+        if (totalItems.value === 0) context.root.$router.push("/cart");
+      }
+    );
 
     const providerPaymentHandler = () => {};
 
@@ -274,7 +245,7 @@ export default {
       loading,
       products: computed(() => cartGetters.getItems(cart.value)),
       totals: computed(() => cartGetters.getTotals(cart.value)),
-      tableHeaders: ['Description', 'Size', 'Color', 'Quantity', 'Amount'],
+      tableHeaders: ["Description", "Size", "Color", "Quantity", "Amount"],
       cartGetters,
       processOrder,
       providerList,
@@ -282,9 +253,9 @@ export default {
       selectedProvider,
       providerListHasMoreThanOne,
       providerPaymentHandler,
-      getComponentProviderByName: th.getComponentProviderByName
+      getComponentProviderByName: th.getComponentProviderByName,
     };
-  }
+  },
 };
 </script>
 

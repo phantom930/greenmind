@@ -14,20 +14,10 @@
           :value="totalItems"
         />
       </template>
-      <transition
-        name="sf-fade"
-        mode="out-in"
-      >
-        <div
-          v-if="totalItems"
-          key="my-cart"
-          class="my-cart"
-        >
+      <transition name="sf-fade" mode="out-in">
+        <div v-if="totalItems" key="my-cart" class="my-cart">
           <div class="collected-product-list">
-            <transition-group
-              name="sf-fade"
-              tag="div"
-            >
+            <transition-group name="sf-fade" tag="div">
               <LazyGreenCollectedProduct
                 v-for="product in products"
                 :key="product.id"
@@ -37,11 +27,7 @@
             </transition-group>
           </div>
         </div>
-        <div
-          v-else
-          key="empty-cart"
-          class="empty-cart"
-        >
+        <div v-else key="empty-cart" class="empty-cart">
           <div class="empty-cart__banner">
             <SfImage
               alt="Empty bag"
@@ -76,13 +62,13 @@
             </SfProperty>
             <nuxt-link to="/checkout/personaldetails">
               <SfButton
-                class="sf-button--full-width checkout_button"
+                class="sf-button--full-width checkout_button mb-4"
                 @click="toggleCartSidebar"
               >
                 {{ $t("checkout") }}
               </SfButton>
             </nuxt-link>
-            <nuxt-link to="/Cart/DetailedCart">
+            <nuxt-link to="/cart">
               <SfButton
                 class="sf-button--full-width details_button"
                 @click="toggleCartSidebar"
@@ -111,22 +97,22 @@ import {
   SfButton,
   SfProperty,
   SfPrice,
-  SfImage
-} from '@storefront-ui/vue';
-import { computed } from '@vue/composition-api';
-import { useCart, useUser, cartGetters } from '@vue-storefront/odoo';
-import { useUiState } from '~/composables';
-import { onSSR } from '@vue-storefront/core';
+  SfImage,
+} from "@storefront-ui/vue";
+import { computed } from "@vue/composition-api";
+import { useCart, useUser, cartGetters } from "@vue-storefront/odoo";
+import { useUiState } from "~/composables";
+import { onSSR } from "@vue-storefront/core";
 
 export default {
-  name: 'Cart',
+  name: "Cart",
   components: {
     SfSidebar,
     SfButton,
     SfHeading,
     SfProperty,
     SfPrice,
-    SfImage
+    SfImage,
   },
   setup() {
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
@@ -149,9 +135,9 @@ export default {
       toggleCartSidebar,
       totals,
       totalItems,
-      cartGetters
+      cartGetters,
     };
-  }
+  },
 };
 </script>
 
@@ -278,7 +264,12 @@ export default {
 }
 .empty-cart__button {
   --button-background: var(--_c-greenmind-pine-primary-dark-green)
-    radial-gradient(circle, transparent 1%, var(--_c-greenmind-pine-primary-dark-green) 1%) center/15000%;;
+    radial-gradient(
+      circle,
+      transparent 1%,
+      var(--_c-greenmind-pine-primary-dark-green) 1%
+    )
+    center/15000%;
   --button-border-radius: 100px;
   font-family: var(--font-family--primary);
   font-size: 14px;
@@ -292,7 +283,12 @@ export default {
 .empty-cart__button:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-fern-secondary-medium-green)
-    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+    radial-gradient(
+      circle,
+      transparent 40%,
+      var(--_c-greenmind-mint-secondary-light-green) 1%
+    )
+    center/15000%;
   --button-transition: background 0s;
   --button-text-decoration: underline;
   background-size: 100%;
@@ -309,7 +305,7 @@ export default {
 }
 ::v-deep .sf-value {
   font-family: var(--font-family--primary);
-    font-size: 20px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 24px;
   color: var(--_c-greenmind-primary-black);
