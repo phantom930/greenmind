@@ -127,32 +127,32 @@ export default {
           title: 'Product',
           childs: [
             {
-              name: this.$i18n.t('iPhones'),
+              name: 'iPhones',
               slug: '/c/iphones',
               id: 3
             },
             {
-              name: this.$i18n.t('Smartphones'),
+              name: 'Smartphones',
               slug: '/c/cell-phones',
               id: 1
             },
             {
-              name: this.$i18n.t('Tablets'),
+              name: 'Tablets',
               slug: '/c/tablets',
               id: 96
             },
             {
-              name: this.$i18n.t('Computers'),
+              name: 'Computers',
               slug: '/c/computers',
               id: 99
             },
             {
-              name: this.$i18n.t('Accessories'),
+              name: 'Accessories',
               slug: '/c/accessories',
               id: 154
             },
             {
-              name: this.$i18n.t('Other products'),
+              name: 'Other products',
               slug: '/c/other-products',
               id: 138
             }
@@ -162,27 +162,27 @@ export default {
           title: 'About us',
           childs: [
             {
-              name: this.$i18n.t('Why choose Greenmind?'),
+              name: 'Why choose Greenmind?',
               slug: '/why-greenmind',
               id: ''
             },
             {
-              name: this.$i18n.t('How do you sell?'),
+              name: 'How do you sell?',
               slug: '/how-do-you-sell',
               id: ''
             },
             {
-              name: this.$i18n.t('How to buy?'),
+              name: 'How to buy?',
               slug: '/how-to-buy',
               id: ''
             },
             {
-              name: this.$i18n.t('Reparation'),
+              name: 'Reparation',
               slug: '/reparation',
               id: ''
             },
             {
-              name: this.$i18n.t('Blog'),
+              name: 'Blog',
               slug: '/blog',
               id: ''
             }
@@ -192,32 +192,32 @@ export default {
           title: 'Help',
           childs: [
             {
-              name: this.$i18n.t('Customer service'),
+              name: 'Customer service',
               slug: '/customer-service',
               id: ''
             },
             {
-              name: this.$i18n.t('Shipping and returns'),
+              name: 'Shipping and returns',
               slug: '/shipping-and-returns',
               id: ''
             },
             {
-              name: this.$i18n.t('Terms of trade'),
+              name: 'Terms of trade',
               slug: '/terms-of-trade',
               id: ''
             },
             {
-              name: this.$i18n.t('GDPR'),
+              name: 'GDPR',
               slug: '/gdpr',
               id: ''
             },
             {
-              name: this.$i18n.t('Cookies'),
+              name: 'Cookies',
               slug: '/cookies',
               id: ''
             },
             {
-              name: this.$i18n.t('FAQ'),
+              name: 'FAQ',
               slug: '/faq',
               id: ''
             }
@@ -227,12 +227,12 @@ export default {
           title: 'Shops',
           contact: true,
           contactChilds: [
-            this.$i18n.t('Tlf: 78756535'),
-            this.$i18n.t('email: hans@greenmind.dk')
+            'Tlf: 78756535',
+            'email: hans@greenmind.dk'
           ],
           childs: [
             {
-              name: this.$i18n.t('Find store'),
+              name: 'Find store',
               slug: '/stores',
               id: ''
             }
