@@ -1,0 +1,47 @@
+<template>
+  <div class="description-wrap">
+    <div class="title-main">
+      Meget flot
+    </div>
+    <p class="description-main">
+      Screen: May have micro-scratches which are not noticeable when<br>
+      the screen is turned on. Body: Has visible scratches and/or dents
+    </p>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    description: {
+      type: String,
+      default: ''
+    }
+  },
+  setup() {
+
+  }
+});
+</script>
+<style scoped>
+  .description-wrap .title-main {
+    text-align: end;
+    color: #1d1f22;
+    margin-bottom: 10px;
+  }
+
+  .description-wrap .description-main {
+    font-size: 14px;
+    color: #72757e;
+    text-align: end;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f2f3;
+    margin-bottom: 26px;
+  }
+</style>

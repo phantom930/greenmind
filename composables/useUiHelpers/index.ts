@@ -16,7 +16,7 @@ const useUiHelpers = (): any => {
     let filters: string[] = [];
     if (query) {
       Object.keys(query).forEach((filterKey) => {
-        if (!queryParamsNotFilters.includes(filterKey)) {
+        if (![...queryParamsNotFilters, 'price'].includes(filterKey)) {
           filters.push(query[filterKey]);
         }
       });
@@ -24,6 +24,7 @@ const useUiHelpers = (): any => {
       filters = filters.map((filter) => filter.split(',')).flat();
     }
 
+    const price = query?.price?.split('-');
     const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 6;
     const sort = query?.sort?.split(',') || [];
     const page = query?.page || 1;
@@ -35,6 +36,8 @@ const useUiHelpers = (): any => {
       pageSize,
       categorySlug: params.slug_1,
       currentPage: page,
+      minPrice: price?.[0] || null,
+      maxPrice: price?.[1] || null,
       filter: {
         categoryId,
         attributeValueId: filters

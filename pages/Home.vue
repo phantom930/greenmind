@@ -40,54 +40,62 @@
       style="display: flex"
       class="category_card"
     >
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          iPhones
-        </p>
-      </SfButton>
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          Smartphones
-        </p>
-      </SfButton>
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          Smartphones
-        </p>
-      </SfButton>
-      <SfButton style="display: initial; background: none; border-radius: 14px">
-        <SfImage
-          :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
-          alt="iPhones"
-          :width="295"
-          :height="223"
-          class="categoryCardImage"
-        />
-        <p style="color: #000">
-          Smartphones
-        </p>
-      </SfButton>
+      <SfLink :link="localePath(`/c/iphones`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            iPhones
+          </p>
+        </SfButton>
+      </SfLink>
+      <SfLink :link="localePath(`/c/smartphones`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            Smartphones
+          </p>
+        </SfButton>
+      </SfLink>
+      <SfLink :link="localePath(`/c/tablets`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            Tablets
+          </p>
+        </SfButton>
+      </SfLink>
+      <SfLink :link="localePath(`/c/computers`)">
+        <SfButton style="display: initial; background: none; border-radius: 14px;">
+          <SfImage
+            :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
+            alt="iPhones"
+            :width="295"
+            :height="223"
+            class="categoryCardImage"
+          />
+          <p style="color: #000">
+            Computers
+          </p>
+        </SfButton>
+      </SfLink>
     </div>
     <!-- <div style="display: flex; padding-top: 5%">
       <GreenBannerVertical
@@ -118,7 +126,7 @@
       :feature1="storage"
       :feature2="color"
       :currency="currency"
-      :carousel_title="$t('Populære produkter')"
+      :carousel_title="$t('Popular products')"
       style="padding-top: 5%"
     />
     <div class="bottom_hero">
@@ -134,10 +142,22 @@
             background-position-y: center;
             margin-top: -15%;
           "
-        />
+        >
+          <template #call-to-action>
+            <SfButton
+              class="subscribe-button"
+              @click="toggleNewsletterModal"
+            >
+              {{ $t('See more') }}
+            </SfButton>
+          </template>
+        </SfHeroItem>
       </SfHero>
     </div>
-    <NewsletterModal @email-submitted="onSubscribe" />
+    <NewsletterModal
+      :loading="loading"
+      @email-submitted="onSubscribe"
+    />
   </div>
 </template>
 
@@ -146,7 +166,8 @@ import {
   SfHero,
   SfBanner,
   SfButton,
-  SfImage
+  SfImage,
+  SfLink
 } from '@storefront-ui/vue';
 import { computed } from '@vue/composition-api';
 import {
@@ -166,22 +187,23 @@ export default {
     SfHero,
     SfBanner,
     SfButton,
-    SfImage
+    SfImage,
+    SfLink
   },
   setup(props, { root }) {
     const { result, search } = useFacet();
     const { params } = root.$router.history.current;
-    const products = computed(() => facetGetters.getProducts(result.value).slice(0, 10));
+    const products = computed(() => facetGetters.getProducts(result.value).slice(0, 4));
     const { toggleNewsletterModal } = useUiState();
-    const { sendSubscription } = useNewsLetter();
+    const { loading, sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
 
     onSSR(async () => {
       await search(params);
     });
 
-    const onSubscribe = (emailAddress) => {
-      const data = sendSubscription({ email: emailAddress });
+    const onSubscribe = async (emailAddress) => {
+      const data = await sendSubscription({ email: emailAddress });
       if (data.subscribed) {
         send({
           message: 'Subscribe successfull!',
@@ -198,6 +220,7 @@ export default {
     };
 
     return {
+      loading,
       onSubscribe,
       toggleNewsletterModal,
       productGetters,
@@ -230,7 +253,7 @@ export default {
   width: 125%;
   margin-top: 0;
 }
-::v-deep .sf-hero-item__button .sf-button {
+.subscribe-button {
   border-radius: 40px;
   --button-background: #f1f2f3;
   --button-color: #72757e;
@@ -285,7 +308,7 @@ export default {
   text-transform: none;
 }
 ::v-deep .bottom_hero .sf-button {
-  transform: translate(550%, -20px);
+  transform: translate(500%, -20px);
 }
 ::v-deep .bottom_hero .sf-hero {
   height: 250px;
@@ -307,5 +330,9 @@ export default {
 }
 ::v-deep .categoryCardImage .sf-image{
   object-fit: fill
+}
+::v-deep .sf-link {
+  --button-width: var(--button-size, var(--button-width));
+  text-decoration: none;
 }
 </style>

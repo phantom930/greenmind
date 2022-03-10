@@ -47,17 +47,18 @@
   </SfProductCard>
 </template>
 
-<script>
+<script lang="ts">
 import { SfProductCard } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
-import { defineComponent } from '@vue/composition-api';
+import { Product } from '@vue-storefront/odoo-api';
+import { defineComponent, PropType } from '@vue/composition-api';
 export default defineComponent({
   components: {
     SfProductCard
   },
   props: {
     product: {
-      type: Object,
+      type: Object as PropType<Product>,
       default: () => ({})
     }
   },

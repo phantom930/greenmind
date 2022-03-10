@@ -1,16 +1,18 @@
 <template>
   <form @submit.prevent="subscribe">
-    <div class="sf-div--email">
-      <SfInput
-        v-model="email"
-        class="sf-input--outline sf-input--email"
-        type="email"
-        :placeholder="$t('Type your email')"
-      />
-      <SfButton class="sf-button--email">
-        {{ $t("SUBSCRIBE") }}
-      </SfButton>
-    </div>
+    <SfInput
+      v-model="email"
+      class="sf-input--outline sf-input--email"
+      type="email"
+      :placeholder="$t('Type your email')"
+      @submit.prevent="subscribe"
+    />
+    <SfButton
+      class="sf-button--email"
+      :disabled="loading || !email"
+    >
+      {{ $t("SUBSCRIBE") }}
+    </SfButton>
   </form>
 </template>
 
@@ -25,13 +27,13 @@ export default {
     SfButton
   },
   setup() {
-    const { sendSubscription } = useNewsLetter();
+    const { sendSubscription, loading } = useNewsLetter();
     const { send } = useUiNotification();
 
     const email = ref(null);
 
-    const subscribe = () => {
-      const data = sendSubscription({ email: email.value });
+    const subscribe = async () => {
+      const data = await sendSubscription({ email: email.value });
       if (data.subscribed) {
         send({
           message: 'Subscribe successfull!',
@@ -47,6 +49,7 @@ export default {
     };
 
     return {
+      loading,
       subscribe,
       email
     };
@@ -55,12 +58,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sf-div--email {
+form {
   display: flex;
+  flex-direction: row-reverse;
+  justify-self: right;
   height: 32px;
   margin-top: 22px;
   width: fit-content;
 }
+
+@media (max-width: 1024px) {
+  form {
+    position: relative;
+    right: 96px;
+  }
+}
+
 .sf-input--email {
   border-radius: 40px;
   width: 343px;
@@ -74,7 +87,9 @@ export default {
 .sf-button--email {
   border-radius: 40px;
   width: 116px;
-  transform: translate(-95%) scale(0.8, 0.8);
+  position: relative;
+  left: 349px;
+  transform: scale(0.8, 0.8);
   --button-background: #7ba393;
 }
 .sf-button--email:hover {

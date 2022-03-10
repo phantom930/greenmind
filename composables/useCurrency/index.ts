@@ -10,6 +10,8 @@ const useNumber = (): any => {
     return euro(value).format();
   };
 
+  const toInteger = (value) => currency(value, { precision: 0}).intValue;
+
   const formatDolar = (value) => {
     return dolar(value).format();
   };
@@ -19,6 +21,7 @@ const useNumber = (): any => {
   };
 
   return {
+    toInteger,
     formatMoney,
     formatDolar,
     formatMoneyFromStringDotDecimal

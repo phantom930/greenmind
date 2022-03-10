@@ -46,6 +46,10 @@ module.exports = {
                     attributeValues {
                         id
                         name
+                        displayType
+                        priceExtra
+                        attributeName
+                        search
                     }
                 }
             }
