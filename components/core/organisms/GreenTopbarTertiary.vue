@@ -16,7 +16,7 @@
                 <SfList>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Pro Max" />iPhone 13 Pro Max</SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Pro" />iPhone 13 Pro</SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 13" />iPhone 13</SfListItem></a>
+                  <a href="/c/iphones-13/5"><SfListItem><SfMenuItem label="iPhone 13" />iPhone 13</SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Mini" />iPhone 13 Mini</SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
@@ -24,7 +24,7 @@
                 <SfList>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Pro Max" />iPhone 12 Pro Max</SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Pro" />iPhone 12 Pro</SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 12" />iPhone 12</SfListItem></a>
+                  <a href="/c/iphones-12/10"><SfListItem><SfMenuItem label="iPhone 12" />iPhone 12</SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Mini" />iPhone 12 Mini</SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
@@ -86,9 +86,9 @@
             >
               <SfMegaMenuColumn title="Samsung Galaxy">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Galaxy S Serie" />Galaxy S Serie</SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Galaxy Z Serie" />Galaxy Z Serie</SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Galaxy Note Serie" />Galaxy Note Serie</SfListItem></a>
+                  <a href="#"><SfListItem><SfMenuItem label="Galaxy S Series" />Galaxy S Serie</SfListItem></a>
+                  <a href="#"><SfListItem><SfMenuItem label="Galaxy Z Series" />Galaxy Z Serie</SfListItem></a>
+                  <a href="#"><SfListItem><SfMenuItem label="Galaxy Note Series" />Galaxy Note Serie</SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
               <nuxt-link to="#">
@@ -106,7 +106,7 @@
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('All Smartphones')" />
               </nuxt-link>
-              <nuxt-link to="#">
+              <nuxt-link to="/c/smartphone-accessories/154">
                 <SfMegaMenuColumn :title="$t('Smartphone accessories')" />
               </nuxt-link>
             </SfMegaMenu>
@@ -122,7 +122,7 @@
               title="Tablets"
               visible
             >
-              <nuxt-link to="#">
+              <nuxt-link to="/c/apple-ipads/97">
                 <SfMegaMenuColumn title="iPads" />
               </nuxt-link>
               <nuxt-link to="#">
@@ -149,7 +149,7 @@
             >
               <SfMegaMenuColumn :title="$t('Portable')">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Apple MacBooks" />Apple MacBooks</SfListItem></a>
+                  <a href="/c/apple-macbooks/103"><SfListItem><SfMenuItem label="Apple MacBooks" />Apple MacBooks</SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="Windows portable" />{{ $t('Windows portable') }}</SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
@@ -230,7 +230,7 @@
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('iPhone accessories')" />
               </nuxt-link>
-              <nuxt-link to="#">
+              <nuxt-link to="/c/smartphone-accessories/154">
                 <SfMegaMenuColumn :title="$t('Smartphone accessories')" />
               </nuxt-link>
               <nuxt-link to="#">
