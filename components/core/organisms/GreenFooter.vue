@@ -15,8 +15,8 @@
           :key="indexChild"
         >
           <SfMenuItem
-            :label="$t(item)"
-            :link="localePath()"
+            :label="$t(item.name)"
+            :link="localePath(`${item.slug}/${item.id}`)"
           />
         </SfListItem>
       </SfList>
@@ -31,7 +31,9 @@
             v-for="(item, contactIndex) in column.contactChilds"
             :key="contactIndex"
           >
-            <SfMenuItem :label="$t(item)" />
+            <p class="menu-item_p">
+              {{ $t(item) }}
+            </p>
           </SfListItem>
         </SfList>
       </SfFooterColumn>
@@ -124,33 +126,101 @@ export default {
         {
           title: 'Product',
           childs: [
-            this.$i18n.t('iPhones'),
-            this.$i18n.t('Smartphones'),
-            this.$i18n.t('Tablets'),
-            this.$i18n.t('Computer'),
-            this.$i18n.t('Accessories'),
-            this.$i18n.t('Other products')
+            {
+              name: this.$i18n.t('iPhones'),
+              slug: '/c/iphones',
+              id: 3
+            },
+            {
+              name: this.$i18n.t('Smartphones'),
+              slug: '/c/cell-phones',
+              id: 1
+            },
+            {
+              name: this.$i18n.t('Tablets'),
+              slug: '/c/tablets',
+              id: 96
+            },
+            {
+              name: this.$i18n.t('Computers'),
+              slug: '/c/computers',
+              id: 99
+            },
+            {
+              name: this.$i18n.t('Accessories'),
+              slug: '/c/accessories',
+              id: 154
+            },
+            {
+              name: this.$i18n.t('Other products'),
+              slug: '/c/other-products',
+              id: 138
+            }
           ]
         },
         {
           title: 'About us',
           childs: [
-            this.$i18n.t('Why choose Greenmind?'),
-            this.$i18n.t('How do you sell?'),
-            this.$i18n.t('How to buy?'),
-            this.$i18n.t('Reparation'),
-            this.$i18n.t('Blog')
+            {
+              name: this.$i18n.t('Why choose Greenmind?'),
+              slug: '/why-greenmind',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('How do you sell?'),
+              slug: '/how-do-you-sell',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('How to buy?'),
+              slug: '/how-to-buy',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('Reparation'),
+              slug: '/reparation',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('Blog'),
+              slug: '/blog',
+              id: ''
+            }
           ]
         },
         {
           title: 'Help',
           childs: [
-            this.$i18n.t('Customer service'),
-            this.$i18n.t('Shipping and returns'),
-            this.$i18n.t('Terms of trade'),
-            this.$i18n.t('GDPR'),
-            this.$i18n.t('Cookies'),
-            this.$i18n.t('FAQ')
+            {
+              name: this.$i18n.t('Customer service'),
+              slug: '/customer-service',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('Shipping and returns'),
+              slug: '/shipping-and-returns',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('Terms of trade'),
+              slug: '/terms-of-trade',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('GDPR'),
+              slug: '/gdpr',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('Cookies'),
+              slug: '/cookies',
+              id: ''
+            },
+            {
+              name: this.$i18n.t('FAQ'),
+              slug: '/faq',
+              id: ''
+            }
           ]
         },
         {
@@ -161,7 +231,11 @@ export default {
             this.$i18n.t('email: hans@greenmind.dk')
           ],
           childs: [
-            this.$i18n.t('Find butik')
+            {
+              name: this.$i18n.t('Find store'),
+              slug: '/stores',
+              id: ''
+            }
           ]
         }
       ],
