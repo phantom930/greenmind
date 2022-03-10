@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@nuxtjs/amp": "^0.5.4",
+    "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/style-resources": "1.1.0",
     "@storefront-ui/vue": "0.12.0",
     "@vue-storefront/cache": "^2.5.0",

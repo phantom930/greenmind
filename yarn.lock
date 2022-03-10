@@ -1839,6 +1839,13 @@
     unplugin-vue2-script-setup "^0.6.11"
     upath "^2.0.1"
 
+"@nuxtjs/device@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-2.1.0.tgz#552c668b2d82dc982d18429845777c19d48d87d6"
+  integrity sha512-TYBdt1w2bmCCWp+MhgcBATZtqyUBi3nSdNpcLGILw5USLwCsC/yZtIkq9YisuEzuRnod9w/RZpoE80MxLftEuA==
+  dependencies:
+    defu "^3.2.2"
+
 "@nuxtjs/pwa@^3.3.5":
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/@nuxtjs/pwa/-/pwa-3.3.5.tgz#db7c905536ebe8a464a347b6ae3215810642c044"

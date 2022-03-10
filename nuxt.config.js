@@ -72,10 +72,14 @@ export default {
   },
   loading: { color: '#fff' },
   plugins: ['~/plugins/getImage.ts'],
+  device: {
+    refreshOnResize: true
+  },
   buildModules: [
     '@nuxtjs/composition-api/module',
     '@nuxtjs/pwa',
     '@nuxt/image',
+    '@nuxtjs/device',
     '@nuxtjs/web-vitals',
     '@nuxtjs/tailwindcss',
     '@nuxt/typescript-build',
