@@ -22,37 +22,39 @@
           :title="$t('Subscribe to newsletter')"
           class="modal__title desktop-only"
         />
-        <form @submit.prevent="$emit('email-submitted', emailAddress)">
-          <SfInput
-            v-model="emailAddress"
-            type="email"
-            :label="$t('Email address')"
-            class="modal__input"
-          />
-          <SfButton
-            class="modal__button"
-            type="submit"
-          >
-            {{ $t("I confirm subscription") }}
-          </SfButton>
-        </form>
+        <ValidationObserver
+          v-slot="{ invalid }"
+          key="log-in"
+        >
+          <form @submit.prevent="$emit('email-submitted', emailAddress)">
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required|email"
+            >
+              <SfInput
+                v-model="emailAddress"
+                type="email"
+                :label="$t('Email address')"
+                :valid="!errors[0]"
+                :error-message="errors[0]"
+                class="modal__input"
+              />
+            </ValidationProvider>
+
+            <SfButton
+              class="modal__button"
+              type="submit"
+              :disabled="loading || invalid"
+            >
+              {{ $t('I confirm subscription') }}
+            </SfButton>
+          </form>
+        </ValidationObserver>
+
         <SfHeading
           :description="$t('You can unsubscribe at any time')"
           :level="3"
         />
-        <SfScrollable
-          max-content-height="3.75rem"
-          :class="{ 'is-open': !isHidden }"
-        >
-          <template #view-all>
-            <SfButton
-              class="sf-button--text sf-scrollable__view-all desktop-only"
-              @click="isHidden = !isHidden"
-            >
-              <span>{{ isHidden ? $t("show more") : $t("hide") }}</span>
-            </SfButton>
-          </template>
-        </SfScrollable>
       </div>
     </transition>
   </SfModal>
@@ -63,24 +65,30 @@ import {
   SfHeading,
   SfInput,
   SfButton,
-  SfScrollable,
-  SfBar,
-  SfLink
+  SfBar
 } from '@storefront-ui/vue';
 import { ref } from '@nuxtjs/composition-api';
 import { useUiState } from '~/composables';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   name: 'NewsletterModal',
   components: {
+    ValidationProvider,
+    ValidationObserver,
     SfModal,
     SfHeading,
     SfInput,
     SfButton,
-    SfScrollable,
-    SfBar,
-    SfLink
+    SfBar
   },
+  props: {
+    loading: {
+      type: Boolean,
+      default: false
+    }
+  },
+  emits: ['email-submitted'],
   setup() {
     const { isNewsletterModalOpen, toggleNewsletterModal } = useUiState();
 

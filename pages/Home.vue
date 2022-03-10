@@ -142,10 +142,22 @@
             background-position-y: center;
             margin-top: -15%;
           "
-        />
+        >
+          <template #call-to-action>
+            <SfButton
+              class="subscribe-button"
+              @click="toggleNewsletterModal"
+            >
+              {{ $t('See more') }}
+            </SfButton>
+          </template>
+        </SfHeroItem>
       </SfHero>
     </div>
-    <NewsletterModal @email-submitted="onSubscribe" />
+    <NewsletterModal
+      :loading="loading"
+      @email-submitted="onSubscribe"
+    />
   </div>
 </template>
 
@@ -183,15 +195,15 @@ export default {
     const { params } = root.$router.history.current;
     const products = computed(() => facetGetters.getProducts(result.value).slice(0, 4));
     const { toggleNewsletterModal } = useUiState();
-    const { sendSubscription } = useNewsLetter();
+    const { loading, sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
 
     onSSR(async () => {
       await search(params);
     });
 
-    const onSubscribe = (emailAddress) => {
-      const data = sendSubscription({ email: emailAddress });
+    const onSubscribe = async (emailAddress) => {
+      const data = await sendSubscription({ email: emailAddress });
       if (data.subscribed) {
         send({
           message: 'Subscribe successfull!',
@@ -208,6 +220,7 @@ export default {
     };
 
     return {
+      loading,
       onSubscribe,
       toggleNewsletterModal,
       productGetters,
@@ -240,7 +253,7 @@ export default {
   width: 125%;
   margin-top: 0;
 }
-::v-deep .sf-hero-item__button .sf-button {
+.subscribe-button {
   border-radius: 40px;
   --button-background: #f1f2f3;
   --button-color: #72757e;
@@ -295,7 +308,7 @@ export default {
   text-transform: none;
 }
 ::v-deep .bottom_hero .sf-button {
-  transform: translate(550%, -20px);
+  transform: translate(500%, -20px);
 }
 ::v-deep .bottom_hero .sf-hero {
   height: 250px;

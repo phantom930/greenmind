@@ -1,68 +1,82 @@
 <template>
   <SfFooter
+    :multiple="false"
     :column="4"
-    multiple
     class="footer"
   >
-    <SfFooterColumn :title="$t('Product')">
+    <SfFooterColumn
+      v-for="(column, index) in columns"
+      :key="index"
+      :title="$t(column.title)"
+    >
       <SfList>
         <SfListItem
-          v-for="(item, index) in produkter"
-          :key="index"
+          v-for="(item, indexChild) in column.childs"
+          :key="indexChild"
         >
-          <SfMenuItem :label="$t(item)" />
+          <SfMenuItem
+            :label="$t(item)"
+            :link="localePath()"
+          />
         </SfListItem>
       </SfList>
-    </SfFooterColumn>
-    <SfFooterColumn :title="$t('')">
-      <SfList>
-        <SfListItem
-          v-for="(item, index) in OmOs"
-          :key="index"
-        >
-          <SfMenuItem :label="$t(item)" />
-        </SfListItem>
-      </SfList>
-    </SfFooterColumn>
-    <SfFooterColumn :title="$t('')">
-      <SfList>
-        <SfListItem
-          v-for="(item, index) in hjaelp"
-          :key="index"
-        >
-          <SfMenuItem :label="$t(item)" />
-        </SfListItem>
-      </SfList>
-    </SfFooterColumn>
-    <SfFooterColumn :title="$t('')">
-      <SfList>
-        <SfListItem
-          v-for="(item, index) in butikker"
-          :key="index"
-        >
-          <SfMenuItem :label="$t(item)" />
-        </SfListItem>
-      </SfList>
-      <SfFooterColumn :title="$t('Contact')">
+
+      <SfFooterColumn
+        v-if="column.contact"
+        class="desktop-only"
+        :title="$t('Contact')"
+      >
         <SfList>
           <SfListItem
-            v-for="(item, index) in kontakt"
-            :key="index"
+            v-for="(item, contactIndex) in column.contactChilds"
+            :key="contactIndex"
           >
             <SfMenuItem :label="$t(item)" />
           </SfListItem>
         </SfList>
       </SfFooterColumn>
     </SfFooterColumn>
+
+    <div class="sf-footer-column smartphone-only border-t">
+      <div>
+        <div class="sf-footer-column__title">
+          Social
+        </div>
+        <div class="flex justify-around">
+          <SfImage
+            v-for="item in social"
+            :key="item"
+            :src="require('/assets/images/icons/' + item + '.svg')"
+            alt="item"
+            :width="32"
+            :height="32"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="sf-footer-column smartphone-only flex p-6 justify-between">
+      <div class="flex flex-col">
+        <span
+          v-for="(item, contactIndex) in columns[3].contactChilds"
+          :key="contactIndex"
+        >
+          {{ $t(item) }}
+        </span>
+      </div>
+
+      <FooterEmailMarketIcons />
+    </div>
+
     <SfFooterColumn
-      title="Social"
-      class="bottom-columns-social"
+      :title="$t('Social')"
+      class="bottom-columns-social desktop-only"
     >
-      <div class="footer__socials">
+      <div class="footer__socials ">
         <SfImage
           v-for="item in social"
           :key="item"
-          class="footer__social-image"
+          class="footer__social-image mr-1"
           :src="require('/assets/images/icons/' + item + '.svg')"
           :alt="item"
           :width="32"
@@ -70,34 +84,22 @@
         />
       </div>
     </SfFooterColumn>
-    <SfFooterColumn class="bottom-columns-emarket">
+
+    <div class="sf-footer-column desktop-only">
+      <FooterEmailMarketIcons />
+    </div>
+
+    <GreenEmailForm class="col-start-3 col-end-5 " />
+
+    <div class="mobile-only mt-12 mb-10 flex justify-center">
       <SfImage
-        class="footer__social-image"
-        :src="require('/assets/images/footer/emarket.svg')"
-        alt="emarket"
-        :width="58"
-        :height="58"
+        :width="35"
+        :height="35"
+        src="/icons/logo.svg"
+        alt="Vue Storefront Next"
+        class="sf-header__logo-image "
       />
-      <SfImage
-        class="footer__social-image"
-        :src="require('/assets/images/footer/emarket.svg')"
-        alt="emarket"
-        :width="58"
-        :height="58"
-      />
-      <SfImage
-        class="footer__social-image"
-        :src="require('/assets/images/footer/emarket.svg')"
-        alt="emarket"
-        :width="58"
-        :height="58"
-      />
-    </SfFooterColumn>
-    <SfFooterColumn />
-    <SfFooterColumn class="bottom-columns-email">
-      <GreenEmailForm />
-    </SfFooterColumn>
-    <!-- Column with icons missing here -->
+    </div>
   </SfFooter>
 </template>
 
@@ -118,33 +120,50 @@ export default {
   },
   data() {
     return {
-      produkter: [
-        this.$i18n.t('iPhones'),
-        this.$i18n.t('Smartphones'),
-        this.$i18n.t('Tablets'),
-        this.$i18n.t('Computer'),
-        this.$i18n.t(''),
-        this.$i18n.t('')
-      ],
-      OmOs: [
-        this.$i18n.t(''),
-        this.$i18n.t(''),
-        this.$i18n.t(''),
-        this.$i18n.t('Reparation'),
-        this.$i18n.t('Blog')
-      ],
-      hjaelp: [
-        this.$i18n.t(''),
-        this.$i18n.t(''),
-        this.$i18n.t(''),
-        this.$i18n.t(''),
-        this.$i18n.t('Cookies'),
-        this.$i18n.t('FAQ')
-      ],
-      butikker: [this.$i18n.t('Find butik')],
-      kontakt: [
-        this.$i18n.t('Tlf: 78756535'),
-        this.$i18n.t('email: hans@greenmind.dk')
+      columns: [
+        {
+          title: 'Product',
+          childs: [
+            this.$i18n.t('iPhones'),
+            this.$i18n.t('Smartphones'),
+            this.$i18n.t('Tablets'),
+            this.$i18n.t('Computer'),
+            this.$i18n.t('Accessories'),
+            this.$i18n.t('Other products')
+          ]
+        },
+        {
+          title: 'About us',
+          childs: [
+            this.$i18n.t('Why choose Greenmind?'),
+            this.$i18n.t('How do you sell?'),
+            this.$i18n.t('How to buy?'),
+            this.$i18n.t('Reparation'),
+            this.$i18n.t('Blog')
+          ]
+        },
+        {
+          title: 'Help',
+          childs: [
+            this.$i18n.t('Customer service'),
+            this.$i18n.t('Shipping and returns'),
+            this.$i18n.t('Terms of trade'),
+            this.$i18n.t('GDPR'),
+            this.$i18n.t('Cookies'),
+            this.$i18n.t('FAQ')
+          ]
+        },
+        {
+          title: 'Shops',
+          contact: true,
+          contactChilds: [
+            this.$i18n.t('Tlf: 78756535'),
+            this.$i18n.t('email: hans@greenmind.dk')
+          ],
+          childs: [
+            this.$i18n.t('Find butik')
+          ]
+        }
       ],
       social: ['facebook', 'pinterest', 'google', 'twitter', 'youtube']
     };
@@ -153,82 +172,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.footer {
-  margin-bottom: 3.75rem;
-  background-color: #32463d;
-  @include for-desktop {
-    margin-bottom: 0;
-  }
-  &__socials {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto var(--spacer-lg);
-    padding: var(--spacer-base) var(--spacer-xl);
-    @include for-desktop {
-      justify-content: flex-start;
-      padding: var(--spacer-xs) 0;
-      margin: 0 auto;
-    }
-  }
-  &__social-image {
-    margin: 0 var(--spacer-2xs) 0 0;
-  }
-}
-::v-deep .sf-footer {
-  @include for-desktop {
-    border-top: none;
-    padding-bottom: 0;
-    margin-top: var(--spacer-2xl);
-  }
-  &__container {
-    margin: var(--spacer-sm);
-    @include for-desktop {
-      max-width: 69rem;
-      margin: 0 auto;
-    }
-  }
-}
-::v-deep .sf-footer-column {
-  background-color: #32463d;
-  width: 275px;
-}
-::v-deep .sf-footer-column__title {
-  background-color: #32463d;
-}
-.bottom-columns-email {
-  transform: translate(-125px, -80px);
-}
-.bottom-columns-email .sf-button {
-  text-decoration: none;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-}
-.bottom-columns-social {
-  transform: translate(-0px, -80px);
-}
-.bottom-columns-emarket {
-  transform: translate(-0px, -75px);
-}
-::v-deep .sf-footer-column__title {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-}
-::v-deep .sf-menu-item {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-}
-::v-deep .sf-input--outline input {
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: var(--line-height--primary);
-}
-
-.footer {
-  padding-bottom: 0;
-}
+@import url('~/assets/css/footer.scss');
 </style>
