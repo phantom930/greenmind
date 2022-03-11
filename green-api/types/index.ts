@@ -24,5 +24,6 @@ export enum ButtonColor {
 }
 
 export interface GreenProduct extends Product {
-    variantAttributeValues: Attribute[]
+    variantAttributeValues: Attribute[],
+    websiteSubtitle: string
 }
