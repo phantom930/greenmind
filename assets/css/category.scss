@@ -110,40 +110,7 @@
     --sidebar-z-index: 3;
   }
   
-  .before-results {
-    box-sizing: border-box;
-    padding: var(--spacer-lg) var(--spacer-sm) var(--spacer-2xl);
-    width: 100%;
-    text-align: center;
-    @include for-desktop {
-      padding: 0;
-    }
-    &__picture {
-      --image-width: 230px;
-      margin-top: var(--spacer-2xl);
-      @include for-desktop {
-        --image-width: 18.75rem;
-        margin-top: var(--spacer-base);
-      }
-    }
-    &__paragraph {
-      font-family: var(--font-family--primary);
-      font-weight: var(--font-weight--normal);
-      font-size: var(--font-size--base);
-      color: var(--c-text-muted);
-      margin: 0;
-      @include for-desktop {
-        font-size: var(--font-size--lg);
-      }
-      &:first-of-type {
-        margin: var(--spacer-xl) auto var(--spacer-xs);
-      }
-    }
-    &__button {
-      margin: var(--spacer-xl) auto;
-      width: 100%;
-    }
-  }
+  
   ::v-deep .sf-accordion-item__content {
     list-style: none;
     padding: 0px 0px;

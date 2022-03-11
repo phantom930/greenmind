@@ -15,8 +15,8 @@
           :key="indexChild"
         >
           <SfMenuItem
-            :label="$t(item)"
-            :link="localePath()"
+            :label="$t(item.name)"
+            :link="localePath(`${item.slug}/${item.id}`)"
           />
         </SfListItem>
       </SfList>
@@ -31,7 +31,9 @@
             v-for="(item, contactIndex) in column.contactChilds"
             :key="contactIndex"
           >
-            <SfMenuItem :label="$t(item)" />
+            <p class="menu-item_p">
+              {{ $t(item) }}
+            </p>
           </SfListItem>
         </SfList>
       </SfFooterColumn>
@@ -124,44 +126,116 @@ export default {
         {
           title: 'Product',
           childs: [
-            this.$i18n.t('iPhones'),
-            this.$i18n.t('Smartphones'),
-            this.$i18n.t('Tablets'),
-            this.$i18n.t('Computer'),
-            this.$i18n.t('Accessories'),
-            this.$i18n.t('Other products')
+            {
+              name: 'iPhones',
+              slug: '/c/iphones',
+              id: 3
+            },
+            {
+              name: 'Smartphones',
+              slug: '/c/cell-phones',
+              id: 1
+            },
+            {
+              name: 'Tablets',
+              slug: '/c/tablets',
+              id: 96
+            },
+            {
+              name: 'Computers',
+              slug: '/c/computers',
+              id: 99
+            },
+            {
+              name: 'Accessories',
+              slug: '/c/accessories',
+              id: 154
+            },
+            {
+              name: 'Other products',
+              slug: '/c/other-products',
+              id: 138
+            }
           ]
         },
         {
           title: 'About us',
           childs: [
-            this.$i18n.t('Why choose Greenmind?'),
-            this.$i18n.t('How do you sell?'),
-            this.$i18n.t('How to buy?'),
-            this.$i18n.t('Reparation'),
-            this.$i18n.t('Blog')
+            {
+              name: 'Why choose Greenmind?',
+              slug: '/why-greenmind',
+              id: ''
+            },
+            {
+              name: 'How do you sell?',
+              slug: '/how-do-you-sell',
+              id: ''
+            },
+            {
+              name: 'How to buy?',
+              slug: '/how-to-buy',
+              id: ''
+            },
+            {
+              name: 'Reparation',
+              slug: '/reparation',
+              id: ''
+            },
+            {
+              name: 'Blog',
+              slug: '/blog',
+              id: ''
+            }
           ]
         },
         {
           title: 'Help',
           childs: [
-            this.$i18n.t('Customer service'),
-            this.$i18n.t('Shipping and returns'),
-            this.$i18n.t('Terms of trade'),
-            this.$i18n.t('GDPR'),
-            this.$i18n.t('Cookies'),
-            this.$i18n.t('FAQ')
+            {
+              name: 'Customer service',
+              slug: '/customer-service',
+              id: ''
+            },
+            {
+              name: 'Shipping and returns',
+              slug: '/shipping-and-returns',
+              id: ''
+            },
+            {
+              name: 'Terms of trade',
+              slug: '/terms-of-trade',
+              id: ''
+            },
+            {
+              name: 'GDPR',
+              slug: '/gdpr',
+              id: ''
+            },
+            {
+              name: 'Cookies',
+              slug: '/cookies',
+              id: ''
+            },
+            {
+              name: 'FAQ',
+              slug: '/faq',
+              id: ''
+            }
           ]
         },
         {
           title: 'Shops',
           contact: true,
           contactChilds: [
-            this.$i18n.t('Tlf: 78756535'),
-            this.$i18n.t('email: hans@greenmind.dk')
+            'Tlf: 78756535',
+            'email: hans@greenmind.dk'
           ],
           childs: [
-            this.$i18n.t('Find butik')
+            {
+              name: 'Find store',
+              slug: '/stores',
+              id: ''
+            }
           ]
         }
       ],

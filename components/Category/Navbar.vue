@@ -20,7 +20,7 @@
             :value="sortBy.selected"
             placeholder="Select sorting"
             data-cy="category-select_sortBy"
-            class="navbar__select"
+            class="navbar__select cursor-pointer"
             @input="changeSorting"
           >
             <SfSelectOption

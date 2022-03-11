@@ -29,64 +29,45 @@
                 :product="product"
               />
             </transition-group>
+            <div class="flex justify-end">
+              <GreenButton
+                type="Primary"
+                color="Green"
+                @click="changeItemsPerPage()"
+              >
+                {{ $t('See More') }}
+              </GreenButton>
+            </div>
           </div>
-          <div
-            v-else
-            key="no-results"
-            class="before-results"
-          >
-            <SfImage
-              :width="256"
-              :height="176"
-              src="/error/error.svg"
-              class="before-results__picture"
-              alt="error"
-              loading="lazy"
-            />
-            <p class="before-results__paragraph">
-              {{ $t("Sorry, we didnt find what youre looking for") }}
-            </p>
-            <SfButton
-              class="before-results__button color-secondary smartphone-only"
-              @click="$emit('close')"
-            >
-              {{ $t("Go back") }}
-            </SfButton>
-          </div>
+
+          <CategoryNoResults v-else />
         </SfLoader>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import { computed, onMounted } from '@nuxtjs/composition-api';
-import { SfButton, SfImage, SfLoader } from '@storefront-ui/vue';
+<script lang="ts">
+import { computed, defineComponent } from '@nuxtjs/composition-api';
+import { SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
-import { facetGetters, productGetters, useCart, useFacet, useWishlist } from '@vue-storefront/odoo';
-import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
+import { facetGetters, useFacet } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
+import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
 
-export default {
+export default defineComponent({
   name: 'Category',
-  components: {
-    SfButton,
-    SfLoader,
-    SfImage,
-    LazyHydrate
-  },
+  components: { SfLoader, LazyHydrate },
   transition: 'fade',
   emits: ['close'],
-  setup(props, { root }) {
-    const th = useUiHelpers();
+  setup() {
     const uiState = useUiState();
 
+    const { getFacetsFromURL, changeItemsPerPage } = useUiHelpers();
     const { result, search, loading } = useFacet();
-    const { categoryTree, currentRootCategory } = useUiCategoryHelpers(result);
+    const { categoryTree, currentRootCategory } = useUiCategoryHelpers(result.value);
     const { addTags } = useCache();
-    const { addItem: addItemToCart, isInCart } = useCart();
-    const { addItem: addItemToWishlist, removeItem: removeItemFromWishList, isInWishlist } = useWishlist();
 
     const products = computed(() => facetGetters.getProducts(result.value));
 
@@ -100,8 +81,12 @@ export default {
       () => !loading.value && products.value?.length > 0
     );
 
+    const customQueryProducts = {
+      getProductTemplatesList: 'greenGetProductList'
+    };
+
     onSSR(async () => {
-      const params = { ...th.getFacetsFromURL() };
+      const params = { ...getFacetsFromURL(), customQueryProducts };
       await search(params);
 
       addTags([
@@ -112,30 +97,20 @@ export default {
       ]);
     });
 
-    onMounted(() => {
-      root.$scrollTo(root.$el, 2000);
-    });
-
     return {
       ...uiState,
+      changeItemsPerPage,
       currentRootCategory,
-      th,
       products,
       categoryTree,
       loading,
-      productGetters,
       pagination,
 
       facets,
-      addItemToWishlist,
-      removeItemFromWishList,
-      addItemToCart,
-      isInWishlist,
-      isInCart,
       showProducts
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

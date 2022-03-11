@@ -1,6 +1,74 @@
+const gql = require('graphql-tag');
+
 module.exports = {
-  greenGetProductAccessories: ({variables}) => ({
-    query: `
+  greenGetProductList: ({variables}) => ({
+    query: gql`
+                query(
+    $filter: ProductFilterInput
+    $currentPage: Int
+    $pageSize: Int = 0
+    $search: String
+    $sort: ProductSortInput
+  ) {
+    products(
+      filter: $filter
+      currentPage: $currentPage
+      pageSize: $pageSize
+      search: $search
+      sort: $sort
+    ) {
+      totalCount
+      attributes {
+        id
+        name
+        displayType
+        values {
+          id
+          name
+          htmlColor
+          search
+          attributeId
+        }
+      }
+      products {
+        id
+        firstVariant
+        websiteSubtitle
+        smallImage
+        price
+        name
+        description
+        image
+        slug
+        sku
+        isInWishlist
+        status
+        categories {
+            id
+            name
+            slug
+            parent{
+            parent{
+                id
+            }
+            }
+        }
+        attributeValues {
+            id
+            name
+            displayType
+            priceExtra
+            attributeName
+            search
+        }
+      }
+    }
+  }
+            `,
+    variables
+  }),
+  greenGetProduct: ({variables}) => ({
+    query: gql`
             query ($id: Int) {
                 product(id: $id) {
                     id
@@ -14,8 +82,17 @@ module.exports = {
                     sku
                     status
                     price
+                    websiteSubtitle
                     isInWishlist
                     firstVariant
+                    productTemplate{
+                      id
+                    }
+                    variantAttributeValues{
+                      id
+                      name
+                      attributeName
+                    }
                     currency {
                         id
                         name

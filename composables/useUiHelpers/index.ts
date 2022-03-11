@@ -25,7 +25,7 @@ const useUiHelpers = (): any => {
     }
 
     const price = query?.price?.split('-');
-    const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 6;
+    const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 3;
     const sort = query?.sort?.split(',') || [];
     const page = query?.page || 1;
     const categoryId = parseInt(params.slug_3) || parseInt(params.slug_2);
@@ -94,9 +94,13 @@ const useUiHelpers = (): any => {
     router.push({ query: formatedFilters });
   };
 
-  const changeItemsPerPage = (itemsPerPage) => {
-    delete query.page;
+  const changeItemsPerPage = () => {
+    console.log(query);
+
+    const itemsPerPage = query.itemsPerPage ? parseInt(query.itemsPerPage) + 3 : 6;
+
     router.push({ query: { ...query, itemsPerPage } });
+
   };
 
   const changeSearchTerm = (term: string) => term;

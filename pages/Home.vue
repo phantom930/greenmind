@@ -7,22 +7,52 @@
         background="none"
         :image="require('/assets/images/homeHero/homeHero_1.svg')"
         style="background-size: auto; background-position-y: center"
-      />
+      >
+        <template #call-to-action>
+          <GreenButton
+            type="Tertiary"
+            color="Grey"
+          >
+            {{ $t('See More') }}
+          </GreenButton>
+        </template>
+      </SfHeroItem>
+
+      <SfHeroItem
+        title="Colorful summer dresses are already in store"
+        button-text="SE MERE2"
+        background="none"
+        :image="require('/assets/images/homeHero/homeHero_1.svg')"
+        style="background-size: auto; background-position-y: center"
+      >
+        <template #call-to-action>
+          <GreenButton
+            type="Tertiary"
+            color="Grey"
+          >
+            {{ $t('See More') }}
+          </GreenButton>
+        </template>
+      </SfHeroItem>
+
       <SfHeroItem
         title="Colorful summer dresses are already in store"
         button-text="SE MERE"
         background="none"
         :image="require('/assets/images/homeHero/homeHero_1.svg')"
         style="background-size: auto; background-position-y: center"
-      />
-      <SfHeroItem
-        title="Colorful summer dresses are already in store"
-        button-text="SE MERE"
-        background="none"
-        :image="require('/assets/images/homeHero/homeHero_1.svg')"
-        style="background-size: auto; background-position-y: center"
-      />
+      >
+        <template #call-to-action>
+          <GreenButton
+            type="Tertiary"
+            color="Grey"
+          >
+            {{ $t('See More') }}
+          </GreenButton>
+        </template>
+      </SfHeroItem>
     </SfHero>
+
     <SfBanner
       title=""
       subtitle=""
@@ -144,12 +174,14 @@
           "
         >
           <template #call-to-action>
-            <SfButton
-              class="subscribe-button"
+            <GreenButton
+              type="Primary"
+              color="Green"
+              shape="Round"
               @click="toggleNewsletterModal"
             >
-              {{ $t('See more') }}
-            </SfButton>
+              {{ $t('See More') }}
+            </GreenButton>
           </template>
         </SfHeroItem>
       </SfHero>
@@ -254,16 +286,7 @@ export default {
   margin-top: 0;
 }
 .subscribe-button {
-  border-radius: 40px;
-  --button-background: #f1f2f3;
-  --button-color: #72757e;
-  font-family: "Josefin Sans", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 18px 52px;
-  padding-top: 20px;
-  transform: translate(0%, -50%);
+
 }
 ::v-deep .sf-hero-item__button .sf-button:hover {
   --button-background: #e0e0e1;
@@ -308,7 +331,7 @@ export default {
   text-transform: none;
 }
 ::v-deep .bottom_hero .sf-button {
-  transform: translate(500%, -20px);
+  transform: translate(550%, -20px);
 }
 ::v-deep .bottom_hero .sf-hero {
   height: 250px;

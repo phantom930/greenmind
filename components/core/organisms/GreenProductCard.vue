@@ -34,7 +34,9 @@
       <span class="green-product-card__title">{{
         productGetters.getName(product)
       }}</span>
-      <span class="green-product-card__description"> {{ description }} </span>
+      <span class="green-product-card__description">
+        {{ product.websiteSubtitle }}
+      </span>
     </div>
 
     <div
@@ -50,15 +52,15 @@
 <script lang="ts">
 import { SfProductCard } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
-import { Product } from '@vue-storefront/odoo-api';
 import { defineComponent, PropType } from '@vue/composition-api';
+import { GreenProduct } from '~/green-api/types';
 export default defineComponent({
   components: {
     SfProductCard
   },
   props: {
     product: {
-      type: Object as PropType<Product>,
+      type: Object as PropType<GreenProduct>,
       default: () => ({})
     }
   },
