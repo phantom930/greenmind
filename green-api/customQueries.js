@@ -67,6 +67,37 @@ module.exports = {
             `,
     variables
   }),
+  greenGetProductListFormHomePage: ({variables}) => ({
+    query: gql`
+    query(
+    $filter: ProductFilterInput
+    $currentPage: Int
+    $pageSize: Int = 0
+    $search: String
+    $sort: ProductSortInput
+  ) {
+    products(
+      filter: $filter
+      currentPage: $currentPage
+      pageSize: $pageSize
+      search: $search
+      sort: $sort
+    ) {
+      products {
+        id
+        websiteSubtitle
+        smallImage
+        price
+        name
+        description
+        image
+        slug
+      }
+    }
+  }
+            `,
+    variables
+  }),
   greenGetProduct: ({variables}) => ({
     query: gql`
             query ($id: Int) {
