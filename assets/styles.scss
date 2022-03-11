@@ -115,3 +115,8 @@
   color: var(--_c-greenmind-primary-grey);
 }
 
+@media (min-width: 1024px) {
+  .loading {
+      margin: 0 !important;
+  }
+}
