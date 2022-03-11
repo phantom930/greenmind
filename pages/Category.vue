@@ -48,8 +48,8 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted } from '@nuxtjs/composition-api';
-import { SfLoader, SfButton } from '@storefront-ui/vue';
+import { computed, defineComponent } from '@nuxtjs/composition-api';
+import { SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { facetGetters, useFacet } from '@vue-storefront/odoo';
@@ -58,10 +58,10 @@ import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
 
 export default defineComponent({
   name: 'Category',
-  components: { SfLoader, LazyHydrate, SfButton },
+  components: { SfLoader, LazyHydrate },
   transition: 'fade',
   emits: ['close'],
-  setup(props, { root }) {
+  setup() {
     const uiState = useUiState();
 
     const { getFacetsFromURL, changeItemsPerPage } = useUiHelpers();
@@ -81,8 +81,12 @@ export default defineComponent({
       () => !loading.value && products.value?.length > 0
     );
 
+    const customQueryProducts = {
+      getProductTemplatesList: 'greenGetProductList'
+    };
+
     onSSR(async () => {
-      const params = { ...getFacetsFromURL() };
+      const params = { ...getFacetsFromURL(), customQueryProducts };
       await search(params);
 
       addTags([

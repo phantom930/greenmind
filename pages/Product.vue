@@ -30,7 +30,7 @@
           />
         </div>
         <SfHeading
-          title="128GB | Space Grey"
+          :title="product.websiteSubtitle"
           :level="3"
           class="sf-heading--no-underline sf-heading--left product_variants"
         />
