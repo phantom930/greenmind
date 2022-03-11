@@ -70,7 +70,7 @@
       style="display: flex"
       class="category_card"
     >
-      <SfLink :link="localePath(`/c/iphones`)">
+      <SfLink :link="localePath(`/c/iphones/3`)">
         <SfButton style="display: initial; background: none; border-radius: 14px">
           <SfImage
             :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
@@ -84,7 +84,7 @@
           </p>
         </SfButton>
       </SfLink>
-      <SfLink :link="localePath(`/c/smartphones`)">
+      <SfLink :link="localePath(`/c/smartphones/1`)">
         <SfButton style="display: initial; background: none; border-radius: 14px">
           <SfImage
             :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
@@ -98,7 +98,7 @@
           </p>
         </SfButton>
       </SfLink>
-      <SfLink :link="localePath(`/c/tablets`)">
+      <SfLink :link="localePath(`/c/tablets/96`)">
         <SfButton style="display: initial; background: none; border-radius: 14px">
           <SfImage
             :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
@@ -112,7 +112,7 @@
           </p>
         </SfButton>
       </SfLink>
-      <SfLink :link="localePath(`/c/computers`)">
+      <SfLink :link="localePath(`/c/computers/99`)">
         <SfButton style="display: initial; background: none; border-radius: 14px;">
           <SfImage
             :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
