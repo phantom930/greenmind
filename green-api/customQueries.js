@@ -1,6 +1,8 @@
+const gql = require('graphql-tag');
+
 module.exports = {
-  greenGetProductAccessories: ({variables}) => ({
-    query: `
+  greenGetProduct: ({variables}) => ({
+    query: gql`
             query ($id: Int) {
                 product(id: $id) {
                     id
@@ -16,6 +18,14 @@ module.exports = {
                     price
                     isInWishlist
                     firstVariant
+                    productTemplate{
+                      id
+                    }
+                    variantAttributeValues{
+                      id
+                      name
+                      attributeName
+                    }
                     currency {
                         id
                         name

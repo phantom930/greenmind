@@ -35,6 +35,7 @@
 
   @include generate-color-variants(--_c-greenmind-sand-primary, #E0D6C9);
 
+
   /* start storefront ui components customization */
 
 
@@ -70,7 +71,7 @@
 
   --footer-column-title-font-size: 18px;
   --footer-column-title-font-weight: 400;
-  --footer-column-title-font-family: var(--font-family--primary);;
+  --footer-column-title-font-family: var(--font-family--primary);
 }
 
 
@@ -85,3 +86,32 @@
     margin: auto;
   }
 }
+
+.bg-pine-primary-dark-green, .bg-pine-primary-dark-green__with-hover {
+  background-color: var(--_c-greenmind-pine-primary-dark-green);
+  &__with-hover:hover{
+    background-color: var(--_c-greenmind-fern-secondary-medium-green);
+  }
+}
+.bg-primary-green {
+  background-color: var(--_c-greenmind-primary-green);
+}
+.bg-fern-primary-medium-green, .bg-fern-primary-medium-green__with-hover {
+  background-color: var(--_c-greenmind-fern-primary-medium-green);
+  &__with-hover:hover {
+    background-color: var(--_c-greenmind-mint-secondary-light-green);
+  }
+}
+.bg-primary-black {
+  background-color: var(--_c-greenmind-primary-black);
+}
+.bg-tertiary-grey{
+  background-color: var(--_c-greenmind-light-grey-accent);
+}
+.bg-grey-light-accent {
+  background-color: var(--_c-greenmind-light-grey-accent);
+}
+.text-primary-grey {
+  color: var(--_c-greenmind-primary-grey);
+}
+

@@ -68,21 +68,27 @@
               2.395,-
             </p>
             <div class="buttons">
-              <SfAddToCart
-                v-model="qty"
-                data-cy="product-cart_add"
-                :stock="stock"
-                :disabled="loading || !allOptionsSelected"
-                :can-add-to-cart="stock > 0"
-                :class="{
-                  'add-to-cart': allOptionsSelected,
-                  'add-to-cart-disabled': !allOptionsSelected,
-                }"
-                @click="addItem({ product, quantity: parseInt(qty) })"
-              />
-              <SfButton class="status">
+              <GreenButton
+                type="Primary"
+                color="Green"
+                shape="Round"
+                size="Medium"
+                class="mb-3"
+                :disabled="addToCartDisabled"
+                :loading="loadingProducts || loading"
+                @click="addItem({ product, quantity: 1 })"
+              >
+                {{ $t('Add to Cart') }}
+              </GreenButton>
+
+              <GreenButton
+                type="Secondary"
+                color="Green"
+                shape="Round"
+                size="Medium"
+              >
                 {{ $t("SEE STOCK STATUS IN STORE") }}
-              </SfButton>
+              </Greenbutton>
             </div>
           </div>
         </div>
@@ -170,7 +176,7 @@
     </div>
   </div>
 </template>
-<script>
+<script >
 import {
   SfHeading,
   SfAddToCart,
@@ -182,7 +188,7 @@ import {
   SfButton,
   SfColor
 } from '@storefront-ui/vue';
-
+import { GreenProduct } from '~/green-api/types';
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import {
@@ -217,7 +223,7 @@ export default defineComponent({
   setup(props, { root }) {
     const route = useRoute();
 
-    const qty = ref(1);
+    const loadingProducts = ref(false);
     const { id } = route.value.params;
     const { query } = root.$route;
     const { size, color } = root.$route.query;
@@ -236,6 +242,7 @@ export default defineComponent({
 
     const { reviews: productReviews } = useReview('productReviews');
 
+    // const product : ComputedRef<GreenProduct>
     const product = computed(() => {
       return {
         ...products.value,
@@ -277,16 +284,30 @@ export default defineComponent({
     const { params } = root.$router.history.current;
     const sliderProducts = computed(() => facetGetters.getProducts(result.value).slice(0, 4));
 
-    onSSR(async () => {
+    const searchRealProductWithGradeSelected = async() => {
+      if (!query.Grade) return;
+
       await searchRealProduct({
-        productTemplateId: parseInt(id),
+        productTemplateId: product.value?.productTemplate?.id,
         combinationIds: Object.values(root.$route.query)
       });
-      await search({
-        id: parseInt(id),
-        customQuery: { getProductTemplate: 'greenGetProductAccessories' }
-      });
-      await searchFacet(params);
+    };
+
+    onSSR(async () => {
+      loadingProducts.value = true;
+      try {
+        await search({
+          id: parseInt(id),
+          customQuery: { getProductTemplate: 'greenGetProduct' }
+        });
+
+        await searchRealProductWithGradeSelected();
+        await searchFacet(params);
+
+      } finally {
+        loadingProducts.value = false;
+      }
+
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
       // await searchRelatedProducts({ catId: [categories.value[0]], limit: 8 });
       // await searchReviews({ productId: id });
@@ -294,25 +315,19 @@ export default defineComponent({
 
     const accessoryProducts = computed(() => products?.value?.accessoryProducts || []);
 
+    const attributesWithoutGrade = computed(() => product.value?.variantAttributeValues?.filter(attribute => attribute.attributeName !== 'Grade'));
+
     const updateFilter = (filter) => {
+      const attributesParams = {};
+      attributesWithoutGrade.value?.forEach(item => {
+        attributesParams[item.attributeName] = item.id;
+      });
+
       root.$router.push({
         path: root.$route.path,
-        query: { ...root.$route.query, ...filter }
+        query: { ...root.$route.query, ...filter, ...attributesParams }
       });
     };
-
-    const allOptionsSelected = computed(() => {
-      let keys = [];
-      Object.keys(options.value).forEach((item) => {
-        keys = [
-          ...options.value[item].map((element) => element.label),
-          ...keys
-        ];
-      });
-      const queryParams = Object.keys(root.$route.query);
-
-      return keys.every((param) => queryParams.includes(param));
-    });
 
     const checkSelected = (attribute, value) => {
       return root.$route.query[attribute] === value;
@@ -320,12 +335,20 @@ export default defineComponent({
 
     const selectedGrade = computed(() => route.value?.query?.Grade);
 
+    const addToCartDisabled = computed(() => {
+      if (!selectedGrade.value) {
+        return true;
+      }
+      return loadingProducts.value || loading.value;
+    });
+
     return {
+      loadingProducts,
+      addToCartDisabled,
       selectedGrade,
       price,
       productloading,
       breadcrumbs,
-      allOptionsSelected,
       checkSelected,
       elementNames,
       updateFilter,
@@ -347,13 +370,13 @@ export default defineComponent({
       ),
       relatedLoading,
       options,
-      qty,
       addItem,
       loading,
       productGetters,
       productVariants,
       productGallery,
       useFacet,
+      realProduct,
       facetGetters,
       sliderProducts,
       accessoryProducts
@@ -479,12 +502,6 @@ export default defineComponent({
     &__color {
       margin: 0 var(--spacer-2xs);
     }
-    &__add-to-cart {
-      margin: var(--spacer-base) var(--spacer-sm) 0;
-      @include for-desktop {
-        margin-top: var(--spacer-2xl);
-      }
-    }
     &__guide,
     &__compare,
     &__save {
@@ -598,88 +615,6 @@ export default defineComponent({
     align-items: center;
     width: 100%;
     max-width: 280px;
-  }
-
-  .total-price-buttons .buttons .add-to-cart {
-    font-size: 14px;
-    color: #fff;
-    background: var(--_c-greenmind-pine-primary-dark-green);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    margin-bottom: 8px;
-    cursor: pointer;
-  }
-  .total-price-buttons .buttons .add-to-cart:hover {
-    background: var(--_c-greenmind-fern-secondary-medium-green);
-  }
-  .total-price-buttons .buttons .add-to-cart:active {
-    --button-box-shadow: none;
-    background: var(--_c-greenmind-fern-secondary-medium-green)
-      radial-gradient(
-        circle,
-        transparent 40%,
-        var(--_c-greenmind-mint-secondary-light-green) 1%
-      )
-      center/15000%;
-    --button-transition: background 0s;
-    background-size: 100%;
-  }
-  ::v-deep .sf-add-to-cart__button {
-    text-decoration: none;
-  }
-  .total-price-buttons .buttons .add-to-cart-disabled {
-    font-size: 14px;
-    color: var(--_c-greenmind-dark-grey-accent);
-    background: var(--_c-greenmind-light-grey-accent);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    margin-bottom: 8px;
-    cursor: not-allowed;
-  }
-
-  .total-price-buttons .buttons .status {
-    font-size: 14px;
-    color: #fff;
-    --button-background: var(--_c-greenmind-fern-primary-medium-green);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    width: 100%;
-    border-radius: 100px;
-    text-align: center;
-    text-decoration: none;
-  }
-  .total-price-buttons .buttons .status:hover {
-    --button-background: var(--_c-greenmind-mint-secondary-light-green);
-  }
-
-  .total-price-buttons .buttons .status:active {
-    --button-box-shadow: none;
-    --button-background: var(--_c-greenmind-fern-secondary-medium-green)
-      radial-gradient(
-        circle,
-        transparent 40%,
-        var(--_c-greenmind-mint-secondary-light-green) 1%
-      )
-      center/15000%;
-    --button-transition: background 0s;
-    background-size: 100%;
-  }
-  ::v-deep .sf-add-to-cart__select-quantity {
-    display: none;
-  }
-  ::v-deep .sf-add-to-cart__button {
-    background: none;
-    padding: 0;
-  }
-  ::v-deep .add-to-cart .sf-button {
-    font-size: 14px;
-    font-family: var(--font-family--primary);
   }
   .product_variants {
     text-align: left;

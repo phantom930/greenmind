@@ -2,8 +2,18 @@
   <SfButton
     :class="classes"
     v-bind="$props"
+    @click="$emit('click')"
   >
-    {{ text }}
+    <slot />
+    <div
+      v-show="loading"
+      class="lds-ring"
+    >
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
   </SfButton>
 </template>
 
@@ -16,9 +26,17 @@ export default defineComponent({
     SfButton
   },
   props: {
-    text: {
-      type: String,
-      required: true
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    link: {
+      type: [String, Object],
+      default: null
     },
     type: {
       type: String as PropType<ButtonType>,
@@ -37,8 +55,8 @@ export default defineComponent({
       default: ButtonColor.Green
     }
   },
+  emits: ['click'],
   setup (props) {
-
     const typeClasses : ComputedRef<string> = computed(() => {
       if (props.type === ButtonType.Primary && props.shape === ButtonShape.Round && props.color === ButtonColor.Green) {
         return 'bg-pine-primary-dark-green__with-hover big-text font-semibold';
@@ -105,21 +123,77 @@ $button-height: 50px;
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
-    padding: 19px 32px 19px 32px;
+    padding: 18px 32px 18px 32px;
     @include for-mobile {
       padding: 18px 52px 18px 52px;
     }
 }
-.btn_primary__pine:hover{
-    --button-background: #78A886;
-    --button-box-shadow-opacity: 0.25;
-    --button-background: #78A886 radial-gradient(circle, transparent 1%, #32463D 1%) center/15000%;
-}
-.btn_primary__pine:active {
+.btn:active {
     --button-box-shadow: none;
-    --button-background: #32463D radial-gradient(circle, transparent 40%, #78A886 1%) center/15000%;
-    --button-transition: background 0s ;
-    --button-text-decoration: underline;
-  background-size: 100%;
+    background: var(--_c-greenmind-fern-secondary-medium-green)
+      radial-gradient(
+        circle,
+        transparent 40%,
+        var(--_c-greenmind-mint-secondary-light-green) 1%
+      )
+      center/15000%;
+    --button-transition: background 0s;
+    background-size: 100%;
+}
+.bg-tertiary-grey:active {
+  --button-box-shadow: none;
+  background: var(--_c-greenmind-dark-grey-accent)
+      radial-gradient(
+        circle,
+        transparent 40%,
+        var(--_c-greenmind-light-grey-accent) 1%
+      )
+      center/15000% ;
+    --button-transition: background 0s;
+    background-size: 100%;
+
+}
+
+.is-disabled--button {
+  color: var(--_c-greenmind-dark-grey-accent);
+  background: var(--_c-greenmind-light-grey-accent);
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  left: 45px;
+  width: 16px;
+  height: 16px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: 0px 6px 0px 11px;
+  border: 4px solid var(--_c-greenmind-pine-primary-dark-green);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--_c-greenmind-pine-primary-dark-green) transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
