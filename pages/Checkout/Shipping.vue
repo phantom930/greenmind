@@ -131,7 +131,6 @@
           slim
         >
           <SfSelect
-            v-if="countryStates && countryStates.length"
             v-model="form.state.id"
             label="State/Province"
             name="state"
@@ -140,6 +139,9 @@
               sf-select--underlined
               form__element--half-even
             "
+            :class="[
+              countryStates && countryStates.length ? 'visible' : 'invisible',
+            ]"
             required
             :valid="!errors[0]"
             :errorMessage="errors[0]"
@@ -152,16 +154,6 @@
               {{ countryStateOption.name }}
             </SfSelectOption>
           </SfSelect>
-          <SfSelect
-            v-else
-            class="
-              form__element
-              form__element--half
-              form__select
-              form__element--half-even
-              invisible
-            "
-          />
         </ValidationProvider>
         <ValidationProvider
           v-slot="{ errors }"
@@ -252,7 +244,7 @@ export default {
   setup(props, { root, emit }) {
     const { cart } = useCart();
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    if (totalItems.value === 0) root.$router.push('/cart');
+    if (totalItems.value === 0) root.$router.push("/cart");
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
     const currentAddressId = ref("");
