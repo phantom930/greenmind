@@ -114,4 +114,12 @@
 .text-primary-grey {
   color: var(--_c-greenmind-primary-grey);
 }
+.text-primary-black {
+  color: var(--_c-greenmind-primary-black);
+}
 
+@media (min-width: 1024px) {
+  .loading {
+      margin: 0 !important;
+  }
+}

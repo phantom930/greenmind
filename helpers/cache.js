@@ -1,10 +1,12 @@
 import Redis from 'redis-tag-cache';
 
 export default function RedisCache({ redis, isDev }) {
-  const client = new Redis({
-    defaultTimeout: redis.defaultTimeout,
-    redis: redis
-  });
+  if (!isDev) {
+    const client = new Redis({
+      defaultTimeout: redis.defaultTimeout,
+      redis: redis
+    });
+  }
 
   return {
     async invoke({ route, render, getTags }) {

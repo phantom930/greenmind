@@ -1,9 +1,11 @@
 <template>
   <div>
     <SfHeading
-      :title="carouselTitle"
+      class="pt-14 mb-12 carousel-heading"
+      :title="title"
       :level="2"
     />
+
     <SfCarousel
       :style="{ maxWidth: '1312px', margin: 'auto' }"
       :settings="{
@@ -11,7 +13,7 @@
         rewind: true,
         perView: 4,
         slidePerPage: true,
-        gap: 16,
+        gap: 19,
         breakpoints: {
           1279: {
             perView: 2,
@@ -24,45 +26,22 @@
       }"
     >
       <SfCarouselItem
-        v-for="(items, i) in item.slice(0, 4)"
+        v-for="(product, i) in products"
         :key="i"
+        class="hover:drop-shadow-xl"
       >
         <SfLink
           :link="
             localePath(
-              `/p/${productGetters.getId(items)}/${productGetters.getSlug(
-                items
-              )}`
+              `/p/${productGetters.getId(product)}/${productGetters.getSlug( product )}`
             )
           "
-          data-testid="product-link"
         >
-          <div class="carousel-item">
-            <div>
-              <SfImage
-                :key="items.id"
-                :src="$image(productGetters.getCoverImage(items))"
-                alt="product image"
-                :width="136"
-                :height="266"
-                class="carousel-image"
-              />
-            </div>
-            <div class="carousel-item__title">
-              {{ items.name }}
-            </div>
-            <div class="carousel-item__features">
-              {{ feature1[i] + " | " + feature2[i] }}
-            </div>
-            <div class="carousel-item-price__wrapper">
-              <div class="carousel-item-bfr__price">
-                {{ $t("From") }}
-              </div>
-              <div class="carousel-item__price">
-                {{ items.price + currency }}
-              </div>
-            </div>
-          </div>
+          <LazyGreenProductCard
+            :product="product"
+            :image-width="216"
+            :image-height="326"
+          />
         </SfLink>
       </SfCarouselItem>
     </SfCarousel>
@@ -70,18 +49,21 @@
 </template>
 
 <script>
-import { SfCarousel, SfImage, SfHeading, SfLink } from '@storefront-ui/vue';
+import { SfCarousel, SfLink, SfHeading } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
 import { defineComponent } from '@vue/composition-api';
 export default defineComponent({
   components: {
     SfCarousel,
-    SfImage,
-    SfHeading,
-    SfLink
+    SfLink,
+    SfHeading
   },
   props: {
-    item: {
+    title: {
+      type: String,
+      default: ''
+    },
+    products: {
       type: Array,
       default() {
         return [''];
@@ -117,100 +99,43 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-::v-deep .sf-image {
-  object-fit: contain;
-}
-::v-deep .sf-heading {
-  padding: 3% 0;
-  background-color: #f3f3f3;
-}
-::v-deep .sf-heading__title {
+
+::v-deep .carousel-heading .sf-heading__title {
   font: var(--font-family--primary);
   font-size: 34px;
   font-weight: 700;
   line-height: 35px;
 }
-.carousel-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 493px;
-  background-color: #ffffff;
-  color: #1d1f22;
-  border-radius: 10px;
-  font-size: 2.5rem;
-}
-.carousel-item:hover {
-  box-shadow: 0 8px 10px -2px rgba(11, 12, 13, 0.1);
-  cursor: pointer;
-}
-.carousel-image {
-  transform: translate(0px, -10px);
-}
-.carousel-item__title {
-  display: flex;
-  font-family: "Josefin Sans", sans-serif;
-  color: var(--_c-greenmind-primary-black);
-  font-size: 26px;
-  font-weight: 500;
-  text-align: center;
-  // line-height: 24;
-}
-.carousel-item__features {
-  display: flex;
-  font-family: "Josefin Sans", sans-serif;
-  color: #72757e;
-  font-size: 18px;
-  font-weight: 400;
-}
-.carousel-item-price__wrapper {
-  display: flex;
-  flex-direction: row;
-  padding-top: 15px;
-}
-.carousel-item-bfr__price {
-  display: flex;
-  font-family: "Josefin Sans", sans-serif;
-  color: #1d1f22;
-  font-size: 18px;
-  font-weight: 400;
-  padding-right: 5px;
-  margin-bottom: 5%;
-  margin-top: auto;
-}
-.carousel-item__price {
-  display: flex;
-  font-family: "Josefin Sans", sans-serif;
-  color: var(--_c-greenmind-primary-black);
-  font-size: 26px;
-  font-weight: 500;
-}
-::v-deep .sf-carousel__wrapper {
-  height: 650px;
-}
-::v-deep .glide__track {
-  transform: scale(0.98, 1);
-  padding-top: 10px;
-}
-::v-deep .sf-carousel__controls {
-  width: 90%;
-  transform: translate(5%, -100%);
-}
-::v-deep .sf-button {
-  border-radius: 40px;
-  background-color: #f1f2f3;
-}
-::v-deep .sf-button:hover {
-  background-color: #7ba393;
-}
-::v-deep .sf-button:active {
-  background-color: #43464e;
-}
-::v-deep .sf-carousel {
-  background-color: #f3f3f3;
-}
+
 ::v-deep .sf-link {
-  text-decoration: none;
+  border-radius: 14px;
 }
+
+::v-deep .sf-carousel__wrapper {
+  padding-bottom: 10px;
+}
+
+::v-deep .sf-arrow.sf-button {
+  left: 55px
+}
+
+::v-deep .sf-arrow, .carousel-prev-button, .carousel-next-button {
+  border-radius: 50%;
+}
+
+::v-deep .sf-arrow:hover, ::v-deep .sf-arrow:active {
+  background-color: var(--_c-greenmind-fern-secondary-medium-green);
+  color: white !important;
+  --button-background: white;
+}
+
+::v-deep .sf-arrow--right.sf-arrow.sf-button {
+  left: -55px
+}
+
+::v-deep .sf-product-card {
+  width: 256px !important;
+  height: 493px !important;
+}
+
 </style>

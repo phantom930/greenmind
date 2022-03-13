@@ -4,7 +4,7 @@
     v-bind="$props"
     @click="$emit('click')"
   >
-    <slot />
+    <span style="grid-column-start: 2"><slot /> </span>
     <div
       v-show="loading"
       class="lds-ring"
@@ -119,6 +119,8 @@ $button-height: 50px;
   border-radius: 100px;
 }
 .btn{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     font-family: var(--font-family--primary);
     font-size: 14px;
     font-weight: 500;
@@ -160,9 +162,10 @@ $button-height: 50px;
 }
 
 .lds-ring {
+  margin-left: auto;
   display: inline-block;
   position: relative;
-  left: 45px;
+
   width: 16px;
   height: 16px;
 }

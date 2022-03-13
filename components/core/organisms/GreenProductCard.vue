@@ -3,8 +3,8 @@
     :key="product.id"
     data-cy="category-product-card"
     :style="{ '--index': product.id }"
-    :image-width="248"
-    :image-height="375"
+    :image-width="imageWidth"
+    :image-height="imageHeight"
     :title="productGetters.getName(product)"
     :image="$image(productGetters.getCoverImage(product))"
     :nuxt-img-config="{ fit: 'cover' }"
@@ -22,10 +22,7 @@
         `/p/${productGetters.getId(product)}/${productGetters.getSlug(product)}`
       )
     "
-    class="products__product-card"
-    description="128 GB | Gold"
-    price_helper="Fra"
-    discount="$ 50.00"
+    class="products__product-card hover:drop-shadow-xl"
   >
     <div
       slot="title"
@@ -59,6 +56,14 @@ export default defineComponent({
     SfProductCard
   },
   props: {
+    imageWidth: {
+      type: Number,
+      default: 248
+    },
+    imageHeight: {
+      type: Number,
+      default: 375
+    },
     product: {
       type: Object as PropType<GreenProduct>,
       default: () => ({})
@@ -66,7 +71,6 @@ export default defineComponent({
   },
   setup() {
     return {
-      description: '128 GB  I  Gold',
       productGetters
     };
   }
@@ -93,7 +97,9 @@ export default defineComponent({
 .price-flex {
   margin-top: 18.29px;
 }
+
 .sf-product-card {
+  border-radius: 14px;
   width: 295px;
   height: 568.11px;
 }

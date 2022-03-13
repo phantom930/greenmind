@@ -12,7 +12,7 @@
 
         <SfLoader
           :class="{ loading }"
-          :loading="loading"
+          :loading="loading && !buttonLoading"
         >
           <div
             v-if="showProducts"
@@ -21,6 +21,7 @@
             <transition-group
               appear
               tag="div"
+              name="sf-collapse-top"
               class="products__grid"
             >
               <LazyGreenProductCard
@@ -33,9 +34,11 @@
               <GreenButton
                 type="Primary"
                 color="Green"
+                :loading="buttonLoading"
+                :disabled="buttonLoading"
                 @click="changeItemsPerPage()"
               >
-                {{ $t('See More') }}
+                {{ $t("See More") }}
               </GreenButton>
             </div>
           </div>
@@ -48,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@nuxtjs/composition-api';
+import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
 import { SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
@@ -61,12 +64,16 @@ export default defineComponent({
   components: { SfLoader, LazyHydrate },
   transition: 'fade',
   emits: ['close'],
-  setup() {
+  setup(root) {
     const uiState = useUiState();
+    const pageSize = ref(3);
+    const buttonLoading = ref(false);
 
-    const { getFacetsFromURL, changeItemsPerPage } = useUiHelpers();
+    const { getFacetsFromURL } = useUiHelpers();
     const { result, search, loading } = useFacet();
-    const { categoryTree, currentRootCategory } = useUiCategoryHelpers(result.value);
+    const { categoryTree, currentRootCategory } = useUiCategoryHelpers(
+      result.value
+    );
     const { addTags } = useCache();
 
     const products = computed(() => facetGetters.getProducts(result.value));
@@ -74,15 +81,22 @@ export default defineComponent({
     const facets = computed(() =>
       facetGetters.getGrouped(result.value, ['color', 'size'])
     );
-    const pagination = computed(() =>
-      facetGetters.getPagination(result.value)
-    );
+    const pagination = computed(() => facetGetters.getPagination(result.value));
     const showProducts = computed(
-      () => !loading.value && products.value?.length > 0
+      () => !loading.value && products.value?.length > 0 || buttonLoading.value
     );
 
     const customQueryProducts = {
       getProductTemplatesList: 'greenGetProductList'
+    };
+
+    const changeItemsPerPage = async () =>{
+      buttonLoading.value = true;
+      pageSize.value += 3;
+      const params = { ...getFacetsFromURL(), pageSize: pageSize, customQueryProducts };
+
+      await search(params);
+      buttonLoading.value = false;
     };
 
     onSSR(async () => {
@@ -99,6 +113,7 @@ export default defineComponent({
 
     return {
       ...uiState,
+      buttonLoading,
       changeItemsPerPage,
       currentRootCategory,
       products,

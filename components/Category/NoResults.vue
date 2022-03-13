@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="text-center mt-20"
-    style="min-height: 400px;"
-  >
+  <div class="text-center mt-20" style="min-height: 400px">
     <SfImage
       :width="256"
       :height="176"
@@ -23,17 +20,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
-import { SfImage, SfButton } from '@storefront-ui/vue';
+import { defineComponent } from "@nuxtjs/composition-api";
+import { SfImage, SfButton } from "@storefront-ui/vue";
 export default defineComponent({
   components: {
-    SfImage, SfButton
+    SfImage,
+    SfButton,
   },
-  setup() {
-
-  }
+  setup() {},
 });
 </script>
 <style scoped lang="scss">
-
 </style>

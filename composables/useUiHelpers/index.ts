@@ -2,7 +2,6 @@
 /* eslint-disable camelcase */
 // @ts-nocheck
 import { useRoute, useRouter } from '@nuxtjs/composition-api';
-
 import { Category } from '@vue-storefront/odoo-api/server';
 
 const queryParamsNotFilters = ['page', 'sort', 'itemsPerPage'];
@@ -25,7 +24,7 @@ const useUiHelpers = (): any => {
     }
 
     const price = query?.price?.split('-');
-    const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 3;
+    const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 21;
     const sort = query?.sort?.split(',') || [];
     const page = query?.page || 1;
     const categoryId = parseInt(params.slug_3) || parseInt(params.slug_2);
@@ -95,8 +94,6 @@ const useUiHelpers = (): any => {
   };
 
   const changeItemsPerPage = () => {
-    console.log(query);
-
     const itemsPerPage = query.itemsPerPage ? parseInt(query.itemsPerPage) + 3 : 6;
 
     router.push({ query: { ...query, itemsPerPage } });
