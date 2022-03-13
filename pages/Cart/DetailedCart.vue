@@ -5,48 +5,41 @@
       :breadcrumbs="breadcrumbs"
     />
     <div class="detailed-cart">
-      <div
-        v-if="totalItems"
-        class="detailed-cart__aside"
-      >
+      <div v-if="totalItems" class="detailed-cart__aside">
         <SfOrderSummary
           :products="products"
           order-title="Totals"
           :total-items="totalItems"
+          class="oderSummary"
         >
           <template #summary>
-            <div
-              v-for="item in summary"
-              :key="item.name"
-              class="mb-3"
-            >
+            <div v-for="item in summary" :key="item.name" class="mb-3 px-7">
               <SfProperty
                 :name="item.name"
-                class="sf-property--full-width sf-property--large my-cart__total-price"
+                class="
+                  sf-property--full-width sf-property--large
+                  my-cart__total-price
+                "
               >
                 <template #value>
-                  <span
-                    v-if="item.name === 'Products'"
-                    class="card__text"
+                  <span v-if="item.name === 'Products'" class="card__text">
+                    {{ item.value.value }}</span
                   >
-                    {{ item.value.value }}</span>
                   <span
                     v-else-if="item.name === 'Sub Total'"
                     class="card__text"
                   >
-                    ${{ item.value.value.subtotal }}</span>
-                  <span
-                    v-else
-                    class="card__text"
-                  > {{ item.value }}</span>
+                    ${{ item.value.value.subtotal }}</span
+                  >
+                  <span v-else class="card__text"> {{ item.value }}</span>
                 </template>
               </SfProperty>
             </div>
 
-            <div class="my-7">
-              <hr>
+            <div class="my-7 px-7">
+              <hr />
             </div>
-            <div class="mb-5">
+            <div class="mb-5 px-7">
               <SfProperty class="sf-property--full-width sf-property--large">
                 <template #name>
                   <span class="card__text">Total Price:</span>
@@ -62,9 +55,7 @@
               <div>
                 <nuxt-link to="/checkout/personaldetails">
                   <SfButton class="custom__width detailed_cart-checkout_button">
-                    {{
-                      $t("CHECKOUT")
-                    }}
+                    {{ $t("CHECKOUT") }}
                   </SfButton>
                 </nuxt-link>
               </div>
@@ -78,11 +69,11 @@
               </div>
               <div class="custom__con">
                 <div class="bottom__text">
-                  Helpful information: <br>
+                  Helpful information: <br />
                   <span class="text-primary">•</span> Questions? Chat with us or
-                  call 1.888.282.6060. <br>
+                  call 1.888.282.6060. <br />
                   <span class="text-primary">•</span> Shipping internationally?
-                  Choose your destination  & currency. <br>
+                  Choose your destination & currency. <br />
                   <span class="text-primary">•</span> Shipping methods & charges
                 </div>
               </div>
@@ -91,19 +82,13 @@
         </SfOrderSummary>
       </div>
       <div class="detailed-cart__main">
-        <transition
-          name="sf-fade"
-          mode="out-in"
-        >
+        <transition name="sf-fade" mode="out-in">
           <div
             v-if="totalItems"
             key="detailed-cart"
             class="collected-product-list"
           >
-            <transition-group
-              name="sf-fade"
-              tag="div"
-            >
+            <transition-group name="sf-fade" tag="div">
               <LazyGreenDetailedCollectedProduct
                 v-for="product in products"
                 :key="product.id"
@@ -113,11 +98,7 @@
               />
             </transition-group>
           </div>
-          <div
-            v-else
-            key="empty-cart"
-            class="empty-cart"
-          >
+          <div v-else key="empty-cart" class="empty-cart">
             <SfImage
               :src="require('@storefront-ui/shared/icons/empty_cart.svg')"
               alt="Empty cart"
@@ -132,21 +113,25 @@
               description="Looks like you haven’t added any items to the cart yet. Start
                 shopping to fill it in."
               style="
-                --heading-title-color: var(--_c-greenmind-fern-primary-medium-green);
+                --heading-title-color: var(
+                  --_c-greenmind-fern-primary-medium-green
+                );
                 --heading-title-font-size: 46px;
                 --heading-title-font-weight: 700;
                 --heading-title-font-line-height: 48px;
                 --heading-description-font-family: var(--font-family--primary);
                 --heading-description-font-weight: 400;
                 --heading-description-font-size: 16px;
-                --heading-description-color: var(--_c-greenmind-secondary-black);
-                "
+                --heading-description-color: var(
+                  --_c-greenmind-secondary-black
+                );
+              "
             />
             <SfButton
               class="sf-button--full-width empty-cart__button"
               @click="$router.go(-2)"
             >
-              {{ $t('go back to shopping') }}
+              {{ $t("go back to shopping") }}
             </SfButton>
           </div>
         </transition>
@@ -299,7 +284,7 @@ export default {
     box-sizing: border-box;
     width: 100%;
     background: var(--c-light);
-    padding: var(--spacer-base) var(--spacer-sm);
+    padding: var(--spacer-xl) 26px var(--spacer-xl) 26px;
   }
   @include for-desktop {
     display: flex;
@@ -427,8 +412,8 @@ hr {
   }
 }
 .detailed_cart-checkout_button {
-    border-radius: 100px;
-    --button-background: var(--_c-greenmind-pine-primary-dark-green);
+  border-radius: 100px;
+  --button-background: var(--_c-greenmind-pine-primary-dark-green);
 }
 .detailed_cart-checkout_button:hover {
   --button-background: var(--_c-greenmind-fern-secondary-medium-green);
@@ -436,14 +421,19 @@ hr {
 .detailed_cart-checkout_button:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-fern-secondary-medium-green)
-    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+    radial-gradient(
+      circle,
+      transparent 40%,
+      var(--_c-greenmind-mint-secondary-light-green) 1%
+    )
+    center/15000%;
   --button-transition: background 0s;
   background-size: 100%;
 }
 .detailed_cart-shopping_button {
-    border-radius: 100px;
-    --button-background: var(--_c-greenmind-dark-grey-accent);
-    --button-color: var(--_c-greenmind-primary-grey);
+  border-radius: 100px;
+  --button-background: var(--_c-greenmind-dark-grey-accent);
+  --button-color: var(--_c-greenmind-primary-grey);
 }
 .detailed_cart-shopping_button:hover {
   --button-background: var(--_c-greenmind-dark-grey-accent);
@@ -451,23 +441,28 @@ hr {
 .detailed_cart-shopping_button:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-dark-grey-accent)
-    radial-gradient(circle, transparent 40%, var(--_c-greenmind-light-grey-accent) 1%) center/15000%;
+    radial-gradient(
+      circle,
+      transparent 40%,
+      var(--_c-greenmind-light-grey-accent) 1%
+    )
+    center/15000%;
   --button-transition: background 0s;
   background-size: 100%;
 }
-::v-deep .detailed-cart__aside{
-    margin-bottom: 5%;
-    border-radius: 14px;
+::v-deep .detailed-cart__aside {
+  margin-bottom: 5%;
+  border-radius: 14px;
 }
 ::v-deep .sf-collected-product__title {
-    font-family: var(--font-family--primary);
+  font-family: var(--font-family--primary);
 }
 .empty-cart__button {
-    margin-top: 5%;
-    margin-bottom: 10%;
-    border-radius: 100px;
-    --button-background: var(--_c-greenmind-pine-primary-dark-green);
-    text-decoration: none;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  border-radius: 100px;
+  --button-background: var(--_c-greenmind-pine-primary-dark-green);
+  text-decoration: none;
 }
 .empty-cart__button:hover {
   --button-background: var(--_c-greenmind-fern-secondary-medium-green);
@@ -475,8 +470,25 @@ hr {
 .empty-cart__button:active {
   --button-box-shadow: none;
   --button-background: var(--_c-greenmind-fern-secondary-medium-green)
-    radial-gradient(circle, transparent 40%, var(--_c-greenmind-mint-secondary-light-green) 1%) center/15000%;
+    radial-gradient(
+      circle,
+      transparent 40%,
+      var(--_c-greenmind-mint-secondary-light-green) 1%
+    )
+    center/15000%;
   --button-transition: background 0s;
   background-size: 100%;
 }
 </style>
+<style lang="scss">
+@import "~@storefront-ui/vue/styles";
+.oderSummary .sf-order-summary {
+  &__heading {
+    padding-left: 30px;
+  }
+  &__property {
+    font-size: var(--font-size-xl);
+  }
+}
+</style>
+

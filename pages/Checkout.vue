@@ -9,20 +9,13 @@
           :class="{ checkout__steps: true }"
           @change="handleStepClick"
         >
-          <SfStep
-            v-for="(step, key) in STEPS"
-            :key="key"
-            :name="step"
-          >
+          <SfStep v-for="(step, key) in STEPS" :key="key" :name="step">
             <nuxt-child />
           </SfStep>
         </SfSteps>
         <nuxt-child v-else />
       </div>
-      <div
-        v-if="!isThankYou"
-        class="checkout__aside desktop-only"
-      >
+      <div v-if="!isThankYou" class="checkout__aside desktop-only">
         <transition name="fade">
           <CartPreview key="order-summary" />
         </transition>
@@ -56,7 +49,9 @@ export default {
     const isThankYou = computed(() => currentStep.value === 'thank-you');
     const handleStepClick = (stepIndex) => {
       const key = Object.keys(STEPS)[stepIndex];
-      context.root.$router.push(`/checkout/${key}`);
+      if (stepIndex <= currentStepIndex.value) {
+        context.root.$router.push(`/checkout/${key}`);
+      }
     };
     return {
       handleStepClick,

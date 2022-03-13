@@ -107,9 +107,9 @@
         </ValidationProvider>
 
         <ValidationProvider
+          v-slot="{ errors, validate }"
           name="state"
           rules="required"
-          v-slot="{ errors, validate }"
           slim
         >
           <SfSelect
@@ -125,9 +125,9 @@
               countryStates && countryStates.length ? 'visible' : 'invisible',
             ]"
             required
-            @change="validate"
             :valid="!errors[0]"
-            :errorMessage="errors[0]"
+            :error-message="errors[0]"
+            @change="validate"
           >
             <SfSelectOption
               v-for="countryStateOption in countryStates"
@@ -177,34 +177,34 @@ import {
   SfInput,
   SfButton,
   SfSelect,
-  SfCheckbox,
-} from "@storefront-ui/vue";
-import { ref, onMounted, watch, computed } from "@nuxtjs/composition-api";
-import { onSSR } from "@vue-storefront/core";
+  SfCheckbox
+} from '@storefront-ui/vue';
+import { ref, onMounted, watch, computed } from '@nuxtjs/composition-api';
+import { onSSR } from '@vue-storefront/core';
 import {
   useBilling,
   useCountrySearch,
   useShippingAsBillingAddress,
   useCart,
-  cartGetters,
-} from "@vue-storefront/odoo";
-import { required, min, digits } from "vee-validate/dist/rules";
-import { ValidationProvider, ValidationObserver, extend } from "vee-validate";
+  cartGetters
+} from '@vue-storefront/odoo';
+import { required, min, digits } from 'vee-validate/dist/rules';
+import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 
-extend("required", {
+extend('required', {
   ...required,
-  message: "This field is required",
+  message: 'This field is required'
 });
-extend("min", {
+extend('min', {
   ...min,
-  message: "The field should have at least {length} characters",
+  message: 'The field should have at least {length} characters'
 });
-extend("digits", {
+extend('digits', {
   ...digits,
-  message: "Please provide a valid phone number",
+  message: 'Please provide a valid phone number'
 });
 export default {
-  name: "Billing",
+  name: 'Billing',
   components: {
     SfHeading,
     SfInput,
@@ -212,12 +212,12 @@ export default {
     SfSelect,
     SfCheckbox,
     ValidationProvider,
-    ValidationObserver,
+    ValidationObserver
   },
   setup(props, { root }) {
     const { cart } = useCart();
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    if (totalItems.value === 0) root.$router.push("/cart");
+    if (totalItems.value === 0) root.$router.push('/cart');
 
     const { search, searchCountryStates, countries, countryStates } =
       useCountrySearch();
@@ -230,13 +230,13 @@ export default {
     const formRef = ref(false);
 
     const form = ref({
-      name: "",
-      street: "",
-      city: "",
+      name: '',
+      street: '',
+      city: '',
       state: { id: null },
       country: { id: null },
-      zip: "",
-      phone: null,
+      zip: '',
+      phone: null
     });
 
     const handleCheckSameAddress = async () => {
@@ -255,7 +255,7 @@ export default {
       isFormSubmitted.value = true;
 
       if (!error.save) {
-        root.$router.push("/checkout/payment");
+        root.$router.push('/checkout/payment');
       }
     };
 
@@ -275,7 +275,9 @@ export default {
       async () => {
         await searchCountryStates(form?.value?.country?.id || null);
         if (!countryStates.value || countryStates.value.length === 0) {
-          form.value.state.id = 1;
+          form.value.state.id = 0;
+        } else {
+          form.value.state.id = countryStates.value[0].id;
         }
       }
     );
@@ -283,7 +285,7 @@ export default {
     watch(
       () => totalItems.value,
       () => {
-        if (totalItems.value === 0) root.$router.push("/cart");
+        if (totalItems.value === 0) root.$router.push('/cart');
       }
     );
 
@@ -295,9 +297,9 @@ export default {
       handleCheckSameAddress,
       sameAsShipping,
       form,
-      handleFormSubmit,
+      handleFormSubmit
     };
-  },
+  }
 };
 </script>
 <style lang="scss" scoped>
