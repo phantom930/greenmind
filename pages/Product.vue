@@ -65,7 +65,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              2.395,-
+              {{ formatDolar(price) }}
             </p>
             <div class="buttons">
               <GreenButton
@@ -166,6 +166,7 @@
     </div>
     <div class="product_carousel">
       <GreenCarousel
+        v-if="sliderProducts.length > 0"
         :item="sliderProducts"
         :feature1="storage"
         :feature2="color"
@@ -179,16 +180,12 @@
 <script >
 import {
   SfHeading,
-  SfAddToCart,
   SfTabs,
   SfGallery,
   SfIcon,
   SfImage,
-  SfBreadcrumbs,
-  SfButton,
-  SfColor
+  SfBreadcrumbs
 } from '@storefront-ui/vue';
-import { GreenProduct } from '~/green-api/types';
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import {
@@ -202,21 +199,19 @@ import {
   useFacet
 } from '@vue-storefront/odoo';
 
+import { useCurrency } from '~/composables';
 import { onSSR } from '@vue-storefront/core';
-import { useRoute, ComputedRef } from '@nuxtjs/composition-api';
+import { useRoute } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
 export default defineComponent({
   name: 'Product',
   components: {
-    SfColor,
     SfHeading,
-    SfAddToCart,
     SfTabs,
     SfGallery,
     SfIcon,
     SfImage,
     SfBreadcrumbs,
-    SfButton,
     LazyHydrate
   },
   transition: 'fade',
@@ -225,6 +220,7 @@ export default defineComponent({
 
     const loadingProducts = ref(false);
     const { id } = route.value.params;
+    const { formatDolar } = useCurrency();
     const { query } = root.$route;
     const { size, color } = root.$route.query;
     const configuration = reactive({ size, color });
@@ -280,9 +276,7 @@ export default defineComponent({
       }))
     );
 
-    const { result, search: searchFacet } = useFacet();
-    const { params } = root.$router.history.current;
-    const sliderProducts = computed(() => facetGetters.getProducts(result.value).slice(0, 4));
+    const sliderProducts = computed(() => product.value.alternativeProducts || []);
 
     const searchRealProductWithGradeSelected = async() => {
       if (!query.Grade) return;
@@ -302,25 +296,22 @@ export default defineComponent({
         });
 
         await searchRealProductWithGradeSelected();
-        await searchFacet(params);
 
       } finally {
         loadingProducts.value = false;
       }
 
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
-      // await searchRelatedProducts({ catId: [categories.value[0]], limit: 8 });
-      // await searchReviews({ productId: id });
     });
 
     const accessoryProducts = computed(() => products?.value?.accessoryProducts || []);
 
-    const attributesWithoutGrade = computed(() => product.value?.variantAttributeValues?.filter(attribute => attribute.attributeName !== 'Grade'));
+    const attributesWithoutGrade = computed(() => product.value?.variantAttributeValues?.filter(attribute => attribute.attribute?.name !== 'Grade'));
 
     const updateFilter = (filter) => {
       const attributesParams = {};
       attributesWithoutGrade.value?.forEach(item => {
-        attributesParams[item.attributeName] = item.id;
+        attributesParams[item.attribute?.name] = item.id;
       });
 
       root.$router.push({
@@ -347,6 +338,7 @@ export default defineComponent({
       addToCartDisabled,
       selectedGrade,
       price,
+      formatDolar,
       productloading,
       breadcrumbs,
       checkSelected,

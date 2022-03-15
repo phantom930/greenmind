@@ -123,7 +123,9 @@ module.exports = {
                     variantAttributeValues{
                       id
                       name
-                      attributeName
+                      attribute {
+                        name
+                      }
                     }
                     currency {
                         id
@@ -139,6 +141,12 @@ module.exports = {
                         id
                         slug
                         name
+                    }
+                    alternativeProducts{
+                      id
+                      name
+                      websiteSubtitle
+                      price
                     }
                     accessoryProducts{
                         id
@@ -157,7 +165,9 @@ module.exports = {
                         name
                         displayType
                         priceExtra
-                        attributeName
+                        attribute{
+                          name
+                        }
                         search
                     }
                 }

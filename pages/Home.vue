@@ -337,24 +337,24 @@ export default {
    }
 }
 
-// ::v-deep .sf-call-to-action__title {
-//   transform: translate(43%, 166%);
-//   line-height: 35px;
-//   font-weight: 700;
-//   font-size: 34px;
-// }
-// ::v-deep .sf-call-to-action__description {
-//   transform: translate(43%, 245%);
-//   font-family: var(--font-family--primary);
-//   font-weight: 400;
-//   line-height: 22px;
-//   font-size: 18px;
-//   color: #ffffff;
-//   text-transform: none;
-// }
-// ::v-deep  .sf-button-call-to-action {
-//   transform: translate(0%, 77%);
-// }
+::v-deep .sf-call-to-action__title {
+  transform: translate(43%, 166%);
+  line-height: 35px;
+  font-weight: 700;
+  font-size: 34px;
+}
+::v-deep .sf-call-to-action__description {
+  transform: translate(43%, 245%);
+  font-family: var(--font-family--primary);
+  font-weight: 400;
+  line-height: 22px;
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: none;
+}
+::v-deep  .sf-button-call-to-action {
+  transform: translate(0%, 77%);
+}
 ::v-deep .bottom_hero .sf-hero {
   height: 250px;
 }

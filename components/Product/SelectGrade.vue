@@ -28,12 +28,12 @@
 
 <script lang="ts">
 import { computed, ComputedRef, defineComponent, PropType } from '@nuxtjs/composition-api';
-import { Attribute } from '@vue-storefront/odoo-api';
+import { AttributeValue } from '@vue-storefront/odoo-api';
 
 export default defineComponent({
   props: {
     productAttributes: {
-      type: Array as PropType<Array<Attribute>>,
+      type: Array as PropType<Array<AttributeValue>>,
       default: () => ([])
     },
     baseProductPrice: {
@@ -47,10 +47,10 @@ export default defineComponent({
   },
   emits: ['update'],
   setup (props, { emit }) {
-    const gradeAttributes : ComputedRef<Attribute[]> =
-      computed(() => props.productAttributes?.filter(atribute => atribute.name === 'Grade'));
+    const gradeAttributes : ComputedRef<AttributeValue[]> =
+      computed(() => props.productAttributes?.filter(item => item.attribute.name === 'Grade'));
 
-    const chooseGrade = (attribute : Attribute) => {
+    const chooseGrade = (attribute : AttributeValue) => {
       emit('update', { Grade: attribute.id });
     };
 
