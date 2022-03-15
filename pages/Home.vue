@@ -5,6 +5,7 @@
         <SfHeroItem
           title="Colorful summer dresses are already in store"
           class="top-hero"
+          button-text="SE MERE3"
           background="none"
           :image="require('/assets/images/homeHero/homeHero_1.svg')"
           style="background-size: auto; background-position-y: center"

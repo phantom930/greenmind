@@ -6,7 +6,9 @@ const isDev = process.env.NODE_ENV !== 'production';
 
 const localesMap = {
   'en-EN': 'en',
-  'de-DE': 'de'
+  'de-DE': 'de',
+  'da-DA': 'da',
+  'sv-SV': 'sv'
 };
 
 const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
