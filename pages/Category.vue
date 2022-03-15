@@ -31,7 +31,14 @@
               />
             </transition-group>
             <div class="flex justify-end">
+              <div
+                v-if="noMoreProductsToLoad"
+                class="px-5 py-1 bg-gray-200 text-gray-800 rounded-full"
+              >
+                {{ $t('No More Products to Load') }}
+              </div>
               <GreenButton
+                v-else
                 type="Primary"
                 color="Green"
                 :loading="buttonLoading"
@@ -64,9 +71,9 @@ export default defineComponent({
   components: { SfLoader, LazyHydrate },
   transition: 'fade',
   emits: ['close'],
-  setup(root) {
+  setup() {
     const uiState = useUiState();
-    const pageSize = ref(3);
+    const pageSize = ref(21);
     const buttonLoading = ref(false);
 
     const { getFacetsFromURL } = useUiHelpers();
@@ -81,10 +88,14 @@ export default defineComponent({
     const facets = computed(() =>
       facetGetters.getGrouped(result.value, ['color', 'size'])
     );
+
     const pagination = computed(() => facetGetters.getPagination(result.value));
+
     const showProducts = computed(
       () => !loading.value && products.value?.length > 0 || buttonLoading.value
     );
+
+    const noMoreProductsToLoad = computed(() => pageSize.value > pagination.value?.totalItems);
 
     const customQueryProducts = {
       getProductTemplatesList: 'greenGetProductList'
@@ -113,6 +124,7 @@ export default defineComponent({
 
     return {
       ...uiState,
+      noMoreProductsToLoad,
       buttonLoading,
       changeItemsPerPage,
       currentRootCategory,
