@@ -106,7 +106,7 @@ export default defineComponent({
       addTags([
         {
           prefix: CacheTagPrefix.Category,
-          value: currentRootCategory.value.id || params.slug_2
+          value: currentRootCategory.value?.id || params.slug_2
         }
       ]);
     });

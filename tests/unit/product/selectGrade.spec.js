@@ -19,6 +19,7 @@ describe('SelectGrade.vue', () => {
     });
 
     const secondSpan = await wrapper.findAll('.price-wrap').at(1);
+
     await secondSpan.trigger('click');
 
     expect(wrapper.emitted().update).toBeTruthy();

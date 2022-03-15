@@ -22,10 +22,13 @@ module.exports = {
         id
         name
         displayType
-        id
         name
         htmlColor
         search
+        attribute{
+          id
+          name
+        }
       }
       products {
         id

@@ -19,7 +19,7 @@
             <p>{{ attribute.name }}</p>
             <div class="price">{{ baseProductPrice }}</div>
           </div>
-          <div class="discount">{{ attribute.priceExtra }}</div>
+          <div class="discount">0</div>
         </span>
       </div>
     </div>
@@ -48,7 +48,7 @@ export default defineComponent({
   emits: ['update'],
   setup (props, { emit }) {
     const gradeAttributes : ComputedRef<Attribute[]> =
-      computed(() => props.productAttributes?.filter(atribute => atribute.attributeName === 'Grade'));
+      computed(() => props.productAttributes?.filter(atribute => atribute.name === 'Grade'));
 
     const chooseGrade = (attribute : Attribute) => {
       emit('update', { Grade: attribute.id });
