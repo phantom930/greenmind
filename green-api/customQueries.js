@@ -3,7 +3,7 @@ const gql = require('graphql-tag');
 module.exports = {
   greenGetProductList: ({variables}) => ({
     query: gql`
-                query(
+    query(
     $filter: ProductFilterInput
     $currentPage: Int
     $pageSize: Int = 0
@@ -18,17 +18,14 @@ module.exports = {
       sort: $sort
     ) {
       totalCount
-      attributes {
+      attributeValues {
         id
         name
         displayType
-        values {
-          id
-          name
-          htmlColor
-          search
-          attributeId
-        }
+        id
+        name
+        htmlColor
+        search
       }
       products {
         id
@@ -58,13 +55,14 @@ module.exports = {
             name
             displayType
             priceExtra
-            attributeName
+            attribute{
+              name
+            }
             search
         }
       }
     }
-  }
-            `,
+  }`,
     variables
   }),
   greenGetProductListFormHomePage: ({variables}) => ({

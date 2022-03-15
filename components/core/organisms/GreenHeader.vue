@@ -168,7 +168,7 @@ export default {
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { load: loadWishlist, wishlist } = useWishlist();
-    const { search: searchProductApi, result } = useFacet('AppHeader:Search');
+    const { result } = useFacet('AppHeader:Search');
     const { categories: topCategories, search: searchTopCategoryApi } =
       useCategory('AppHeader:TopCategories');
 
@@ -199,8 +199,6 @@ export default {
         term.value = paramValue.target.value;
       }
       if (term.value.length < 2) return;
-
-      await searchProductApi({ search: term.value, pageSize: 12 });
 
       formatedResult.value = {
         products: result?.value?.data?.products,

@@ -36,44 +36,60 @@
   @include generate-color-variants(--_c-greenmind-sand-primary, #E0D6C9);
 
 
-  /* start storefront ui components customization */
+}
 
+/* start storefront ui components customization */
 
-  /* sf-accordion-item */
+.sf-accordtion-item {
   --accordion-item-header-font: var(--font-family--primary);
   --accordion-item-header-font-size: 20px;
   --accordion-item-header-font-line-height: var(--line-height--primary);
-  /* sf-heading */
-  --heading-title-font: var(--font-family--primary);
+}
 
-  /* sf-color */
+.sf-heading {
+  --heading-title-font: var(--font-family--primary);
+}
+
+.sf-color {
   --color-width: 15px !important;
   --color-height: 15px;
   --color-border-radius: 50%;
+}
 
-  /* sf-range */
+.sf-range {
   --range-tooltip-font-family	: var(--font-family--primary);
-  --range-tooltip-font-size: 16px;
+  --range-tooltip-font-size: 16px;  
   --range-tooltip-font-line-height: 22px;	
+}
 
-  /* sf-hero */
-  --hero-item-subtitle-font	: var(--font-family--primary);
-  --hero-item-title-font		: var(--font-family--primary);  
-  
-  /* sf-call-toaction */
-  --call-to-action-title-font		: var(--font-family--primary);
-  --hero-item-title-font		: var(--font-family--primary);
+.sf-hero {
+  --hero-item-subtitle-font: var(--font-family--primary);
+  --hero-item-title-font: var(--font-family--primary);  
+}
 
-  /* sf-icon */
+.sf-icon{ 
   --icon-color: white;
+}
 
-  /* sf-footer-column */
-
+.sf-footer-column {
   --footer-column-title-font-size: 18px;
   --footer-column-title-font-weight: 400;
   --footer-column-title-font-family: var(--font-family--primary);
 }
 
+.sf-carousel {
+  --call-to-action-title-font: var(--font-family--primary);
+  --call-to-action-title-font-weight: 700;
+  --call-to-action-title-font-size: 34px;	
+  --call-to-action-title-font-line-height: 35px;
+
+  --call-to-action-description-font-weight: 400;	
+  --call-to-action-description-font-family: var(--font-family--primary);	
+  --call-to-action-description-font-size: 18px;
+  @include for-mobile {
+    --carousel-width: 90%;
+  }
+}
 
 .topbar {
   z-index: 1 !important;
