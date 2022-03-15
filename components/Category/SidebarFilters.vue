@@ -19,10 +19,10 @@
           :initial-price="price"
           @change="selectPrice"
         />
-
         <SfAccordion
-          :multiple="true"
+          :multiple="false"
           transition="sf-expand"
+          :open="openedHeaders"
         >
           <SfAccordionItem
             v-for="(facet, i) in facets"
@@ -82,13 +82,14 @@
             </template>
           </SfAccordionItem>
         </SfAccordion>
+        </categorysfgreenaccordion>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted, defineComponent } from '@nuxtjs/composition-api';
+import { ref, onMounted, defineComponent, useRoute, computed } from '@nuxtjs/composition-api';
 import {
   SfAccordion,
   SfColor,
@@ -116,8 +117,9 @@ export default defineComponent({
   },
   setup() {
     const selectedFilters = ref([]);
-    const { toInteger } = useCurrency();
     const price = ref([1, 1200]);
+    const { toInteger } = useCurrency();
+    const { query } = useRoute().value;
     const { changeFilters, isFacetColor, facetsFromUrlToFilter } =
       useUiHelpers();
 
@@ -133,6 +135,8 @@ export default defineComponent({
       }
     };
 
+    const openedHeaders = computed(() => Object.keys(query));
+
     onMounted(() => {
       selectedFilters.value = facetsFromUrlToFilter();
       setPrice();
@@ -146,7 +150,7 @@ export default defineComponent({
     };
 
     const isFilterSelected = (option) => {
-      return selectedFilters.value?.some((filter) => filter.id == option.value);
+      return selectedFilters.value?.some((filter) => filter.id === option.value);
     };
 
     const selectFilter = (facet, option) => {
@@ -193,6 +197,7 @@ export default defineComponent({
     };
 
     return {
+      openedHeaders,
       price,
       selectPrice,
       selectFilter,
