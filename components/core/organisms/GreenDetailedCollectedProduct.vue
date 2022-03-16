@@ -49,6 +49,29 @@
         {{ $n(cartGetters.getItemPrice(product).regular) + " " + currency }}
       </span>
     </div>
+    <div slot="remove">
+      <SfButton
+        class="
+            sf-button--text
+            sf-collected-product__remove sf-collected-product__remove--text
+          "
+        data-testid="collected-product-desktop-remove"
+        style="cursor: pointer"
+        @click="removeItem({ product })"
+      >
+        Remove
+      </SfButton>
+      <SfButton
+        class="
+            sf-button--text
+            sf-collected-product__remove sf-collected-product__remove--text
+          "
+        data-testid="collected-product-desktop-remove"
+        style="cursor: pointer; margin-top: 3%"
+      >
+        Edit
+      </SfButton>
+    </div>
     <template #configuration>
       <div class="collected-product__properties">
         <SfProperty

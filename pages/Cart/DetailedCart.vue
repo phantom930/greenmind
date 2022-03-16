@@ -5,7 +5,10 @@
       :breadcrumbs="breadcrumbs"
     />
     <div class="detailed-cart">
-      <div v-if="totalItems" class="detailed-cart__aside">
+      <div
+        v-if="totalItems"
+        class="detailed-cart__aside"
+      >
         <SfOrderSummary
           :products="products"
           order-title="Totals"
@@ -13,7 +16,11 @@
           class="oderSummary"
         >
           <template #summary>
-            <div v-for="item in summary" :key="item.name" class="mb-3 px-7">
+            <div
+              v-for="item in summary"
+              :key="item.name"
+              class="mb-3 px-7"
+            >
               <SfProperty
                 :name="item.name"
                 class="
@@ -22,22 +29,26 @@
                 "
               >
                 <template #value>
-                  <span v-if="item.name === 'Products'" class="card__text">
-                    {{ item.value.value }}</span
+                  <span
+                    v-if="item.name === 'Products'"
+                    class="card__text"
                   >
+                    {{ item.value.value }}</span>
                   <span
                     v-else-if="item.name === 'Sub Total'"
                     class="card__text"
                   >
-                    ${{ item.value.value.subtotal }}</span
-                  >
-                  <span v-else class="card__text"> {{ item.value }}</span>
+                    ${{ item.value.value.subtotal }}</span>
+                  <span
+                    v-else
+                    class="card__text"
+                  > {{ item.value }}</span>
                 </template>
               </SfProperty>
             </div>
 
             <div class="my-7 px-7">
-              <hr />
+              <hr>
             </div>
             <div class="mb-5 px-7">
               <SfProperty class="sf-property--full-width sf-property--large">
@@ -69,11 +80,11 @@
               </div>
               <div class="custom__con">
                 <div class="bottom__text">
-                  Helpful information: <br />
+                  Helpful information: <br>
                   <span class="text-primary">•</span> Questions? Chat with us or
-                  call 1.888.282.6060. <br />
+                  call 1.888.282.6060. <br>
                   <span class="text-primary">•</span> Shipping internationally?
-                  Choose your destination & currency. <br />
+                  Choose your destination & currency. <br>
                   <span class="text-primary">•</span> Shipping methods & charges
                 </div>
               </div>
@@ -82,13 +93,19 @@
         </SfOrderSummary>
       </div>
       <div class="detailed-cart__main">
-        <transition name="sf-fade" mode="out-in">
+        <transition
+          name="sf-fade"
+          mode="out-in"
+        >
           <div
             v-if="totalItems"
             key="detailed-cart"
             class="collected-product-list"
           >
-            <transition-group name="sf-fade" tag="div">
+            <transition-group
+              name="sf-fade"
+              tag="div"
+            >
               <LazyGreenDetailedCollectedProduct
                 v-for="product in products"
                 :key="product.id"
@@ -98,7 +115,11 @@
               />
             </transition-group>
           </div>
-          <div v-else key="empty-cart" class="empty-cart">
+          <div
+            v-else
+            key="empty-cart"
+            class="empty-cart"
+          >
             <SfImage
               :src="require('@storefront-ui/shared/icons/empty_cart.svg')"
               alt="Empty cart"
