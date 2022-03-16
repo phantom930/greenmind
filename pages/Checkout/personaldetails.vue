@@ -1,8 +1,5 @@
 <template>
-  <ValidationObserver
-    v-slot="{ handleSubmit, invalid }"
-    ref="formRef"
-  >
+  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
     <div class="button-wrap">
       <button
         class="color-primary sf-button login-btn"
@@ -26,10 +23,7 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div
-        v-if="canAddNewAddress"
-        class="form"
-      >
+      <div v-if="canAddNewAddress" class="form">
         <div class="first-name-last-name">
           <ValidationProvider
             v-slot="{ errors }"
@@ -92,43 +86,34 @@
         {{ $t("Add new address") }}
       </SfButton>
 
-      <SfButton
-        type="submit"
-        :disabled="invalid"
-      >
+      <SfButton type="submit" :disabled="invalid">
         {{ $t("Continue to billing") }}
       </SfButton>
     </form>
 
     <div class="checkbox-wrap">
       <GreenCheckbox :has-general-wrapper="false" />
-      <p class="label">
-        Join newsletter
-      </p>
+      <p class="label">Join newsletter</p>
     </div>
 
     <div class="perks-wrap">
-      <p class="title">
-        Enjoy these perks with your free account!
-      </p>
+      <p class="title">Enjoy these perks with your free account!</p>
       <div class="perks">
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/clock.svg')">
-          <p class="label">
-            Faster<br>checkout
-          </p>
+          <img :src="require('/assets/images/personaldetails/clock.svg')" />
+          <p class="label">Faster<br />checkout</p>
         </div>
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/coins.svg')">
+          <img :src="require('/assets/images/personaldetails/coins.svg')" />
           <p class="label">
-            Earn credits with every<br>
+            Earn credits with every<br />
             purchase
           </p>
         </div>
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/award.svg')">
+          <img :src="require('/assets/images/personaldetails/award.svg')" />
           <p class="label">
-            Full rewards program<br>
+            Full rewards program<br />
             benefits
           </p>
         </div>
@@ -137,9 +122,7 @@
     <div class="checkbox-button-wrap">
       <div class="checkbox-wrap">
         <GreenCheckbox :has-general-wrapper="false" />
-        <p class="label">
-          I want to create an account.
-        </p>
+        <p class="label">I want to create an account.</p>
       </div>
       <nuxt-link to="/">
         <SfButton class="color-primary sf-button shipping-btn">
@@ -161,6 +144,8 @@ import { ref, watch, onMounted, computed } from '@nuxtjs/composition-api';
 import {
   useCountrySearch,
   useUser,
+  useCart,
+  cartGetters,
   userShippingGetters,
   useShipping
 } from '@vue-storefront/odoo';
@@ -189,6 +174,9 @@ export default {
   },
   emits: ['finish'],
   setup(props, { root, emit }) {
+    const { cart } = useCart();
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    if (totalItems.value === 0) root.$router.push('/cart');
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
     const currentAddressId = ref('');
@@ -268,6 +256,12 @@ export default {
         if (!countryStates.value || countryStates.value.length === 0) {
           form.value.state.id = null;
         }
+      }
+    );
+    watch(
+      () => totalItems.value,
+      () => {
+        if (totalItems.value === 0) root.$router.push('/cart');
       }
     );
 

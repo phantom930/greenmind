@@ -1,17 +1,11 @@
 <template>
   <div class="review-order">
-    <h3 class="title">
-      Order Details
-    </h3>
+    <h3 class="title">Order Details</h3>
     <div class="orders">
-      <a
-        v-for="(product, index) in products"
-        :key="index"
-        class="order"
-      >
+      <a v-for="(product, index) in products" :key="index" class="order">
         <div class="img-info-wrap">
           <div class="image-container">
-            <img :src="$image(cartGetters.getItemImage(product))">
+            <img :src="$image(cartGetters.getItemImage(product))" />
           </div>
           <div class="product-info">
             <div class="product-title">
@@ -40,14 +34,10 @@
       </div>
       <div class="shipping">
         <p>Shipping:</p>
-        <p class="price">
-          Free
-        </p>
+        <p class="price">Free</p>
       </div>
       <div class="total-price">
-        <p class="total">
-          Total price:
-        </p>
+        <p class="total">Total price:</p>
         <p class="price">
           {{ totals.total + ",-" }}
         </p>
@@ -56,9 +46,7 @@
     <div class="checkbox-button-wrap">
       <div class="checkbox-wrap">
         <GreenCheckbox :has-general-wrapper="false" />
-        <p class="label">
-          I agree to <a href="#">Terms and Conditions</a>
-        </p>
+        <p class="label">I agree to <a href="#">Terms and Conditions</a></p>
       </div>
       <nuxt-link to="/checkout/payment">
         <SfButton class="color-primary sf-button payment-btn">
@@ -70,15 +58,23 @@
 </template>
 
 <script>
-import { computed } from '@vue/composition-api';
+import { computed, watch } from '@vue/composition-api';
 import { useCart, cartGetters } from '@vue-storefront/odoo';
 
 export default {
-  setup() {
+  setup(props, { root }) {
     const { cart } = useCart();
 
     const products = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    if (totalItems.value === 0) root.$router.push('/cart');
+    watch(
+      () => totalItems.value,
+      () => {
+        if (totalItems.value === 0) root.$router.push('/cart');
+      }
+    );
     return {
       cartGetters,
       totals,
