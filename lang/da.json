@@ -161,5 +161,9 @@
   "See More": "Se Mere",
   "You can unsubscribe at any time": "Du kan til enhver tid afmelde dig",
   "Purchases" :"Indkøb",
-  "Add to cart": "Tilføj til kurv"
+  "Add to cart": "Tilføj til kurv",
+  "checkout": "kassen",
+  "see details": "se detaljer",
+  "CHECKOUT": "KASSEN",
+  "BACK TO SHOPPING": "TILBAGE TIL SHOPPING"
 }

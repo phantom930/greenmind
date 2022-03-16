@@ -180,5 +180,9 @@
   "Purchases": "Purchases",
   "Add to Cart": "Add to Cart",
   "No More Products to Load": "No More Products to Load",
-  "Acquisition": "Acquisition"
+  "Acquisition": "Acquisition",
+  "checkout": "checkout",
+  "see details": "see details",
+  "CHECKOUT": "CHECKOUT",
+  "BACK TO SHOPPING": "BACK TO SHOPPING"
 }

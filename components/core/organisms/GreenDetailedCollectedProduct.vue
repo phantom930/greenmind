@@ -85,25 +85,19 @@
         />
       </div>
     </template>
-    <template #actions>
-      <div class="actions desktop-only">
-        <SfButton class="sf-button--text actions__button">
-          Edit
-        </SfButton>
-      </div>
-    </template>
   </SfCollectedProduct>
 </template>
 
 <script>
-import { SfCollectedProduct, SfProperty } from '@storefront-ui/vue';
+import { SfCollectedProduct, SfProperty, SfButton } from '@storefront-ui/vue';
 import { useCart, cartGetters } from '@vue-storefront/odoo';
 import { defineComponent } from '@vue/composition-api';
 
 export default defineComponent({
   components: {
     SfCollectedProduct,
-    SfProperty
+    SfProperty,
+    SfButton
   },
   props: {
     product: {
@@ -182,9 +176,6 @@ export default defineComponent({
 ::v-deep .sf-collected-product__title-wraper {
   transform: translate(-130%, 0%);
   width: 25%;
-}
-::v-deep .sf-collected-product__actions {
-  display: none;
 }
 .green-collected-product__checkbox-title {
   font-size: 18px;
