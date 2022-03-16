@@ -1,5 +1,8 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
+  <ValidationObserver
+    v-slot="{ handleSubmit, invalid }"
+    ref="formRef"
+  >
     <SfHeading
       :level="3"
       :title="$t('Shipping Details')"
@@ -12,7 +15,10 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div v-if="canAddNewAddress" class="form">
+      <div
+        v-if="canAddNewAddress"
+        class="form"
+      >
         <div class="first-name-last-name">
           <ValidationProvider
             v-slot="{ errors }"
