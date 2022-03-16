@@ -58,11 +58,23 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { computed, watch } from '@vue/composition-api';
 import { useCart, cartGetters } from '@vue-storefront/odoo';
 
 export default {
   setup(props, { root }) {
+=======
+import { computed } from '@vue/composition-api';
+import { SfButton } from '@storefront-ui/vue';
+import { useCart, cartGetters } from '@vue-storefront/odoo';
+
+export default {
+  components: {
+    SfButton
+  },
+  setup() {
+>>>>>>> [FIX] fixed warnings on review order page
     const { cart } = useCart();
 
     const products = computed(() => cartGetters.getItems(cart.value));
