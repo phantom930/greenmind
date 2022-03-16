@@ -174,5 +174,79 @@ module.exports = {
             }
         `,
     variables
+  }),
+  greenCartLoad: ({variables}) => ({
+    variables,
+    query: gql`
+    query {
+      cart {
+        order {
+          id
+          name
+          amountTotal
+          amountTax
+          amountDelivery
+          dateOrder
+          orderUrl
+          stage
+          websiteOrderLine {
+            id
+            name
+            product {
+              id
+              name
+              image
+              image
+              displayName
+              websiteSubtitle
+            }
+            quantity
+            priceTotal
+          }
+          orderLines {
+            id
+            name
+            product {
+              id
+              name
+              image
+              image
+              displayName
+              websiteSubtitle
+            }
+            quantity
+            priceTotal
+          }
+          partnerInvoice {
+            id
+            name
+            street
+            city
+            phone
+            zip
+            country {
+              id
+            }
+            state {
+              id
+            }
+          }
+          partnerShipping {
+            id
+            name
+            street
+            city
+            phone
+            zip
+            country {
+              id
+            }
+            state {
+              id
+            }
+          }
+        }
+      }
+    }`
   })
 };

@@ -14,10 +14,20 @@
           :value="totalItems"
         />
       </template>
-      <transition name="sf-fade" mode="out-in">
-        <div v-if="totalItems" key="my-cart" class="my-cart">
+      <transition
+        name="sf-fade"
+        mode="out-in"
+      >
+        <div
+          v-if="totalItems"
+          key="my-cart"
+          class="my-cart"
+        >
           <div class="collected-product-list">
-            <transition-group name="sf-fade" tag="div">
+            <transition-group
+              name="sf-fade"
+              tag="div"
+            >
               <LazyGreenCollectedProduct
                 v-for="product in products"
                 :key="product.id"
@@ -27,7 +37,11 @@
             </transition-group>
           </div>
         </div>
-        <div v-else key="empty-cart" class="empty-cart">
+        <div
+          v-else
+          key="empty-cart"
+          class="empty-cart"
+        >
           <div class="empty-cart__banner">
             <SfImage
               alt="Empty bag"
@@ -97,22 +111,22 @@ import {
   SfButton,
   SfProperty,
   SfPrice,
-  SfImage,
-} from "@storefront-ui/vue";
-import { computed } from "@vue/composition-api";
-import { useCart, useUser, cartGetters } from "@vue-storefront/odoo";
-import { useUiState } from "~/composables";
-import { onSSR } from "@vue-storefront/core";
+  SfImage
+} from '@storefront-ui/vue';
+import { computed } from '@vue/composition-api';
+import { useCart, useUser, cartGetters } from '@vue-storefront/odoo';
+import { useUiState } from '~/composables';
+import { onSSR } from '@vue-storefront/core';
 
 export default {
-  name: "Cart",
+  name: 'Cart',
   components: {
     SfSidebar,
     SfButton,
     SfHeading,
     SfProperty,
     SfPrice,
-    SfImage,
+    SfImage
   },
   setup() {
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
@@ -135,9 +149,9 @@ export default {
       toggleCartSidebar,
       totals,
       totalItems,
-      cartGetters,
+      cartGetters
     };
-  },
+  }
 };
 </script>
 
@@ -249,6 +263,7 @@ export default {
 
 ::v-deep .sf-sidebar__aside {
   z-index: 61;
+  width: 434px;
 }
 .empty-cart__heading {
   --heading-title-color: var(--_c-greenmind-fern-primary-medium-green);

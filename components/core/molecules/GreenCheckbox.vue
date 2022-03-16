@@ -46,7 +46,7 @@
               <div class="product-title">
                 {{ title }}
               </div>
-              <a href="#">{{ link_title }}</a>
+              <a href="#" />
             </div>
             <p class="product-description">
               {{ description }}

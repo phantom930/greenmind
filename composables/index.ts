@@ -4,6 +4,7 @@ import useUiCategoryHelpers from './useUiCategoryHelpers';
 import useUiState from './useUiState';
 import useCurrency from './useCurrency';
 import useUiStyleState from './useUiStyleState';
+import cartGetters from './getters/cartGetters';
 
 export {
   useUiHelpers,
@@ -11,5 +12,7 @@ export {
   useUiCategoryHelpers,
   useUiState,
   useCurrency,
-  useUiStyleState
+  useUiStyleState,
+
+  cartGetters
 };

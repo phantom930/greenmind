@@ -244,7 +244,7 @@ export default {
         }),
         loadUser(),
         loadWishlist(),
-        loadCart()
+        loadCart({ customQuery: { cartLoad: 'greenCartLoad' } })
       ]);
     });
 
