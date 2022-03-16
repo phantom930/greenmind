@@ -15,7 +15,7 @@
       />
       <SfProperty
         name="Subtotal"
-        :value="$n(totals.subtotal, 'currency')"
+        :value="'$'+totals.subtotal"
         :class="[
           'sf-property--full-width',
           'sf-property--large property',
@@ -40,12 +40,12 @@
       />
       <SfProperty
         name="Shipping"
-        :value="$n(shippingMethodPrice, 'currency')"
+        :value="shippingMethodPrice"
         class="sf-property--full-width sf-property--large property"
       />
       <SfProperty
         name="Total price"
-        :value="$n(totals.total, 'currency')"
+        :value="'$'+totals.total"
         class="sf-property--full-width sf-property--large property-total total-price"
       />
     </div>
@@ -80,11 +80,9 @@
 import {
   SfHeading,
   SfButton,
-  SfCollectedProduct,
   SfProperty,
   SfCharacteristic,
-  SfInput,
-  SfCircleIcon
+  SfInput
 } from '@storefront-ui/vue';
 import { computed, ref } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters, cartGetters } from '@vue-storefront/odoo';
@@ -94,11 +92,9 @@ export default {
   components: {
     SfHeading,
     SfButton,
-    SfCollectedProduct,
     SfProperty,
     SfCharacteristic,
-    SfInput,
-    SfCircleIcon
+    SfInput
   },
   setup() {
     const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
@@ -108,6 +104,7 @@ export default {
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
+    console.log(totals.subtotal);
     const discounts = computed(() => cartGetters.getDiscounts(cart.value));
     const shippingMethodPrice = computed(() =>
       checkoutGetters.getShippingMethodPrice(cart.value)
