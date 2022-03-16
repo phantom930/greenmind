@@ -27,13 +27,13 @@
     <div class="checkbox-button-wrap">
       <div class="checkbox-group">
         <div class="checkbox-wrap">
-          <GreenCheckboxSecond />
+          <GreenCheckbox />
           <p class="label">
             Copy address data from shipping
           </p>
         </div>
         <div class="checkbox-wrap">
-          <GreenCheckboxSecond />
+          <GreenCheckbox />
           <p class="label">
             I want to generate invoice<br>
             for the company
