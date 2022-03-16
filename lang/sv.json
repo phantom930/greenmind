@@ -165,5 +165,6 @@
   "checkout": "kolla upp",
   "see details": "se detaljer",
   "CHECKOUT": "KOLLA UPP",
-  "BACK TO SHOPPING": "TILLBAKA TILL SHOPPING"
+  "BACK TO SHOPPING": "TILLBAKA TILL SHOPPING",
+  "GO TO SHIPPING": "GÅ TILL FRAKT"
 }

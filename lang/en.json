@@ -184,5 +184,6 @@
   "checkout": "checkout",
   "see details": "see details",
   "CHECKOUT": "CHECKOUT",
-  "BACK TO SHOPPING": "BACK TO SHOPPING"
+  "BACK TO SHOPPING": "BACK TO SHOPPING",
+  "GO TO SHIPPING": "GO TO SHIPPING"
 }

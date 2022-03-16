@@ -119,5 +119,6 @@
   "checkout": "kassen",
   "see details": "se detaljer",
   "CHECKOUT": "KASSEN",
-  "BACK TO SHOPPING": "TILBAGE TIL SHOPPING"
+  "BACK TO SHOPPING": "TILBAGE TIL SHOPPING",
+  "GO TO SHIPPING": "GÅ TIL FORSENDELSE"
 }
