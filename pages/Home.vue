@@ -142,22 +142,37 @@
       />
     </div>
 
-    <div>
-      <SfCallToAction
-        title="Subscribe to Newsletters"
-        description="Be aware of upcoming sales and events. Receive gifts and special offers!"
-        :image="require('/assets/images/homeHero/homeHero_2.svg')"
-      >
-        <template #button>
-          <GreenButton
-            class="sf-button-call-to-action"
-            type="Primary"
-            color="Green"
-            shape="Round"
-            @click="toggleNewsletterModal"
-          >
-            {{ $t('See More') }}
-          </GreenButton>
+    <div
+      style="height: 144px;"
+      class="div-call-to-hero-bottom"
+    >
+      <SfCallToAction>
+        <template #title>
+          <SfImage
+            width="437"
+            height="240"
+            :src="require('/assets/images/homeHero/samsung_phones.svg')"
+            alt="samsumg"
+          />
+          <div class="title-subtitle">
+            <h2 class="sf-call-to-action__title">
+              Subscribe to Newsletters
+            </h2> <p class="sf-call-to-action__description display-none" />
+            <p class="sf-call-to-action__description">
+              Be aware of upcoming sales and events. Receive gifts and special offers!
+            </p>
+          </div>
+          <div class="div-button">
+            <GreenButton
+              class="sf-button-call-to-action"
+              type="Primary"
+              color="Green"
+              shape="Round"
+              @click="toggleNewsletterModal"
+            >
+              {{ $t('See More') }}
+            </GreenButton>
+          </div>
         </template>
       </sfcalltoaction>
     </div>
@@ -275,24 +290,6 @@ export default {
   height: 480px;
   margin-top: -75px;
 }
-::v-deep .bottom_hero .sf-hero-item__title {
-  transform: translate(70%, 100%);
-  line-height: 35px;
-  font-weight: 700;
-  font-size: 34px;
-}
-::v-deep .bottom_hero .sf-hero-item__subtitle {
-  transform: translate(86%, 256%);
-  font-family: var(--font-family--primary);
-  font-weight: 400;
-  line-height: 22px;
-  font-size: 18px;
-  color: #ffffff;
-  text-transform: none;
-}
-::v-deep .bottom_hero .sf-button {
-  transform: translate(550%, -20px);
-}
 ::v-deep .top-hero .sf-hero-item__title {
   font: var(--font-family--primary);
   color: #ffffff;
@@ -331,33 +328,82 @@ export default {
   display: none;
 }
 
+::v-deep .sf-call-to-action__text-container{
+  flex-direction: row;
+  gap: 6%;
+  --call-to-action-text-container-width: 100%;
+  justify-content: center;
+}
+
+.title-subtitle {
+  min-width: 411px;
+}
+
+::v-deep .sf-call-to-action .sf-image--wrapper{
+  transform: translate(0, -51.5%);
+  min-width: 393px;;
+}
 ::v-deep .sf-call-to-action {
-  background-color  : #F3F3F3;
-  @include for-mobile {
-      background-color  : #7ba393;
-   }
+  --call-to-action-height: 9.625rem;
+  --call-to-action-flex-direction: unset;
+  --call-to-action-padding: 2%;
+  background-color  : #7ba393;
+}
+
+@media (max-width: 1024px) {
+ ::v-deep .sf-call-to-action__text-container {
+    flex-direction: column;
+    align-items: center;
+    height: 324px;
+  }
+  .title-subtitle {
+    transform: translate(0, -35%);
+  }
+
+  .div-button{
+    transform: translate(0, -145%);
+  }
+  ::v-deep .sf-call-to-action__text-container .sf-image--wrapper {
+    transform: translate(0, -8%);
+  }
+  ::v-deep .sf-call-to-action {
+    margin: 2%;
+    border-radius: 14px;
+    transform: translate(0, -68%);
+  }
+
+  ::v-deep .sf-call-to-action__description{
+    font-size: 16px;
+    line-height: 20px;
+    padding: 0 20% 0 20%;
+  }
+
+}
+
+.div-call-to-hero-bottom {
+  height: 144px;
+  background-color: #F3F3F3;
 }
 
 ::v-deep .sf-call-to-action__title {
-  transform: translate(43%, 166%);
   line-height: 35px;
   font-weight: 700;
   font-size: 34px;
+    @include for-mobile {
+      line-height: 26px;
+      font-size: 24px;
+      text-align: center;
+  }
 }
 ::v-deep .sf-call-to-action__description {
-  transform: translate(43%, 245%);
   font-family: var(--font-family--primary);
   font-weight: 400;
   line-height: 22px;
   font-size: 18px;
   color: #ffffff;
-  text-transform: none;
-}
-::v-deep  .sf-button-call-to-action {
-  transform: translate(0%, 77%);
-}
-::v-deep .bottom_hero .sf-hero {
-  height: 250px;
+  @include for-mobile {
+      text-align: center;
+  }
 }
 ::v-deep .category_card .sf-category-card__label {
   font: var(--font-family--primary);
