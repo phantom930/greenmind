@@ -128,32 +128,32 @@ export default {
           childs: [
             {
               name: 'iPhones',
-              slug: '/c/iphones',
+              slug: '/products/iphones',
               id: 3
             },
             {
               name: 'Smartphones',
-              slug: '/c/cell-phones',
+              slug: '/products/cell-phones',
               id: 1
             },
             {
               name: 'Tablets',
-              slug: '/c/tablets',
+              slug: '/products/tablets',
               id: 96
             },
             {
               name: 'Computers',
-              slug: '/c/computers',
+              slug: '/products/computers',
               id: 99
             },
             {
               name: 'Accessories',
-              slug: '/c/accessories',
+              slug: '/products/accessories',
               id: 154
             },
             {
               name: 'Other products',
-              slug: '/c/other-products',
+              slug: '/products/other-products',
               id: 138
             }
           ]
