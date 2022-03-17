@@ -154,13 +154,13 @@
     </div>
 
     <div class="div-popular-products mt-20 ">
-      <!-- <GreenCarousel
+      <GreenCarousel
         :title="$t('Popular products')"
         :products="products"
         :feature1="storage"
         :feature2="color"
         :currency="currency"
-      /> -->
+      />
     </div>
 
     <div
@@ -253,7 +253,7 @@ export default {
     onSSR(async () => {
       const params = { ...getFacetsFromURL(), customQueryProducts };
 
-      // await search(params);
+      await search(params);
     });
 
     const onSubscribe = async (emailAddress) => {
