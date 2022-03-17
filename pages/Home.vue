@@ -133,13 +133,13 @@
       </div>
     </div>
     <div class="div-popular-products mt-20 ">
-      <GreenCarousel
+      <!-- <GreenCarousel
         :title="$t('Popular products')"
         :products="products"
         :feature1="storage"
         :feature2="color"
         :currency="currency"
-      />
+      /> -->
     </div>
 
     <div
@@ -149,8 +149,8 @@
       <SfCallToAction>
         <template #title>
           <SfImage
-            width="437"
-            height="240"
+            :width="437"
+            :height="240"
             :src="require('/assets/images/homeHero/samsung_phones.svg')"
             alt="samsumg"
           />
@@ -232,7 +232,7 @@ export default {
     onSSR(async () => {
       const params = { ...getFacetsFromURL(), customQueryProducts };
 
-      await search(params);
+      // await search(params);
     });
 
     const onSubscribe = async (emailAddress) => {

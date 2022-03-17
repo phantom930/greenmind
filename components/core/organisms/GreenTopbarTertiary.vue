@@ -254,11 +254,13 @@
 </template>
 
 <script>
-import { SfHeader, SfMegaMenu } from '@storefront-ui/vue';
+import { SfHeader, SfMegaMenu, SfList, SfMenuItem } from '@storefront-ui/vue';
 export default {
   components: {
     SfHeader,
-    SfMegaMenu
+    SfMegaMenu,
+    SfList,
+    SfMenuItem
   },
   data() {
     return {
