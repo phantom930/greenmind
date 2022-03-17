@@ -131,15 +131,36 @@
           </SfButton>
         </SfLink>
       </div>
+
+      <div class="flex justify-between">
+        <HomeCallToActionStand
+          :title="$t('Stand')"
+          :image="require('/assets/images/homeHero/image_01.svg')"
+          background="#CABDBD"
+        />
+        <HomeCallToActionStand
+          :title="$t('Stand')"
+          :image="require('/assets/images/homeHero/image_02.svg')"
+          description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+          background="#D6D4D4"
+        />
+        <HomeCallToActionStand
+          :title="$t('Stand')"
+          :image="require('/assets/images/homeHero/image_03.svg')"
+          description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+          background="#E0D6C9"
+        />
+      </div>
     </div>
+
     <div class="div-popular-products mt-20 ">
-      <GreenCarousel
+      <!-- <GreenCarousel
         :title="$t('Popular products')"
         :products="products"
         :feature1="storage"
         :feature2="color"
         :currency="currency"
-      />
+      /> -->
     </div>
 
     <div
@@ -232,7 +253,7 @@ export default {
     onSSR(async () => {
       const params = { ...getFacetsFromURL(), customQueryProducts };
 
-      await search(params);
+      // await search(params);
     });
 
     const onSubscribe = async (emailAddress) => {
@@ -324,11 +345,12 @@ export default {
 ::v-deep .top-hero .sf-hero__control--left {
   display: none;
 }
+
 ::v-deep .top-hero .sf-hero__control--right {
   display: none;
 }
 
-::v-deep .sf-call-to-action__text-container{
+.div-call-to-hero-bottom  ::v-deep .sf-call-to-action__text-container{
   flex-direction: row;
   gap: 6%;
   --call-to-action-text-container-width: 100%;
@@ -339,11 +361,11 @@ export default {
   min-width: 411px;
 }
 
-::v-deep .sf-call-to-action .sf-image--wrapper{
+.div-call-to-hero-bottom ::v-deep .sf-call-to-action .sf-image--wrapper{
   transform: translate(0, -51.5%);
   min-width: 393px;;
 }
-::v-deep .sf-call-to-action {
+::v-deep .div-call-to-hero-bottom .sf-call-to-action {
   --call-to-action-height: 9.625rem;
   --call-to-action-flex-direction: unset;
   --call-to-action-padding: 2%;
