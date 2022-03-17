@@ -1,26 +1,27 @@
 <template>
-  <div class="div-call-to-action">
-    <SfCallToAction
-      :title="title"
-      :description="description"
-      :background="background"
-    />
-    <GreenButton
-      class="sf-button-call-to-action"
-      type="Primary"
-      color="Green"
-      shape="Round"
-    >
-      {{ $t('See More') }}
-    </GreenButton>
-    <SfImage
-      v-if="image"
-      :width="363"
-      :height="358"
-      :src="image"
-      alt="image_01"
-    />
-  </div>
+  <SfCallToAction
+    :title="title"
+    :description="description"
+    :background="background"
+  >
+    <template #button>
+      <GreenButton
+        class="sf-button-call-to-action"
+        type="Primary"
+        color="Green"
+        shape="Round"
+      >
+        {{ $t('See More') }}
+      </GreenButton>
+      <SfImage
+        v-if="image"
+        :width="363"
+        :height="358"
+        :src="image"
+        alt="image_01"
+      />
+    </template>
+  </SfCallToAction>
 </template>
 
 <script lang="ts">
@@ -37,11 +38,11 @@ export default defineComponent({
     },
     title: {
       type: String,
-      default: ''
+      default: ' '
     },
     description: {
       type: String,
-      default: ''
+      default: ' '
     },
     background: {
       type: String,
@@ -62,30 +63,23 @@ export default defineComponent({
   color: var(--_c-greenmind-primary-black);
   text-align: center;
   padding: 0 39px;
+  height: 115px;
 }
 ::v-deep .sf-call-to-action__title {
   margin-bottom: 28px;
   padding: 80px 0 0 0;
 }
 ::v-deep .sf-button-call-to-action{
-  transform: translate(0, -220%);
+  transform: translate(0, 478%);
   z-index: 2;
 }
 
 ::v-deep .sf-image--wrapper{
-    bottom: 426px;
+    transform: translate(0, -40px);
 }
 
 ::v-deep .sf-image--wrapper img{
     object-fit: contain !important;
-}
-
-.div-call-to-action{
-    text-align: center;
-    text-align: -webkit-center;
-    width: 386px;
-    height: 660px;
-    margin-top: 75px;
 }
 
 .sf-call-to-action {

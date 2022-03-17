@@ -132,7 +132,7 @@
         </SfLink>
       </div>
 
-      <div class="flex justify-between">
+      <div class="flex justify-between mt-14">
         <HomeCallToActionStand
           :title="$t('Stand')"
           :image="require('/assets/images/homeHero/image_01.svg')"
@@ -345,12 +345,11 @@ export default {
 ::v-deep .top-hero .sf-hero__control--left {
   display: none;
 }
-
 ::v-deep .top-hero .sf-hero__control--right {
   display: none;
 }
 
-.div-call-to-hero-bottom  ::v-deep .sf-call-to-action__text-container{
+.div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container{
   flex-direction: row;
   gap: 6%;
   --call-to-action-text-container-width: 100%;
@@ -365,7 +364,7 @@ export default {
   transform: translate(0, -51.5%);
   min-width: 393px;;
 }
-::v-deep .div-call-to-hero-bottom .sf-call-to-action {
+.div-call-to-hero-bottom ::v-deep .sf-call-to-action {
   --call-to-action-height: 9.625rem;
   --call-to-action-flex-direction: unset;
   --call-to-action-padding: 2%;
@@ -373,28 +372,28 @@ export default {
 }
 
 @media (max-width: 1024px) {
- ::v-deep .sf-call-to-action__text-container {
+ .div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container {
     flex-direction: column;
     align-items: center;
     height: 324px;
   }
-  .title-subtitle {
-    transform: translate(0, -35%);
+  .div-call-to-hero-bottom .title-subtitle {
+    transform: translate(0, -26%);
   }
 
-  .div-button{
-    transform: translate(0, -145%);
+  .div-call-to-hero-bottom .div-button{
+    transform: translate(0, -100%);
   }
-  ::v-deep .sf-call-to-action__text-container .sf-image--wrapper {
+  .div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container .sf-image--wrapper {
     transform: translate(0, -8%);
   }
-  ::v-deep .sf-call-to-action {
+  .div-call-to-hero-bottom ::v-deep .sf-call-to-action {
     margin: 2%;
     border-radius: 14px;
     transform: translate(0, -68%);
   }
 
-  ::v-deep .sf-call-to-action__description{
+  .div-call-to-hero-bottom ::v-deep .sf-call-to-action__description{
     font-size: 16px;
     line-height: 20px;
     padding: 0 20% 0 20%;
