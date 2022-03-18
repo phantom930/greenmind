@@ -16,7 +16,7 @@
                 <SfList>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Pro Max" /></SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Pro" /></SfListItem></a>
-                  <a href="/c/iphones-13/5"><SfListItem><SfMenuItem label="iPhone 13" /></SfListItem></a>
+                  <a href="/c/iphones-13/3260 "><SfListItem><SfMenuItem label="iPhone 13" /></SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Mini" /></SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
@@ -24,7 +24,7 @@
                 <SfList>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Pro Max" /></SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Pro" /></SfListItem></a>
-                  <a href="/c/iphones-12/10"><SfListItem><SfMenuItem label="iPhone 12" /></SfListItem></a>
+                  <a href="/c/iphones-12/3265"><SfListItem><SfMenuItem label="iPhone 12" /></SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Mini" /></SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
@@ -106,7 +106,7 @@
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('All Smartphones')" />
               </nuxt-link>
-              <nuxt-link to="/c/smartphone-accessories/154">
+              <nuxt-link to="/c/smartphone-accessories/3405">
                 <SfMegaMenuColumn :title="$t('Smartphone accessories')" />
               </nuxt-link>
             </SfMegaMenu>
@@ -122,7 +122,7 @@
               title="Tablets"
               visible
             >
-              <nuxt-link to="/c/apple-ipads/97">
+              <nuxt-link to="/c/apple-ipads/3349">
                 <SfMegaMenuColumn title="iPads" />
               </nuxt-link>
               <nuxt-link to="#">
@@ -149,7 +149,7 @@
             >
               <SfMegaMenuColumn :title="$t('Portable')">
                 <SfList>
-                  <a href="/c/apple-macbooks/103"><SfListItem><SfMenuItem label="Apple MacBooks" /></SfListItem></a>
+                  <a href="/c/apple-macbooks/3355"><SfListItem><SfMenuItem label="Apple MacBooks" /></SfListItem></a>
                   <a href="#"><SfListItem><SfMenuItem label="Windows portable" /></SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
