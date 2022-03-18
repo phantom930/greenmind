@@ -131,7 +131,28 @@
           </SfButton>
         </SfLink>
       </div>
+
+      <!-- <div class="flex justify-between mt-14">
+        <HomeCallToActionStand
+          :title="$t('Stand')"
+          :image="require('/assets/images/homeHero/image_01.svg')"
+          background="#CABDBD"
+        />
+        <HomeCallToActionStand
+          :title="$t('Stand')"
+          :image="require('/assets/images/homeHero/image_02.svg')"
+          description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+          background="#D6D4D4"
+        />
+        <HomeCallToActionStand
+          :title="$t('Stand')"
+          :image="require('/assets/images/homeHero/image_03.svg')"
+          description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
+          background="#E0D6C9"
+        />
+      </div> -->
     </div>
+
     <div class="div-popular-products mt-20 ">
       <GreenCarousel
         :title="$t('Popular products')"
@@ -274,8 +295,11 @@ export default {
 
 <style lang="scss" scoped>
 .div-popular-products {
-  height: 702px;
+  height: 791px;
   background-color: #F3F3F3;
+  @include for-mobile {
+      height: 939px;
+   }
 }
 
 .between-call-to-action-and-footer{
@@ -328,7 +352,7 @@ export default {
   display: none;
 }
 
-::v-deep .sf-call-to-action__text-container{
+.div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container{
   flex-direction: row;
   gap: 6%;
   --call-to-action-text-container-width: 100%;
@@ -339,11 +363,11 @@ export default {
   min-width: 411px;
 }
 
-::v-deep .sf-call-to-action .sf-image--wrapper{
+.div-call-to-hero-bottom ::v-deep .sf-call-to-action .sf-image--wrapper{
   transform: translate(0, -51.5%);
   min-width: 393px;;
 }
-::v-deep .sf-call-to-action {
+.div-call-to-hero-bottom ::v-deep .sf-call-to-action {
   --call-to-action-height: 9.625rem;
   --call-to-action-flex-direction: unset;
   --call-to-action-padding: 2%;
@@ -351,28 +375,28 @@ export default {
 }
 
 @media (max-width: 1024px) {
- ::v-deep .sf-call-to-action__text-container {
+ .div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container {
     flex-direction: column;
     align-items: center;
     height: 324px;
   }
-  .title-subtitle {
-    transform: translate(0, -35%);
+  .div-call-to-hero-bottom .title-subtitle {
+    transform: translate(0, -26%);
   }
 
-  .div-button{
-    transform: translate(0, -145%);
+  .div-call-to-hero-bottom .div-button{
+    transform: translate(0, -100%);
   }
-  ::v-deep .sf-call-to-action__text-container .sf-image--wrapper {
+  .div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container .sf-image--wrapper {
     transform: translate(0, -8%);
   }
-  ::v-deep .sf-call-to-action {
+  .div-call-to-hero-bottom ::v-deep .sf-call-to-action {
     margin: 2%;
     border-radius: 14px;
     transform: translate(0, -68%);
   }
 
-  ::v-deep .sf-call-to-action__description{
+  .div-call-to-hero-bottom ::v-deep .sf-call-to-action__description{
     font-size: 16px;
     line-height: 20px;
     padding: 0 20% 0 20%;

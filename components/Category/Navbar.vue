@@ -1,6 +1,5 @@
 <template>
   <div
-    v-frag
     class="navbar section"
   >
     <div class="navbar__aside desktop-only">
@@ -10,7 +9,28 @@
       />
     </div>
     <div class="navbar__main">
-      <div class="navbar__title desktop-only">
+      <LazyHydrate
+        on-interaction
+        class="smartphone-only"
+      >
+        <SfButton
+          class="sf-button--text navbar__filters-button "
+          data-cy="category-btn_filters"
+          aria-label="Filters"
+          @click="toggleFilterSidebar"
+        >
+          <SfIcon
+            size="24px"
+            color="dark-secondary"
+            icon="filter2"
+            class="navbar__filters-icon"
+            data-cy="category-icon_"
+          />
+          {{ $t('Filters') }}
+        </SfButton>
+      </LazyHydrate>
+
+      <div class="navbar__title ">
         <SfHeading :title="$t('iPhones')" />
       </div>
       <div class="navbar__sort desktop-only">
@@ -40,7 +60,7 @@
 
 <script>
 import { computed, defineComponent, useRoute } from '@nuxtjs/composition-api';
-import { SfBreadcrumbs, SfHeading, SfSelect } from '@storefront-ui/vue';
+import { SfBreadcrumbs, SfHeading, SfSelect, SfButton, SfIcon } from '@storefront-ui/vue';
 import { facetGetters, useFacet } from '@vue-storefront/odoo';
 import { useUiCategoryHelpers, useUiHelpers } from '~/composables';
 
@@ -52,6 +72,8 @@ export default defineComponent({
     SfSelect,
     SfBreadcrumbs,
     SfHeading,
+    SfButton,
+    SfIcon,
     LazyHydrate
   },
   directives: {
@@ -188,6 +210,10 @@ export default defineComponent({
         color: var(--c-link);
       }
     }
+  }
+
+  .sf-button--text {
+    display: flex;
   }
   .sort-by {
     flex: unset;

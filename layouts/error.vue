@@ -55,7 +55,7 @@ export default {
   padding: 0 var(--spacer-sm);
   margin: var(--spacer-xl) 0;
   @include for-desktop {
-    max-width: 77.5rem;
+    max-width: 100%;
   }
 }
 .image {
