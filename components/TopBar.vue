@@ -1,7 +1,7 @@
 <template>
   <SfTopBar class="topbar">
     <template #center>
-      <SfButton>{{ $t("") }}</SfButton>
+      <SfButton>{{ $t("See Offer") }}</SfButton>
     </template>
   </SfTopBar>
 </template>

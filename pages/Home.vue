@@ -295,8 +295,11 @@ export default {
 
 <style lang="scss" scoped>
 .div-popular-products {
-  height: 702px;
+  height: 791px;
   background-color: #F3F3F3;
+  @include for-mobile {
+      height: 939px;
+   }
 }
 
 .between-call-to-action-and-footer{

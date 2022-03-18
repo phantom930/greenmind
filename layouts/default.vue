@@ -1,12 +1,12 @@
 <template>
   <div>
     <LazyHydrate when-visible>
-      <TopBar class="desktop-only" />
+      <TopBar />
     </LazyHydrate>
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
-    <GreenTopbarTertiary />
+    <GreenTopbarTertiary v-if="xlAndLarger" />
 
     <div id="">
       <nuxt :key="$route.fullPath" />
@@ -33,6 +33,7 @@ import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LoginModal from '~/components/LoginModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default {
   name: 'DefaultLayout',
@@ -46,7 +47,12 @@ export default {
     Notification
   },
   setup () {
+    const breakpoints = useBreakpoints(breakpointsTailwind);
 
+    const xlAndLarger = breakpoints.greater('xl');
+    return {
+      xlAndLarger
+    };
   }
 };
 </script>
