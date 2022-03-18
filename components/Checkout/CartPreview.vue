@@ -15,7 +15,7 @@
       />
       <SfProperty
         name="Subtotal"
-        :value="'$'+totals.subtotal"
+        :value="'$' + totals.subtotal"
         :class="[
           'sf-property--full-width',
           'sf-property--large property',
@@ -40,13 +40,17 @@
       />
       <SfProperty
         name="Shipping"
-        :value="shippingMethodPrice"
+        :value="shippingMethodPrice ? shippingMethodPrice : 'Free'"
         class="sf-property--full-width sf-property--large property"
       />
       <SfProperty
         name="Total price"
-        :value="'$'+totals.total"
-        class="sf-property--full-width sf-property--large property-total total-price"
+        :value="'$' + totals.total"
+        class="
+          sf-property--full-width sf-property--large
+          property-total
+          total-price
+        "
       />
     </div>
     <div class="highlighted promo-code">
@@ -199,7 +203,7 @@ export default {
   position: absolute;
   top: 44px;
   right: 45px;
-  background: #7BA393;
+  background: #7ba393;
   font-size: 12px;
   color: #fff;
   font-weight: 500;
@@ -217,7 +221,7 @@ export default {
 ::v-deep .promo-code .sf-input__label {
   font-weight: 400;
   font-size: 16px;
-  color: #43464E;
+  color: #43464e;
   font-family: "Josefin Sans";
   padding-left: 22px;
 }
