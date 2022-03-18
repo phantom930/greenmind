@@ -132,7 +132,7 @@
         </SfLink>
       </div>
 
-      <div class="flex justify-between mt-14">
+      <!-- <div class="flex justify-between mt-14">
         <HomeCallToActionStand
           :title="$t('Stand')"
           :image="require('/assets/images/homeHero/image_01.svg')"
@@ -150,7 +150,7 @@
           description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
           background="#E0D6C9"
         />
-      </div>
+      </div> -->
     </div>
 
     <div class="div-popular-products mt-20 ">
