@@ -1,4 +1,5 @@
 const gql = require('graphql-tag');
+const orderFragment = require('./fragments/orderFragment.ts');
 
 module.exports = {
   greenGetProductList: ({variables}) => ({
@@ -175,86 +176,38 @@ module.exports = {
     query: gql`
     query {
       cart {
-        order {
-          id
-          name
-          amountTotal
-          amountTax
-          amountDelivery
-          dateOrder
-          orderUrl
-          stage
-          websiteOrderLine {
-            id
-            name
-            product {
-              id
-              name
-              image
-              image
-              displayName
-              websiteSubtitle
-              
-            }
-            quantity
-            priceTotal
-          }
-          orderLines {
-            id
-            name
-            product {
-              id
-              name
-              image
-              image
-              displayName
-              websiteSubtitle
-              currency{
-                id
-                name
-                symbol
-              }
-              accessoryProducts{
-                  id
-                  name
-                  description
-                  image
-                  price
-              }
-            }
-            quantity
-            priceTotal
-          }
-          partnerInvoice {
-            id
-            name
-            street
-            city
-            phone
-            zip
-            country {
-              id
-            }
-            state {
-              id
-            }
-          }
-          partnerShipping {
-            id
-            name
-            street
-            city
-            phone
-            zip
-            country {
-              id
-            }
-            state {
-              id
-            }
-          }
-        }
+        ${orderFragment}
       }
     }`
+  }),
+  greenCartAddItem: ({variables}) => ({
+    variables,
+    mutation: gql`
+      mutation($productId: Int!, $quantity: Int!) {
+        cartAddItem(productId: $productId, quantity: $quantity) {
+          ${orderFragment}
+        }
+      }
+    `
+  }),
+  greenCartRemoveItem: ({variables}) => ({
+    variables,
+    mutation: `
+      mutation($lineId: Int!){
+        cartRemoveItem(lineId: $lineId){
+          ${orderFragment}
+        }
+      }
+      `
+  }),
+  greenCartUpdateItemQty: ({ variables}) => ({
+    variables,
+    mutation: `
+      mutation($lineId: Int!, $quantity: Int!) {
+        cartUpdateItem(lineId: $lineId, quantity: $quantity) {
+          ${orderFragment}
+        }
+      }
+      `
   })
 };

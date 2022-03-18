@@ -29,9 +29,9 @@
               tag="div"
             >
               <LazyGreenCollectedProduct
-                v-for="product in products"
-                :key="product.id"
-                :product="product"
+                v-for="item in items"
+                :key="item.id"
+                :order-line="item"
                 :checkbox_title="$t('Purchases')"
               />
             </transition-group>
@@ -71,7 +71,7 @@
               "
             >
               <template #value>
-                <SfPrice :regular="$n(totals.subtotal, 'currency')" />
+                <SfPrice :regular="totals.subtotal" />
               </template>
             </SfProperty>
             <nuxt-link to="/checkout/personaldetails">
@@ -131,13 +131,13 @@ export default {
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
     const { cart, removeItem, updateItemQty } = useCart();
     const { isAuthenticated } = useUser();
-    const products = computed(() => cartGetters.getItems(cart.value));
+    const items = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
 
     return {
       isAuthenticated,
-      products,
+      items,
       removeItem,
       updateItemQty,
       isCartSidebarOpen,

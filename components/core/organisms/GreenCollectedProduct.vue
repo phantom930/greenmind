@@ -1,25 +1,25 @@
 <template>
   <SfCollectedProduct
-    :key="cartGetters.getItemSku(product)"
+    :key="cartGetters.getItemSku(orderLine)"
     data-cy="collected-product-cart-sidebar"
-    :image="$image(cartGetters.getItemImage(product))"
-    :title="cartGetters.getItemName(product)"
-    :regular-price="$n(cartGetters.getItemPrice(product).regular)"
+    :image="$image(cartGetters.getItemImage(orderLine))"
+    :title="cartGetters.getItemName(orderLine)"
+    :regular-price="$n(cartGetters.getItemPrice(orderLine).regular)"
     :image-width="140"
     :image-height="200"
     :special-price="
-      cartGetters.getItemPrice(product).special &&
-        $n(cartGetters.getItemPrice(product).special, 'currency')
+      cartGetters.getItemPrice(orderLine).special &&
+        $n(cartGetters.getItemPrice(orderLine).special, 'currency')
     "
     :stock="99999"
-    :qty="cartGetters.getItemQty(product)"
+    :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
-    @input="updateItemQty({ product, quantity: $event })"
-    @click:remove="removeItem({ product })"
+    @input="handleUpdateItem(orderLine, $event)"
+    @click:remove="handleRemoveItem(orderLine.id)"
   >
     <template #title>
-      <span class="custom-product-title"> {{ cartGetters.getCartItemTitle(product) }} </span>
-      <span class="custom-subtitle"> {{ cartGetters.getCartItemWebsiteTitle(product.product) }} </span>
+      <span class="custom-product-title"> {{ cartGetters.getCartItemTitle(orderLine) }} </span>
+      <span class="custom-subtitle"> {{ cartGetters.getCartItemWebsiteTitle(orderLine.product) }} </span>
       <span class="custom-stand"> Stand: Meget flat </span>
     </template>
     <template #configuration>
@@ -28,7 +28,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $n(cartGetters.getItemPrice(product).regular) }}
+        {{ $n(cartGetters.getItemPrice(orderLine).regular) }}
       </span>
 
       <div class="mt-3">
@@ -40,6 +40,8 @@
           :key="acessoryProduct.id"
           :title="acessoryProduct.name"
           :price="acessoryProduct.price"
+          :is-checked="accessoryIsInCart(acessoryProduct.id)"
+          @change="handleAddOrRemoveAccessory"
         />
       </div>
     </template>
@@ -57,21 +59,65 @@ export default defineComponent({
     SfCollectedProduct
   },
   props: {
-    product: {
+    orderLine: {
       type: Object,
       default: () => ({})
     }
   },
   setup(props) {
-    const { removeItem, updateItemQty } = useCart();
+    const { removeItem, updateItemQty, addItem, cart, loading } = useCart();
+    const items = computed(() => cartGetters.getItems(cart.value));
 
-    const accessoryProducts = computed(() => props.product?.product?.accessoryProducts);
+    const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts);
+
+    const handleAddItem = async (productId) => {
+      if (loading.value) {
+        return;
+      }
+      await addItem({
+        product: { firstVariant: productId },
+        quantity: 1,
+        customQuery: { cartAddItem: 'greenCartAddItem'}
+
+      });
+    };
+
+    const handleRemoveItem = async (orderLineId) => {
+      if (loading.value) {
+        return;
+      }
+      await removeItem({ product: { id: orderLineId }, customQuery: { cartRemoveItem: 'greenCartRemoveItem'} });
+    };
+
+    const accessoryIsInCart = (acessoryId) => {
+      return items.value.some(item => item.product?.id === acessoryId);
+    };
+
+    const handleAddOrRemoveAccessory = async (productId) => {
+      if (accessoryIsInCart(productId)) {
+        const acessoryOrderLine = items.value.find(item => item.product?.id === productId);
+        await handleRemoveItem(acessoryOrderLine.id);
+        return;
+      }
+
+      handleAddItem(productId);
+    };
+
+    const handleUpdateItem = async (orderLine, quantity) => {
+      if (loading.value) {
+        return;
+      }
+      await updateItemQty({ product: orderLine, quantity, customQuery: { cartUpdateItemQty: 'greenCartUpdateItemQty'} });
+    };
 
     return {
+      handleAddOrRemoveAccessory,
+      accessoryIsInCart,
+      handleAddItem,
       accessoryProducts,
       cartGetters,
-      removeItem,
-      updateItemQty
+      handleRemoveItem,
+      handleUpdateItem
     };
   }
 });

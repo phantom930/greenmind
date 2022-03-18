@@ -9,6 +9,8 @@
         <SfGallery
           :images="productGallery"
           :image-width="422"
+          :thumb-width="160"
+          :thumb-height="160"
           :image-height="644"
           :nuxt-img-config="{ fit: 'cover' }"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
@@ -77,7 +79,7 @@
                 class="mb-3"
                 :disabled="addToCartDisabled"
                 :loading="loadingProducts || loading"
-                @click="addItem({ product, quantity: 1 })"
+                @click="handleAddItem()"
               >
                 {{ $t('Add to Cart') }}
               </GreenButton>
@@ -268,7 +270,11 @@ export default defineComponent({
     });
 
     const handleAddItem = async () => {
-
+      await addItem({
+        product: { firstVariant: product.value.id },
+        quantity: 1,
+        customQuery: { cartAddItem: 'greenCartAddItem'}
+      });
     };
 
     return {
@@ -294,7 +300,6 @@ export default defineComponent({
       ),
       relatedLoading,
       options,
-      addItem,
       loading,
       productGetters,
       productVariants,

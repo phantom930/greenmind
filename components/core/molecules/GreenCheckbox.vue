@@ -92,6 +92,10 @@ export default defineComponent({
       type: String,
       default: ''
     },
+    isChecked: {
+      type: Boolean,
+      default: false
+    },
     hasImage: {
       type: Boolean,
       default: false
@@ -112,6 +116,14 @@ export default defineComponent({
     return {
       checked
     };
+  },
+  watch: {
+    isChecked () {
+      this.checked = this.isChecked;
+    }
+  },
+  mounted () {
+    this.checked = this.isChecked;
   }
 });
 </script>
