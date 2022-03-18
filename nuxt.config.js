@@ -154,6 +154,7 @@ export default {
       }
     ]
   ],
+  extractCSS: true,
   nuxtPrecompress: {
     enabled: true,
     report: false,
