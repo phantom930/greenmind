@@ -11,8 +11,9 @@
     :disabled="false"
     :selected="false"
     style="--checkbox-border-radius:100px"
+    @change="$emit('change', $vnode.key)"
   >
-    <div slot="label">
+    <template #label>
       <div
         v-if="hasGeneralWrapper"
         class="general_wrapper"
@@ -23,6 +24,8 @@
         >
           <img
             :src="image"
+            :width="82"
+            :height="70"
             class="checkbox_image"
           >
           <div class="description-wrap">
@@ -57,14 +60,14 @@
           {{ price }}
         </div>
       </div>
-    </div>
+    </template>
   </SfCheckbox>
 </template>
 
-<script>
+<script lang="ts">
 import { SfCheckbox } from '@storefront-ui/vue';
-import { ref } from '@vue/composition-api';
-export default {
+import { ref, defineComponent } from '@nuxtjs/composition-api';
+export default defineComponent({
   components: {
     SfCheckbox
   },
@@ -82,7 +85,7 @@ export default {
       default: ''
     },
     price: {
-      type: String,
+      type: [String, Number],
       default: ''
     },
     img: {
@@ -102,6 +105,7 @@ export default {
       default: true
     }
   },
+  emits: ['change'],
   setup() {
     const checked = ref(false);
 
@@ -109,7 +113,7 @@ export default {
       checked
     };
   }
-};
+});
 </script>
 
 <style scoped>

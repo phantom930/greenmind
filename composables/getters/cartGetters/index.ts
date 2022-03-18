@@ -1,12 +1,11 @@
 import { cartGetters } from '@vue-storefront/odoo';
-import { OrderLine } from '@vue-storefront/odoo-api';
-import { GreenProduct } from '~/green-api/types';
+import { GreenOrderLine } from '~/green-api/types';
 
-export const getCartItemTitle = (orderLine: OrderLine): string =>
+export const getCartItemTitle = (orderLine: GreenOrderLine): string =>
   orderLine?.product.name || 'Product name';
 
-export const getCartItemWebsiteTitle = (product: GreenProduct): string =>
-  product?.websiteSubtitle || 'Subtitle';
+export const getCartItemWebsiteTitle = (product: GreenOrderLine): string =>
+  product?.product?.websiteSubtitle || 'Subtitle';
 
 const getters = {
   ...cartGetters,

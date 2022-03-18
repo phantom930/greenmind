@@ -153,11 +153,6 @@ module.exports = {
                         name
                         description
                         image
-                        currency {
-                            id
-                            name
-                            symbol
-                        }
                         price
                     }
                     attributeValues {
@@ -199,6 +194,7 @@ module.exports = {
               image
               displayName
               websiteSubtitle
+              
             }
             quantity
             priceTotal
@@ -213,6 +209,18 @@ module.exports = {
               image
               displayName
               websiteSubtitle
+              currency{
+                id
+                name
+                symbol
+              }
+              accessoryProducts{
+                  id
+                  name
+                  description
+                  image
+                  price
+              }
             }
             quantity
             priceTotal

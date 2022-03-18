@@ -13,8 +13,6 @@
     "
     :stock="99999"
     :qty="cartGetters.getItemQty(product)"
-    :currency="currency"
-    :checkbox-title="checkboxTitle"
     class="collected-product"
     @input="updateItemQty({ product, quantity: $event })"
     @click:remove="removeItem({ product })"
@@ -30,7 +28,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $n(cartGetters.getItemPrice(product).regular) + " " + currency }}
+        {{ $n(cartGetters.getItemPrice(product).regular) }}
       </span>
 
       <div class="mt-3">
@@ -38,60 +36,39 @@
           {{ $t('Acquisition') }}
         </span>
         <GreenCheckbox
-          v-for="accessoryProducts in product.accessoryProducts"
-          :key="accessoryProducts.id"
-          :title="accessoryProducts.name"
-          :price="accessoryProducts.price"
-        />
-        <GreenCheckbox
-          title="Screenprotection"
-          price="149,-"
-        />
-        <GreenCheckbox
-          title="Adapter"
-          price="99,-"
-        />
-        <GreenCheckbox
-          title="Forsikring All Risk"
-          price="fra 599,-"
-        />
-        <GreenCheckbox
-          title="Forsikring skærm"
-          price="fra 299,-"
+          v-for="acessoryProduct in accessoryProducts"
+          :key="acessoryProduct.id"
+          :title="acessoryProduct.name"
+          :price="acessoryProduct.price"
         />
       </div>
     </template>
   </SfCollectedProduct>
 </template>
 
-<script>
-import { SfCollectedProduct, SfProperty } from '@storefront-ui/vue';
+<script >
+import { SfCollectedProduct } from '@storefront-ui/vue';
 import { useCart } from '@vue-storefront/odoo';
 import { cartGetters } from '~/composables';
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, computed } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   components: {
-    SfCollectedProduct,
-    SfProperty
+    SfCollectedProduct
   },
   props: {
     product: {
       type: Object,
       default: () => ({})
-    },
-    currency: {
-      type: String,
-      default: ',-'
-    },
-    checkboxTitle: {
-      type: String,
-      default: ''
     }
   },
-  setup() {
+  setup(props) {
     const { removeItem, updateItemQty } = useCart();
+
+    const accessoryProducts = computed(() => props.product?.product?.accessoryProducts);
+
     return {
+      accessoryProducts,
       cartGetters,
       removeItem,
       updateItemQty
@@ -101,5 +78,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-@import url('~/assets/css/collectedPoduct.scss');
+@import '~/assets/css/collectedPoduct.scss';
 </style>

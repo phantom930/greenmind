@@ -28,22 +28,6 @@
           :title="accessoryProducts.name"
           :price="accessoryProducts.price"
         />
-        <GreenCheckbox
-          title="Screenprotection"
-          price="149,-"
-        />
-        <GreenCheckbox
-          title="Adapter"
-          price="99,-"
-        />
-        <GreenCheckbox
-          title="Forsikring All Risk"
-          price="fra 599,-"
-        />
-        <GreenCheckbox
-          title="Forsikring skærm"
-          price="fra 299,-"
-        />
       </div>
       <span class="green-collected-product__price">
         {{ $n(cartGetters.getItemPrice(product).regular) + " " + currency }}

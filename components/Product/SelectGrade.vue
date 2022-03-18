@@ -63,5 +63,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import url(~/assets/css/selectGrade.scss);
+@import '~/assets/css/selectGrade.scss';
 </style>

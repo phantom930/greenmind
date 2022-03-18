@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { Product, Attribute } from '@vue-storefront/odoo-api';
+import { Product, Attribute, OrderLine } from '@vue-storefront/odoo-api';
 
 export enum ButtonType {
     Primary = 'Primary',
@@ -26,4 +26,7 @@ export enum ButtonColor {
 export interface GreenProduct extends Product {
     variantAttributeValues: Attribute[],
     websiteSubtitle: string
+}
+export interface GreenOrderLine extends OrderLine {
+    product?: GreenProduct;
 }

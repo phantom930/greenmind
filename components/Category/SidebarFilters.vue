@@ -211,5 +211,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/css/sidebarFilter.scss');
+@import '~/assets/css/sidebarFilter.scss';
 </style>
