@@ -24,65 +24,66 @@
           transition="sf-expand"
           :open="openedHeaders"
         >
-          <SfAccordionItem
-            v-for="(facet, i) in facets"
-            :key="i"
-            :header="facet.label"
-            class="mt-10"
-          >
-            <template #header="{ header, isOpen, accordionClick }">
-              <div
-                :style="{ cursor: 'pointer' }"
-                class="flex justify-between"
-                @click="accordionClick"
-              >
-                <h4 class="sf-heading__title h4">
-                  {{ header }}
-                </h4>
-
-                <img
-                  v-if="isOpen"
-                  :src="require('/assets/images/category/arrow-down.svg')"
-                  class="pr-5"
-                >
-                <img
-                  v-else
-                  :src="require('/assets/images/category/arrow-up.svg')"
-                  class="pr-3.5"
-                >
-              </div>
-            </template>
-            <div
-              v-if="isFacetColor(facet)"
-              class="flex flex-wrap"
+          <template v-for="(facet, i) in facets">
+            <SfAccordionItem
+              v-if="facetHasMoreThanOneOption(facet)"
+              :key="i"
+              :header="facet.label"
+              class="mt-10"
             >
-              <SfColor
-                v-for="option in facet.options"
-                :key="`${facet.id}-${option.value}`"
-                :data-cy="`category-filter_color_${option.value}`"
-                :color="option.htmlColor"
-                class="filters__color mr-3"
-                @click="() => selectFilter(facet, option)"
-              />
-            </div>
-            <template v-else>
-              <SfList>
-                <SfListItem
+              <template #header="{ header, isOpen, accordionClick }">
+                <div
+                  :style="{ cursor: 'pointer' }"
+                  class="flex justify-between"
+                  @click="accordionClick"
+                >
+                  <h4 class="sf-heading__title h4">
+                    {{ header }}
+                  </h4>
+
+                  <img
+                    v-if="isOpen"
+                    :src="require('/assets/images/category/arrow-down.svg')"
+                    class="pr-5"
+                  >
+                  <img
+                    v-else
+                    :src="require('/assets/images/category/arrow-up.svg')"
+                    class="pr-3.5"
+                  >
+                </div>
+              </template>
+              <div
+                v-if="isFacetColor(facet)"
+                class="flex flex-wrap"
+              >
+                <SfColor
                   v-for="option in facet.options"
                   :key="`${facet.id}-${option.value}`"
-                >
-                  <SfCheckbox
-                    class="mt-3"
-                    :label="option.label"
-                    :selected="isFilterSelected(option)"
-                    @change="() => selectFilter(facet, option)"
-                  />
-                </SfListItem>
-              </SfList>
-            </template>
-          </SfAccordionItem>
+                  :data-cy="`category-filter_color_${option.value}`"
+                  :color="option.htmlColor"
+                  class="filters__color mr-3"
+                  @click="() => selectFilter(facet, option)"
+                />
+              </div>
+              <template v-else>
+                <SfList>
+                  <SfListItem
+                    v-for="option in facet.options"
+                    :key="`${facet.id}-${option.value}`"
+                  >
+                    <SfCheckbox
+                      class="mt-3"
+                      :label="option.label"
+                      :selected="isFilterSelected(option)"
+                      @change="() => selectFilter(facet, option)"
+                    />
+                  </SfListItem>
+                </SfList>
+              </template>
+            </SfAccordionItem>
+          </template>
         </SfAccordion>
-        </categorysfgreenaccordion>
       </div>
     </div>
   </div>
@@ -150,7 +151,7 @@ export default defineComponent({
     };
 
     const isFilterSelected = (option) => {
-      return selectedFilters.value?.some((filter) => filter.id === option.value);
+      return selectedFilters.value?.some((filter) => Number(filter.id) === option.value);
     };
 
     const selectFilter = (facet, option) => {
