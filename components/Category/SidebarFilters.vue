@@ -151,19 +151,19 @@ export default defineComponent({
     };
 
     const isFilterSelected = (option) => {
-      return selectedFilters.value?.some((filter) => Number(filter.id) === option.value);
+      return selectedFilters.value?.some((filter) => filter.id === option.id);
     };
 
     const selectFilter = (facet, option) => {
       const alreadySelectedIndex = selectedFilters.value.findIndex(
-        (filter) => String(filter.id) === String(option.value)
+        (filter) => String(filter.id) === String(option.id)
       );
 
       if (alreadySelectedIndex === -1) {
         selectedFilters.value.push({
           filterName: facet.label,
           label: option.label,
-          id: option.value
+          id: option.id
         });
         applyFilters();
         return;

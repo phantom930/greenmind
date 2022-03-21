@@ -39,7 +39,7 @@ const useUiHelpers = (): any => {
       maxPrice: price?.[1] || null,
       filter: {
         categoryId,
-        attributeValueId: filters
+        attribValues: filters
       }
     };
   };

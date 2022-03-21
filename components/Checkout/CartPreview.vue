@@ -108,7 +108,6 @@ export default {
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
-    console.log(totals.subtotal);
     const discounts = computed(() => cartGetters.getDiscounts(cart.value));
     const shippingMethodPrice = computed(() =>
       checkoutGetters.getShippingMethodPrice(cart.value)
