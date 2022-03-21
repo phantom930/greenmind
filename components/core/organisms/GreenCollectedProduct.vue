@@ -1,27 +1,25 @@
 <template>
   <SfCollectedProduct
-    :key="cartGetters.getItemSku(product)"
+    :key="cartGetters.getItemSku(orderLine)"
     data-cy="collected-product-cart-sidebar"
-    :image="$image(cartGetters.getItemImage(product))"
-    :title="cartGetters.getItemName(product)"
-    :regular-price="$n(cartGetters.getItemPrice(product).regular)"
+    :image="$image(cartGetters.getItemImage(orderLine))"
+    :title="cartGetters.getItemName(orderLine)"
+    :regular-price="$n(cartGetters.getItemPrice(orderLine).regular)"
     :image-width="140"
     :image-height="200"
     :special-price="
-      cartGetters.getItemPrice(product).special &&
-        $n(cartGetters.getItemPrice(product).special, 'currency')
+      cartGetters.getItemPrice(orderLine).special &&
+        $n(cartGetters.getItemPrice(orderLine).special, 'currency')
     "
     :stock="99999"
-    :qty="cartGetters.getItemQty(product)"
-    :currency="currency"
-    :checkbox-title="checkboxTitle"
+    :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
-    @input="updateItemQty({ product, quantity: $event })"
-    @click:remove="removeItem({ product })"
+    @input="handleUpdateItem(orderLine, $event)"
+    @click:remove="handleRemoveItem(orderLine.id)"
   >
     <template #title>
-      <span class="custom-product-title"> {{ cartGetters.getCartItemTitle(product) }} </span>
-      <span class="custom-subtitle"> {{ cartGetters.getCartItemWebsiteTitle(product.product) }} </span>
+      <span class="custom-product-title"> {{ cartGetters.getCartItemTitle(orderLine) }} </span>
+      <span class="custom-subtitle"> {{ cartGetters.getCartItemWebsiteTitle(orderLine.product) }} </span>
       <span class="custom-stand"> Stand: Meget flat </span>
     </template>
     <template #configuration>
@@ -30,7 +28,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $n(cartGetters.getItemPrice(product).regular) + " " + currency }}
+        {{ $n(cartGetters.getItemPrice(orderLine).regular) }}
       </span>
 
       <div class="mt-3">
@@ -38,68 +36,93 @@
           {{ $t('Acquisition') }}
         </span>
         <GreenCheckbox
-          v-for="accessoryProducts in product.accessoryProducts"
-          :key="accessoryProducts.id"
-          :title="accessoryProducts.name"
-          :price="accessoryProducts.price"
-        />
-        <GreenCheckbox
-          title="Screenprotection"
-          price="149,-"
-        />
-        <GreenCheckbox
-          title="Adapter"
-          price="99,-"
-        />
-        <GreenCheckbox
-          title="Forsikring All Risk"
-          price="fra 599,-"
-        />
-        <GreenCheckbox
-          title="Forsikring skærm"
-          price="fra 299,-"
+          v-for="acessoryProduct in accessoryProducts"
+          :key="acessoryProduct.id"
+          :title="acessoryProduct.name"
+          :price="acessoryProduct.price"
+          :is-checked="accessoryIsInCart(acessoryProduct.id)"
+          @change="handleAddOrRemoveAccessory"
         />
       </div>
     </template>
   </SfCollectedProduct>
 </template>
 
-<script>
-import { SfCollectedProduct, SfProperty } from '@storefront-ui/vue';
+<script >
+import { SfCollectedProduct } from '@storefront-ui/vue';
 import { useCart } from '@vue-storefront/odoo';
 import { cartGetters } from '~/composables';
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, computed } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   components: {
-    SfCollectedProduct,
-    SfProperty
+    SfCollectedProduct
   },
   props: {
-    product: {
+    orderLine: {
       type: Object,
       default: () => ({})
-    },
-    currency: {
-      type: String,
-      default: ',-'
-    },
-    checkboxTitle: {
-      type: String,
-      default: ''
     }
   },
-  setup() {
-    const { removeItem, updateItemQty } = useCart();
+  setup(props) {
+    const { removeItem, updateItemQty, addItem, cart, loading } = useCart();
+    const items = computed(() => cartGetters.getItems(cart.value));
+
+    const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts);
+
+    const handleAddItem = async (productId) => {
+      if (loading.value) {
+        return;
+      }
+      await addItem({
+        product: { firstVariant: productId },
+        quantity: 1,
+        customQuery: { cartAddItem: 'greenCartAddItem'}
+
+      });
+    };
+
+    const handleRemoveItem = async (orderLineId) => {
+      if (loading.value) {
+        return;
+      }
+      await removeItem({ product: { id: orderLineId }, customQuery: { cartRemoveItem: 'greenCartRemoveItem'} });
+    };
+
+    const accessoryIsInCart = (acessoryId) => {
+      return items.value.some(item => item.product?.id === acessoryId);
+    };
+
+    const handleAddOrRemoveAccessory = async (productId) => {
+      if (accessoryIsInCart(productId)) {
+        const acessoryOrderLine = items.value.find(item => item.product?.id === productId);
+        await handleRemoveItem(acessoryOrderLine.id);
+        return;
+      }
+
+      handleAddItem(productId);
+    };
+
+    const handleUpdateItem = async (orderLine, quantity) => {
+      if (loading.value) {
+        return;
+      }
+      await updateItemQty({ product: orderLine, quantity, customQuery: { cartUpdateItemQty: 'greenCartUpdateItemQty'} });
+    };
+
     return {
+      handleAddOrRemoveAccessory,
+      accessoryIsInCart,
+      handleAddItem,
+      accessoryProducts,
       cartGetters,
-      removeItem,
-      updateItemQty
+      handleRemoveItem,
+      handleUpdateItem
     };
   }
 });
 </script>
 
 <style scoped>
-@import url('~/assets/css/collectedPoduct.scss');
+@import '~/assets/css/collectedPoduct.scss';
 </style>

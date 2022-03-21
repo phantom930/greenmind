@@ -17,7 +17,6 @@
           class="sf-button--text navbar__filters-button "
           data-cy="category-btn_filters"
           aria-label="Filters"
-          @click="toggleFilterSidebar"
         >
           <SfIcon
             size="24px"

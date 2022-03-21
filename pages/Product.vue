@@ -9,6 +9,8 @@
         <SfGallery
           :images="productGallery"
           :image-width="422"
+          :thumb-width="160"
+          :thumb-height="160"
           :image-height="644"
           :nuxt-img-config="{ fit: 'cover' }"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
@@ -50,7 +52,7 @@
             class="checkbox-title-wrap"
           >
             <div class="title">
-              Tilkøb
+              {{ $t('Purchases') }}
             </div>
             <GreenCheckbox
               v-for="accessoryProduct in product.accessoryProducts"
@@ -60,6 +62,7 @@
               :price="accessoryProduct.price"
               :has-image="true"
               :image="$image(accessoryProduct.image)"
+              @change="selectAcessories"
             />
           </div>
 
@@ -76,7 +79,7 @@
                 class="mb-3"
                 :disabled="addToCartDisabled"
                 :loading="loadingProducts || loading"
-                @click="addItem({ product, quantity: 1 })"
+                @click="handleAddItem()"
               >
                 {{ $t('Add to Cart') }}
               </GreenButton>
@@ -92,38 +95,8 @@
             </div>
           </div>
         </div>
-        <div class="usp_banner_products">
-          <div style="display: grid; padding-left: 8%">
-            <SfImage
-              :src="require('/assets/images/productsUspBanner/banner_1.svg')"
-              :width="63"
-              :height="71"
-              alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto"
-            />
-            <span class="usp_text_product">Produkter er testet af egne eksperter</span>
-          </div>
-          <div style="display: grid; padding-left: 8%">
-            <SfImage
-              :src="require('/assets/images/productsUspBanner/banner_2.svg')"
-              :width="63"
-              :height="71"
-              alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto"
-            />
-            <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
-          </div>
-          <div style="display: grid; padding-left: 8%">
-            <SfImage
-              :src="require('/assets/images/productsUspBanner/banner_3.svg')"
-              :width="63"
-              :height="71"
-              alt="Vue Storefront Next"
-              style="margin-left: auto; margin-right: auto"
-            />
-            <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
-          </div>
-        </div>
+
+        <BannerProducts />
 
         <LazyHydrate when-idle>
           <SfTabs
@@ -178,31 +151,15 @@
   </div>
 </template>
 <script >
-import {
-  SfHeading,
-  SfTabs,
-  SfGallery,
-  SfIcon,
-  SfImage,
-  SfBreadcrumbs
-} from '@storefront-ui/vue';
+import { SfHeading, SfTabs, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront-ui/vue';
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import {
-  useProduct,
-  useCart,
-  productGetters,
-  useReview,
-  useProductVariant,
-  reviewGetters,
-  facetGetters,
-  useFacet
-} from '@vue-storefront/odoo';
-
+import { useProduct, useCart, productGetters, useProductVariant, facetGetters, useFacet } from '@vue-storefront/odoo';
 import { useCurrency } from '~/composables';
 import { onSSR } from '@vue-storefront/core';
 import { useRoute } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
+
 export default defineComponent({
   name: 'Product',
   components: {
@@ -210,35 +167,24 @@ export default defineComponent({
     SfTabs,
     SfGallery,
     SfIcon,
-    SfImage,
     SfBreadcrumbs,
     LazyHydrate
   },
   transition: 'fade',
   setup(props, { root }) {
     const route = useRoute();
-
     const loadingProducts = ref(false);
+    const selectedAcessories = reactive(new Set([]));
+
     const { id } = route.value.params;
     const { formatDolar } = useCurrency();
     const { query } = root.$route;
-    const { size, color } = root.$route.query;
-    const configuration = reactive({ size, color });
-    const {
-      products,
-      search,
-      loading: productloading
-    } = useProduct(`products-${id}`);
-    const { searchRealProduct, productVariants, realProduct, elementNames } =
-      useProductVariant(query);
-    const { products: relatedProducts, loading: relatedLoading } =
-      useProduct('relatedProducts');
+    const { products, search, loading: productloading } = useProduct(`products-${id}`);
+    const { searchRealProduct, productVariants, realProduct, elementNames } = useProductVariant(query);
+    const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addItem, loading } = useCart();
     const { addTags } = useCache();
 
-    const { reviews: productReviews } = useReview('productReviews');
-
-    // const product : ComputedRef<GreenProduct>
     const product = computed(() => {
       return {
         ...products.value,
@@ -246,26 +192,16 @@ export default defineComponent({
       };
     });
 
-    const options = computed(() =>
-      productGetters.getAttributes(product.value, ['color', 'size'])
-    );
-    const description = computed(() =>
-      productGetters.getDescription(product.value)
-    );
-    const properties = computed(() =>
-      productGetters.getProperties(product.value)
-    );
+    const options = computed(() => productGetters.getAttributes(product.value, ['color', 'size']));
+    const description = computed(() => productGetters.getDescription(product.value));
+    const properties = computed(() => productGetters.getProperties(product.value));
     const code = computed(() => productGetters.getCode(product.value));
-
     const price = computed(() => productGetters.getPrice(product.value)?.regular || 0);
-
-    const breadcrumbs = computed(() =>
-      facetGetters.getBreadcrumbsByProduct(product.value)
-    );
-
-    const reviews = computed(() =>
-      reviewGetters.getItems(productReviews.value)
-    );
+    const breadcrumbs = computed(() => facetGetters.getBreadcrumbsByProduct(product.value));
+    const sliderProducts = computed(() => product.value.alternativeProducts || []);
+    const accessoryProducts = computed(() => products?.value?.accessoryProducts || []);
+    const attributesWithoutGrade = computed(() => product.value?.variantAttributeValues?.filter(attribute => attribute.attribute?.name !== 'Grade'));
+    const selectedGrade = computed(() => route.value?.query?.Grade);
 
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
@@ -275,8 +211,6 @@ export default defineComponent({
         alt: product.value.name || 'alt'
       }))
     );
-
-    const sliderProducts = computed(() => product.value.alternativeProducts || []);
 
     const searchRealProductWithGradeSelected = async() => {
       if (!query.Grade) return;
@@ -304,10 +238,6 @@ export default defineComponent({
       addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
     });
 
-    const accessoryProducts = computed(() => products?.value?.accessoryProducts || []);
-
-    const attributesWithoutGrade = computed(() => product.value?.variantAttributeValues?.filter(attribute => attribute.attribute?.name !== 'Grade'));
-
     const updateFilter = (filter) => {
       const attributesParams = {};
       attributesWithoutGrade.value?.forEach(item => {
@@ -324,7 +254,13 @@ export default defineComponent({
       return root.$route.query[attribute] === value;
     };
 
-    const selectedGrade = computed(() => route.value?.query?.Grade);
+    const selectAcessories = (accessory) => {
+      if (selectedAcessories.has(accessory)) {
+        selectedAcessories.delete(accessory);
+        return;
+      }
+      selectedAcessories.add(accessory);
+    };
 
     const addToCartDisabled = computed(() => {
       if (!selectedGrade.value) {
@@ -333,7 +269,18 @@ export default defineComponent({
       return loadingProducts.value || loading.value;
     });
 
+    const handleAddItem = async () => {
+      await addItem({
+        product: { firstVariant: product.value.id },
+        quantity: 1,
+        customQuery: { cartAddItem: 'greenCartAddItem'}
+      });
+    };
+
     return {
+      handleAddItem,
+      selectedAcessories,
+      selectAcessories,
       loadingProducts,
       addToCartDisabled,
       selectedGrade,
@@ -344,25 +291,15 @@ export default defineComponent({
       checkSelected,
       elementNames,
       updateFilter,
-      configuration,
       product,
       code,
       description,
       properties,
-      reviews,
-      reviewGetters,
-      averageRating: computed(() =>
-        productGetters.getAverageRating(product.value)
-      ),
-      totalReviews: computed(() =>
-        productGetters.getTotalReviews(product.value)
-      ),
       relatedProducts: computed(() =>
         productGetters.getFiltered(relatedProducts.value, { master: true })
       ),
       relatedLoading,
       options,
-      addItem,
       loading,
       productGetters,
       productVariants,
@@ -390,248 +327,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-#product {
-    box-sizing: border-box;
-    @include for-desktop {
-      max-width: 1272px;
-      margin: 0 auto;
-    }
-  }
-.product {
-    @include for-desktop {
-      display: flex;
-    }
-
-    &__info {
-      margin: var(--spacer-sm) auto;
-      @include for-desktop {
-        max-width: 32.625rem;
-        margin: 0 0 0 7.5rem;
-      }
-    }
-    &__header {
-      --heading-title-color: var(--c-link);
-      --heading-title-font-weight: var(--font-weight--bold);
-      --heading-padding: 0;
-      margin: 0 var(--spacer-sm);
-      display: flex;
-      justify-content: space-between;
-      @include for-desktop {
-        --heading-title-font-weight: var(--font-weight--semibold);
-        margin: 0 auto;
-      }
-    }
-    &__drag-icon {
-      animation: moveicon 1s ease-in-out infinite;
-    }
-    &__price-and-rating {
-      margin: 0 var(--spacer-sm) var(--spacer-base);
-      align-items: center;
-      @include for-desktop {
-        display: flex;
-        justify-content: space-between;
-        margin: var(--spacer-sm) 0 var(--spacer-lg) 0;
-      }
-    }
-    &__rating {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      margin: var(--spacer-xs) 0 var(--spacer-xs);
-    }
-    &__count {
-      @include font(
-        --count-font,
-        var(--font-weight--normal),
-        var(--font-size--sm),
-        1.4,
-        var(--font-family--secondary)
-      );
-      color: var(--c-text);
-      text-decoration: none;
-      margin: 0 0 0 var(--spacer-xs);
-    }
-    &__description {
-      @include font(
-        --product-description-font,
-        var(--font-weight--light),
-        var(--font-size--base),
-        1.6,
-        var(--font-family--primary)
-      );
-    }
-    &__select-size {
-      margin: 0 var(--spacer-sm);
-      @include for-desktop {
-        margin: 0;
-      }
-    }
-    &__colors {
-      @include font(
-        --product-color-font,
-        var(--font-weight--normal),
-        var(--font-size--lg),
-        1.6,
-        var(--font-family--secondary)
-      );
-      display: flex;
-      align-items: center;
-      margin-top: var(--spacer-xl);
-    }
-    &__radio-label {
-      @include font(
-        --product-color-font,
-        var(--font-weight--normal),
-        var(--font-size--lg),
-        1.6,
-        var(--font-family--secondary)
-      );
-      margin: 0 var(--spacer-lg) 0 0;
-    }
-    &__color-label {
-      margin: 0 var(--spacer-lg) 0 0;
-    }
-    &__color {
-      margin: 0 var(--spacer-2xs);
-    }
-    &__guide,
-    &__compare,
-    &__save {
-      display: block;
-      margin: var(--spacer-xl) 0 var(--spacer-base) auto;
-    }
-    &__compare {
-      margin-top: 0;
-    }
-    &__tabs {
-      margin: var(--spacer-lg) auto var(--spacer-2xl);
-      --tabs-title-font-size: var(--font-size--lg);
-      @include for-desktop {
-        margin-top: var(--spacer-2xl);
-      }
-    }
-    &__property {
-      margin: var(--spacer-base) 0;
-      &__button {
-        --button-font-size: var(--font-size--base);
-      }
-    }
-    &__review {
-      line-height: var(--line-height--primary);
-      border-bottom: var(--c-light) solid 1px;
-      margin-bottom: var(--spacer-base);
-    }
-    &__additional-info {
-      color: var(--c-link);
-      @include font(
-        --additional-info-font,
-        var(--font-weight--light),
-        var(--font-size--sm),
-        1.6,
-        var(--font-family--primary)
-      );
-      &__title {
-        font-weight: var(--font-weight--normal);
-        font-size: var(--font-size--base);
-        margin: 0 0 var(--spacer-sm);
-        &:not(:first-child) {
-          margin-top: 3.5rem;
-        }
-      }
-      &__paragraph {
-        margin: 0;
-      }
-    }
-    &__gallery {
-      flex: 1;
-    }
-  }
-
-  .breadcrumbs {
-    margin: var(--spacer-base) auto var(--spacer-lg);
-    text-transform: capitalize;
-  }
-  @keyframes moveicon {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    50% {
-      transform: translate3d(0, 30%, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-  ::v-deep .product_carousel .sf-heading {
-    background-color: transparent;
-  }
-  ::v-deep .product_carousel .sf-carousel {
-    background-color: transparent;
-  }
-  .usp_banner_products {
-    height: 120px;
-    width: 531px;
-    border-radius: 10px;
-    background-color: #f3f3f3;
-    display: flex;
-    margin-top: 7%;
-  }
-  .usp_text_product {
-    width: 122px;
-    font-family: var(--font-family--primary);
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: center;
-  }
-  ::v-deep .product__tabs {
-    margin-top: 7%;
-  }
-  ::v-deep .sf-tabs__title {
-    margin-right: 15%;
-  }
-  .total-price-buttons .total-price {
-    font-size: 34px;
-    font-weight: 700;
-  }
-
-  .total-price-buttons {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .total-price-buttons .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 280px;
-  }
-  .product_variants {
-    text-align: left;
-    --heading-title-color: var(--_c-greenmind-secondary-black);
-    --heading-title-font-size: 26px;
-    --heading-title-font-weight: 500;
-  }
-  .product_title {
-    --heading-title-color: var(--_c-greenmind-primary-black);
-    --heading-title-font-weight: 700;
-    --heading-title-font-size: 34px;
-    --heading-title-font-line-height: 48px;
-    margin-bottom: -10px;
-  }
-  .checkbox-title-wrap .title {
-    font-size: 20px;
-    color: #1d1f22;
-    font-weight: 500;
-    margin-bottom: 25px;
-  }
-
-  .checkbox-title-wrap {
-    padding-bottom: 8px;
-    border-bottom: 1px solid #f1f2f3;
-    margin-bottom: 40px;
-  }
-
+@import '~/assets/css/product.scss';
 </style>
