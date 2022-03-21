@@ -1,57 +1,110 @@
 <template>
   <div>
-    <div class="highlighted">
-      <SfHeading
-        :level="3"
-        title="Totals"
-        class="sf-heading--left sf-heading--no-underline title"
-      />
+    <div v-if="currentStep !== 'revieworder'">
+      <div class="highlighted">
+        <SfHeading
+          :level="3"
+          title="Totals"
+          class="sf-heading--left sf-heading--no-underline title"
+        />
+      </div>
+      <div class="highlighted">
+        <SfProperty
+          name="Products"
+          :value="totalItems"
+          class="sf-property--full-width sf-property--large property"
+        />
+        <SfProperty
+          name="Subtotal"
+          :value="'$' + totals.subtotal"
+          :class="[
+            'sf-property--full-width',
+            'sf-property--large property',
+            { discounted: totals.special > 0 },
+          ]"
+        />
+        <SfProperty
+          v-for="discount in discounts"
+          :key="discount.id"
+          :name="discount.name + (discount.code && ` (${discount.code})`)"
+          :value="'-' + $n(discount.value, 'currency')"
+          class="sf-property--full-width sf-property--small"
+        />
+        <SfProperty
+          v-if="totals.special > 0"
+          :value="$n(totals.special, 'currency')"
+          class="
+            sf-property--full-width sf-property--small
+            property
+            special-price
+          "
+        />
+        <SfProperty
+          name="Shipping"
+          :value="shippingMethodPrice ? shippingMethodPrice : 'Free'"
+          class="sf-property--full-width sf-property--large property"
+        />
+        <SfProperty
+          name="Total price"
+          :value="'$' + totals.total"
+          class="
+            sf-property--full-width sf-property--large
+            property-total
+            total-price
+          "
+        />
+      </div>
     </div>
-    <div class="highlighted">
-      <SfProperty
-        name="Products"
-        :value="totalItems"
-        class="sf-property--full-width sf-property--large property"
-      />
-      <SfProperty
-        name="Subtotal"
-        :value="'$' + totals.subtotal"
-        :class="[
-          'sf-property--full-width',
-          'sf-property--large property',
-          { discounted: totals.special > 0 },
-        ]"
-      />
-      <SfProperty
-        v-for="discount in discounts"
-        :key="discount.id"
-        :name="discount.name + (discount.code && ` (${discount.code})`)"
-        :value="'-' + $n(discount.value, 'currency')"
-        class="sf-property--full-width sf-property--small"
-      />
-      <SfProperty
-        v-if="totals.special > 0"
-        :value="$n(totals.special, 'currency')"
-        class="
-          sf-property--full-width sf-property--small
-          property
-          special-price
-        "
-      />
-      <SfProperty
-        name="Shipping"
-        :value="shippingMethodPrice ? shippingMethodPrice : 'Free'"
-        class="sf-property--full-width sf-property--large property"
-      />
-      <SfProperty
-        name="Total price"
-        :value="'$' + totals.total"
-        class="
-          sf-property--full-width sf-property--large
-          property-total
-          total-price
-        "
-      />
+    <div v-else>
+      <div class="highlighted">
+        <SfHeading
+          :level="3"
+          title="Order Review"
+          class="sf-heading--left sf-heading--no-underline title"
+        />
+      </div>
+      <div class="highlighted pb-0">
+        <div class="personal-detail flex justify-between">
+          <div class="detail-adress grow">
+            <p class="font-bold mb-4 text-lg">Personal details</p>
+            <p class="mb-4">
+              Sviatlana Havaka <br />Zielinskiego 30 – 41, 53-345<br />
+              Wroclaw, Poland
+            </p>
+            <p>sviatlana.example@gmail.com</p>
+            <p class="mb-4">(00) 468 900 300</p>
+          </div>
+          <div class="detail-edit">
+            <SfLink link="#" class="font-bold"> EDIT </SfLink>
+          </div>
+        </div>
+        <div class="personal-detail flex justify-between">
+          <div class="detail-adress grow">
+            <p class="font-bold mb-4 text-lg">Shipping details</p>
+            <p class="mb-4">GLS pakkeshop</p>
+          </div>
+          <div class="detail-edit">
+            <SfLink link="#" class="font-bold"> EDIT </SfLink>
+          </div>
+        </div>
+        <div
+          class="
+            personal-detail
+            flex
+            justify-between
+            border-b-2 border-white
+            rounded-none
+          "
+        >
+          <div class="detail-adress grow">
+            <p class="font-bold mb-4 text-lg">Billing address</p>
+            <p class="mb-4">GLS pakkeshop</p>
+          </div>
+          <div class="detail-edit">
+            <SfLink link="#" class="font-bold"> EDIT </SfLink>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="highlighted promo-code">
       <SfInput
@@ -86,7 +139,8 @@ import {
   SfButton,
   SfProperty,
   SfCharacteristic,
-  SfInput
+  SfInput,
+  SfLink
 } from '@storefront-ui/vue';
 import { computed, ref } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters, cartGetters } from '@vue-storefront/odoo';
@@ -98,23 +152,27 @@ export default {
     SfButton,
     SfProperty,
     SfCharacteristic,
-    SfInput
+    SfInput,
+    SfLink
   },
-  setup() {
+  setup(props, context) {
     const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
+    const currentStep = computed(() =>
+      context.root.$route.path.split('/').pop()
+    );
     const listIsHidden = ref(false);
     const promoCode = ref('');
     const showPromoCode = ref(false);
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
-    console.log(totals.subtotal);
     const discounts = computed(() => cartGetters.getDiscounts(cart.value));
     const shippingMethodPrice = computed(() =>
       checkoutGetters.getShippingMethodPrice(cart.value)
     );
 
     return {
+      currentStep,
       shippingMethodPrice,
       discounts,
       totalItems,
@@ -157,6 +215,9 @@ export default {
   width: 100%;
   background-color: var(--c-light);
   padding: var(--spacer-xl) var(--spacer-xl) 0;
+  @include for-mobile {
+    padding: var(--spacer-xl) var(--spacer-lg) 0;
+  }
   &:last-child {
     padding-bottom: var(--spacer-xl);
   }

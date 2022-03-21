@@ -1,8 +1,5 @@
 <template>
-  <ValidationObserver
-    v-slot="{ handleSubmit, invalid }"
-    ref="formRef"
-  >
+  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
     <SfHeading
       :level="3"
       :title="$t('Shipping Details')"
@@ -15,10 +12,7 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div
-        v-if="canAddNewAddress"
-        class="form"
-      >
+      <div v-if="canAddNewAddress" class="form">
         <div class="first-name-last-name">
           <ValidationProvider
             v-slot="{ errors }"
@@ -171,7 +165,7 @@
             v-model="form.phone"
             label="Phone number"
             name="phone"
-            class="form__element form__element--half form__element--half-even"
+            class="form__element form__element--half "
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -199,14 +193,28 @@
         @selectedMethod="handleSelectedMethodShipping"
       />
       <ShippingTab />
-      <SfButton
-        type="submit"
-        :disabled="!form.selectedMethodShipping || invalid"
-        class="revieworder_button"
-        @click="$router.push('/checkout/revieworder')"
-      >
-        {{ $t("GO TO REVIEW ORDER") }}
-      </SfButton>
+      <div class="submit-button">
+        <SfButton
+          :disabled="!form.selectedMethodShipping || invalid"
+          type="submit"
+          class="color-primary sf-button revieworder_button"
+          @click="$router.push('/checkout/revieworder')"
+        >
+          {{ $t("GO TO REVIEW ORDER") }}
+        </SfButton>
+        <SfButton
+          class="
+            color-primary
+            sf-button
+            revieworder_button
+            mt-4
+            smartphone-only
+          "
+          @click="$router.push('/checkout/personaldetails')"
+        >
+          {{ $t("GO BACK") }}
+        </SfButton>
+      </div>
     </form>
   </ValidationObserver>
 </template>
@@ -480,7 +488,9 @@ export default {
 }
 
 ::v-deep .form__element--half-even {
-  padding-left: 20px;
+  @include for-desktop {
+    padding-left: 20px;
+  }
 }
 
 ::v-deep .sf-button.is-disabled--button {
@@ -493,9 +503,19 @@ export default {
   font-weight: 500;
   border-radius: 100px;
   font-family: "Josefin Sans";
-  max-width: 267px;
   width: 100%;
   padding-top: 20px;
-  margin-bottom: 185px;
+  @include for-desktop {
+    margin-bottom: 185px;
+    max-width: 267px;
+  }
+}
+.submit-button {
+  @include for-mobile {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 48px);
+    padding-bottom: 20px;
+  }
 }
 </style>

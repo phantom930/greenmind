@@ -1,17 +1,11 @@
 <template>
   <div class="review-order">
-    <h3 class="title">
-      Order Details
-    </h3>
+    <h3 class="title">Order Details</h3>
     <div class="orders">
-      <a
-        v-for="(product, index) in products"
-        :key="index"
-        class="order"
-      >
+      <a v-for="(product, index) in products" :key="index" class="order">
         <div class="img-info-wrap">
           <div class="image-container">
-            <img :src="$image(cartGetters.getItemImage(product))">
+            <img :src="$image(cartGetters.getItemImage(product))" />
           </div>
           <div class="product-info">
             <div class="product-title">
@@ -40,14 +34,10 @@
       </div>
       <div class="shipping">
         <p>Shipping:</p>
-        <p class="price">
-          Free
-        </p>
+        <p class="price">Free</p>
       </div>
       <div class="total-price">
-        <p class="total">
-          Total price:
-        </p>
+        <p class="total">Total price:</p>
         <p class="price">
           {{ totals.total + ",-" }}
         </p>
@@ -56,15 +46,22 @@
     <div class="checkbox-button-wrap">
       <div class="checkbox-wrap">
         <GreenCheckbox :has-general-wrapper="false" />
-        <p class="label">
-          I agree to <a href="#">Terms and Conditions</a>
-        </p>
+        <p class="label">I agree to <a href="#">Terms and Conditions</a></p>
       </div>
-      <nuxt-link to="/checkout/payment">
-        <SfButton class="color-primary sf-button payment-btn">
+      <div class="submit-button">
+        <SfButton
+          class="color-primary sf-button payment-btn"
+          @click="$router.push('/checkout/payment')"
+        >
           {{ $t("GO TO PAYMENT") }}
         </SfButton>
-      </nuxt-link>
+        <SfButton
+          class="color-primary sf-button payment-btn mt-4 smartphone-only"
+          @click="$router.push('/checkout/shipping')"
+        >
+          {{ $t("GO BACK") }}
+        </SfButton>
+      </div>
     </div>
   </div>
 </template>
@@ -100,9 +97,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .review-order {
   margin-bottom: 447px;
+  @include for-mobile {
+    margin-bottom: 47px;
+  }
 }
 
 .review-order .title {
@@ -247,8 +247,18 @@ export default {
   font-weight: 500;
   border-radius: 100px;
   font-family: "Josefin Sans";
-  max-width: 224px;
   width: 100%;
   padding-top: 20px;
+  @include for-desktop {
+    max-width: 224px;
+  }
+}
+.submit-button {
+  @include for-mobile {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 48px);
+    padding-bottom: 20px;
+  }
 }
 </style>

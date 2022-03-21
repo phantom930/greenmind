@@ -121,14 +121,21 @@
         <GreenCheckbox />
         <p class="label">Save this card for other purchases.</p>
       </div>
-      <button
-        class="color-primary sf-button confirm-btn"
-        :aria-disabled="false"
-        :link="null"
-        type="button"
-      >
-        CONFIRM & PAY
-      </button>
+      <div class="submit-button">
+        <SfButton
+          :aria-disabled="false"
+          :link="null"
+          class="color-primary sf-button confirm-btn"
+        >
+          {{ $t("CONFIRM & PAY") }}
+        </SfButton>
+        <SfButton
+          class="color-primary sf-button confirm-btn mt-4 smartphone-only"
+          @click="$router.push('/checkout/revieworder')"
+        >
+          {{ $t("GO BACK") }}
+        </SfButton>
+      </div>
     </div>
   </div>
 </template>
@@ -376,7 +383,9 @@ export default {
 }
 
 .payment-page {
-  margin-bottom: 651px;
+  @include for-desktop {
+    margin-bottom: 651px;
+  }
 }
 
 .payment-page .form-wrap {
@@ -471,8 +480,10 @@ export default {
   font-size: 14px;
   padding-top: 18px;
   font-weight: 500;
-  max-width: 218px;
   width: 100%;
+  @include for-desktop {
+    max-width: 218px;
+  }
 }
 
 ::v-deep .img-description-wrap {
@@ -560,5 +571,13 @@ export default {
   border-top: 2px solid #f1f2f3;
   border-bottom: 2px solid #f1f2f3;
   margin-bottom: 40px;
+}
+.submit-button {
+  @include for-mobile {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 48px);
+    padding-bottom: 20px;
+  }
 }
 </style>

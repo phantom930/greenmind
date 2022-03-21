@@ -2,7 +2,7 @@
 <template>
   <div id="checkout">
     <div class="checkout">
-      <div class="checkout__main">
+      <div class="checkout__main desktop-only">
         <SfSteps
           v-if="!isThankYou"
           :active="currentStepIndex"
@@ -15,7 +15,20 @@
         </SfSteps>
         <nuxt-child v-else />
       </div>
-      <div v-if="!isThankYou" class="checkout__aside desktop-only">
+      <div class="checkout__main smartphone-only">
+        <SfSteps
+          v-if="!isThankYou"
+          :active="currentStepIndex"
+          :class="{ checkout__steps: true }"
+          @change="handleStepClick"
+        >
+          <SfStep v-for="(step, key) in STEPSM" :key="key" :name="step">
+            <nuxt-child />
+          </SfStep>
+        </SfSteps>
+        <nuxt-child v-else />
+      </div>
+      <div v-if="!isThankYou" class="checkout__aside">
         <transition name="fade">
           <CartPreview key="order-summary" />
         </transition>
@@ -31,6 +44,12 @@ const STEPS = {
   personaldetails: 'Personal details',
   shipping: 'Shipping',
   revieworder: 'Review Order',
+  payment: 'Payment'
+};
+const STEPSM = {
+  personaldetails: 'Details',
+  shipping: 'Shipping',
+  revieworder: 'Review',
   payment: 'Payment'
 };
 export default {
@@ -55,6 +74,7 @@ export default {
     };
     return {
       handleStepClick,
+      STEPSM,
       STEPS,
       currentStepIndex,
       isThankYou,
@@ -73,6 +93,7 @@ export default {
   }
 }
 .checkout {
+  position: relative;
   @include for-desktop {
     display: flex;
   }
@@ -86,6 +107,9 @@ export default {
     @include for-desktop {
       flex: 0 0 25.5rem;
       margin: 0 0 0 4.25rem;
+    }
+    @include for-mobile {
+      padding-bottom: 170px;
     }
   }
   &__steps {
@@ -108,6 +132,9 @@ export default {
 ::v-deep .checkout__aside div {
   background: #f1f2f3;
   border-radius: 14px;
+  @include for-mobile {
+    border-radius: 0;
+  }
 }
 
 ::v-deep .checkout__aside .sf-property__name {
@@ -140,9 +167,10 @@ export default {
 }
 
 ::v-deep .checkout__aside {
-  max-width: 452px;
-  width: 100%;
-  margin-left: 20px;
   margin-top: 42px;
+  @include for-desktop {
+    margin-left: 20px;
+    max-width: 452px;
+  }
 }
 </style>
