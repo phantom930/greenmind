@@ -28,6 +28,8 @@
   @include generate-color-variants(--_c-greenmind-pine-secondary-dark-green, #435E52);
 
   @include generate-color-variants(--_c-greenmind-fern-primary-medium-green, #7BA393);
+  @include assign-color-variants(--c-primary, --_c-greenmind-fern-primary-medium-green);
+  
   @include generate-color-variants(--_c-greenmind-fern-secondary-medium-green, #78A886);
 
   @include generate-color-variants(--_c-greenmind-mint-primary-light-green, #A5CEBE);
