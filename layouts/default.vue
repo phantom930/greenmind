@@ -7,7 +7,7 @@
       <GreenHeader />
     </LazyHydrate>
     <GreenTopbarTertiary v-if="xlAndLarger" />
-
+    <StoreStatus />
     <div id="">
       <nuxt :key="$route.fullPath" />
 
@@ -33,6 +33,7 @@ import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LoginModal from '~/components/LoginModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
+import StoreStatus from '~/components/Product/StoreStatus.vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default {
@@ -44,6 +45,7 @@ export default {
     CartSidebar,
     WishlistSidebar,
     LoginModal,
+    StoreStatus,
     Notification
   },
   setup () {

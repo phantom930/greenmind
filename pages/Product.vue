@@ -47,12 +47,9 @@
 
           <ProductDescription />
 
-          <div
-            v-if="accessoryProducts.length > 0"
-            class="checkbox-title-wrap"
-          >
+          <div v-if="accessoryProducts.length > 0" class="checkbox-title-wrap">
             <div class="title">
-              {{ $t('Purchases') }}
+              {{ $t("Purchases") }}
             </div>
             <GreenCheckbox
               v-for="accessoryProduct in product.accessoryProducts"
@@ -81,7 +78,7 @@
                 :loading="loadingProducts || loading"
                 @click="handleAddItem()"
               >
-                {{ $t('Add to Cart') }}
+                {{ $t("Add to Cart") }}
               </GreenButton>
 
               <GreenButton
@@ -89,9 +86,10 @@
                 color="Green"
                 shape="Round"
                 size="Medium"
+                @click="handleStoreStatus"
               >
                 {{ $t("SEE STOCK STATUS IN STORE") }}
-              </Greenbutton>
+              </GreenButton>
             </div>
           </div>
         </div>
@@ -99,14 +97,8 @@
         <BannerProducts />
 
         <LazyHydrate when-idle>
-          <SfTabs
-            :open-tab="1"
-            class="product__tabs"
-          >
-            <SfTab
-              data-cy="product-tab_description"
-              title="Description"
-            >
+          <SfTabs :open-tab="1" class="product__tabs">
+            <SfTab data-cy="product-tab_description" title="Description">
               <div class="product__description">
                 {{ description }}
               </div>
@@ -155,7 +147,7 @@ import { SfHeading, SfTabs, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import { useProduct, useCart, productGetters, useProductVariant, facetGetters, useFacet } from '@vue-storefront/odoo';
-import { useCurrency } from '~/composables';
+import { useCurrency, useUiState } from '~/composables';
 import { onSSR } from '@vue-storefront/core';
 import { useRoute } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
@@ -175,7 +167,7 @@ export default defineComponent({
     const route = useRoute();
     const loadingProducts = ref(false);
     const selectedAcessories = reactive(new Set([]));
-
+    const { toggleStoreModal } = useUiState();
     const { id } = route.value.params;
     const { formatDolar } = useCurrency();
     const { query } = root.$route;
@@ -277,7 +269,12 @@ export default defineComponent({
       });
     };
 
+    const handleStoreStatus = () =>{
+      toggleStoreModal();
+    }
+
     return {
+      handleStoreStatus,
       handleAddItem,
       selectedAcessories,
       selectAcessories,
@@ -327,5 +324,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/css/product.scss';
+@import "~/assets/css/product.scss";
 </style>

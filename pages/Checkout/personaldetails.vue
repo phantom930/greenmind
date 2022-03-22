@@ -98,7 +98,7 @@
     </form>
 
     <div v-if="invalid" class="checkbox-wrap">
-      <GreenCheckbox :has-general-wrapper="false" />
+      <GreenCheckbox :has-general-wrapper="true" />
       <p class="label">Join newsletter</p>
     </div>
 
@@ -133,7 +133,7 @@
     </div>
     <div class="checkbox-button-wrap">
       <div v-if="invalid" class="checkbox-wrap">
-        <GreenCheckbox :has-general-wrapper="false" />
+        <GreenCheckbox :has-general-wrapper="true" />
         <p class="label">I want to create an account.</p>
       </div>
       <div class="submit-button">

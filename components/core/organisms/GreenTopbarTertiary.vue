@@ -1,31 +1,47 @@
 <template>
-  <SfHeader>
+  <SfHeader class="top-header">
     <template #navigation>
       <div class="header-links">
         <div class="dropdown-wrap">
-          <a
-            href="#"
-            class="custom-link"
-          >IPHONES</a>
+          <a href="#" class="custom-link">IPHONES</a>
           <div class="dropdown">
-            <SfMegaMenu
-              title="iPhones"
-              visible
-            >
+            <SfMegaMenu title="iPhones" visible>
               <SfMegaMenuColumn title="iPhone 13">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Pro Max" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Pro" /></SfListItem></a>
-                  <a href="/c/iphones-13/3260 "><SfListItem><SfMenuItem label="iPhone 13" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 13 Mini" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 13 Pro Max" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 13 Pro" /></SfListItem
+                  ></a>
+                  <a href="/c/iphones-13/3260 "
+                    ><SfListItem><SfMenuItem label="iPhone 13" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 13 Mini" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="iPhone 12">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Pro Max" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Pro" /></SfListItem></a>
-                  <a href="/c/iphones-12/3265"><SfListItem><SfMenuItem label="iPhone 12" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 12 Mini" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 12 Pro Max" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 12 Pro" /></SfListItem
+                  ></a>
+                  <a href="/c/iphones-12/3265"
+                    ><SfListItem><SfMenuItem label="iPhone 12" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 12 Mini" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <nuxt-link to="#">
@@ -33,15 +49,28 @@
               </nuxt-link>
               <SfMegaMenuColumn title="iPhone 11">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 11 Pro Max" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 11 Pro" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 11" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 11 Pro Max" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 11 Pro" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="iPhone 11" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="iPhone Xs">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone Xs Max" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone Xs" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone Xs Max" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="iPhone Xs" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <nuxt-link to="#">
@@ -52,14 +81,24 @@
               </nuxt-link>
               <SfMegaMenuColumn title="iPhone 8">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 8" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 8 Plus" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="iPhone 8" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 8 Plus" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="iPhone 7">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 7 " /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="iPhone 7 Plus" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="iPhone 7 " /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="iPhone 7 Plus" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <nuxt-link to="#">
@@ -75,20 +114,23 @@
           </div>
         </div>
         <div class="dropdown-wrap">
-          <a
-            href="#"
-            class="custom-link"
-          >SMARTPHONES</a>
+          <a href="#" class="custom-link">SMARTPHONES</a>
           <div class="dropdown">
-            <SfMegaMenu
-              title="Smartphones"
-              visible
-            >
+            <SfMegaMenu title="Smartphones" visible>
               <SfMegaMenuColumn title="Samsung Galaxy">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Galaxy S Series" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Galaxy Z Series" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Galaxy Note Series" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Galaxy S Series" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Galaxy Z Series" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Galaxy Note Series" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <nuxt-link to="#">
@@ -113,15 +155,9 @@
           </div>
         </div>
         <div class="dropdown-wrap">
-          <a
-            href="#"
-            class="custom-link"
-          >TABLETS</a>
+          <a href="#" class="custom-link">TABLETS</a>
           <div class="dropdown">
-            <SfMegaMenu
-              title="Tablets"
-              visible
-            >
+            <SfMegaMenu title="Tablets" visible>
               <nuxt-link to="/c/apple-ipads/3349">
                 <SfMegaMenuColumn title="iPads" />
               </nuxt-link>
@@ -138,95 +174,140 @@
           </div>
         </div>
         <div class="dropdown-wrap">
-          <a
-            href="#"
-            class="custom-link"
-          >{{ $t('COMPUTERS') }}</a>
+          <a href="#" class="custom-link">{{ $t("COMPUTERS") }}</a>
           <div class="dropdown">
-            <SfMegaMenu
-              title="Computers"
-              visible
-            >
+            <SfMegaMenu title="Computers" visible>
               <SfMegaMenuColumn :title="$t('Portable')">
                 <SfList>
-                  <a href="/c/apple-macbooks/3355"><SfListItem><SfMenuItem label="Apple MacBooks" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Windows portable" /></SfListItem></a>
+                  <a href="/c/apple-macbooks/3355"
+                    ><SfListItem
+                      ><SfMenuItem label="Apple MacBooks" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Windows portable" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="Stationary">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Apple stationary" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Windows stationary" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Apple stationary" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Windows stationary" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="Gaming PC">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Gaming Portable" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Gaming Stationary" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Gaming Portable" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Gaming Stationary" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn :title="$t('Computer accessories')">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="PC screens" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Mouse & Keyboard" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="PC screens" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Mouse & Keyboard" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
-          <a
-            href="#"
-            class="custom-link"
-          >{{ $t('Other Products') }}</a>
+          <a href="#" class="custom-link">{{ $t("Other Products") }}</a>
           <div class="dropdown">
-            <SfMegaMenu
-              title="other-products"
-              visible
-            >
+            <SfMegaMenu title="other-products" visible>
               <SfMegaMenuColumn :title="$t('Consoles')">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Sony Playstation" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Microsoft Xbox" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Nintendo" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Console accessories" />{{ $t('Console accessories') }}</SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Sony Playstation" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Microsoft Xbox" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="Nintendo" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Console accessories" />{{
+                        $t("Console accessories")
+                      }}</SfListItem
+                    ></a
+                  >
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn :title="$t('TV & Sound')">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="TV accessories" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Headphones" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Speakers & Hi-Fi" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Projectors" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="TV accessories" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="Headphones" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Speakers & Hi-Fi" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="Projectors" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn :title="$t('Camera & picture')">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Camera" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Camera lenses" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Camera accessories" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="Camera" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Camera lenses" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Camera accessories" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn :title="$t('Smartwatches')">
                 <SfList>
-                  <a href="#"><SfListItem><SfMenuItem label="Apple watch" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Android smartwatch" /></SfListItem></a>
-                  <a href="#"><SfListItem><SfMenuItem label="Smartwatch accessories" /></SfListItem></a>
+                  <a href="#"
+                    ><SfListItem><SfMenuItem label="Apple watch" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Android smartwatch" /></SfListItem
+                  ></a>
+                  <a href="#"
+                    ><SfListItem
+                      ><SfMenuItem label="Smartwatch accessories" /></SfListItem
+                  ></a>
                 </SfList>
               </SfMegaMenuColumn>
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
-          <a
-            href="#"
-            class="custom-link"
-          >{{ $t('Accessories') }}</a>
+          <a href="#" class="custom-link">{{ $t("Accessories") }}</a>
           <div class="dropdown">
-            <SfMegaMenu
-              title="accessories"
-              visible
-            >
+            <SfMegaMenu title="accessories" visible>
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('iPhone accessories')" />
               </nuxt-link>
@@ -279,4 +360,7 @@ export default {
 
 <style scoped>
 @import url("~/assets/css/greenTopbarTertiary.scss");
+.top-header {
+  z-index: 1;
+}
 </style>
