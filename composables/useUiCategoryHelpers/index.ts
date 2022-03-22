@@ -21,7 +21,7 @@ const useUiHelpers = (result : FacetSearchResult<FacetResultsData>): useUiCatego
     return categories[0] || emptyCategory;
   });
 
-  const currentRootCategory = computed(() => result?.data?.categories?.[0]?.parent || {});
+  const currentRootCategory = computed(() => result?.data?.categories?.[0] || {});
 
   return {
     currentRootCategory,

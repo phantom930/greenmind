@@ -21,7 +21,7 @@
             <transition-group
               appear
               tag="div"
-              name="sf-collapse-top"
+              name="sf-fade"
               class="products__grid"
             >
               <LazyGreenProductCard

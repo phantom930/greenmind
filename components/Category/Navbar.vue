@@ -215,6 +215,10 @@ export default defineComponent({
   .sf-button--text {
     display: flex;
   }
+
+  .sf-breadcrumbs__breadcrumb {
+    cursor: pointer;
+  }
   .sort-by {
     flex: unset;
     width: 11.875rem;
