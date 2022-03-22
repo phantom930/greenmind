@@ -94,6 +94,7 @@ module.exports = {
         description
         image
         slug
+        combinationInfo
       }
     }
   }
