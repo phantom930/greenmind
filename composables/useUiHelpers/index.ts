@@ -27,7 +27,7 @@ const useUiHelpers = (): any => {
     const pageSize = query.itemsPerPage ? parseInt(query.itemsPerPage) : 21;
     const sort = query?.sort?.split(',') || [];
     const page = query?.page || 1;
-    const categoryId = parseInt(params.slug_3) || parseInt(params.slug_2);
+    const categoryId = parseInt(params.slug_2);
 
     return {
       search: '',
@@ -37,6 +37,7 @@ const useUiHelpers = (): any => {
       currentPage: page,
       minPrice: price?.[0] || null,
       maxPrice: price?.[1] || null,
+      fetchCategory: true,
       filter: {
         categoryId,
         attribValues: filters

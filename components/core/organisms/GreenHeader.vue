@@ -169,8 +169,6 @@ export default {
     const { load: loadCart, cart } = useCart();
     const { load: loadWishlist, wishlist } = useWishlist();
     const { result } = useFacet('AppHeader:Search');
-    const { categories: topCategories, search: searchTopCategoryApi } =
-      useCategory('AppHeader:TopCategories');
 
     const isMobile = computed(() => mapMobileObserver().isMobile.get());
 
@@ -239,9 +237,6 @@ export default {
 
     onSSR(async () => {
       await Promise.all([
-        searchTopCategoryApi({
-          filter: { parent: true }
-        }),
         loadUser(),
         loadWishlist(),
         loadCart({ customQuery: { cartLoad: 'greenCartLoad' } })
@@ -252,7 +247,6 @@ export default {
       wishlistHasItens: computed(
         () => wishlist.value?.wishlistItems.length > 0
       ),
-      topCategories,
       accountIcon,
       closeOrFocusSearchBar,
       cartTotalItems,
