@@ -2,7 +2,6 @@
   --font-family--primary: "Josefin Sans"; 
   --line-height--primary: 24px;
     
-
   @include generate-color-variants(--_c-greenmind-primary-black, #1d1f22);
   @include generate-color-variants(--_c-greenmind-secondary-black, #43464E);
 
@@ -36,7 +35,6 @@
   @include generate-color-variants(--_c-greenmind-mint-secondary-light-green, #BAE8D6);
 
   @include generate-color-variants(--_c-greenmind-sand-primary, #E0D6C9);
-
 
 }
 
