@@ -33,7 +33,7 @@ import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LoginModal from '~/components/LoginModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
-import StoreStatus from '~/components/Product/StoreStatus.vue'
+import StoreStatus from '~/components/Product/StoreStatus.vue';
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default {
@@ -66,4 +66,5 @@ export default {
   overflow: hidden;
   height: 100vh;
 }
+
 </style>

@@ -9,6 +9,7 @@
     :image="$image(productGetters.getCoverImage(product))"
     :nuxt-img-config="{ fit: 'cover' }"
     image-tag="nuxt-img"
+    :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"
     :regular-price="$n(productGetters.getPrice(product).regular, 'currency')"
     :special-price="
       productGetters.getPrice(product).special &&
@@ -32,7 +33,7 @@
         productGetters.getName(product)
       }}</span>
       <span class="green-product-card__description">
-        {{ product.websiteSubtitle }}
+        {{ product.websiteSubtitle || '-' }}
       </span>
     </div>
 
@@ -40,8 +41,8 @@
       slot="price"
       class="price-flex flex justify-center items-baseline"
     >
-      <span class="green-product-card__fra">Fra</span>
-      <span class="green-product-card__price">$3.99 - $19.09</span>
+      <span class="green-product-card__fra">{{ $t('From') }}</span>
+      <span class="green-product-card__price">{{ priceWithDiscount }} - {{ price }}</span>
     </div>
   </SfProductCard>
 </template>
@@ -49,8 +50,10 @@
 <script lang="ts">
 import { SfProductCard } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
-import { defineComponent, PropType } from '@vue/composition-api';
+import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
 import { GreenProduct } from '~/green-api/types';
+import { useCurrency } from '~/composables';
+
 export default defineComponent({
   components: {
     SfProductCard
@@ -69,8 +72,19 @@ export default defineComponent({
       default: () => ({})
     }
   },
-  setup() {
+  setup(props) {
+    const { formatDolar } = useCurrency();
+
+    const productHasDiscont = computed(() => props.product?.combinationInfo?.has_discounted_price);
+    const productDiscontPerc = computed(() => props.product?.combinationInfo?.discount_perc);
+    const priceWithDiscount = computed(() => formatDolar(props.product?.price - props.product?.combinationInfo.discount));
+    const price = computed(() => formatDolar(productGetters.getPrice(props.product).regular));
+
     return {
+      price,
+      priceWithDiscount,
+      productDiscontPerc,
+      productHasDiscont,
       productGetters
     };
   }
@@ -78,69 +92,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@media (min-width: 1024px) {
-  .sf-product-card {
-    --product-card-max-width: 18.5rem;
-  }
-}
-::v-deep .sf-image {
-  left: 7.81%;
-  right: 7.81%;
-  top: 4.06%;
-  bottom: 29.82%;
-}
-
-.title-flex {
-  padding-top: 11.52px;
-}
-
-.price-flex {
-  margin-top: 18.29px;
-}
-
-.sf-product-card {
-  border-radius: 14px;
-  width: 295px;
-  height: 568.11px;
-}
-.sf-product-card::after {
-  border-radius: 14px;
-  cursor: pointer;
-}
-
-.green-product-card__title {
-  font-family: var(--font-family--primary);
-  font-size: 26px;
-  font-weight: 500;
-  line-height: var(--line-height--primary);
-  color: var(--_c-greenmind-black-primary);
-}
-
-.green-product-card__description {
-  font-family: var(--font-family--primary);
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: var(--line-height--primary);
-  color: var(--_c-greenmind-primary-grey);
-  padding-top: 2.3px;
-}
-
-.green-product-card__price {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: var(--line-height--primary);
-}
-
-.green-product-card__fra {
-  margin-right: 10px;
-}
-
-.green-product-card__fra {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: var(--line-height--primary);
-}
+@import '~/assets/css/greenProductCard.scss';
 </style>
