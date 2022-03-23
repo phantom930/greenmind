@@ -1,50 +1,51 @@
 <template>
-  <SfProductCard
-    :key="product.id"
-    data-cy="category-product-card"
-    :style="{ '--index': product.id }"
-    :image-width="imageWidth"
-    :image-height="imageHeight"
-    :title="productGetters.getName(product)"
-    :image="$image(productGetters.getCoverImage(product))"
-    :nuxt-img-config="{ fit: 'cover' }"
-    image-tag="nuxt-img"
-    :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"
-    :regular-price="$n(productGetters.getPrice(product).regular, 'currency')"
-    :special-price="
-      productGetters.getPrice(product).special &&
-        $n(productGetters.getPrice(product).special, 'currency')
-    "
-    :score-rating="false"
-    wishlist-icon="false"
-    :show-add-to-cart-button="false"
-    :link="
-      localePath(
-        `/p/${productGetters.getId(product)}/${productGetters.getSlug(product)}`
-      )
-    "
-    class="products__product-card hover:drop-shadow-xl"
+  <nuxt-link
+    :to="localePath(
+      `/p/${productGetters.getId(product)}/${productGetters.getSlug(product)}`
+    )"
   >
-    <div
-      slot="title"
-      class="title-flex flex flex-col place-items-center text-center"
+    <SfProductCard
+      :key="product.id"
+      data-cy="category-product-card"
+      :style="{ '--index': product.id }"
+      :image-width="imageWidth"
+      :image-height="imageHeight"
+      :title="productGetters.getName(product)"
+      :image="$image(productGetters.getCoverImage(product))"
+      :nuxt-img-config="{ fit: 'cover' }"
+      image-tag="nuxt-img"
+      :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"
+      :regular-price="$n(productGetters.getPrice(product).regular, 'currency')"
+      :special-price="
+        productGetters.getPrice(product).special &&
+          $n(productGetters.getPrice(product).special, 'currency')
+      "
+      :score-rating="false"
+      wishlist-icon="false"
+      :show-add-to-cart-button="false"
+      class="products__product-card hover:drop-shadow-xl"
     >
-      <span class="green-product-card__title">{{
-        productGetters.getName(product)
-      }}</span>
-      <span class="green-product-card__description">
-        {{ product.websiteSubtitle || '-' }}
-      </span>
-    </div>
+      <div
+        slot="title"
+        class="title-flex flex flex-col place-items-center text-center"
+      >
+        <span class="green-product-card__title">{{
+          productGetters.getName(product)
+        }}</span>
+        <span class="green-product-card__description">
+          {{ product.websiteSubtitle || '-' }}
+        </span>
+      </div>
 
-    <div
-      slot="price"
-      class="price-flex flex justify-center items-baseline"
-    >
-      <span class="green-product-card__fra">{{ $t('From') }}</span>
-      <span class="green-product-card__price">{{ priceWithDiscount }} - {{ price }}</span>
-    </div>
-  </SfProductCard>
+      <div
+        slot="price"
+        class="price-flex flex justify-center items-baseline"
+      >
+        <span class="green-product-card__fra">{{ $t('From') }}</span>
+        <span class="green-product-card__price">{{ priceWithDiscount }},-</span>
+      </div>
+    </SfProductCard>
+  </nuxt-link>
 </template>
 
 <script lang="ts">
@@ -77,11 +78,9 @@ export default defineComponent({
 
     const productHasDiscont = computed(() => props.product?.combinationInfoVariant?.has_discounted_price);
     const productDiscontPerc = computed(() => props.product?.combinationInfoVariant?.discount_perc);
-    const priceWithDiscount = computed(() => formatDolar(props.product?.price - props.product?.combinationInfoVariant.discount));
-    const price = computed(() => formatDolar(productGetters.getPrice(props.product).regular));
+    const priceWithDiscount = computed(() => formatDolar(props.product?.combinationInfoVariant?.price || 0));
 
     return {
-      price,
       priceWithDiscount,
       productDiscontPerc,
       productHasDiscont,
