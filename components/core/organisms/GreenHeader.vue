@@ -67,7 +67,10 @@
               {{ cartTotalItems }}
             </SfBadge>
           </SfButton>
-          <SfButton class="sf-button--pure sf-header__action list">
+          <SfButton
+            class="sf-button--pure sf-header__action list"
+            @click="toggleHamburguerMenu"
+          >
             <SfIcon
               class="sf-header__icon"
               icon="list"
@@ -132,7 +135,6 @@ import {
   useUser,
   cartGetters,
   categoryGetters,
-  useCategory,
   useFacet
 } from '@vue-storefront/odoo';
 import { clickOutside } from '@storefront-ui/vue/src/utilities/directives/click-outside/click-outside-directive.js';
@@ -162,7 +164,7 @@ export default {
     const isSearchOpen = ref(false);
 
     const { changeSearchTerm } = useUiHelpers();
-    const { toggleCartSidebar, toggleWishlistSidebar, toggleLoginModal } =
+    const { toggleCartSidebar, toggleWishlistSidebar, toggleLoginModal, toggleHamburguerMenu } =
       useUiState();
 
     const { load: loadUser, isAuthenticated } = useUser();
@@ -256,6 +258,7 @@ export default {
       handleAccountClick,
       toggleCartSidebar,
       toggleWishlistSidebar,
+      toggleHamburguerMenu,
       changeSearchTerm,
       formatedResult,
       term,
