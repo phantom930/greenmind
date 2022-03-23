@@ -16,7 +16,7 @@
         >
           <SfMenuItem
             :label="$t(item.name)"
-            :link="localePath(`${item.slug}/${item.id}`)"
+            :link="localePath(`${item.slug}`)"
           />
         </SfListItem>
       </SfList>
@@ -128,33 +128,27 @@ export default {
           childs: [
             {
               name: 'iPhones',
-              slug: '/products/iphones',
-              id: 3
+              slug: '/iphones'
             },
             {
               name: 'Smartphones',
-              slug: '/products/cell-phones',
-              id: 1
+              slug: '/smartphones'
             },
             {
               name: 'Tablets',
-              slug: '/products/tablets',
-              id: 96
+              slug: '/tablets'
             },
             {
               name: 'Computers',
-              slug: '/products/computers',
-              id: 99
+              slug: '/computere'
             },
             {
               name: 'Accessories',
-              slug: '/products/accessories',
-              id: 154
+              slug: '/tilbehor'
             },
             {
               name: 'Other products',
-              slug: '/products/other-products',
-              id: 138
+              slug: '/andre-produkter'
             }
           ]
         },
@@ -163,28 +157,23 @@ export default {
           childs: [
             {
               name: 'Why choose Greenmind?',
-              slug: '/why-greenmind',
-              id: ''
+              slug: '/hvorfor-greenmind'
             },
             {
               name: 'How do you sell?',
-              slug: '/how-do-you-sell',
-              id: ''
+              slug: '/saelg-til-os'
             },
             {
               name: 'How to buy?',
-              slug: '/how-to-buy',
-              id: ''
+              slug: '/saadan-koeber-du'
             },
             {
               name: 'Reparation',
-              slug: '/reparation',
-              id: ''
+              slug: '/reparation'
             },
             {
               name: 'Blog',
-              slug: '/blog',
-              id: ''
+              slug: '/blog'
             }
           ]
         },
@@ -193,33 +182,27 @@ export default {
           childs: [
             {
               name: 'Customer service',
-              slug: '/customer-service',
-              id: ''
+              slug: '/kundeservice'
             },
             {
               name: 'Shipping and returns',
-              slug: '/shipping-and-returns',
-              id: ''
+              slug: '/fragt-retur'
             },
             {
               name: 'Terms of trade',
-              slug: '/terms-of-trade',
-              id: ''
+              slug: '/handelsbetingelser'
             },
             {
               name: 'GDPR',
-              slug: '/gdpr',
-              id: ''
+              slug: '/gdpr'
             },
             {
               name: 'Cookies',
-              slug: '/cookies',
-              id: ''
+              slug: '/cookies'
             },
             {
               name: 'FAQ',
-              slug: '/faq',
-              id: ''
+              slug: '/faq'
             }
           ]
         },
@@ -233,8 +216,7 @@ export default {
           childs: [
             {
               name: 'Find store',
-              slug: '/stores',
-              id: ''
+              slug: '/butiker'
             }
           ]
         }
