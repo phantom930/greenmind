@@ -39,6 +39,7 @@ export interface GreenProduct extends Product {
     variantAttributeValues: Attribute[],
     websiteSubtitle: string
     combinationInfo: CombinationInfo
+    combinationInfoVariant: CombinationInfo
 }
 export interface GreenOrderLine extends OrderLine {
     product?: GreenProduct;

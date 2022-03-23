@@ -75,9 +75,9 @@ export default defineComponent({
   setup(props) {
     const { formatDolar } = useCurrency();
 
-    const productHasDiscont = computed(() => props.product?.combinationInfo?.has_discounted_price);
-    const productDiscontPerc = computed(() => props.product?.combinationInfo?.discount_perc);
-    const priceWithDiscount = computed(() => formatDolar(props.product?.price - props.product?.combinationInfo.discount));
+    const productHasDiscont = computed(() => props.product?.combinationInfoVariant?.has_discounted_price);
+    const productDiscontPerc = computed(() => props.product?.combinationInfoVariant?.discount_perc);
+    const priceWithDiscount = computed(() => formatDolar(props.product?.price - props.product?.combinationInfoVariant.discount));
     const price = computed(() => formatDolar(productGetters.getPrice(props.product).regular));
 
     return {
