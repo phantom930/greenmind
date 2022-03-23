@@ -2,8 +2,8 @@
   <div class="product-details">
     <div class="link-prices-wrap">
       <div class="links">
-        <p>Vælg stand</p>
-        <a href="#">Læs mere</a>
+        <p>{{ $t('Select stand') }}</p>
+        <a href="/standbeskrivelser">{{ $t('read more') }}</a>
       </div>
       <div class="prices-wrap">
         <span
@@ -17,9 +17,9 @@
             @click="chooseGrade(attribute)"
           >
             <p>{{ attribute.name }}</p>
-            <div class="price">{{ baseProductPrice }}</div>
+            <div class="price">{{ 0 }}</div>
           </div>
-          <div class="discount">0</div>
+          <div class="discount">{{ formatDolar(baseProductPrice) }}</div>
         </span>
       </div>
     </div>
@@ -29,6 +29,7 @@
 <script lang="ts">
 import { computed, ComputedRef, defineComponent, PropType } from '@nuxtjs/composition-api';
 import { AttributeValue } from '@vue-storefront/odoo-api';
+import { useCurrency } from '~/composables';
 
 export default defineComponent({
   props: {
@@ -47,6 +48,8 @@ export default defineComponent({
   },
   emits: ['update'],
   setup (props, { emit }) {
+    const { formatDolar } = useCurrency();
+
     const gradeAttributes : ComputedRef<AttributeValue[]> =
       computed(() => props.productAttributes?.filter(item => item.attribute.name === 'Grade'));
 
@@ -56,7 +59,8 @@ export default defineComponent({
 
     return {
       chooseGrade,
-      gradeAttributes
+      gradeAttributes,
+      formatDolar
     };
   }
 });
