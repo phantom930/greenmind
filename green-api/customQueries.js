@@ -44,7 +44,7 @@ module.exports = {
         sku
         isInWishlist
         status
-        combinationInfo
+        combinationInfoVariant
         categories {
             id
             name
@@ -95,7 +95,7 @@ module.exports = {
         description
         image
         slug
-        combinationInfo
+        combinationInfoVariant
       }
     }
   }
@@ -120,7 +120,7 @@ module.exports = {
                     websiteSubtitle
                     isInWishlist
                     firstVariant
-                    combinationInfo
+                    combinationInfoVariant
                     productTemplate{
                       id
                     }
