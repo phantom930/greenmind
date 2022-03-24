@@ -10,6 +10,7 @@
           v-for="(attribute, index) in gradeAttributes"
           :key="index"
           class="price-discount-wrap"
+          :class="isSelectedGrade(attribute) ? 'active' : ''"
         >
           <div
             class="price-wrap cursor-pointer"
@@ -17,9 +18,12 @@
             @click="chooseGrade(attribute)"
           >
             <p>{{ attribute.name }}</p>
-            <div class="price">{{ 0 }}</div>
+            <div class="price">{{ combinationInfo.price }}</div>
           </div>
-          <div class="discount">{{ formatDolar(baseProductPrice) }}</div>
+          <div
+            v-if="isSelectedGrade(attribute) && combinationInfo.has_discounted_price"
+            class="discount"
+          >{{ formatDolar(combinationInfo.list_price) }}</div>
         </span>
       </div>
     </div>
@@ -30,6 +34,7 @@
 import { computed, ComputedRef, defineComponent, PropType } from '@nuxtjs/composition-api';
 import { AttributeValue } from '@vue-storefront/odoo-api';
 import { useCurrency } from '~/composables';
+import { CombinationInfo } from '~/green-api/types';
 
 export default defineComponent({
   props: {
@@ -37,9 +42,9 @@ export default defineComponent({
       type: Array as PropType<Array<AttributeValue>>,
       default: () => ([])
     },
-    baseProductPrice: {
-      type: Number,
-      required: true
+    combinationInfo: {
+      type: Object as PropType<CombinationInfo>,
+      default: () => ({})
     },
     selectedGrade: {
       type: String,
@@ -53,11 +58,15 @@ export default defineComponent({
     const gradeAttributes : ComputedRef<AttributeValue[]> =
       computed(() => props.productAttributes?.filter(item => item.attribute.name === 'Grade'));
 
+    const isSelectedGrade = (attribute : AttributeValue): boolean =>
+      props.combinationInfo.display_name.includes(attribute.name);
+
     const chooseGrade = (attribute : AttributeValue) => {
       emit('update', attribute.id);
     };
 
     return {
+      isSelectedGrade,
       chooseGrade,
       gradeAttributes,
       formatDolar

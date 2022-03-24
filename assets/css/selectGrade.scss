@@ -41,7 +41,7 @@
     text-decoration: none;
   }
   
-  .prices-wrap .price-discount-wrap:hover .price-wrap {
+  .prices-wrap .price-discount-wrap:hover .price-wrap, .price-discount-wrap.active .price-wrap{
     background: #7ba393;
     color: #fff;
     box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.1);
