@@ -1,6 +1,5 @@
 <template>
   <SfRange
-    :disabled="false"
     :config="config"
     @change="$emit('change', arguments[0])"
   />
