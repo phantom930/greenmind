@@ -18,10 +18,7 @@
             :link="localePath(`/${category.slug}`)"
           />
         </div>
-        <nuxt-link
-          :to="localePath('/')"
-          class="sf-header__logo"
-        >
+        <nuxt-link :to="localePath('/')" class="sf-header__logo">
           <SfImage
             :width="35"
             :height="35"
@@ -33,37 +30,19 @@
       </template>
       <template #header-icons>
         <div class="sf-header__icons">
-          <SfButton class="sf-button--pure sf-header__action">
-            <SfIcon
-              class="sf-header__icon"
-              icon="search"
-              size="1.25rem"
-            />
-          </SfButton>
           <SfButton
             class="sf-button--pure sf-header__action"
             @click="handleAccountClick"
           >
-            <SfIcon
-              :icon="accountIcon"
-              size="1.25rem"
-            />
+            <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton>
-
           <SfButton
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="empty_cart"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="empty_cart" size="1.25rem" />
 
-            <SfBadge
-              v-if="cartTotalItems"
-              class="sf-badge--number cart-badge"
-            >
+            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
               {{ cartTotalItems }}
             </SfBadge>
           </SfButton>
@@ -71,39 +50,29 @@
             class="sf-button--pure sf-header__action list"
             @click="toggleHamburguerMenu"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="list"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="list" size="1.25rem" />
           </SfButton>
         </div>
       </template>
-      <!-- This was the only way I found it to work, will check it later -->
       <template #search>
-        <SfSearchBar>
-          <template #icon>
-            <SfButton
-              v-if="!!term"
-              class="sf-search-bar__button sf-button--pure"
-              @click="closeOrFocusSearchBar"
-            >
-              <span class="sf-search-bar__icon">
-                <SfIcon
-                  color="var(--c-text)"
-                  size="18px"
-                  icon="cross"
-                />
-              </span>
-            </SfButton>
-            <SfButton
-              v-else
-              class="sf-search-bar__button sf-button--pure"
-              @click="
-                isSearchOpen ? (isSearchOpen = false) : (isSearchOpen = false)
-              "
-            />
-          </template>
+        <SfSearchBar
+          ref="searchBarRef"
+          :placeholder="$t('Search for items and promotions')"
+          aria-label="Search"
+          class="sf-header__search none"
+          :value="term"
+          @input="handleSearch"
+          @keydown.enter="handleSearch($event)"
+          @focus="isSearchOpen = true"
+          @keydown.esc="closeSearch"
+          v-click-outside="closeSearch"
+          :icon="{
+            icon: !!term ? 'cross' : 'search',
+            size: '1.25rem',
+            color: '#43464E',
+          }"
+          @click:icon="closeOrFocusSearchBar"
+        >
         </SfSearchBar>
       </template>
       <!-- End of Search bar -->
@@ -170,7 +139,7 @@ export default {
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { load: loadWishlist, wishlist } = useWishlist();
-    const { result } = useFacet('AppHeader:Search');
+    const { search: searchProductApi, result } = useFacet('AppHeader:Search');
 
     const isMobile = computed(() => mapMobileObserver().isMobile.get());
 
@@ -199,7 +168,11 @@ export default {
         term.value = paramValue.target.value;
       }
       if (term.value.length < 2) return;
-
+      await searchProductApi({
+        search: term.value,
+        pageSize: 12,
+        currentPage: 1,
+      });
       formatedResult.value = {
         products: result?.value?.data?.products,
         categories: result?.value?.data?.categories
@@ -296,6 +269,14 @@ export default {
   }
   &__logo-image {
     height: 100%;
+    @include for-mobile {
+      display: none;
+    }
+  }
+  &__icons {
+    @include for-mobile {
+      display: none;
+    }
   }
 }
 .header-on-top {
@@ -321,7 +302,7 @@ export default {
 }
 
 ::v-deep .sf-search-bar {
-  display: none;
+  // display: none;
 }
 
 ::v-deep .sf-header__action.list {

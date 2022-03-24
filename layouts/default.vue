@@ -66,8 +66,7 @@ export default {
 @import "~@storefront-ui/vue/styles";
 
 .no-scroll {
-  overflow: hidden;
+  overflow: scroll;
   height: 100vh;
 }
-
 </style>

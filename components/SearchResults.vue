@@ -5,10 +5,7 @@
       :title="$t('Search results')"
       class="search"
     >
-      <transition
-        name="sf-fade"
-        mode="out-in"
-      >
+      <transition name="sf-fade" mode="out-in">
         <div
           v-if="products && products.length > 0"
           key="results"
@@ -24,25 +21,19 @@
             <template #title="{ title }">
               <SfMenuItem
                 :label="title"
+                class="sf-mega-menu-column__header"
                 @click="megaMenu.changeActive(title)"
               >
-                <template #mobile-nav-icon>
-                  &#8203;
-                </template>
+                <template #mobile-nav-icon> &#8203; </template>
               </SfMenuItem>
             </template>
             <SfList v-if="categories.length">
-              <SfListItem
-                v-for="(category, key) in categories"
-                :key="key"
-              >
+              <SfListItem v-for="(category, key) in categories" :key="key">
                 <SfMenuItem
                   :label="category.label"
                   :link="uiHelper.getCatLinkForSearch(category)"
+                  icon="chevron_right"
                 >
-                  <template #mobile-nav-icon>
-                    &#8203;
-                  </template>
                 </SfMenuItem>
               </SfListItem>
             </SfList>
@@ -56,16 +47,10 @@
                 :label="title"
                 class="sf-mega-menu-column__header search__header"
               >
-                <template #mobile-nav-icon>
-                  &#8203;
-                </template>
+                <template #mobile-nav-icon> &#8203; </template>
               </SfMenuItem>
             </template>
-            <SfScrollable
-              class="results--desktop desktop-only"
-              show-text=""
-              hide-text=""
-            >
+            <div class="results--desktop desktop-only">
               <div class="results-listing">
                 <SfProductCard
                   v-for="(product, index) in products"
@@ -74,29 +59,45 @@
                   :regular-price="
                     $n(productGetters.getPrice(product).regular, 'currency')
                   "
+                  :imageWidth="216"
+                  :imageHeight="288"
+                  :nuxtImgConfig="{ fit: 'cover' }"
+                  image-tag="nuxt-img"
                   :score-rating="productGetters.getAverageRating(product)"
                   :reviews-count="7"
                   :image="$image(productGetters.getCoverImage(product))"
-                  alt="product image"
+                  :alt="productGetters.getName(product)"
                   :title="productGetters.getName(product)"
                   :link="localePath(goToProduct(product))"
                   @click:wishlist="addItemToWishlist({ product })"
                   @click="$emit('close')"
                 />
               </div>
-            </SfScrollable>
+              <div class="flex justify-end">
+                <SfButton
+                  class="color-primary sf-button search_result mt-4"
+                  @click="$emit('close')"
+                >
+                  {{ $t("See all results") }}
+                </SfButton>
+              </div>
+            </div>
             <div class="results--mobile smartphone-only">
               <SfProductCard
                 v-for="(product, index) in products"
                 :key="index"
                 class="result-card"
+                :imageWidth="216"
+                :imageHeight="288"
+                :nuxtImgConfig="{ fit: 'cover' }"
+                image-tag="nuxt-img"
                 :regular-price="
                   $n(productGetters.getPrice(product).regular, 'currency')
                 "
                 :score-rating="productGetters.getAverageRating(product)"
                 :reviews-count="7"
-                :image="productGetters.getCoverImage(product)"
-                alt="product image"
+                :image="$image(productGetters.getCoverImage(product))"
+                :alt="productGetters.getName(product)"
                 :title="productGetters.getName(product)"
                 :link="localePath(goToProduct(product))"
                 @click="$emit('close')"
@@ -105,18 +106,20 @@
           </SfMegaMenuColumn>
           <div class="action-buttons smartphone-only">
             <SfButton
-              class="action-buttons__button color-light"
+              class="color-primary sf-button search_result"
+              @click="$emit('close')"
+            >
+              {{ $t("See all results") }}
+            </SfButton>
+            <SfButton
+              class="color-primary sf-button search_result mt-4"
               @click="$emit('close')"
             >
               {{ $t("Cancel") }}
             </SfButton>
           </div>
         </div>
-        <div
-          v-else
-          key="no-results"
-          class="before-results"
-        >
+        <div v-else key="no-results" class="before-results">
           <SfImage
             :width="256"
             :height="176"
@@ -132,10 +135,10 @@
             {{ $t("Let’s start now – we’ll help you") }}
           </p>
           <SfButton
-            class="before-results__button color-secondary smartphone-only"
+            class="color-primary sf-button search_result smartphone-only mt-4"
             @click="$emit('close')"
           >
-            {{ $t("Go back") }}
+            {{ $t("GO BACK") }}
           </SfButton>
         </div>
       </transition>
@@ -151,13 +154,14 @@ import {
   SfScrollable,
   SfMenuItem,
   SfButton,
-  SfImage
+  SfImage,
+  SfIcon,
 } from '@storefront-ui/vue';
-import { ref, watch, computed } from '@vue/composition-api';
+import { ref, watch, computed } from '@nuxtjs/composition-api';
 import {
   productGetters,
   categoryGetters,
-  useWishlist
+  useWishlist,
 } from '@vue-storefront/odoo';
 import { useUiHelpers } from '~/composables';
 
@@ -171,16 +175,22 @@ export default {
     SfScrollable,
     SfMenuItem,
     SfButton,
-    SfImage
+    SfImage,
   },
   props: {
     visible: {
       type: Boolean,
-      default: false
+      default: false,
     },
     result: {
-      type: Object
-    }
+      type: Object,
+    },
+  },
+  watch: {
+    $route() {
+      this.$emit('close');
+      this.$emit('removeSearchResults');
+    },
   },
   setup(props, { emit }) {
     const uiHelper = useUiHelpers();
@@ -190,7 +200,9 @@ export default {
     const { addItem: addItemToWishlist } = useWishlist();
 
     const goToProduct = (product) => {
-      return `/p/${productGetters.getId(product)}}`;
+      return `/p/${productGetters.getId(product)}/${productGetters.getSlug(
+        product,
+      )}`;
     };
     watch(
       () => props.visible,
@@ -202,7 +214,7 @@ export default {
           document.body.classList.remove('no-scroll');
           emit('removeSearchResults');
         }
-      }
+      },
     );
     return {
       addItemToWishlist,
@@ -212,15 +224,9 @@ export default {
       categoryGetters,
       productGetters,
       products,
-      categories
+      categories,
     };
   },
-  watch: {
-    $route() {
-      this.$emit('close');
-      this.$emit('removeSearchResults');
-    }
-  }
 };
 </script>
 <style lang="scss" scoped>
@@ -228,7 +234,7 @@ export default {
   position: absolute;
   right: 0;
   left: 0;
-  z-index: 3;
+  z-index: 7;
   --mega-menu-column-header-margin: var(--spacer-sm) 0 var(--spacer-xl);
   --mega-menu-content-padding: 0;
   --mega-menu-height: auto;
@@ -262,9 +268,23 @@ export default {
     }
   }
 }
+.search_result {
+  font-size: 14px;
+  background: #32463d;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 100px;
+  font-family: "Josefin Sans";
+  width: 100%;
+  padding-top: 20px;
+  @include for-desktop {
+    margin-bottom: 185px;
+    max-width: 267px;
+  }
+}
 .results {
   &--desktop {
-    --scrollable-max-height: 35vh;
+    // --scrollable-max-height: 35vh;
   }
   &--mobile {
     display: flex;
@@ -283,7 +303,7 @@ export default {
   background: var(--c-white);
   width: 100%;
   &__button {
-    width: calc(100% - 32px);
+    width: 100%;
   }
 }
 .results-listing {
@@ -297,6 +317,13 @@ export default {
     margin: var(--spacer-2xs) 0;
   }
 }
+.custom__text {
+  color: #0468db;
+  margin-top: 40px;
+}
+.custom__text:hover {
+  color: #5ece7b;
+}
 .before-results {
   box-sizing: border-box;
   padding: var(--spacer-base) var(--spacer-sm) var(--spacer-2xl);
@@ -304,6 +331,7 @@ export default {
   text-align: center;
   @include for-desktop {
     padding: 0;
+    height: 100vh;
   }
   &__picture {
     --image-width: 230px;
