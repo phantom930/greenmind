@@ -18,7 +18,10 @@
             :link="localePath(`/${category.slug}`)"
           />
         </div>
-        <nuxt-link :to="localePath('/')" class="sf-header__logo">
+        <nuxt-link
+          :to="localePath('/')"
+          class="sf-header__logo"
+        >
           <SfImage
             :width="35"
             :height="35"
@@ -34,15 +37,25 @@
             class="sf-button--pure sf-header__action"
             @click="handleAccountClick"
           >
-            <SfIcon :icon="accountIcon" size="1.25rem" />
+            <SfIcon
+              :icon="accountIcon"
+              size="1.25rem"
+            />
           </SfButton>
           <SfButton
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
-            <SfIcon class="sf-header__icon" icon="empty_cart" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="empty_cart"
+              size="1.25rem"
+            />
 
-            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
+            <SfBadge
+              v-if="cartTotalItems"
+              class="sf-badge--number cart-badge"
+            >
               {{ cartTotalItems }}
             </SfBadge>
           </SfButton>
@@ -50,30 +63,33 @@
             class="sf-button--pure sf-header__action list"
             @click="toggleHamburguerMenu"
           >
-            <SfIcon class="sf-header__icon" icon="list" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="list"
+              size="1.25rem"
+            />
           </SfButton>
         </div>
       </template>
       <template #search>
         <SfSearchBar
           ref="searchBarRef"
+          v-click-outside="closeSearch"
           :placeholder="$t('Search for items and promotions')"
           aria-label="Search"
           class="sf-header__search none"
           :value="term"
-          @input="handleSearch"
-          @keydown.enter="handleSearch($event)"
-          @focus="isSearchOpen = true"
-          @keydown.esc="closeSearch"
-          v-click-outside="closeSearch"
           :icon="{
             icon: !!term ? 'cross' : 'search',
             size: '1.25rem',
             color: '#43464E',
           }"
+          @input="handleSearch"
+          @keydown.enter="handleSearch($event)"
+          @focus="isSearchOpen = true"
+          @keydown.esc="closeSearch"
           @click:icon="closeOrFocusSearchBar"
-        >
-        </SfSearchBar>
+        />
       </template>
       <!-- End of Search bar -->
     </SfHeader>
@@ -171,7 +187,7 @@ export default {
       await searchProductApi({
         search: term.value,
         pageSize: 12,
-        currentPage: 1,
+        currentPage: 1
       });
       formatedResult.value = {
         products: result?.value?.data?.products,
@@ -190,7 +206,7 @@ export default {
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
     const handleAccountClick = async () => {
       if (isAuthenticated.value) {
-        return root.$router.push('/my-account');
+        return root.$router.push('/Checkout');
       }
 
       toggleLoginModal();

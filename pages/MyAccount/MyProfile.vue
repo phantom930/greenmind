@@ -1,5 +1,8 @@
 <template>
-  <div class="my-account" id="my-account">
+  <div
+    id="my-account"
+    class="my-account"
+  >
     <SfBreadcrumbs
       class="breadcrumbs desktop-only"
       :breadcrumbs="breadcrumbs"
@@ -11,7 +14,10 @@
       @click:change="changeActivePage"
     >
       <SfContentCategory title="Personal Details">
-        <SfContentPage title="My profile" data-testid="my-profile">
+        <SfContentPage
+          title="My profile"
+          data-testid="my-profile"
+        >
           <SfMyProfile
             :account="account"
             data-testid="my-profile-tabs"
@@ -19,7 +25,10 @@
             @update:password="account = { ...account, ...$event }"
           />
         </SfContentPage>
-        <SfContentPage title="Shipping & Payment Details" data-testid="shipping-details">
+        <SfContentPage
+          title="Shipping & Payment Details"
+          data-testid="shipping-details"
+        >
           <SfShippingDetails
             :account="account"
             data-testid="shipping-details-tabs"
@@ -27,9 +36,9 @@
           />
         </SfContentPage>
         <div class="test">
-            <SfContentPage title="Loyalty Card">
+          <SfContentPage title="Loyalty Card">
           <!-- <SfMyNewsletter /> -->
-        </SfContentPage>
+          </SfContentPage>
         </div>
         <SfContentPage title="Newsletter">
           <SfMyNewsletter />
@@ -48,83 +57,83 @@
   </div>
 </template>
 <script>
-import { SfBreadcrumbs, SfContentPages } from "@storefront-ui/vue";
+import { SfBreadcrumbs, SfContentPages } from '@storefront-ui/vue';
 import {
   SfMyProfile,
   SfShippingDetails,
   SfMyNewsletter,
-  SfOrderHistory,
-} from "@storefront-ui/vue";
+  SfOrderHistory
+} from '@storefront-ui/vue';
 export default {
-  name: "MyAccount",
+  name: 'MyAccount',
   components: {
     SfBreadcrumbs,
     SfContentPages,
     SfMyProfile,
     SfShippingDetails,
     SfMyNewsletter,
-    SfOrderHistory,
+    SfOrderHistory
   },
   data() {
     return {
-      activePage: "My profile",
+      activePage: 'My profile',
       breadcrumbs: [
         {
-          text: "Home",
-          link: "#",
+          text: 'Home',
+          link: '#'
         },
         {
-          text: "My Account",
-          link: "#",
-        },
+          text: 'My Account',
+          link: '#'
+        }
       ],
       account: {
-        firstName: "First Name",
-        lastName: "Last Name",
-        email: "Your email address",
-        password: "a*23Et",
+        firstName: 'First Name',
+        lastName: 'Last Name',
+        email: 'Your email address',
+        password: 'a*23Et',
         shipping: [
           {
-            firstName: "John",
-            lastName: "Dog",
-            streetName: "Sezame Street",
-            apartment: "24/193A",
-            city: "Wroclaw",
-            state: "Lower Silesia",
-            zipCode: "53-540",
-            country: "Poland",
-            phoneNumber: "(00)560 123 456",
+            firstName: 'John',
+            lastName: 'Dog',
+            streetName: 'Sezame Street',
+            apartment: '24/193A',
+            city: 'Wroclaw',
+            state: 'Lower Silesia',
+            zipCode: '53-540',
+            country: 'Poland',
+            phoneNumber: '(00)560 123 456'
           },
           {
-            firstName: "John",
-            lastName: "Dog",
-            streetName: "Sezame Street",
-            apartment: "20/193A",
-            city: "Wroclaw",
-            state: "Lower Silesia",
-            zipCode: "53-603",
-            country: "Poland",
-            phoneNumber: "(00)560 123 456",
-          },
+            firstName: 'John',
+            lastName: 'Dog',
+            streetName: 'Sezame Street',
+            apartment: '20/193A',
+            city: 'Wroclaw',
+            state: 'Lower Silesia',
+            zipCode: '53-603',
+            country: 'Poland',
+            phoneNumber: '(00)560 123 456'
+          }
         ],
         orders: [
-          ["#45", "23th June, 2021", "Visa card", "$412.00", "Finalised"],
-          ["#46", "26th June, 2021", "Paypal", "$132.00", "Finalised"],
-          ["#47", "28th June, 2021", "Mastercard", "$12.00", "Finalised"],
-          ["#48", "28th June, 2021", "Paypal", "$20.00", "In process"],
-        ],
-      },
+          ['#45', '23th June, 2021', 'Visa card', '$412.00', 'Finalised'],
+          ['#46', '26th June, 2021', 'Paypal', '$132.00', 'Finalised'],
+          ['#47', '28th June, 2021', 'Mastercard', '$12.00', 'Finalised'],
+          ['#48', '28th June, 2021', 'Paypal', '$20.00', 'In process']
+        ]
+      }
     };
   },
   methods: {
     changeActivePage(title) {
-      if (title === "Log out") {
-        alert("You are logged out!");
+      if (title === 'Log out') {
+        alert('You are logged out!');
         return;
       }
       this.activePage = title;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -246,7 +255,5 @@ export default {
     text-transform: uppercase;
     text-decoration: underline;
 }
-
-
 
 </style>
