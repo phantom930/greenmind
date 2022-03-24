@@ -40,8 +40,7 @@
         <div>
           <ProductSelectGrade
             :product-attributes="product.attributeValues"
-            :base-product-price="price"
-            :selected-grade="selectedGrade"
+            :combination-info="combinationInfo"
             @update="updateFilter"
           />
 
@@ -68,7 +67,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              {{ formatDolar(price) }},-
+              {{ formatDolar(combinationInfo.price) }},-
             </p>
             <div class="buttons">
               <GreenButton
@@ -159,12 +158,11 @@ export default defineComponent({
 
     const properties = computed(() => productGetters.getProperties(product.value));
     const code = computed(() => productGetters.getCode(product.value));
-    const price = computed(() => product.value?.combinationInfoVariant?.price || 0);
+    const combinationInfo = computed(() => product.value?.combinationInfoVariant || {});
     const breadcrumbs = computed(() => facetGetters.getBreadcrumbsByProduct(product.value));
     const sliderProducts = computed(() => product.value.alternativeProducts || []);
     const accessoryProducts = computed(() => productGetters.getAccessoryProducts(product.value));
     const attributesWithoutGrade = computed(() => productGetters.getAttributesWithoutGrade(product.value));
-    const selectedGrade = computed(() => query?.Grade);
 
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
@@ -210,8 +208,6 @@ export default defineComponent({
         customQuery: { getRealProduct: 'greenGetRealProduct'}
       });
 
-      console.log(realProduct.value.product.id);
-
       router.push({ name: 'product', params: { id: realProduct.value.product.id} });
     };
 
@@ -228,9 +224,6 @@ export default defineComponent({
     };
 
     const addToCartDisabled = computed(() => {
-      if (!selectedGrade.value) {
-        return true;
-      }
       return loadingProducts.value || loading.value;
     });
 
@@ -253,8 +246,7 @@ export default defineComponent({
       selectAcessories,
       loadingProducts,
       addToCartDisabled,
-      selectedGrade,
-      price,
+      combinationInfo,
       formatDolar,
       productloading,
       breadcrumbs,
