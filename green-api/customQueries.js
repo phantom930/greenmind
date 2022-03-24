@@ -122,6 +122,7 @@ module.exports = {
                     firstVariant
                     combinationInfoVariant
                     productTemplate{
+                      description
                       id
                     }
                     variantAttributeValues{
@@ -240,5 +241,26 @@ module.exports = {
         }
       }
     }`
+  }),
+  greenGetRealProduct: ({variables}) => ({
+    variables,
+    query: gql `
+    query($productTemplateId: Int, $combinationId: [Int]) {
+    productVariant(
+      productTemplateId: $productTemplateId
+      combinationId: $combinationId
+    ) {
+      product{
+        variantAttributeValues{
+          id
+          name
+          attribute{
+            id
+            name
+          }
+        }
+      }
+    }
+  }`
   })
 };
