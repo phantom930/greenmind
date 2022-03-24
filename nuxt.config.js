@@ -15,6 +15,10 @@ const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
 
 export default {
   css: ['@/assets/styles.scss'],
+  dir: {
+    // using to ignore auto-generated routes
+    pages: 'routes'
+  },
   components: [
     '~/components/',
     '~/components/core/atoms',
@@ -192,6 +196,7 @@ export default {
     }
   },
   i18n: {
+    strategy: 'no_prefix',
     currency: 'USD',
     country: 'US',
     countries: [
