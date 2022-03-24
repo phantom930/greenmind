@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { ref, onMounted, defineComponent, useRoute, computed } from '@nuxtjs/composition-api';
+import { ref, onMounted, defineComponent, useRoute, computed, useRouter } from '@nuxtjs/composition-api';
 import {
   SfAccordion,
   SfColor,
@@ -118,7 +118,7 @@ export default defineComponent({
   },
   setup() {
     const selectedFilters = ref([]);
-    const price = ref([1, 1200]);
+    const price = ref([0, 8000]);
     const { toInteger } = useCurrency();
     const { query } = useRoute().value;
     const { changeFilters, isFacetColor, facetsFromUrlToFilter } =
@@ -175,8 +175,8 @@ export default defineComponent({
 
     const selectPrice = (values) => {
       const newValue = `${toInteger(values[0])}-${toInteger(values[1])}`;
-      newValue[0];
-      price.value = values;
+
+      price.value = [toInteger(values[0]), toInteger(values[1])];
       const selectedValue = selectedFilters.value.find(
         (item) => item?.filterName === 'price'
       );

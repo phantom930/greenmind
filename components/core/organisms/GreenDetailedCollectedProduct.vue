@@ -116,7 +116,7 @@ export default defineComponent({
   font-size: 16px !important;
   font-weight: 500 !important;
   color: var(--_c-greenmind-primary-grey) !important;
-  margin-right: 5px !important;
+  margin-right: 20px !important;
   line-height: 20px !important;
 }
 ::v-deep .sf-checkbox__checkmark {

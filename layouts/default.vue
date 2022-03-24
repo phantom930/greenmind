@@ -15,6 +15,7 @@
         <BottomNavigation />
       </LazyHydrate>
       <CartSidebar />
+      <HamburguerMenu />
       <WishlistSidebar />
       <LoginModal />
       <Notification />
@@ -29,11 +30,12 @@
 import BottomNavigation from '~/components/BottomNavigation.vue';
 import TopBar from '~/components/TopBar.vue';
 import CartSidebar from '~/components/CartSidebar.vue';
+import HamburguerMenu from '~/components/HamburguerMenu.vue';
 import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LoginModal from '~/components/LoginModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
-import StoreStatus from '~/components/Product/StoreStatus.vue'
+import StoreStatus from '~/components/Product/StoreStatus.vue';
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default {
@@ -43,6 +45,7 @@ export default {
     TopBar,
     BottomNavigation,
     CartSidebar,
+    HamburguerMenu,
     WishlistSidebar,
     LoginModal,
     StoreStatus,
@@ -66,4 +69,5 @@ export default {
   overflow: hidden;
   height: 100vh;
 }
+
 </style>

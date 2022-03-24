@@ -30,7 +30,7 @@
       </LazyHydrate>
 
       <div class="navbar__title ">
-        <SfHeading :title="$t('iPhones')" />
+        <SfHeading :title="currentRootCategory.name" />
       </div>
       <div class="navbar__sort desktop-only">
         <span class="navbar__label">{{ $t("Sort by") }}:</span>
@@ -57,7 +57,7 @@
   </div>
 </template>
 
-<script>
+<script >
 import { computed, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { SfBreadcrumbs, SfHeading, SfSelect, SfButton, SfIcon } from '@storefront-ui/vue';
 import { facetGetters, useFacet } from '@vue-storefront/odoo';
@@ -83,7 +83,7 @@ export default defineComponent({
 
     const { result } = useFacet();
     const { changeSorting } = useUiHelpers();
-    const { currentRootCategory } = useUiCategoryHelpers(result);
+    const { currentRootCategory } = useUiCategoryHelpers(result.value);
     const { params, query } = route.value;
 
     const sortBy = computed(() =>
@@ -99,6 +99,7 @@ export default defineComponent({
       })
     );
     return {
+      currentRootCategory,
       breadcrumbs,
       sortBy,
       changeSorting
@@ -213,6 +214,10 @@ export default defineComponent({
 
   .sf-button--text {
     display: flex;
+  }
+
+  .sf-breadcrumbs__breadcrumb {
+    cursor: pointer;
   }
   .sort-by {
     flex: unset;

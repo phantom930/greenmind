@@ -9,7 +9,7 @@ export function getRoutes(themeDir = __dirname) {
     },
     {
       name: 'product',
-      path: '/p/:id/:slug/',
+      path: '/p/:id/:slug?',
       component: path.resolve(themeDir, 'pages/Product.vue')
     },
     {

@@ -329,7 +329,7 @@ export default {
     const showPassword = ref(false);
     const isLogin = ref(true);
     const isForgottenPassword = ref(false);
-    const isCreateAccount = ref(true);
+    const isCreateAccount = ref(false);
 
     const createAccount = ref(false);
     const rememberMe = ref(false);

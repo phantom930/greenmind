@@ -8,7 +8,8 @@ const state = reactive({
   isNewsletterModalOpen: false,
   isCategoryGridView: true,
   isFilterSidebarOpen: false,
-  isMobileMenuOpen: false
+  isMobileMenuOpen: false,
+  isHamburguerMenuOpen: false
 });
 
 const useUiState = () => {
@@ -35,11 +36,11 @@ const useUiState = () => {
     state.isLoginModalOpen = !state.isLoginModalOpen;
   };
 
-  const isStoreModalOpen = computed(() => state.isStoreModalOpen)
+  const isStoreModalOpen = computed(() => state.isStoreModalOpen);
   const toggleStoreModal = () =>{
-    if(state.isStoreModalOpen) toggleMobileMenu();
-    state.isStoreModalOpen = ! state.isStoreModalOpen
-  }
+    if (state.isStoreModalOpen) toggleMobileMenu();
+    state.isStoreModalOpen = ! state.isStoreModalOpen;
+  };
 
   const isNewsletterModalOpen = computed(() => state.isNewsletterModalOpen);
   const toggleNewsletterModal = () => {
@@ -59,6 +60,15 @@ const useUiState = () => {
     state.isFilterSidebarOpen = !state.isFilterSidebarOpen;
   };
 
+  const isHamburguerMenuOpen = computed(() => state.isHamburguerMenuOpen);
+  const toggleHamburguerMenu = () => {
+    state.isHamburguerMenuOpen = !state.isHamburguerMenuOpen;
+  };
+  const loginHamburguer = () => {
+    state.isHamburguerMenuOpen = !state.isHamburguerMenuOpen;
+    state.isLoginModalOpen = !state.isLoginModalOpen;
+  };
+
   return {
     isCartSidebarOpen,
     isWishlistSidebarOpen,
@@ -68,6 +78,7 @@ const useUiState = () => {
     isCategoryGridView,
     isFilterSidebarOpen,
     isMobileMenuOpen,
+    isHamburguerMenuOpen,
     toggleCartSidebar,
     toggleWishlistSidebar,
     toggleLoginModal,
@@ -76,7 +87,9 @@ const useUiState = () => {
     changeToCategoryGridView,
     changeToCategoryListView,
     toggleFilterSidebar,
-    toggleMobileMenu
+    toggleMobileMenu,
+    toggleHamburguerMenu,
+    loginHamburguer
   };
 };
 

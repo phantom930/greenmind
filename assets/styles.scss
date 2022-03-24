@@ -2,7 +2,6 @@
   --font-family--primary: "Josefin Sans"; 
   --line-height--primary: 24px;
     
-
   @include generate-color-variants(--_c-greenmind-primary-black, #1d1f22);
   @include generate-color-variants(--_c-greenmind-secondary-black, #43464E);
 
@@ -28,13 +27,14 @@
   @include generate-color-variants(--_c-greenmind-pine-secondary-dark-green, #435E52);
 
   @include generate-color-variants(--_c-greenmind-fern-primary-medium-green, #7BA393);
+  @include assign-color-variants(--c-primary, --_c-greenmind-fern-primary-medium-green);
+  
   @include generate-color-variants(--_c-greenmind-fern-secondary-medium-green, #78A886);
 
   @include generate-color-variants(--_c-greenmind-mint-primary-light-green, #A5CEBE);
   @include generate-color-variants(--_c-greenmind-mint-secondary-light-green, #BAE8D6);
 
   @include generate-color-variants(--_c-greenmind-sand-primary, #E0D6C9);
-
 
 }
 
@@ -117,7 +117,7 @@
 .layout {
   box-sizing: border-box;
   @include for-desktop {
-    max-width: 1240px;
+    max-width: 1280px;
     margin: auto;
   }
 }

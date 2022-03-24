@@ -33,7 +33,7 @@
         <SfLink
           :link="
             localePath(
-              `/p/${productGetters.getId(product)}/${productGetters.getSlug( product )}`
+              `/p/${productGetters.getId(product)}`
             )
           "
         >

@@ -1,7 +1,6 @@
 <template>
   <SfModal
     :visible="isNewsletterModalOpen"
-    class="modal"
     @close="closeModal"
   >
     <template #modal-bar>

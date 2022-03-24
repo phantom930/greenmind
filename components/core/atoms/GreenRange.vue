@@ -1,6 +1,5 @@
 <template>
   <SfRange
-    :disabled="false"
     :config="config"
     @change="$emit('change', arguments[0])"
   />
@@ -26,7 +25,7 @@ export default {
 
     const config = computed(() => ({
       start: props.initialPrice,
-      range: { min: 0, max: 4000 },
+      range: { min: 0, max: 20000 },
       step: 10,
       connect: true,
       direction: 'ltr',

@@ -190,9 +190,7 @@ export default {
     const { addItem: addItemToWishlist } = useWishlist();
 
     const goToProduct = (product) => {
-      return `/p/${productGetters.getId(product)}/${productGetters.getSlug(
-        product
-      )}`;
+      return `/p/${productGetters.getId(product)}}`;
     };
     watch(
       () => props.visible,

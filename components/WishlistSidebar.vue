@@ -180,7 +180,7 @@ export default {
     const getLocalPathFromWishListItem = (wishlistItem) => {
       return `/p/${productGetters.getId(
         wishlistItem.product
-      )}/${productGetters.getSlug(wishlistItem.product)}`;
+      )}`;
     };
 
     return {

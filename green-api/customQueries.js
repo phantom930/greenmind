@@ -44,6 +44,7 @@ module.exports = {
         sku
         isInWishlist
         status
+        combinationInfoVariant
         categories {
             id
             name
@@ -94,6 +95,7 @@ module.exports = {
         description
         image
         slug
+        combinationInfoVariant
       }
     }
   }
@@ -118,7 +120,9 @@ module.exports = {
                     websiteSubtitle
                     isInWishlist
                     firstVariant
+                    combinationInfoVariant
                     productTemplate{
+                      description
                       id
                     }
                     variantAttributeValues{
@@ -209,5 +213,55 @@ module.exports = {
         }
       }
       `
+  }),
+  greenGetCategories: ({variables}) => ({
+    variables,
+    query: gql `query(
+      $search: String
+      $filter: CategoryFilterInput
+      $currentPage: Int
+      $pageSize: Int
+      $sort: CategorySortInput
+    ) {
+      categories(
+        search: $search
+        filter: $filter
+        currentPage: $currentPage
+        pageSize: $pageSize
+        sort: $sort
+      ) {
+        categories {
+          id
+          name
+          slug
+          parent {
+            id
+            name
+          }
+        }
+      }
+    }`
+  }),
+  greenGetRealProduct: ({variables}) => ({
+    variables,
+    query: gql `
+    query($productTemplateId: Int, $combinationId: [Int]) {
+    productVariant(
+      productTemplateId: $productTemplateId
+      combinationId: $combinationId
+    ) {
+      product{
+        id
+        variantAttributeValues{
+          id
+          name
+          attribute{
+            id
+            name
+          }
+        }
+      }
+    }
+  }`
   })
 };
