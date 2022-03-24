@@ -118,7 +118,7 @@ export default defineComponent({
   },
   setup() {
     const selectedFilters = ref([]);
-    const price = ref([1, 1200]);
+    const price = ref([0, 8000]);
     const { toInteger } = useCurrency();
     const { query } = useRoute().value;
     const { changeFilters, isFacetColor, facetsFromUrlToFilter } =

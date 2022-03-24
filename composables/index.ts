@@ -5,6 +5,7 @@ import useUiState from './useUiState';
 import useCurrency from './useCurrency';
 import useUiStyleState from './useUiStyleState';
 import cartGetters from './getters/cartGetters';
+import productGetters from './getters/productGetters';
 
 export {
   useUiHelpers,
@@ -14,5 +15,6 @@ export {
   useCurrency,
   useUiStyleState,
 
+  productGetters,
   cartGetters
 };

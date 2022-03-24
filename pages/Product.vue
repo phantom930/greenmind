@@ -47,7 +47,10 @@
 
           <ProductDescription />
 
-          <div v-if="accessoryProducts.length > 0" class="checkbox-title-wrap">
+          <div
+            v-if="accessoryProducts.length > 0"
+            class="checkbox-title-wrap"
+          >
             <div class="title">
               {{ $t("Purchases") }}
             </div>
@@ -65,7 +68,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              {{ formatDolar(price) }}
+              {{ formatDolar(price) }},-
             </p>
             <div class="buttons">
               <GreenButton
@@ -97,35 +100,7 @@
         <BannerProducts />
 
         <LazyHydrate when-idle>
-          <SfTabs :open-tab="1" class="product__tabs">
-            <SfTab data-cy="product-tab_description" title="Description">
-              <div class="product__description">
-                {{ description }}
-              </div>
-            </SfTab>
-            <SfTab
-              :title="$t('Specifications')"
-              data-cy="product-tab_additional"
-              class="product__additional-info"
-            >
-              <div class="product__additional-info">
-                <p class="product__additional-info__title">
-                  {{ $t("Brand") }}
-                </p>
-                <p>{{ brand }}</p>
-                <p class="product__additional-info__title">
-                  {{ $t("Instruction1") }}
-                </p>
-                <p class="product__additional-info__paragraph">
-                  {{ $t("Instruction2") }}
-                </p>
-                <p class="product__additional-info__paragraph">
-                  {{ $t("Instruction3") }}
-                </p>
-                <p>{{ careInstructions }}</p>
-              </div>
-            </SfTab>
-          </SfTabs>
+          <ProductTabs :product="product" />
         </LazyHydrate>
       </div>
     </div>
@@ -143,20 +118,19 @@
   </div>
 </template>
 <script >
-import { SfHeading, SfTabs, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront-ui/vue';
+import { SfHeading, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront-ui/vue';
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import { useProduct, useCart, productGetters, useProductVariant, facetGetters, useFacet } from '@vue-storefront/odoo';
-import { useCurrency, useUiState } from '~/composables';
+import { useProduct, useCart, useProductVariant, facetGetters, useFacet } from '@vue-storefront/odoo';
+import { useCurrency, useUiState, productGetters } from '~/composables';
 import { onSSR } from '@vue-storefront/core';
-import { useRoute } from '@nuxtjs/composition-api';
+import { useRoute, useRouter } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
 
 export default defineComponent({
   name: 'Product',
   components: {
     SfHeading,
-    SfTabs,
     SfGallery,
     SfIcon,
     SfBreadcrumbs,
@@ -164,15 +138,14 @@ export default defineComponent({
   },
   transition: 'fade',
   setup(props, { root }) {
-    const route = useRoute();
+    const { query, params} = useRoute().value;
+    const router = useRouter();
     const loadingProducts = ref(false);
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
-    const { id } = route.value.params;
     const { formatDolar } = useCurrency();
-    const { query } = root.$route;
-    const { products, search, loading: productloading } = useProduct(`products-${id}`);
-    const { searchRealProduct, productVariants, realProduct, elementNames } = useProductVariant(query);
+    const { products, search, loading: productloading } = useProduct(`products-${params.id}`);
+    const { searchRealProduct, realProduct, elementNames } = useProductVariant(query);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addItem, loading } = useCart();
     const { addTags } = useCache();
@@ -180,20 +153,18 @@ export default defineComponent({
     const product = computed(() => {
       return {
         ...products.value,
-        realProduct: realProduct.value
+        ...realProduct.value?.product
       };
     });
 
-    const options = computed(() => productGetters.getAttributes(product.value, ['color', 'size']));
-    const description = computed(() => productGetters.getDescription(product.value));
     const properties = computed(() => productGetters.getProperties(product.value));
     const code = computed(() => productGetters.getCode(product.value));
-    const price = computed(() => productGetters.getPrice(product.value)?.regular || 0);
+    const price = computed(() => product.value?.combinationInfoVariant?.price || 0);
     const breadcrumbs = computed(() => facetGetters.getBreadcrumbsByProduct(product.value));
     const sliderProducts = computed(() => product.value.alternativeProducts || []);
-    const accessoryProducts = computed(() => products?.value?.accessoryProducts || []);
-    const attributesWithoutGrade = computed(() => product.value?.variantAttributeValues?.filter(attribute => attribute.attribute?.name !== 'Grade'));
-    const selectedGrade = computed(() => route.value?.query?.Grade);
+    const accessoryProducts = computed(() => productGetters.getAccessoryProducts(product.value));
+    const attributesWithoutGrade = computed(() => productGetters.getAttributesWithoutGrade(product.value));
+    const selectedGrade = computed(() => query?.Grade);
 
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
@@ -209,7 +180,8 @@ export default defineComponent({
 
       await searchRealProduct({
         productTemplateId: product.value?.productTemplate?.id,
-        combinationIds: Object.values(root.$route.query)
+        combinationIds: Object.values(root.$route.query),
+        customQuery: { getRealProduct: 'greenGetRealProduct'}
       });
     };
 
@@ -217,7 +189,7 @@ export default defineComponent({
       loadingProducts.value = true;
       try {
         await search({
-          id: parseInt(id),
+          id: parseInt(params.id),
           customQuery: { getProductTemplate: 'greenGetProduct' }
         });
 
@@ -227,19 +199,20 @@ export default defineComponent({
         loadingProducts.value = false;
       }
 
-      addTags([{ prefix: CacheTagPrefix.Product, value: id }]);
+      addTags([{ prefix: CacheTagPrefix.Product, value: params.id }]);
     });
 
-    const updateFilter = (filter) => {
-      const attributesParams = {};
-      attributesWithoutGrade.value?.forEach(item => {
-        attributesParams[item.attribute?.name] = item.id;
+    const updateFilter = async (filterId) => {
+
+      await searchRealProduct({
+        productTemplateId: product.value?.productTemplate?.id,
+        combinationIds: [filterId, ...attributesWithoutGrade.value.map(attribute => attribute.id)],
+        customQuery: { getRealProduct: 'greenGetRealProduct'}
       });
 
-      root.$router.push({
-        path: root.$route.path,
-        query: { ...root.$route.query, ...filter, ...attributesParams }
-      });
+      console.log(realProduct.value.product.id);
+
+      router.push({ name: 'product', params: { id: realProduct.value.product.id} });
     };
 
     const checkSelected = (attribute, value) => {
@@ -271,7 +244,7 @@ export default defineComponent({
 
     const handleStoreStatus = () =>{
       toggleStoreModal();
-    }
+    };
 
     return {
       handleStoreStatus,
@@ -290,16 +263,13 @@ export default defineComponent({
       updateFilter,
       product,
       code,
-      description,
       properties,
       relatedProducts: computed(() =>
         productGetters.getFiltered(relatedProducts.value, { master: true })
       ),
       relatedLoading,
-      options,
       loading,
       productGetters,
-      productVariants,
       productGallery,
       useFacet,
       realProduct,
@@ -310,11 +280,6 @@ export default defineComponent({
   },
   data() {
     return {
-      stock: 5,
-      detailsIsActive: false,
-      brand:
-        'Brand name is the perfect pairing of quality and design. This label creates major everyday vibes with its collection of modern brooches, silver and gold jewellery, or clips it back with hair accessories in geo styles.',
-      careInstructions: 'Do not wash!',
       storage: ['128 Gb', '128 Gb', '128 Gb', '128 Gb', '128 Gb'],
       color: ['Gold', 'Red', 'Silver', 'Black', 'Gold'],
       currency: ['$']

@@ -54,7 +54,7 @@ export default defineComponent({
       computed(() => props.productAttributes?.filter(item => item.attribute.name === 'Grade'));
 
     const chooseGrade = (attribute : AttributeValue) => {
-      emit('update', { Grade: attribute.id });
+      emit('update', attribute.id);
     };
 
     return {

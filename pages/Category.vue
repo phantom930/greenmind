@@ -31,14 +31,8 @@
               />
             </transition-group>
             <div class="flex justify-end">
-              <div
-                v-if="noMoreProductsToLoad"
-                class="px-5 py-1 bg-gray-200 text-gray-800 rounded-full"
-              >
-                {{ $t('No More Products to Load') }}
-              </div>
               <GreenButton
-                v-else
+                v-if="hasMoreProductsToLoad"
                 type="Primary"
                 color="Green"
                 :loading="buttonLoading"
@@ -95,7 +89,7 @@ export default defineComponent({
       () => !loading.value && products.value?.length > 0 || buttonLoading.value
     );
 
-    const noMoreProductsToLoad = computed(() => pageSize.value > pagination.value?.totalItems);
+    const hasMoreProductsToLoad = computed(() => pageSize.value < pagination.value?.totalItems);
 
     const customQueryProducts = {
       getProductTemplatesList: 'greenGetProductList'
@@ -124,7 +118,7 @@ export default defineComponent({
 
     return {
       ...uiState,
-      noMoreProductsToLoad,
+      hasMoreProductsToLoad,
       buttonLoading,
       changeItemsPerPage,
       currentRootCategory,

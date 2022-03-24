@@ -133,3 +133,8 @@
   ::v-deep .sf-breadcrumbs__breadcrumb.current {
     text-transform: capitalize;
   }
+
+  ::v-deep .sf-loader {
+    display: flex;
+    align-self: center;
+  }

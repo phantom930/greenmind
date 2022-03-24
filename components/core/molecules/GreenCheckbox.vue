@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="price">
-          {{ price }}
+          {{ price }},-
         </div>
       </div>
     </template>
@@ -145,7 +145,7 @@ export default defineComponent({
     font-size: 20px;
     font-weight: 500;
     color: var(--_c-greenmind-secondary-black);
-    margin-right: 16px;
+    margin-right: 20px;
 }
 .title-link a {
     color: var(--_c-greenmind-primary-blue);

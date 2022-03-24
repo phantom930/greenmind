@@ -251,6 +251,7 @@ module.exports = {
       combinationId: $combinationId
     ) {
       product{
+        id
         variantAttributeValues{
           id
           name
