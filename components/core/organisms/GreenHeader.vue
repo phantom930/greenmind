@@ -101,14 +101,13 @@ import {
   useCart,
   useWishlist,
   useUser,
-  cartGetters,
   categoryGetters,
   useFacet
 } from '@vue-storefront/odoo';
 import { clickOutside } from '@storefront-ui/vue/src/utilities/directives/click-outside/click-outside-directive.js';
 import { computed, ref, watch } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';
-import { useUiHelpers } from '~/composables';
+import { useUiHelpers, cartGetters } from '~/composables';
 import SearchResults from '~/components/SearchResults';
 
 import debounce from 'lodash.debounce';

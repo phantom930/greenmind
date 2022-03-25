@@ -104,7 +104,7 @@
     </SfSidebar>
   </div>
 </template>
-<script>
+<script lang="ts">
 import {
   SfSidebar,
   SfHeading,
@@ -113,12 +113,12 @@ import {
   SfPrice,
   SfImage
 } from '@storefront-ui/vue';
-import { computed } from '@vue/composition-api';
-import { useCart, useUser, cartGetters } from '@vue-storefront/odoo';
-import { useUiState } from '~/composables';
+import { computed, defineComponent } from '@nuxtjs/composition-api';
+import { useCart, useUser } from '@vue-storefront/odoo';
+import { useUiState, cartGetters } from '~/composables';
 
-export default {
-  name: 'Cart',
+export default defineComponent({
+  name: 'CartSidebar',
   components: {
     SfSidebar,
     SfButton,
@@ -134,6 +134,7 @@ export default {
     const items = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    const accessories = computed(() => cartGetters.getAccessories(cart.value));
 
     return {
       isAuthenticated,
@@ -142,12 +143,13 @@ export default {
       updateItemQty,
       isCartSidebarOpen,
       toggleCartSidebar,
+      accessories,
       totals,
       totalItems,
       cartGetters
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

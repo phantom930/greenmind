@@ -6,7 +6,6 @@ const coreProductAttribs = `
   smallImage
   slug
   qty
-  typeId
   status
   price
   websiteSubtitle
@@ -26,26 +25,8 @@ order {
     id
     name
     product {
-      id
-      name
-      image
-      image
-      displayName
-      websiteSubtitle
-      
-    }
-    quantity
-    priceTotal
-  }
-  accessoryLines{
-    id
-    name
-  }
-  orderLines {
-    id
-    name
-    product {
       ${coreProductAttribs}
+      combinationInfoVariant
       accessoryProducts{
           id
           name
@@ -53,6 +34,22 @@ order {
           image
           price
       }
+    }
+    quantity
+    priceTotal
+  }
+  accessoryLines{
+    id
+    name
+    product{
+      id
+    }
+  }
+  orderLines {
+    id
+    name
+    product {
+      ${coreProductAttribs}
     }
     quantity
     priceTotal

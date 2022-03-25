@@ -239,8 +239,6 @@ export default defineComponent({
         customQuery: { cartAddMultipleItems: 'greenCartAddMultipleItem'}
       };
 
-      console.log(params);
-
       await addMultipleProductsToCart(params);
     };
 
