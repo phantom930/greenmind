@@ -193,6 +193,10 @@ export default {
   },
   emits: ['finish'],
   setup(props, { root, emit }) {
+    const { isAuthenticated } = useUser();
+    if (isAuthenticated.value) {
+        return  root.$router.push('/checkout/shipping');
+      }
     const { cart } = useCart();
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     if (totalItems.value === 0) root.$router.push('/cart');
@@ -206,7 +210,7 @@ export default {
     const { load: loadShipping, shipping, save } = useShipping();
     const { toggleCartSidebar, toggleWishlistSidebar, toggleLoginModal } =
       useUiState();
-    const { isAuthenticated } = useUser();
+
 
     const { search, searchCountryStates, countries, countryStates } =
       useCountrySearch();
