@@ -28,6 +28,11 @@ export function getRoutes(themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/Checkout.vue'),
       children: [
         {
+          path: 'personaldetails',
+          name: 'personaldetails',
+          component: path.resolve(themeDir, 'pages/Checkout/Personaldetails.vue')
+        },
+        {
           path: 'shipping',
           name: 'shipping',
           component: path.resolve(themeDir, 'pages/Checkout/Shipping.vue')
@@ -36,6 +41,11 @@ export function getRoutes(themeDir = __dirname) {
           path: 'billing',
           name: 'billing',
           component: path.resolve(themeDir, 'pages/Checkout/Billing.vue')
+        },
+        {
+          path: 'revieworder',
+          name: 'revieworder',
+          component: path.resolve(themeDir, 'pages/Checkout/Revieworder.vue')
         },
         {
           path: 'payment',

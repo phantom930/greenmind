@@ -179,7 +179,7 @@ extend('min', {
 extend('digits', { ...digits, message: 'Please provide a valid phone number' });
 
 export default {
-  name: 'Shipping',
+  name: 'Personaldetails',
   components: {
     SfHeading,
     SfInput,

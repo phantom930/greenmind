@@ -72,6 +72,7 @@ import { computed, watch } from '@vue/composition-api';
 import { useCart, cartGetters } from '@vue-storefront/odoo';
 
 export default {
+  name: 'Revieworder',
   components: {
     SfButton
   },
