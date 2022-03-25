@@ -18,10 +18,7 @@
             :link="localePath(`/${category.slug}`)"
           />
         </div>
-        <nuxt-link
-          :to="localePath('/')"
-          class="sf-header__logo"
-        >
+        <nuxt-link :to="localePath('/')" class="sf-header__logo">
           <SfImage
             :width="35"
             :height="35"
@@ -37,25 +34,15 @@
             class="sf-button--pure sf-header__action"
             @click="handleAccountClick"
           >
-            <SfIcon
-              :icon="accountIcon"
-              size="1.25rem"
-            />
+            <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton>
           <SfButton
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="empty_cart"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="empty_cart" size="1.25rem" />
 
-            <SfBadge
-              v-if="cartTotalItems"
-              class="sf-badge--number cart-badge"
-            >
+            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
               {{ cartTotalItems }}
             </SfBadge>
           </SfButton>
@@ -63,11 +50,7 @@
             class="sf-button--pure sf-header__action list"
             @click="toggleHamburguerMenu"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="list"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="list" size="1.25rem" />
           </SfButton>
         </div>
       </template>
@@ -187,7 +170,8 @@ export default {
       await searchProductApi({
         search: term.value,
         pageSize: 12,
-        currentPage: 1
+        currentPage: 1,
+        fetchCategory: true,
       });
       formatedResult.value = {
         products: result?.value?.data?.products,
