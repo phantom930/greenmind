@@ -33,12 +33,17 @@ export interface CombinationInfo {
     has_discounted_price: boolean,
     discount: number,
     discount_perc: number
+    grade_name: number
+}
+export interface CombinationInfoGrade {
+    grades: CombinationInfo[]
 }
 
 export interface GreenProduct extends Product {
     variantAttributeValues?: AttributeValue[],
     websiteSubtitle?: string
     combinationInfo?: CombinationInfo
+    combinationInfoGrade?: CombinationInfoGrade
     combinationInfoVariant?: CombinationInfo
 }
 export interface GreenOrderLine extends OrderLine {

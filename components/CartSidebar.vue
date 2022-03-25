@@ -71,7 +71,7 @@
               "
             >
               <template #value>
-                <SfPrice :regular="totals.subtotal" />
+                <SfPrice :regular="totals" />
               </template>
             </SfProperty>
             <nuxt-link to="/checkout/personaldetails">
@@ -115,7 +115,7 @@ import {
 } from '@storefront-ui/vue';
 import { computed, defineComponent } from '@nuxtjs/composition-api';
 import { useCart, useUser } from '@vue-storefront/odoo';
-import { useUiState, cartGetters } from '~/composables';
+import { useUiState, cartGetters, useCurrency } from '~/composables';
 
 export default defineComponent({
   name: 'CartSidebar',
@@ -131,8 +131,10 @@ export default defineComponent({
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
     const { cart, removeItem, updateItemQty } = useCart();
     const { isAuthenticated } = useUser();
+    const { formatDinamarques } = useCurrency();
+
     const items = computed(() => cartGetters.getItems(cart.value));
-    const totals = computed(() => cartGetters.getTotals(cart.value));
+    const totals = computed(() => formatDinamarques(cartGetters.getTotals(cart.value).total));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const accessories = computed(() => cartGetters.getAccessories(cart.value));
 

@@ -15,7 +15,7 @@
     :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
     @input="handleUpdateItem(orderLine, $event)"
-    @click:remove="handleRemoveItem(orderLine.id)"
+    @click:remove="handleRemoveItemAndAccessories(orderLine)"
   >
     <template #title>
       <span class="custom-product-title"> {{ cartGetters.getItemTitle(orderLine) }} </span>
@@ -35,9 +35,11 @@
         <span class="green-collected-product__checkbox-title mb-1">
           {{ $t('Acquisition') }}
         </span>
+
         <GreenCheckbox
           v-for="acessoryProduct in accessoryProducts"
           :key="acessoryProduct.id"
+          :disabled="loading"
           :title="acessoryProduct.name"
           :price="acessoryProduct.price"
           :is-checked="accessoryIsInCart(acessoryProduct.id)"
@@ -66,22 +68,24 @@ export default defineComponent({
   },
   setup(props) {
     const {
-      handleRemoveItem,
+      handleRemoveItemAndAccessories,
       handleAddOrRemoveAccessory,
       handleUpdateItem,
       accessoryIsInCart,
-      getPrice
+      getPrice,
+      loading
     } = useCollectedProduct();
 
     const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts);
 
     return {
+      loading,
       accessoryIsInCart,
       handleAddOrRemoveAccessory,
       accessoryProducts,
       cartGetters,
       getPrice,
-      handleRemoveItem,
+      handleRemoveItemAndAccessories,
       handleUpdateItem
     };
   }

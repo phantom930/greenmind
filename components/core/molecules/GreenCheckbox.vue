@@ -8,7 +8,7 @@
     info-message=""
     error-message=""
     valid
-    :disabled="false"
+    :disabled="disabled"
     :selected="false"
     style="--checkbox-border-radius:100px"
     @change="$emit('change', $vnode.key)"
@@ -107,6 +107,10 @@ export default defineComponent({
     hasGeneralWrapper: {
       type: Boolean,
       default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['change'],
@@ -145,7 +149,7 @@ export default defineComponent({
     font-size: 20px;
     font-weight: 500;
     color: var(--_c-greenmind-secondary-black);
-    margin-right: 20px;
+    margin-right: 80px;
 }
 .title-link a {
     color: var(--_c-greenmind-primary-blue);

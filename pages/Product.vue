@@ -38,11 +38,7 @@
         />
         <div class="product__price-and-rating" />
         <div>
-          <ProductSelectGrade
-            :product-attributes="product.attributeValues"
-            :combination-info="combinationInfo"
-            @update="updateFilter"
-          />
+          <ProductSelectGrade :product-grades="productGrades" />
 
           <ProductDescription />
 
@@ -67,7 +63,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              {{ formatDolar(combinationInfo.price) }},-
+              {{ formatDinamarques(combinationInfo.price) }}
             </p>
             <div class="buttons">
               <GreenButton
@@ -77,7 +73,7 @@
                 size="Medium"
                 class="mb-3"
                 :disabled="addToCartDisabled"
-                :loading="loadingProducts || loading"
+                :loading="loadingProducts"
                 @click="handleAddItem()"
               >
                 {{ $t("Add to Cart") }}
@@ -120,11 +116,11 @@
 import { SfHeading, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront-ui/vue';
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import { useProduct, useCart, useProductVariant, facetGetters, useFacet, useMultipleProduct } from '@vue-storefront/odoo';
+import { useProduct, useProductVariant, facetGetters, useFacet, useMultipleProduct } from '@vue-storefront/odoo';
 import { useCurrency, useUiState, productGetters } from '~/composables';
 import { GreenGraphQlAddMultipleProductsParams } from 'green-api/types';
 import { onSSR } from '@vue-storefront/core';
-import { useRoute, useRouter } from '@nuxtjs/composition-api';
+import { useRoute } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
 
 export default defineComponent({
@@ -139,15 +135,13 @@ export default defineComponent({
   transition: 'fade',
   setup(props, { root }) {
     const { query, params} = useRoute().value;
-    const router = useRouter();
     const loadingProducts = ref(false);
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
-    const { formatDolar } = useCurrency();
-    const { products, search, loading: productloading } = useProduct(`products-${params.id}`);
+    const { formatDinamarques } = useCurrency();
+    const { products, search, loading } = useProduct(`products-${params.id}`);
     const { searchRealProduct, realProduct, elementNames } = useProductVariant(query);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
-    const { addItem, loading } = useCart();
     const { addMultipleProductsToCart } = useMultipleProduct(GreenGraphQlAddMultipleProductsParams);
     const { addTags } = useCache();
 
@@ -164,7 +158,7 @@ export default defineComponent({
     const breadcrumbs = computed(() => facetGetters.getBreadcrumbsByProduct(product.value));
     const sliderProducts = computed(() => product.value.alternativeProducts || []);
     const accessoryProducts = computed(() => productGetters.getAccessoryProducts(product.value));
-    const attributesWithoutGrade = computed(() => productGetters.getAttributesWithoutGrade(product.value));
+    const productGrades = computed(() => productGetters.getGrades(product.value));
 
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
@@ -193,7 +187,7 @@ export default defineComponent({
           customQuery: { getProductTemplate: 'greenGetProduct' }
         });
 
-        await searchRealProductWithGradeSelected();
+        // await searchRealProductWithGradeSelected();
 
       } finally {
         loadingProducts.value = false;
@@ -201,21 +195,6 @@ export default defineComponent({
 
       addTags([{ prefix: CacheTagPrefix.Product, value: params.id }]);
     });
-
-    const updateFilter = async (filterId) => {
-
-      await searchRealProduct({
-        productTemplateId: product.value?.productTemplate?.id,
-        combinationIds: [filterId, ...attributesWithoutGrade.value.map(attribute => attribute.id)],
-        customQuery: { getRealProduct: 'greenGetRealProduct'}
-      });
-
-      router.push({ name: 'product', params: { id: realProduct.value.product.id} });
-    };
-
-    const checkSelected = (attribute, value) => {
-      return root.$route.query[attribute] === value;
-    };
 
     const selectAcessories = (accessory) => {
       if (selectedAcessories.has(accessory)) {
@@ -226,7 +205,7 @@ export default defineComponent({
     };
 
     const addToCartDisabled = computed(() => {
-      return loadingProducts.value || loading.value;
+      return loadingProducts.value;
     });
 
     const handleAddItem = async () => {
@@ -247,6 +226,7 @@ export default defineComponent({
     };
 
     return {
+      productGrades,
       handleStoreStatus,
       handleAddItem,
       selectedAcessories,
@@ -254,12 +234,10 @@ export default defineComponent({
       loadingProducts,
       addToCartDisabled,
       combinationInfo,
-      formatDolar,
-      productloading,
+      formatDinamarques,
+      loading,
       breadcrumbs,
-      checkSelected,
       elementNames,
-      updateFilter,
       product,
       code,
       properties,
@@ -267,7 +245,6 @@ export default defineComponent({
         productGetters.getFiltered(relatedProducts.value, { master: true })
       ),
       relatedLoading,
-      loading,
       productGetters,
       productGallery,
       useFacet,
