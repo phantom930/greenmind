@@ -2709,7 +2709,7 @@
     graphql-tag "^2.12.4"
     isomorphic-fetch "^3.0.0"
 
-"@vue-storefront/odoo@1.2.7":
+"@vue-storefront/odoo@^1.2.7":
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/@vue-storefront/odoo/-/odoo-1.2.7.tgz#3d4dbf9d8216aa2c2eefbfbf55096821b1d683d6"
   integrity sha512-ul4FJ1PkB4ycojrWbYynsI87G7kPdmPhZa+fV5UFpUJYhv4eF+rlLw2+Xs3mrK0U3tzLNMo6hseaau+NspDzDA==
