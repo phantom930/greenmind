@@ -120,8 +120,9 @@
 import { SfHeading, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront-ui/vue';
 import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
 import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import { useProduct, useCart, useProductVariant, facetGetters, useFacet } from '@vue-storefront/odoo';
+import { useProduct, useCart, useProductVariant, facetGetters, useFacet, useMultipleProduct } from '@vue-storefront/odoo';
 import { useCurrency, useUiState, productGetters } from '~/composables';
+import { GreenGraphQlAddMultipleProductsParams } from 'green-api/types';
 import { onSSR } from '@vue-storefront/core';
 import { useRoute, useRouter } from '@nuxtjs/composition-api';
 import LazyHydrate from 'vue-lazy-hydration';
@@ -147,6 +148,7 @@ export default defineComponent({
     const { searchRealProduct, realProduct, elementNames } = useProductVariant(query);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addItem, loading } = useCart();
+    const { addMultipleProductsToCart } = useMultipleProduct(GreenGraphQlAddMultipleProductsParams);
     const { addTags } = useCache();
 
     const product = computed(() => {
@@ -228,11 +230,16 @@ export default defineComponent({
     });
 
     const handleAddItem = async () => {
-      await addItem({
-        product: { firstVariant: product.value.id },
-        quantity: 1,
-        customQuery: { cartAddItem: 'greenCartAddItem'}
-      });
+      console.log(selectedAcessories.values());
+      const params = {
+        products: [{
+          id: product.value.id,
+          quantity: 1,
+          accessoryToIds: [...selectedAcessories]
+        }]
+      };
+
+      await addMultipleProductsToCart(params);
     };
 
     const handleStoreStatus = () =>{

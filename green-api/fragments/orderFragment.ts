@@ -37,6 +37,10 @@ order {
     quantity
     priceTotal
   }
+  accessoryLines{
+    id
+    name
+  }
   orderLines {
     id
     name
