@@ -194,6 +194,16 @@ module.exports = {
       }
     `
   }),
+  greenCartAddMultipleItem: ({variables}) => ({
+    variables,
+    mutation: gql`
+       mutation($products: [ProductInput]!){
+        cartAddMultipleItems(products: $products){
+          ${orderFragment}
+        }
+      }
+    `
+  }),
   greenCartRemoveItem: ({variables}) => ({
     variables,
     mutation: `

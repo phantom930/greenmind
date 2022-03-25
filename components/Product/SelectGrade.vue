@@ -62,6 +62,8 @@ export default defineComponent({
       props.combinationInfo.display_name.includes(attribute.name);
 
     const chooseGrade = (attribute : AttributeValue) => {
+      if (isSelectedGrade(attribute)) return;
+
       emit('update', attribute.id);
     };
 

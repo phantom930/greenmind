@@ -230,14 +230,16 @@ export default defineComponent({
     });
 
     const handleAddItem = async () => {
-      console.log(selectedAcessories.values());
       const params = {
         products: [{
           id: product.value.id,
           quantity: 1,
           accessoryToIds: [...selectedAcessories]
-        }]
+        }],
+        customQuery: { cartAddMultipleItems: 'greenCartAddMultipleItem'}
       };
+
+      console.log(params);
 
       await addMultipleProductsToCart(params);
     };
