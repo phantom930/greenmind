@@ -72,8 +72,8 @@
                 shape="Round"
                 size="Medium"
                 class="mb-3"
-                :disabled="addToCartDisabled"
-                :loading="loadingProducts"
+                :disabled="anyLoading"
+                :loading="anyLoading"
                 @click="handleAddItem()"
               >
                 {{ $t("Add to Cart") }}
@@ -113,15 +113,13 @@
   </div>
 </template>
 <script >
-import { SfHeading, SfGallery, SfIcon, SfBreadcrumbs } from '@storefront-ui/vue';
-import { ref, computed, reactive, defineComponent } from '@nuxtjs/composition-api';
-import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
-import { useProduct, useProductVariant, facetGetters, useFacet, useMultipleProduct } from '@vue-storefront/odoo';
-import { useCurrency, useUiState, productGetters } from '~/composables';
-import { GreenGraphQlAddMultipleProductsParams } from 'green-api/types';
+import { computed, defineComponent, reactive, useRoute } from '@nuxtjs/composition-api';
+import { SfBreadcrumbs, SfGallery, SfHeading, SfIcon } from '@storefront-ui/vue';
+import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
-import { useRoute } from '@nuxtjs/composition-api';
+import { facetGetters, useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
+import { productGetters, useCurrency, useUiState } from '~/composables';
 
 export default defineComponent({
   name: 'Product',
@@ -134,21 +132,18 @@ export default defineComponent({
   },
   transition: 'fade',
   setup(props, { root }) {
-    const { query, params} = useRoute().value;
-    const loadingProducts = ref(false);
+    const { params} = useRoute().value;
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
     const { formatDinamarques } = useCurrency();
     const { products, search, loading } = useProduct(`products-${params.id}`);
-    const { searchRealProduct, realProduct, elementNames } = useProductVariant(query);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
-    const { addMultipleProductsToCart } = useMultipleProduct(GreenGraphQlAddMultipleProductsParams);
+    const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
     const { addTags } = useCache();
 
     const product = computed(() => {
       return {
-        ...products.value,
-        ...realProduct.value?.product
+        ...products.value
       };
     });
 
@@ -169,29 +164,11 @@ export default defineComponent({
       }))
     );
 
-    const searchRealProductWithGradeSelected = async() => {
-      if (!query.Grade) return;
-
-      await searchRealProduct({
-        productTemplateId: product.value?.productTemplate?.id,
-        combinationIds: Object.values(root.$route.query),
-        customQuery: { getRealProduct: 'greenGetRealProduct'}
-      });
-    };
-
     onSSR(async () => {
-      loadingProducts.value = true;
-      try {
-        await search({
-          id: parseInt(params.id),
-          customQuery: { getProductTemplate: 'greenGetProduct' }
-        });
-
-        // await searchRealProductWithGradeSelected();
-
-      } finally {
-        loadingProducts.value = false;
-      }
+      await search({
+        id: parseInt(params.id),
+        customQuery: { getProductTemplate: 'greenGetProduct' }
+      });
 
       addTags([{ prefix: CacheTagPrefix.Product, value: params.id }]);
     });
@@ -204,8 +181,8 @@ export default defineComponent({
       selectedAcessories.add(accessory);
     };
 
-    const addToCartDisabled = computed(() => {
-      return loadingProducts.value;
+    const anyLoading = computed(() => {
+      return loading.value || addLoading.value;
     });
 
     const handleAddItem = async () => {
@@ -231,13 +208,11 @@ export default defineComponent({
       handleAddItem,
       selectedAcessories,
       selectAcessories,
-      loadingProducts,
-      addToCartDisabled,
+      anyLoading,
       combinationInfo,
       formatDinamarques,
       loading,
       breadcrumbs,
-      elementNames,
       product,
       code,
       properties,
@@ -248,7 +223,6 @@ export default defineComponent({
       productGetters,
       productGallery,
       useFacet,
-      realProduct,
       facetGetters,
       sliderProducts,
       accessoryProducts
