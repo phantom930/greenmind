@@ -1,25 +1,35 @@
 
 import { useCart, useMultipleProduct } from '@vue-storefront/odoo';
 import { cartGetters } from '~/composables';
-import { GreenCart } from '~/green-api/types';
+import { computed } from '@nuxtjs/composition-api';
+import { GreenCart, GreenOrderLine } from '~/green-api/types';
 
 const useCollectedProduct = (): any => {
   const { removeItem, updateItemQty, cart, loading } = useCart();
-  const { addMultipleProductsToCart } = useMultipleProduct();
-
-  const handleRemoveItem = async (orderLineId) => {
-    if (loading.value) {
-      return;
-    }
-    await removeItem({ product: { id: orderLineId }, customQuery: { cartRemoveItem: 'greenCartRemoveItem'} });
-  };
+  const { addMultipleProductsToCart, removeMultipleProductsFromCart, loading: multipleLoading } = useMultipleProduct();
 
   const accessoryIsInCart = (accessoryId) => cartGetters.accessoryIsInCart(cart.value, accessoryId);
 
+  const anyLoading = computed(() => loading.value || multipleLoading.value);
+
   const getPrice = (orderLine) => cartGetters.getPrice(cart.value, orderLine);
 
+  const handleRemoveItemAndAccessories = async (orderLine: GreenOrderLine) => {
+    const greenCart = cart.value as GreenCart;
+
+    if (anyLoading.value) {
+      return;
+    }
+
+    const accessoriesInCartFromThisProduct = greenCart.order?.accessoryLines
+      .filter(acessoryLine => orderLine?.product?.accessoryProducts.some(acessory => acessory.id !== acessoryLine.product.id))
+      .map(acessoryLine => acessoryLine.id);
+
+    await removeMultipleProductsFromCart({ lineIds: [orderLine.id, ...accessoriesInCartFromThisProduct], customQuery: { cartRemoveMultipleItems: 'greenCartRemoveMultipleItem'} });
+  };
+
   const handleUpdateItem = async (orderLine, quantity) => {
-    if (loading.value) {
+    if (anyLoading.value) {
       return;
     }
     await updateItemQty({ product: orderLine, quantity, customQuery: { cartUpdateItemQty: 'greenCartUpdateItemQty'} });
@@ -28,7 +38,7 @@ const useCollectedProduct = (): any => {
   const handleAddOrRemoveAccessory = async (productId: number, accessoryId: number) => {
     const greenCart = cart.value as GreenCart;
 
-    if (loading.value) {
+    if (anyLoading.value) {
       return;
     }
 
@@ -56,7 +66,8 @@ const useCollectedProduct = (): any => {
   };
 
   return {
-    handleRemoveItem,
+    loading: anyLoading,
+    handleRemoveItemAndAccessories,
     handleAddOrRemoveAccessory,
     handleUpdateItem,
     accessoryIsInCart,

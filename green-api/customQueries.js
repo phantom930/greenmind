@@ -121,6 +121,7 @@ module.exports = {
                     isInWishlist
                     firstVariant
                     combinationInfoVariant
+                    combinationInfoGrade
                     productTemplate{
                       description
                       id
@@ -202,6 +203,16 @@ module.exports = {
           ${orderFragment}
         }
       }
+    `
+  }),
+  greenCartRemoveMultipleItem: ({variables}) => ({
+    variables,
+    mutation: gql`
+       mutation($lineIds: [Int]!){
+          cartRemoveMultipleItems(lineIds: $lineIds){
+            ${orderFragment}
+          }
+        }
     `
   }),
   greenCartRemoveItem: ({variables}) => ({
