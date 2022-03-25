@@ -2694,10 +2694,10 @@
     lodash "^4.17.15"
     nuxt-purgecss "^1.0.0"
 
-"@vue-storefront/odoo-api@1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo-api/-/odoo-api-1.2.7.tgz#9204c48a55e5e0fe210e642c21a665b3c9fad592"
-  integrity sha512-BT4n84k+m7korAN80ai3Gqvt04NNMFgxBJ7C7cO5pauhQ9f8nQ+vVSur06AbaeJnI8QXJbKV+pmpXoLtXdisEg==
+"@vue-storefront/odoo-api@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo-api/-/odoo-api-1.3.0.tgz#ff71acaec56f8dc09cc11082f53fe8929f0c0098"
+  integrity sha512-QMEQab6JpTjnLEYWeCtF6jRj8+2xBqj6wSMmBi9BahxhlXcYzVh/RHByrzNsho1YXoP9x3hoAABzxVBGFRX+zw==
   dependencies:
     "@vue-storefront/core" "2.5.4"
     apollo-cache-inmemory "^1.6.6"
@@ -2708,15 +2708,14 @@
     graphql "^15.5.0"
     graphql-tag "^2.12.4"
     isomorphic-fetch "^3.0.0"
-
-"@vue-storefront/odoo@^1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo/-/odoo-1.2.7.tgz#3d4dbf9d8216aa2c2eefbfbf55096821b1d683d6"
-  integrity sha512-ul4FJ1PkB4ycojrWbYynsI87G7kPdmPhZa+fV5UFpUJYhv4eF+rlLw2+Xs3mrK0U3tzLNMo6hseaau+NspDzDA==
+"@vue-storefront/odoo@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo/-/odoo-1.3.0.tgz#d188648278cc5fcb1907ff7ee4f0737f1ffbe882"
+  integrity sha512-sbkfGLuUgKwCWBm/0UekE5Lz1CqtPHsdY7Fx1+dXKiiaEjL4FnjuS3FK0gxUr1DBS5N7lQfEVx7m9LRRBV9+MA==
   dependencies:
     "@nuxtjs/composition-api" "0.31.0"
     "@vue-storefront/core" "2.5.4"
-    "@vue-storefront/odoo-api" "1.2.7"
+    "@vue-storefront/odoo-api" "1.3.0"
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"

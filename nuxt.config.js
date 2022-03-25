@@ -1,7 +1,7 @@
 import webpack from 'webpack';
 import theme from './themeConfig';
 import { getRoutes } from './routes';
-
+import { resolve } from 'path';
 const isDev = process.env.NODE_ENV !== 'production';
 
 const localesMap = {
@@ -18,6 +18,9 @@ export default {
   dir: {
     // using to ignore auto-generated routes
     pages: 'routes'
+  },
+  alias: {
+    'green-api': resolve(__dirname, './green-api')
   },
   components: [
     '~/components/',
