@@ -4,7 +4,7 @@
       <div class="header-links">
         <div class="dropdown-wrap">
           <a href="#" class="custom-link">IPHONES</a>
-          <div class="dropdown">
+          <div class="dropdown iphones">
             <SfMegaMenu title="iPhones" visible>
               <SfMegaMenuColumn title="iPhone 13">
                 <SfList>
@@ -47,75 +47,12 @@
               <nuxt-link to="#">
                 <SfMegaMenuColumn title="iPhone SE (2020)" />
               </nuxt-link>
-              <SfMegaMenuColumn title="iPhone 11">
-                <SfList>
-                  <a href="#"
-                    ><SfListItem
-                      ><SfMenuItem label="iPhone 11 Pro Max" /></SfListItem
-                  ></a>
-                  <a href="#"
-                    ><SfListItem
-                      ><SfMenuItem label="iPhone 11 Pro" /></SfListItem
-                  ></a>
-                  <a href="#"
-                    ><SfListItem><SfMenuItem label="iPhone 11" /></SfListItem
-                  ></a>
-                </SfList>
-              </SfMegaMenuColumn>
-              <SfMegaMenuColumn title="iPhone Xs">
-                <SfList>
-                  <a href="#"
-                    ><SfListItem
-                      ><SfMenuItem label="iPhone Xs Max" /></SfListItem
-                  ></a>
-                  <a href="#"
-                    ><SfListItem><SfMenuItem label="iPhone Xs" /></SfListItem
-                  ></a>
-                </SfList>
-              </SfMegaMenuColumn>
-              <nuxt-link to="#">
-                <SfMegaMenuColumn title="iPhone Xr" />
-              </nuxt-link>
-              <nuxt-link to="#">
-                <SfMegaMenuColumn title="iPhone X" />
-              </nuxt-link>
-              <SfMegaMenuColumn title="iPhone 8">
-                <SfList>
-                  <a href="#"
-                    ><SfListItem><SfMenuItem label="iPhone 8" /></SfListItem
-                  ></a>
-                  <a href="#"
-                    ><SfListItem
-                      ><SfMenuItem label="iPhone 8 Plus" /></SfListItem
-                  ></a>
-                </SfList>
-              </SfMegaMenuColumn>
-              <SfMegaMenuColumn title="iPhone 7">
-                <SfList>
-                  <a href="#"
-                    ><SfListItem><SfMenuItem label="iPhone 7 " /></SfListItem
-                  ></a>
-                  <a href="#"
-                    ><SfListItem
-                      ><SfMenuItem label="iPhone 7 Plus" /></SfListItem
-                  ></a>
-                </SfList>
-              </SfMegaMenuColumn>
-              <nuxt-link to="#">
-                <SfMegaMenuColumn title="iPhone SE" />
-              </nuxt-link>
-              <nuxt-link to="#">
-                <SfMegaMenuColumn :title="$t('All iPhones')" />
-              </nuxt-link>
-              <nuxt-link to="#">
-                <SfMegaMenuColumn :title="$t('iPhone accessories')" />
-              </nuxt-link>
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
           <a href="#" class="custom-link">SMARTPHONES</a>
-          <div class="dropdown">
+          <div class="dropdown smartphones">
             <SfMegaMenu title="Smartphones" visible>
               <SfMegaMenuColumn title="Samsung Galaxy">
                 <SfList>
@@ -139,7 +76,7 @@
               <nuxt-link to="#">
                 <SfMegaMenuColumn title="Huawei" />
               </nuxt-link>
-              <nuxt-link to="#">
+              <!-- <nuxt-link to="#">
                 <SfMegaMenuColumn title="Sony" />
               </nuxt-link>
               <nuxt-link to="#">
@@ -150,13 +87,13 @@
               </nuxt-link>
               <nuxt-link to="/c/smartphone-accessories/3405">
                 <SfMegaMenuColumn :title="$t('Smartphone accessories')" />
-              </nuxt-link>
+              </nuxt-link> -->
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
           <a href="#" class="custom-link">TABLETS</a>
-          <div class="dropdown">
+          <div class="dropdown tablets">
             <SfMegaMenu title="Tablets" visible>
               <nuxt-link to="/c/apple-ipads/3349">
                 <SfMegaMenuColumn title="iPads" />
@@ -164,18 +101,18 @@
               <nuxt-link to="#">
                 <SfMegaMenuColumn title="Android tablets" />
               </nuxt-link>
-              <nuxt-link to="#">
+              <!-- <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('All tablets')" />
               </nuxt-link>
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('Tablet accessories')" />
-              </nuxt-link>
+              </nuxt-link> -->
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
           <a href="#" class="custom-link">{{ $t("COMPUTERS") }}</a>
-          <div class="dropdown">
+          <div class="dropdown computers">
             <SfMegaMenu title="Computers" visible>
               <SfMegaMenuColumn :title="$t('Portable')">
                 <SfList>
@@ -201,7 +138,7 @@
                   ></a>
                 </SfList>
               </SfMegaMenuColumn>
-              <SfMegaMenuColumn title="Gaming PC">
+              <!-- <SfMegaMenuColumn title="Gaming PC">
                 <SfList>
                   <a href="#"
                     ><SfListItem
@@ -223,13 +160,13 @@
                       ><SfMenuItem label="Mouse & Keyboard" /></SfListItem
                   ></a>
                 </SfList>
-              </SfMegaMenuColumn>
+              </SfMegaMenuColumn> -->
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
           <a href="#" class="custom-link">{{ $t("Other Products") }}</a>
-          <div class="dropdown">
+          <div class="dropdown other-products">
             <SfMegaMenu title="other-products" visible>
               <SfMegaMenuColumn :title="$t('Consoles')">
                 <SfList>
@@ -253,7 +190,7 @@
                   >
                 </SfList>
               </SfMegaMenuColumn>
-              <SfMegaMenuColumn :title="$t('TV & Sound')">
+              <!-- <SfMegaMenuColumn :title="$t('TV & Sound')">
                 <SfList>
                   <a href="#"
                     ><SfListItem
@@ -300,13 +237,13 @@
                       ><SfMenuItem label="Smartwatch accessories" /></SfListItem
                   ></a>
                 </SfList>
-              </SfMegaMenuColumn>
+              </SfMegaMenuColumn> -->
             </SfMegaMenu>
           </div>
         </div>
         <div class="dropdown-wrap">
           <a href="#" class="custom-link">{{ $t("Accessories") }}</a>
-          <div class="dropdown">
+          <div class="dropdown accessories">
             <SfMegaMenu title="accessories" visible>
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('iPhone accessories')" />
@@ -314,7 +251,7 @@
               <nuxt-link to="/c/smartphone-accessories/154">
                 <SfMegaMenuColumn :title="$t('Smartphone accessories')" />
               </nuxt-link>
-              <nuxt-link to="#">
+              <!-- <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('Computer accessories')" />
               </nuxt-link>
               <nuxt-link to="#">
@@ -325,7 +262,7 @@
               </nuxt-link>
               <nuxt-link to="#">
                 <SfMegaMenuColumn :title="$t('Smartwatch accessories')" />
-              </nuxt-link>
+              </nuxt-link> -->
             </SfMegaMenu>
           </div>
         </div>
@@ -362,5 +299,45 @@ export default {
 @import url("~/assets/css/greenTopbarTertiary.scss");
 .top-header {
   z-index: 1;
+}
+
+::v-deep .dropdown.iphones .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 25px;
+}
+
+::v-deep .dropdown.smartphones .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 208px;
+}
+
+::v-deep .dropdown.tablets .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 435px;
+}
+
+::v-deep .dropdown.computers .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 620px;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 815px;
+}
+
+::v-deep .dropdown.accessories .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 1030px;
+  overflow: visible;
+}
+
+::v-deep .dropdown.accessories {
+  overflow: hidden;
+}
+
+::v-deep .dropdown .sf-mega-menu-column {
+  margin-left: 25px;
+  margin-right: 25px;
 }
 </style>
