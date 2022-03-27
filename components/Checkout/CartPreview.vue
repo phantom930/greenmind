@@ -68,7 +68,8 @@
           <div class="detail-adress grow">
             <p class="font-bold mb-4 text-lg">Personal details</p>
             <p class="mb-4">
-              Sviatlana Havaka <br />Zielinskiego 30 – 41, 53-345<br />
+              <span>{{ partnername }}</span> <br />Zielinskiego 30 – 41,
+              53-345<br />
               Wroclaw, Poland
             </p>
             <p>sviatlana.example@gmail.com</p>
@@ -156,13 +157,15 @@ export default {
     SfLink
   },
   setup(props, context) {
-    const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
+    const { cart, removeItem, updateItemQty, applyCoupon,  } = useCart();
+    console.log('useCart', useCart())
     const currentStep = computed(() =>
       context.root.$route.path.split('/').pop()
     );
     const listIsHidden = ref(false);
     const promoCode = ref('');
     const showPromoCode = ref(false);
+    const partnername = cart?.value?.order?.partnerShipping?.name;
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
@@ -173,6 +176,7 @@ export default {
 
     return {
       currentStep,
+      partnername,
       shippingMethodPrice,
       discounts,
       totalItems,

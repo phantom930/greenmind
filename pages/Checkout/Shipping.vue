@@ -165,7 +165,7 @@
             v-model="form.phone"
             label="Phone number"
             name="phone"
-            class="form__element form__element--half "
+            class="form__element form__element--half"
             required
             :valid="!errors[0]"
             :error-message="errors[0]"
@@ -198,7 +198,6 @@
           :disabled="!form.selectedMethodShipping || invalid"
           type="submit"
           class="color-primary sf-button revieworder_button"
-          @click="$router.push('/checkout/revieworder')"
         >
           {{ $t("GO TO REVIEW ORDER") }}
         </SfButton>
@@ -228,7 +227,7 @@ import {
   useCart,
   cartGetters,
   userShippingGetters,
-  useShipping
+  useShipping,
 } from '@vue-storefront/odoo';
 import { required, min, digits } from 'vee-validate/dist/rules';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
@@ -267,7 +266,6 @@ export default {
     const canAddNewAddress = ref(true);
 
     const { load: loadShipping, shipping, save } = useShipping();
-
     const { isAuthenticated } = useUser();
 
     const { search, searchCountryStates, countries, countryStates } =

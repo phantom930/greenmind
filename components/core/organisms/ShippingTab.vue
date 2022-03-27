@@ -1,41 +1,25 @@
 <template>
   <div class="billing-details-wrap">
-    <h3 class="sf-heading__title h3">
-      Billing details
-    </h3>
+    <h3 class="sf-heading__title h3">Billing details</h3>
     <div class="billing-details-card">
-      <p class="name info">
-        Jack Smith
-      </p>
-      <p class="address info">
-        Mazowiecka 34
-      </p>
-      <p class="number info">
-        02-020
-      </p>
-      <p class="city info">
-        Warszawa, Mazowieckie
-      </p>
-      <p class="state info">
-        Poland
-      </p>
-      <p class="phone info">
-        +48 777 777 777
-      </p>
-      <img :src="require('/assets/images/checkout/checkmark.svg')">
+      <p class="name info">Jack Smith</p>
+      <p class="address info">Mazowiecka 34</p>
+      <p class="number info">02-020</p>
+      <p class="city info">Warszawa, Mazowieckie</p>
+      <p class="state info">Poland</p>
+      <p class="phone info">+48 777 777 777</p>
+      <img :src="require('/assets/images/checkout/checkmark.svg')" />
     </div>
     <div class="checkbox-button-wrap">
       <div class="checkbox-group">
         <div class="checkbox-wrap">
           <GreenCheckbox />
-          <p class="label">
-            Copy address data from shipping
-          </p>
+          <p class="label">Copy address data from shipping</p>
         </div>
         <div class="checkbox-wrap">
           <GreenCheckbox />
           <p class="label">
-            I want to generate invoice<br>
+            I want to generate invoice<br />
             for the company
           </p>
         </div>
@@ -84,7 +68,7 @@
 }
 
 .checkbox-wrap .label {
-  padding-left: 8px;
+  /* padding-left: 8px; */
 }
 
 .checkbox-group {

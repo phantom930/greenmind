@@ -466,7 +466,7 @@ export default {
 }
 
 .checkbox-wrap .label {
-  padding-left: 8px;
+  // padding-left: 8px;
 }
 
 .checkbox-wrap .general_wrapper {

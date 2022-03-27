@@ -45,7 +45,7 @@
     </div>
     <div class="checkbox-button-wrap">
       <div class="checkbox-wrap">
-        <GreenCheckbox :has-general-wrapper="false" />
+        <GreenCheckbox />
         <p class="label">I agree to <a href="#">Terms and Conditions</a></p>
       </div>
       <div class="submit-button">
@@ -69,7 +69,9 @@
 <script>
 import { SfButton } from '@storefront-ui/vue';
 import { computed, watch } from '@vue/composition-api';
-import { useCart, cartGetters } from '@vue-storefront/odoo';
+import { useCart, useUserOrder, orderGetters, cartGetters } from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core'
+
 
 export default {
   name: 'Revieworder',
@@ -78,7 +80,6 @@ export default {
   },
   setup(props, { root }) {
     const { cart } = useCart();
-
     const products = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
@@ -234,7 +235,7 @@ export default {
 }
 
 .checkbox-wrap .label {
-  padding-left: 8px;
+  // padding-left: 8px;
 }
 
 .checkbox-wrap a {

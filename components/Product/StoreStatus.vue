@@ -296,7 +296,6 @@ import {
   SfLoader,
   SfAlert,
   SfBar,
-  SfStore,
   SfStoreLocator,
   SfSearchBar
 } from '@storefront-ui/vue';
@@ -318,7 +317,6 @@ export default {
     ValidationObserver,
     SfBar,
     SfStoreLocator,
-    SfStore,
     SfSearchBar
   },
   setup() {
@@ -351,7 +349,7 @@ export default {
 }
 
 .checkbox-wrap p {
-  margin-left: -18px;
+  margin-left: -10px;
   font-size: 16px;
   font-weight: 400;
 }

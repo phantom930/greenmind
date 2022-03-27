@@ -508,7 +508,6 @@ export default {
 }
 
 ::v-deep .checkbox-wrap p {
-  padding-left: 8px;
 }
 
 ::v-deep .perks-wrap .perk {
