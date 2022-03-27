@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { Product, AttributeValue, OrderLine, GraphQlProductParam, Order } from '@vue-storefront/odoo-api';
+import { Product, AttributeValue, OrderLine, GraphQlProductParam, Order, Cart } from '@vue-storefront/odoo-api';
 
 export enum ButtonType {
     Primary = 'Primary',
@@ -23,9 +23,6 @@ export enum ButtonColor {
     Grey = 'Grey',
 }
 
-export interface GreenOrder extends Order {
-    accessoryLines: OrderLine[]
-}
 export interface CombinationInfo {
     product_id: number,
     product_template_id: number,
@@ -36,16 +33,30 @@ export interface CombinationInfo {
     has_discounted_price: boolean,
     discount: number,
     discount_perc: number
+    grade_name: number
+}
+export interface CombinationInfoGrade {
+    grades: CombinationInfo[]
 }
 
 export interface GreenProduct extends Product {
-    variantAttributeValues: AttributeValue[],
-    websiteSubtitle: string
-    combinationInfo: CombinationInfo
-    combinationInfoVariant: CombinationInfo
+    variantAttributeValues?: AttributeValue[],
+    websiteSubtitle?: string
+    combinationInfo?: CombinationInfo
+    combinationInfoGrade?: CombinationInfoGrade
+    combinationInfoVariant?: CombinationInfo
 }
 export interface GreenOrderLine extends OrderLine {
     product?: GreenProduct;
+}
+export interface GreenOrder extends Order {
+    accessoryLines?: OrderLine[]
+    orderLines?: GreenOrderLine[];
+    websiteOrderLine?: GreenOrderLine[];
+}
+
+export interface GreenCart extends Cart {
+    order: GreenOrder;
 }
 
 export interface GreenGraphQlProductParam extends GraphQlProductParam {

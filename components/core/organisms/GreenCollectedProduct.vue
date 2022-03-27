@@ -15,11 +15,11 @@
     :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
     @input="handleUpdateItem(orderLine, $event)"
-    @click:remove="handleRemoveItem(orderLine.id)"
+    @click:remove="handleRemoveItemAndAccessories(orderLine)"
   >
     <template #title>
-      <span class="custom-product-title"> {{ cartGetters.getCartItemTitle(orderLine) }} </span>
-      <span class="custom-subtitle"> {{ cartGetters.getCartItemWebsiteTitle(orderLine.product) }} </span>
+      <span class="custom-product-title"> {{ cartGetters.getItemTitle(orderLine) }} </span>
+      <span class="custom-subtitle"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
       <span class="custom-stand"> Stand: Meget flat </span>
     </template>
     <template #configuration>
@@ -28,31 +28,33 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $n(cartGetters.getItemPrice(orderLine).regular) }}
+        {{ $n(getPrice(orderLine)) }}
       </span>
 
       <div class="mt-3">
         <span class="green-collected-product__checkbox-title mb-1">
           {{ $t('Acquisition') }}
         </span>
+
         <GreenCheckbox
           v-for="acessoryProduct in accessoryProducts"
           :key="acessoryProduct.id"
+          :disabled="loading"
           :title="acessoryProduct.name"
           :price="acessoryProduct.price"
           :is-checked="accessoryIsInCart(acessoryProduct.id)"
-          @change="handleAddOrRemoveAccessory"
+          @change="handleAddOrRemoveAccessory(orderLine.product.id, acessoryProduct.id)"
         />
       </div>
     </template>
   </SfCollectedProduct>
 </template>
 
-<script >
+<script lang="ts">
 import { SfCollectedProduct } from '@storefront-ui/vue';
-import { useCart } from '@vue-storefront/odoo';
-import { cartGetters } from '~/composables';
-import { defineComponent, computed } from '@nuxtjs/composition-api';
+import { cartGetters, useCollectedProduct } from '~/composables';
+import { defineComponent, computed, PropType } from '@nuxtjs/composition-api';
+import { GreenOrderLine } from '~/green-api/types';
 
 export default defineComponent({
   components: {
@@ -60,63 +62,30 @@ export default defineComponent({
   },
   props: {
     orderLine: {
-      type: Object,
+      type: Object as PropType<GreenOrderLine>,
       default: () => ({})
     }
   },
   setup(props) {
-    const { removeItem, updateItemQty, addItem, cart, loading } = useCart();
-    const items = computed(() => cartGetters.getItems(cart.value));
+    const {
+      handleRemoveItemAndAccessories,
+      handleAddOrRemoveAccessory,
+      handleUpdateItem,
+      accessoryIsInCart,
+      getPrice,
+      loading
+    } = useCollectedProduct();
 
     const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts);
 
-    const handleAddItem = async (productId) => {
-      if (loading.value) {
-        return;
-      }
-      await addItem({
-        product: { firstVariant: productId },
-        quantity: 1,
-        customQuery: { cartAddItem: 'greenCartAddItem'}
-
-      });
-    };
-
-    const handleRemoveItem = async (orderLineId) => {
-      if (loading.value) {
-        return;
-      }
-      await removeItem({ product: { id: orderLineId }, customQuery: { cartRemoveItem: 'greenCartRemoveItem'} });
-    };
-
-    const accessoryIsInCart = (acessoryId) => {
-      return items.value.some(item => item.product?.id === acessoryId);
-    };
-
-    const handleAddOrRemoveAccessory = async (productId) => {
-      if (accessoryIsInCart(productId)) {
-        const acessoryOrderLine = items.value.find(item => item.product?.id === productId);
-        await handleRemoveItem(acessoryOrderLine.id);
-        return;
-      }
-
-      handleAddItem(productId);
-    };
-
-    const handleUpdateItem = async (orderLine, quantity) => {
-      if (loading.value) {
-        return;
-      }
-      await updateItemQty({ product: orderLine, quantity, customQuery: { cartUpdateItemQty: 'greenCartUpdateItemQty'} });
-    };
-
     return {
-      handleAddOrRemoveAccessory,
+      loading,
       accessoryIsInCart,
-      handleAddItem,
+      handleAddOrRemoveAccessory,
       accessoryProducts,
       cartGetters,
-      handleRemoveItem,
+      getPrice,
+      handleRemoveItemAndAccessories,
       handleUpdateItem
     };
   }

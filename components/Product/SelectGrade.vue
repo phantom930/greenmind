@@ -6,45 +6,46 @@
         <a href="/standbeskrivelser">{{ $t('read more') }}</a>
       </div>
       <div class="prices-wrap">
-        <span
-          v-for="(attribute, index) in gradeAttributes"
+        <nuxt-link
+          v-for="(grade, index) in productGrades"
           :key="index"
+          tag="span"
+          :to="{ name: 'product', params: {id: grade.product_id }}"
           class="price-discount-wrap"
-          :class="isSelectedGrade(attribute) ? 'active' : ''"
+          :class="isSelectedGrade(grade) ? 'active' : ''"
         >
           <div
             class="price-wrap cursor-pointer"
-            :class="{'border-solid border-2 border-emerald-200 ': parseInt(selectedGrade) === attribute.id}"
-            @click="chooseGrade(attribute)"
+            :class="{'border-solid border-2 border-emerald-200 ': isSelectedGrade(grade)}"
+            @click="chooseGrade(grade)"
           >
-            <p>{{ attribute.name }}</p>
-            <div class="price">{{ combinationInfo.price }}</div>
+            <p> {{ grade.grade_name }} </p>
+            <div class="price">
+              {{ formatDinamarques(grade.price) }}
+            </div>
           </div>
           <div
-            v-if="isSelectedGrade(attribute) && combinationInfo.has_discounted_price"
+            v-if="grade.has_discounted_price"
             class="discount"
-          >{{ formatDolar(combinationInfo.list_price) }}</div>
-        </span>
+          >
+            {{ formatDinamarques(grade.list_price) }}
+          </div>
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, ComputedRef, defineComponent, PropType } from '@nuxtjs/composition-api';
-import { AttributeValue } from '@vue-storefront/odoo-api';
+import { defineComponent, PropType, useRoute } from '@nuxtjs/composition-api';
 import { useCurrency } from '~/composables';
 import { CombinationInfo } from '~/green-api/types';
 
 export default defineComponent({
   props: {
-    productAttributes: {
-      type: Array as PropType<Array<AttributeValue>>,
+    productGrades: {
+      type: Array as PropType<Array<CombinationInfo>>,
       default: () => ([])
-    },
-    combinationInfo: {
-      type: Object as PropType<CombinationInfo>,
-      default: () => ({})
     },
     selectedGrade: {
       type: String,
@@ -53,25 +54,22 @@ export default defineComponent({
   },
   emits: ['update'],
   setup (props, { emit }) {
-    const { formatDolar } = useCurrency();
+    const { formatDinamarques } = useCurrency();
+    const { params } = useRoute().value;
 
-    const gradeAttributes : ComputedRef<AttributeValue[]> =
-      computed(() => props.productAttributes?.filter(item => item.attribute.name === 'Grade'));
+    const isSelectedGrade = (info : CombinationInfo): boolean =>
+      Number(params.id) === info.product_id;
 
-    const isSelectedGrade = (attribute : AttributeValue): boolean =>
-      props.combinationInfo.display_name.includes(attribute.name);
+    const chooseGrade = (info : CombinationInfo) => {
+      if (isSelectedGrade(info)) return;
 
-    const chooseGrade = (attribute : AttributeValue) => {
-      if (isSelectedGrade(attribute)) return;
-
-      emit('update', attribute.id);
+      emit('update', info.product_id);
     };
 
     return {
       isSelectedGrade,
       chooseGrade,
-      gradeAttributes,
-      formatDolar
+      formatDinamarques
     };
   }
 });

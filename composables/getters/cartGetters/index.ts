@@ -1,16 +1,42 @@
 import { cartGetters } from '@vue-storefront/odoo';
-import { GreenOrderLine } from '~/green-api/types';
+import { GreenOrderLine, GreenCart } from '~/green-api/types';
 
-export const getCartItemTitle = (orderLine: GreenOrderLine): string =>
+export const getItemTitle = (orderLine: GreenOrderLine): string =>
   orderLine?.product.name || 'Product name';
 
-export const getCartItemWebsiteTitle = (product: GreenOrderLine): string =>
-  product?.product?.websiteSubtitle || 'Subtitle';
+export const getItemWebsiteTitle = (orderLine: GreenOrderLine): string =>
+  orderLine?.product?.websiteSubtitle || 'Subtitle';
+
+export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine;
+
+export const getTotalItems = (cart: GreenCart): number => cart?.order?.websiteOrderLine?.length || null;
+
+export const getAccessories = (cart: GreenCart): GreenOrderLine[] => cart?.order?.accessoryLines;
+
+export const accessoryIsInCart = (cart: GreenCart, acessoryId: number): boolean => {
+  return cart?.order?.accessoryLines?.some(item => item.product?.id === acessoryId);
+};
+
+export const getPrice = (cart: GreenCart, orderLine: GreenOrderLine): number => {
+  let totalAccessoryValue = 0;
+  orderLine.product?.accessoryProducts?.forEach(accessory => {
+    if (accessoryIsInCart(cart, accessory.id)) {
+      totalAccessoryValue += accessory.price;
+    }
+  });
+
+  return totalAccessoryValue + orderLine.product?.combinationInfoVariant?.price;
+};
 
 const getters = {
   ...cartGetters,
-  getCartItemTitle,
-  getCartItemWebsiteTitle
+  getItemTitle,
+  getItemWebsiteTitle,
+  getItems,
+  getTotalItems,
+  getAccessories,
+  getPrice,
+  accessoryIsInCart
 };
 
 export default getters;

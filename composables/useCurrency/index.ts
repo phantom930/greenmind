@@ -2,6 +2,7 @@
 import currency from 'currency.js';
 const euro = value => currency(value, { separator: '.', decimal: ',', symbol: '€' });
 const dolar = value => currency(value, { separator: ',', decimal: '.', symbol: '$', pattern: '#!', precision: 0 });
+const dinamarques = value => currency(value, { separator: '.', decimal: '.', symbol: ',-', pattern: '#!', precision: 0 });
 const euroWithDotDecimal = value => currency(value, { separator: '.', decimal: ',', symbol: '€'});
 
 const useNumber = (): any => {
@@ -16,6 +17,10 @@ const useNumber = (): any => {
     return dolar(value).format();
   };
 
+  const formatDinamarques = (value) => {
+    return dinamarques(value).format();
+  };
+
   const formatMoneyFromStringDotDecimal = (value) => {
     return euroWithDotDecimal(parseFloat(value)).format();
   };
@@ -24,6 +29,7 @@ const useNumber = (): any => {
     toInteger,
     formatMoney,
     formatDolar,
+    formatDinamarques,
     formatMoneyFromStringDotDecimal
   };
 };
