@@ -7,7 +7,10 @@
 
       <div class="main section">
         <LazyHydrate when-idle>
-          <CategorySidebarFilters :facets="facets" />
+          <CategorySidebarFilters
+            :facets="facets"
+            :range-attributes="rangeAttributes"
+          />
         </LazyHydrate>
 
         <SfLoader
@@ -83,6 +86,11 @@ export default defineComponent({
       facetGetters.getGrouped(result.value, ['color', 'size'])
     );
 
+    const rangeAttributes = computed(() => ({
+      minPrice: result.value?.data?.minPrice,
+      maxPrice: result.value?.data?.maxPrice
+    }));
+
     const pagination = computed(() => facetGetters.getPagination(result.value));
 
     const showProducts = computed(
@@ -117,6 +125,7 @@ export default defineComponent({
     });
 
     return {
+      rangeAttributes,
       ...uiState,
       hasMoreProductsToLoad,
       buttonLoading,

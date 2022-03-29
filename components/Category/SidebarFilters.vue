@@ -17,6 +17,7 @@
         <LazyGreenRange
           v-model="price"
           :initial-price="price"
+          :range-prices="rangeAttributes"
           @change="selectPrice"
         />
         <SfAccordion
@@ -114,6 +115,10 @@ export default defineComponent({
     facets: {
       type: Array,
       default: () => []
+    },
+    rangeAttributes: {
+      type: Object,
+      default: () => ({})
     }
   },
   setup() {

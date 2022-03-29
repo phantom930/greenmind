@@ -17,6 +17,13 @@ export default {
     initialPrice: {
       type: Array,
       default: () => ([])
+    },
+    rangePrices: {
+      type: Object,
+      default: () => ({
+        minPrice: 0,
+        maxPrice: 20000
+      })
     }
   },
   emits: ['change'],
@@ -25,7 +32,7 @@ export default {
 
     const config = computed(() => ({
       start: props.initialPrice,
-      range: { min: 0, max: 20000 },
+      range: { min: props.rangePrices?.minPrice, max: props.rangePrices?.maxPrice },
       step: 10,
       connect: true,
       direction: 'ltr',

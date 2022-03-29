@@ -18,6 +18,8 @@ module.exports = {
       search: $search
       sort: $sort
     ) {
+      minPrice
+      maxPrice
       totalCount
       attributeValues {
         id
