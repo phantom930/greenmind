@@ -16,7 +16,6 @@
         >
           <div
             class="price-wrap cursor-pointer"
-            :class="{'border-solid border-2 border-emerald-200 ': isSelectedGrade(grade)}"
             @click="chooseGrade(grade)"
           >
             <p> {{ grade.grade_name }} </p>
