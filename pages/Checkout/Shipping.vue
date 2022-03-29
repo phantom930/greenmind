@@ -284,7 +284,12 @@ export default {
     });
 
     const handleFormSubmit = async () => {
-      await save({ shippingDetails: form.value });
+      await save({ 
+        params: {
+          ...form.value,
+          stateId: parseInt(form.value.state.id),
+          countryId: parseInt(form.value.country.id),
+        },});
       isFormSubmitted.value = true;
 
       if (root.$router.history.current.path !== '/my-account/shipping-details')
