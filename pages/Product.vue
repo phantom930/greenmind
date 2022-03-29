@@ -54,7 +54,7 @@
               :key="accessoryProduct.id"
               :title="accessoryProduct.name"
               :description="accessoryProduct.description"
-              :price="accessoryProduct.price"
+              :price="accessoryProduct.combinationInfoVariant.price"
               :has-image="true"
               :image="$image(accessoryProduct.image)"
               @change="selectAcessories"

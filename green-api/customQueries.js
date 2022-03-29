@@ -160,6 +160,7 @@ module.exports = {
                         description
                         image
                         price
+                        combinationInfoVariant
                     }
                     attributeValues {
                         id
