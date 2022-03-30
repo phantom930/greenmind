@@ -78,6 +78,8 @@
     </SfHeader>
     <SearchResults
       :visible="isSearchOpen"
+      :term="term"
+      :searchLoading="searchLoading"
       :result="formatedResult"
       @close="closeSearch"
       @removeSearchResults="removeSearchResults"
@@ -137,7 +139,7 @@ export default {
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { load: loadWishlist, wishlist } = useWishlist();
-    const { search: searchProductApi, result } = useFacet('AppHeader:Search');
+    const { search: searchProductApi, result, loading: searchLoading } = useFacet('AppHeader:Search');
 
     const isMobile = computed(() => mapMobileObserver().isMobile.get());
 
@@ -236,7 +238,8 @@ export default {
       term,
       isMobile,
       handleSearch,
-      closeSearch
+      closeSearch,
+      searchLoading
     };
   },
   data() {
