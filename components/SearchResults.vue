@@ -119,27 +119,41 @@
             </SfButton>
           </div>
         </div>
-        <div v-else key="no-results" class="before-results">
+        <div v-else class="before-results">
           <SfImage
             :width="256"
-            :height="176"
+            :height="276"
             src="/error/error.svg"
             class="before-results__picture"
             alt="error"
             loading="lazy"
           />
-          <p class="before-results__paragraph">
-            {{ $t("You haven’t searched for items yet") }}
-          </p>
-          <p class="before-results__paragraph">
-            {{ $t("Let’s start now – we’ll help you") }}
-          </p>
-          <SfButton
-            class="color-primary sf-button search_result smartphone-only mt-4"
-            @click="$emit('close')"
-          >
-            {{ $t("GO BACK") }}
-          </SfButton>
+          <div v-if="term">
+            <div v-if="searchLoading">
+              <p class="before-results__paragraph">
+                {{ $t("Loading...") }}
+              </p>
+            </div>
+            <div v-else>
+              <p class="before-results__paragraph">
+                {{ $t("Sorry, we didn't find what you're looking for.") }}
+              </p>
+            </div>
+          </div>
+          <div v-else key="no-results">
+            <p class="before-results__paragraph">
+              {{ $t("You haven’t searched for items yet") }}
+            </p>
+            <p class="before-results__paragraph">
+              {{ $t("Let’s start now – we’ll help you") }}
+            </p>
+            <SfButton
+              class="before-results__button color-secondary smartphone-only"
+              @click="$emit('close')"
+            >
+              {{ $t("Go back") }}
+            </SfButton>
+          </div>
         </div>
       </transition>
     </SfMegaMenu>
@@ -185,6 +199,12 @@ export default {
     result: {
       type: Object,
     },
+    term: {
+      type: String,
+    },
+    searchLoading: {
+      type: Boolean,
+    },
   },
   watch: {
     $route() {
@@ -195,6 +215,8 @@ export default {
   setup(props, { emit }) {
     const uiHelper = useUiHelpers();
     const isSearchOpen = ref(props.visible);
+    const term = ref(props.term);
+    const searchLoading = ref(props.searchLoading);
     const products = computed(() => props.result?.products);
     const categories = computed(() => props.result?.categories);
     const { addItem: addItemToWishlist } = useWishlist();
@@ -225,6 +247,9 @@ export default {
       productGetters,
       products,
       categories,
+      term,
+      searchLoading
+      
     };
   },
 };
