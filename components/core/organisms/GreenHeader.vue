@@ -57,7 +57,6 @@
       <template #search>
         <SfSearchBar
           ref="searchBarRef"
-          v-click-outside="closeSearch"
           :placeholder="$t('Search for items and promotions')"
           aria-label="Search"
           class="sf-header__search none"
@@ -186,6 +185,7 @@ export default {
         return closeSearch();
       }
       term.value = '';
+      closeSearch();
       return searchBarRef.value.$el.children[0].focus();
     };
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
