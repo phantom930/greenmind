@@ -306,6 +306,9 @@ export default {
 ::v-deep .sf-search-bar {
   // display: none;
 }
+::v-deep .sf-input {
+  --input-padding: 0 10px;
+}
 
 ::v-deep .sf-header__action.list {
   transform: rotate(180deg);
