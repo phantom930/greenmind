@@ -14,7 +14,6 @@ const localesMap = {
 const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
 
 export default {
-  css: ['@/assets/styles.scss'],
   dir: {
     // using to ignore auto-generated routes
     pages: 'routes'
@@ -44,11 +43,6 @@ export default {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
-      },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: 'crossorigin'
       }
     ]
   },
@@ -94,13 +88,7 @@ export default {
       '@vue-storefront/nuxt',
       {
         performance: {
-          httpPush: true,
-          purgeCSS: {
-            enabled: false,
-            paths: [
-              '**/*.vue'
-            ]
-          }
+          httpPush: true
         },
         // @core-development-only-start
         // @core-development-only-end
@@ -134,30 +122,28 @@ export default {
     'nuxt-i18n',
     'cookie-universal-nuxt',
     'vue-scrollto/nuxt',
-    [
-      '~/helpers/cache/nuxt',
-      {
-        invalidation: {
-          endpoint: '/cache-invalidate',
-          key: '0ead60c3-d118-40be-9519-d531462ddc60',
-          handlers: ['./helpers/cache/defaultHandler']
-        },
-        driver: [
-          './helpers/cache.js',
-          {
-            isDev,
-            redis: {
-              host: process.env.REDIS_HOST,
-              port: process.env.REDIS_PORT,
-              password: process.env.REDIS_PASSWORD,
-              defaultTimeout: 86400
-            }
+    ['@vue-storefront/cache/nuxt', {
+      enabled: !isDev,
+      invalidation: {
+        endpoint: '/cache-invalidate',
+        key: '0ead60c3-d118-40be-9519-d531462ddc60',
+        handlers: ['./helpers/cache/defaultHandler']
+      },
+      driver: [
+        '@vue-storefront/redis-cache',
+        {
+          defaultTimeout: 86400,
+          redis: {
+            host: process.env.REDIS_HOST,
+            port: process.env.REDIS_PORT,
+            password: process.env.REDIS_PASSWORD
           }
-        ]
-      }
+        }
+      ]
+    }
     ]
   ],
-  extractCSS: true,
+
   nuxtPrecompress: {
     enabled: true,
     report: false,
@@ -237,24 +223,32 @@ export default {
     }
   },
   styleResources: {
-    scss: [
-      require.resolve('@storefront-ui/shared/styles/_helpers.scss', {
-        paths: [process.cwd()]
-      })
-    ]
+    scss: [require.resolve('@storefront-ui/shared/styles/_helpers.scss', { paths: [process.cwd()] })]
   },
   build: {
-    babel: {
-      plugins: [
-        ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
-      ]
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
     },
+    optimizeCSS: true,
+    parallel: true,
+    babel: {
+      plugins: [['@babel/plugin-proposal-private-property-in-object', { loose: true }]] },
     postcss: {
       plugins: {
         'postcss-custom-properties': false
       }
     },
-    transpile: ['vee-validate/dist/rules'],
+    transpile: ['vee-validate/dist/rules', '/^@storefront-ui/'],
     extend(config, ctx) {
       if (ctx.isDev) {
         config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map';

@@ -20,10 +20,7 @@ export default {
     },
     rangePrices: {
       type: Object,
-      default: () => ({
-        minPrice: 0,
-        maxPrice: 20000
-      })
+      default: () => ({ })
     }
   },
   emits: ['change'],
@@ -32,7 +29,7 @@ export default {
 
     const config = computed(() => ({
       start: props.initialPrice,
-      range: { min: props.rangePrices?.minPrice, max: props.rangePrices?.maxPrice },
+      range: { min: props?.rangePrices?.minPrice || 0, max: props?.rangePrices?.maxPrice || 20000 },
       step: 10,
       connect: true,
       direction: 'ltr',
@@ -56,7 +53,7 @@ export default {
 <style lang="scss" scoped>
 .sf-range {
   margin: 35px 0px 60px 7px;
-  width: 91%;
+  width: 80%;
   height: 5px;
 }
 
