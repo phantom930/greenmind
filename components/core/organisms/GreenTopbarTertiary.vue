@@ -160,9 +160,7 @@
                   <a href="/consoles/sony-playstation"><SfListItem><SfMenuItem label="Sony Playstation" /></SfListItem></a>
                   <a href="/consoles/microsoft-xbox"><SfListItem><SfMenuItem label="Microsoft Xbox" /></SfListItem></a>
                   <a href="/consoles/nintendo"><SfListItem><SfMenuItem label="Nintendo" /></SfListItem></a>
-                  <a href="/consoles/accessories"><SfListItem><SfMenuItem label="Console accessories" />{{
-                    $t("Console accessories")
-                  }}</SfListItem></a>
+                  <a href="/consoles/accessories"><SfListItem><SfMenuItem label="Console accessories" /></SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>
               <!-- <SfMegaMenuColumn :title="$t('TV & Sound')">
