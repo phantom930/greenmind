@@ -85,12 +85,14 @@
                 />
               </div>
               <div class="flex justify-end">
-                <SfButton
-                  class="color-primary sf-button search_result mt-4"
-                  @click="$emit('close')"
-                >
-                  {{ $t("See all results") }}
-                </SfButton>
+                <nuxt-link :to="'/c/all-searh-result/' + term">
+                  <SfButton
+                    class="color-primary sf-button search_result mt-4"
+                    @click="$emit('close')"
+                  >
+                    {{ $t("See all results") }}
+                  </SfButton>
+                </nuxt-link>
               </div>
             </div>
             <div class="results--mobile smartphone-only">
@@ -127,12 +129,14 @@
             </div>
           </SfMegaMenuColumn>
           <div class="action-buttons smartphone-only">
-            <SfButton
-              class="color-primary sf-button search_result"
-              @click="$emit('close')"
-            >
-              {{ $t("See all results") }}
-            </SfButton>
+            <nuxt-link :to="'/c/all-searh-result/' + term">
+              <SfButton
+                class="color-primary sf-button search_result"
+                @click="$emit('close')"
+              >
+                {{ $t("See all results") }}
+              </SfButton>
+            </nuxt-link>
             <SfButton
               class="color-primary sf-button search_result mt-4"
               @click="$emit('close')"
