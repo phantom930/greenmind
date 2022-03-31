@@ -33,6 +33,10 @@ const useUiHelpers = (): any => {
       return {
         search: params.slug_2,
         fetchCategory: true,
+        pageSize,
+        currentPage: page,
+        minPrice: price?.[0] || null,
+        maxPrice: price?.[1] || null,
       };
     }
     

@@ -17,7 +17,6 @@
         <LazyGreenRange
           v-model="price"
           :initial-price="price"
-          :range-prices="rangeAttributes"
           @change="selectPrice"
         />
         <SfAccordion
@@ -46,18 +45,15 @@
                     v-if="isOpen"
                     :src="require('/assets/images/category/arrow-down.svg')"
                     class="pr-5"
-                  >
+                  />
                   <img
                     v-else
                     :src="require('/assets/images/category/arrow-up.svg')"
                     class="pr-3.5"
-                  >
+                  />
                 </div>
               </template>
-              <div
-                v-if="isFacetColor(facet)"
-                class="flex flex-wrap"
-              >
+              <div v-if="isFacetColor(facet)" class="flex flex-wrap">
                 <SfColor
                   v-for="option in facet.options"
                   :key="`${facet.id}-${option.value}`"
@@ -217,5 +213,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/css/sidebarFilter.scss';
+@import "~/assets/css/sidebarFilter.scss";
 </style>

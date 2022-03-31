@@ -13,14 +13,8 @@
           />
         </LazyHydrate>
 
-        <SfLoader
-          :class="{ loading }"
-          :loading="loading && !buttonLoading"
-        >
-          <div
-            v-if="showProducts"
-            class="products"
-          >
+        <SfLoader :class="{ loading }" :loading="loading && !buttonLoading">
+          <div v-if="showProducts" class="products">
             <transition-group
               appear
               tag="div"
@@ -55,19 +49,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
-import { SfLoader } from '@storefront-ui/vue';
-import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
-import { onSSR } from '@vue-storefront/core';
-import { facetGetters, useFacet } from '@vue-storefront/odoo';
-import LazyHydrate from 'vue-lazy-hydration';
-import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
+import { computed, defineComponent, ref } from "@nuxtjs/composition-api";
+import { SfLoader } from "@storefront-ui/vue";
+import { CacheTagPrefix, useCache } from "@vue-storefront/cache";
+import { onSSR } from "@vue-storefront/core";
+import { facetGetters, useFacet } from "@vue-storefront/odoo";
+import LazyHydrate from "vue-lazy-hydration";
+import { useUiCategoryHelpers, useUiHelpers, useUiState } from "~/composables";
 
 export default defineComponent({
-  name: 'Category',
+  name: "Category",
   components: { SfLoader, LazyHydrate },
-  transition: 'fade',
-  emits: ['close'],
+  transition: "fade",
+  emits: ["close"],
   setup() {
     const uiState = useUiState();
     const pageSize = ref(21);
@@ -83,30 +77,37 @@ export default defineComponent({
     const products = computed(() => facetGetters.getProducts(result.value));
 
     const facets = computed(() =>
-      facetGetters.getGrouped(result.value, ['color', 'size'])
+      facetGetters.getGrouped(result.value, ["color", "size"])
     );
 
     const rangeAttributes = computed(() => ({
       minPrice: result.value?.data?.minPrice,
-      maxPrice: result.value?.data?.maxPrice
+      maxPrice: result.value?.data?.maxPrice,
     }));
 
     const pagination = computed(() => facetGetters.getPagination(result.value));
 
     const showProducts = computed(
-      () => !loading.value && products.value?.length > 0 || buttonLoading.value
+      () =>
+        (!loading.value && products.value?.length > 0) || buttonLoading.value
     );
 
-    const hasMoreProductsToLoad = computed(() => pageSize.value < pagination.value?.totalItems);
+    const hasMoreProductsToLoad = computed(
+      () => pageSize.value < pagination.value?.totalItems
+    );
 
     const customQueryProducts = {
-      getProductTemplatesList: 'greenGetProductList'
+      getProductTemplatesList: "greenGetProductList",
     };
 
-    const changeItemsPerPage = async () =>{
+    const changeItemsPerPage = async () => {
       buttonLoading.value = true;
       pageSize.value += 3;
-      const params = { ...getFacetsFromURL(), pageSize: pageSize, customQueryProducts };
+      const params = {
+        ...getFacetsFromURL(),
+        pageSize: pageSize,
+        customQueryProducts,
+      };
 
       await search(params);
       buttonLoading.value = false;
@@ -115,12 +116,11 @@ export default defineComponent({
     onSSR(async () => {
       const params = { ...getFacetsFromURL(), customQueryProducts };
       await search(params);
-
       addTags([
         {
           prefix: CacheTagPrefix.Category,
-          value: currentRootCategory.value?.id || params.slug_2
-        }
+          value: currentRootCategory.value?.id || params.slug_2,
+        },
       ]);
     });
 
@@ -137,9 +137,9 @@ export default defineComponent({
       pagination,
 
       facets,
-      showProducts
+      showProducts,
     };
-  }
+  },
 });
 </script>
 
