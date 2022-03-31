@@ -316,7 +316,32 @@ export default {
 }
 
 ::v-deep .dropdown .sf-mega-menu-column {
+  max-width: unset;
+}
+
+::v-deep .dropdown .sf-mega-menu-column__content .sf-list {
+  display: flex;
+}
+
+::v-deep .dropdown .sf-mega-menu__menu {
+  flex-direction: column;
+}
+
+::v-deep .dropdown .sf-list a {
   margin-left: 25px;
   margin-right: 25px;
 }
+
+:v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {
+  display: none;
+}
+
+::v-deep .dropdown .sf-menu-item__label:hover {
+  color: #7BA393;
+}
+
+::v-deep .sf-mega-menu-column__header {
+  display: none;
+}
+
 </style>
