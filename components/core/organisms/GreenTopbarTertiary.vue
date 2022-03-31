@@ -311,6 +311,10 @@ export default {
   overflow: visible;
 }
 
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+  overflow: visible;
+}
+
 ::v-deep .dropdown.accessories {
   overflow: hidden;
 }
@@ -342,6 +346,12 @@ export default {
 
 ::v-deep .sf-mega-menu-column__header {
   display: none;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+    justify-content: flex-start;
+    padding-left: 477px;
+    transform: translateX(340px);
 }
 
 </style>
