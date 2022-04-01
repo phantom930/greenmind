@@ -57,7 +57,6 @@
       <template #search>
         <SfSearchBar
           ref="searchBarRef"
-          v-click-outside="closeSearch"
           :placeholder="$t('Search for items and promotions')"
           aria-label="Search"
           class="sf-header__search none"
@@ -78,6 +77,8 @@
     </SfHeader>
     <SearchResults
       :visible="isSearchOpen"
+      :term="term"
+      :searchLoading="searchLoading"
       :result="formatedResult"
       @close="closeSearch"
       @removeSearchResults="removeSearchResults"
@@ -137,7 +138,7 @@ export default {
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { load: loadWishlist, wishlist } = useWishlist();
-    const { search: searchProductApi, result } = useFacet('AppHeader:Search');
+    const { search: searchProductApi, result, loading: searchLoading } = useFacet('AppHeader:Search');
 
     const isMobile = computed(() => mapMobileObserver().isMobile.get());
 
@@ -184,6 +185,7 @@ export default {
         return closeSearch();
       }
       term.value = '';
+      closeSearch();
       return searchBarRef.value.$el.children[0].focus();
     };
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
@@ -236,7 +238,8 @@ export default {
       term,
       isMobile,
       handleSearch,
-      closeSearch
+      closeSearch,
+      searchLoading
     };
   },
   data() {
@@ -302,6 +305,9 @@ export default {
 
 ::v-deep .sf-search-bar {
   // display: none;
+}
+::v-deep .sf-input {
+  --input-padding: 0 10px;
 }
 
 ::v-deep .sf-header__action.list {
