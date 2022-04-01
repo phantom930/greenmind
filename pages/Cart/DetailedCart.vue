@@ -13,7 +13,7 @@
           class="oderSummary"
         >
           <template #summary>
-            <div v-for="item in summary" :key="item.name" class="mb-3 px-7">
+            <div v-for="item in summary" :key="item.name" class="mb-3">
               <SfProperty
                 :name="item.name"
                 class="
@@ -36,13 +36,13 @@
               </SfProperty>
             </div>
 
-            <div class="my-7 px-7">
+            <div class="my-7">
               <hr />
             </div>
-            <div class="mb-5 px-7">
+            <div class="mb-5">
               <SfProperty class="sf-property--full-width sf-property--large">
                 <template #name>
-                  <span class="card__text">Total Price:</span>
+                  <span class="cart-total">Total price:</span>
                 </template>
                 <template #value>
                   <span class="card__text"> ${{ totals.total }}</span>
@@ -292,10 +292,10 @@ export default {
       flex: 1;
     }
     &__aside {
-      flex: 0 0 26.8125rem;
+      flex: 0 0 25.5rem;
       order: 1;
-      margin: 0 0 0 var(--spacer-xl);
-      padding: var(--spacer-xl);
+      margin: 0 0 0 4.25rem;
+      padding: var(--spacer-xl) 40px var(--spacer-xl) 40px;
     }
   }
 }
@@ -357,8 +357,19 @@ hr {
 .card__text {
   color: black;
   font-size: 20px;
-
-  font-family: Raleway;
+  font: var(
+    --property-value-font,
+    var(--property-value-font-weight, var(--font-weight--semibold))
+      var(--property-value-font-size, var(--font-size--base)) /
+      var(--property-value-font-line-height, 1.2)
+      var(--property-value-font-family, var(--font-family--secondary))
+  );
+  font-style: normal;
+  font-weight: bold;
+}
+.cart-total {
+  color: black;
+  font-size: 20px;
   font-style: normal;
   font-weight: bold;
 }
@@ -368,7 +379,6 @@ hr {
 }
 
 .bottom__text {
-  width: 400px;
   height: 146px;
   font-family: var(--font-family--primary);
   font-style: normal;
@@ -483,9 +493,6 @@ hr {
 <style lang="scss">
 @import "~@storefront-ui/vue/styles";
 .oderSummary .sf-order-summary {
-  &__heading {
-    padding-left: 30px;
-  }
   &__property {
     font-size: var(--font-size-xl);
   }
