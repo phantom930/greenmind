@@ -145,7 +145,7 @@ export default {
   ],
 
   nuxtPrecompress: {
-    enabled: true,
+    enabled: !isDev,
     report: false,
     test: /\.(js|css|html|txt|xml|svg)$/,
     // Serving options
@@ -226,7 +226,9 @@ export default {
     scss: [require.resolve('@storefront-ui/shared/styles/_helpers.scss', { paths: [process.cwd()] })]
   },
   build: {
-    extractCSS: true,
+    extractCSS: !isDev,
+    optimizeCSS: !isDev,
+    parallel: true,
     optimization: {
       splitChunks: {
         cacheGroups: {
@@ -239,8 +241,6 @@ export default {
         }
       }
     },
-    optimizeCSS: true,
-    parallel: true,
     babel: {
       plugins: [['@babel/plugin-proposal-private-property-in-object', { loose: true }]] },
     postcss: {
