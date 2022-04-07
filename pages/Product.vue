@@ -120,7 +120,9 @@ import { onSSR } from '@vue-storefront/core';
 import { facetGetters, useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { productGetters, useCurrency, useUiState } from '~/composables';
+import { product } from '@odoogap/seo';
 
+const { allHead } = product();
 export default defineComponent({
   name: 'Product',
   components: {
@@ -234,6 +236,9 @@ export default defineComponent({
       color: ['Gold', 'Red', 'Silver', 'Black', 'Gold'],
       currency: ['$']
     };
+  },
+  head() {
+    return allHead(this.product);
   }
 });
 </script>

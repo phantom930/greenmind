@@ -2048,6 +2048,18 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
+"@odoogap/nuxt-config@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@odoogap/nuxt-config/-/nuxt-config-0.0.4.tgz#71c2eef86d356798873d2650b01af0e8f671572a"
+  integrity sha512-TG8FXiBEYH2JoApSm+XyRoUErmyI0u61Av6Acyt23MWh9SeCwvV4C5ZH7fGcW6nAu2hKY6S0RxzVA0koI4yCuw==
+  dependencies:
+    "@types/jest" "^27.4.1"
+
+"@odoogap/seo@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@odoogap/seo/-/seo-0.0.6.tgz#d458ab89f91f39e3882424c3faf66f49ef5712f9"
+  integrity sha512-aAUwj/zdhBkD9WSqCfFZoSWicFpB7c1Vh+U6a4LksDSxtW7QkDi8wUWN4mm1kdF6POseWQsrilDBPB+hkWb0fQ==
+
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.21"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"

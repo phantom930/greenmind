@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import webpack from 'webpack';
 import theme from './themeConfig';
 import { getRoutes } from './routes';
 import { resolve } from 'path';
+import Config from '@odoogap/nuxt-config';
+
+const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
 
 const localesMap = {
@@ -115,35 +119,7 @@ export default {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
     theme
   },
-  modules: [
-    '@nuxtjs/pwa',
-    'nuxt-precompress',
-    '@vue-storefront/middleware/nuxt',
-    'nuxt-i18n',
-    'cookie-universal-nuxt',
-    'vue-scrollto/nuxt',
-    ['@vue-storefront/cache/nuxt', {
-      enabled: !isDev,
-      invalidation: {
-        endpoint: '/cache-invalidate',
-        key: '0ead60c3-d118-40be-9519-d531462ddc60',
-        handlers: ['./helpers/cache/defaultHandler']
-      },
-      driver: [
-        '@vue-storefront/redis-cache',
-        {
-          defaultTimeout: 86400,
-          redis: {
-            host: process.env.REDIS_HOST,
-            port: process.env.REDIS_PORT,
-            password: process.env.REDIS_PASSWORD
-          }
-        }
-      ]
-    }
-    ]
-  ],
-
+  modules: makeModules(),
   nuxtPrecompress: {
     enabled: !isDev,
     report: false,
@@ -225,35 +201,8 @@ export default {
   styleResources: {
     scss: [require.resolve('@storefront-ui/shared/styles/_helpers.scss', { paths: [process.cwd()] })]
   },
-  build: {
-    extractCSS: !isDev,
-    optimizeCSS: !isDev,
-    parallel: true,
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    },
-    babel: {
-      plugins: [['@babel/plugin-proposal-private-property-in-object', { loose: true }]] },
-    postcss: {
-      plugins: {
-        'postcss-custom-properties': false
-      }
-    },
+  build: makeBuild({
     transpile: ['vee-validate/dist/rules', '/^@storefront-ui/'],
-    extend(config, ctx) {
-      if (ctx.isDev) {
-        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map';
-      }
-    },
     plugins: [
       new webpack.DefinePlugin({
         'process.VERSION': JSON.stringify({
@@ -263,5 +212,5 @@ export default {
         })
       })
     ]
-  }
+  })
 };
