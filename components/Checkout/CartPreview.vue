@@ -66,26 +66,44 @@
       <div class="highlighted pb-0">
         <div class="personal-detail flex justify-between">
           <div class="detail-adress grow">
-            <p class="font-bold mb-4 text-lg">Personal details</p>
+            <p class="font-bold mb-4 text-lg">
+              Personal details
+            </p>
             <p class="mb-4">
-              <span>{{ partnername }}</span> <br />Zielinskiego 30 – 41,
-              53-345<br />
+              <span>{{ partnername }}</span> <br>Zielinskiego 30 – 41,
+              53-345<br>
               Wroclaw, Poland
             </p>
             <p>sviatlana.example@gmail.com</p>
-            <p class="mb-4">(00) 468 900 300</p>
+            <p class="mb-4">
+              (00) 468 900 300
+            </p>
           </div>
           <div class="detail-edit">
-            <SfLink link="#" class="font-bold"> EDIT </SfLink>
+            <SfLink
+              link="#"
+              class="font-bold"
+            >
+              EDIT
+            </SfLink>
           </div>
         </div>
         <div class="personal-detail flex justify-between">
           <div class="detail-adress grow">
-            <p class="font-bold mb-4 text-lg">Shipping details</p>
-            <p class="mb-4">GLS pakkeshop</p>
+            <p class="font-bold mb-4 text-lg">
+              Shipping details
+            </p>
+            <p class="mb-4">
+              GLS pakkeshop
+            </p>
           </div>
           <div class="detail-edit">
-            <SfLink link="#" class="font-bold"> EDIT </SfLink>
+            <SfLink
+              link="#"
+              class="font-bold"
+            >
+              EDIT
+            </SfLink>
           </div>
         </div>
         <div
@@ -98,11 +116,20 @@
           "
         >
           <div class="detail-adress grow">
-            <p class="font-bold mb-4 text-lg">Billing address</p>
-            <p class="mb-4">GLS pakkeshop</p>
+            <p class="font-bold mb-4 text-lg">
+              Billing address
+            </p>
+            <p class="mb-4">
+              GLS pakkeshop
+            </p>
           </div>
           <div class="detail-edit">
-            <SfLink link="#" class="font-bold"> EDIT </SfLink>
+            <SfLink
+              link="#"
+              class="font-bold"
+            >
+              EDIT
+            </SfLink>
           </div>
         </div>
       </div>
@@ -157,8 +184,7 @@ export default {
     SfLink
   },
   setup(props, context) {
-    const { cart, removeItem, updateItemQty, applyCoupon,  } = useCart();
-    console.log('useCart', useCart())
+    const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
     const currentStep = computed(() =>
       context.root.$route.path.split('/').pop()
     );

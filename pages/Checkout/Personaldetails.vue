@@ -1,12 +1,18 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
-    <div v-if="invalid" class="button-wrap">
+  <ValidationObserver
+    v-slot="{ handleSubmit, invalid }"
+    ref="formRef"
+  >
+    <div
+      v-if="invalid"
+      class="button-wrap"
+    >
       <button
         class="color-primary sf-button login-btn"
         :aria-disabled="false"
         :link="null"
-        @click="handleAccountClick"
         type="button"
+        @click="handleAccountClick"
       >
         LOG INTO YOUR ACCOUNT
       </button>
@@ -24,7 +30,10 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div v-if="canAddNewAddress" class="form">
+      <div
+        v-if="canAddNewAddress"
+        class="form"
+      >
         <div class="first-name-last-name">
           <div class="lastname">
             <ValidationProvider
@@ -97,44 +106,63 @@
       </SfButton>
     </form>
 
-    <div v-if="invalid" class="checkbox-wrap">
+    <div
+      v-if="invalid"
+      class="checkbox-wrap"
+    >
       <GreenCheckbox :has-general-wrapper="true" />
-      <p class="label">Join newsletter</p>
+      <p class="label">
+        Join newsletter
+      </p>
     </div>
 
-    <div v-if="invalid" class="perks-wrap">
-      <p class="title">Enjoy these perks with your free account!</p>
+    <div
+      v-if="invalid"
+      class="perks-wrap"
+    >
+      <p class="title">
+        Enjoy these perks with your free account!
+      </p>
       <div class="perks">
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/clock.svg')" />
-          <p class="label">Faster<br />checkout</p>
+          <img :src="require('/assets/images/personaldetails/clock.svg')">
+          <p class="label">
+            Faster<br>checkout
+          </p>
         </div>
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/coins.svg')" />
+          <img :src="require('/assets/images/personaldetails/coins.svg')">
           <p class="label">
-            Earn credits with every<br />
+            Earn credits with every<br>
             purchase
           </p>
         </div>
         <div class="perk">
-          <img :src="require('/assets/images/personaldetails/award.svg')" />
+          <img :src="require('/assets/images/personaldetails/award.svg')">
           <p class="label">
-            Full rewards program<br />
+            Full rewards program<br>
             benefits
           </p>
         </div>
         <div class="perk perk-favourite">
           <img
             :src="require('/assets/images/personaldetails/favourites.svg')"
-          />
-          <p class="label">Manage your wishlist</p>
+          >
+          <p class="label">
+            Manage your wishlist
+          </p>
         </div>
       </div>
     </div>
     <div class="checkbox-button-wrap">
-      <div v-if="invalid" class="checkbox-wrap">
+      <div
+        v-if="invalid"
+        class="checkbox-wrap"
+      >
         <GreenCheckbox :has-general-wrapper="true" />
-        <p class="label">I want to create an account.</p>
+        <p class="label">
+          I want to create an account.
+        </p>
       </div>
       <div class="submit-button">
         <SfButton
@@ -155,7 +183,7 @@
   </ValidationObserver>
 </template>
 
-<script>
+<script >
 import { SfHeading, SfInput, SfButton } from '@storefront-ui/vue';
 import { useUiState } from '~/composables';
 
@@ -166,7 +194,7 @@ import {
   useCart,
   cartGetters,
   userShippingGetters,
-  useShipping,
+  useShipping
 } from '@vue-storefront/odoo';
 import { required, min, digits } from 'vee-validate/dist/rules';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
@@ -195,8 +223,8 @@ export default {
   setup(props, { root, emit }) {
     const { isAuthenticated } = useUser();
     if (isAuthenticated.value) {
-        return  root.$router.push('/checkout/shipping');
-      }
+      return root.$router.push('/checkout/shipping');
+    }
     const { cart } = useCart();
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     if (totalItems.value === 0) root.$router.push('/cart');
@@ -208,9 +236,7 @@ export default {
     const canAddNewAddress = ref(true);
 
     const { load: loadShipping, shipping, save } = useShipping();
-    const { toggleCartSidebar, toggleWishlistSidebar, toggleLoginModal } =
-      useUiState();
-
+    const { toggleLoginModal } = useUiState();
 
     const { search, searchCountryStates, countries, countryStates } =
       useCountrySearch();
@@ -272,6 +298,7 @@ export default {
     onMounted(async () => {
       await search();
       await loadShipping();
+
       if (shipping.value) {
         form.value = shipping.value;
       }
@@ -295,6 +322,7 @@ export default {
     );
 
     return {
+      cart,
       formRef,
       handleSelectedMethodShipping,
       isShippingDetailsStepCompleted,
@@ -318,240 +346,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.form {
-  --button-width: 100%;
-  &__select {
-    display: flex;
-    align-items: center;
-    --select-option-font-size: var(--font-size--lg);
-    ::v-deep .sf-select__dropdown {
-      font-size: var(--font-size--lg);
-      margin: 0;
-      color: var(--c-text);
-      font-family: var(--font-family--secondary);
-      font-weight: var(--font-weight--normal);
-    }
-    ::v-deep .sf-select__label {
-      left: initial;
-    }
-  }
-  @include for-desktop {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    --button-width: auto;
-  }
-  &__element {
-    margin: 0 0 var(--spacer-xl) 0;
-    @include for-desktop {
-      flex: 0 0 100%;
-    }
-    &--half {
-      @include for-desktop {
-        flex: 1 1 50%;
-      }
-      &-even {
-        @include for-desktop {
-          padding: 0 0 0 var(--spacer-xl);
-        }
-      }
-    }
-  }
-  &__action {
-    @include for-desktop {
-      flex: 0 0 100%;
-      display: flex;
-    }
-  }
-  &__action-button {
-    &--secondary {
-      @include for-desktop {
-        order: -1;
-        text-align: left;
-      }
-    }
-    &--add-address {
-      width: 100%;
-      margin: 0;
-      @include for-desktop {
-        margin: 0 0 var(--spacer-lg) 0;
-        width: auto;
-      }
-    }
-  }
-  &__back-button {
-    margin: var(--spacer-xl) 0 var(--spacer-sm);
-    &:hover {
-      color: var(--c-white);
-    }
-    @include for-desktop {
-      margin: 0 var(--spacer-xl) 0 0;
-    }
-  }
-}
-.shipping {
-  &__label {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__description {
-    --radio-description-margin: 0;
-    --radio-description-font-size: var(--font-xs);
-  }
-}
-.title {
-  margin: var(--spacer-xl) 0 var(--spacer-base) 0;
-}
-
-::v-deep .first-name-last-name {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  @include for-mobile {
-    display: block;
-  }
-}
-
-::v-deep .first-name-last-name .form__element {
-  flex: 1 1 50%;
-}
-
-::v-deep .first-name-last-name .lastname {
-  flex: 1 1 50%;
-  &:last-child {
-    padding-left: 20px;
-    @include for-mobile {
-      padding-left: 0;
-    }
-  }
-}
-
-::v-deep .sf-input__label {
-  font-size: 18px;
-  font-weight: 300;
-  color: #43464e;
-  font-family: "Josefin Sans";
-  padding-left: 5px;
-}
-
-::v-deep .sf-heading__title {
-  font-size: 34px;
-  font-weight: 700;
-  color: #1d1f22;
-}
-
-::v-deep .form__element--half-even {
-  padding-left: 20px;
-}
-
-::v-deep .sf-button.is-disabled--button {
-  display: none;
-}
-
-::v-deep .login-btn {
-  font-size: 14px;
-  background: #32463d;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 100px;
-  font-family: "Josefin Sans";
-  width: 100%;
-  padding-top: 20px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  @include for-desktop {
-    max-width: 296px;
-  }
-  @include for-mobile {
-    width: 100%;
-  }
-}
-
-.submit-button {
-  @include for-mobile {
-    position: absolute;
-    bottom: 0;
-    width: calc(100% - 48px);
-    padding-bottom: 20px;
-  }
-}
-
-::v-deep .shipping-btn {
-  font-size: 14px;
-  background: #32463d;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 100px;
-  font-family: "Josefin Sans";
-  width: 100%;
-  padding-top: 20px;
-  margin-top: 20px;
-  @include for-desktop {
-    max-width: 223px;
-  }
-}
-
-::v-deep .button-wrap p {
-  color: #43464e;
-  font-size: 20px;
-  font-weight: 500;
-}
-
-::v-deep .email-input {
-  margin-bottom: 0;
-}
-
-::v-deep .checkbox-wrap {
-  display: flex;
-  align-items: center;
-}
-
-::v-deep .checkbox-wrap p {
-}
-
-::v-deep .perks-wrap .perk {
-  display: flex;
-  align-items: center;
-  @include for-desktop {
-    width: 33%;
-  }
-}
-
-::v-deep .perks {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 68px;
-  @include for-mobile {
-    display: block;
-    margin-bottom: 30px;
-  }
-}
-
-::v-deep .perk .label {
-  font-size: 18px;
-  color: #72757e;
-  font-weight: 400;
-  padding-left: 8px;
-  @include for-mobile {
-    br {
-      display: none;
-    }
-  }
-}
-
-::v-deep .perk-favourite {
-  @include for-desktop {
-    display: none !important;
-  }
-}
-
-::v-deep .checkbox-button-wrap {
-  margin-bottom: 86px;
-  @include for-mobile {
-    margin-bottom: 40px;
-  }
-}
+@import '~/assets/css/personalDetails.scss';
 </style>

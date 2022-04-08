@@ -5,7 +5,10 @@
       :title="$t('Search results')"
       class="search"
     >
-      <transition name="sf-fade" mode="out-in">
+      <transition
+        name="sf-fade"
+        mode="out-in"
+      >
         <div
           v-if="products && products.length > 0"
           key="results"
@@ -24,17 +27,21 @@
                 class="sf-mega-menu-column__header"
                 @click="megaMenu.changeActive(title)"
               >
-                <template #mobile-nav-icon> &#8203; </template>
+                <template #mobile-nav-icon>
+                  &#8203;
+                </template>
               </SfMenuItem>
             </template>
             <SfList v-if="categories.length">
-              <SfListItem v-for="(category, key) in categories" :key="key">
+              <SfListItem
+                v-for="(category, key) in categories"
+                :key="key"
+              >
                 <SfMenuItem
                   :label="category.label"
                   :link="uiHelper.getCatLinkForSearch(category)"
                   icon="chevron_right"
-                >
-                </SfMenuItem>
+                />
               </SfListItem>
             </SfList>
           </SfMegaMenuColumn>
@@ -47,7 +54,9 @@
                 :label="title"
                 class="sf-mega-menu-column__header search__header"
               >
-                <template #mobile-nav-icon> &#8203; </template>
+                <template #mobile-nav-icon>
+                  &#8203;
+                </template>
               </SfMenuItem>
             </template>
             <div class="results--desktop desktop-only">
@@ -61,12 +70,12 @@
                   "
                   :special-price="
                     productGetters.getPrice(product).special &&
-                    $n(productGetters.getPrice(product).special, 'currency')
+                      $n(productGetters.getPrice(product).special, 'currency')
                   "
                   :show-add-to-cart-button="true"
-                  :imageWidth="216"
-                  :imageHeight="288"
-                  :nuxtImgConfig="{ fit: 'cover' }"
+                  :image-width="216"
+                  :image-height="288"
+                  :nuxt-img-config="{ fit: 'cover' }"
                   image-tag="nuxt-img"
                   :score-rating="productGetters.getAverageRating(product)"
                   :reviews-count="7"
@@ -74,7 +83,7 @@
                   :alt="productGetters.getName(product)"
                   :title="productGetters.getName(product)"
                   :link="localePath(goToProduct(product))"
-                  :isInWishlist="isInWishlist({ product })"
+                  :is-in-wishlist="isInWishlist({ product })"
                   @click:wishlist="
                     isInWishlist({ product })
                       ? removeItemFromWishList({ product: { product } })
@@ -100,16 +109,16 @@
                 v-for="(product, index) in products"
                 :key="index"
                 class="result-card"
-                :imageWidth="216"
-                :imageHeight="288"
-                :nuxtImgConfig="{ fit: 'cover' }"
+                :image-width="216"
+                :image-height="288"
+                :nuxt-img-config="{ fit: 'cover' }"
                 image-tag="nuxt-img"
                 :regular-price="
                   $n(productGetters.getPrice(product).regular, 'currency')
                 "
                 :special-price="
                   productGetters.getPrice(product).special &&
-                  $n(productGetters.getPrice(product).special, 'currency')
+                    $n(productGetters.getPrice(product).special, 'currency')
                 "
                 :score-rating="productGetters.getAverageRating(product)"
                 :reviews-count="7"
@@ -118,7 +127,7 @@
                 :title="productGetters.getName(product)"
                 :link="localePath(goToProduct(product))"
                 :show-add-to-cart-button="true"
-                :isInWishlist="isInWishlist({ product })"
+                :is-in-wishlist="isInWishlist({ product })"
                 @click:wishlist="
                   isInWishlist({ product })
                     ? removeItemFromWishList({ product: { product } })
@@ -145,7 +154,10 @@
             </SfButton>
           </div>
         </div>
-        <div v-else class="before-results">
+        <div
+          v-else
+          class="before-results"
+        >
           <SfImage
             :width="256"
             :height="276"
@@ -166,7 +178,10 @@
               </p>
             </div>
           </div>
-          <div v-else key="no-results">
+          <div
+            v-else
+            key="no-results"
+          >
             <p class="before-results__paragraph">
               {{ $t("You haven’t searched for items yet") }}
             </p>
@@ -195,14 +210,14 @@ import {
   SfMenuItem,
   SfButton,
   SfImage,
-  SfIcon,
+  SfIcon
 } from '@storefront-ui/vue';
 import { ref, watch, computed } from '@nuxtjs/composition-api';
 import {
   productGetters,
   categoryGetters,
   useWishlist,
-  useCart,
+  useCart
 } from '@vue-storefront/odoo';
 import { useUiHelpers } from '~/composables';
 
@@ -216,47 +231,41 @@ export default {
     SfScrollable,
     SfMenuItem,
     SfButton,
-    SfImage,
+    SfImage
   },
   props: {
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     result: {
       type: Object,
+      default: () => ({})
     },
     term: {
       type: String,
+      default: ''
     },
     searchLoading: {
-      type: Boolean,
-    },
-  },
-  watch: {
-    $route() {
-      this.$emit('close');
-      this.$emit('removeSearchResults');
-    },
+      type: Boolean
+    }
   },
   setup(props, { emit }) {
     const uiHelper = useUiHelpers();
     const isSearchOpen = ref(props.visible);
-    const term = ref(props.term);
-    const searchLoading = ref(props.searchLoading);
     const products = computed(() => props.result?.products);
     const categories = computed(() => props.result?.categories);
     const {
       addItem: addItemToWishlist,
       removeItem: removeItemFromWishList,
-      isInWishlist,
+      isInWishlist
     } = useWishlist();
 
     const { addItem: addItemToCart, isInCart } = useCart();
 
     const goToProduct = (product) => {
       return `/p/${productGetters.getId(product)}/${productGetters.getSlug(
-        product,
+        product
       )}`;
     };
     watch(
@@ -269,7 +278,7 @@ export default {
           document.body.classList.remove('no-scroll');
           emit('removeSearchResults');
         }
-      },
+      }
     );
     return {
       addItemToWishlist,
@@ -282,12 +291,16 @@ export default {
       productGetters,
       products,
       categories,
-      term,
-      searchLoading,
       addItemToCart,
-      isInCart,
+      isInCart
     };
   },
+  watch: {
+    $route() {
+      this.$emit('close');
+      this.$emit('removeSearchResults');
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

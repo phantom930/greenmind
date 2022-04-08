@@ -56,7 +56,7 @@
               :description="accessoryProduct.description"
               :price="`${accessoryProduct.combinationInfoVariant.price},-`"
               :has-image="true"
-              :image="$image(accessoryProduct.image)"
+              :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.name)"
               @change="selectAcessories"
             />
           </div>
@@ -159,9 +159,9 @@ export default defineComponent({
 
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
-        mobile: { url: root.$image(img.small) },
-        desktop: { url: root.$image(img.normal) },
-        big: { url: root.$image(img.big) },
+        mobile: { url: root.$image(img.small, 160, 160, product.value.name) },
+        desktop: { url: root.$image(img.normal, 442, 664, product.value.name) },
+        big: { url: root.$image(img.big, 442, 664, product.value.name) },
         alt: product.value.name || 'alt'
       }))
     );

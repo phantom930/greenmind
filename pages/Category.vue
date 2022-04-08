@@ -13,8 +13,14 @@
           />
         </LazyHydrate>
 
-        <SfLoader :class="{ loading }" :loading="loading && !buttonLoading">
-          <div v-if="showProducts" class="products">
+        <SfLoader
+          :class="{ loading }"
+          :loading="loading && !buttonLoading"
+        >
+          <div
+            v-if="showProducts"
+            class="products"
+          >
             <transition-group
               appear
               tag="div"
@@ -25,6 +31,8 @@
                 v-for="product in products"
                 :key="product.id"
                 :product="product"
+                :image-width="biggerThanSmall ? 248 : 160"
+                :image-height="biggerThanSmall ? 375 : 206"
               />
             </transition-group>
             <div class="flex justify-end">
@@ -49,24 +57,27 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "@nuxtjs/composition-api";
-import { SfLoader } from "@storefront-ui/vue";
-import { CacheTagPrefix, useCache } from "@vue-storefront/cache";
-import { onSSR } from "@vue-storefront/core";
-import { facetGetters, useFacet } from "@vue-storefront/odoo";
-import LazyHydrate from "vue-lazy-hydration";
-import { useUiCategoryHelpers, useUiHelpers, useUiState } from "~/composables";
+import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
+import { SfLoader } from '@storefront-ui/vue';
+import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
+import { onSSR } from '@vue-storefront/core';
+import { facetGetters, useFacet } from '@vue-storefront/odoo';
+import LazyHydrate from 'vue-lazy-hydration';
+import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default defineComponent({
-  name: "Category",
+  name: 'Category',
   components: { SfLoader, LazyHydrate },
-  transition: "fade",
-  emits: ["close"],
+  transition: 'fade',
+  emits: ['close'],
   setup() {
     const uiState = useUiState();
     const pageSize = ref(21);
     const buttonLoading = ref(false);
+    const breakpoints = useBreakpoints(breakpointsTailwind);
 
+    const biggerThanSmall = breakpoints.greater('sm');
     const { getFacetsFromURL } = useUiHelpers();
     const { result, search, loading } = useFacet();
     const { categoryTree, currentRootCategory } = useUiCategoryHelpers(
@@ -77,12 +88,12 @@ export default defineComponent({
     const products = computed(() => facetGetters.getProducts(result.value));
 
     const facets = computed(() =>
-      facetGetters.getGrouped(result.value, ["color", "size"])
+      facetGetters.getGrouped(result.value, ['color', 'size'])
     );
 
     const rangeAttributes = computed(() => ({
       minPrice: result.value?.data?.minPrice,
-      maxPrice: result.value?.data?.maxPrice,
+      maxPrice: result.value?.data?.maxPrice
     }));
 
     const pagination = computed(() => facetGetters.getPagination(result.value));
@@ -97,7 +108,7 @@ export default defineComponent({
     );
 
     const customQueryProducts = {
-      getProductTemplatesList: "greenGetProductList",
+      getProductTemplatesList: 'greenGetProductList'
     };
 
     const changeItemsPerPage = async () => {
@@ -106,7 +117,7 @@ export default defineComponent({
       const params = {
         ...getFacetsFromURL(),
         pageSize: pageSize,
-        customQueryProducts,
+        customQueryProducts
       };
 
       await search(params);
@@ -119,12 +130,13 @@ export default defineComponent({
       addTags([
         {
           prefix: CacheTagPrefix.Category,
-          value: currentRootCategory.value?.id || params.slug_2,
-        },
+          value: currentRootCategory.value?.id || params.slug_2
+        }
       ]);
     });
 
     return {
+      biggerThanSmall,
       rangeAttributes,
       ...uiState,
       hasMoreProductsToLoad,
@@ -137,9 +149,9 @@ export default defineComponent({
       pagination,
 
       facets,
-      showProducts,
+      showProducts
     };
-  },
+  }
 });
 </script>
 

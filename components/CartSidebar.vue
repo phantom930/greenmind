@@ -46,7 +46,7 @@
             <SfImage
               alt="Empty bag"
               class="empty-cart__image"
-              src="/icons/empty-cart.svg"
+              :src="require(`/assets/images/cart/${biggerThanSmall ? 'empty_cart_big.svg' : 'empty_cart.svg'}`)"
               :width="373"
               :height="253"
             />
@@ -116,6 +116,7 @@ import {
 import { computed, defineComponent } from '@nuxtjs/composition-api';
 import { useCart, useUser } from '@vue-storefront/odoo';
 import { useUiState, cartGetters, useCurrency } from '~/composables';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default defineComponent({
   name: 'CartSidebar',
@@ -128,10 +129,14 @@ export default defineComponent({
     SfImage
   },
   setup() {
+    const breakpoints = useBreakpoints(breakpointsTailwind);
+
     const { isCartSidebarOpen, toggleCartSidebar } = useUiState();
     const { cart, removeItem, updateItemQty } = useCart();
     const { isAuthenticated } = useUser();
     const { formatDinamarques } = useCurrency();
+
+    const biggerThanSmall = breakpoints.greater('sm');
 
     const items = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => formatDinamarques(cartGetters.getTotals(cart.value).total));
@@ -139,6 +144,7 @@ export default defineComponent({
     const accessories = computed(() => cartGetters.getAccessories(cart.value));
 
     return {
+      biggerThanSmall,
       isAuthenticated,
       items,
       removeItem,

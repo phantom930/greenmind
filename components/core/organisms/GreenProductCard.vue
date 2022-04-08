@@ -7,7 +7,7 @@
       :image-width="imageWidth"
       :image-height="imageHeight"
       :title="productGetters.getName(product)"
-      :image="$image(productGetters.getCoverImage(product))"
+      :image="$image(productGetters.getCoverImage(product), imageWidth, imageHeight, productGetters.getName(product).trim())"
       :nuxt-img-config="{ fit: 'cover' }"
       image-tag="nuxt-img"
       :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"

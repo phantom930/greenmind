@@ -68,6 +68,12 @@ order {
       id
     }
   }
+  partner{
+    id
+    name
+    street
+    email
+  }
   partnerShipping {
     id
     name

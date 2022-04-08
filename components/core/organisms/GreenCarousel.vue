@@ -39,8 +39,8 @@
         >
           <LazyGreenProductCard
             :product="product"
-            :image-width="216"
-            :image-height="326"
+            :image-width="biggerThanSmall ? 216 : 125"
+            :image-height="biggerThanSmall ? 326 : 171"
           />
         </SfLink>
       </SfCarouselItem>
@@ -52,6 +52,8 @@
 import { SfCarousel, SfLink, SfHeading } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
 import { defineComponent } from '@vue/composition-api';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
+
 export default defineComponent({
   components: {
     SfCarousel,
@@ -91,7 +93,12 @@ export default defineComponent({
     }
   },
   setup() {
+    const breakpoints = useBreakpoints(breakpointsTailwind);
+
+    const biggerThanSmall = breakpoints.greater('sm');
+
     return {
+      biggerThanSmall,
       productGetters
     };
   }
