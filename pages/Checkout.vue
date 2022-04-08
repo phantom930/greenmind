@@ -6,14 +6,13 @@
         <SfSteps
           :active="currentStepIndex"
           :class="{ checkout__steps: true }"
-          @change="handleStepClick"
         >
           <SfStep
             v-for="(step, key) in STEPS"
             :key="key"
             :name="step"
           >
-            <nuxt-child />
+            <nuxt-child @change="handleStepClick" />
           </SfStep>
         </SfSteps>
       </div>
@@ -55,12 +54,8 @@ export default defineComponent({
     const currentStepIndex = computed(() =>
       Object.keys(STEPS).findIndex((s) => s === currentStep.value)
     );
-    const handleStepClick = (stepIndex) => {
-      const key = Object.keys(STEPS)[stepIndex];
-
-      if (stepIndex <= currentStepIndex.value) {
-        router.push(`/checkout/${key}`);
-      }
+    const handleStepClick = (step) => {
+      router.push(`/checkout/${step}`);
     };
     return {
       handleStepClick,

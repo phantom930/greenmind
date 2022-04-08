@@ -3,10 +3,7 @@
     v-slot="{ handleSubmit, invalid }"
     ref="formRef"
   >
-    <div
-      v-show="invalid"
-      class="button-wrap"
-    >
+    <div v-show="invalid" class="button-wrap">
       <button
         class="color-primary sf-button login-btn"
         type="button"
@@ -23,7 +20,7 @@
       class="sf-heading--left sf-heading--no-underline title"
     />
 
-    <form class="form">
+    <form class="form" @submit="handleSubmit(handleFormSubmit)">
       <div class="first-name-last-name">
         <div class="lastname">
           <ValidationProvider
@@ -87,69 +84,71 @@
       label="Join newsletter"
     />
 
-    <div
-      v-show="invalid"
-      class="perks-wrap"
-    >
-      <p class="title">
-        Enjoy these perks with your free account!
-      </p>
+    <p v-show="invalid" class="title">
+      Enjoy these perks with your free account!
+    </p>
 
-      <CheckoutPerks />
-    </div>
-    <div class="checkbox-button-wrap">
-      <div
-        v-if="invalid"
-        class="checkbox-wrap"
-      >
-        <GreenCheckbox :has-general-wrapper="true" />
-        <p class="label">
-          I want to create an account.
-        </p>
-      </div>
+    <CheckoutPerks />
+
+    <div class="flex flex-wrap mb-5 items-baseline">
+      <GreenCheckbox
+        v-show="invalid"
+        v-model="wantRegister"
+        :has-general-wrapper="false"
+        :label="$t('I want to create an account')"
+      />
 
       <ValidationProvider
+        v-show="wantRegister"
         v-slot="{ errors }"
         name="password"
-        rules="required"
+        :rules="wantRegister ? 'required' : ''"
         slim
+        style="max-width: 50%"
       >
         <SfInput
           v-model="form.password"
           label="Password"
-          name="email"
+          name="password"
+          type="password"
           class="form__element password"
           required
+          style="margin: 0"
           :valid="!errors[0]"
           :error-message="errors[0]"
         />
       </ValidationProvider>
+    </div>
+    <div class="submit-button mb-5">
+      <GreenButton
+        type="Primary"
+        color="Green"
+        shape="Round"
+        size="Medium"
+        class="mb-3 desktop-only"
+        :disabled="invalid || loading"
+        :loading="loading"
+        @click="handleSubmit(handleFormSubmit)"
+      >
+        {{ $t("GO TO SHIPPING") }}
+      </GreenButton>
 
-      <div class="submit-button">
-        <SfButton
-          class="color-primary sf-button shipping-btn"
-          @click="$router.push('/checkout/shipping')"
-        >
-          {{ $t("GO TO SHIPPING") }}
-        </SfButton>
-
-        <SfButton
-          class="color-primary sf-button shipping-btn smartphone-only"
-          @click="$router.push('/')"
-        >
-          {{ $t("BACK TO SHOPPING") }}
-        </SfButton>
-      </div>
+      <SfButton
+        class="color-primary sf-button shipping-btn smartphone-only"
+        @click="$router.push('/')"
+      >
+        {{ $t("BACK TO SHOPPING") }}
+      </SfButton>
     </div>
   </ValidationObserver>
 </template>
 
 <script >
-import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api';
+import { defineComponent, onMounted, ref, reactive } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading, SfInput } from '@storefront-ui/vue';
-import { useCart } from '@vue-storefront/odoo';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import { useUiState } from '~/composables';
+import { useCart, useUser } from '@vue-storefront/odoo';
+import { useUiState, useUiNotification } from '~/composables';
 
 export default defineComponent({
   name: 'Personaldetails',
@@ -160,18 +159,20 @@ export default defineComponent({
     ValidationProvider,
     ValidationObserver
   },
-  emits: ['next'],
+  emits: ['change'],
   setup(props, { root, emit }) {
 
     const { cart } = useCart();
+    const { register, loading, error } = useUser();
+    const { toggleLoginModal } = useUiState();
+    const { send } = useUiNotification();
 
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
     const newsLetter = ref(false);
+    const wantRegister = ref(false);
 
-    const { toggleLoginModal } = useUiState();
-
-    const form = ref({
+    const form = reactive({
       firstName: '',
       lastName: '',
       password: '',
@@ -179,8 +180,18 @@ export default defineComponent({
     });
 
     const handleFormSubmit = async () => {
+      if (wantRegister.value) {
+        await register({ user: { ...form, name: `${form.firstName} ${form.lastName}`} });
+      } else {
+        //
+      }
 
-      emit('next', true);
+      if (error.value.register) {
+        send({ message: error?.value?.register?.message, type: 'danger' });
+        return;
+      }
+
+      emit('change', 'shipping');
     };
 
     onMounted(async () => {
@@ -189,12 +200,14 @@ export default defineComponent({
 
     return {
       toggleLoginModal,
+      handleFormSubmit,
+      loading,
       cart,
       form,
       newsLetter,
+      wantRegister,
       formRef,
-      isFormSubmitted,
-      handleFormSubmit
+      isFormSubmitted
     };
   }
 });

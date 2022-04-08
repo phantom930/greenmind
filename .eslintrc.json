@@ -27,6 +27,14 @@
     "Intl": true
   },
   "rules": {
+    "vue/max-attributes-per-line": ["error", {
+      "singleline": {
+        "max": 2
+      },      
+      "multiline": {
+        "max": 1
+      }
+    }],
     "vue/multi-word-component-names": 0,
     "eqeqeq": 2,
     "no-use-before-define": [
