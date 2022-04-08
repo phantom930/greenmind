@@ -1,3 +1,5 @@
+const isAuthenticated = (app) => Boolean(app.$cookies.get('odoo-user')) || false;
+
 const canEnterShipping = (cart) => cart?.order.orderLines?.length > 0 || false;
 
 const canEnterBiling = (cart) => canEnterShipping(cart) && cart?.order.partnerShipping.id;
@@ -10,24 +12,17 @@ export default async ({ app, $vsf }) => {
   if (!currentPath) return;
 
   const { cart } = await $vsf.$odoo.api.cartLoad();
-
+  console.log(cart);
   if (!cart) return;
 
   switch (currentPath) {
-    case 'shipping':
-      if (!canEnterShipping(cart)) {
-        app.context.redirect('/');
+
+    case 'personaldetails':
+      if (isAuthenticated(app)) {
+        console.log('3213');
+        app.context.redirect('/checkout/shipping');
       }
       break;
-    case 'billing':
-      if (!canEnterBiling(cart)) {
-        app.context.redirect('/');
-      }
-      break;
-    case 'payment':
-      if (!canEnterPayment(cart)) {
-        app.context.redirect('/');
-      }
-      break;
+
   }
 };

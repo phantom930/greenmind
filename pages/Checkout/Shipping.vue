@@ -1,5 +1,8 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="formRef">
+  <ValidationObserver
+    v-slot="{ handleSubmit, invalid }"
+    ref="formRef"
+  >
     <SfHeading
       :level="3"
       :title="$t('Shipping Details')"
@@ -12,7 +15,10 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div v-if="canAddNewAddress" class="form">
+      <div
+        v-if="canAddNewAddress"
+        class="form"
+      >
         <div class="first-name-last-name">
           <ValidationProvider
             v-slot="{ errors }"
@@ -173,7 +179,6 @@
         </ValidationProvider>
       </div>
       <SfButton
-        v-if="!canAddNewAddress"
         class="color-light form__action-button form__action-button--add-address"
         type="button"
         @click.native="handleAddNewAddressBtnClick"
@@ -227,7 +232,7 @@ import {
   useCart,
   cartGetters,
   userShippingGetters,
-  useShipping,
+  useShipping
 } from '@vue-storefront/odoo';
 import { required, min, digits } from 'vee-validate/dist/rules';
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
@@ -284,12 +289,12 @@ export default {
     });
 
     const handleFormSubmit = async () => {
-      await save({ 
+      await save({
         params: {
           ...form.value,
           stateId: parseInt(form.value.state.id),
-          countryId: parseInt(form.value.country.id),
-        },});
+          countryId: parseInt(form.value.country.id)
+        } });
       isFormSubmitted.value = true;
 
       if (root.$router.history.current.path !== '/my-account/shipping-details')

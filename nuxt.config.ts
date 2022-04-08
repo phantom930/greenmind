@@ -73,7 +73,7 @@ export default {
     display: 'swap'
   },
   loading: { color: '#fff' },
-  plugins: ['~/plugins/getImage.ts'],
+  plugins: ['~/plugins/getImage.ts', '~/plugins/vee-validate.ts'],
   device: {
     refreshOnResize: true
   },

@@ -9,7 +9,11 @@
           :class="{ checkout__steps: true }"
           @change="handleStepClick"
         >
-          <SfStep v-for="(step, key) in STEPS" :key="key" :name="step">
+          <SfStep
+            v-for="(step, key) in STEPS"
+            :key="key"
+            :name="step"
+          >
             <nuxt-child />
           </SfStep>
         </SfSteps>
@@ -22,13 +26,20 @@
           :class="{ checkout__steps: true }"
           @change="handleStepClick"
         >
-          <SfStep v-for="(step, key) in STEPSM" :key="key" :name="step">
+          <SfStep
+            v-for="(step, key) in STEPSM"
+            :key="key"
+            :name="step"
+          >
             <nuxt-child />
           </SfStep>
         </SfSteps>
         <nuxt-child v-else />
       </div>
-      <div v-if="!isThankYou" class="checkout__aside">
+      <div
+        v-if="!isThankYou"
+        class="checkout__aside"
+      >
         <transition name="fade">
           <CartPreview key="order-summary" />
         </transition>
@@ -58,6 +69,7 @@ export default {
     SfSteps,
     CartPreview
   },
+  middleware: 'checkout',
   setup(props, context) {
     const currentStep = computed(() =>
       context.root.$route.path.split('/').pop()
