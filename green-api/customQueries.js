@@ -106,8 +106,8 @@ module.exports = {
   }),
   greenGetProduct: ({variables}) => ({
     query: gql`
-            query ($id: Int) {
-                product(id: $id) {
+            query ($slug: String) {
+                product(slug: $slug) {
                     id
                     name
                     image

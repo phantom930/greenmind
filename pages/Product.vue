@@ -134,11 +134,11 @@ export default defineComponent({
   },
   transition: 'fade',
   setup(props, { root }) {
-    const { params} = useRoute().value;
+    const { path } = useRoute().value;
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
     const { formatDinamarques } = useCurrency();
-    const { products, search, loading } = useProduct(`products-${params.id}`);
+    const { products, search, loading } = useProduct(`products-${path}`);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
     const { addTags } = useCache();
@@ -168,11 +168,11 @@ export default defineComponent({
 
     onSSR(async () => {
       await search({
-        id: parseInt(params.id),
+        slug: path,
         customQuery: { getProductTemplate: 'greenGetProduct' }
       });
 
-      addTags([{ prefix: CacheTagPrefix.Product, value: params.id }]);
+      addTags([{ prefix: CacheTagPrefix.Product, value: path }]);
     });
 
     const selectAcessories = (accessory) => {

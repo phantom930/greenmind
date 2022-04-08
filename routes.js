@@ -8,19 +8,19 @@ export function getRoutes(themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/Home.vue')
     },
     {
-      name: 'product',
-      path: '/p/:id/:slug?',
-      component: path.resolve(themeDir, 'pages/Product.vue')
-    },
-    {
       name: 'cart',
       path: '/cart',
       component: path.resolve(themeDir, 'pages/Cart/DetailedCart.vue')
     },
     {
       name: 'category',
-      path: '/c/:slug_1/:slug_2?/:slug_3?/:slug_4?/:slug_5?',
+      path: '/category/:slug_1/:slug_2?/:slug_3?/:slug_4?/:slug_5?',
       component: path.resolve(themeDir, 'pages/Category.vue')
+    },
+    {
+      name: 'product',
+      path: '/:slug_1/:slug_2',
+      component: path.resolve(themeDir, 'pages/Product.vue')
     },
     {
       name: 'checkout',

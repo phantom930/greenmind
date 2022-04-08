@@ -157,8 +157,6 @@ export default {
   setup(props, { root, emit }) {
 
     const { cart } = useCart();
-    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    if (totalItems.value === 0) root.$router.push('/cart');
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
     const currentAddressId = ref('');
@@ -205,13 +203,6 @@ export default {
     onSSR(async () => {
       await search();
     });
-
-    watch(
-      () => totalItems.value,
-      () => {
-        if (totalItems.value === 0) root.$router.push('/cart');
-      }
-    );
 
     return {
       cart,
