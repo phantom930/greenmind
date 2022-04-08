@@ -132,17 +132,12 @@
 </template>
 
 <script >
-import { SfHeading, SfInput, SfButton } from '@storefront-ui/vue';
-import { useUiState } from '~/composables';
-import { ref, watch, onMounted, computed } from '@nuxtjs/composition-api';
-import {
-  useCountrySearch,
-  useCart,
-  cartGetters,
-  useShipping
-} from '@vue-storefront/odoo';
-import { ValidationProvider, ValidationObserver } from 'vee-validate';
+import { onMounted, ref } from '@nuxtjs/composition-api';
+import { SfButton, SfHeading, SfInput } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
+import { useCart, useCountrySearch, useShipping } from '@vue-storefront/odoo';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import { useUiState } from '~/composables';
 
 export default {
   name: 'Personaldetails',
@@ -153,18 +148,14 @@ export default {
     ValidationProvider,
     ValidationObserver
   },
-  emits: ['finish'],
+  emits: ['next'],
   setup(props, { root, emit }) {
 
     const { cart } = useCart();
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
-    const currentAddressId = ref('');
     const defaultShippingAddress = ref(false);
-    const isShippingDetailsStepCompleted = ref(false);
-    const canAddNewAddress = ref(true);
 
-    const { load: shipping, save } = useShipping();
     const { toggleLoginModal } = useUiState();
 
     const { search, countries } = useCountrySearch();
@@ -182,14 +173,8 @@ export default {
     });
 
     const handleFormSubmit = async () => {
-      await save({ shippingDetails: form.value });
-      isFormSubmitted.value = true;
 
-      if (root.$router.history.current.path !== '/my-account/shipping-details')
-        root.$router.push('/checkout/billing');
-      else root.$router.push('/my-account/shipping-details');
-
-      emit('finish', true);
+      emit('next', true);
     };
 
     const handleAccountClick = () => {
@@ -207,11 +192,7 @@ export default {
     return {
       cart,
       formRef,
-      isShippingDetailsStepCompleted,
-      canAddNewAddress,
       defaultShippingAddress,
-      currentAddressId,
-      shipping,
       isFormSubmitted,
       form,
       countries,

@@ -51,11 +51,6 @@ export function getRoutes(themeDir = __dirname) {
           path: 'payment',
           name: 'payment',
           component: path.resolve(themeDir, 'pages/Checkout/Payment.vue')
-        },
-        {
-          path: 'thank-you',
-          name: 'thank-you',
-          component: path.resolve(themeDir, 'pages/Checkout/ThankYou.vue')
         }
       ]
     },
