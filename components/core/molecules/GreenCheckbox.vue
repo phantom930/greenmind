@@ -1,22 +1,34 @@
 <template>
   <SfCheckbox
-    v-model="checked"
-    name="shipping"
-    label="I want to create an account"
+    v-model="model"
+    :name="name"
+    :label="label"
     hint-message=""
-    :required="false"
+    :required="required"
     info-message=""
     error-message=""
     valid
     :disabled="disabled"
-    :selected="false"
-    style="--checkbox-border-radius: 100px"
-    @change="$emit('change', $vnode.key)"
+    style="--checkbox-border-radius: 100px; margin-right: 7px"
+    @change="$emit('input', model)"
   >
-    <template #label>
-      <div v-if="hasGeneralWrapper" class="general_wrapper">
-        <div v-if="hasImage" class="img-description-wrap">
-          <img :src="image" :width="82" :height="70" class="checkbox_image" />
+    <template
+      v-if="hasGeneralWrapper"
+      #label
+    >
+      <div
+        class="general_wrapper"
+      >
+        <div
+          v-if="hasImage"
+          class="img-description-wrap"
+        >
+          <img
+            :src="image"
+            :width="82"
+            :height="70"
+            class="checkbox_image"
+          >
           <div class="description-wrap">
             <div class="title-link">
               <div class="product-title">
@@ -29,7 +41,10 @@
             </p>
           </div>
         </div>
-        <div v-else class="img-description-wrap">
+        <div
+          v-else
+          class="img-description-wrap"
+        >
           <div class="description-wrap">
             <div class="title-link">
               <div class="product-title">
@@ -51,116 +66,85 @@
 </template>
 
 <script lang="ts">
-import { SfCheckbox } from "@storefront-ui/vue";
-import { ref, defineComponent } from "@nuxtjs/composition-api";
+import { SfCheckbox } from '@storefront-ui/vue';
+import { ref, defineComponent } from '@nuxtjs/composition-api';
 export default defineComponent({
   components: {
-    SfCheckbox,
+    SfCheckbox
   },
   props: {
     title: {
       type: String,
-      default: "",
+      default: ''
+    },
+    name: {
+      type: String,
+      default: ''
+    },
+    label: {
+      type: String,
+      default: ''
     },
     linkTitle: {
       type: String,
-      default: "",
+      default: ''
     },
     description: {
       type: String,
-      default: "",
+      default: ''
     },
     price: {
       type: [String, Number],
-      default: "",
+      default: ''
     },
     img: {
       type: String,
-      default: "",
+      default: ''
     },
     isChecked: {
       type: Boolean,
-      default: false,
+      default: false
     },
     hasImage: {
       type: Boolean,
-      default: false,
+      default: false
     },
     image: {
       type: String,
-      default: "",
+      default: ''
     },
     hasGeneralWrapper: {
       type: Boolean,
-      default: true,
+      default: true
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
+    required: {
+      type: Boolean,
+      default: false
+    }
   },
-  emits: ["change"],
+  emits: ['input'],
   setup() {
-    const checked = ref(false);
+    const model = ref(false);
 
     return {
-      checked,
+      model
     };
   },
   watch: {
     isChecked() {
-      this.checked = this.isChecked;
-    },
+      this.model = this.isChecked;
+    }
   },
   mounted() {
-    this.checked = this.isChecked;
-  },
+    this.model = this.isChecked;
+  }
 });
 </script>
 
 <style scoped>
-.img-description-wrap {
-  display: flex;
-  align-items: center;
-  /* padding-left: 6%; */
-}
-.description-wrap {
-  /* margin-left: 16px; */
-}
-.title-link {
-  display: flex;
-  align-items: center;
-}
-.product-title {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--_c-greenmind-secondary-black);
-  margin-right: 80px;
-}
-.title-link a {
-  color: var(--_c-greenmind-primary-blue);
-  border-bottom: 1px solid var(--_c-greenmind-primary-blue);
-  line-height: 12px;
-}
-.product-description {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--_c-greenmind-primary-grey);
-  max-width: 285px;
-}
-.price {
-  position: absolute;
-  top: 3px;
-  right: 0;
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--_c-greenmind-secondary-black);
-}
-::v-deep .sf-checkbox__checkmark.is-active {
-  background: var(--_c-greenmind-fern-primary-medium-green, transparent);
-}
-.checkbox_image {
-  max-width: 82px;
-  max-height: 70px;
-}
+@import '~/assets/css/greenCheckbox.scss';
 </style>

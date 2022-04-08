@@ -4,15 +4,13 @@
     ref="formRef"
   >
     <div
-      v-if="invalid"
+      v-show="invalid"
       class="button-wrap"
     >
       <button
         class="color-primary sf-button login-btn"
-        :aria-disabled="false"
-        :link="null"
         type="button"
-        @click="handleAccountClick"
+        @click="toggleLoginModal"
       >
         LOG INTO YOUR ACCOUNT
       </button>
@@ -25,17 +23,17 @@
       class="sf-heading--left sf-heading--no-underline title"
     />
 
-    <div class="form">
+    <form class="form">
       <div class="first-name-last-name">
         <div class="lastname">
           <ValidationProvider
             v-slot="{ errors }"
             name="firstName"
-            rules="required|min:2"
+            rules="required"
             slim
           >
             <SfInput
-              v-model="form.fname"
+              v-model="form.firstName"
               label="First name"
               name="firstName"
               class="form__element"
@@ -49,11 +47,11 @@
           <ValidationProvider
             v-slot="{ errors }"
             name="lastname"
-            rules="required|min:2"
+            rules="required"
             slim
           >
             <SfInput
-              v-model="form.lname"
+              v-model="form.lastName"
               label="Last Name"
               name="lastName"
               class="form__element"
@@ -66,12 +64,12 @@
       </div>
       <ValidationProvider
         v-slot="{ errors }"
-        name="streetName"
-        rules="required|min:2"
+        name="email"
+        rules="required|email"
         slim
       >
         <SfInput
-          v-model="form.street"
+          v-model="form.email"
           label="Your email address"
           name="email"
           class="form__element email-input"
@@ -80,20 +78,17 @@
           :error-message="errors[0]"
         />
       </ValidationProvider>
-    </div>
-    <div
-      v-if="invalid"
-      class="checkbox-wrap"
-    >
-      <GreenCheckbox :has-general-wrapper="true" />
+    </form>
 
-      <p class="label">
-        Join newsletter
-      </p>
-    </div>
+    <GreenCheckbox
+      v-show="invalid"
+      v-model="newsLetter"
+      :has-general-wrapper="false"
+      label="Join newsletter"
+    />
 
     <div
-      v-if="invalid"
+      v-show="invalid"
       class="perks-wrap"
     >
       <p class="title">
@@ -112,6 +107,24 @@
           I want to create an account.
         </p>
       </div>
+
+      <ValidationProvider
+        v-slot="{ errors }"
+        name="password"
+        rules="required"
+        slim
+      >
+        <SfInput
+          v-model="form.password"
+          label="Password"
+          name="email"
+          class="form__element password"
+          required
+          :valid="!errors[0]"
+          :error-message="errors[0]"
+        />
+      </ValidationProvider>
+
       <div class="submit-button">
         <SfButton
           class="color-primary sf-button shipping-btn"
@@ -132,14 +145,13 @@
 </template>
 
 <script >
-import { onMounted, ref } from '@nuxtjs/composition-api';
+import { defineComponent, onMounted, ref } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading, SfInput } from '@storefront-ui/vue';
-import { onSSR } from '@vue-storefront/core';
-import { useCart, useCountrySearch, useShipping } from '@vue-storefront/odoo';
+import { useCart } from '@vue-storefront/odoo';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { useUiState } from '~/composables';
 
-export default {
+export default defineComponent({
   name: 'Personaldetails',
   components: {
     SfHeading,
@@ -152,24 +164,18 @@ export default {
   setup(props, { root, emit }) {
 
     const { cart } = useCart();
+
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
-    const defaultShippingAddress = ref(false);
+    const newsLetter = ref(false);
 
     const { toggleLoginModal } = useUiState();
 
-    const { search, countries } = useCountrySearch();
-
     const form = ref({
-      fname: '',
-      lname: '',
-      street: '',
-      city: '',
-      state: { id: null },
-      country: { id: null },
-      zip: '',
-      phone: null,
-      selectedMethodShipping: null
+      firstName: '',
+      lastName: '',
+      password: '',
+      email: null
     });
 
     const handleFormSubmit = async () => {
@@ -177,30 +183,21 @@ export default {
       emit('next', true);
     };
 
-    const handleAccountClick = () => {
-      toggleLoginModal();
-    };
-
     onMounted(async () => {
       formRef.value.validate({ silent: true });
     });
 
-    onSSR(async () => {
-      await search();
-    });
-
     return {
+      toggleLoginModal,
       cart,
-      formRef,
-      defaultShippingAddress,
-      isFormSubmitted,
       form,
-      countries,
-      handleFormSubmit,
-      handleAccountClick
+      newsLetter,
+      formRef,
+      isFormSubmitted,
+      handleFormSubmit
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
