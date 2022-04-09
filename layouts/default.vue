@@ -17,7 +17,6 @@
       <CartSidebar />
       <HamburguerMenu />
       <WishlistSidebar />
-      <LoginModal />
       <Notification />
     </div>
     <LazyHydrate when-visible>
@@ -32,7 +31,6 @@ import TopBar from '~/components/TopBar.vue';
 import CartSidebar from '~/components/CartSidebar.vue';
 import HamburguerMenu from '~/components/HamburguerMenu.vue';
 import WishlistSidebar from '~/components/WishlistSidebar.vue';
-import LoginModal from '~/components/LoginModal.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
 import StoreStatus from '~/components/Product/StoreStatus.vue';
@@ -47,7 +45,6 @@ export default {
     CartSidebar,
     HamburguerMenu,
     WishlistSidebar,
-    LoginModal,
     StoreStatus,
     Notification
   },

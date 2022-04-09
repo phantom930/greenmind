@@ -1,5 +1,9 @@
 <template>
-  <SfModal :visible="isLoginModalOpen" class="modal" @close="toggleLoginModal">
+  <SfModal
+    :visible="isLoginModalOpen"
+    class="modal"
+    @close="toggleLoginModal"
+  >
     <template #modal-bar>
       <SfBar
         class="sf-modal__bar smartphone-only"
@@ -11,7 +15,9 @@
     <transition name="sf-fade" mode="out-in">
       <div v-if="isLogin">
         <div v-show="isForgottenPassword">
-          <p class="sign-title">Reset your password.</p>
+          <p class="sign-title">
+            Reset your password.
+          </p>
           <p class="reset-pass-text">
             {{
               $t(
@@ -21,7 +27,9 @@
           </p>
         </div>
         <div v-show="!isForgottenPassword">
-          <p class="sign-title">Log into your account!</p>
+          <p class="sign-title">
+            Log into your account!
+          </p>
           <p class="reset-pass-text">
             {{
               $t(
@@ -39,41 +47,41 @@
               )
             "
           >
-            <ValidationProvider rules="required|email" v-slot="{ errors }">
+            <ValidationProvider v-slot="{ errors }" rules="required|email">
               <SfInput
-                data-cy="login-input_email"
                 v-model="form.email"
+                data-cy="login-input_email"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="email"
                 label="Your email addres"
                 class="form__element"
               />
             </ValidationProvider>
             <template v-if="!isForgottenPassword">
-              <ValidationProvider rules="required" v-slot="{ errors }">
+              <ValidationProvider v-slot="{ errors }" rules="required">
                 <SfInput
-                  data-cy="login-input_password"
                   v-model="form.password"
+                  data-cy="login-input_password"
                   :valid="!errors[0]"
-                  :errorMessage="errors[0]"
+                  :error-message="errors[0]"
                   name="password"
                   :icon="{ icon: 'show_password' }"
                   type:icon="text"
                   label="Your password"
+                  :type="showPassword ? 'text' : 'password'"
+                  class="form__element"
                   @click:icon="
                     {
                       showPassword = !showPassword;
                     }
                   "
-                  :type="showPassword ? 'text' : 'password'"
-                  class="form__element"
                 />
               </ValidationProvider>
               <div class="action">
                 <SfCheckbox
-                  data-cy="login-checkbox-remember-me"
                   v-model="rememberMe"
+                  data-cy="login-checkbox-remember-me"
                   name="remember-me"
                   label="Remember me"
                   class="form__element checkbox"
@@ -124,8 +132,10 @@
           </form>
         </ValidationObserver>
 
-        <div class="bottom" v-show="!isForgottenPassword">
-          <p class="bottom-enjoy">Enjoy these perks with your free account!</p>
+        <div v-show="!isForgottenPassword" class="bottom">
+          <p class="bottom-enjoy">
+            Enjoy these perks with your free account!
+          </p>
           <div class="block lg:flex justify-around">
             <div class="flex additional-account">
               <SfIcon
@@ -152,11 +162,13 @@
         <ValidationObserver v-slot="{ handleSubmit }" key="sign-up">
           <form
             class="form"
-            @submit.prevent="handleSubmit(handleRegister)"
             autocomplete="off"
+            @submit.prevent="handleSubmit(handleRegister)"
           >
             <div>
-              <p class="sign-title">Create your new account!</p>
+              <p class="sign-title">
+                Create your new account!
+              </p>
               <p class="reset-pass-text">
                 {{
                   $t(
@@ -165,56 +177,56 @@
                 }}
               </p>
             </div>
-            <ValidationProvider rules="required" v-slot="{ errors }">
+            <ValidationProvider v-slot="{ errors }" rules="required">
               <SfInput
-                data-cy="login-input_name"
                 v-model="form.name"
+                data-cy="login-input_name"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="name"
                 label="Your name"
                 class="form__element"
               />
             </ValidationProvider>
-            <ValidationProvider rules="required|email" v-slot="{ errors }">
+            <ValidationProvider v-slot="{ errors }" rules="required|email">
               <SfInput
-                data-cy="login-input_email"
                 v-model="form.email"
+                data-cy="login-input_email"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="Your email address"
                 label="Your email"
                 class="form__element"
               />
             </ValidationProvider>
 
-            <ValidationProvider rules="required" v-slot="{ errors }">
+            <ValidationProvider v-slot="{ errors }" rules="required">
               <SfInput
-                data-cy="login-input_password"
                 v-model="form.password"
+                data-cy="login-input_password"
                 :valid="!errors[0]"
-                :errorMessage="errors[0]"
+                :error-message="errors[0]"
                 name="password"
                 label="Password"
                 :icon="{ icon: 'show_password' }"
+                :type="showPassword ? 'text' : 'password'"
+                class="form__element"
                 @click:icon="
                   {
                     showPassword = !showPassword;
                   }
                 "
-                :type="showPassword ? 'text' : 'password'"
-                class="form__element"
               />
             </ValidationProvider>
             <ValidationProvider
-              :rules="{ required: { allowFalse: false } }"
               v-slot="{ errors }"
+              :rules="{ required: { allowFalse: false } }"
             >
               <div class="term-declare">
                 <SfCheckbox
                   v-model="createAccount"
                   :valid="!errors[0]"
-                  :errorMessage="errors[0]"
+                  :error-message="errors[0]"
                   name="create-account"
                   class="form__element"
                 />
@@ -252,7 +264,9 @@
           </form>
         </ValidationObserver>
         <div class="bottom">
-          <p class="bottom-enjoy">Enjoy these perks with your free account!</p>
+          <p class="bottom-enjoy">
+            Enjoy these perks with your free account!
+          </p>
           <div class="block lg:flex justify-around">
             <div class="flex additional-account">
               <SfIcon
@@ -289,23 +303,11 @@ import {
   SfButton,
   SfCheckbox,
   SfLoader,
-  SfAlert,
-  SfBar,
+  SfBar
 } from '@storefront-ui/vue';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
-import { required, email } from 'vee-validate/dist/rules';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
 import { useUser, usePassword } from '@vue-storefront/odoo';
 import { useUiState } from '~/composables';
-
-extend('email', {
-  ...email,
-  message: 'Invalid email',
-});
-
-extend('required', {
-  ...required,
-  message: 'This field is required',
-});
 
 export default {
   name: 'LoginModal',
@@ -316,12 +318,12 @@ export default {
     SfButton,
     SfCheckbox,
     SfLoader,
-    SfAlert,
     ValidationProvider,
     ValidationObserver,
-    SfBar,
+    SfBar
   },
-  setup() {
+  emits: ['success'],
+  setup(props, { emit }) {
     const { isLoginModalOpen, toggleLoginModal } = useUiState();
     const { send } = useUiNotification();
     const form = ref({});
@@ -337,7 +339,7 @@ export default {
     const {
       sendResetPassword,
       errors: errorPassword,
-      resetPasswordErrors,
+      resetPasswordErrors
     } = usePassword();
 
     watch(isLoginModalOpen, () => {
@@ -361,13 +363,14 @@ export default {
       if (isForgottenPassword.value) {
         send({
           message: `Thanks! If there is an account registered with the ${form.value.email} email, you will find message with a password reset link in your inbox. If the message is not arriving in your inbox, try another email address you might’ve used to register.`,
-          type: 'info',
+          type: 'info'
         });
       }
 
       if (user.value !== undefined) {
         toggleLoginModal();
       }
+      emit('success');
     };
 
     const displayChoosedTrue = async (fn) => {
@@ -387,12 +390,12 @@ export default {
     const handleLogin = async () =>
       handleForm(login, {
         username: form.value.email,
-        password: form.value.password,
+        password: form.value.password
       })();
 
     const handlePasswordRecovery = async () =>
       handleForm(sendResetPassword, {
-        email: form.value.email,
+        email: form.value.email
       })();
 
     return {
@@ -412,9 +415,9 @@ export default {
       handleRegister,
       displayChoosedTrue,
       isCreateAccount,
-      showIsForgottenPassword,
+      showIsForgottenPassword
     };
-  },
+  }
 };
 </script>
 

@@ -15,10 +15,7 @@
         :current-address-id="currentAddressId || ''"
         @setCurrentAddress="handleSetCurrentAddress"
       />
-      <div
-        v-if="canAddNewAddress"
-        class="form"
-      >
+      <div v-if="canAddNewAddress" class="form">
         <div class="first-name-last-name">
           <ValidationProvider
             v-slot="{ errors }"
@@ -124,43 +121,13 @@
             <SfSelectOption
               v-for="countryOption in countries"
               :key="countryOption.id"
-              :value="countryOption.id"
+              :value="String(countryOption.id)"
             >
               {{ countryOption.name }}
             </SfSelectOption>
           </SfSelect>
         </ValidationProvider>
-        <ValidationProvider
-          v-slot="{ errors }"
-          name="state"
-          rules="required"
-          slim
-        >
-          <SfSelect
-            v-model="form.state.id"
-            label="State/Province"
-            name="state"
-            class="
-              form__element form__element--half form__select
-              sf-select--underlined
-              form__element--half-even
-            "
-            :class="[
-              countryStates && countryStates.length ? 'visible' : 'invisible',
-            ]"
-            required
-            :valid="!errors[0]"
-            :error-message="errors[0]"
-          >
-            <SfSelectOption
-              v-for="countryStateOption in countryStates"
-              :key="countryStateOption && countryStateOption.id"
-              :value="countryStateOption && countryStateOption.id"
-            >
-              {{ countryStateOption.name }}
-            </SfSelectOption>
-          </SfSelect>
-        </ValidationProvider>
+
         <ValidationProvider
           v-slot="{ errors }"
           name="phone"
@@ -181,7 +148,7 @@
       <SfButton
         class="color-light form__action-button form__action-button--add-address"
         type="button"
-        @click.native="handleAddNewAddressBtnClick"
+        @click="handleAddNewAddressBtnClick"
       >
         {{ $t("Add new address") }}
       </SfButton>
@@ -223,28 +190,14 @@
   </ValidationObserver>
 </template>
 
-<script>
-import { SfHeading, SfInput, SfButton, SfSelect } from '@storefront-ui/vue';
-import { ref, watch, onMounted, computed } from '@nuxtjs/composition-api';
-import {
-  useCountrySearch,
-  useUser,
-  useCart,
-  cartGetters,
-  userShippingGetters,
-  useShipping
-} from '@vue-storefront/odoo';
-import { required, min, digits } from 'vee-validate/dist/rules';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
+<script lang="ts">
+import { computed, onMounted, ref, reactive, watch, defineComponent, ComputedRef } from '@nuxtjs/composition-api';
+import { SfButton, SfHeading, SfInput, SfSelect } from '@storefront-ui/vue';
+import { useCountrySearch, userShippingGetters, useShipping, useUser } from '@vue-storefront/odoo';
+import { ValidationObserver, ValidationProvider } from 'vee-validate';
+import { useField } from 'vee-validate';
 
-extend('required', { ...required, message: 'This field is required' });
-extend('min', {
-  ...min,
-  message: 'The field should have at least {length} characters'
-});
-extend('digits', { ...digits, message: 'Please provide a valid phone number' });
-
-export default {
+export default defineComponent({
   name: 'Shipping',
   components: {
     SfHeading,
@@ -253,18 +206,13 @@ export default {
     SfSelect,
     ValidationProvider,
     ValidationObserver,
-    UserShippingAddresses: () =>
-      import('~/components/Checkout/UserShippingAddresses.vue'),
-    VsfShippingProvider: () =>
-      import('~/components/Checkout/VsfShippingProvider')
+    UserShippingAddresses: () => import('~/components/Checkout/UserShippingAddresses.vue'),
+    VsfShippingProvider: () => import('~/components/Checkout/VsfShippingProvider.vue')
   },
-  emits: ['finish'],
+  emits: ['finish', 'change'],
   setup(props, { root, emit }) {
-    const { cart } = useCart();
-    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    if (totalItems.value === 0) root.$router.push('/cart');
     const isFormSubmitted = ref(false);
-    const formRef = ref(false);
+    const formRef = ref<useField>(null);
     const currentAddressId = ref('');
     const defaultShippingAddress = ref(false);
     const isShippingDetailsStepCompleted = ref(false);
@@ -272,13 +220,11 @@ export default {
 
     const { load: loadShipping, shipping, save } = useShipping();
     const { isAuthenticated } = useUser();
+    const { search, searchCountryStates, countries, countryStates } = useCountrySearch();
 
-    const { search, searchCountryStates, countries, countryStates } =
-      useCountrySearch();
-
-    const form = ref({
-      fname: '',
-      lname: '',
+    const form = reactive({
+      firstName: '',
+      lastName: '',
       street: '',
       city: '',
       state: { id: null },
@@ -291,17 +237,13 @@ export default {
     const handleFormSubmit = async () => {
       await save({
         params: {
-          ...form.value,
-          stateId: parseInt(form.value.state.id),
-          countryId: parseInt(form.value.country.id)
+          ...form,
+          stateId: parseInt(form.state.id),
+          countryId: parseInt(form.country.id)
         } });
       isFormSubmitted.value = true;
 
-      if (root.$router.history.current.path !== '/my-account/shipping-details')
-        root.$router.push('/checkout/revieworder');
-      else root.$router.push('/my-account/shipping-details');
-
-      emit('finish', true);
+      emit('change', 'billing');
     };
 
     const hasSavedShippingAddress = computed(() => {
@@ -315,48 +257,39 @@ export default {
 
     const handleAddNewAddressBtnClick = () => {
       currentAddressId.value = '';
-      form.value = {};
       canAddNewAddress.value = true;
       isShippingDetailsStepCompleted.value = false;
     };
 
     const handleSetCurrentAddress = (addr) => {
-      form.value = addr;
       currentAddressId.value = addr?.id;
       canAddNewAddress.value = false;
       isShippingDetailsStepCompleted.value = false;
     };
 
     const handleSelectedMethodShipping = (method) => {
-      form.value.selectedMethodShipping = method;
+      form.selectedMethodShipping = method;
     };
 
     onMounted(async () => {
       await search();
       await loadShipping();
-      if (shipping.value) {
-        form.value = shipping.value;
-      }
+
       formRef.value.validate({ silent: true });
     });
 
     watch(
-      () => form.value.country.id,
+      () => form.country.id,
       async () => {
-        await searchCountryStates(form.value.country.id);
+        await searchCountryStates(form.country.id);
         if (!countryStates.value || countryStates.value.length === 0) {
-          form.value.state.id = 0;
+          form.state.id = 0;
         } else {
-          form.value.state.id = countryStates.value[0].id;
+          form.state.id = countryStates.value[0].id;
         }
       }
     );
-    watch(
-      () => totalItems.value,
-      () => {
-        if (totalItems.value === 0) root.$router.push('/cart');
-      }
-    );
+
     return {
       formRef,
       handleSelectedMethodShipping,
@@ -376,154 +309,9 @@ export default {
       handleFormSubmit
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
-.form {
-  --button-width: 100%;
-  &__select {
-    display: flex;
-    align-items: center;
-    --select-option-font-size: var(--font-size--lg);
-    ::v-deep .sf-select__dropdown {
-      font-size: var(--font-size--lg);
-      margin: 0;
-      color: var(--c-text);
-      font-family: var(--font-family--secondary);
-      font-weight: var(--font-weight--normal);
-    }
-    ::v-deep .sf-select__label {
-      left: initial;
-    }
-  }
-  @include for-desktop {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    --button-width: auto;
-  }
-  &__element {
-    margin: 0 0 var(--spacer-xl) 0;
-    @include for-desktop {
-      flex: 0 0 100%;
-    }
-    &--half {
-      @include for-desktop {
-        flex: 1 1 50%;
-      }
-      &-even {
-        @include for-desktop {
-          padding: 0 0 0 var(--spacer-xl);
-        }
-      }
-    }
-  }
-  &__action {
-    @include for-desktop {
-      flex: 0 0 100%;
-      display: flex;
-    }
-  }
-  &__action-button {
-    &--secondary {
-      @include for-desktop {
-        order: -1;
-        text-align: left;
-      }
-    }
-    &--add-address {
-      width: 100%;
-      margin: 0;
-      @include for-desktop {
-        margin: 0 0 var(--spacer-lg) 0;
-        width: auto;
-      }
-    }
-  }
-  &__back-button {
-    margin: var(--spacer-xl) 0 var(--spacer-sm);
-    &:hover {
-      color: var(--c-white);
-    }
-    @include for-desktop {
-      margin: 0 var(--spacer-xl) 0 0;
-    }
-  }
-}
-.shipping {
-  &__label {
-    display: flex;
-    justify-content: space-between;
-  }
-  &__description {
-    --radio-description-margin: 0;
-    --radio-description-font-size: var(--font-xs);
-  }
-}
-.title {
-  margin: var(--spacer-xl) 0 var(--spacer-base) 0;
-}
-
-::v-deep .first-name-last-name {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-
-::v-deep .first-name-last-name .form__element {
-  flex: 1 1 50%;
-}
-
-::v-deep .first-name-last-name .lastname {
-  flex: 1 1 50%;
-  padding-left: 20px;
-}
-
-::v-deep .sf-input__label {
-  font-size: 18px;
-  font-weight: 300;
-  color: #43464e;
-  font-family: "Josefin Sans";
-  padding-left: 5px;
-}
-
-::v-deep .sf-heading__title {
-  font-size: 34px;
-  font-weight: 700;
-  color: #1d1f22;
-}
-
-::v-deep .form__element--half-even {
-  @include for-desktop {
-    padding-left: 20px;
-  }
-}
-
-::v-deep .sf-button.is-disabled--button {
-  display: none;
-}
-.revieworder_button {
-  font-size: 14px;
-  background: #32463d;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 100px;
-  font-family: "Josefin Sans";
-  width: 100%;
-  padding-top: 20px;
-  @include for-desktop {
-    margin-bottom: 185px;
-    max-width: 267px;
-  }
-}
-.submit-button {
-  @include for-mobile {
-    position: absolute;
-    bottom: 0;
-    width: calc(100% - 48px);
-    padding-bottom: 20px;
-  }
-}
+@import '~/assets/css/shipping.scss';
 </style>
