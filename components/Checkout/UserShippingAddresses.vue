@@ -22,26 +22,28 @@
       class="shipping__setAsDefault"
       @change="$emit('input', $event)"
     />
-    <hr class="sf-divider">
   </div>
 </template>
 
 <script>
 import { SfCheckbox, SfAddressPicker } from '@storefront-ui/vue';
-import { useUserShipping, userShippingGetters } from '@vue-storefront/odoo';
+import { userShippingGetters } from '@vue-storefront/odoo';
 import { computed } from '@nuxtjs/composition-api';
-import UserShippingAddress from '~/components/UserShippingAddress';
+
 export default {
   name: 'UserShippingAddresses',
   components: {
     SfCheckbox,
-    SfAddressPicker,
-    UserShippingAddress
+    SfAddressPicker
   },
   props: {
     currentAddressId: {
       type: [String, Number],
       required: true
+    },
+    addresses: {
+      type: Array,
+      default: () => ([])
     },
     value: {
       type: Boolean,
@@ -50,10 +52,9 @@ export default {
   },
   emits: ['setCurrentAddress'],
   setup(props, { emit }) {
-    const { shipping: userShipping } = useUserShipping();
     const setCurrentAddress = (addressId) => {
       const selectedAddress = userShippingGetters.getAddresses(
-        userShipping.value,
+        props.addresses,
         { id: Number.parseInt(addressId, 10) }
       );
       if (!selectedAddress) {
@@ -62,8 +63,9 @@ export default {
       emit('setCurrentAddress', selectedAddress[0]);
     };
     const shippingAddresses = computed(() =>
-      userShippingGetters.getAddresses(userShipping.value)
+      userShippingGetters.getAddresses(props.addresses)
     );
+
     return {
       setCurrentAddress,
       shippingAddresses,
@@ -74,6 +76,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+::v-deep .shipping__address{
+  border-radius: 14px;
+}
 .shipping {
   &__address {
     margin-bottom: var(--spacer-base);
@@ -86,7 +92,6 @@ export default {
     @include for-desktop {
       display: flex;
       width: 100%;
-      flex-direction: column;
     }
   }
   &__setAsDefault {

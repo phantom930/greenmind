@@ -287,5 +287,28 @@ module.exports = {
       }
     }
   }`
+  }),
+  greenAddAddress: ({variables}) => ({
+    variables,
+    mutation: gql `
+    mutation addAddress($name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $zip: String!) {
+      addAddress(type: Shipping, address: {name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, zip: $zip}) {
+        id
+        name 
+        street
+        street2
+        city
+        state
+        {
+          id
+        }
+        country
+        {
+          id
+        }
+        email
+        phone
+      }
+    }`
   })
 };

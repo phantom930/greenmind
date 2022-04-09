@@ -1,14 +1,14 @@
 <template>
   <div>
     <p :style="userShippingAddress.isDefault ? 'font-weight: bold;' : ''">
-      {{ userShippingAddress.firstName }} {{ userShippingAddress.lastName }}
+      {{ userShippingAddress.name }}
     </p>
     <p>
       {{ userShippingAddress.street }}, {{ userShippingAddress.streetNumber }}
     </p>
 
     <p>
-      {{ userShippingAddress.city }}, {{ userShippingAddress.province }} -
+      {{ userShippingAddress.city }}
       {{ userShippingAddress.postalCode }}
     </p>
 
@@ -34,19 +34,17 @@ export default {
     }
   },
   setup(props) {
-    const address = toRef(props, 'address');
     const userShippingAddress = computed(() => ({
-      firstName: userShippingGetters.getFirstName(address.value),
-      lastName: userShippingGetters.getLastName(address.value),
-      street: userShippingGetters.getStreetName(address.value),
-      streetNumber: userShippingGetters.getApartmentNumber(address.value),
-      postalCode: userShippingGetters.getPostCode(address.value),
-      city: userShippingGetters.getCity(address.value),
-      province: userShippingGetters.getProvince(address.value) || '',
-      country: userShippingGetters.getCountry(address.value),
-      phone: userShippingGetters.getPhone(address.value),
-      isDefault: userShippingGetters.isDefault(address.value)
+      name: props.address?.name || '',
+      street: userShippingGetters.getStreetName(props.address),
+      streetNumber: userShippingGetters.getApartmentNumber(props.address),
+      postalCode: userShippingGetters.getPostCode(props.address),
+      city: userShippingGetters.getCity(props.address),
+      country: userShippingGetters.getCountry(props.address),
+      phone: userShippingGetters.getPhone(props.address),
+      isDefault: userShippingGetters.isDefault(props.address)
     }));
+
     return {
       userShippingAddress
     };
