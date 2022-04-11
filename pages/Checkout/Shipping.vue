@@ -37,12 +37,12 @@
       v-if="canAddNewAddress"
       :loading="loading"
       :countries="countries"
+      class="mb-5"
       @submit="handleAddNewAddress"
     />
 
     <VsfShippingProvider
       name="selectedMethodShipping"
-      @submit="$router.push('/checkout/revieworder')"
     />
     <ShippingTab />
     <div class="submit-button mb-5">
@@ -53,7 +53,7 @@
         size="Medium"
         :disabled="!canGoReviewOrder"
         :loading="loading"
-        @click="canAddNewAddress = true"
+        @click="handleGoToReviewOrder"
       >
         {{ $t("GO TO REVIEW ORDER") }}
       </GreenButton>
@@ -91,8 +91,9 @@ export default defineComponent({
     const isFormSubmitted = ref(false);
     const formRef = ref(null);
     const defaultShippingAddress = ref(false);
-    const isShippingDetailsStepCompleted = ref(false);
     const canAddNewAddress = ref(false);
+    const shippingMethodId = ref(null);
+    const newCurrentAddressId = ref(null);
 
     const { shipping: userShipping, load } = useUserShipping();
     const { load: loadShipping, shipping, save, loading } = useShipping();
@@ -125,12 +126,24 @@ export default defineComponent({
     };
 
     const canGoReviewOrder = computed(() => {
-      return false;
+
+      if (canAddNewAddress.value) return false;
+
+      if (!shippingMethodId.value) return false;
+
+      return true;
     });
 
-    const handleSetCurrentAddress = () => {
-      canAddNewAddress.value = false;
-      isShippingDetailsStepCompleted.value = false;
+    const handleSetCurrentAddress = (address) => {
+      if (defaultShippingAddress.value) {
+        newCurrentAddressId.value = address.id;
+      }
+    };
+
+    const handleGoToReviewOrder = () => {
+      if (newCurrentAddressId.value) {
+        // save novo address
+      }
     };
 
     onSSR(async () => {
@@ -145,12 +158,12 @@ export default defineComponent({
     });
 
     return {
+      shippingMethodId,
       canGoReviewOrder,
       userShipping,
       showAdresses,
       loading,
       formRef,
-      isShippingDetailsStepCompleted,
       canAddNewAddress,
       handleAddNewAddress,
       defaultShippingAddress,

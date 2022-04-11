@@ -2,6 +2,7 @@
   <ValidationObserver
     v-slot="{ handleSubmit, invalid }"
     ref="formRef"
+    tag="div"
   >
     <form @submit.prevent="handleSubmit(submitForm)">
       <div class="form">

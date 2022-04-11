@@ -3,6 +3,7 @@
     <SfRadio
       v-for="method in shippingMethods"
       :key="method.id"
+      v-model="selectedMethod"
       :label="method.name"
       :value="method.id"
       :description="method.name"
@@ -25,7 +26,7 @@
 <script>
 import { SfButton, SfRadio } from '@storefront-ui/vue';
 import { ref, onMounted, watch } from '@nuxtjs/composition-api';
-import { useShippingMethods } from '@vue-storefront/odoo';
+import { useShippingProvider } from '@vue-storefront/odoo';
 
 export default {
   name: 'VsfShippingProvider',
@@ -41,10 +42,10 @@ export default {
   },
   setup(props, context) {
     const selectedMethod = ref(null);
-    const { searchShippingMethods, shippingMethods } = useShippingMethods();
-    const selectMethod = (method) => {
-      selectedMethod.value = method;
-      context.emit('selectedMethod', method);
+    const { load, state: shippingMethods, save } = useShippingProvider();
+
+    const selectMethod = async (methodId) => {
+      await save({ shippingMethod: { id: methodId} });
     };
 
     watch(
@@ -55,7 +56,7 @@ export default {
     );
 
     onMounted(async () => {
-      await searchShippingMethods();
+      await load();
     });
 
     return {
