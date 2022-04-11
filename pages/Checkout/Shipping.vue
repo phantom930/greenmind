@@ -257,7 +257,7 @@ export default defineComponent({
     const { shipping: userShipping, load } = useUserShipping();
     const { load: loadShipping, shipping, save, loading } = useShipping();
     const { isAuthenticated } = useUser();
-    const { search, countries } = useCountrySearch();
+    const { search, countries } = useCountrySearch('countries');
 
     const form = reactive(formInitialState());
 
@@ -276,6 +276,7 @@ export default defineComponent({
           name: `${form.firstName} ${form.lastName}`,
           countryId: parseInt(form.country.id)
         },
+        shippingDetails: null,
         customQuery: { shippingAddAdress: 'greenAddAddress'}
       });
 
