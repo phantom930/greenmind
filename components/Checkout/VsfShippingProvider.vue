@@ -5,7 +5,7 @@
       :key="method.id"
       v-model="selectedMethod"
       :label="method.name"
-      :value="method.id"
+      :value="String(method.id)"
       :description="method.name"
       :selected="selectedMethod"
       name="shippingMethod"
@@ -24,35 +24,30 @@
 </template>
 
 <script>
-import { SfButton, SfRadio } from '@storefront-ui/vue';
-import { ref, onMounted, watch } from '@nuxtjs/composition-api';
+import { SfRadio } from '@storefront-ui/vue';
+import { ref, onMounted, watch, defineComponent } from '@nuxtjs/composition-api';
 import { useShippingProvider } from '@vue-storefront/odoo';
 
-export default {
+export default defineComponent({
   name: 'VsfShippingProvider',
-  components: {
-    SfButton,
-    SfRadio
-  },
+  components: { SfRadio },
   props: {
-    selectedMethodShipping: {
+    selectedShippingMethodId: {
       type: [String, Number],
       default: ''
     }
   },
-  setup(props, context) {
-    const selectedMethod = ref(null);
+  setup(props) {
+    const selectedMethod = ref(String(props.selectedShippingMethodId));
     const { load, state: shippingMethods, save } = useShippingProvider();
 
     const selectMethod = async (methodId) => {
-      await save({ shippingMethod: { id: methodId} });
+      await save({ shippingMethod: { id: methodId } });
     };
 
     watch(
-      () => props.selectedMethodShipping,
-      () => {
-        selectedMethod.value = props.selectedMethodShipping;
-      }
+      () => props.selectedShippingMethodId,
+      () => selectedMethod.value = props.selectedShippingMethodId
     );
 
     onMounted(async () => {
@@ -65,7 +60,7 @@ export default {
       selectMethod
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

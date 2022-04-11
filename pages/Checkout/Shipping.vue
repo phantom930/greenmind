@@ -43,6 +43,7 @@
 
     <VsfShippingProvider
       name="selectedMethodShipping"
+      :selected-shipping-method-id="selectedShippingMethod.id"
     />
     <ShippingTab />
     <div class="submit-button mb-5">
@@ -76,7 +77,7 @@
 <script lang="ts">
 import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading } from '@storefront-ui/vue';
-import { useCountrySearch, useShipping, useUser, useUserShipping } from '@vue-storefront/odoo';
+import { useCart, useCountrySearch, useShipping, useUser, useUserShipping } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 
 export default defineComponent({
@@ -88,6 +89,7 @@ export default defineComponent({
   },
   emits: ['finish', 'change'],
   setup() {
+    const { cart } = useCart();
     const isFormSubmitted = ref(false);
     const formRef = ref(null);
     const defaultShippingAddress = ref(false);
@@ -102,6 +104,8 @@ export default defineComponent({
     const { isAuthenticated } = useUser();
 
     const currentAddressId = computed(() => shipping.value?.id);
+
+    const selectedShippingMethod = computed(() => cart.value?.order?.shippingMethod || {});
 
     const hasSavedShippingAddress = computed(() => {
       return Boolean(shipping.value);
@@ -158,6 +162,9 @@ export default defineComponent({
     });
 
     return {
+      selectedShippingMethod,
+      cart,
+      handleGoToReviewOrder,
       shippingMethodId,
       canGoReviewOrder,
       userShipping,

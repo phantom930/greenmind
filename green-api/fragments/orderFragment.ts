@@ -88,6 +88,11 @@ order {
       id
     }
   }
+  shippingMethod{
+    id
+    name
+    price
+  }
 }
 `;
 
