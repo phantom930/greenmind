@@ -27,179 +27,36 @@
       {{ $t("Add new address") }}
     </GreenButton>
 
-    <ValidationObserver
-      v-if="canAddNewAddress"
-      v-slot="{ handleSubmit, invalid }"
-      ref="formRef"
-    >
-      <form @submit.prevent="handleSubmit(handleAddNewAddress)">
-        <div class="form">
-          <div class="first-name-last-name">
-            <ValidationProvider
-              v-slot="{ errors }"
-              name="firstName"
-              rules="required|min:2"
-              slim
-            >
-              <SfInput
-                v-model="form.firstName"
-                label="First name"
-                name="firstName"
-                class="form__element"
-                required
-                :valid="!errors[0]"
-                :error-message="errors[0]"
-              />
-            </ValidationProvider>
-            <div class="lastname">
-              <ValidationProvider
-                v-slot="{ errors }"
-                name="lastname"
-                rules="required|min:2"
-                slim
-              >
-                <SfInput
-                  v-model="form.lastName"
-                  label="Last Name"
-                  name="lastName"
-                  class="form__element"
-                  required
-                  :valid="!errors[0]"
-                  :error-message="errors[0]"
-                />
-              </ValidationProvider>
-            </div>
-          </div>
-          <ValidationProvider
-            v-slot="{ errors }"
-            name="streetName"
-            rules="required|min:2"
-            slim
-          >
-            <SfInput
-              v-model="form.street"
-              label="Street name"
-              name="streetName"
-              class="form__element"
-              required
-              :valid="!errors[0]"
-              :error-message="errors[0]"
-            />
-          </ValidationProvider>
-          <ValidationProvider
-            v-slot="{ errors }"
-            name="zipCode"
-            rules="required|min:2"
-            slim
-          >
-            <SfInput
-              v-model="form.zip"
-              label="Zip-code"
-              name="zipCode"
-              class="form__element form__element--half form__element--half"
-              required
-              :valid="!errors[0]"
-              :error-message="errors[0]"
-            />
-          </ValidationProvider>
-          <ValidationProvider
-            v-slot="{ errors }"
-            name="city"
-            rules="required|min:2"
-            slim
-          >
-            <SfInput
-              v-model="form.city"
-              label="City"
-              name="city"
-              class="form__element form__element--half-even form__element--half"
-              required
-              :valid="!errors[0]"
-              :error-message="errors[0]"
-            />
-          </ValidationProvider>
-          <ValidationProvider
-            v-slot="{ errors }"
-            name="country"
-            rules="required"
-            slim
-          >
-            <SfSelect
-              v-model="form.country.id"
-              label="Country"
-              name="country"
-              class="
-              form__element form__element--half form__select
-              sf-select--underlined
-            "
-              required
-              :valid="!errors[0]"
-              :error-message="errors[0]"
-            >
-              <SfSelectOption
-                v-for="countryOption in countries"
-                :key="countryOption.id"
-                name=""
-                country
-                :value="String(countryOption.id)"
-              >
-                {{ countryOption.name }}
-              </SfSelectOption>
-            </SfSelect>
-          </ValidationProvider>
-
-          <ValidationProvider
-            v-slot="{ errors }"
-            name="phone"
-            rules="required|digits:9"
-            slim
-          >
-            <SfInput
-              v-model="form.phone"
-              label="Phone number"
-              name="phone"
-              class="form__element form__element--half-even form__element--half"
-              required
-              :valid="!errors[0]"
-              :error-message="errors[0]"
-            />
-          </ValidationProvider>
-        </div>
-        <GreenButton
-          type="Primary"
-          color="Grey"
-          shape="Round"
-          size="Medium"
-          :disabled="invalid || loading"
-          :loading="loading"
-          @submit="handleAddNewAddress"
-        >
-          {{ $t("Save new Address") }}
-        </GreenButton>
-      </form>
-    </ValidationObserver>
-
     <SfHeading
       :level="3"
       :title="$t('Select shipping method')"
       class="sf-heading--left sf-heading--no-underline title"
     />
 
+    <CheckoutAddressForm
+      v-if="canAddNewAddress"
+      :loading="loading"
+      :countries="countries"
+      @submit="handleAddNewAddress"
+    />
+
     <VsfShippingProvider
       name="selectedMethodShipping"
-      :selected-method-shipping="form.selectedMethodShipping"
       @submit="$router.push('/checkout/revieworder')"
-      @selected-method="handleSelectedMethodShipping"
     />
     <ShippingTab />
-    <div class="submit-button">
-      <SfButton
-        :disabled="!form.selectedMethodShipping"
-        type="submit"
-        class="color-primary sf-button revieworder_button"
+    <div class="submit-button mb-5">
+      <GreenButton
+        type="Tertiary"
+        color="Grey"
+        shape="Round"
+        size="Medium"
+        :disabled="!canGoReviewOrder"
+        :loading="loading"
+        @click="canAddNewAddress = true"
       >
         {{ $t("GO TO REVIEW ORDER") }}
-      </SfButton>
+      </GreenButton>
       <SfButton
         class="
             color-primary
@@ -217,37 +74,20 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, reactive, defineComponent } from '@nuxtjs/composition-api';
-import { SfButton, SfHeading, SfInput, SfSelect } from '@storefront-ui/vue';
+import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
+import { SfButton, SfHeading } from '@storefront-ui/vue';
 import { useCountrySearch, useShipping, useUser, useUserShipping } from '@vue-storefront/odoo';
-import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { onSSR } from '@vue-storefront/core';
-
-const formInitialState = () =>({
-  firstName: '',
-  lastName: '',
-  street: '',
-  city: '',
-  state: { id: null },
-  country: { id: null },
-  zip: '',
-  phone: null,
-  selectedMethodShipping: null
-});
 
 export default defineComponent({
   name: 'Shipping',
   components: {
     SfHeading,
-    SfInput,
     SfButton,
-    SfSelect,
-    ValidationProvider,
-    ValidationObserver,
     VsfShippingProvider: () => import('~/components/Checkout/VsfShippingProvider.vue')
   },
   emits: ['finish', 'change'],
-  setup(props, { emit }) {
+  setup() {
     const isFormSubmitted = ref(false);
     const formRef = ref(null);
     const defaultShippingAddress = ref(false);
@@ -256,10 +96,9 @@ export default defineComponent({
 
     const { shipping: userShipping, load } = useUserShipping();
     const { load: loadShipping, shipping, save, loading } = useShipping();
-    const { isAuthenticated } = useUser();
     const { search, countries } = useCountrySearch('countries');
 
-    const form = reactive(formInitialState());
+    const { isAuthenticated } = useUser();
 
     const currentAddressId = computed(() => shipping.value?.id);
 
@@ -269,7 +108,7 @@ export default defineComponent({
 
     const showAdresses = computed(() => hasSavedShippingAddress.value && !canAddNewAddress.value);
 
-    const handleAddNewAddress = async () => {
+    const handleAddNewAddress = async (form) => {
       await save({
         params: {
           ...form,
@@ -283,16 +122,15 @@ export default defineComponent({
       await loadShipping();
       await load();
       canAddNewAddress.value = false;
-      Object.assign(form, formInitialState());
     };
 
-    const handleSetCurrentAddress = (addr) => {
+    const canGoReviewOrder = computed(() => {
+      return false;
+    });
+
+    const handleSetCurrentAddress = () => {
       canAddNewAddress.value = false;
       isShippingDetailsStepCompleted.value = false;
-    };
-
-    const handleSelectedMethodShipping = (method) => {
-      form.selectedMethodShipping = method;
     };
 
     onSSR(async () => {
@@ -307,11 +145,11 @@ export default defineComponent({
     });
 
     return {
+      canGoReviewOrder,
       userShipping,
       showAdresses,
       loading,
       formRef,
-      handleSelectedMethodShipping,
       isShippingDetailsStepCompleted,
       canAddNewAddress,
       handleAddNewAddress,
@@ -322,7 +160,6 @@ export default defineComponent({
       hasSavedShippingAddress,
       isAuthenticated,
       isFormSubmitted,
-      form,
       countries
     };
   }

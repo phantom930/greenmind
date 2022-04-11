@@ -2,7 +2,7 @@
   <div>
     <SfAddressPicker
       :selected="`${currentAddressId}`"
-      class="shipping__addresses"
+      class="shipping__addresses flex-wrap"
       @change="setCurrentAddress($event)"
     >
       <SfAddress
