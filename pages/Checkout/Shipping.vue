@@ -223,6 +223,18 @@ import { useCountrySearch, useShipping, useUser, useUserShipping } from '@vue-st
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { onSSR } from '@vue-storefront/core';
 
+const formInitialState = () =>({
+  firstName: '',
+  lastName: '',
+  street: '',
+  city: '',
+  state: { id: null },
+  country: { id: null },
+  zip: '',
+  phone: null,
+  selectedMethodShipping: null
+});
+
 export default defineComponent({
   name: 'Shipping',
   components: {
@@ -247,17 +259,7 @@ export default defineComponent({
     const { isAuthenticated } = useUser();
     const { search, countries } = useCountrySearch();
 
-    const form = reactive({
-      firstName: '',
-      lastName: '',
-      street: '',
-      city: '',
-      state: { id: null },
-      country: { id: null },
-      zip: '',
-      phone: null,
-      selectedMethodShipping: null
-    });
+    const form = reactive(formInitialState());
 
     const currentAddressId = computed(() => shipping.value?.id);
 
@@ -266,10 +268,6 @@ export default defineComponent({
     });
 
     const showAdresses = computed(() => hasSavedShippingAddress.value && !canAddNewAddress.value);
-
-    if (!hasSavedShippingAddress.value) {
-      canAddNewAddress.value = true;
-    }
 
     const handleAddNewAddress = async () => {
       await save({
@@ -284,6 +282,7 @@ export default defineComponent({
       await loadShipping();
       await load();
       canAddNewAddress.value = false;
+      Object.assign(form, formInitialState());
     };
 
     const handleSetCurrentAddress = (addr) => {
@@ -300,6 +299,9 @@ export default defineComponent({
       await loadShipping();
       await load();
 
+      if (!hasSavedShippingAddress.value) {
+        canAddNewAddress.value = true;
+      }
       formRef?.value?.validate({ silent: true });
     });
 

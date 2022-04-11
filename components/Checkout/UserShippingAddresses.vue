@@ -42,7 +42,7 @@ export default {
       required: true
     },
     addresses: {
-      type: Array,
+      type: [Array, Object],
       default: () => ([])
     },
     value: {
