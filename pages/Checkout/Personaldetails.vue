@@ -81,6 +81,7 @@
       <GreenCheckbox
         v-show="invalid"
         v-model="newsLetter"
+        :value="newsLetter"
         :has-general-wrapper="false"
         label="Join newsletter"
       />
@@ -95,6 +96,7 @@
         <GreenCheckbox
           v-show="invalid"
           v-model="wantRegister"
+          :value="wantRegister"
           class="pt-3"
           :has-general-wrapper="false"
           :label="$t('I want to create an account')"

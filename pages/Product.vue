@@ -52,6 +52,8 @@
             <GreenCheckbox
               v-for="accessoryProduct in product.accessoryProducts"
               :key="accessoryProduct.id"
+              :value="accessoryProduct.id"
+              :emit-value="true"
               :title="accessoryProduct.name"
               :description="accessoryProduct.description"
               :price="$currency(accessoryProduct.combinationInfoVariant.price)"

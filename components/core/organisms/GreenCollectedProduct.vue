@@ -39,6 +39,7 @@
         <GreenCheckbox
           v-for="acessoryProduct in accessoryProducts"
           :key="acessoryProduct.id"
+          :value="acessoryProduct.id"
           :disabled="loading"
           :title="acessoryProduct.name"
           :price="$currency(acessoryProduct.price)"

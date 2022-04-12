@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="layout">
-      <SfHero class="top-hero">
+      <SfHero class="top-hero" style="z-index:2">
         <SfHeroItem
           title="Colorful summer dresses are already in store"
           class="top-hero"
           button-text="SE MERE3"
           background="none"
           :image="require('/assets/images/homeHero/homeHero_1.svg')"
-          style="background-size: auto; background-position-y: center"
+          style="background-size: contain; background-position-y: center"
         >
           <template #call-to-action>
             <GreenButton
@@ -26,7 +26,7 @@
           class="top-hero"
           background="none"
           :image="require('/assets/images/homeHero/homeHero_1.svg')"
-          style="background-size: auto; background-position-y: center"
+          style="background-size: contain; background-position-y: center"
         >
           <template #call-to-action>
             <GreenButton
@@ -44,7 +44,7 @@
           class="top-hero"
           background="none"
           :image="require('/assets/images/homeHero/homeHero_1.svg')"
-          style="background-size: auto; background-position-y: center"
+          style="background-size: contain; background-position-y: center"
         >
           <template #call-to-action>
             <GreenButton
@@ -56,20 +56,19 @@
           </template>
         </SfHeroItem>
       </SfHero>
+    </div>
 
-      <SfBanner
-        title=""
-        subtitle=""
-        description=""
-        button-text=""
-        background=""
-        :image="require('/assets/images/homeUspBanner/banner_1.svg')"
-        style="
-        background-size: auto;
-        background-position-y: center;
-        margin-top: -10%;
-      "
+    <div class="flex justify-center" style="transform: translateY(-34px)">
+      <SfImage
+        :src="require('/assets/images/homeUspBanner/banner_1.svg')"
+        alt="banner_1"
+        class="mb-5"
+        :width="1440"
+        :height="237"
       />
+    </div>
+
+    <div class="layout">
       <div
         style="display: flex"
         class="category_card"

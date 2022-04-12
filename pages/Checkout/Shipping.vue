@@ -76,12 +76,14 @@
     <div class="flex justify-between my-10 px-4">
       <GreenCheckbox
         v-model="copyShippingToBilling"
+        :value="copyShippingToBilling"
         :has-general-wrapper="false"
         :label="$t('Copy address data from shipping')"
       />
 
       <GreenCheckbox
         v-model="generateInvoice"
+        :value="generateInvoice"
         :has-general-wrapper="false"
         :label="$t('I want to generate invoice for the company')"
       />
@@ -110,27 +112,27 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, defineComponent } from "@nuxtjs/composition-api";
-import { SfButton, SfHeading } from "@storefront-ui/vue";
+import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
+import { SfButton, SfHeading } from '@storefront-ui/vue';
 import {
   useBilling,
   useCart,
   useCountrySearch,
   useShipping,
   useUser,
-  useUserShipping,
-} from "@vue-storefront/odoo";
-import { onSSR } from "@vue-storefront/core";
+  useUserShipping
+} from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
 
 export default defineComponent({
-  name: "Shipping",
+  name: 'Shipping',
   components: {
     SfHeading,
     SfButton,
     VsfShippingProvider: () =>
-      import("~/components/Checkout/VsfShippingProvider.vue"),
+      import('~/components/Checkout/VsfShippingProvider.vue')
   },
-  emits: ["finish", "change"],
+  emits: ['finish', 'change'],
   setup(_, { emit }) {
     const { cart } = useCart();
     const isFormSubmitted = ref(false);
@@ -145,16 +147,16 @@ export default defineComponent({
     const {
       shipping: userShipping,
       load,
-      setDefaultAddress,
+      setDefaultAddress
     } = useUserShipping();
     const { load: loadShipping, shipping, save, loading } = useShipping();
     const {
       load: loadBilling,
       billing,
       save: saveBilling,
-      loading: loadingBilling,
+      loading: loadingBilling
     } = useBilling();
-    const { search, countries } = useCountrySearch("countries");
+    const { search, countries } = useCountrySearch('countries');
 
     const { isAuthenticated } = useUser();
 
@@ -177,9 +179,9 @@ export default defineComponent({
         params: {
           ...form,
           name: `${form.firstName} ${form.lastName}`,
-          countryId: parseInt(form.country.id),
+          countryId: parseInt(form.country.id)
         },
-        billingDetails: null,
+        billingDetails: null
       });
       canAddNewBillingAddress.value = false;
     };
@@ -189,10 +191,10 @@ export default defineComponent({
         params: {
           ...form,
           name: `${form.firstName} ${form.lastName}`,
-          countryId: parseInt(form.country.id),
+          countryId: parseInt(form.country.id)
         },
         shippingDetails: null,
-        customQuery: { shippingAddAdress: "greenAddAddress" },
+        customQuery: { shippingAddAdress: 'greenAddAddress' }
       });
 
       await loadShipping();
@@ -214,7 +216,7 @@ export default defineComponent({
       }
     };
 
-    const goToOrderReview = () => emit("change", "revieworder");
+    const goToOrderReview = () => emit('change', 'revieworder');
 
     const handleGoToReviewOrder = async () => {
       if (newCurrentAddressId.value) {
@@ -259,9 +261,9 @@ export default defineComponent({
       hasSavedShippingAddress,
       isAuthenticated,
       isFormSubmitted,
-      countries,
+      countries
     };
-  },
+  }
 });
 </script>
 

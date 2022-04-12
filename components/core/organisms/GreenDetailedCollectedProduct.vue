@@ -25,6 +25,7 @@
         <GreenCheckbox
           v-for="accessoryProducts in product.accessoryProducts"
           :key="accessoryProducts.id"
+          :value="accessoryProducts.id"
           :title="accessoryProducts.name"
           :price="accessoryProducts.price"
         />

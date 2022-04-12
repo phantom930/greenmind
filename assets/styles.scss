@@ -151,6 +151,7 @@ h4 {
   }
 }
 .sf-header__icons {
+  padding-right: 16px;
   display: flex;
 }
 
@@ -177,11 +178,11 @@ h4 {
 }
 
 .layout {
-  box-sizing: border-box;
-  @include for-desktop {
-    max-width: 1280px;
-    margin: auto;
-  }
+  padding: var(--header-padding, 0 var(--spacer-sm));
+  margin: var(--header-margin, 0 auto);
+  max-width: var(--header-width, 77.5rem);
+  justify-content: center;
+  align-items: center;
 }
 
 .bg-pine-primary-dark-green, .bg-pine-primary-dark-green__with-hover {

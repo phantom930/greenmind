@@ -10,7 +10,7 @@
     valid
     :disabled="disabled"
     style="--checkbox-border-radius: 100px; margin-right: 7px"
-    @change="$emit('input', model)"
+    @change="change"
   >
     <template
       v-if="hasGeneralWrapper"
@@ -72,6 +72,10 @@ export default defineComponent({
   components: {
     SfCheckbox
   },
+  model: {
+    prop: 'model',
+    event: 'change'
+  },
   props: {
     title: {
       type: String,
@@ -80,6 +84,10 @@ export default defineComponent({
     name: {
       type: String,
       default: ''
+    },
+    value: {
+      type: [String, Number, Boolean],
+      required: true
     },
     label: {
       type: String,
@@ -101,10 +109,6 @@ export default defineComponent({
       type: String,
       default: ''
     },
-    isChecked: {
-      type: Boolean,
-      default: false
-    },
     hasImage: {
       type: Boolean,
       default: false
@@ -124,9 +128,17 @@ export default defineComponent({
     required: {
       type: Boolean,
       default: false
+    },
+    isChecked: {
+      type: Boolean,
+      default: false
+    },
+    emitValue: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ['input'],
+  emits: ['input', 'change'],
   setup() {
     const model = ref(false);
 
@@ -134,13 +146,14 @@ export default defineComponent({
       model
     };
   },
-  watch: {
-    isChecked() {
-      this.model = this.isChecked;
-    }
-  },
   mounted() {
     this.model = this.isChecked;
+  },
+  methods: {
+    change() {
+      this.$emit('change', this.emitValue ? this.value : this.model);
+      this.$emit('input', this.emitValue ? this.value : this.model);
+    }
   }
 });
 </script>

@@ -156,7 +156,7 @@
               visible
             >
               <SfMegaMenuColumn :title="$t('Consoles')">
-                <SfList>
+                <SfList class="justify-between flex-wrap">
                   <a href="/consoles/sony-playstation"><SfListItem><SfMenuItem label="Sony Playstation" /></SfListItem></a>
                   <a href="/consoles/microsoft-xbox"><SfListItem><SfMenuItem label="Microsoft Xbox" /></SfListItem></a>
                   <a href="/consoles/nintendo"><SfListItem><SfMenuItem label="Nintendo" /></SfListItem></a>
@@ -277,7 +277,7 @@ export default {
 <style scoped>
 @import url("~/assets/css/greenTopbarTertiary.scss");
 .top-header {
-  z-index: 1;
+  z-index: 3;
 }
 
 ::v-deep .dropdown.iphones .sf-mega-menu__menu {
@@ -350,8 +350,6 @@ export default {
 
 ::v-deep .dropdown.other-products .sf-mega-menu__menu {
     justify-content: flex-start;
-    padding-left: 477px;
-    transform: translateX(340px);
 }
 
 </style>
