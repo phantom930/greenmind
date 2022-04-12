@@ -28,7 +28,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $n(getPrice(orderLine)) }}
+        {{ $n(getPrice(orderLine), 'currency') }}
       </span>
 
       <div class="mt-3">
@@ -41,7 +41,7 @@
           :key="acessoryProduct.id"
           :disabled="loading"
           :title="acessoryProduct.name"
-          :price="acessoryProduct.price"
+          :price="$n(acessoryProduct.price, 'currency')"
           :is-checked="accessoryIsInCart(acessoryProduct.id)"
           @change="handleAddOrRemoveAccessory(orderLine.product.id, acessoryProduct.id)"
         />

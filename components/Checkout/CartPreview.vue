@@ -16,7 +16,7 @@
         />
         <SfProperty
           name="Subtotal"
-          :value="'$' + totals.subtotal"
+          :value="$n(totals.subtotal, 'currency')"
           :class="[
             'sf-property--full-width',
             'sf-property--large property',
@@ -27,7 +27,7 @@
           v-for="discount in discounts"
           :key="discount.id"
           :name="discount.name + (discount.code && ` (${discount.code})`)"
-          :value="'-' + $n(discount.value, 'currency')"
+          :value="$n(discount.value, 'currency')"
           class="sf-property--full-width sf-property--small"
         />
         <SfProperty
@@ -46,7 +46,7 @@
         />
         <SfProperty
           name="Total price"
-          :value="'$' + totals.total"
+          :value="$n(totals.total, 'currency')"
           class="
             sf-property--full-width sf-property--large
             property-total

@@ -158,13 +158,14 @@ export default {
   },
   i18n: {
     strategy: 'no_prefix',
-    currency: 'USD',
-    country: 'US',
+    currency: 'DKK',
+    country: 'DN',
     countries: [
       { name: 'US', label: 'United States' },
       { name: 'DE', label: 'Germany' }
     ],
     currencies: [
+      { name: 'DKK', label: 'DenMark' },
       { name: 'EUR', label: 'Euro' },
       { name: 'USD', label: 'Dollar' }
     ],
@@ -193,6 +194,18 @@ export default {
     lazy: true,
     seo: true,
     langDir: 'lang',
+    vueI18n: {
+      fallbackLocale: 'DKK',
+      numberFormats: {
+        DKK: {
+          currency: {
+            style: 'currency',
+            currency: 'DKK',
+            currencyDisplay: 'symbol'
+          }
+        }
+      }
+    },
 
     detectBrowserLanguage: {
       cookieKey: 'vsf-locale'

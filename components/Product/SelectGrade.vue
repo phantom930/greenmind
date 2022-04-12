@@ -20,14 +20,14 @@
           >
             <p> {{ grade.grade_name }} </p>
             <div class="price">
-              {{ formatDinamarques(grade.price) }}
+              {{ $n(grade.price, 'currency') }}
             </div>
           </div>
           <div
             v-if="grade.has_discounted_price"
             class="discount"
           >
-            {{ formatDinamarques(grade.list_price) }}
+            {{ $n(grade.list_price, 'currency') }}
           </div>
         </nuxt-link>
       </div>
@@ -53,7 +53,6 @@ export default defineComponent({
   },
   emits: ['update'],
   setup (props, { emit }) {
-    const { formatDinamarques } = useCurrency();
     const { params } = useRoute().value;
 
     const isSelectedGrade = (info : CombinationInfo): boolean =>
@@ -67,8 +66,7 @@ export default defineComponent({
 
     return {
       isSelectedGrade,
-      chooseGrade,
-      formatDinamarques
+      chooseGrade
     };
   }
 });

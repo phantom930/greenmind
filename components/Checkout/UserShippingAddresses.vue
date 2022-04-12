@@ -12,6 +12,13 @@
         :name="`${userShippingGetters.getId(shippingAddress)}`"
       >
         <UserShippingAddress :address="shippingAddress" />
+        <template #icon>
+          <img
+            v-show="currentAddressId === shippingAddress.id"
+            class="sf-address-picker-icon"
+            :src="require('/assets/images/checkout/checkmark.svg')"
+          >
+        </template>
       </SfAddress>
     </SfAddressPicker>
     <SfCheckbox
@@ -103,4 +110,10 @@ export default defineComponent({
 .form__action-button--margin-bottom {
   margin-bottom: var(--spacer-xl);
 }
+
+.sf-address-picker-icon {
+  position: absolute;
+  right: 18px;
+}
+
 </style>

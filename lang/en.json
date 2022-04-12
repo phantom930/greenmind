@@ -243,5 +243,9 @@
   "Customer Service": "Customer Service",
   "Sell to us": "Sell to us",
   "Sign in": "Sign in",
+  "Billing details": "Billing details",
+  "Add new Billing Address": "Add new Billing Address",
+  "I want to generate invoice for the company": "I want to generate invoice for the company",
+  "Copy address data from shipping": "Copy address data from shipping",
   "Save new Address": "Save new Address"
 }

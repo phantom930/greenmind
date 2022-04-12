@@ -16,7 +16,7 @@
                 <SfList>
                   <a href="/iphones/iphone13-pro-max"><SfListItem><SfMenuItem label="iPhone 13 Pro Max" /></SfListItem></a>
                   <a href="/iphones/iphone13-pro"><SfListItem><SfMenuItem label="iPhone 13 Pro" /></SfListItem></a>
-                  <a href="/c/iphones-13/3260 "><SfListItem><SfMenuItem label="iPhone 13" /></SfListItem></a>
+                  <a href="/category/iphones-13/3260 "><SfListItem><SfMenuItem label="iPhone 13" /></SfListItem></a>
                   <a href="/iphones/iphone13-mini"><SfListItem><SfMenuItem label="iPhone 13 Mini" /></SfListItem></a>
                 </SfList>
               </SfMegaMenuColumn>

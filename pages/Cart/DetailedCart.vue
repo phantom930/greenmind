@@ -13,7 +13,11 @@
           class="oderSummary"
         >
           <template #summary>
-            <div v-for="item in summary" :key="item.name" class="mb-3">
+            <div
+              v-for="item in summary"
+              :key="item.name"
+              class="mb-3"
+            >
               <SfProperty
                 :name="item.name"
                 class="
@@ -23,21 +27,19 @@
               >
                 <template #value>
                   <span v-if="item.name === 'Products'" class="card__text">
-                    {{ item.value.value }}</span
-                  >
+                    {{ item.value.value }}</span>
                   <span
                     v-else-if="item.name === 'Sub Total'"
                     class="card__text"
                   >
-                    ${{ item.value.value.subtotal }}</span
-                  >
+                    ${{ item.value.value.subtotal }}</span>
                   <span v-else class="card__text"> {{ item.value }}</span>
                 </template>
               </SfProperty>
             </div>
 
             <div class="my-7">
-              <hr />
+              <hr>
             </div>
             <div class="mb-5">
               <SfProperty class="sf-property--full-width sf-property--large">
@@ -45,7 +47,7 @@
                   <span class="cart-total">Total price:</span>
                 </template>
                 <template #value>
-                  <span class="card__text"> ${{ totals.total }}</span>
+                  <span class="card__text"> {{ $n(totals.total, 'currency') }}</span>
                 </template>
               </SfProperty>
             </div>
@@ -69,11 +71,11 @@
               </div>
               <div class="custom__con">
                 <div class="bottom__text">
-                  Helpful information: <br />
+                  Helpful information: <br>
                   <span class="text-primary">•</span> Questions? Chat with us or
-                  call 1.888.282.6060. <br />
+                  call 1.888.282.6060. <br>
                   <span class="text-primary">•</span> Shipping internationally?
-                  Choose your destination & currency. <br />
+                  Choose your destination & currency. <br>
                   <span class="text-primary">•</span> Shipping methods & charges
                 </div>
               </div>
@@ -98,7 +100,11 @@
               />
             </transition-group>
           </div>
-          <div v-else key="empty-cart" class="empty-cart">
+          <div
+            v-else
+            key="empty-cart"
+            class="empty-cart"
+          >
             <SfImage
               :src="require('@storefront-ui/shared/icons/empty_cart.svg')"
               alt="Empty cart"

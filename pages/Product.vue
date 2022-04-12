@@ -54,7 +54,7 @@
               :key="accessoryProduct.id"
               :title="accessoryProduct.name"
               :description="accessoryProduct.description"
-              :price="`${accessoryProduct.combinationInfoVariant.price},-`"
+              :price="$n(accessoryProduct.combinationInfoVariant.price, 'currency')"
               :has-image="true"
               :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.name)"
               @change="selectAcessories"
@@ -63,7 +63,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              {{ formatDinamarques(combinationInfo.price) }}
+              {{ $n(combinationInfo.price, 'currency') }}
             </p>
             <div class="buttons">
               <GreenButton
@@ -119,7 +119,7 @@ import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { facetGetters, useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
-import { productGetters, useCurrency, useUiState } from '~/composables';
+import { productGetters, useUiState } from '~/composables';
 import { product } from '@odoogap/seo';
 
 const { allHead } = product();
@@ -137,7 +137,6 @@ export default defineComponent({
     const { path } = useRoute().value;
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
-    const { formatDinamarques } = useCurrency();
     const { products, search, loading } = useProduct(`products-${path}`);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
@@ -212,7 +211,6 @@ export default defineComponent({
       selectAcessories,
       anyLoading,
       combinationInfo,
-      formatDinamarques,
       loading,
       breadcrumbs,
       product,

@@ -38,7 +38,7 @@
         class="price-flex flex justify-center items-baseline"
       >
         <span class="green-product-card__fra">{{ $t('From') }}</span>
-        <span class="green-product-card__price">{{ priceWithDiscount }},-</span>
+        <span class="green-product-card__price">{{ $n(priceWithDiscount, 'currency') }}</span>
       </div>
     </SfProductCard>
   </nuxt-link>
@@ -49,7 +49,6 @@ import { SfProductCard } from '@storefront-ui/vue';
 import { productGetters } from '@vue-storefront/odoo';
 import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
 import { GreenProduct } from '~/green-api/types';
-import { useCurrency } from '~/composables';
 
 export default defineComponent({
   components: {
@@ -70,11 +69,10 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const { formatDolar } = useCurrency();
 
     const productHasDiscont = computed(() => props.product?.combinationInfoVariant?.has_discounted_price);
     const productDiscontPerc = computed(() => props.product?.combinationInfoVariant?.discount_perc);
-    const priceWithDiscount = computed(() => formatDolar(props.product?.combinationInfoVariant?.price || 0));
+    const priceWithDiscount = computed(() => props.product?.combinationInfoVariant?.price || 0);
 
     return {
       priceWithDiscount,
