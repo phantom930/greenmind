@@ -73,7 +73,7 @@ export default {
     display: 'swap'
   },
   loading: { color: '#fff' },
-  plugins: ['~/plugins/getImage.ts', '~/plugins/vee-validate.ts'],
+  plugins: ['~/plugins/getImage.ts', '~/plugins/vee-validate.ts', '~/plugins/dkkCustomCurrency.ts'],
   device: {
     refreshOnResize: true
   },
@@ -194,19 +194,6 @@ export default {
     lazy: true,
     seo: true,
     langDir: 'lang',
-    vueI18n: {
-      fallbackLocale: 'da',
-      numberFormats: {
-        DKK: {
-          currency: {
-            style: 'currency',
-            currency: 'DKK',
-            currencyDisplay: 'symbol'
-          }
-        }
-      }
-    },
-
     detectBrowserLanguage: {
       cookieKey: 'vsf-locale'
     }

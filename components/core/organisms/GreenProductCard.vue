@@ -11,10 +11,10 @@
       :nuxt-img-config="{ fit: 'cover' }"
       image-tag="nuxt-img"
       :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"
-      :regular-price="$n(productGetters.getPrice(product).regular, 'currency')"
+      :regular-price="$currency(productGetters.getPrice(product).regular)"
       :special-price="
         productGetters.getPrice(product).special &&
-          $n(productGetters.getPrice(product).special, 'currency')
+          $currency(productGetters.getPrice(product).special)
       "
       :score-rating="false"
       wishlist-icon="false"
@@ -38,7 +38,7 @@
         class="price-flex flex justify-center items-baseline"
       >
         <span class="green-product-card__fra">{{ $t('From') }}</span>
-        <span class="green-product-card__price">{{ $n(priceWithDiscount, 'currency') }}</span>
+        <span class="green-product-card__price">{{ $currency(priceWithDiscount) }}</span>
       </div>
     </SfProductCard>
   </nuxt-link>

@@ -24,7 +24,7 @@
         </div>
         <div class="costs">
           <div class="price">
-            {{ $n(cartGetters.getItemPrice(product).regular, 'currency') }}
+            {{ $currency(cartGetters.getItemPrice(product).regular) }}
           </div>
           <p>149,-</p>
           <p>599,-</p>
@@ -35,7 +35,7 @@
       <div class="subtotal">
         <p>Subtotal:</p>
         <div class="price">
-          {{ $n(totals.subtotal, 'currency') }}
+          {{ $currency(totals.subtotal) }}
         </div>
       </div>
       <div class="shipping">
@@ -49,7 +49,7 @@
           Total price:
         </p>
         <p class="price">
-          {{ $n(totals.total, 'currency') }}
+          {{ $currency(totals.total) }}
         </p>
       </div>
     </div>

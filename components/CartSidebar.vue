@@ -71,7 +71,7 @@
               "
             >
               <template #value>
-                <SfPrice :regular="$n(totals, 'currency')" />
+                <SfPrice :regular="$currency(totals)" />
               </template>
             </SfProperty>
             <nuxt-link to="/checkout/personaldetails">

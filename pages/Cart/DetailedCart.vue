@@ -47,7 +47,7 @@
                   <span class="cart-total">Total price:</span>
                 </template>
                 <template #value>
-                  <span class="card__text"> {{ $n(totals.total, 'currency') }}</span>
+                  <span class="card__text"> {{ $currency(totals.total) }}</span>
                 </template>
               </SfProperty>
             </div>

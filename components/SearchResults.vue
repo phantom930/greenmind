@@ -66,11 +66,11 @@
                   :key="index"
                   class="result-card"
                   :regular-price="
-                    $n(productGetters.getPrice(product).regular, 'currency')
+                    $currency(productGetters.getPrice(product).regular)
                   "
                   :special-price="
                     productGetters.getPrice(product).special &&
-                      $n(productGetters.getPrice(product).special, 'currency')
+                      $currency(productGetters.getPrice(product).special)
                   "
                   :show-add-to-cart-button="true"
                   :image-width="216"
@@ -114,11 +114,11 @@
                 :nuxt-img-config="{ fit: 'cover' }"
                 image-tag="nuxt-img"
                 :regular-price="
-                  $n(productGetters.getPrice(product).regular, 'currency')
+                  $currency(productGetters.getPrice(product).regular)
                 "
                 :special-price="
                   productGetters.getPrice(product).special &&
-                    $n(productGetters.getPrice(product).special, 'currency')
+                    $currency(productGetters.getPrice(product).special)
                 "
                 :score-rating="productGetters.getAverageRating(product)"
                 :reviews-count="7"

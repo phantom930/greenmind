@@ -4,12 +4,12 @@
     data-cy="collected-product-cart-sidebar"
     :image="$image(cartGetters.getItemImage(orderLine), 140, 200, cartGetters.getItemName(orderLine))"
     :title="cartGetters.getItemName(orderLine)"
-    :regular-price="$n(cartGetters.getItemPrice(orderLine).regular)"
+    :regular-price="$currency(cartGetters.getItemPrice(orderLine).regular)"
     :image-width="140"
     :image-height="200"
     :special-price="
       cartGetters.getItemPrice(orderLine).special &&
-        $n(cartGetters.getItemPrice(orderLine).special, 'currency')
+        $currency(cartGetters.getItemPrice(orderLine).special)
     "
     :stock="99999"
     :qty="cartGetters.getItemQty(orderLine)"
@@ -28,7 +28,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $n(getPrice(orderLine), 'currency') }}
+        {{ $currency(getPrice(orderLine)) }}
       </span>
 
       <div class="mt-3">
@@ -41,7 +41,7 @@
           :key="acessoryProduct.id"
           :disabled="loading"
           :title="acessoryProduct.name"
-          :price="$n(acessoryProduct.price, 'currency')"
+          :price="$currency(acessoryProduct.price)"
           :is-checked="accessoryIsInCart(acessoryProduct.id)"
           @change="handleAddOrRemoveAccessory(orderLine.product.id, acessoryProduct.id)"
         />

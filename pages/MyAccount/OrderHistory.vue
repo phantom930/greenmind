@@ -26,7 +26,7 @@
           />
           <SfProperty
             name="Total"
-            :value="$n(orderGetters.getPrice(currentOrder), 'currency')"
+            :value="$currency(orderGetters.getPrice(currentOrder))"
             class="sf-property--full-width property"
           />
         </div>
@@ -59,7 +59,7 @@
             <SfTableData>{{ orderGetters.getItemQty(item) }}</SfTableData>
             <SfTableData>
               {{
-                $n(orderGetters.getItemPrice(item), "currency")
+                $currency(orderGetters.getItemPrice(item))
               }}
             </SfTableData>
           </SfTableRow>
@@ -111,7 +111,7 @@
             <SfTableData>{{ orderGetters.getDate(order) }}</SfTableData>
             <SfTableData>
               {{
-                $n(orderGetters.getPrice(order), "currency")
+                $currency(orderGetters.getPrice(order))
               }}
             </SfTableData>
             <SfTableData>

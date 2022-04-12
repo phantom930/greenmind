@@ -4,10 +4,10 @@
     data-cy="collected-product-cart-sidebar"
     :image="$image(cartGetters.getItemImage(product))"
     :title="cartGetters.getItemName(product)"
-    :regular-price="$n(cartGetters.getItemPrice(product).regular)"
+    :regular-price="$currency(cartGetters.getItemPrice(product).regular)"
     :special-price="
       cartGetters.getItemPrice(product).special &&
-        $n(cartGetters.getItemPrice(product).special, 'currency')
+        $currency(cartGetters.getItemPrice(product).special)
     "
     :stock="99999"
     :qty="cartGetters.getItemQty(product)"
@@ -30,7 +30,7 @@
         />
       </div>
       <span class="green-collected-product__price">
-        {{ $n(cartGetters.getItemPrice(product).regular) + " " + currency }}
+        {{ $currency(cartGetters.getItemPrice(product).regular) + " " + currency }}
       </span>
     </div>
     <div slot="remove">

@@ -54,7 +54,7 @@
               :key="accessoryProduct.id"
               :title="accessoryProduct.name"
               :description="accessoryProduct.description"
-              :price="$n(accessoryProduct.combinationInfoVariant.price, 'currency')"
+              :price="$currency(accessoryProduct.combinationInfoVariant.price)"
               :has-image="true"
               :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.name)"
               @change="selectAcessories"
@@ -63,7 +63,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              {{ $n(combinationInfo.price, 'currency') }}
+              {{ $currency(combinationInfo.price) }}
             </p>
             <div class="buttons">
               <GreenButton

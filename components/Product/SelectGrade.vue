@@ -20,14 +20,14 @@
           >
             <p> {{ grade.grade_name }} </p>
             <div class="price">
-              {{ $n(grade.price, 'currency') }}
+              {{ $currency(grade.price) }}
             </div>
           </div>
           <div
             v-if="grade.has_discounted_price"
             class="discount"
           >
-            {{ $n(grade.list_price, 'currency') }}
+            {{ $currency(grade.list_price) }}
           </div>
         </nuxt-link>
       </div>
