@@ -2,29 +2,28 @@
   <div>
     <SfAddressPicker
       :selected="`${currentAddressId}`"
-      class="shipping__addresses flex-wrap"
+      class="flex-wrap mb-5"
       @change="setCurrentAddress($event)"
     >
       <SfAddress
-        v-for="shippingAddress in shippingAddresses"
-        :key="userShippingGetters.getId(shippingAddress)"
-        class="shipping__address"
-        :name="`${userShippingGetters.getId(shippingAddress)}`"
+        v-for="address in addresses"
+        :key="address.id"
+        :name="address.id"
       >
-        <UserShippingAddress :address="shippingAddress" />
+        <UserAddress :address="address" />
         <template #icon>
           <img
-            v-show="currentAddressId === shippingAddress.id"
+            v-show="currentAddressId === address.id"
             class="sf-address-picker-icon"
             :src="require('/assets/images/checkout/checkmark.svg')"
-          />
+          >
         </template>
       </SfAddress>
     </SfAddressPicker>
     <SfCheckbox
       v-show="currentAddressId && addresses.length > 1"
       v-model="defaultAddress"
-      :selected="value"
+      :selected="`${value$}`"
       name="setAsDefault"
       label="Use this address as my default one."
       class="shipping__setAsDefault"
@@ -34,31 +33,31 @@
 </template>
 
 <script lang="ts">
-import { SfCheckbox, SfAddressPicker } from "@storefront-ui/vue";
-import { userShippingGetters } from "@vue-storefront/odoo";
-import { computed, defineComponent, ref } from "@nuxtjs/composition-api";
+import { SfCheckbox, SfAddressPicker } from '@storefront-ui/vue';
+import { userShippingGetters } from '@vue-storefront/odoo';
+import { defineComponent, ref } from '@nuxtjs/composition-api';
 
 export default defineComponent({
-  name: "UserShippingAddresses",
+  name: 'UserShippingAddresses',
   components: {
     SfCheckbox,
-    SfAddressPicker,
+    SfAddressPicker
   },
   props: {
     currentAddressId: {
       type: [String, Number],
-      required: true,
+      required: true
     },
     addresses: {
       type: [Array, Object],
-      default: () => [],
+      default: () => []
     },
     value: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
-  emits: ["input", "set-current-address"],
+  emits: ['input', 'set-current-address'],
   setup(props, { emit }) {
     const defaultAddress = ref(props.value);
 
@@ -67,44 +66,30 @@ export default defineComponent({
         (item) => item.id === Number.parseInt(addressId)
       );
 
-      emit("set-current-address", selectedAddress?.[0] || {});
+      emit('set-current-address', selectedAddress?.[0] || {});
     };
-    const shippingAddresses = computed(() =>
-      userShippingGetters.getAddresses(props.addresses)
-    );
 
     return {
       defaultAddress,
       setCurrentAddress,
-      shippingAddresses,
-      userShippingGetters,
+      userShippingGetters
     };
-  },
+  }
 });
 </script>
 
 <style lang="scss" scoped>
-::v-deep .shipping__address {
+::v-deep .sf-address {
   border-radius: 14px;
 }
-.shipping {
-  &__address {
-    margin-bottom: var(--spacer-base);
-    @include for-desktop {
-      margin-right: var(--spacer-sm);
-    }
-  }
-  &__addresses {
-    margin-bottom: var(--spacer-xl);
-    @include for-desktop {
-      display: flex;
-      width: 100%;
-    }
-  }
-  &__setAsDefault {
-    margin-bottom: var(--spacer-xl);
-  }
+
+::v-deep .sf-radio__content {
+  font-family: var(--font-family--primary);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 22px;
 }
+
 .sf-divider,
 .form__action-button--margin-bottom {
   margin-bottom: var(--spacer-xl);

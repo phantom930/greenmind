@@ -195,7 +195,7 @@ export default {
     seo: true,
     langDir: 'lang',
     vueI18n: {
-      fallbackLocale: 'DKK',
+      fallbackLocale: 'da',
       numberFormats: {
         DKK: {
           currency: {
