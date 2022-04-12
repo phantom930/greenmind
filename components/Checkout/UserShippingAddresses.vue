@@ -17,12 +17,12 @@
             v-show="currentAddressId === shippingAddress.id"
             class="sf-address-picker-icon"
             :src="require('/assets/images/checkout/checkmark.svg')"
-          >
+          />
         </template>
       </SfAddress>
     </SfAddressPicker>
     <SfCheckbox
-      v-show="currentAddressId"
+      v-show="currentAddressId && addresses.length > 1"
       v-model="defaultAddress"
       :selected="value"
       name="setAsDefault"
@@ -34,40 +34,40 @@
 </template>
 
 <script lang="ts">
-import { SfCheckbox, SfAddressPicker } from '@storefront-ui/vue';
-import { userShippingGetters } from '@vue-storefront/odoo';
-import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
+import { SfCheckbox, SfAddressPicker } from "@storefront-ui/vue";
+import { userShippingGetters } from "@vue-storefront/odoo";
+import { computed, defineComponent, ref } from "@nuxtjs/composition-api";
 
 export default defineComponent({
-  name: 'UserShippingAddresses',
+  name: "UserShippingAddresses",
   components: {
     SfCheckbox,
-    SfAddressPicker
+    SfAddressPicker,
   },
   props: {
     currentAddressId: {
       type: [String, Number],
-      required: true
+      required: true,
     },
     addresses: {
       type: [Array, Object],
-      default: () => ([])
+      default: () => [],
     },
     value: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
-  emits: ['input', 'set-current-address'],
+  emits: ["input", "set-current-address"],
   setup(props, { emit }) {
-
     const defaultAddress = ref(props.value);
 
     const setCurrentAddress = (addressId) => {
-      const selectedAddress = props.addresses
-        ?.filter(item => item.id === Number.parseInt(addressId));
+      const selectedAddress = props.addresses?.filter(
+        (item) => item.id === Number.parseInt(addressId)
+      );
 
-      emit('set-current-address', selectedAddress?.[0] || {});
+      emit("set-current-address", selectedAddress?.[0] || {});
     };
     const shippingAddresses = computed(() =>
       userShippingGetters.getAddresses(props.addresses)
@@ -77,15 +77,14 @@ export default defineComponent({
       defaultAddress,
       setCurrentAddress,
       shippingAddresses,
-      userShippingGetters
+      userShippingGetters,
     };
-  }
+  },
 });
 </script>
 
 <style lang="scss" scoped>
-
-::v-deep .shipping__address{
+::v-deep .shipping__address {
   border-radius: 14px;
 }
 .shipping {
@@ -115,5 +114,4 @@ export default defineComponent({
   position: absolute;
   right: 18px;
 }
-
 </style>
