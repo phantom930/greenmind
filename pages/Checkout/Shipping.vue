@@ -7,11 +7,11 @@
     />
 
     <CheckoutUserShippingAddresses
-      v-show="showAdresses"
+      v-show=" showShippingAddresses "
       v-model="defaultShippingAddress"
       :current-address-id="currentAddressId || ''"
       :addresses="userShipping"
-      @set-current-address="handleSetCurrentAddress"
+      @set-current-address="handleSetCurrentShippingAddress"
     />
 
     <GreenButton
@@ -20,8 +20,8 @@
       color="Grey"
       shape="Round"
       size="Medium"
-      :disabled="loading"
-      :loading="loading"
+      :disabled="loadingShipping"
+      :loading="loadingShipping"
       @click="canAddNewAddress = true"
     >
       {{ $t("Add new address") }}
@@ -35,7 +35,7 @@
 
     <CheckoutAddressForm
       v-if="canAddNewAddress"
-      :loading="loading"
+      :loading="loadingShipping"
       :countries="countries"
       class="mb-5"
       @submit="handleAddNewAddress"
@@ -52,9 +52,17 @@
       class="sf-heading--left sf-heading--no-underline title"
     />
 
+    <CheckoutUserShippingAddresses
+      v-show="showBillingAdresses"
+      v-model="defaultBillingAddress"
+      :current-address-id="currentBillingAddressId || ''"
+      :addresses="userBilling"
+      @set-current-address="handleSetCurrentBillingAddress"
+    />
+
     <CheckoutAddressForm
       v-if="canAddNewBillingAddress"
-      :loading="loading"
+      :loading="loadingBilling"
       :countries="countries"
       class="mb-5"
       @submit="handleAddNewBillingAddress"
@@ -96,7 +104,6 @@
         shape="Round"
         size="Medium"
         :disabled="!canGoReviewOrder"
-        :loading="loading"
         @click="handleGoToReviewOrder"
       >
         {{ $t("GO TO REVIEW ORDER") }}
@@ -114,15 +121,9 @@
 <script lang="ts">
 import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading } from '@storefront-ui/vue';
-import {
-  useBilling,
-  useCart,
-  useCountrySearch,
-  useShipping,
-  useUser,
-  useUserShipping
-} from '@vue-storefront/odoo';
+import { useCart, useCountrySearch, useUser } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
+import { useCheckoutShipping, useCheckoutBilling } from '~/composables';
 
 export default defineComponent({
   name: 'Shipping',
@@ -135,72 +136,49 @@ export default defineComponent({
   emits: ['finish', 'change'],
   setup(_, { emit }) {
     const { cart } = useCart();
-    const isFormSubmitted = ref(false);
-    const formRef = ref(null);
-    const defaultShippingAddress = ref(false);
-    const copyShippingToBilling = ref(false);
-    const generateInvoice = ref(false);
-    const canAddNewAddress = ref(false);
-    const canAddNewBillingAddress = ref(false);
-    const newCurrentAddressId = ref(null);
-
-    const {
-      shipping: userShipping,
-      load,
-      setDefaultAddress
-    } = useUserShipping();
-    const { load: loadShipping, shipping, save, loading } = useShipping();
-    const {
-      load: loadBilling,
-      billing,
-      save: saveBilling,
-      loading: loadingBilling
-    } = useBilling();
     const { search, countries } = useCountrySearch('countries');
-
     const { isAuthenticated } = useUser();
 
-    const currentAddressId = computed(() => shipping.value?.id);
+    const isFormSubmitted = ref(false);
+    const formRef = ref(null);
+    const copyShippingToBilling = ref(false);
+    const generateInvoice = ref(false);
+
+    const {
+      defaultShippingAddress,
+      canAddNewAddress,
+      hasSavedShippingAddress,
+      showShippingAddresses,
+      handleAddNewAddress,
+      currentAddressId,
+      setDefaultShippingAddress,
+      loadShipping,
+      loadUserShipping,
+      loadingShipping,
+      userShipping,
+      handleSetCurrentShippingAddress,
+      newCurrentShippingAddressId
+    } = useCheckoutShipping();
+
+    const {
+      defaultBillingAddress,
+      canAddNewBillingAddress,
+      hasSavedBillingAddress,
+      showBillingAdresses,
+      handleAddNewBillingAddress,
+      currentBillingAddressId,
+      setDefaultBillingAddress,
+      newCurrentBillingAddressId,
+      loadBilling,
+      loadUserBilling,
+      loadingBilling,
+      userBilling,
+      handleSetCurrentBillingAddress
+    } = useCheckoutBilling();
 
     const selectedShippingMethod = computed(
       () => cart.value?.order?.shippingMethod || {}
     );
-
-    const hasSavedShippingAddress = computed(() => {
-      return Boolean(shipping.value);
-    });
-
-    const showAdresses = computed(
-      () => hasSavedShippingAddress.value && !canAddNewAddress.value
-    );
-
-    const handleAddNewBillingAddress = async (form) => {
-      await saveBilling({
-        params: {
-          ...form,
-          name: `${form.firstName} ${form.lastName}`,
-          countryId: parseInt(form.country.id)
-        },
-        billingDetails: null
-      });
-      canAddNewBillingAddress.value = false;
-    };
-
-    const handleAddNewAddress = async (form) => {
-      await save({
-        params: {
-          ...form,
-          name: `${form.firstName} ${form.lastName}`,
-          countryId: parseInt(form.country.id)
-        },
-        shippingDetails: null,
-        customQuery: { shippingAddAdress: 'greenAddAddress' }
-      });
-
-      await loadShipping();
-      await load();
-      canAddNewAddress.value = false;
-    };
 
     const canGoReviewOrder = computed(() => {
       if (canAddNewAddress.value) return false;
@@ -210,17 +188,14 @@ export default defineComponent({
       return true;
     });
 
-    const handleSetCurrentAddress = (address) => {
-      if (defaultShippingAddress.value) {
-        newCurrentAddressId.value = address.id;
-      }
-    };
-
     const goToOrderReview = () => emit('change', 'revieworder');
 
     const handleGoToReviewOrder = async () => {
-      if (newCurrentAddressId.value) {
-        await setDefaultAddress({ address: { id: newCurrentAddressId.value } });
+      if (newCurrentShippingAddressId.value && defaultShippingAddress.value) {
+        await setDefaultShippingAddress({ address: { id: newCurrentShippingAddressId.value } });
+      }
+      if (newCurrentBillingAddressId.value && defaultBillingAddress.value) {
+        await setDefaultBillingAddress({ address: { id: newCurrentBillingAddressId.value } });
       }
 
       goToOrderReview();
@@ -230,24 +205,35 @@ export default defineComponent({
       await search();
       await loadShipping();
       await loadBilling();
-      await load();
+      await loadUserShipping();
+      await loadUserBilling();
 
       if (!hasSavedShippingAddress.value) {
         canAddNewAddress.value = true;
       }
+      if (!hasSavedBillingAddress.value) {
+        canAddNewBillingAddress.value = true;
+      }
+
       formRef?.value?.validate({ silent: true });
     });
 
     return {
+      hasSavedBillingAddress,
+      currentBillingAddressId,
+      handleSetCurrentBillingAddress,
+      defaultBillingAddress,
+      userBilling,
       generateInvoice,
+      showBillingAdresses,
       copyShippingToBilling,
       selectedShippingMethod,
       cart,
       handleGoToReviewOrder,
       canGoReviewOrder,
       userShipping,
-      showAdresses,
-      loading,
+      showShippingAddresses,
+      loadingShipping,
       loadingBilling,
       formRef,
       canAddNewAddress,
@@ -255,9 +241,8 @@ export default defineComponent({
       handleAddNewBillingAddress,
       handleAddNewAddress,
       defaultShippingAddress,
-      handleSetCurrentAddress,
+      handleSetCurrentShippingAddress,
       currentAddressId,
-      shipping,
       hasSavedShippingAddress,
       isAuthenticated,
       isFormSubmitted,

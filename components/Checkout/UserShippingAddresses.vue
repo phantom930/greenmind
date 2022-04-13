@@ -2,13 +2,13 @@
   <div>
     <SfAddressPicker
       :selected="`${currentAddressId}`"
-      class="flex-wrap mb-5"
+      class="flex flex-wrap mb-5 gap-6"
       @change="setCurrentAddress($event)"
     >
       <SfAddress
         v-for="address in addresses"
         :key="address.id"
-        :name="address.id"
+        :name="String(address.id)"
       >
         <UserAddress :address="address" />
         <template #icon>
@@ -23,10 +23,10 @@
     <SfCheckbox
       v-show="currentAddressId && addresses.length > 1"
       v-model="defaultAddress"
-      :selected="`${value$}`"
+      :selected="`${value}`"
       name="setAsDefault"
       label="Use this address as my default one."
-      class="shipping__setAsDefault"
+      class="shipping__setAsDefault my-10"
       @change="$emit('input', defaultAddress)"
     />
   </div>
@@ -84,6 +84,7 @@ export default defineComponent({
 }
 
 ::v-deep .sf-radio__content {
+  margin: 0;
   font-family: var(--font-family--primary);
   font-weight: 300;
   font-size: 18px;

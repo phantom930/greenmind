@@ -332,8 +332,8 @@ export default {
 }
 
 ::v-deep .dropdown .sf-list a {
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-left: 23px;
+  margin-right: 23px;
 }
 
 :v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {

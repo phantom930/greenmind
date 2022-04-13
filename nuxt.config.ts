@@ -66,8 +66,9 @@ export default {
   },
   googleFonts: {
     families: {
-      'Josefin+Sans': true,
-      wght: [300, 400, 500, 600, 700],
+      'Josefin+Sans': {
+        wght: [300, 400, 500, 600, 700]
+      },
       Lato: [100, 300]
     },
     display: 'swap'
