@@ -5,29 +5,32 @@
     </h3>
     <div class="orders">
       <a
-        v-for="(product, index) in products"
+        v-for="(orderLine, index) in orderLines"
         :key="index"
         class="order"
       >
         <div class="img-info-wrap">
           <div class="image-container">
-            <img :src="$image(cartGetters.getItemImage(product), 82, 104, cartGetters.getItemName(product))">
+            <img :src="$image(cartGetters.getItemImage(orderLine), 82, 104, cartGetters.getItemName(orderLine))">
           </div>
           <div class="product-info">
             <div class="product-title">
-              {{ cartGetters.getItemName(product) }}
+              {{ cartGetters.getItemName(orderLine) }}
             </div>
-            <div class="gadget">+ Screenprotection</div>
-            <div class="gadget">+ Forsikring All Risk</div>
+            <div class="">
+              <div
+                v-for="(accessory, acessoryIndex) in productGetters.getAccessoryProducts(orderLine.product)"
+                :key="acessoryIndex"
+                class="gadget flex justify-between"
+              >
+                <span>+ {{ accessory.name }}</span>
+                <span class="price">
+                  {{ $currency(accessory.price) }}
+                </span>
+              </div>
+            </div>
             <div class="code">MSD23-345-324</div>
           </div>
-        </div>
-        <div class="costs">
-          <div class="price">
-            {{ $currency(cartGetters.getItemPrice(product).regular) }}
-          </div>
-          <p>149,-</p>
-          <p>599,-</p>
         </div>
       </a>
     </div>
@@ -55,10 +58,13 @@
     </div>
     <div class="checkbox-button-wrap">
       <div class="checkbox-wrap">
-        <GreenCheckbox />
-        <p class="label">
-          I agree to <a href="#">Terms and Conditions</a>
-        </p>
+        <GreenCheckbox
+          v-model="agreeTermsConditions"
+          :value="agreeTermsConditions"
+          :is-checked="agreeTermsConditions"
+          :has-general-wrapper="false"
+          label="I agree to Terms and Conditions"
+        />
       </div>
       <div class="submit-button">
         <SfButton
@@ -78,36 +84,32 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
 import { SfButton } from '@storefront-ui/vue';
-import { computed, watch } from '@vue/composition-api';
-import { useCart, useUserOrder, orderGetters, cartGetters } from '@vue-storefront/odoo';
-import { onSSR } from '@vue-storefront/core';
+import { useCart } from '@vue-storefront/odoo';
+import { cartGetters, productGetters } from '~/composables';
 
-export default {
+export default defineComponent({
   name: 'Revieworder',
   components: {
     SfButton
   },
   setup(props, { root }) {
     const { cart } = useCart();
-    const products = computed(() => cartGetters.getItems(cart.value));
+    const orderLines = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
-    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    if (totalItems.value === 0) root.$router.push('/cart');
-    watch(
-      () => totalItems.value,
-      () => {
-        if (totalItems.value === 0) root.$router.push('/cart');
-      }
-    );
+    const agreeTermsConditions = ref(false);
+
     return {
+      agreeTermsConditions,
       cartGetters,
       totals,
-      products
+      orderLines,
+      productGetters
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -193,6 +193,10 @@ export default defineComponent({
 
       if (!selectedShippingMethod.value) return false;
 
+      if (cart.value?.order?.partnerShipping?.name.includes('Public')) return false;
+
+      if (cart.value?.order?.partnerInvoice?.name.includes('Public')) return false;
+
       return true;
     });
 

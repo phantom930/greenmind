@@ -40,7 +40,11 @@
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
-            <SfIcon class="sf-header__icon" icon="empty_cart" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="empty_cart"
+              size="1.25rem"
+            />
 
             <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
               {{ cartTotalItems }}
@@ -50,7 +54,11 @@
             class="sf-button--pure sf-header__action list"
             @click="toggleHamburguerMenu"
           >
-            <SfIcon class="sf-header__icon" icon="list" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="list"
+              size="1.25rem"
+            />
           </SfButton>
         </div>
       </template>
@@ -78,7 +86,7 @@
     <SearchResults
       :visible="isSearchOpen"
       :term="term"
-      :searchLoading="searchLoading"
+      :search-loading="searchLoading"
       :result="formatedResult"
       @close="closeSearch"
       @removeSearchResults="removeSearchResults"
@@ -171,7 +179,7 @@ export default {
         search: term.value,
         pageSize: 12,
         currentPage: 1,
-        fetchCategory: true,
+        fetchCategory: true
       });
       formatedResult.value = {
         products: result?.value?.data?.products,

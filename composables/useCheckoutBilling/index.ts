@@ -34,9 +34,10 @@ const useCheckoutBilling = (): any => {
       billingDetails: null,
       customQuery: { billingAddAddress: 'greenAddAddress' }
     });
-    canAddNewBillingAddress.value = false;
+
     await loadBilling();
     await loadUserBilling();
+    canAddNewBillingAddress.value = false;
   };
 
   const handleSetCurrentBillingAddress = (address) => {
