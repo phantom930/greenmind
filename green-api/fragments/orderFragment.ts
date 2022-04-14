@@ -71,8 +71,11 @@ order {
   partner{
     id
     name
+    phone
     street
     email
+    city
+    zip
   }
   partnerShipping {
     id

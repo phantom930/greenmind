@@ -70,13 +70,13 @@
               Personal details
             </p>
             <p class="mb-4">
-              <span>{{ partnername }}</span> <br>Zielinskiego 30 – 41,
-              53-345<br>
-              Wroclaw, Poland
+              <span>{{ partner.name }}</span> <br>{{ partner.street }} –
+              {{ partner.zip }}<br>
+              {{ partner.city }}, {{ partner.country ? partner.country.name : '' }}
             </p>
-            <p>sviatlana.example@gmail.com</p>
+            <p>{{ partner.email }}</p>
             <p class="mb-4">
-              (00) 468 900 300
+              {{ partner.phone }}
             </p>
           </div>
           <div class="detail-edit">
@@ -94,7 +94,9 @@
               Shipping details
             </p>
             <p class="mb-4">
-              GLS pakkeshop
+              <span>{{ partnerShipping.name }}</span> <br>{{ partnerShipping.street }} –
+              {{ partnerShipping.zip }}<br>
+              {{ partnerShipping.city }}, {{ partnerShipping.country.name }}
             </p>
           </div>
           <div class="detail-edit">
@@ -120,7 +122,9 @@
               Billing address
             </p>
             <p class="mb-4">
-              GLS pakkeshop
+              <span>{{ partnerInvoice.name }}</span> <br>{{ partnerInvoice.street }} –
+              {{ partnerInvoice.zip }}<br>
+              {{ partnerInvoice.city }}, {{ partnerInvoice.country.name }}
             </p>
           </div>
           <div class="detail-edit">
@@ -161,7 +165,7 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import {
   SfHeading,
   SfButton,
@@ -170,10 +174,10 @@ import {
   SfInput,
   SfLink
 } from '@storefront-ui/vue';
-import { computed, ref } from '@nuxtjs/composition-api';
+import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters, cartGetters } from '@vue-storefront/odoo';
 
-export default {
+export default defineComponent({
   name: 'CartPreview',
   components: {
     SfHeading,
@@ -191,18 +195,22 @@ export default {
     const listIsHidden = ref(false);
     const promoCode = ref('');
     const showPromoCode = ref(false);
-    const partnername = cart?.value?.order?.partnerShipping?.name;
+    const partner = computed(() => cart?.value?.order?.partner || {});
+    const partnerShipping = computed(() => cart?.value?.order?.partnerShipping || {});
+    const partnerInvoice = computed(() => cart?.value?.order?.partnerInvoice || {});
     const products = computed(() => cartGetters.getItems(cart.value));
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const discounts = computed(() => cartGetters.getDiscounts(cart.value));
     const shippingMethodPrice = computed(() =>
-      checkoutGetters.getShippingMethodPrice(cart.value)
+      checkoutGetters.getShippingMethodPrice(cart.value?.order?.shippingMethod)
     );
 
     return {
       currentStep,
-      partnername,
+      partner,
+      partnerShipping,
+      partnerInvoice,
       shippingMethodPrice,
       discounts,
       totalItems,
@@ -236,99 +244,9 @@ export default {
       ]
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
-.highlighted {
-  box-sizing: border-box;
-  width: 100%;
-  background-color: var(--c-light);
-  padding: var(--spacer-xl) var(--spacer-xl) 0;
-  @include for-mobile {
-    padding: var(--spacer-xl) var(--spacer-lg) 0;
-  }
-  &:last-child {
-    padding-bottom: var(--spacer-xl);
-  }
-}
-.total-items {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacer-xl);
-}
-.property {
-  margin-bottom: var(--spacer-base);
-}
-.property-total {
-  margin-top: var(--spacer-xl);
-  padding-top: var(--spacer-lg);
-  font-size: var(--font-size-xl);
-  border-top: var(--c-white) 1px solid;
-  --property-name-font-weight: var(--font-weight--semibold);
-  --property-name-color: var(--c-text);
-}
-
-.characteristic {
-  &:not(:last-child) {
-    margin-bottom: var(--spacer-lg);
-  }
-}
-.promo-code {
-  // display: flex;
-  // align-items: flex-start;
-  &__button {
-    --button-width: 6.3125rem;
-    --button-height: var(--spacer-lg);
-  }
-  &__input {
-    --input-background: var(--c-white);
-    flex: 1;
-    border-radius: 100px !important;
-  }
-  position: relative;
-}
-
-.promo-code__button {
-  position: absolute;
-  top: 44px;
-  right: 45px;
-  background: #7ba393;
-  font-size: 12px;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 100px;
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
-::v-deep .promo-code input {
-  border-radius: 100px;
-  padding-top: 15px;
-  padding-bottom: 11px;
-}
-
-::v-deep .promo-code .sf-input__label {
-  font-weight: 400;
-  font-size: 16px;
-  color: #43464e;
-  font-family: "Josefin Sans";
-  padding-left: 22px;
-}
-
-.discounted {
-  &::v-deep .sf-property__value {
-    color: var(--c-danger);
-    text-decoration: line-through;
-  }
-}
-
-.special-price {
-  justify-content: flex-end;
-
-  &::v-deep .sf-property__name {
-    display: none;
-  }
-}
+@import '~/assets/css/cartPreview.scss';
 </style>

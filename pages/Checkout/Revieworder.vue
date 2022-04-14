@@ -15,19 +15,21 @@
           </div>
           <div class="product-info">
             <div class="product-title">
-              {{ cartGetters.getItemName(orderLine) }}
+              {{ cartGetters.getItemTitle(orderLine) }} | {{ cartGetters.getItemWebsiteTitle(orderLine) }}
             </div>
-            <div class="">
-              <div
-                v-for="(accessory, acessoryIndex) in productGetters.getAccessoryProducts(orderLine.product)"
-                :key="acessoryIndex"
-                class="gadget flex justify-between"
-              >
-                <span>+ {{ accessory.name }}</span>
-                <span class="price">
-                  {{ $currency(accessory.price) }}
-                </span>
-              </div>
+            <div>
+              <template v-for="(accessory, acessoryIndex) in productGetters.getAccessoryProducts(orderLine.product)">
+                <div
+                  v-if="cartGetters.accessoryIsInCart(cart, accessory.id)"
+                  :key="acessoryIndex"
+                  class="gadget flex justify-between"
+                >
+                  <span>+ {{ accessory.name }}</span>
+                  <span class="price">
+                    {{ $currency(accessory.price) }}
+                  </span>
+                </div>
+              </template>
             </div>
             <div class="code">MSD23-345-324</div>
           </div>
@@ -67,12 +69,17 @@
         />
       </div>
       <div class="submit-button">
-        <SfButton
-          class="color-primary sf-button payment-btn"
+        <GreenButton
+          type="Tertiary"
+          color="Grey"
+          shape="Round"
+          size="Medium"
+          :disabled="!agreeTermsConditions"
           @click="$router.push('/checkout/payment')"
         >
           {{ $t("GO TO PAYMENT") }}
-        </SfButton>
+        </GreenButton>
+
         <SfButton
           class="color-primary sf-button payment-btn mt-4 smartphone-only"
           @click="$router.push('/checkout/shipping')"
@@ -102,6 +109,7 @@ export default defineComponent({
     const agreeTermsConditions = ref(false);
 
     return {
+      cart,
       agreeTermsConditions,
       cartGetters,
       totals,
