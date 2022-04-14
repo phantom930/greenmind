@@ -38,7 +38,7 @@
       :loading="loadingShipping"
       :countries="countries"
       class="mb-5"
-      @submit="handleAddNewAddress"
+      @submit="addNewAddres"
     />
 
     <VsfShippingProvider
@@ -85,16 +85,17 @@
       <GreenCheckbox
         v-model="copyShippingToBilling"
         :value="copyShippingToBilling"
+        :is-checked="copyShippingToBilling"
         :has-general-wrapper="false"
         :label="$t('Copy address data from shipping')"
       />
 
-      <GreenCheckbox
+      <!-- <GreenCheckbox
         v-model="generateInvoice"
         :value="generateInvoice"
         :has-general-wrapper="false"
         :label="$t('I want to generate invoice for the company')"
-      />
+      /> -->
     </div>
 
     <div class="submit-button mb-10">
@@ -141,7 +142,7 @@ export default defineComponent({
 
     const isFormSubmitted = ref(false);
     const formRef = ref(null);
-    const copyShippingToBilling = ref(false);
+    const copyShippingToBilling = ref(true);
     const generateInvoice = ref(false);
 
     const {
@@ -175,6 +176,13 @@ export default defineComponent({
       userBilling,
       handleSetCurrentBillingAddress
     } = useCheckoutBilling();
+
+    const addNewAddres = async (form) => {
+      await handleAddNewAddress(form);
+      if (copyShippingToBilling.value) {
+        handleAddNewBillingAddress(form);
+      }
+    };
 
     const selectedShippingMethod = computed(
       () => cart.value?.order?.shippingMethod || {}
@@ -239,7 +247,7 @@ export default defineComponent({
       canAddNewAddress,
       canAddNewBillingAddress,
       handleAddNewBillingAddress,
-      handleAddNewAddress,
+      addNewAddres,
       defaultShippingAddress,
       handleSetCurrentShippingAddress,
       currentAddressId,

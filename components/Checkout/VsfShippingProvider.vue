@@ -7,7 +7,7 @@
       :label="method.name"
       :value="String(method.id)"
       :description="method.name"
-      :selected="selectedMethod"
+      :selected="isSelected(method.id)"
       name="shippingMethod"
       class="form__radio shipping"
       @change="selectMethod(method.id)"
@@ -38,23 +38,21 @@ export default defineComponent({
     }
   },
   setup(props) {
-    const selectedMethod = ref(String(props.selectedShippingMethodId));
+    const selectedMethod = ref(props.selectedShippingMethodId ? String(props.selectedShippingMethodId) : null);
     const { load, state: shippingMethods, save } = useShippingProvider();
 
     const selectMethod = async (methodId) => {
       await save({ shippingMethod: { id: methodId } });
     };
 
-    watch(
-      () => props.selectedShippingMethodId,
-      () => selectedMethod.value = props.selectedShippingMethodId
-    );
+    const isSelected = (id) => String(props?.selectedShippingMethodId) === id;
 
     onMounted(async () => {
       await load();
     });
 
     return {
+      isSelected,
       shippingMethods,
       selectedMethod,
       selectMethod
