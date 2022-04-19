@@ -10,6 +10,7 @@ import useCheckoutBilling from './useCheckoutBilling';
 
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
+import facetGetters from './getters/facetGetters';
 
 export {
   useUiHelpers,
@@ -22,6 +23,7 @@ export {
   useCollectedProduct,
   useCheckoutBilling,
 
+  facetGetters,
   productGetters,
   cartGetters
 };

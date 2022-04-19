@@ -86,7 +86,6 @@ export default {
     '@nuxtjs/web-vitals',
     '@nuxtjs/tailwindcss',
     '@nuxt/typescript-build',
-    '@vueuse/nuxt',
     ['@nuxtjs/google-fonts'],
     '@nuxtjs/style-resources',
     [

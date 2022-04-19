@@ -36,8 +36,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, useRoute } from '@nuxtjs/composition-api';
-import { useCurrency } from '~/composables';
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 import { CombinationInfo } from '~/green-api/types';
 
 export default defineComponent({
@@ -46,17 +45,16 @@ export default defineComponent({
       type: Array as PropType<Array<CombinationInfo>>,
       default: () => ([])
     },
-    selectedGrade: {
-      type: String,
-      default: ''
+    productVariantId: {
+      type: Number,
+      default: 0
     }
   },
   emits: ['update'],
   setup (props, { emit }) {
-    const { params } = useRoute().value;
 
     const isSelectedGrade = (info : CombinationInfo): boolean =>
-      Number(params.id) === info.product_id;
+      props.productVariantId === info.product_id;
 
     const chooseGrade = (info : CombinationInfo) => {
       if (isSelectedGrade(info)) return;

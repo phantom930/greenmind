@@ -6,7 +6,7 @@
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
-    <GreenTopbarTertiary v-if="xlAndLarger" />
+    <GreenTopbarTertiary v-if="$device.isDesktopOrTablet" />
     <StoreStatus />
 
     <nuxt :key="$route.fullPath" />
@@ -33,7 +33,6 @@ import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
 import StoreStatus from '~/components/Product/StoreStatus.vue';
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default {
   name: 'DefaultLayout',
@@ -48,12 +47,6 @@ export default {
     Notification
   },
   setup () {
-    const breakpoints = useBreakpoints(breakpointsTailwind);
-
-    const xlAndLarger = breakpoints.greater('xl');
-    return {
-      xlAndLarger
-    };
   }
 };
 </script>

@@ -31,8 +31,8 @@
                 v-for="product in products"
                 :key="product.id"
                 :product="product"
-                :image-width="biggerThanSmall ? 248 : 160"
-                :image-height="biggerThanSmall ? 375 : 206"
+                :image-width="$device.isMobile ? 160 : 248"
+                :image-height="$device.isMobile ? 206 : 375"
               />
             </transition-group>
             <div class="flex justify-end">
@@ -64,7 +64,6 @@ import { onSSR } from '@vue-storefront/core';
 import { facetGetters, useFacet } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
-import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 
 export default defineComponent({
   name: 'Category',
@@ -75,9 +74,7 @@ export default defineComponent({
     const uiState = useUiState();
     const pageSize = ref(21);
     const buttonLoading = ref(false);
-    const breakpoints = useBreakpoints(breakpointsTailwind);
 
-    const biggerThanSmall = breakpoints.greater('sm');
     const { getFacetsFromURL } = useUiHelpers();
     const { result, search, loading } = useFacet();
     const { categoryTree, currentRootCategory } = useUiCategoryHelpers(
@@ -136,7 +133,6 @@ export default defineComponent({
     });
 
     return {
-      biggerThanSmall,
       rangeAttributes,
       ...uiState,
       hasMoreProductsToLoad,

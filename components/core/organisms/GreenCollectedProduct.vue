@@ -2,11 +2,11 @@
   <SfCollectedProduct
     :key="cartGetters.getItemSku(orderLine)"
     data-cy="collected-product-cart-sidebar"
-    :image="$image(cartGetters.getItemImage(orderLine), 140, 200, cartGetters.getItemName(orderLine))"
+    :image="$image(cartGetters.getItemImage(orderLine), 140, 236, cartGetters.getItemName(orderLine))"
     :title="cartGetters.getItemName(orderLine)"
     :regular-price="$currency(cartGetters.getItemPrice(orderLine).regular)"
     :image-width="140"
-    :image-height="200"
+    :image-height="236"
     :special-price="
       cartGetters.getItemPrice(orderLine).special &&
         $currency(cartGetters.getItemPrice(orderLine).special)

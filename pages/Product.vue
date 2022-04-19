@@ -38,7 +38,11 @@
         />
         <div class="product__price-and-rating" />
         <div>
-          <ProductSelectGrade :product-grades="productGrades" />
+          <ProductSelectGrade
+            :product-grades="productGrades"
+            :product-variant-id="combinationInfo.product_id"
+            @update="handleSelectNewGrade"
+          />
 
           <ProductDescription />
 
@@ -115,13 +119,13 @@
   </div>
 </template>
 <script >
-import { computed, defineComponent, reactive, useRoute } from '@nuxtjs/composition-api';
+import { computed, defineComponent, reactive, useRoute, useRouter } from '@nuxtjs/composition-api';
 import { SfBreadcrumbs, SfGallery, SfHeading, SfIcon } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
-import { facetGetters, useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
+import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
-import { productGetters, useUiState } from '~/composables';
+import { productGetters, useUiState, facetGetters } from '~/composables';
 import { product } from '@odoogap/seo';
 
 const { allHead } = product();
@@ -143,6 +147,7 @@ export default defineComponent({
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
     const { addTags } = useCache();
+    const router = useRouter();
 
     const product = computed(() => {
       return {
@@ -166,6 +171,14 @@ export default defineComponent({
         alt: product.value.name || 'alt'
       }))
     );
+
+    const handleSelectNewGrade = async (productdId) => {
+      await search({
+        id: productdId
+      });
+
+      router.push(products.value.slug);
+    };
 
     onSSR(async () => {
       await search({
@@ -206,6 +219,7 @@ export default defineComponent({
     };
 
     return {
+      handleSelectNewGrade,
       productGrades,
       handleStoreStatus,
       handleAddItem,
