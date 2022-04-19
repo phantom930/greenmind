@@ -8,17 +8,16 @@
     </LazyHydrate>
     <GreenTopbarTertiary v-if="xlAndLarger" />
     <StoreStatus />
-    <div id="">
-      <nuxt :key="$route.fullPath" />
 
-      <LazyHydrate when-visible>
-        <BottomNavigation />
-      </LazyHydrate>
-      <CartSidebar />
-      <HamburguerMenu />
-      <WishlistSidebar />
-      <Notification />
-    </div>
+    <nuxt :key="$route.fullPath" />
+
+    <LazyHydrate when-visible>
+      <BottomNavigation />
+    </LazyHydrate>
+    <CartSidebar />
+    <HamburguerMenu />
+    <WishlistSidebar />
+    <Notification />
     <LazyHydrate when-visible>
       <GreenFooter />
     </LazyHydrate>
