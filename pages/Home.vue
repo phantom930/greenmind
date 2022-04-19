@@ -6,12 +6,13 @@
           title="Colorful summer dresses are already in store"
           class="top-hero"
           button-text="SE MERE3"
-          background="none"
-          :image="require('/assets/images/homeHero/homeHero_1.svg')"
+          :background="$device.isMobile ? '#668F72' : ''"
+          :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
           style="background-size: contain; background-position-y: center"
         >
           <template #call-to-action>
             <GreenButton
+              v-if="!$device.isMobile"
               type="Tertiary"
               color="Grey"
             >
@@ -30,6 +31,7 @@
         >
           <template #call-to-action>
             <GreenButton
+              v-if="!$device.isMobile"
               type="Tertiary"
               color="Grey"
             >
@@ -48,6 +50,7 @@
         >
           <template #call-to-action>
             <GreenButton
+              v-if="!$device.isMobile"
               type="Tertiary"
               color="Grey"
             >
@@ -58,7 +61,11 @@
       </SfHero>
     </div>
 
-    <div class="flex justify-center" style="transform: translateY(-34px)">
+    <div
+      v-if="!$device.isMobileOrTablet"
+      class="flex justify-center"
+      style="transform: translateY(-34px)"
+    >
       <SfImage
         :src="require('/assets/images/homeUspBanner/banner_1.svg')"
         alt="banner_1"
@@ -66,6 +73,46 @@
         :width="1440"
         :height="237"
       />
+    </div>
+    <div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-16">
+      <div class="flex items-center gap-5">
+        <SfImage
+          :src="require('/assets/images/homeHero/usp_01.svg')"
+          alt="banner_1"
+          :width="74"
+          :height="69"
+        />
+        <p>
+          Produkter er testet
+          af egne eksperter
+        </p>
+      </div>
+
+      <div class="flex items-center gap-5">
+        <SfImage
+          :src="require('/assets/images/homeHero/usp_02.svg')"
+          alt="banner_1"
+          :width="74"
+          :height="69"
+        />
+        <p>
+          14 dages returret
+          2 års garanti
+        </p>
+      </div>
+
+      <div class="flex items-center gap-5">
+        <SfImage
+          :src="require('/assets/images/homeHero/usp_03.svg')"
+          alt="banner_1"
+          :width="74"
+          :height="69"
+        />
+        <p>
+          Ombyt i én af vores
+          10 butikker
+        </p>
+      </div>
     </div>
 
     <div class="layout">
@@ -309,10 +356,13 @@ export default {
    }
 }
 
-::v-deep .sf-hero {
-  height: 480px;
-  margin-top: -75px;
+@media (min-width: 768px) {
+  ::v-deep .sf-hero {
+    height: 480px;
+    margin-top: -75px;
+  }
 }
+
 ::v-deep .top-hero .sf-hero-item__title {
   font: var(--font-family--primary);
   color: #ffffff;
@@ -321,6 +371,15 @@ export default {
   line-height: 48px;
   width: 125%;
   margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  ::v-deep .top-hero .sf-hero-item__title {
+    font-size: 24px;
+    line-height: 26px;
+    width: 59%;
+    margin-top: 0;
+  }
 }
 
 ::v-deep .top-hero .sf-hero-item__button .sf-button:hover {
@@ -450,4 +509,15 @@ export default {
   --button-width: var(--button-size, var(--button-width));
   text-decoration: none;
 }
+
+.usp-mobile {
+  background-color: #F3F3F3;
+  p {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 500;
+    width: 90%;
+  }
+}
+
 </style>

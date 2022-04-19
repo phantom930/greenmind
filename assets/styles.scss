@@ -184,6 +184,14 @@ h4 {
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 1024px) {
+  .layout {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
 
 .bg-pine-primary-dark-green, .bg-pine-primary-dark-green__with-hover {
   background-color: var(--_c-greenmind-pine-primary-dark-green);
