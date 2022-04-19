@@ -5,10 +5,7 @@
       :title="$t('Search results')"
       class="search"
     >
-      <transition
-        name="sf-fade"
-        mode="out-in"
-      >
+      <transition name="sf-fade" mode="out-in">
         <div
           v-if="products && products.length > 0"
           key="results"
@@ -27,16 +24,11 @@
                 class="sf-mega-menu-column__header"
                 @click="megaMenu.changeActive(title)"
               >
-                <template #mobile-nav-icon>
-                  &#8203;
-                </template>
+                <template #mobile-nav-icon> &#8203; </template>
               </SfMenuItem>
             </template>
             <SfList v-if="categories.length">
-              <SfListItem
-                v-for="(category, key) in categories"
-                :key="key"
-              >
+              <SfListItem v-for="(category, key) in categories" :key="key">
                 <SfMenuItem
                   :label="category.label"
                   :link="uiHelper.getCatLinkForSearch(category)"
@@ -54,9 +46,7 @@
                 :label="title"
                 class="sf-mega-menu-column__header search__header"
               >
-                <template #mobile-nav-icon>
-                  &#8203;
-                </template>
+                <template #mobile-nav-icon> &#8203; </template>
               </SfMenuItem>
             </template>
             <div class="results--desktop desktop-only">
@@ -70,7 +60,7 @@
                   "
                   :special-price="
                     productGetters.getPrice(product).special &&
-                      $currency(productGetters.getPrice(product).special)
+                    $currency(productGetters.getPrice(product).special)
                   "
                   :show-add-to-cart-button="true"
                   :image-width="216"
@@ -79,7 +69,14 @@
                   image-tag="nuxt-img"
                   :score-rating="productGetters.getAverageRating(product)"
                   :reviews-count="7"
-                  :image="$image(productGetters.getCoverImage(product))"
+                  :image="
+                    $image(
+                      productGetters.getCoverImage(product),
+                      442,
+                      664,
+                      productGetters.getName(product)
+                    )
+                  "
                   :alt="productGetters.getName(product)"
                   :title="productGetters.getName(product)"
                   :link="localePath(goToProduct(product))"
@@ -94,7 +91,7 @@
                 />
               </div>
               <div class="flex justify-end">
-                <nuxt-link :to="'/c/all-searh-result/' + term">
+                <nuxt-link :to="'/category/all-searh-result/' + term">
                   <SfButton
                     class="color-primary sf-button search_result mt-4"
                     @click="$emit('close')"
@@ -118,7 +115,7 @@
                 "
                 :special-price="
                   productGetters.getPrice(product).special &&
-                    $currency(productGetters.getPrice(product).special)
+                  $currency(productGetters.getPrice(product).special)
                 "
                 :score-rating="productGetters.getAverageRating(product)"
                 :reviews-count="7"
@@ -138,7 +135,7 @@
             </div>
           </SfMegaMenuColumn>
           <div class="action-buttons smartphone-only">
-            <nuxt-link :to="'/c/all-searh-result/' + term">
+            <nuxt-link :to="'/category/all-searh-result/' + term">
               <SfButton
                 class="color-primary sf-button search_result"
                 @click="$emit('close')"
@@ -154,10 +151,7 @@
             </SfButton>
           </div>
         </div>
-        <div
-          v-else
-          class="before-results"
-        >
+        <div v-else class="before-results">
           <SfImage
             :width="256"
             :height="276"
@@ -178,10 +172,7 @@
               </p>
             </div>
           </div>
-          <div
-            v-else
-            key="no-results"
-          >
+          <div v-else key="no-results">
             <p class="before-results__paragraph">
               {{ $t("You haven’t searched for items yet") }}
             </p>
@@ -250,10 +241,11 @@ export default {
       type: Boolean
     }
   },
-  setup(props, { emit }) {
+  setup(props, { emit, root }) {
     const uiHelper = useUiHelpers();
     const isSearchOpen = ref(props.visible);
     const products = computed(() => props.result?.products);
+
     const categories = computed(() => props.result?.categories);
     const {
       addItem: addItemToWishlist,
@@ -264,10 +256,11 @@ export default {
     const { addItem: addItemToCart, isInCart } = useCart();
 
     const goToProduct = (product) => {
-      return `/p/${productGetters.getId(product)}/${productGetters.getSlug(
+      return `${productGetters.getSlug(
         product
       )}`;
     };
+
     watch(
       () => props.visible,
       (newVal) => {

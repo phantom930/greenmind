@@ -36,10 +36,10 @@ const useUiHelpers = (): any => {
         pageSize,
         currentPage: page,
         minPrice: price?.[0] || null,
-        maxPrice: price?.[1] || null,
+        maxPrice: price?.[1] || null
       };
     }
-    
+
     return {
       search: '',
       sort: { [sort[0]]: sort[1] },
@@ -65,7 +65,7 @@ const useUiHelpers = (): any => {
   const getCatLinkForSearch = (category: Category): string => {
     const splitedSlug = category.slug.split('-');
 
-    return `/c/${splitedSlug[0]}/${category.slug}/${category.id}`;
+    return `${category.slug}/${category.id}`;
   };
 
   const changeSorting = (sort: string) => {
