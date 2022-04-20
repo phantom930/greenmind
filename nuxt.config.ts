@@ -59,8 +59,8 @@ export default {
   },
   pwa: {
     manifest: {
-      name: 'VSF Odoo ',
-      lang: 'en',
+      name: 'Greenmind',
+      lang: localeIndex,
       useWebmanifestExtension: false
     }
   },
@@ -174,13 +174,19 @@ export default {
         code: 'da',
         label: 'Danish',
         file: 'da.json',
-        iso: 'da-DK'
+        iso: 'da-DA'
       },
       {
         code: 'sv',
         label: 'Swedish',
         file: 'sv.json',
-        iso: 'sv-SE'
+        iso: 'sv-SV'
+      },
+      {
+        code: 'de',
+        label: 'German',
+        file: 'de.json',
+        iso: 'de-DE'
       },
       {
         code: 'en',
@@ -191,12 +197,9 @@ export default {
     ],
     fallbackLocale: localeIndex,
     defaultLocale: localeIndex,
-    lazy: true,
     seo: true,
     langDir: 'lang',
-    detectBrowserLanguage: {
-      cookieKey: 'vsf-locale'
-    }
+    detectBrowserLanguage: false
   },
   styleResources: {
     scss: [require.resolve('@storefront-ui/shared/styles/_helpers.scss', { paths: [process.cwd()] })]

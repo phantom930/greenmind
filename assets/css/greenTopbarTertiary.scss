@@ -115,3 +115,74 @@
   border-bottom: 2px solid #78a495;
 }
 
+::v-deep .dropdown.iphones .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 25px;
+}
+
+::v-deep .dropdown.smartphones .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 208px;
+}
+
+::v-deep .dropdown.tablets .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 435px;
+}
+
+::v-deep .dropdown.computers .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 620px;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 815px;
+}
+
+::v-deep .dropdown.accessories .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 1030px;
+  overflow: visible;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+  overflow: visible;
+}
+
+::v-deep .dropdown.accessories {
+  overflow: hidden;
+}
+
+::v-deep .dropdown .sf-mega-menu-column {
+  max-width: unset;
+}
+
+::v-deep .dropdown .sf-mega-menu-column__content .sf-list {
+  display: flex;
+}
+
+::v-deep .dropdown .sf-mega-menu__menu {
+  flex-direction: column;
+}
+
+::v-deep .dropdown .sf-list a {
+  margin-left: 23px;
+  margin-right: 23px;
+}
+
+:v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {
+  display: none;
+}
+
+::v-deep .dropdown .sf-menu-item__label:hover {
+  color: #7BA393;
+}
+
+::v-deep .sf-mega-menu-column__header {
+  display: none;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+    justify-content: flex-start;
+}
