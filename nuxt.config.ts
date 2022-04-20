@@ -192,7 +192,7 @@ export default {
         code: 'en',
         label: 'English',
         file: 'en.json',
-        iso: 'en-EN'
+        iso: 'en-US'
       }
     ],
     fallbackLocale: localeIndex,

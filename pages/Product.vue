@@ -164,9 +164,9 @@ export default defineComponent({
 
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
-        mobile: { url: root.$image(img.small, 160, 160, product.value.name) },
-        desktop: { url: root.$image(img.normal, 442, 664, product.value.name) },
-        big: { url: root.$image(img.big, 442, 664, product.value.name) },
+        mobile: { url: root.$image(img.small, 160, 160, productGetters.getImageFilename(product.value)) },
+        desktop: { url: root.$image(img.normal, 442, 664, productGetters.getImageFilename(product.value)) },
+        big: { url: root.$image(img.big, 442, 664, productGetters.getImageFilename(product.value)) },
         alt: product.value.name || 'alt'
       }))
     );

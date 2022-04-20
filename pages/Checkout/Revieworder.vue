@@ -11,7 +11,7 @@
       >
         <div class="img-info-wrap">
           <div class="image-container">
-            <img :src="$image(cartGetters.getItemImage(orderLine), 82, 104, cartGetters.getItemName(orderLine))">
+            <img :src="$image(cartGetters.getItemImage(orderLine), 82, 104, cartGetters.getItemImageFilename(orderLine))">
           </div>
           <div class="product-info">
             <div class="product-title">

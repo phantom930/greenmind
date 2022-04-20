@@ -42,6 +42,7 @@ module.exports = {
         name
         description
         image
+        imageFilename
         slug
         sku
         isInWishlist
@@ -96,6 +97,7 @@ module.exports = {
         name
         description
         image
+        imageFilename
         slug
         combinationInfoVariant
       }
@@ -111,6 +113,7 @@ module.exports = {
                     id
                     name
                     image
+                    imageFilename
                     description
                     smallImage
                     slug
@@ -161,6 +164,7 @@ module.exports = {
                         name
                         description
                         image
+                        imageFilename
                         price
                         combinationInfoVariant
                     }

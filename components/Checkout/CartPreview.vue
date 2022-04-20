@@ -138,7 +138,7 @@
         </div>
       </div>
     </div>
-    <div class="highlighted promo-code">
+    <!-- <div class="highlighted promo-code">
       <SfInput
         v-model="promoCode"
         data-cy="cart-preview-input_promoCode"
@@ -152,7 +152,7 @@
       >
         {{ $t("Apply") }}
       </SfButton>
-    </div>
+    </div> -->
     <div class="highlighted">
       <SfCharacteristic
         v-for="characteristic in characteristics"

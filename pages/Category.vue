@@ -123,6 +123,7 @@ export default defineComponent({
 
     onSSR(async () => {
       const params = { ...getFacetsFromURL(), customQueryProducts };
+
       await search(params);
       addTags([
         {

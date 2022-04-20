@@ -110,7 +110,6 @@ import {
 import { useUiState } from '~/composables';
 import {
   useCart,
-  useWishlist,
   useUser,
   categoryGetters,
   useFacet
@@ -143,12 +142,11 @@ export default {
     const searchSize = ref(12);
 
     const { changeSearchTerm } = useUiHelpers();
-    const { toggleCartSidebar, toggleWishlistSidebar, toggleLoginModal, toggleHamburguerMenu } =
+    const { toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
       useUiState();
 
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
-    const { load: loadWishlist, wishlist } = useWishlist();
     const { search, result, loading: searchLoading } = useFacet('AppHeader:Search');
 
     const isMobile = computed(() => mapMobileObserver().isMobile.get());
@@ -238,15 +236,11 @@ export default {
     onSSR(async () => {
       await Promise.all([
         loadUser(),
-        loadWishlist(),
         loadCart({ customQuery: { cartLoad: 'greenCartLoad' } })
       ]);
     });
 
     return {
-      wishlistHasItens: computed(
-        () => wishlist.value?.wishlistItems.length > 0
-      ),
       accountIcon,
       closeOrFocusSearchBar,
       cartTotalItems,
@@ -255,7 +249,6 @@ export default {
       searchBarRef,
       handleAccountClick,
       toggleCartSidebar,
-      toggleWishlistSidebar,
       toggleHamburguerMenu,
       changeSearchTerm,
       formatedResult,

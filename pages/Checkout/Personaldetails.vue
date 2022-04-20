@@ -4,7 +4,7 @@
       v-slot="{ handleSubmit, invalid }"
       ref="formRef"
     >
-      <div v-show="invalid" class="button-wrap">
+      <!-- <div v-show="invalid" class="button-wrap">
         <button
           class="color-primary sf-button login-btn"
           type="button"
@@ -14,7 +14,7 @@
         </button>
 
         <p>or fill the details below:</p>
-      </div>
+      </div> -->
       <SfHeading
         :level="3"
         :title="$t('Personal details')"
@@ -86,7 +86,7 @@
         label="Join newsletter"
       />
 
-      <p v-show="invalid" class="title">
+      <!-- <p v-show="invalid" class="title">
         Enjoy these perks with your free account!
       </p>
 
@@ -122,14 +122,14 @@
             :error-message="errors[0]"
           />
         </ValidationProvider>
-      </div>
+      </div> -->
       <div class="submit-button mb-5">
         <GreenButton
           type="Primary"
           color="Green"
           shape="Round"
           size="Medium"
-          class="mb-3 desktop-only"
+          class="my-5 desktop-only"
           :disabled="invalid || loading"
           :loading="loading"
           @click="handleSubmit(handleFormSubmit)"

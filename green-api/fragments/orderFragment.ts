@@ -2,6 +2,7 @@ const coreProductAttribs = `
   id
   name
   image
+  imageFilename
   description
   smallImage
   slug
