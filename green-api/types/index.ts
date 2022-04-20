@@ -23,6 +23,13 @@ export enum ButtonColor {
     Grey = 'Grey',
 }
 
+export interface CreateUpdatePartnerInput {
+    countryId?: string | number
+    name: string
+    email: string
+    phone: string
+}
+
 export interface CombinationInfo {
     product_id: number,
     product_template_id: number,

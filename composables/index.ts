@@ -7,6 +7,7 @@ import useCurrency from './useCurrency';
 import useUiStyleState from './useUiStyleState';
 import useCheckoutShipping from './useCheckoutShipping';
 import useCheckoutBilling from './useCheckoutBilling';
+import usePartner from './usePartner';
 
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
@@ -22,6 +23,7 @@ export {
   useCheckoutShipping,
   useCollectedProduct,
   useCheckoutBilling,
+  usePartner,
 
   facetGetters,
   productGetters,
