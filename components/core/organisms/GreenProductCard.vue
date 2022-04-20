@@ -7,7 +7,7 @@
       :image-width="imageWidth"
       :image-height="imageHeight"
       :title="productGetters.getName(product)"
-      :image="$image(productGetters.getCoverImage(product), imageWidth, imageHeight, productGetters.getName(product).trim())"
+      :image="$image(productGetters.getCoverImage(product), imageWidth, imageHeight, productGetters.getImageFilename(product))"
       :nuxt-img-config="{ fit: 'cover' }"
       image-tag="nuxt-img"
       :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"
@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { SfProductCard } from '@storefront-ui/vue';
-import { productGetters } from '@vue-storefront/odoo';
+import { productGetters } from '~/composables';
 import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
 import { GreenProduct } from '~/green-api/types';
 

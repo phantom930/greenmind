@@ -42,6 +42,7 @@ export interface CombinationInfoGrade {
 export interface GreenProduct extends Product {
     variantAttributeValues?: AttributeValue[],
     websiteSubtitle?: string
+    imageFilename?: string
     combinationInfo?: CombinationInfo
     combinationInfoGrade?: CombinationInfoGrade
     combinationInfoVariant?: CombinationInfo

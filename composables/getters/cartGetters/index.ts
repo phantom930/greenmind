@@ -4,6 +4,9 @@ import { GreenOrderLine, GreenCart } from '~/green-api/types';
 export const getItemTitle = (orderLine: GreenOrderLine): string =>
   orderLine?.product.name || 'Product name';
 
+export const getItemImageFilename = (orderLine: GreenOrderLine): string =>
+  orderLine?.product.imageFilename || 'Product filename';
+
 export const getItemWebsiteTitle = (orderLine: GreenOrderLine): string =>
   orderLine?.product?.websiteSubtitle || 'Subtitle';
 
@@ -36,7 +39,8 @@ const getters = {
   getTotalItems,
   getAccessories,
   getPrice,
-  accessoryIsInCart
+  accessoryIsInCart,
+  getItemImageFilename
 };
 
 export default getters;

@@ -8,6 +8,8 @@ const getAttributesValues = (product: GreenProduct) : AttributeValue[] => produc
 
 const getGrades = (product: GreenProduct) : CombinationInfo[] => product?.combinationInfoGrade?.grades;
 
+const getImageFilename = (product: GreenProduct) : string => product?.imageFilename || '';
+
 const getAttributesWithoutGrade = (product: GreenProduct) : AttributeValue[] =>
   product?.variantAttributeValues ?.filter(attribute => attribute?.attribute?.name !== 'Grade');
 
@@ -16,7 +18,8 @@ const getters = {
   getAccessoryProducts,
   getAttributesWithoutGrade,
   getAttributesValues,
-  getGrades
+  getGrades,
+  getImageFilename
 };
 
 export default getters;

@@ -9,7 +9,7 @@ const queryParamsNotFilters = ['page', 'sort', 'itemsPerPage'];
 const useUiHelpers = (): any => {
   const route = useRoute();
   const router = useRouter();
-  const { params, query } = route.value;
+  const { params, query, path } = route.value;
 
   const getFacetsFromURL = () => {
     let filters: string[] = [];
@@ -33,12 +33,12 @@ const useUiHelpers = (): any => {
       search: '',
       sort: { [sort[0]]: sort[1] },
       pageSize,
-      categorySlug: params.slug_1,
       currentPage: page,
       minPrice: price?.[0] || null,
       maxPrice: price?.[1] || null,
       fetchCategory: true,
       filter: {
+        categorySlug: path,
         categoryId,
         attribValues: filters
       }
