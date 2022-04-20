@@ -3,7 +3,6 @@
     <div class="layout">
       <SfHero
         class="top-hero"
-        style="z-index:2"
         :class="$device.isMobile ? 'mt-8' : null"
       >
         <SfHeroItem
@@ -12,7 +11,7 @@
           button-text="SE MERE3"
           :background="$device.isMobile ? '#668F72' : ''"
           :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-          style="background-size: contain; background-position-y: center"
+          style="background-size: contain; background-position-y: center;"
         >
           <template #call-to-action>
             <GreenButton

@@ -71,7 +71,6 @@ export default defineComponent({
 }
 ::v-deep .sf-button-call-to-action{
   transform: translate(0, 478%);
-  z-index: 2;
 }
 
 ::v-deep .sf-image--wrapper{

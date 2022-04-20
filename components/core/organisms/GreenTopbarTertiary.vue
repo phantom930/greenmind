@@ -276,9 +276,6 @@ export default {
 
 <style scoped>
 @import url("~/assets/css/greenTopbarTertiary.scss");
-.top-header {
-  z-index: 3;
-}
 
 ::v-deep .dropdown.iphones .sf-mega-menu__menu {
   justify-content: flex-start;

@@ -24,7 +24,9 @@
                 class="sf-mega-menu-column__header"
                 @click="megaMenu.changeActive(title)"
               >
-                <template #mobile-nav-icon> &#8203; </template>
+                <template #mobile-nav-icon>
+                  &#8203;
+                </template>
               </SfMenuItem>
             </template>
             <SfList v-if="categories.length">
@@ -46,48 +48,19 @@
                 :label="title"
                 class="sf-mega-menu-column__header search__header"
               >
-                <template #mobile-nav-icon> &#8203; </template>
+                <template #mobile-nav-icon>
+                  &#8203;
+                </template>
               </SfMenuItem>
             </template>
             <div class="results--desktop desktop-only">
               <div class="results-listing">
-                <SfProductCard
-                  v-for="(product, index) in products"
-                  :key="index"
-                  class="result-card"
-                  :regular-price="
-                    $currency(productGetters.getPrice(product).regular)
-                  "
-                  :special-price="
-                    productGetters.getPrice(product).special &&
-                    $currency(productGetters.getPrice(product).special)
-                  "
-                  :show-add-to-cart-button="true"
+                <LazyGreenProductCard
+                  v-for="product in products"
+                  :key="product.id"
+                  :product="product"
                   :image-width="216"
                   :image-height="288"
-                  :nuxt-img-config="{ fit: 'cover' }"
-                  image-tag="nuxt-img"
-                  :score-rating="productGetters.getAverageRating(product)"
-                  :reviews-count="7"
-                  :image="
-                    $image(
-                      productGetters.getCoverImage(product),
-                      442,
-                      664,
-                      productGetters.getName(product)
-                    )
-                  "
-                  :alt="productGetters.getName(product)"
-                  :title="productGetters.getName(product)"
-                  :link="localePath(goToProduct(product))"
-                  :is-in-wishlist="isInWishlist({ product })"
-                  @click:wishlist="
-                    isInWishlist({ product })
-                      ? removeItemFromWishList({ product: { product } })
-                      : addItemToWishlist({ product })
-                  "
-                  @click:add-to-cart="addItemToCart({ product, quantity: 1 })"
-                  @click="$emit('close')"
                 />
               </div>
               <div class="flex justify-end">
@@ -102,35 +75,12 @@
               </div>
             </div>
             <div class="results--mobile smartphone-only">
-              <SfProductCard
-                v-for="(product, index) in products"
-                :key="index"
-                class="result-card"
+              <LazyGreenProductCard
+                v-for="product in products"
+                :key="product.id"
+                :product="product"
                 :image-width="216"
                 :image-height="288"
-                :nuxt-img-config="{ fit: 'cover' }"
-                image-tag="nuxt-img"
-                :regular-price="
-                  $currency(productGetters.getPrice(product).regular)
-                "
-                :special-price="
-                  productGetters.getPrice(product).special &&
-                  $currency(productGetters.getPrice(product).special)
-                "
-                :score-rating="productGetters.getAverageRating(product)"
-                :reviews-count="7"
-                :image="$image(productGetters.getCoverImage(product))"
-                :alt="productGetters.getName(product)"
-                :title="productGetters.getName(product)"
-                :link="localePath(goToProduct(product))"
-                :show-add-to-cart-button="true"
-                :is-in-wishlist="isInWishlist({ product })"
-                @click:wishlist="
-                  isInWishlist({ product })
-                    ? removeItemFromWishList({ product: { product } })
-                    : addItemToWishlist({ product })
-                "
-                @click="$emit('close')"
               />
             </div>
           </SfMegaMenuColumn>
@@ -195,21 +145,13 @@
 import {
   SfMegaMenu,
   SfList,
-  SfBanner,
-  SfProductCard,
   SfScrollable,
   SfMenuItem,
   SfButton,
-  SfImage,
-  SfIcon
+  SfImage
 } from '@storefront-ui/vue';
 import { ref, watch, computed } from '@nuxtjs/composition-api';
-import {
-  productGetters,
-  categoryGetters,
-  useWishlist,
-  useCart
-} from '@vue-storefront/odoo';
+import { productGetters, categoryGetters, useCart } from '@vue-storefront/odoo';
 import { useUiHelpers } from '~/composables';
 
 export default {
@@ -217,8 +159,6 @@ export default {
   components: {
     SfMegaMenu,
     SfList,
-    SfBanner,
-    SfProductCard,
     SfScrollable,
     SfMenuItem,
     SfButton,
@@ -247,11 +187,6 @@ export default {
     const products = computed(() => props.result?.products);
 
     const categories = computed(() => props.result?.categories);
-    const {
-      addItem: addItemToWishlist,
-      removeItem: removeItemFromWishList,
-      isInWishlist
-    } = useWishlist();
 
     const { addItem: addItemToCart, isInCart } = useCart();
 
@@ -274,9 +209,6 @@ export default {
       }
     );
     return {
-      addItemToWishlist,
-      removeItemFromWishList,
-      isInWishlist,
       goToProduct,
       uiHelper,
       isSearchOpen,
@@ -297,130 +229,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.search {
-  position: absolute;
-  right: 0;
-  left: 0;
-  z-index: 7;
-  --mega-menu-column-header-margin: var(--spacer-sm) 0 var(--spacer-xl);
-  --mega-menu-content-padding: 0;
-  --mega-menu-height: auto;
-  @include for-desktop {
-    --mega-menu-content-padding: var(--spacer-xl) 0;
-  }
-  &__wrapper-results {
-    display: flex;
-    flex-direction: column;
-    @include for-desktop {
-      flex-direction: row;
-      flex: 1;
-    }
-  }
-  &__categories {
-    flex: 0 0 220px;
-  }
-  &__results {
-    flex: 1;
-  }
-  &__header {
-    margin-left: var(--spacer-sm);
-  }
-  ::v-deep .sf-bar {
-    display: none;
-  }
-  ::v-deep .sf-mega-menu-column__header {
-    display: none;
-    @include for-desktop {
-      display: flex;
-    }
-  }
-}
-.search_result {
-  font-size: 14px;
-  background: #32463d;
-  color: #fff;
-  font-weight: 500;
-  border-radius: 100px;
-  font-family: "Josefin Sans";
-  width: 100%;
-  padding-top: 20px;
-  @include for-desktop {
-    margin-bottom: 185px;
-    max-width: 267px;
-  }
-}
-.results {
-  &--mobile {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background: var(--c-white);
-    padding: var(--spacer-base) var(--spacer-sm);
-    --product-card-max-width: 9rem;
-  }
-}
-.see-all {
-  padding: var(--spacer-xl) 0 0 var(--spacer-sm);
-}
-.action-buttons {
-  padding: var(--spacer-xl) var(--spacer-sm) var(--spacer-3xl);
-  background: var(--c-white);
-  width: 100%;
-  &__button {
-    width: 100%;
-  }
-}
-.results-listing {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: var(--spacer-2xs);
-}
-.result-card {
-  margin: var(--spacer-sm) 0;
-  @include for-desktop {
-    margin: var(--spacer-2xs) 0;
-  }
-}
-.custom__text {
-  color: #0468db;
-  margin-top: 40px;
-}
-.custom__text:hover {
-  color: #5ece7b;
-}
-.before-results {
-  box-sizing: border-box;
-  padding: var(--spacer-base) var(--spacer-sm) var(--spacer-2xl);
-  width: 100%;
-  text-align: center;
-  @include for-desktop {
-    padding: 0;
-    height: 100vh;
-  }
-  &__picture {
-    --image-width: 230px;
-    margin-top: var(--spacer-2xl);
-    @include for-desktop {
-      --image-width: 18.75rem;
-      margin-top: var(--spacer-base);
-    }
-  }
-  &__paragraph {
-    font-family: var(--font-family--primary);
-    font-weight: var(--font-weight--normal);
-    font-size: var(--font-size--base);
-    color: var(--c-text-muted);
-    margin: 0;
-    @include for-desktop {
-      font-size: var(--font-size--lg);
-    }
-    &:first-of-type {
-      margin: var(--spacer-xl) auto var(--spacer-xs);
-    }
-  }
-  &__button {
-    margin: var(--spacer-xl) auto;
-    width: 100%;
-  }
-}
+@import '~/assets/css/searchResults.scss';
 </style>
