@@ -11,9 +11,9 @@ const validatePersonaDetails = (cart, app) => {
   if (cartIsEmpty(cart)) {
     app.context.redirect('/cart');
   }
-  if (isAuthenticated(app)) {
-    app.context.redirect('/checkout/shipping');
-  }
+  // if (isAuthenticated(app)) {
+  //   app.context.redirect('/checkout/shipping');
+  // }
 };
 
 const validateShipping = (cart, app) => {
@@ -21,9 +21,9 @@ const validateShipping = (cart, app) => {
     app.context.redirect('/cart');
   }
 
-  if (!isAuthenticated(app)) {
-    app.context.redirect('/checkout/personaldetails');
-  }
+  // if (!isAuthenticated(app)) {
+  //   app.context.redirect('/checkout/personaldetails');
+  // }
 };
 
 const validateReviewOrder = (cart, app) => {
