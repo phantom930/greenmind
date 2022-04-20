@@ -14,12 +14,13 @@ export function getRoutes(themeDir = __dirname) {
     },
     {
       name: 'category',
-      path: '/category/:slug_1/:slug_2?/:slug_3?/:slug_4?/:slug_5?',
-      component: path.resolve(themeDir, 'pages/Category.vue')
+      path: '/category/:slug_1+',
+      component: path.resolve(themeDir, 'pages/Category.vue'),
+      alias: ['/iphones', '/smartphones', '/computers', '/consoles', '/acessories'].map(alias => `${alias}/:slug_1+`)
     },
     {
       name: 'product',
-      path: '/:slug_1/:slug_2',
+      path: '/product/:slug_2',
       component: path.resolve(themeDir, 'pages/Product.vue')
     },
     {

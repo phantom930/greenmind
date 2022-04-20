@@ -21,7 +21,7 @@
         />
         <SfAccordion
           :multiple="false"
-          transition="sf-expand"
+          transition="sf-fade"
           :open="openedHeaders"
         >
           <template v-for="(facet, i) in facets">
@@ -45,12 +45,12 @@
                     v-if="isOpen"
                     :src="require('/assets/images/category/arrow-down.svg')"
                     class="pr-5"
-                  />
+                  >
                   <img
                     v-else
                     :src="require('/assets/images/category/arrow-up.svg')"
                     class="pr-3.5"
-                  />
+                  >
                 </div>
               </template>
               <div v-if="isFacetColor(facet)" class="flex flex-wrap">
