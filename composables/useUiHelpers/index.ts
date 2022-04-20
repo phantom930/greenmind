@@ -29,17 +29,6 @@ const useUiHelpers = (): any => {
     const page = query?.page || 1;
     const categoryId = parseInt(params.slug_2);
 
-    if (params.slug_1 === 'all-searh-result') {
-      return {
-        search: params.slug_2,
-        fetchCategory: true,
-        pageSize,
-        currentPage: page,
-        minPrice: price?.[0] || null,
-        maxPrice: price?.[1] || null
-      };
-    }
-
     return {
       search: '',
       sort: { [sort[0]]: sort[1] },
