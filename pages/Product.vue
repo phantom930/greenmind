@@ -43,7 +43,6 @@
             :product-variant-id="combinationInfo.product_id"
             @update="handleSelectNewGrade"
           />
-
           <ProductDescription />
 
           <div

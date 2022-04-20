@@ -4,12 +4,12 @@ import { CombinationInfo, GreenProduct } from '~/green-api/types';
 
 const getAccessoryProducts = (product: GreenProduct) : Product[] => product?.accessoryProducts || [];
 
-const getAttributesValues = (product: GreenProduct) : AttributeValue[] => product?.variantAttributeValues;
+const getAttributesValues = (product: GreenProduct) : AttributeValue[] => product?.variantAttributeValues || [];
 
 const getGrades = (product: GreenProduct) : CombinationInfo[] => product?.combinationInfoGrade?.grades;
 
 const getAttributesWithoutGrade = (product: GreenProduct) : AttributeValue[] =>
-  product?.variantAttributeValues ?.filter(attribute => attribute.attribute?.name !== 'Grade');
+  product?.variantAttributeValues ?.filter(attribute => attribute?.attribute?.name !== 'Grade');
 
 const getters = {
   ...productGetters,

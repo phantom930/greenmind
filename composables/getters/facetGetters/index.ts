@@ -7,7 +7,7 @@ export const getBreadcrumbsByProduct = (product: GreenProduct): AgnosticBreadcru
   const category = product.categories?.find((cat) => cat.name !== 'All');
 
   breadcrumbs.push({
-    text: category?.name || '',
+    text: `${product?.name || ''} ${product?.websiteSubtitle || ''}` || '',
     link: category?.slug || ''
   });
 
