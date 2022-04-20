@@ -145,18 +145,15 @@
         </SfButton>
       </div>
     </ValidationObserver>
-
-    <LoginModal @success="goToShipping" />
   </div>
 </template>
 
 <script >
-import { defineComponent, onMounted, ref, reactive } from '@nuxtjs/composition-api';
+import { defineComponent, onMounted, ref, reactive, watch } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading, SfInput } from '@storefront-ui/vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { useCart, useUser } from '@vue-storefront/odoo';
 import { useUiState, useUiNotification } from '~/composables';
-import LoginModal from '~/components/LoginModal.vue';
 
 export default defineComponent({
   name: 'Personaldetails',
@@ -165,14 +162,13 @@ export default defineComponent({
     SfInput,
     SfButton,
     ValidationProvider,
-    ValidationObserver,
-    LoginModal
+    ValidationObserver
   },
   emits: ['change'],
   setup(props, { root, emit }) {
 
     const { cart } = useCart();
-    const { register, loading, error } = useUser();
+    const { register, loading, error, isAuthenticated } = useUser();
     const { toggleLoginModal } = useUiState();
     const { send } = useUiNotification();
 
@@ -204,6 +200,13 @@ export default defineComponent({
 
       goToShipping();
     };
+
+    watch(
+      () => isAuthenticated.value,
+      (value) => {
+        if (value) goToShipping();
+      }
+    );
 
     onMounted(async () => {
       formRef.value.validate({ silent: true });

@@ -197,7 +197,7 @@ export default {
       return searchBarRef.value.$el.children[0].focus();
     };
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
-    const handleAccountClick = async () => {
+    const handleAccountClick = () => {
       if (isAuthenticated.value) {
         return root.$router.push('/Checkout');
       }
@@ -272,79 +272,5 @@ export default {
 </script>
 
 <style lang='scss' scoped >
-.sf-header {
-  --header-padding: var(--spacer-sm);
-  @include for-desktop {
-    --header-padding: 0;
-  }
-  &__logo-image {
-    height: 100%;
-    @include for-mobile {
-      display: none;
-    }
-  }
-  &__icons {
-    @include for-mobile {
-      display: none;
-    }
-  }
-}
-.header-on-top {
-  z-index: 2;
-}
-.nav-item {
-  --header-navigation-item-margin: 0 var(--spacer-base);
-  .sf-header-navigation-item__item--mobile {
-    display: none;
-  }
-}
-.cart-badge {
-  position: absolute;
-  bottom: 40%;
-  left: 40%;
-}
-
-::v-deep .sf-header-navigation-item__link {
-  font-size: 14px;
-  color: #43464e;
-  font-weight: 500;
-  margin: 0;
-}
-
-::v-deep .sf-search-bar {
-  // display: none;
-}
-::v-deep .sf-input {
-  --input-padding: 0 10px;
-}
-
-::v-deep .sf-header__action.list {
-  transform: rotate(180deg);
-}
-::v-deep .sf-header__actions {
-  z-index: 1;
-}
-::v-deep .sf-header__logo {
-  z-index: 2;
-}
-
-::v-deep .sf-header__navigation {
-  justify-content: space-between;
-  align-items: center;
-  max-width: 638px;
-  width: 100%;
-  margin-left: 0;
-}
-
-::v-deep .header-links {
-  column-gap: 15px;
-}
-
-::v-deep .sf-sidebar__aside {
-  z-index: var(--sidebar-z-index, 4);
-}
-
-::v-deep .sf-header__wrapper {
-  border-bottom: 1px solid #f1f2f3;
-}
+@import '~/assets/css/greenHeader.scss';
 </style>

@@ -1,7 +1,8 @@
 :root {
   --font-family--primary: "Josefin Sans"; 
   --line-height--primary: 24px;
-    
+  --overlay-z-index: 4;
+  --modal-index: 5;
   @include generate-color-variants(--_c-greenmind-primary-black, #1d1f22);
   @include generate-color-variants(--_c-greenmind-secondary-black, #43464E);
 
@@ -134,8 +135,6 @@ h4 {
   --footer-column-title-font-weight: 400;
   --footer-column-title-font-family: var(--font-family--primary);
 }
-
-
 
 .sf-carousel {
   --call-to-action-title-font: var(--font-family--primary);

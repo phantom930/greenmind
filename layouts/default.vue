@@ -18,6 +18,9 @@
     <HamburguerMenu />
     <WishlistSidebar />
     <Notification />
+    <LazyHydrate when-idle>
+      <LoginModal />
+    </LazyHydrate>
     <LazyHydrate when-visible>
       <GreenFooter />
     </LazyHydrate>
