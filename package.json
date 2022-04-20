@@ -50,6 +50,7 @@
     "nuxt-i18n": "^6.5.0",
     "nuxt-precompress": "^0.5.9",
     "redis-tag-cache": "^1.2.1",
+    "sanitize-html": "^2.7.0",
     "vee-validate": "^3.2.3",
     "vue-frag": "^1.4.0",
     "vue-scrollto": "^2.17.1"

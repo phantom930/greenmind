@@ -30,12 +30,13 @@
       </template>
       <template #header-icons>
         <div class="sf-header__icons">
-          <SfButton
+          <!-- temporary removed -->
+          <!-- <SfButton
             class="sf-button--pure sf-header__action"
             @click="handleAccountClick"
           >
             <SfIcon :icon="accountIcon" size="1.25rem" />
-          </SfButton>
+          </SfButton> -->
           <SfButton
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
@@ -89,6 +90,7 @@
       :search-loading="searchLoading"
       :result="formatedResult"
       @close="closeSearch"
+      @seeMore="handleSearchMore"
       @removeSearchResults="removeSearchResults"
     />
     <SfOverlay :visible="isSearchOpen" />
@@ -138,6 +140,7 @@ export default {
     const term = ref(null);
     const formatedResult = ref(null);
     const isSearchOpen = ref(false);
+    const searchSize = ref(12);
 
     const { changeSearchTerm } = useUiHelpers();
     const { toggleCartSidebar, toggleWishlistSidebar, toggleLoginModal, toggleHamburguerMenu } =
@@ -146,7 +149,7 @@ export default {
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { load: loadWishlist, wishlist } = useWishlist();
-    const { search: searchProductApi, result, loading: searchLoading } = useFacet('AppHeader:Search');
+    const { search, result, loading: searchLoading } = useFacet('AppHeader:Search');
 
     const isMobile = computed(() => mapMobileObserver().isMobile.get());
 
@@ -169,25 +172,38 @@ export default {
     };
 
     const handleSearch = debounce(async (paramValue) => {
-      if (!paramValue.target) {
+      if (!paramValue?.target) {
         term.value = paramValue;
       } else {
         term.value = paramValue.target.value;
       }
       if (term.value.length < 2) return;
-      await searchProductApi({
+
+      const customQueryProducts = {
+        getProductTemplatesList: 'greenGetProductList'
+      };
+
+      await search({
         search: term.value,
-        pageSize: 12,
+        pageSize: searchSize.value,
         currentPage: 1,
-        fetchCategory: true
+        fetchCategory: true,
+        customQueryProducts
       });
       formatedResult.value = {
+        total: result?.value?.data?.totalProducts,
         products: result?.value?.data?.products,
         categories: result?.value?.data?.categories
           .filter((category) => category.childs === null)
           .map((category) => categoryGetters.getTree(category))
       };
     }, 100);
+
+    const handleSearchMore = async () => {
+      searchSize.value += 12;
+      await handleSearch(term.value);
+    };
+
     const closeOrFocusSearchBar = () => {
       if (isMobile.value) {
         return closeSearch();
@@ -245,6 +261,7 @@ export default {
       formatedResult,
       term,
       isMobile,
+      handleSearchMore,
       handleSearch,
       closeSearch,
       searchLoading

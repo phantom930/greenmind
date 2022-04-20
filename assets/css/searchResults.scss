@@ -18,6 +18,7 @@
       }
     }
     &__categories {
+      
       flex: 0 0 220px;
     }
     &__results {
@@ -33,6 +34,7 @@
       display: none;
       @include for-desktop {
         display: flex;
+        align-items: baseline;
       }
     }
   }
@@ -123,4 +125,23 @@
       margin: var(--spacer-xl) auto;
       width: 100%;
     }
+  }
+  ::v-deep .sf-mega-menu-column__header .sf-menu-item__label  {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 29px;
+    font-style: normal;
+    text-transform: lowercase;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  ::v-deep .sf-menu-item  {
+    font-family: var(--font-family--primary);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
   }

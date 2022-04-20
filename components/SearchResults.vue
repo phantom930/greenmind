@@ -35,7 +35,11 @@
                   :label="category.label"
                   :link="uiHelper.getCatLinkForSearch(category)"
                   icon="chevron_right"
-                />
+                >
+                  <template #label>
+                    <div v-html="higthlightText(category.label)" />
+                  </template>
+                </SfMenuItem>
               </SfListItem>
             </SfList>
           </SfMegaMenuColumn>
@@ -51,6 +55,9 @@
                 <template #mobile-nav-icon>
                   &#8203;
                 </template>
+                <template #count>
+                  <span style="margin-left: 45%">Total results: {{ result.total }}</span>
+                </template>
               </SfMenuItem>
             </template>
             <div class="results--desktop desktop-only">
@@ -59,19 +66,17 @@
                   v-for="product in products"
                   :key="product.id"
                   :product="product"
-                  :image-width="216"
-                  :image-height="288"
+                  :image-width="$device.isMobile ? 125 : 216"
+                  :image-height="$device.isMobile ? 171 : 288"
                 />
               </div>
               <div class="flex justify-end">
-                <nuxt-link :to="'/category/all-searh-result/' + term">
-                  <SfButton
-                    class="color-primary sf-button search_result mt-4"
-                    @click="$emit('close')"
-                  >
-                    {{ $t("See all results") }}
-                  </SfButton>
-                </nuxt-link>
+                <SfButton
+                  class="color-primary sf-button search_result"
+                  @click="$emit('seeMore')"
+                >
+                  {{ $t("See More") }}
+                </SfButton>
               </div>
             </div>
             <div class="results--mobile smartphone-only">
@@ -79,20 +84,18 @@
                 v-for="product in products"
                 :key="product.id"
                 :product="product"
-                :image-width="216"
-                :image-height="288"
+                :image-width="$device.isMobile ? 125 : 216"
+                :image-height="$device.isMobile ? 171 : 288"
               />
             </div>
           </SfMegaMenuColumn>
           <div class="action-buttons smartphone-only">
-            <nuxt-link :to="'/category/all-searh-result/' + term">
-              <SfButton
-                class="color-primary sf-button search_result"
-                @click="$emit('close')"
-              >
-                {{ $t("See all results") }}
-              </SfButton>
-            </nuxt-link>
+            <SfButton
+              class="color-primary sf-button search_result"
+              @click="$emit('seeMore')"
+            >
+              {{ $t("See More") }}
+            </SfButton>
             <SfButton
               class="color-primary sf-button search_result mt-4"
               @click="$emit('close')"
@@ -145,7 +148,6 @@
 import {
   SfMegaMenu,
   SfList,
-  SfScrollable,
   SfMenuItem,
   SfButton,
   SfImage
@@ -153,13 +155,13 @@ import {
 import { ref, watch, computed } from '@nuxtjs/composition-api';
 import { productGetters, categoryGetters, useCart } from '@vue-storefront/odoo';
 import { useUiHelpers } from '~/composables';
+import sanitizeHtml from 'sanitize-html';
 
 export default {
   name: 'SearchResults',
   components: {
     SfMegaMenu,
     SfList,
-    SfScrollable,
     SfMenuItem,
     SfButton,
     SfImage
@@ -181,6 +183,7 @@ export default {
       type: Boolean
     }
   },
+  emits: ['seeMore', 'close'],
   setup(props, { emit, root }) {
     const uiHelper = useUiHelpers();
     const isSearchOpen = ref(props.visible);
@@ -190,10 +193,11 @@ export default {
 
     const { addItem: addItemToCart, isInCart } = useCart();
 
-    const goToProduct = (product) => {
-      return `${productGetters.getSlug(
-        product
-      )}`;
+    const higthlightText = (text) => {
+      const cleanText = sanitizeHtml(text);
+      const reg = new RegExp(`(${props.term})`, 'gi');
+
+      return cleanText.replace(reg, '<span class="text-fern-secondary">$&</span>');
     };
 
     watch(
@@ -209,7 +213,6 @@ export default {
       }
     );
     return {
-      goToProduct,
       uiHelper,
       isSearchOpen,
       categoryGetters,
@@ -217,7 +220,8 @@ export default {
       products,
       categories,
       addItemToCart,
-      isInCart
+      isInCart,
+      higthlightText
     };
   },
   watch: {
