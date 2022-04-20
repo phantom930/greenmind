@@ -7,7 +7,6 @@
 
 <script>
 import { SfRange } from '@storefront-ui/vue';
-import { useCurrency } from '~/composables';
 import { computed } from '@nuxtjs/composition-api';
 export default {
   components: {
@@ -24,8 +23,7 @@ export default {
     }
   },
   emits: ['change'],
-  setup(props) {
-    const { formatDolar } = useCurrency();
+  setup(props, { root }) {
 
     const config = computed(() => ({
       start: props.initialPrice,
@@ -38,7 +36,7 @@ export default {
       tooltips: true,
       keyboardSupport: true,
       format: {
-        to: (value) => formatDolar(value),
+        to: (value) => root.$currency(value),
         from: (value) => value
       }
     }));

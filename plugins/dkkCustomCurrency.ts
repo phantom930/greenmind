@@ -15,7 +15,7 @@ declare module '@nuxt/types' {
 }
 const dkkCustomCurrency: Plugin = (context, inject) => {
   inject('currency', (value: number | string) => {
-    return `${currency(value, { separator: ',', symbol: '', decimal: '.', precision: 0}).format()},-`;
+    return `${currency(value, { separator: '.', symbol: '', decimal: '.', precision: 0}).format()},-`;
   });
 };
 
