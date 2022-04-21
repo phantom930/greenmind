@@ -79,7 +79,6 @@
       </form>
 
       <GreenCheckbox
-        v-show="invalid"
         v-model="newsLetter"
         :value="newsLetter"
         :has-general-wrapper="false"
@@ -153,7 +152,7 @@ import { defineComponent, onMounted, ref, reactive, watch } from '@nuxtjs/compos
 import { SfButton, SfHeading, SfInput } from '@storefront-ui/vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { useCart, useUser } from '@vue-storefront/odoo';
-import { useUiState, useUiNotification } from '~/composables';
+import { useUiState, useUiNotification, usePartner } from '~/composables';
 
 export default defineComponent({
   name: 'Personaldetails',
@@ -168,9 +167,10 @@ export default defineComponent({
   setup(props, { root, emit }) {
 
     const { cart } = useCart();
-    const { register, loading, error, isAuthenticated } = useUser();
+    const { register, isAuthenticated } = useUser();
     const { toggleLoginModal } = useUiState();
     const { send } = useUiNotification();
+    const { createUpdatePartner, error, loading } = usePartner();
 
     const isFormSubmitted = ref(false);
     const formRef = ref(false);
@@ -184,17 +184,25 @@ export default defineComponent({
       email: null
     });
 
+    const loadUser = () => {
+      if (cart.value.order?.partner) {
+        form.email = cart.value.order?.partner.email;
+        form.firstName = cart.value.order?.partner?.name?.split(' ')[0];
+        form.lastName = cart.value.order?.partner?.name?.split(' ')[1];
+      }
+    };
+
     const goToShipping = () => emit('change', 'shipping');
 
     const handleFormSubmit = async () => {
-      if (wantRegister.value) {
-        await register({ user: { ...form, name: `${form.firstName} ${form.lastName}`} });
-      } else {
-        //
-      }
+      // if (wantRegister.value) {
+      await createUpdatePartner({ email: form.email, subscribeNewsletter: newsLetter.value, name: `${form.firstName} ${form.lastName}` });
+      // } else {
+      //
+      // }
 
-      if (error.value.register) {
-        send({ message: error?.value?.register?.message, type: 'danger' });
+      if (error.value) {
+        send({ message: error?.value?.message, type: 'danger' });
         return;
       }
 
@@ -209,6 +217,7 @@ export default defineComponent({
     );
 
     onMounted(async () => {
+      loadUser();
       formRef.value.validate({ silent: true });
     });
 

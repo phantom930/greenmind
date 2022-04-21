@@ -24,10 +24,9 @@ export enum ButtonColor {
 }
 
 export interface CreateUpdatePartnerInput {
-    countryId?: string | number
+    subscribeNewsletter?: boolean
     name: string
     email: string
-    phone: string
 }
 
 export interface CombinationInfo {
