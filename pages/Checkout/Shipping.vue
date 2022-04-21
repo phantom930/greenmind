@@ -226,6 +226,8 @@ export default defineComponent({
 
     onSSR(async () => {
       await search();
+      await loadBilling();
+      await loadShipping();
       await loadUserShipping();
       await loadUserBilling();
 
