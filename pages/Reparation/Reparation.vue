@@ -1,3 +1,3 @@
 <template>
-  <h1>Main reparation page</h1>
+  <h1>Reparation page</h1>
 </template>

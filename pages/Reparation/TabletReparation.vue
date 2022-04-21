@@ -1,3 +1,3 @@
 <template>
-  <h1>Tablet Reparation Main page</h1>
+  <h1>Tablet Reparation page</h1>
 </template>

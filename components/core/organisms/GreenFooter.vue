@@ -157,15 +157,15 @@ export default {
           childs: [
             {
               name: 'Why choose Greenmind?',
-              slug: '/hvorfor-greenmind'
+              slug: '/why-greenmind'
             },
             {
               name: 'How do you sell?',
-              slug: '/saelg-til-os'
+              slug: '/sell-to-us'
             },
             {
               name: 'How to buy?',
-              slug: '/saadan-koeber-du'
+              slug: '/how-to-buy'
             },
             {
               name: 'Reparation',
@@ -182,15 +182,15 @@ export default {
           childs: [
             {
               name: 'Customer service',
-              slug: '/kundeservice'
+              slug: '/customer-service'
             },
             {
               name: 'Shipping and returns',
-              slug: '/fragt-retur'
+              slug: '/freight-return'
             },
             {
               name: 'Terms of trade',
-              slug: '/handelsbetingelser'
+              slug: '/terms-of-trade'
             },
             {
               name: 'GDPR',
@@ -216,7 +216,7 @@ export default {
           childs: [
             {
               name: 'Find store',
-              slug: '/butiker'
+              slug: '/shops'
             }
           ]
         }

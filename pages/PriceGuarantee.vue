@@ -1,3 +1,3 @@
 <template>
-  <h1>Price Guarantee page</h1>
+  <h1>Price Guarantee page - Prisgaranti</h1>
 </template>

@@ -265,7 +265,7 @@ export default {
       sbCategories: [
         {
           name: 'SÆLG TIL OS',
-          slug: 'saelg-til-os'
+          slug: 'sell-to-us'
         },
         {
           name: 'REPARATION',
@@ -273,7 +273,7 @@ export default {
         },
         {
           name: 'FIND BUTIK',
-          slug: 'find-butik'
+          slug: 'shops'
         }
       ]
     };

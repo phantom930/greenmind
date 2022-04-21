@@ -1,3 +1,3 @@
 <template>
-  <h1>Standbeskrivelser</h1>
+  <h1>Stand Descriptions Page - Standbeskrivelser</h1>
 </template>

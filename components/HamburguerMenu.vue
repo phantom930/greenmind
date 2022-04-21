@@ -5,7 +5,7 @@
       class="sf-sidebar--right"
       @close="toggleHamburguerMenu"
     >
-      <nuxt-link to="/kundeservice">
+      <nuxt-link to="/customer-service">
         <SfButton
           style="margin-top: 15%;"
           class="sf-button_hamburguer_item"
@@ -19,7 +19,7 @@
           {{ $t('Customer Service') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/saelg-til-os">
+      <nuxt-link to="/sell-to-us">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -45,7 +45,7 @@
           {{ $t('Reparation') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/butiker">
+      <nuxt-link to="/shops">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -58,7 +58,7 @@
           {{ $t('Find store') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/om-os">
+      <nuxt-link to="/about-us">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
