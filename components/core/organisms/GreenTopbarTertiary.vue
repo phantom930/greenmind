@@ -20,7 +20,7 @@
                   <nuxt-link to="/iphones/iphone13-pro">
                     <SfListItem><SfMenuItem label="iPhone 13 Pro" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/category/iphones-13/3260 ">
+                  <nuxt-link to="/category/cell-phones-iphones-iphone-13-iphone-13-3261">
                     <SfListItem><SfMenuItem label="iPhone 13" /></SfListItem>
                   </nuxt-link>
                   <nuxt-link to="/iphones/iphone13-mini">
@@ -63,7 +63,7 @@
             >
               <SfMegaMenuColumn title="Samsung Galaxy">
                 <SfList>
-                  <nuxt-link to="/smartphones/galaxy-s-series">
+                  <nuxt-link to="/category/cell-phones-smartphones-samsung-galaxy-3293">
                     <SfListItem><SfMenuItem label="Galaxy S Series" /></SfListItem>
                   </nuxt-link>
                   <nuxt-link to="/smartphones/galaxy-z-series">
