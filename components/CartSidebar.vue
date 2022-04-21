@@ -155,5 +155,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/css/cart.scss';
+@import '~/assets/css/cartSidebar.scss';
 </style>

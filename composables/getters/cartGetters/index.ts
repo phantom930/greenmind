@@ -2,10 +2,10 @@ import { cartGetters } from '@vue-storefront/odoo';
 import { GreenOrderLine, GreenCart } from '~/green-api/types';
 
 export const getItemTitle = (orderLine: GreenOrderLine): string =>
-  orderLine?.product.name || 'Product name';
+  orderLine?.product?.name || 'Product name';
 
 export const getItemImageFilename = (orderLine: GreenOrderLine): string =>
-  orderLine?.product.imageFilename || 'Product filename';
+  orderLine?.product?.imageFilename || 'Product filename';
 
 export const getItemWebsiteTitle = (orderLine: GreenOrderLine): string =>
   orderLine?.product?.websiteSubtitle || 'Subtitle';

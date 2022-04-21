@@ -10,7 +10,7 @@ export function getRoutes(themeDir = __dirname) {
     {
       name: 'cart',
       path: '/cart',
-      component: path.resolve(themeDir, 'pages/Cart/DetailedCart.vue')
+      component: path.resolve(themeDir, 'pages/Cart/Cart.vue')
     },
     {
       name: 'category',

@@ -1,183 +1,132 @@
 <template>
-  <SfCollectedProduct
-    :key="cartGetters.getItemSku(product)"
-    data-cy="collected-product-cart-sidebar"
-    :image="$image(cartGetters.getItemImage(product))"
-    :title="cartGetters.getItemName(product)"
-    :regular-price="$currency(cartGetters.getItemPrice(product).regular)"
-    :special-price="
-      cartGetters.getItemPrice(product).special &&
-        $currency(cartGetters.getItemPrice(product).special)
-    "
-    :stock="99999"
-    :qty="cartGetters.getItemQty(product)"
-    :currency="currency"
-    :checkbox-title="checkboxTitle"
-    class="collected-product"
-    @input="updateItemQty({ product, quantity: $event })"
-    @click:remove="removeItem({ product })"
-  >
-    <div slot="price">
-      <div class="collected_product_checkbox_wrapper">
-        <span class="green-collected-product__checkbox-title">
-          {{ checkboxTitle }}
-        </span>
-        <GreenCheckbox
-          v-for="accessoryProducts in product.accessoryProducts"
-          :key="accessoryProducts.id"
-          :value="accessoryProducts.id"
-          :title="accessoryProducts.name"
-          :price="accessoryProducts.price"
+  <div class="flex gap-10 justify-between">
+    <SfCollectedProduct
+      :key="cartGetters.getItemSku(orderLine)"
+      data-cy="collected-product-cart-sidebar"
+      :image="$image(cartGetters.getItemImage(orderLine), 140, 200, cartGetters.getItemImageFilename(orderLine))"
+      :title="cartGetters.getItemTitle(orderLine)"
+      :regular-price="$currency(cartGetters.getItemPrice(orderLine).regular)"
+      :image-width="140"
+      :image-height="200"
+      :special-price="
+        cartGetters.getItemPrice(orderLine).special &&
+          $currency(cartGetters.getItemPrice(orderLine).special)
+      "
+      :stock="99999"
+      :qty="cartGetters.getItemQty(orderLine)"
+      class="collected-product"
+      @input="handleUpdateItem(orderLine, $event)"
+      @click:remove="handleRemoveItemAndAccessories(orderLine)"
+    >
+      <template #title>
+        <span class="custom-product-title"> {{ cartGetters.getItemTitle(orderLine) }} </span>
+        <span class="custom-subtitle"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
+        <span class="custom-stand"> Stand: Meget flat </span>
+
+        <SfQuantitySelector
+          v-model="inputValue"
+          :disabled="disabled"
+          :min="min"
+          :max="max"
+          aria-label="Quantity"
+          :class="classes"
+          @blur="blur"
         />
-      </div>
-      <span class="green-collected-product__price">
-        {{ $currency(cartGetters.getItemPrice(product).regular) + " " + currency }}
+      </template>
+
+      <template #remove>
+        <div />
+      </template>
+      <template #price>
+        <div />
+      </template>
+      <template #configuration>
+        <div />
+      </template>
+      <template #input>
+        <div />
+      </template>
+      <template #actions>
+        <div />
+      </template>
+    </SfCollectedProduct>
+
+    <div>
+      <span v-if="accessoryProducts.length > 0" class="green-collected-product__checkbox-title mb-1">
+        {{ $t('Acquisition') }}
+      </span>
+
+      <GreenCheckbox
+        v-for="acessoryProduct in accessoryProducts"
+        :key="acessoryProduct.id"
+        :value="acessoryProduct.id"
+        :disabled="loading"
+        :title="acessoryProduct.name"
+        :price="$currency(acessoryProduct.price)"
+        :is-checked="accessoryIsInCart(acessoryProduct.id)"
+        @change="handleAddOrRemoveAccessory(orderLine.product.id, acessoryProduct.id)"
+      />
+    </div>
+
+    <div class="grid">
+      <span class="custom-edit-remove-text">
+        REMOVE
+      </span>
+      <span class="self-end custom-price">
+        {{ $currency(getPrice(orderLine)) }}
       </span>
     </div>
-    <div slot="remove">
-      <SfButton
-        class="
-            sf-button--text
-            sf-collected-product__remove sf-collected-product__remove--text
-          "
-        data-testid="collected-product-desktop-remove"
-        style="cursor: pointer"
-        @click="removeItem({ product })"
-      >
-        Remove
-      </SfButton>
-      <SfButton
-        class="
-            sf-button--text
-            sf-collected-product__remove sf-collected-product__remove--text
-          "
-        data-testid="collected-product-desktop-remove"
-        style="cursor: pointer; margin-top: 3%"
-      >
-        Edit
-      </SfButton>
-    </div>
-    <template #configuration>
-      <div class="collected-product__properties">
-        <SfProperty
-          v-for="(attribute, key) in cartGetters.getItemAttributes(product, [
-            'color',
-            'size',
-          ])"
-          :key="key"
-          :name="key"
-          :value="attribute"
-        />
-      </div>
-    </template>
-  </SfCollectedProduct>
+  </div>
 </template>
 
-<script>
-import { SfCollectedProduct, SfProperty, SfButton } from '@storefront-ui/vue';
-import { useCart, cartGetters } from '@vue-storefront/odoo';
-import { defineComponent } from '@vue/composition-api';
+<script lang="ts">
+import { SfCollectedProduct, SfButton, SfQuantitySelector } from '@storefront-ui/vue';
+import { cartGetters, useCollectedProduct } from '~/composables';
+import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
+import { GreenOrderLine } from '~/green-api/types';
 
 export default defineComponent({
   components: {
     SfCollectedProduct,
-    SfProperty,
+    SfQuantitySelector,
     SfButton
   },
   props: {
-    product: {
-      type: Object,
+    orderLine: {
+      type: Object as PropType<GreenOrderLine>,
       default: () => ({})
-    },
-    currency: {
-      type: String,
-      default: ',-'
     },
     checkboxTitle: {
       type: String,
       default: ''
     }
   },
-  setup() {
-    const { removeItem, updateItemQty } = useCart();
+  setup(props) {
+    const {
+      handleRemoveItemAndAccessories,
+      handleAddOrRemoveAccessory,
+      handleUpdateItem,
+      accessoryIsInCart,
+      getPrice,
+      loading
+    } = useCollectedProduct();
+
+    const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts || []);
+
     return {
+      loading,
+      accessoryIsInCart,
+      handleAddOrRemoveAccessory,
+      accessoryProducts,
       cartGetters,
-      removeItem,
-      updateItemQty
+      getPrice,
+      handleRemoveItemAndAccessories,
+      handleUpdateItem
     };
   }
 });
 </script>
 
-<style scoped>
-::v-deep .description-wrap {
-  margin-left: 0 !important;
-}
-::v-deep .product-title {
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  color: var(--_c-greenmind-primary-grey) !important;
-  margin-right: 20px !important;
-  line-height: 20px !important;
-}
-::v-deep .sf-checkbox__checkmark {
-  width: 24px !important;
-  height: 24px !important;
-  margin-right: 2% !important;
-}
-::v-deep .price {
-  font-size: 16px !important;
-  font-weight: 500 !important;
-  color: var(--_c-greenmind-fern-primary-medium-green) !important;
-  position: inherit !important;
-  line-height: 20px !important;
-}
-::v-deep .general_wrapper {
-  display: flex;
-  width: 125%;
-}
-.green-collected-product__price {
-  position: absolute;
-  right: 0;
-  bottom: 35px;
-  font-family: var(--font-family--primary);
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--_c-greenmind-primary-black);
-}
-::v-deep .sf-collected-product__aside {
-  display: inline-flex;
-  flex: 0.5 0 4rem;
-}
-::v-deep .sf-collected-product__configuration {
-  display: none;
-}
-::v-deep .sf-image {
-  height: 100%;
-}
-::v-deep .sf-collected-product__details {
-  flex: 2;
-}
-::v-deep .sf-collected-product__title-wraper {
-  transform: translate(-130%, 0%);
-  width: 25%;
-}
-.green-collected-product__checkbox-title {
-  font-size: 18px;
-  color: var(--_c-greenmind-primary-black);
-  font-weight: 400;
-}
-::v-deep .img-description-wrap {
-  padding-left: 0% !important;
-}
-::v-deep .collected_product_checkbox_wrapper {
-  transform: translate(0%, -50%);
-}
-::v-deep .sf-collected-product__remove--text {
-  font-family: var(--font-family--primary);
-  color: var(--_c-greenmind-primary-grey);
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
+<style scoped lang="scss">
+@import '~/assets/css/detailedCollectedProduct.scss'
 </style>

@@ -3,7 +3,7 @@
     :key="cartGetters.getItemSku(orderLine)"
     data-cy="collected-product-cart-sidebar"
     :image="$image(cartGetters.getItemImage(orderLine), 140, 236, cartGetters.getItemImageFilename(orderLine))"
-    :title="cartGetters.getItemName(orderLine)"
+    :title="cartGetters.getItemTitle(orderLine)"
     :regular-price="$currency(cartGetters.getItemPrice(orderLine).regular)"
     :image-width="140"
     :image-height="236"
@@ -32,7 +32,7 @@
       </span>
 
       <div class="mt-3">
-        <span class="green-collected-product__checkbox-title mb-1">
+        <span v-if="accessoryProducts.length >0" class="green-collected-product__checkbox-title mb-1">
           {{ $t('Acquisition') }}
         </span>
 
@@ -77,7 +77,7 @@ export default defineComponent({
       loading
     } = useCollectedProduct();
 
-    const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts);
+    const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts || []);
 
     return {
       loading,
