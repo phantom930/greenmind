@@ -5,19 +5,14 @@ import { useShipping, useUserShipping } from '@vue-storefront/odoo';
 const useCheckoutShipping = (): any => {
 
   const { load: loadShipping, shipping, save, loading } = useShipping();
-  const {
-    shipping: userShipping,
-    load: loadUserShipping,
-    setDefaultAddress: setDefaultShippingAddress,
-    loading: loadingUserShipping
-  } = useUserShipping();
+  const { shipping: userShipping, load: loadUserShipping, setDefaultAddress: setDefaultShippingAddress, loading: loadingUserShipping } = useUserShipping();
 
   const defaultShippingAddress = ref(false);
-  const canAddNewAddress = ref(false);
+  const canAddNewAddress = ssrRef(false, 'canAddNewAddress');
   const newCurrentShippingAddressId = ref(null);
 
   const hasSavedShippingAddress = computed(() => {
-    return Boolean(shipping.value);
+    return Boolean(shipping.value) && !shipping.value?.name?.includes('Public');
   });
 
   const currentAddressId = computed(() => shipping.value?.id);
@@ -37,7 +32,7 @@ const useCheckoutShipping = (): any => {
         type: 'Shipping'
       },
       shippingDetails: null,
-      customQuery: { shippingAddAdress: 'greenAddAddress' }
+      customQuery: { shippingAddAdress: 'greenAddAddress', shippingUpdateAddress: 'greenUpdateAddress' }
     });
 
     await loadShipping();
@@ -46,8 +41,10 @@ const useCheckoutShipping = (): any => {
   };
 
   const handleSetCurrentShippingAddress = (address) => {
+    canAddNewAddress.value = true;
     newCurrentShippingAddressId.value = address.id;
   };
+
   return {
     newCurrentShippingAddressId,
     handleSetCurrentShippingAddress,
@@ -61,7 +58,8 @@ const useCheckoutShipping = (): any => {
     loadShipping,
     loadUserShipping,
     loadingShipping,
-    userShipping
+    userShipping,
+    shipping
   };
 };
 

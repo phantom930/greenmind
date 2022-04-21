@@ -8,7 +8,6 @@
       <SfAddress
         v-for="address in addresses"
         :key="address.id"
-        :name="String(address.id)"
       >
         <UserAddress :address="address" />
         <template #icon>
@@ -20,7 +19,7 @@
         </template>
       </SfAddress>
     </SfAddressPicker>
-    <SfCheckbox
+    <!-- <SfCheckbox
       v-show="currentAddressId && addresses.length > 1"
       v-model="defaultAddress"
       :selected="`${value}`"
@@ -28,7 +27,7 @@
       label="Use this address as my default one."
       class="shipping__setAsDefault my-10"
       @change="$emit('input', defaultAddress)"
-    />
+    /> -->
   </div>
 </template>
 
@@ -51,26 +50,28 @@ export default defineComponent({
     addresses: {
       type: [Array, Object],
       default: () => []
-    },
-    value: {
-      type: Boolean,
-      required: true
     }
+    // value: {
+    //   type: Boolean,
+    //   required: true
+    // }
   },
   emits: ['input', 'set-current-address'],
   setup(props, { emit }) {
-    const defaultAddress = ref(props.value);
+    // /const defaultAddress = ref(props.value);
 
     const setCurrentAddress = (addressId) => {
       const selectedAddress = props.addresses?.filter(
         (item) => item.id === Number.parseInt(addressId)
       );
 
+      console.log(selectedAddress);
+
       emit('set-current-address', selectedAddress?.[0] || {});
     };
 
     return {
-      defaultAddress,
+      // defaultAddress,
       setCurrentAddress,
       userShippingGetters
     };

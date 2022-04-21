@@ -155,9 +155,15 @@ module.exports = {
                     }
                     alternativeProducts{
                       id
-                      name
                       websiteSubtitle
+                      smallImage
                       price
+                      name
+                      description
+                      image
+                      imageFilename
+                      slug
+                      combinationInfoVariant
                     }
                     accessoryProducts{
                         id
@@ -297,6 +303,29 @@ module.exports = {
     mutation: gql `
     mutation addAddress($name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $zip: String!, $type: AddressEnum! ) {
       addAddress(type: $type, address: {name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, zip: $zip}) {
+        id
+        name 
+        street
+        street2
+        city
+        state
+        {
+          id
+        }
+        country
+        {
+          id
+        }
+        email
+        phone
+      }
+    }`
+  }),
+  greenUpdateAddress: ({variables}) => ({
+    variables,
+    mutation: gql `
+    mutation updateAddress($id: Int!, $name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $zip: String!) {
+      updateAddress( address: {id: $id,name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, zip: $zip}) {
         id
         name 
         street

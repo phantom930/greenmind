@@ -7,15 +7,15 @@
     />
 
     <CheckoutUserShippingAddresses
-      v-show=" showShippingAddresses "
-      v-model="defaultShippingAddress"
+      v-show="showShippingAddresses"
+      key="shipping"
       :current-address-id="currentAddressId || ''"
       :addresses="userShipping"
       @set-current-address="handleSetCurrentShippingAddress"
     />
 
     <GreenButton
-      v-show="!canAddNewAddress"
+      v-show="!canAddNewAddress && !hasSavedShippingAddress"
       type="Tertiary"
       color="Grey"
       shape="Round"
@@ -37,6 +37,7 @@
       v-if="canAddNewAddress"
       :loading="loadingShipping"
       :countries="countries"
+      :current-address-data="userShipping[0]"
       class="mb-5"
       @submit="addNewAddres"
     />
@@ -53,8 +54,8 @@
     />
 
     <CheckoutUserShippingAddresses
-      v-show="showBillingAdresses"
-      v-model="defaultBillingAddress"
+      v-show="showBillingAddresses"
+      key="billing"
       :current-address-id="currentBillingAddressId || ''"
       :addresses="userBilling"
       @set-current-address="handleSetCurrentBillingAddress"
@@ -64,12 +65,13 @@
       v-if="canAddNewBillingAddress"
       :loading="loadingBilling"
       :countries="countries"
+      :current-address-data="userBilling[0]"
       class="mb-5"
       @submit="handleAddNewBillingAddress"
     />
 
     <GreenButton
-      v-show="!canAddNewBillingAddress"
+      v-show="!canAddNewBillingAddress && !hasSavedBillingAddress"
       type="Tertiary"
       color="Grey"
       shape="Round"
@@ -136,7 +138,7 @@ export default defineComponent({
   },
   emits: ['finish', 'change'],
   setup(_, { emit }) {
-    const { cart } = useCart();
+    const { cart, load: loadCart } = useCart();
     const { search, countries } = useCountrySearch('countries');
     const { isAuthenticated } = useUser();
 
@@ -154,6 +156,7 @@ export default defineComponent({
       currentAddressId,
       setDefaultShippingAddress,
       loadShipping,
+      shipping,
       loadUserShipping,
       loadingShipping,
       userShipping,
@@ -161,11 +164,14 @@ export default defineComponent({
       newCurrentShippingAddressId
     } = useCheckoutShipping();
 
+    const hasSavedShippingAddressDifferentPartnerData = computed(() =>
+      hasSavedShippingAddress.value && shipping.value.id !== cart.value.order?.partner?.id);
+
     const {
       defaultBillingAddress,
       canAddNewBillingAddress,
       hasSavedBillingAddress,
-      showBillingAdresses,
+      showBillingAddresses,
       handleAddNewBillingAddress,
       currentBillingAddressId,
       setDefaultBillingAddress,
@@ -174,14 +180,19 @@ export default defineComponent({
       loadUserBilling,
       loadingBilling,
       userBilling,
+      billing,
       handleSetCurrentBillingAddress
     } = useCheckoutBilling();
 
+    const hasSavedBillingAddressDifferentPartnerData = computed(() =>
+      hasSavedBillingAddress.value && billing.value.id !== cart.value.order?.partner?.id);
+
     const addNewAddres = async (form) => {
-      await handleAddNewAddress(form);
-      if (copyShippingToBilling.value) {
-        handleAddNewBillingAddress(form);
+      if (copyShippingToBilling.value && !hasSavedShippingAddress.value) {
+        await handleAddNewBillingAddress(form);
       }
+      await handleAddNewAddress(form);
+      await loadCart({ customQuery: { cartLoad: 'greenCartLoad' } });
     };
 
     const selectedShippingMethod = computed(
@@ -191,11 +202,11 @@ export default defineComponent({
     const canGoReviewOrder = computed(() => {
       if (canAddNewAddress.value) return false;
 
-      if (!selectedShippingMethod.value) return false;
+      if (!selectedShippingMethod.value?.id) return false;
 
-      if (cart.value?.order?.partnerShipping?.name.includes('Public')) return false;
+      if (!hasSavedShippingAddress.value) return false;
 
-      if (cart.value?.order?.partnerInvoice?.name.includes('Public')) return false;
+      if (!hasSavedBillingAddress.value) return false;
 
       return true;
     });
@@ -215,15 +226,13 @@ export default defineComponent({
 
     onSSR(async () => {
       await search();
-      await loadShipping();
-      await loadBilling();
       await loadUserShipping();
       await loadUserBilling();
 
-      if (!hasSavedShippingAddress.value) {
+      if (!hasSavedShippingAddressDifferentPartnerData.value) {
         canAddNewAddress.value = true;
       }
-      if (!hasSavedBillingAddress.value) {
+      if (!hasSavedBillingAddressDifferentPartnerData.value) {
         canAddNewBillingAddress.value = true;
       }
 
@@ -237,10 +246,11 @@ export default defineComponent({
       defaultBillingAddress,
       userBilling,
       generateInvoice,
-      showBillingAdresses,
+      showBillingAddresses,
       copyShippingToBilling,
       selectedShippingMethod,
       cart,
+      billing,
       handleGoToReviewOrder,
       canGoReviewOrder,
       userShipping,

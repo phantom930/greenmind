@@ -146,16 +146,16 @@
         :loading="loading"
         @submit="submitForm"
       >
-        {{ $t("Save new Address") }}
+        {{ $t("Save Address") }}
       </GreenButton>
     </form>
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, PropType } from '@nuxtjs/composition-api';
+import { defineComponent, reactive, PropType, onMounted } from '@nuxtjs/composition-api';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { SfInput, SfSelect } from '@storefront-ui/vue';
-import { Country } from '@vue-storefront/odoo-api';
+import { Address, Country } from '@vue-storefront/odoo-api';
 
 const formInitialState = () =>({
   firstName: '',
@@ -166,7 +166,8 @@ const formInitialState = () =>({
   country: { id: null },
   zip: '',
   phone: null,
-  selectedMethodShipping: null
+  selectedMethodShipping: null,
+  id: null
 });
 
 export default defineComponent({
@@ -184,10 +185,14 @@ export default defineComponent({
     countries: {
       type: Array as PropType<Country[]>,
       required: true
+    },
+    currentAddressData: {
+      type: Object as PropType<Address>,
+      default: null
     }
   },
   emits: ['submit'],
-  setup(_, { emit }) {
+  setup(props, { emit }) {
     const form = reactive(formInitialState());
 
     const submitForm = () => {
@@ -197,6 +202,23 @@ export default defineComponent({
     const resetForm = () => {
       Object.assign(form, formInitialState());
     };
+
+    const loadData = () => {
+      const splitedName = props.currentAddressData?.name?.split(' ');
+
+      form.lastName = splitedName?.pop() || '';
+      form.firstName = splitedName?.join(' ') || '';
+      form.city = props.currentAddressData?.city;
+      form.id = props.currentAddressData?.id;
+      form.street = props.currentAddressData?.street;
+      form.phone = props.currentAddressData?.phone;
+      form.zip = props.currentAddressData?.zip;
+      form.country.id = String(props.currentAddressData?.country.id);
+    };
+
+    onMounted(()=> {
+      loadData();
+    });
 
     return {
       submitForm,

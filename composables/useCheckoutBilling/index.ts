@@ -8,18 +8,18 @@ const useCheckoutBilling = (): any => {
   const { billing: userBilling, load: loadUserBilling, setDefaultAddress: setDefaultBillingAddress, loading: loadingUserBilling } = useUserBilling();
 
   const defaultBillingAddress = ref(false);
-  const canAddNewBillingAddress = ref(false);
+  const canAddNewBillingAddress = ssrRef(false, 'canAddNewBillingAddress');
   const newCurrentBillingAddressId = ref(null);
 
   const hasSavedBillingAddress = computed(() => {
-    return Boolean(billing.value);
+    return Boolean(billing.value) && !billing.value?.name?.includes('Public');
   });
 
-  const showBillingAdresses = computed(
+  const currentBillingAddressId = computed(() => billing.value?.id);
+
+  const showBillingAddresses = computed(
     () => hasSavedBillingAddress.value && !canAddNewBillingAddress.value
   );
-
-  const currentBillingAddressId = computed(() => billing.value?.id);
 
   const loadingBilling = computed(() => loading.value || loadingUserBilling.value);
 
@@ -32,7 +32,7 @@ const useCheckoutBilling = (): any => {
         type: 'Billing'
       },
       billingDetails: null,
-      customQuery: { billingAddAddress: 'greenAddAddress' }
+      customQuery: { billingAddAddress: 'greenAddAddress', billingAddress: 'greenUpdateAddress' }
     });
 
     await loadBilling();
@@ -41,15 +41,17 @@ const useCheckoutBilling = (): any => {
   };
 
   const handleSetCurrentBillingAddress = (address) => {
+    canAddNewBillingAddress.value = true;
     newCurrentBillingAddressId.value = address.id;
   };
 
   return {
+    newCurrentBillingAddressId,
     handleSetCurrentBillingAddress,
     defaultBillingAddress,
     canAddNewBillingAddress,
     hasSavedBillingAddress,
-    showBillingAdresses,
+    showBillingAddresses,
     currentBillingAddressId,
     handleAddNewBillingAddress,
     setDefaultBillingAddress,
@@ -57,7 +59,7 @@ const useCheckoutBilling = (): any => {
     loadUserBilling,
     loadingBilling,
     userBilling,
-    newCurrentBillingAddressId
+    billing
   };
 };
 
