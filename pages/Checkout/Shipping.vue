@@ -138,7 +138,7 @@ export default defineComponent({
   },
   emits: ['finish', 'change'],
   setup(_, { emit }) {
-    const { cart, load: loadCart } = useCart();
+    const { cart, load: loadCart, setCart } = useCart();
     const { search, countries } = useCountrySearch('countries');
     const { isAuthenticated } = useUser();
 
@@ -189,10 +189,14 @@ export default defineComponent({
 
     const addNewAddres = async (form) => {
       if (copyShippingToBilling.value && !hasSavedShippingAddress.value) {
+        await setCart(null);
+        await handleAddNewAddress(form);
         await handleAddNewBillingAddress(form);
+
+        return;
       }
+
       await handleAddNewAddress(form);
-      await loadCart({ customQuery: { cartLoad: 'greenCartLoad' } });
     };
 
     const selectedShippingMethod = computed(
