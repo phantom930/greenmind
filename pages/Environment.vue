@@ -83,7 +83,7 @@
           ganske enkel – det handler om at forlænge levetiden for produkter, så de får et andet og tredje liv i
           stedet for at ende blandt affaldet, så snart den første bruger er færdig med produktet.
       </p>
-      <p class="text mb italic">Kilde: <a href="#" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">forbes.com</a></p>
+      <p class="text mb italic">Kilde: <a href="https://forbes.com" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">forbes.com</a></p>
       <p class="text mb">Hvem genererer mest elektronikaffald?<br>
           Generering af elektronikaffald pr. indbygger i 2014.
       </p>
@@ -98,7 +98,7 @@
       <p class="text text-center">4 tons guld</p>
       <p class="text text-center">84 tons CO2</p>
       <p class="text text-center">1 milliard kr.</p>
-      <p class="text mb italic">Kilde: <a href="#" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">eurekalert.org</a></p>
+      <p class="text mb italic">Kilde: <a href="https://eurekalert.org" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">eurekalert.org</a></p>
       <p class="text text-center">Elektronikaffald genereret på verdensplan i 2016</p>
       <p class="text text-center">44 millioner kilo affald</p>
       <p class="text text-center">Hvilket svarer til:<br>
@@ -109,7 +109,7 @@
       <p class="text mb"><span class="bold">Kun 13%</span> sælger deres gamle mobil videre, når de køber en ny:
           Hjælp os med at øge denne procentandel, og sælg din gamle mobil til os!
       </p>
-      <p class="text mb italic">Kilde: <a href="#" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">meremobil.dk</a></p>
+      <p class="text mb italic">Kilde: <a href="https://meremobil.dk" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">meremobil.dk</a></p>
       <h3 class="font-bold subtitle mb">Hvad så med CO2?</h3>
       <p class="text mb">Det globale CO2-fodaftryk pr. indbygger i 2007.</p>
       <p class="text mb">Angivet i ton pr. år. Tallene dækker alle drivhusgasser omregnet til tilsvarende<br> CO2-udledning – såkaldte CO2-ækvivalenter.
@@ -128,15 +128,15 @@
           I fremstillingen af mobiltelefoner benytter man sig af en masse forskellige kemikalier og metaller. 
           Ikke alene er mange af disse farlige for miljøet, de er også dyre og ikke vedvarende.
       </p>
-      <p class="text mb italic">Kilde: <a href="#" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">tech-test.dk</a></p>
+      <p class="text mb italic">Kilde: <a href="https://tech-test.dk" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">tech-test.dk</a></p>
       <p class="text mb">Ifølge Apple har de forskellige iPhone-modeller følgende CO2-aftryk, angivet i kg.</p>
       <h3 class="font-bold subtitle mb">Vi smider 65.000 ton mobiltelefoner ud per år</h3>
       <p class="text mb italic">Kun 11% af disse telefoner bliver genbrugt.</p>
-      <p class="text mb italic">Kilde: <a href="#" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">tech-test.dk</a></p>
+      <p class="text mb italic">Kilde: <a href="https://tech-test.dk" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">tech-test.dk</a></p>
       <p class="text mb">Hvis 1 ud af 4 personer genbruger en telefon, ville det reducere drivhusgasser
           Svarende til 4 mil. biler
       </p>
-      <p class="text mb italic">Kilde: <a href="#" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">tech-test.dk</a></p>
+      <p class="text mb italic">Kilde: <a href="https://tech-test.dk" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">tech-test.dk</a></p>
     </div>
   
   </div>

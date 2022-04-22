@@ -21,9 +21,14 @@
         <li class="text mb">Det estimeres, at kun 15-20% af alt elektronisk affald bliver genbrugt.</li>
         <li class="text mb">I 2017 blev der solgt over 200 millioner smartphones i USA alene – et antal der svarer til 2/3 af deres samlede befolkningstal</li>
       </ul>
-      <div class="text italic">Kilder: <a href="#" class="underline y-link">https://www.thebalance.com/e-waste-recycling-facts-and-figures-2878189 </a><br>
+      <div class="text italic">Kilder: 
+        <a href="https://www.thebalance.com/e-waste-recycling-facts-and-figures-2878189" class="underline y-link">
+          https://www.thebalance.com/e-waste-recycling-facts-and-figures-2878189
+        </a><br>
         og<br>
-        <a href="#" class="underline y-link">https://www.statista.com/statistics/412108/global-smartphone-shipments-global-region/</a>
+        <a href="https://www.statista.com/statistics/412108/global-smartphone-shipments-global-region/" class="underline y-link">
+          https://www.statista.com/statistics/412108/global-smartphone-shipments-global-region/
+        </a>
       </div>
     </div>
   </div>

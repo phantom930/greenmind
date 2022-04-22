@@ -52,7 +52,7 @@
         GreenMind tilbyder også betaling med Viabill
         Hvis du fortryder dit køb, ophører aftalen om betaling hos ViaBill. ViaBill finansierer køb for op til
         2.000 kr. Beløb over 2.000 kr. finansieres i samarbejde med SparXpress.<br>
-        Læs mere her: <a href="#" class="underline y-link">https://viabill.io/forretningsbetingelser/</a>
+        Læs mere her: <a href="https://viabill.io/forretningsbetingelser/" class="underline y-link">https://viabill.io/forretningsbetingelser/</a>
       </p>
       
       <h3 class="font-bold subtitle">Priser, stand og tilbud</h3>
@@ -101,7 +101,9 @@
         enkeltvist, løber fristen fra den dag, hvor du modtager den sidste vare.
         Ønsker du at benytte din returret, skal du, inden 14 dage fra modtagelsen, give os skriftlig besked.
         Dette gør du ved at benytte følgende fortydelsesformular:<br> 
-        <a href="#" class="underline ylink">https://www.emaerket.dk/external-files/pdf/standardfortrydelsesformular.pdf</a>, og
+        <a href="https://www.emaerket.dk/external-files/pdf/standardfortrydelsesformular.pdf" class="underline ylink">
+          https://www.emaerket.dk/external-files/pdf/standardfortrydelsesformular.pdf
+        </a>, og
         sende den sammen med faktura på dit køb til mailadresse ?????. Du skal returnere varen senest 14 dage
         efter, du har givet besked til os om fortrydelse af købet. Såfremt varen ikke er GreenMind i hænde inden
         14 dage fra fortrydelse, forbeholder GreenMind sig retten til at afvise returneringen.
@@ -478,7 +480,7 @@
         www.naevneneshus.dk<br>
         Har du bopæl i et andet EU-land end Danmark, kan du klage til EU-Kommissionens online klageportal her –
         <a href="https://ec.europa.eu/odr" class="underline ylink"> https://ec.europa.eu/odr</a><br>
-        GDPR (<a href="greenmind.dk/gdpr" class="ylink">greenmind.dk/gdpr</a>)
+        GDPR (<a href="/gdpr" class="underline ylink">greenmind.dk/gdpr</a>)
       </p>
 
       <h3 class="font-bold subtitle text-center">GreenMind's Privatlivspolitik</h3>
@@ -537,7 +539,7 @@
         Oplysninger i forbindelse med vores anvendelse af cookies slettes som udgangspunkt når cookien bliver
         slettet fra din enhed, og afhænger således af den konkrete cookie. Du kan læse mere om de forskellige
         cookies, herunder levetiden, samt mulighederne for deaktivering mv., i vores særskilte 
-        <a href="" class="underline ylink">Cookiepolitik</a>
+        <a href="#" class="underline ylink">Cookiepolitik</a>
       </p>
       <p class="text">Opbevaring</p>
       <p class="text">
@@ -701,9 +703,9 @@
         Hvis du ikke er tilfreds med vores svar, har du mulighed for at klage til Datatilsynet. Det gælder generelt, 
         at hvis du er utilfreds med den måde, dine personoplysninger er blevet behandlet på, kan du klage til Datatilsynet, 
         som derefter undersøger sagen og træffer en afgørelse.
-        Du finder Datatilsynets kontaktoplysninger på <a href="#" class="underline ylink">www.datatilsynet.dk.</a>
+        Du finder Datatilsynets kontaktoplysninger på <a href="https://www.datatilsynet.dk" class="underline ylink">www.datatilsynet.dk.</a>
         Du kan læse mere om dine rettigheder i Datatilsynets vejledning om registreredes rettigheder, som du ligeledes finder 
-        på <a href="#" class="underline ylink">www.datatilsynet.dk.</a>
+        på <a href="https://www.datatilsynet.dk" class="underline ylink">www.datatilsynet.dk.</a>
         NB! Du kan skrive til Datatilsynet via Digital Post på Borger.dk, hvor fremsendelsen af din henvendelse sker sikkert (krypteret). 
         Vi anbefaler, at du bruger Digital Post, hvis din henvendelse indeholder fortrolige eller følsomme personoplysninger.  
       </p>
@@ -732,7 +734,7 @@
       <div class="bold"></div>
       <div class="bold"></div>
 
-      <p>Cookies (<a href="greenmind.dk/cookies" class="underline ylink">greenmind.dk/cookies</a>) </p>
+      <p>Cookies (<a href="/cookies" class="underline ylink">greenmind.dk/cookies</a>) </p>
 
       <h3 class="font-bold subtitle text-center">Vi anvender cookies</h3>
 
@@ -745,7 +747,7 @@
           
         Cookies bruges også til at analysere trafikken på hjemmesiden.
           
-        Du finder mere information om cookies på <a href="www.minecookies.org." class="underline ylink">www.minecookies.org.</a>
+        Du finder mere information om cookies på <a href="https://www.minecookies.org" class="underline ylink">www.minecookies.org</a>.
           
         Hvis du ikke ønsker at vi skal gemme cookies på din computer, har du mulighed for at blokere brugen af cookies ved at ændre en indstilling i din browser.
         Besøg da venligst din browsers hjemmeside for information og vejledning. Hvis du vælger at deaktivere cookies, 

@@ -1,7 +1,6 @@
 <template>
   
   <div class="text-wrap">
-
     <div class="container">
       <h1 class="font-bold title mb">Om GreenMind</h1>
       <p class="text mb">
@@ -67,7 +66,7 @@
         En gennemsnitlig smartphone bliver samtidig udskiftet efter kun 18 måneder. Det er længe før produktets reelle levetid er udløbet, 
         og det betyder blot, at der bliver produceret stadigt mere ny elektronik. 
         Hos GreenMind synes vi derfor, at det giver god mening at forlænge levetiden ved at reparere, istandsætte og sælge elektronikken secondhand.
-        Du kan læse mere om, hvordan vi forholder os til bæredygtighed på vores <a href="#" class="underline y-link">miljøside.</a>
+        Du kan læse mere om, hvordan vi forholder os til bæredygtighed på vores <a href="/environment" class="underline y-link">miljøside.</a>
       </p>
       <h3 class="font-bold subtitle mb">2 års garanti</h3>
       <p class="text mb">Hos GreenMind tilbyder vi 2 års garanti på al secondhand elektronik. Det betyder, at du altid kan komme til os, 
@@ -91,7 +90,6 @@
         høj kundetilfredshed, men også i høj grad opnår at skabe glade og tilfredse kunder over hele linjen.
       </p>
     </div>
-
   </div>
 
 </template>

@@ -308,7 +308,7 @@
 
       <h3 class="font-bold subtitle">Offentlig transport</h3>
       <p>
-        Ved at besøge <a href="#" class="underline ylink">www.rejseplanen.dk</a> kan du nemt planlægge din tur til vores
+        Ved at besøge <a href="https://www.rejseplanen.dk" class="underline ylink">www.rejseplanen.dk</a> kan du nemt planlægge din tur til vores
         butik på Guldsmedgade 2 med det offentlige.
       </p>
 
@@ -377,7 +377,7 @@
         ved siden af Profil Optik i udkanten af det hyggelige Latinerkvarter, som byder på mange fine butikker.
         Det er derfor oplagt at besøge butikken til fods. Er du med offentlig transport kan du tage flere
         forskellige busser fra Aarhus Hovedbanegård til butikken. Planlæg din rejse på 
-        <a href="#" class="underline ylink">www.rejseplanen.dk</a> eller på Google Maps. Er du derimod i bil, kan du finde et
+        <a href="https://www.rejseplanen.dk" class="underline ylink">www.rejseplanen.dk</a> eller på Google Maps. Er du derimod i bil, kan du finde et
         begrænset antal parkeringspladser i området omkring Klostertorv og Lille Torv. Det nærmeste
         parkeringshus er Q-Parks parkeringshus ved Magasin.
       </p>
@@ -637,7 +637,7 @@
         udskiftning (Original Apple-reservedel)<br>
         599 kr.<br>
 
-        {{ Video: <a href="#" class="underline ylink">https://www.youtube.com/watch?v=iQOhrM6iOAk</a>  }}
+        {{ Video: <a href="https://www.youtube.com/watch?v=iQOhrM6iOAk" class="underline ylink">https://www.youtube.com/watch?v=iQOhrM6iOAk</a>  }}
       </p>
 
       <h3 class="font-bold subtitle">Få en billig pris på secondhand iPhone og MAC – Vesterbro</h3>
@@ -705,7 +705,7 @@
         transport, kan du nemt komme hele vejen til døren med bussen. Du kan tage bybus 5 til Grøn indgang
         (stoppested: Vejlevej v. Kolding Storcenter) eller bybus 3 til Hovedindgangen/Lilla indgang, som er tæt
         på butikken (stoppested: Kolding Storcenter v. bio).
-        Ved at besøge <a href="#" class="underline ylink">www.rejseplanen.dk</a> kan du nemt planlægge din tur til vores
+        Ved at besøge <a href="https://www.rejseplanen.dk" class="underline ylink">www.rejseplanen.dk</a> kan du nemt planlægge din tur til vores
         butik i Kolding Storcenter.
       </p>
 
@@ -899,7 +899,7 @@
         v/biografen<br>
         Linje 81, 82 og 83 på Ørbækvej<br>
         For yderligere information, tjek<br>
-        FynBus’ hjemmeside på <a href="#" class="underline ylink">www.fynbus.dk</a>
+        FynBus’ hjemmeside på <a href="https://www.fynbus.dk" class="underline ylink">www.fynbus.dk</a>
       </p>
 
       <h3 class="font-bold subtitle">Parkering</h3>
@@ -1002,7 +1002,7 @@
         </a>
         Vil du vide mere om GreenMind? Så se denne korte 
         <a href="#" class="underline ylink">video fra youtube</a>
-        {{ Video: <a href="#" class="underline ylink">https://www.youtube.com/watch?v=iQOhrM6iOAk</a>  }}
+        {{ Video: <a href="https://www.youtube.com/watch?v=iQOhrM6iOAk" class="underline ylink">https://www.youtube.com/watch?v=iQOhrM6iOAk</a>  }}
       </p>
 
       <h3 class="font-bold subtitle">Rødovre (<a href="#" class="underline ylink">greenmind.dk/butikker</a>/roedovre)</h3>
@@ -1038,14 +1038,14 @@
       <p>
         Der kører busser direkte til Rødovre Centrum. Du finder GreenMind i nærheden af indgang 1C
         Du kan finde en detaljeret oversigt over hvilke busser, der kører til hvilke indgange her: 
-        <a href="#" class="underline ylink">https://roedovrecentrum.dk/information/transport/</a>
+        <a href="https://roedovrecentrum.dk/information/transport/" class="underline ylink">https://roedovrecentrum.dk/information/transport/</a>
       </p>
 
       <h3 class="font-bold subtitle">Parkering</h3>
       <p>
         I Rødovre Centrum kan du vælge mellem 3.250 gratis P-pladser – heraf næsten 1.700 pladser under tag. Du
         kan finde information om de forskellige parkeringsmuligheder her: 
-        <a href="#" class="underline ylink">https://roedovrecentrum.dk/information/transport/</a>
+        <a href="https://roedovrecentrum.dk/information/transport/" class="underline ylink">https://roedovrecentrum.dk/information/transport/</a>
       </p>
 
       <h3 class="font-bold subtitle">Gør noget godt for miljøet og køb brugt</h3>

@@ -176,6 +176,18 @@ export function getRoutes(themeDir = __dirname) {
       path: '/shops',
       name: 'shops',
       component: path.resolve(themeDir, 'pages/Shops.vue')
+    },
+    {
+      /* GDPR */
+      path: '/gdpr',
+      name: 'gdpr',
+      component: path.resolve(themeDir, 'pages/GDPR.vue')
+    },
+    {
+      /* Cookies */
+      path: '/cookies',
+      name: 'cookies',
+      component: path.resolve(themeDir, 'pages/cookies.vue')
     }
   ];
 }

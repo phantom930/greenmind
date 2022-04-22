@@ -84,7 +84,7 @@
           Ved bankoverførsel går der normalt 1-2 bankdage før pengene indgår på din konto. I sjældne tilfælde kan der dog gå op til 4 bankdage.
         </li>
       </ul>
-      <a href="#" class="underline text-center y-link">Find butikker</a>
+      <a href="/shops" class="underline text-center y-link">Find butikker</a>
 
       <h3 class="font-bold subtitle text-center">Virksomheder</h3>
       <p class="text italic">Er I en virksomhed med mere end 10 enheder i vil sælge? <a href="#" class="underline y-link">Læs mere her.</a></p>

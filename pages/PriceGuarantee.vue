@@ -1,7 +1,6 @@
 <template>
 
   <div class="text-wrap">
-  
     <div class="container">
       <h1 class="font-bold title mb">Prisgaranti</h1>
       <p class="text mb"> 
@@ -35,11 +34,10 @@
       </ul>
       <p class="text mb">
         Vores prisgaranti indbefatter, at du indberetter prisdifferencen, før du køber et produkt hos os. 
-        Køber du et produkt i en af vores <a href="#" class="underline y-link">butikker</a>, skal du blot fremvise dokumentation for det billigere produkt 
+        Køber du et produkt i en af vores <a href="/shops" class="underline y-link">butikker</a>, skal du blot fremvise dokumentation for det billigere produkt 
         til vores personale. Ønsker du at benytte vores prisgaranti online, skal du kontakte vores kundeservice på kundeservice@bluecity.dk.
       </p>
     </div>
-
   </div>
 
 </template>

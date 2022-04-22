@@ -67,7 +67,7 @@
       <h3 class="font-bold subtitle">Hvordan fungerer overtagelse af garanti og reklamationsret?</h3>
       <p>
         Det foregår ved, at vi overtager de resterende måneder af garantien og reklamationsretten på enheden,
-        hvis den bliver repareret af os. <a href="#" class="underline ylink">Læs GreenMinds betingelserne her</a>.
+        hvis den bliver repareret af os. <a href="/terms-of-trade" class="underline ylink">Læs GreenMinds betingelserne her</a>.
       </p>
 
       <h3 class="font-bold subtitle">Kan I hjælpe med en fejlsøgning/reparation på en MacBook/iMac?</h3>
