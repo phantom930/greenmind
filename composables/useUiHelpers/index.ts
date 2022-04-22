@@ -38,7 +38,7 @@ const useUiHelpers = (): any => {
       maxPrice: price?.[1] || null,
       fetchCategory: true,
       filter: {
-        categorySlug: path,
+        categorySlug: path === '/' ? null : path,
         categoryId,
         attribValues: filters
       }

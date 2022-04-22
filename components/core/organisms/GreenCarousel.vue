@@ -15,10 +15,11 @@
         slidePerPage: true,
         gap: 19,
         breakpoints: {
+          gap: 15,
           1279: {
             perView: 2,
             peek: {
-              before: 0,
+              before: 10,
               after: 50,
             },
           },
@@ -30,19 +31,11 @@
         :key="i"
         class="hover:drop-shadow-xl"
       >
-        <SfLink
-          :link="
-            localePath(
-              `/p/${productGetters.getId(product)}`
-            )
-          "
-        >
-          <LazyGreenProductCard
-            :product="product"
-            :image-width="$device.isMobile ? 125 : 216"
-            :image-height="$device.isMobile ? 171 : 326"
-          />
-        </SfLink>
+        <LazyGreenProductCard
+          :product="product"
+          :image-width="$device.isMobile ? 125 : 216"
+          :image-height="$device.isMobile ? 171 : 326"
+        />
       </SfCarouselItem>
     </SfCarousel>
   </div>
@@ -69,22 +62,6 @@ export default defineComponent({
       default() {
         return [''];
       }
-    },
-    feature1: {
-      type: Array,
-      default() {
-        return [''];
-      }
-    },
-    feature2: {
-      type: Array,
-      default() {
-        return [''];
-      }
-    },
-    currency: {
-      type: [String, Array],
-      default: ''
     },
     carouselTitle: {
       type: String,
@@ -113,10 +90,6 @@ export default defineComponent({
   border-radius: 14px;
 }
 
-::v-deep .sf-carousel__wrapper {
-  padding-bottom: 10px;
-}
-
 ::v-deep .sf-arrow.sf-button {
   left: 55px
 }
@@ -138,6 +111,10 @@ export default defineComponent({
 ::v-deep .sf-product-card {
   width: 256px !important;
   height: 493px !important;
+    @include for-mobile {
+      width: 100% !important;
+      height: 268px !important;
+    }
 }
 
 </style>

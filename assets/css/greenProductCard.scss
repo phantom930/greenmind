@@ -20,14 +20,28 @@
     line-height: 18px;
     font-weight: 600;
     border-radius: 50%;
+    @include for-mobile{
+      left: 53%;
+      height: 62px;
+      width: 63px;
+      font-size: 20px;
+      line-height: 16px;
+      padding: 24px 0;
+    }
   }
   
   .title-flex {
     padding-top: 11.52px;
+    @include for-mobile {
+      padding-top: 0;
+    }
   }
   
   .price-flex {
     margin-top: 18.29px;
+    @include for-mobile {
+     margin-top: 0; 
+    }
   }
   
   .sf-product-card {
@@ -47,6 +61,9 @@
     font-weight: 500;
     line-height: var(--line-height--primary);
     color: var(--_c-greenmind-black-primary);
+    @include for-mobile {
+      font-size: 18px;
+    }
   }
   
   .green-product-card__description {
@@ -58,6 +75,11 @@
     line-height: var(--line-height--primary);
     color: var(--_c-greenmind-primary-grey);
     padding-top: 2.3px;
+    @include for-mobile {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    }
   }
   
   .green-product-card__price {
@@ -66,6 +88,9 @@
     font-weight: 500;
     font-size: 26px;
     line-height: var(--line-height--primary);
+    @include for-mobile {
+      font-size: 18px;
+    }
   }
   
   .green-product-card__fra {
@@ -77,4 +102,7 @@
     font-weight: normal;
     font-size: 18px;
     line-height: var(--line-height--primary);
+    @include for-mobile {
+      font-size: 14px;
+    }
   }
