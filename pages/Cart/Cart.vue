@@ -109,29 +109,13 @@
               :src="require('@storefront-ui/shared/icons/empty_cart.svg')"
               alt="Empty cart"
               class="empty-cart__image"
-              :width="531"
-              :height="361"
-              style="margin-left: 25%; margin-top: 0%"
+              :width="$device.isMobile ? 210 : 531"
+              :height="$device.isMobile ? 142 : 361"
             />
             <SfHeading
               title="Your cart is empty"
               :level="2"
-              description="Looks like you haven’t added any items to the cart yet. Start
-                shopping to fill it in."
-              style="
-                --heading-title-color: var(
-                  --_c-greenmind-fern-primary-medium-green
-                );
-                --heading-title-font-size: 46px;
-                --heading-title-font-weight: 700;
-                --heading-title-font-line-height: 48px;
-                --heading-description-font-family: var(--font-family--primary);
-                --heading-description-font-weight: 400;
-                --heading-description-font-size: 16px;
-                --heading-description-color: var(
-                  --_c-greenmind-secondary-black
-                );
-              "
+              description="Looks like you haven’t added any items to the cart yet. Start shopping to fill it in."
             />
             <SfButton
               class="sf-button--full-width empty-cart__button"

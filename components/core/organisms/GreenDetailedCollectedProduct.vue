@@ -3,11 +3,11 @@
     <SfCollectedProduct
       :key="cartGetters.getItemSku(orderLine)"
       data-cy="collected-product-cart-sidebar"
-      :image="$image(cartGetters.getItemImage(orderLine), 140, 200, cartGetters.getItemImageFilename(orderLine))"
+      :image="$image(cartGetters.getItemImage(orderLine), 140, 236, cartGetters.getItemImageFilename(orderLine))"
       :title="cartGetters.getItemTitle(orderLine)"
       :regular-price="$currency(cartGetters.getItemPrice(orderLine).regular)"
       :image-width="140"
-      :image-height="200"
+      :image-height="236"
       :special-price="
         cartGetters.getItemPrice(orderLine).special &&
           $currency(cartGetters.getItemPrice(orderLine).special)
@@ -19,9 +19,9 @@
       @click:remove="handleRemoveItemAndAccessories(orderLine)"
     >
       <template #title>
-        <span class="custom-product-title"> {{ cartGetters.getItemTitle(orderLine) }} </span>
-        <span class="custom-subtitle"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
-        <span class="custom-stand"> Stand: Meget flat </span>
+        <span class="custom-product-title "> {{ cartGetters.getItemTitle(orderLine) }} </span>
+        <span class="custom-subtitle mt-3"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
+        <span class="custom-stand mt-1 mb-3"> Stand: Meget flat </span>
 
         <SfQuantitySelector
           v-model="quantity"
