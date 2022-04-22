@@ -175,9 +175,12 @@ export default defineComponent({
     };
 
     const selectPrice = (values) => {
-      const newValue = `${toInteger(values[0])}-${toInteger(values[1])}`;
+      const min = toInteger(values[0]?.replace(',-', '').replace('.', ''));
+      const max = toInteger(values[1]?.replace(',-', '').replace('.', ''));
 
-      price.value = [toInteger(values[0]), toInteger(values[1])];
+      const newValue = `${min}-${max}`;
+
+      price.value = [min, max];
       const selectedValue = selectedFilters.value.find(
         (item) => item?.filterName === 'price'
       );
