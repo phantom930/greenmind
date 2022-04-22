@@ -24,13 +24,8 @@
         <span class="custom-stand"> Stand: Meget flat </span>
 
         <SfQuantitySelector
-          v-model="inputValue"
-          :disabled="disabled"
-          :min="min"
-          :max="max"
+          v-model="quantity"
           aria-label="Quantity"
-          :class="classes"
-          @blur="blur"
         />
       </template>
 
@@ -69,7 +64,7 @@
     </div>
 
     <div class="grid">
-      <span class="custom-edit-remove-text">
+      <span class="custom-edit-remove-text" @click="handleRemoveItemAndAccessories(orderLine)">
         REMOVE
       </span>
       <span class="self-end custom-price">
@@ -80,16 +75,15 @@
 </template>
 
 <script lang="ts">
-import { SfCollectedProduct, SfButton, SfQuantitySelector } from '@storefront-ui/vue';
+import { SfCollectedProduct, SfQuantitySelector } from '@storefront-ui/vue';
 import { cartGetters, useCollectedProduct } from '~/composables';
-import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
+import { defineComponent, PropType, computed, ref, watch } from '@nuxtjs/composition-api';
 import { GreenOrderLine } from '~/green-api/types';
 
 export default defineComponent({
   components: {
     SfCollectedProduct,
-    SfQuantitySelector,
-    SfButton
+    SfQuantitySelector
   },
   props: {
     orderLine: {
@@ -113,7 +107,20 @@ export default defineComponent({
 
     const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts || []);
 
+    const quantity = ref(props.orderLine?.quantity || 0);
+
+    watch(
+      () => props.orderLine.quantity,
+      () => quantity.value = props.orderLine.quantity
+    );
+
+    watch(
+      () => quantity.value,
+      () => handleUpdateItem(props.orderLine, quantity.value)
+    );
+
     return {
+      quantity,
       loading,
       accessoryIsInCart,
       handleAddOrRemoveAccessory,

@@ -7,7 +7,7 @@
     <div class="detailed-cart">
       <div v-if="totalItems" class="detailed-cart__aside">
         <SfOrderSummary
-          :products="products"
+          :products="orderLines"
           order-title="Totals"
           :total-items="totalItems"
           class="oderSummary"

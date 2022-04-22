@@ -22,7 +22,7 @@ const useCollectedProduct = (): any => {
     }
 
     const accessoriesInCartFromThisProduct = greenCart.order?.accessoryLines
-      .filter(acessoryLine => orderLine?.product?.accessoryProducts.some(acessory => acessory.id !== acessoryLine.product.id))
+      .filter(acessoryLine => orderLine?.product?.accessoryProducts?.some(acessory => acessory.id !== acessoryLine.product.id))
       .map(acessoryLine => acessoryLine.id);
 
     await removeMultipleProductsFromCart({ lineIds: [orderLine.id, ...accessoriesInCartFromThisProduct], customQuery: { cartRemoveMultipleItems: 'greenCartRemoveMultipleItem'} });
