@@ -62,6 +62,19 @@ export function getRoutes(themeDir = __dirname) {
       path: '/environment',
       component: path.resolve(themeDir, 'pages/Environment.vue')
     },
+    /* Blogs */
+    {
+      /* Sådan undgår du din mobil fryser på skiferien */
+      path: '/blog/winter-holiday-advice',
+      name: 'winter-holiday-advice',
+      component: path.resolve(themeDir, 'pages/Blog/BlogPost1.vue')
+    },
+    {
+      /* Sådan vælger du den rette iPad ud fra dine ønsker */
+      path: '/blog/how-to-choose-the-right-ipad',
+      name: 'how-to-choose-the-right-ipad',
+      component: path.resolve(themeDir, 'pages/Blog/BlogPost2.vue')
+    },
     {
       /* Prisgaranti */
       name: 'price-guarantee',
@@ -163,19 +176,6 @@ export function getRoutes(themeDir = __dirname) {
       path: '/shops',
       name: 'shops',
       component: path.resolve(themeDir, 'pages/Shops.vue')
-    },
-    /* Blogs */
-    {
-      /* Sådan undgår du din mobil fryser på skiferien */
-      path: '/blog/winter-holiday-advice',
-      name: 'winter-holiday-advice',
-      component: path.resolve(themeDir, 'pages/Blog/BlogPost1.vue')
-    },
-    {
-      /* Sådan vælger du den rette iPad ud fra dine ønsker */
-      path: '/blog/how-to-choose-the-right-ipad',
-      name: 'how-to-choose-the-right-ipad',
-      component: path.resolve(themeDir, 'pages/Blog/BlogPost2.vue')
     }
   ];
 }
