@@ -1,96 +1,7 @@
 <template>
   <div>
     <div class="layout">
-      <SfHero
-        class="top-hero"
-        :class="$device.isMobile ? 'mt-8' : null"
-      >
-        <SfHeroItem
-          title="Colorful summer dresses are already in store"
-          class="top-hero"
-          button-text="SE MERE3"
-          :background="$device.isMobile ? '#668F72' : ''"
-          :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-          style="background-size: contain; background-position-y: center;"
-        >
-          <template #call-to-action>
-            <GreenButton
-              v-if="!$device.isMobile"
-              type="Tertiary"
-              color="Grey"
-            >
-              {{ $t('See More') }}
-            </GreenButton>
-            <SfImage
-              v-else
-              :src="require('/assets/images/homeHero/home_page_phones.svg')"
-              alt="banner_1"
-              :width="214"
-              :height="223"
-            />
-          </template>
-          <template #withImgTag>
-            <SfImage
-              :src="require('/assets/images/homeHero/home_page_phones.svg')"
-              alt="banner_1"
-              :width="214"
-              :height="223"
-            />
-          </template>
-        </SfHeroItem>
-
-        <SfHeroItem
-          title="Colorful summer dresses are already in store"
-          button-text="SE MERE2"
-          class="top-hero"
-          :background="$device.isMobile ? '#668F72' : ''"
-          :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-          style="background-size: contain; background-position-y: center"
-        >
-          <template #call-to-action>
-            <GreenButton
-              v-if="!$device.isMobile"
-              type="Tertiary"
-              color="Grey"
-            >
-              {{ $t('See More') }}
-            </GreenButton>
-            <SfImage
-              v-else
-              :src="require('/assets/images/homeHero/home_page_phones.svg')"
-              alt="banner_1"
-              :width="214"
-              :height="223"
-            />
-          </template>
-        </SfHeroItem>
-
-        <SfHeroItem
-          title="Colorful summer dresses are already in store"
-          button-text="SE MERE"
-          class="top-hero"
-          :background="$device.isMobile ? '#668F72' : ''"
-          :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-          style="background-size: contain; background-position-y: center"
-        >
-          <template #call-to-action>
-            <GreenButton
-              v-if="!$device.isMobile"
-              type="Tertiary"
-              color="Grey"
-            >
-              {{ $t('See More') }}
-            </GreenButton>
-            <SfImage
-              v-else
-              :src="require('/assets/images/homeHero/home_page_phones.svg')"
-              alt="banner_1"
-              :width="214"
-              :height="223"
-            />
-          </template>
-        </SfHeroItem>
-      </SfHero>
+      <HomeTopHero />
     </div>
 
     <div
@@ -224,7 +135,7 @@
 </template>
 
 <script>
-import { SfHero, SfImage, SfCallToAction} from '@storefront-ui/vue';
+import { SfImage, SfCallToAction} from '@storefront-ui/vue';
 import { computed } from '@vue/composition-api';
 import { productGetters, useFacet, facetGetters, useNewsLetter } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
@@ -235,7 +146,6 @@ import NewsletterModal from '~/components/NewsletterModal.vue';
 export default {
   components: {
     NewsletterModal,
-    SfHero,
     SfCallToAction,
     SfImage
   },

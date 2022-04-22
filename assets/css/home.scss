@@ -6,11 +6,12 @@
     }
   
   .between-call-to-action-and-footer{
-    background-color: #F3F3F3;
-     height: 16px;
-     @include for-desktop {
+    background-color: white;
+    height: 16px;
+    @include for-desktop {
         height: 35px;
-     }
+        background-color: #F3F3F3;
+    }
   }
   
   @media (min-width: 768px) {
@@ -181,7 +182,7 @@
   .usp-mobile {
     background-color: #F3F3F3;
     p {
-      font-size: 20px;
+      font-size: 16px;
       line-height: 20px;
       font-weight: 500;
       width: 90%;

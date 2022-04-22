@@ -18,7 +18,11 @@
             :link="localePath(`/${category.slug}`)"
           />
         </div>
-        <nuxt-link :to="localePath('/')" class="sf-header__logo">
+        <nuxt-link
+          v-show="!showSearchInputOnMobile"
+          :to="localePath('/')"
+          class="sf-header__logo"
+        >
           <SfImage
             :width="35"
             :height="35"
@@ -38,6 +42,18 @@
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
           <SfButton
+            v-if="$device.isMobile && !showSearchInputOnMobile"
+            class="sf-button--pure sf-header__action"
+            @click="showSearchInputOnMobile = !showSearchInputOnMobile"
+          >
+            <SfIcon
+              class="sf-header__icon"
+              icon="search"
+              size="1.25rem"
+            />
+          </SfButton>
+          <SfButton
+            v-if="!showSearchInputOnMobile"
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
@@ -52,6 +68,7 @@
             </SfBadge>
           </SfButton>
           <SfButton
+            v-if="!showSearchInputOnMobile"
             class="sf-button--pure sf-header__action list"
             @click="toggleHamburguerMenu"
           >
@@ -65,13 +82,14 @@
       </template>
       <template #search>
         <SfSearchBar
+          v-show="$device.isDesktop || showSearchInputOnMobile"
           ref="searchBarRef"
           :placeholder="$t('Search for items and promotions')"
           aria-label="Search"
           class="sf-header__search none"
           :value="term"
           :icon="{
-            icon: !!term ? 'cross' : 'search',
+            icon: !!term || showSearchInputOnMobile ? 'cross' : 'search',
             size: '1.25rem',
             color: '#43464E',
           }"
@@ -135,6 +153,7 @@ export default {
   },
   directives: { clickOutside },
   setup(props, { root }) {
+    const showSearchInputOnMobile = ref(false);
     const searchBarRef = ref(null);
     const term = ref(null);
     const formatedResult = ref(null);
@@ -164,6 +183,7 @@ export default {
     };
 
     const closeSearch = () => {
+      showSearchInputOnMobile.value = false;
       if (!isSearchOpen.value) return;
       term.value = '';
       isSearchOpen.value = false;
@@ -241,6 +261,7 @@ export default {
     });
 
     return {
+      showSearchInputOnMobile,
       accountIcon,
       closeOrFocusSearchBar,
       cartTotalItems,
