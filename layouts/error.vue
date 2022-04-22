@@ -1,14 +1,14 @@
 <template>
   <div id="error">
     <SfImage
-      :width="412"
-      :height="412"
+      :width="$device.isMobile ? 230 : 412"
+      :height="$device.isMobile ? 230 : 412"
       class="image"
       src="/error/error.svg"
       alt="leaves"
     />
     <SfHeading
-      :title="error.statusCode === 404 ? 'Page not found' : 'An error occured'"
+      :title="error.statusCode === 404 ? $t('Page not found') : $t('An error occured')"
       :level="2"
       :description="
         error.statusCode === 404
