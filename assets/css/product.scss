@@ -9,7 +9,7 @@
 
 .product__info {
   @include for-mobile{
-    padding: 12px;
+    padding: 0 12px 12px 12px;
   }
 }
 
@@ -194,12 +194,12 @@
     width: 100%;
     max-width: 280px;
     @include for-mobile {
-      width: 100%;
+      min-width: 100%;
     }
 
     & button {
       @include for-mobile {
-        width: 100%;
+        min-width: 100%;
       } 
     }
   }
@@ -237,4 +237,9 @@
     @include for-mobile {
       width: 100%;
     }
+  }
+
+  ::v-deep .sf-image--wrapper {
+    display: flex;
+    justify-content: center;
   }

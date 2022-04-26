@@ -10,12 +10,14 @@
           :images="productGallery"
           :image-width="mainImageWidth"
           :image-height="mainImageHeigth"
-          :thumb-width="160"
-          :thumb-height="160"
           :nuxt-img-config="{ fit: 'cover' }"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
-        />
+        >
+          <template #thumbs>
+            <div />
+          </template>
+        </SfGallery>
       </LazyHydrate>
       <div class="product__info">
         <div class="product__header">

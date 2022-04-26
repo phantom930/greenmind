@@ -54,6 +54,7 @@ export default defineComponent({
     margin-top: 7%;
     @include for-mobile {
       width: 100%;
+      justify-content: center;
     }
   }
 
@@ -65,14 +66,13 @@ export default defineComponent({
     line-height: 16px;
     text-align: center;
     @include for-mobile {
-      width: 100px;
     }
   }
 
   .usp-div {
     padding-left: 8%;
     @include for-mobile {
-      padding-left: 2%;
+      padding-left: 0;
     }
   }
 </style>
