@@ -29,6 +29,7 @@ const useCheckoutBilling = (): any => {
         ...form,
         name: `${form.firstName} ${form.lastName}`,
         countryId: parseInt(form.country.id),
+        id: userBilling.value?.[0]?.id ? userBilling.value?.[0]?.id : null,
         type: 'Billing'
       },
       billingDetails: null,
@@ -37,7 +38,7 @@ const useCheckoutBilling = (): any => {
 
     await loadBilling();
     await loadUserBilling();
-    canAddNewBillingAddress.value = false;
+    // canAddNewBillingAddress.value = false;
   };
 
   const handleSetCurrentBillingAddress = (address) => {

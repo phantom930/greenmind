@@ -216,6 +216,12 @@ export default defineComponent({
       }
     );
 
+    watch(
+      () => cart.value,
+      () => loadUser(),
+      { deep: true }
+    );
+
     onMounted(async () => {
       loadUser();
       formRef.value.validate({ silent: true });
