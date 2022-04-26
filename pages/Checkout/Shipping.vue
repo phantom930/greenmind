@@ -6,13 +6,13 @@
       class="sf-heading--left sf-heading--no-underline title"
     />
 
-    <CheckoutUserShippingAddresses
+    <!-- <CheckoutUserShippingAddresses
       v-show="showShippingAddresses"
       key="shipping"
       :current-address-id="currentAddressId || ''"
       :addresses="userShipping"
       @set-current-address="handleSetCurrentShippingAddress"
-    />
+    /> -->
 
     <GreenButton
       v-show="!canAddNewAddress && !hasSavedShippingAddress"
@@ -53,16 +53,16 @@
       class="sf-heading--left sf-heading--no-underline title"
     />
 
-    <CheckoutUserShippingAddresses
+    <!-- <CheckoutUserShippingAddresses
       v-show="showBillingAddresses"
       key="billing"
       :current-address-id="currentBillingAddressId || ''"
       :addresses="userBilling"
       @set-current-address="handleSetCurrentBillingAddress"
-    />
+    /> -->
 
     <CheckoutAddressForm
-      v-if="canAddNewBillingAddress"
+      v-if="!copyShippingToBilling"
       :loading="loadingBilling"
       :countries="countries"
       :current-address-data="userBilling[0]"

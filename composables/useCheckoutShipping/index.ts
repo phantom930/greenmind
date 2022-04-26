@@ -8,7 +8,7 @@ const useCheckoutShipping = (): any => {
   const { shipping: userShipping, load: loadUserShipping, setDefaultAddress: setDefaultShippingAddress, loading: loadingUserShipping } = useUserShipping();
 
   const defaultShippingAddress = ref(false);
-  const canAddNewAddress = ssrRef(false, 'canAddNewAddress');
+  const canAddNewAddress = ssrRef(true, 'canAddNewAddress');
   const newCurrentShippingAddressId = ref(null);
 
   const hasSavedShippingAddress = computed(() => {
@@ -37,11 +37,11 @@ const useCheckoutShipping = (): any => {
 
     await loadShipping();
     await loadUserShipping();
-    canAddNewAddress.value = false;
+    // canAddNewAddress.value = false;
   };
 
   const handleSetCurrentShippingAddress = (address) => {
-    canAddNewAddress.value = true;
+    // canAddNewAddress.value = true;
     newCurrentShippingAddressId.value = address.id;
   };
 

@@ -61,7 +61,7 @@
               :description="accessoryProduct.description"
               :price="$currency(accessoryProduct.combinationInfoVariant.price)"
               :has-image="true"
-              :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.name)"
+              :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.imageFilename)"
               @change="selectAcessories"
             />
           </div>
