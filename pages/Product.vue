@@ -8,10 +8,10 @@
       <LazyHydrate when-idle>
         <SfGallery
           :images="productGallery"
-          :image-width="422"
+          :image-width="mainImageWidth"
+          :image-height="mainImageHeigth"
           :thumb-width="160"
           :thumb-height="160"
-          :image-height="644"
           :nuxt-img-config="{ fit: 'cover' }"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
@@ -24,12 +24,12 @@
             :level="3"
             class="sf-heading--no-underline sf-heading--left product_title"
           />
-          <SfIcon
+          <!-- <SfIcon
             icon="drag"
             size="xxl"
             color="var(--c-text-disabled)"
             class="product__drag-icon smartphone-only"
-          />
+          /> -->
         </div>
         <SfHeading
           :title="product.websiteSubtitle"
@@ -162,11 +162,14 @@ export default defineComponent({
     const accessoryProducts = computed(() => productGetters.getAccessoryProducts(product.value));
     const productGrades = computed(() => productGetters.getGrades(product.value));
 
+    const mainImageWidth = computed(() => root.$device.isDesktop ? 442 : 375);
+    const mainImageHeigth = computed(() => root.$device.isDesktop ? 664 : 500);
+
     const productGallery = computed(() =>
       productGetters.getGallery(product.value).map((img) => ({
         mobile: { url: root.$image(img.small, 160, 160, productGetters.getImageFilename(product.value)) },
-        desktop: { url: root.$image(img.normal, 442, 664, productGetters.getImageFilename(product.value)) },
-        big: { url: root.$image(img.big, 442, 664, productGetters.getImageFilename(product.value)) },
+        desktop: { url: root.$image(img.normal, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(product.value)) },
+        big: { url: root.$image(img.big, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(product.value)) },
         alt: product.value.name || 'alt'
       }))
     );
@@ -218,6 +221,8 @@ export default defineComponent({
     };
 
     return {
+      mainImageWidth,
+      mainImageHeigth,
       handleSelectNewGrade,
       productGrades,
       handleStoreStatus,
