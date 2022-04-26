@@ -14,7 +14,7 @@
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
         >
-          <template #thumbs>
+          <template v-if="$device.isMobile" #thumbs>
             <div />
           </template>
         </SfGallery>
