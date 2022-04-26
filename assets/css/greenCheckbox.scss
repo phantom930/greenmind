@@ -32,10 +32,14 @@
     font-weight: 500;
     color: var(--_c-greenmind-secondary-black);
   }
-  
-  ::v-deep .sf-checkbox__checkmark.is-active {
-    background: var(--_c-greenmind-fern-primary-medium-green, transparent);
+  ::v-deep .sf-checkbox__checkmark {
+    width: 26px;
+    height: 23px;
+    &.is-active {
+      background: var(--_c-greenmind-fern-primary-medium-green, transparent);
+    }
   }
+
   .checkbox_image {
     max-width: 82px;
     max-height: 70px;
