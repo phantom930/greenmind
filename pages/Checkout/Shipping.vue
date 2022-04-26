@@ -188,7 +188,7 @@ export default defineComponent({
       hasSavedBillingAddress.value && billing.value.id !== cart.value.order?.partner?.id);
 
     const addNewAddres = async (form) => {
-      if (copyShippingToBilling.value && !hasSavedShippingAddress.value) {
+      if (copyShippingToBilling.value) {
         await setCart(null);
         await handleAddNewAddress(form);
         await handleAddNewBillingAddress(form);
