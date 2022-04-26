@@ -4,7 +4,7 @@
       Meget flot
     </div>
     <p class="description-main">
-      Screen: May have micro-scratches which are not noticeable when<br>
+      Screen: May have micro-scratches which are not noticeable when
       the screen is turned on. Body: Has visible scratches and/or dents
     </p>
   </div>
@@ -29,11 +29,14 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped>
+<style scoped lang="scss">
   .description-wrap .title-main {
     text-align: end;
     color: #1d1f22;
     margin-bottom: 10px;
+    @include for-mobile {
+      text-align: center;
+    }
   }
 
   .description-wrap .description-main {
@@ -43,5 +46,8 @@ export default defineComponent({
     padding-bottom: 16px;
     border-bottom: 1px solid #f1f2f3;
     margin-bottom: 26px;
+    @include for-mobile {
+      text-align: center;
+    }
   }
 </style>

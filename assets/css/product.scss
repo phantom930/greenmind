@@ -7,6 +7,12 @@
   }
 }
 
+.product__info {
+  @include for-mobile{
+    padding: 12px;
+  }
+}
+
 .product {
     @include for-desktop {
       display: flex;
@@ -20,13 +26,14 @@
       }
     }
     &__header {
+      justify-content: center;
       --heading-title-color: var(--c-link);
       --heading-title-font-weight: var(--font-weight--bold);
       --heading-padding: 0;
       margin: 0 var(--spacer-sm);
       display: flex;
-      justify-content: space-between;
       @include for-desktop {
+        justify-content: space-between;
         --heading-title-font-weight: var(--font-weight--semibold);
         margin: 0 auto;
       }
@@ -174,6 +181,10 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    @include for-mobile {
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   .total-price-buttons .buttons {
@@ -182,12 +193,25 @@
     align-items: center;
     width: 100%;
     max-width: 280px;
+    @include for-mobile {
+      width: 100%;
+    }
+
+    & button {
+      @include for-mobile {
+        width: 100%;
+      } 
+    }
   }
+  
   .product_variants {
     text-align: left;
     --heading-title-color: var(--_c-greenmind-secondary-black);
     --heading-title-font-size: 26px;
     --heading-title-font-weight: 500;
+    @include for-mobile {
+      text-align: center;
+    }
   }
   .product_title {
     --heading-title-color: var(--_c-greenmind-primary-black);
@@ -207,4 +231,10 @@
     padding-bottom: 8px;
     border-bottom: 1px solid #f1f2f3;
     margin-bottom: 40px;
+  }
+
+  .image-wrapper img{
+    @include for-mobile {
+      width: 100%;
+    }
   }
