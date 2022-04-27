@@ -1,11 +1,13 @@
 <template>
   <div>
-    <CategoryTopBanner />
+    <CategoryTopBanner v-if="$device.isDesktop" />
 
     <div id="category">
       <CategoryNavbar />
 
       <div class="main section">
+        <CategoryTopBanner v-if="$device.isMobile" />
+
         <LazyHydrate when-idle>
           <CategorySidebarFilters
             :facets="facets"

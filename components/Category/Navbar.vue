@@ -142,6 +142,9 @@ export default defineComponent({
       display: flex;
       align-items: center;
       margin: 0 16% 0 auto;
+      @include for-mobile {
+        margin: 0 29% 0 auto;
+      }
     }
     &__title .sf-heading__title {
       font-weight: bold;
