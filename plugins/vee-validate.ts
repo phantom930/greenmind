@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 import { extend } from 'vee-validate';
-import { min_value, email, required } from 'vee-validate/dist/rules';
+import { min, email, required } from 'vee-validate/dist/rules';
 extend('min_value', {
-  ...min_value,
+  ...min,
   message: 'This field must have be greater than 0'
 });
 
