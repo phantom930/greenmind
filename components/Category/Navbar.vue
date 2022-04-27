@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="navbar section"
-  >
+  <div class="navbar section">
     <div class="navbar__aside desktop-only">
       <SfBreadcrumbs
         class="breadcrumbs desktop-only"
@@ -17,6 +15,7 @@
           class="sf-button--text navbar__filters-button "
           data-cy="category-btn_filters"
           aria-label="Filters"
+          @click="toggleFilterSidebar"
         >
           <SfIcon
             size="24px"
@@ -61,7 +60,7 @@
 import { computed, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { SfBreadcrumbs, SfHeading, SfSelect, SfButton, SfIcon } from '@storefront-ui/vue';
 import { facetGetters, useFacet } from '@vue-storefront/odoo';
-import { useUiCategoryHelpers, useUiHelpers } from '~/composables';
+import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
 
 import frag from 'vue-frag';
 import LazyHydrate from 'vue-lazy-hydration';
@@ -83,6 +82,7 @@ export default defineComponent({
 
     const { result } = useFacet();
     const { changeSorting } = useUiHelpers();
+    const { toggleFilterSidebar } = useUiState();
     const { currentRootCategory } = useUiCategoryHelpers(result.value);
     const { params, query } = route.value;
 
@@ -99,6 +99,7 @@ export default defineComponent({
       })
     );
     return {
+      toggleFilterSidebar,
       currentRootCategory,
       breadcrumbs,
       sortBy,

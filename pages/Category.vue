@@ -9,7 +9,7 @@
         <CategoryTopBanner v-if="$device.isMobile" />
 
         <LazyHydrate when-idle>
-          <CategorySidebarFilters
+          <CategorySidebarFilter
             :facets="facets"
             :range-attributes="rangeAttributes"
           />

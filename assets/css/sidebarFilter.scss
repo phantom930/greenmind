@@ -1,6 +1,9 @@
 .filters {
     &__title {
       margin: var(--spacer-xs) 0 var(--spacer-base) 0;
+      @include for-mobile {
+        margin: 0 !important;
+      }
       &:first-child {
         margin: calc(var(--spacer-sm) + var(--spacer-base)) 0 var(--spacer-xs) 0;
       }
@@ -84,6 +87,12 @@
       --sidebar-content-padding: 0 var(--spacer-xl);
       --sidebar-bottom-padding: 0 var(--spacer-xl);
     }
+  }
+  ::v-deep .sf-bar__title {
+    font-family: var(--font-family--primary);
+    font-weight: 700; 
+    font-size: 24px;
+    line-height: 30px;
   }
   ::v-deep .sf-checkbox__checkmark {
     border-radius: 50%;

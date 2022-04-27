@@ -1,12 +1,19 @@
 <template>
   <div>
-    <div class="sidebar desktop-only">
+    <component
+      :is="$device.isMobile ? 'SfSidebar' : 'div'"
+      class="sidebar sidebar-filters"
+      :visible="isFilterSidebarOpen"
+      title="Filters"
+      @close="toggleFilterSidebar"
+    >
       <SfHeading
+        v-if="$device.isDesktop"
         :level="4"
         :title="$t('Filters')"
         class="filters-title pb-5 sf-heading--left"
       />
-      <div class="filters desktop-only">
+      <div class="filters">
         <SfHeading
           :key="`filter-title-price`"
           :level="4"
@@ -82,21 +89,22 @@
           </template>
         </SfAccordion>
       </div>
-    </div>
+    </component>
   </div>
 </template>
 
 <script>
-import { ref, onMounted, defineComponent, useRoute, computed, useRouter } from '@nuxtjs/composition-api';
+import { ref, onMounted, defineComponent, useRoute, computed } from '@nuxtjs/composition-api';
 import {
   SfAccordion,
   SfColor,
   SfHeading,
   SfList,
-  SfCheckbox
+  SfCheckbox,
+  SfSidebar
 } from '@storefront-ui/vue';
 import LazyHydrate from 'vue-lazy-hydration';
-import { useCurrency, useUiHelpers } from '~/composables';
+import { useCurrency, useUiHelpers, useUiState } from '~/composables';
 
 export default defineComponent({
   components: {
@@ -105,6 +113,7 @@ export default defineComponent({
     SfAccordion,
     SfList,
     SfCheckbox,
+    SfSidebar,
     LazyHydrate
   },
   props: {
@@ -122,6 +131,8 @@ export default defineComponent({
     const price = ref([0, 8000]);
     const { toInteger } = useCurrency();
     const { query } = useRoute().value;
+    const { toggleFilterSidebar, isFilterSidebarOpen } = useUiState();
+
     const { changeFilters, isFacetColor, facetsFromUrlToFilter } =
       useUiHelpers();
 
@@ -202,6 +213,8 @@ export default defineComponent({
     };
 
     return {
+      isFilterSidebarOpen,
+      toggleFilterSidebar,
       openedHeaders,
       price,
       selectPrice,
