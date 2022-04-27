@@ -108,9 +108,9 @@
     &__aside {
       z-index: 61;
       width: 434px;
-    }
-    &__content, &__bottom {
-      width: 95%;
+      @include for-mobile {
+        width: 100%;
+      }
     }
   }
   .empty-cart__heading {
