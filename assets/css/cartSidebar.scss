@@ -1,3 +1,4 @@
+
 #cart {
     @include for-desktop {
       & > * {
@@ -103,9 +104,14 @@
     z-index: 60;
   }
   
-  ::v-deep .sf-sidebar__aside {
-    z-index: 61;
-    width: 434px;
+  ::v-deep .sf-sidebar {
+    &__aside {
+      z-index: 61;
+      width: 434px;
+    }
+    &__content, &__bottom {
+      width: 95%;
+    }
   }
   .empty-cart__heading {
     --heading-title-color: var(--_c-greenmind-fern-primary-medium-green);
