@@ -189,7 +189,7 @@ export default defineComponent({
 
     const addNewAddres = async (form) => {
       if (copyShippingToBilling.value) {
-        await setCart(null);
+        // await setCart(null);
         await handleAddNewAddress(form);
         await handleAddNewBillingAddress(form);
 
