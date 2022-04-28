@@ -10,7 +10,7 @@
           <ValidationProvider
             v-slot="{ errors }"
             name="firstName"
-            rules="required|min:2"
+            rules="required"
             slim
           >
             <SfInput
@@ -27,7 +27,7 @@
             <ValidationProvider
               v-slot="{ errors }"
               name="lastname"
-              rules="required|min:2"
+              rules="required"
               slim
             >
               <SfInput
@@ -45,7 +45,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="streetName"
-          rules="required|min:2"
+          rules="required"
           slim
         >
           <SfInput
@@ -61,7 +61,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="zipCode"
-          rules="required|min:2"
+          rules="required"
           slim
         >
           <SfInput
@@ -77,7 +77,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="city"
-          rules="required|min:2"
+          rules="required"
           slim
         >
           <SfInput

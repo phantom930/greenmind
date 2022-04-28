@@ -96,7 +96,7 @@
             <p class="mb-4">
               <span>{{ partnerShipping.name }}</span> <br>{{ partnerShipping.street }} –
               {{ partnerShipping.zip }}<br>
-              {{ partnerShipping.city }}, {{ partnerShipping.country.name }}
+              {{ partnerShipping.city }}, {{ partnerShipping.country ? partnerShipping.country.name : '' }}
             </p>
           </div>
           <div class="detail-edit">
@@ -124,7 +124,7 @@
             <p class="mb-4">
               <span>{{ partnerInvoice.name }}</span> <br>{{ partnerInvoice.street }} –
               {{ partnerInvoice.zip }}<br>
-              {{ partnerInvoice.city }}, {{ partnerInvoice.country.name }}
+              {{ partnerInvoice.city }}, {{ partnerInvoice.country ? partnerInvoice.country.name : '' }}
             </p>
           </div>
           <div class="detail-edit">
