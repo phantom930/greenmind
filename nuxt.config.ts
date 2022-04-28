@@ -15,7 +15,7 @@ const localesMap = {
   'sv-SV': 'sv'
 };
 
-const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
+const localeIndex = process.env.NODE_LOCALE ? localesMap[process.env.NODE_LOCALE] : 'en';
 
 export default {
   dir: {
