@@ -10,6 +10,8 @@
           :images="productGallery"
           :image-width="mainImageWidth"
           :image-height="mainImageHeigth"
+          :thumb-width="160"
+          :thumb-height="160"
           :nuxt-img-config="{ fit: 'cover' }"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
@@ -168,12 +170,21 @@ export default defineComponent({
     const mainImageHeigth = computed(() => root.$device.isDesktop ? 664 : 500);
 
     const productGallery = computed(() =>
-      productGetters.getGallery(product.value).map((img) => ({
-        mobile: { url: root.$image(img.small, 160, 160, productGetters.getImageFilename(product.value)) },
-        desktop: { url: root.$image(img.normal, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(product.value)) },
-        big: { url: root.$image(img.big, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(product.value)) },
-        alt: product.value.name || 'alt'
-      }))
+      [
+        ...productGetters.getGallery(product.value).map((img) => ({
+          mobile: { url: root.$image(img.small, 160, 160, productGetters.getImageFilename(product.value)) },
+          desktop: { url: root.$image(img.normal, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(product.value)) },
+          big: { url: root.$image(img.big, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(product.value)) },
+          alt: product.value.name || 'alt'
+        })),
+        ...product?.value?.mediaGallery?.map(img => ({
+          mobile: { url: root.$image(img.image, 160, 160, 'test-no-imagefilename') },
+          desktop: { url: root.$image(img.image, mainImageWidth.value, mainImageHeigth.value, 'test-no-imagefilename') },
+          big: { url: root.$image(img.image, mainImageWidth.value, mainImageHeigth.value, 'test-no-imagefilename') },
+          alt: product.value.name || 'alt'
+        })) || []
+
+      ]
     );
 
     const handleSelectNewGrade = async (productdId) => {

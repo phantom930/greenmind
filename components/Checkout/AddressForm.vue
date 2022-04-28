@@ -138,6 +138,7 @@
         </ValidationProvider>
       </div>
       <GreenButton
+        v-if="false"
         type="Primary"
         color="Grey"
         shape="Round"
@@ -152,7 +153,7 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, PropType, onMounted, watch } from '@nuxtjs/composition-api';
+import { defineComponent, reactive, PropType, onMounted, watch, ref } from '@nuxtjs/composition-api';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { SfInput, SfSelect } from '@storefront-ui/vue';
 import { Address, Country } from '@vue-storefront/odoo-api';
@@ -192,8 +193,9 @@ export default defineComponent({
     }
   },
   emits: ['submit'],
-  setup(props, { emit }) {
+  setup(props, { emit, refs }) {
     const form = reactive(formInitialState());
+    const formRef = ref(null);
 
     const submitForm = () => {
       emit('submit', form);
@@ -229,7 +231,8 @@ export default defineComponent({
     return {
       submitForm,
       resetForm,
-      form
+      form,
+      formRef
     };
   }
 });
