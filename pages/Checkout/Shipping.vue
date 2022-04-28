@@ -35,11 +35,12 @@
 
     <CheckoutAddressForm
       v-if="canAddNewAddress"
+      ref="shippingForm"
       :loading="loadingShipping"
       :countries="countries"
       :current-address-data="userShipping[0]"
       class="mb-5"
-      @submit="addNewAddres"
+      @submit="handleAddNewAddress"
     />
 
     <VsfShippingProvider
@@ -63,6 +64,7 @@
 
     <CheckoutAddressForm
       v-if="!copyShippingToBilling"
+      ref="billingForm"
       :loading="loadingBilling"
       :countries="countries"
       :current-address-data="userBilling[0]"
@@ -106,7 +108,8 @@
         color="Grey"
         shape="Round"
         size="Medium"
-        :disabled="!canGoReviewOrder"
+        :disabled="!canGoReviewOrder || loadingBilling || loadingShipping"
+        :loading="loadingBilling || loadingShipping"
         @click="handleGoToReviewOrder"
       >
         {{ $t("GO TO REVIEW ORDER") }}
@@ -137,12 +140,14 @@ export default defineComponent({
       import('~/components/Checkout/VsfShippingProvider.vue')
   },
   emits: ['finish', 'change'],
-  setup(_, { emit }) {
+  setup(_, { emit, refs }) {
     const { cart, load: loadCart, setCart } = useCart();
     const { search, countries } = useCountrySearch('countries');
     const { isAuthenticated } = useUser();
 
     const isFormSubmitted = ref(false);
+    const shippingForm = ref(null);
+    const billingForm = ref(null);
     const formRef = ref(null);
     const copyShippingToBilling = ref(true);
     const generateInvoice = ref(false);
@@ -187,17 +192,8 @@ export default defineComponent({
     const hasSavedBillingAddressDifferentPartnerData = computed(() =>
       hasSavedBillingAddress.value && billing.value.id !== cart.value.order?.partner?.id);
 
-    const addNewAddres = async (form) => {
-      if (copyShippingToBilling.value) {
-        // await setCart(null);
-        await handleAddNewAddress(form);
-        await handleAddNewBillingAddress(form);
-
-        return;
-      }
-
-      await handleAddNewAddress(form);
-    };
+    const shippingFormValid = computed(() => shippingForm.value?.formRef.flags.valid);
+    const billingFormValid = computed(() => billingForm.value?.formRef.flags.valid);
 
     const selectedShippingMethod = computed(
       () => cart.value?.order?.shippingMethod || {}
@@ -212,10 +208,19 @@ export default defineComponent({
 
       if (!hasSavedBillingAddress.value) return false;
 
+      if (!shippingFormValid.value) return false;
+
+      if (!copyShippingToBilling.value && !billingFormValid.value) return false;
+
       return true;
     });
 
-    const goToOrderReview = () => emit('change', 'revieworder');
+    const goToOrderReview = async () => {
+      await handleAddNewAddress(shippingForm.value.form);
+      await handleAddNewBillingAddress(copyShippingToBilling.value ? shippingForm.value.form : billingForm.value.form);
+
+      emit('change', 'revieworder');
+    };
 
     const handleGoToReviewOrder = async () => {
       if (newCurrentShippingAddressId.value && defaultShippingAddress.value) {
@@ -246,6 +251,7 @@ export default defineComponent({
     });
 
     return {
+      shippingFormValid,
       hasSavedBillingAddress,
       currentBillingAddressId,
       handleSetCurrentBillingAddress,
@@ -267,14 +273,16 @@ export default defineComponent({
       canAddNewAddress,
       canAddNewBillingAddress,
       handleAddNewBillingAddress,
-      addNewAddres,
+      handleAddNewAddress,
       defaultShippingAddress,
       handleSetCurrentShippingAddress,
       currentAddressId,
       hasSavedShippingAddress,
       isAuthenticated,
       isFormSubmitted,
-      countries
+      countries,
+      shippingForm,
+      billingForm
     };
   }
 });
