@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const localesMap = {
   'en-EN': 'en',
   'de-DE': 'de',
-  'da-DA': 'da',
+  'da-DK': 'da',
   'sv-SV': 'sv'
 };
 
