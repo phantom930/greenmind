@@ -71,7 +71,7 @@
           {{ $t('About us') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/blog">
+      <!--<nuxt-link to="/blog">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -83,11 +83,11 @@
           />
           {{ $t('Blog') }}
         </SfButton>
-      </nuxt-link>
+      </nuxt-link>-->
       <SfDivider
         style="margin: 5% 0 5% 0;"
       />
-      <SfButton
+      <!--<SfButton
         class="sf-button_hamburguer_item"
         @click="loginHamburguer"
       >
@@ -97,7 +97,7 @@
           size="1.75rem"
         />
         {{ $t('Sign in') }}
-      </SfButton>
+      </SfButton>-->
     </SfSidebar>
   </div>
 </template>
