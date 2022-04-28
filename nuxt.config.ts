@@ -174,7 +174,7 @@ export default {
         code: 'da',
         label: 'Danish',
         file: 'da.json',
-        iso: 'da-DA'
+        iso: 'da-DK'
       },
       {
         code: 'sv',
