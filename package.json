@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "nuxt build -m --dotenv .env",
+    "build": "nuxt build -m",
     "test:e2e": "cypress open --config-file tests/e2e/cypress.json",
     "test:e2e:hl": "cypress run --headless --config-file tests/e2e/cypress.json",
     "build:analyze": "nuxt build -a -m",
@@ -11,7 +11,7 @@
     "lint": "eslint . --ext .ts,.vue",
     "lint:ts": "tslint --project tsconfig.json --config tslint.json",
     "lint:fix": "eslint . --ext .ts,.vue --fix",
-    "dev": "nuxt",
+    "dev": "cross-env NODE_LOCALE=en-EN nuxt",
     "generate": "nuxt generate",
     "start": "nuxt start",
     "precommit": "lint-staged",
@@ -31,6 +31,7 @@
   "dependencies": {
     "@nuxtjs/amp": "^0.5.4",
     "@nuxtjs/device": "^2.1.0",
+    "@nuxtjs/i18n": "^7.2.2",
     "@nuxtjs/style-resources": "1.1.0",
     "@storefront-ui/vue": "0.12.0",
     "@vue-storefront/cache": "^2.5.7",
@@ -76,6 +77,7 @@
     "autoprefixer": "^10.2.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^27.5.1",
+    "cross-env": "^7.0.3",
     "cypress": "7.5.0",
     "jest": "^27.5.1",
     "lint-staged": "^11.1.2",

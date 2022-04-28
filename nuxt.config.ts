@@ -15,8 +15,7 @@ const localesMap = {
   'sv-SV': 'sv'
 };
 
-const localeIndex = process.env.NODE_LOCALE ? localesMap[process.env.NODE_LOCALE] : 'en';
-
+const localeIndex = localesMap[process.env.NODE_LOCALE];
 export default {
   dir: {
     // using to ignore auto-generated routes
@@ -117,9 +116,10 @@ export default {
   ],
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
+    localeIndex,
     theme
   },
-  modules: makeModules(),
+  modules: makeModules(['@nuxtjs/i18n']),
   nuxtPrecompress: {
     enabled: !isDev,
     report: false,
@@ -158,8 +158,6 @@ export default {
   },
   i18n: {
     strategy: 'no_prefix',
-    currency: 'DKK',
-    country: 'DN',
     countries: [
       { name: 'US', label: 'United States' },
       { name: 'DE', label: 'Germany' }
@@ -195,8 +193,8 @@ export default {
         iso: 'en-US'
       }
     ],
-    fallbackLocale: localeIndex,
-    defaultLocale: localeIndex,
+    fallbackLocale: 'da',
+    defaultLocale: 'da',
     seo: true,
     langDir: 'lang',
     detectBrowserLanguage: false
