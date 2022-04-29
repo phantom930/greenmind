@@ -2,11 +2,14 @@
 import webpack from 'webpack';
 import theme from './themeConfig';
 import { getRoutes } from './routes';
+import getAppRoutes from './sitemap';
 import { resolve } from 'path';
 import Config from '@odoogap/nuxt-config';
 
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
+
+// const siteMapRoutes = getAppRoutes();
 
 const localesMap = {
   'en-EN': 'en',
@@ -15,7 +18,9 @@ const localesMap = {
   'sv-SV': 'sv'
 };
 
-const localeIndex = localesMap[process.env.NODE_LOCALE];
+const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
+
+console.log(localeIndex);
 
 export default {
   dir: {
@@ -121,7 +126,7 @@ export default {
     localeIndex,
     theme
   },
-  modules: makeModules(),
+  modules: makeModules(['@nuxtjs/sitemap', '@nuxtjs/i18n']),
   nuxtPrecompress: {
     enabled: !isDev,
     report: false,
@@ -202,6 +207,20 @@ export default {
     langDir: 'lang',
     detectBrowserLanguage: false
   },
+  sitemap: {
+    hostname: process.env.SITE_URL || 'https://vue-dev.greenmind.space/',
+    i18n: false,
+    gzip: true,
+    defaults: {
+      changefreq: 'daily',
+      priority: 1,
+      lastmod: new Date()
+    }
+    // routes () {
+    //   return getAppRoutes();
+    // }
+  },
+
   styleResources: {
     scss: [require.resolve('@storefront-ui/shared/styles/_helpers.scss', { paths: [process.cwd()] })]
   },

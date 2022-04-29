@@ -170,8 +170,9 @@ export default {
             {
               name: 'Reparation',
               slug: '/reparation'
-            },
-            /*{
+            }
+
+            /* {
               name: 'Blog',
               slug: '/blog'
             }*/
