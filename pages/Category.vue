@@ -112,7 +112,7 @@ export default defineComponent({
 
     const changeItemsPerPage = async () => {
       buttonLoading.value = true;
-      pageSize.value += 15;
+      pageSize.value += 21;
       const params = {
         ...getFacetsFromURL(),
         pageSize: pageSize,

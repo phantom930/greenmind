@@ -70,8 +70,8 @@
       </div>
       <div class="submit-button">
         <GreenButton
-          type="Tertiary"
-          color="Grey"
+          type="Primary"
+          color="Green"
           shape="Round"
           size="Medium"
           :disabled="!agreeTermsConditions"

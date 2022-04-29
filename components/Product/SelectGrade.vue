@@ -9,26 +9,34 @@
         <nuxt-link
           v-for="(grade, index) in productGrades"
           :key="index"
-          tag="span"
+          v-slot="{ navigate }"
+          custom
           :to="{ name: 'product', params: {id: grade.product_id }}"
           class="price-discount-wrap"
           :class="isSelectedGrade(grade) ? 'active' : ''"
         >
-          <div
-            class="price-wrap cursor-pointer"
-            @click="chooseGrade(grade)"
+          <span
+            role="link"
+            @click="navigate"
+            @keypress.enter="navigate"
           >
-            <p> {{ grade.grade_name }} </p>
-            <div class="price">
-              {{ $currency(grade.price) }}
+            <div
+              class="price-wrap cursor-pointer"
+              @click="chooseGrade(grade)"
+            >
+              <p> {{ grade.grade_name }} </p>
+              <div class="price">
+                {{ $currency(grade.price) }}
+              </div>
             </div>
-          </div>
-          <div
-            v-if="grade.has_discounted_price"
-            class="discount"
-          >
-            {{ $currency(grade.list_price) }}
-          </div>
+            <div
+              v-if="grade.has_discounted_price"
+              class="discount"
+            >
+              {{ $currency(grade.list_price) }}
+            </div>
+
+          </span>
         </nuxt-link>
       </div>
     </div>

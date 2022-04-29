@@ -104,8 +104,8 @@
 
     <div class="submit-button mb-10">
       <GreenButton
-        type="Tertiary"
-        color="Grey"
+        type="Primary"
+        color="Green"
         shape="Round"
         size="Medium"
         :disabled="!canGoReviewOrder || loadingBilling || loadingShipping"

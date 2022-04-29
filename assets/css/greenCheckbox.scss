@@ -1,6 +1,7 @@
 .img-description-wrap {
     display: flex;
     align-items: center;
+    gap: 15px;
     /* padding-left: 6%; */
   }
   .title-link {
@@ -8,7 +9,7 @@
     align-items: center;
   }
   .product-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--_c-greenmind-primary-grey) !important;
     margin-right: 80px;
@@ -43,4 +44,8 @@
   .checkbox_image {
     max-width: 82px;
     max-height: 70px;
+  }
+  
+  ::v-deep .sf-checkbox__container{
+    gap: 20px;
   }
