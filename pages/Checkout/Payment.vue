@@ -35,25 +35,25 @@
         </GreenCheckbox>
       </div> -->
 
-      <abstract-payment-observer v-if="selectedProvider.name">
-        <component
-          :is="getComponentProviderByName(selectedProvider.name)"
-          class="py-8"
-          :provider="selectedProvider"
-          @isPaymentReady="isPaymentReady = arguments[0]"
-          @providerPaymentHandler="providerPaymentHandler = arguments[0]"
-        />
-      </abstract-payment-observer>
       <GreenCheckbox
-        v-else
         v-model="selectedProvider"
-        :value="provider.id"
-        :is-checked="selectedProvider === provider.id"
+        :value="provider"
+        :is-checked="selectedProvider.id === provider.id"
         :has-general-wrapper="false"
         :label="provider.name"
-        @change="selectProvider"
       />
     </div>
+
+    <abstract-payment-observer v-if="selectedProvider.name">
+      <component
+        :is="getComponentProviderByName(selectedProvider.name)"
+        class="py-8"
+        :provider="selectedProvider"
+        @isPaymentReady="isPaymentReady = arguments[0]"
+        @providerPaymentHandler="providerPaymentHandler = arguments[0]"
+      />
+    </abstract-payment-observer>
+
     <span v-if="cartExcedLimitTotalAmount">
       You can't pass over 50000!
     </span>
@@ -107,6 +107,7 @@ export default defineComponent({
     const selectedProvider = ref({});
 
     const selectProvider = (provider) => {
+      console.log(provider);
       isPaymentReady.value = false;
       selectedProvider.value = provider;
       context.emit('status');
