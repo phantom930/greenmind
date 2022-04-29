@@ -6,10 +6,10 @@
   >
     <nuxt-link :to="localePath(`/iphones`)" class="hover:shadow rounded-md">
       <SfImage
-        :src="require('/assets/images/categoryCards/homeCategoryCard_1.svg')"
+        :src="require('/assets/images/categoryCards/homeCategoryCard2_1.webp')"
         alt="iPhones"
         :width="295"
-        :height="223"
+        :height="295"
         class="categoryCardImage"
       />
       <p class="text-center">
@@ -19,10 +19,10 @@
 
     <nuxt-link :to="localePath(`/smartphones`)" class="hover:shadow rounded-md">
       <SfImage
-        :src="require('/assets/images/categoryCards/homeCategoryCard_2.svg')"
-        alt="iPhones"
+        :src="require('/assets/images/categoryCards/homeCategoryCard2_2.webp')"
+        alt="Smartphones"
         :width="295"
-        :height="223"
+        :height="295"
         class="categoryCardImage"
       />
       <p class="text-center">
@@ -31,10 +31,10 @@
     </nuxt-link>
     <nuxt-link :to="localePath(`/tablets`)" class="hover:shadow rounded-md">
       <SfImage
-        :src="require('/assets/images/categoryCards/homeCategoryCard_3.svg')"
-        alt="iPhones"
+        :src="require('/assets/images/categoryCards/homeCategoryCard2_3.webp')"
+        alt="Tablets"
         :width="295"
-        :height="223"
+        :height="295"
         class="categoryCardImage"
       />
       <p class="text-center">
@@ -43,10 +43,10 @@
     </nuxt-link>
     <nuxt-link :to="localePath(`/computere`)" class="hover:shadow rounded-md">
       <SfImage
-        :src="require('/assets/images/categoryCards/homeCategoryCard_4.svg')"
-        alt="iPhones"
+        :src="require('/assets/images/categoryCards/homeCategoryCard2_4.webp')"
+        alt="Computers"
         :width="295"
-        :height="223"
+        :height="295"
         class="categoryCardImage"
       />
       <p class="text-center">

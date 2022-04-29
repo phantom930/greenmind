@@ -172,7 +172,13 @@
     height: 270px;
   }
   ::v-deep .categoryCardImage .sf-image{
-    object-fit: fill
+    object-fit: fill;
+    margin-right: 10px;
+    /* --- Resize according size of screen --- */
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    
   }
   ::v-deep .sf-link {
     --button-width: var(--button-size, var(--button-width));
