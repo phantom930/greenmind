@@ -23,23 +23,26 @@
           v-if="hasImage"
           class="img-description-wrap"
         >
-          <img
-            :src="image"
-            :width="82"
-            :height="70"
-            class="checkbox_image"
-          >
-          <div class="description-wrap">
-            <div class="title-link">
-              <div class="product-title">
-                {{ title }}
+          <slot name="image">
+            <img
+              :src="image"
+              :width="imageWidth"
+              :height="imageHeight"
+              class="checkbox_image"
+              :alt="name"
+            >
+            <div class="description-wrap">
+              <div class="title-link">
+                <div class="product-title">
+                  {{ title }}
+                </div>
+                <a href="#">{{ linkTitle }}</a>
               </div>
-              <a href="#">{{ linkTitle }}</a>
+              <p class="product-description">
+                {{ description }}
+              </p>
             </div>
-            <p class="product-description">
-              {{ description }}
-            </p>
-          </div>
+          </slot>
         </div>
         <div
           v-else
@@ -66,11 +69,11 @@
 </template>
 
 <script lang="ts">
-import { SfCheckbox } from '@storefront-ui/vue';
+import { SfCheckbox, SfImage } from '@storefront-ui/vue';
 import { ref, defineComponent } from '@nuxtjs/composition-api';
 export default defineComponent({
   components: {
-    SfCheckbox
+    SfCheckbox, SfImage
   },
   model: {
     prop: 'model',
@@ -116,6 +119,14 @@ export default defineComponent({
     image: {
       type: String,
       default: ''
+    },
+    imageWidth: {
+      type: Number,
+      default: 82
+    },
+    imageHeight: {
+      type: Number,
+      default: 70
     },
     hasGeneralWrapper: {
       type: Boolean,

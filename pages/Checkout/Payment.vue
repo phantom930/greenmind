@@ -12,26 +12,46 @@
         :title="provider.name"
         class="sf-heading--left sf-heading--no-underline title"
       />
-      <div v-if="provider.paymentIcons" class="payment-method">
-        <template>
-          <div
-            v-for="icon in provider.paymentIcons"
-            :key="icon.id"
-            class="method"
-          >
-            <label class="container">
-              <input type="checkbox" checked="checked">
-              <span class="checkmark" />
-            </label>
-            <img :src="$image(icon.image, 57, 25, icon.name)">
-          </div>
-        </template>
-      </div>
+      <!-- <div v-if="provider.paymentIcons" class="payment-method">
+        <GreenCheckbox
+          v-for="icon in provider.paymentIcons"
+          :key="icon.id"
+          :value="icon.id"
+          :emit-value="true"
+          :is-checked="selectedProvider === icon.id"
+          title="accessoryProduct.name"
+          description="accessoryProduct.description"
+          :has-image="true"
+          @change="selectProvider"
+        >
+          <template #image>
+            <SfImage
+              :src="$image(icon.image, 57, 25, icon.name)"
+              :alt="icon.name || 'icon-image'"
+              :width="57"
+              :height="25"
+            />
+          </template>
+        </GreenCheckbox>
+      </div> -->
+
+      <abstract-payment-observer v-if="selectedProvider.name">
+        <component
+          :is="getComponentProviderByName(selectedProvider.name)"
+          class="py-8"
+          :provider="selectedProvider"
+          @isPaymentReady="isPaymentReady = arguments[0]"
+          @providerPaymentHandler="providerPaymentHandler = arguments[0]"
+        />
+      </abstract-payment-observer>
       <GreenCheckbox
         v-else
-        v-model="agreeTermsConditions"
+        v-model="selectedProvider"
+        :value="provider.id"
+        :is-checked="selectedProvider === provider.id"
         :has-general-wrapper="false"
         :label="provider.name"
+        @change="selectProvider"
       />
     </div>
     <span v-if="cartExcedLimitTotalAmount">
@@ -44,6 +64,7 @@
       size="Medium"
       :disabled="!canFinishPayment"
       class="my-5 desktop-only"
+      @click="processOrder"
     >
       {{ $t("Confirm & Pay") }}
     </GreenButton>
@@ -51,33 +72,31 @@
 </template>
 
 <script >
-import { SfButton, SfInput, SfSelect, SfHeading } from '@storefront-ui/vue';
+import { SfHeading, SfImage } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
+import { cartGetters, useCart, useMakeOrder, usePayment } from '@vue-storefront/odoo';
+import { computed, defineComponent, ref } from '@vue/composition-api';
 import { useUiHelpers } from '~/composables';
-import { ref, computed, defineComponent } from '@vue/composition-api';
-import { useMakeOrder, useCart, cartGetters, orderGetters, usePayment } from '@vue-storefront/odoo';
 
 export default defineComponent({
   name: 'Payment',
   components: {
     SfHeading,
-    SfButton
-    // VsfPaymentProvider: () =>
-    //   import('~/components/Checkout/VsfPaymentProvider'),
-    // AdyenPaymentProvider: () =>
-    //   import('~/components/Checkout/AdyenPaymentProvider'),
-    // AdyenExternalPaymentProvider: () =>
-    //   import('~/components/Checkout/AdyenExternalPaymentProvider'),
-    // WireTransferPaymentProvider: () =>
-    //   import('~/components/Checkout/WireTransferPaymentProvider'),
-    // AbstractPaymentObserver: () =>
-    //   import('~/components/Checkout/AbstractPaymentObserver')
+    SfImage,
+    VsfPaymentProvider: () =>
+      import('~/components/Checkout/VsfPaymentProvider'),
+    AdyenPaymentProvider: () =>
+      import('~/components/Checkout/AdyenPaymentProvider'),
+    AdyenExternalPaymentProvider: () =>
+      import('~/components/Checkout/AdyenExternalPaymentProvider'),
+    WireTransferPaymentProvider: () =>
+      import('~/components/Checkout/WireTransferPaymentProvider'),
+    AbstractPaymentObserver: () =>
+      import('~/components/Checkout/AbstractPaymentObserver')
   },
   emits: ['status'],
   setup(props, context) {
     const { cart, load, setCart } = useCart();
-    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    if (totalItems.value === 0) context.root.$router.push('/cart');
 
     const { providerList, getPaymentProviderList } = usePayment(String(cart.value?.order?.id));
     const { order, make, loading } = useMakeOrder();
@@ -99,14 +118,14 @@ export default defineComponent({
     });
 
     const processOrder = async () => {
-      // await make();
+      await make();
 
       // const thankYouPath = {
       //   name: 'thank-you',
       //   query: { order: orderGetters.getId(order.value) }
       // };
       // context.root.$router.push(context.root.localePath(thankYouPath));
-      setCart(null);
+      // setCart(null);
     };
 
     const providerPaymentHandler = () => {};
