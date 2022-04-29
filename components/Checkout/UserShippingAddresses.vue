@@ -65,8 +65,6 @@ export default defineComponent({
         (item) => item.id === Number.parseInt(addressId)
       );
 
-      console.log(selectedAddress);
-
       emit('set-current-address', selectedAddress?.[0] || {});
     };
 

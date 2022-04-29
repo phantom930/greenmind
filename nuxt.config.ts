@@ -16,6 +16,7 @@ const localesMap = {
 };
 
 const localeIndex = localesMap[process.env.NODE_LOCALE];
+
 export default {
   dir: {
     // using to ignore auto-generated routes
@@ -93,6 +94,7 @@ export default {
         performance: {
           httpPush: true
         },
+        i18nExtension: false,
         // @core-development-only-start
         // @core-development-only-end
         useRawSource: {
@@ -112,14 +114,14 @@ export default {
     /* project-only-start
     ['@vue-storefront/nuxt-theme'],
     project-only-end */
-    ['@vue-storefront/odoo/nuxt', {}]
+    ['@vue-storefront/odoo/nuxt', { }]
   ],
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
     localeIndex,
     theme
   },
-  modules: makeModules(['@nuxtjs/i18n']),
+  modules: makeModules(),
   nuxtPrecompress: {
     enabled: !isDev,
     report: false,
@@ -193,9 +195,10 @@ export default {
         iso: 'en-US'
       }
     ],
-    fallbackLocale: 'da',
-    defaultLocale: 'da',
+    fallbackLocale: localeIndex,
+    defaultLocale: localeIndex,
     seo: true,
+    locale: localeIndex,
     langDir: 'lang',
     detectBrowserLanguage: false
   },
