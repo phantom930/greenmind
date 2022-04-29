@@ -7,7 +7,7 @@
     <div
       v-if="!$device.isMobileOrTablet"
       class="flex justify-center"
-      style="transform: translateY(-34px)"
+      style="transform: translateY(-34px) mt-1"
     >
       <SfImage
         :src="require('/assets/images/homeUspBanner/banner_1.svg')"

@@ -1,35 +1,12 @@
 <template>
-  <div class="usp_banner_products flex">
-    <div class="grid usp-div">
-      <SfImage
-        :src="require('/assets/images/productsUspBanner/banner_1.svg')"
-        :width="63"
-        :height="71"
-        alt="Vue Storefront Next"
-        style="margin-left: auto; margin-right: auto"
-      />
-      <span class="usp_text_product">Produkter er testet af egne eksperter</span>
-    </div>
-    <div class="grid usp-div">
-      <SfImage
-        :src="require('/assets/images/productsUspBanner/banner_2.svg')"
-        :width="63"
-        :height="71"
-        alt="Vue Storefront Next"
-        style="margin-left: auto; margin-right: auto"
-      />
-      <span class="usp_text_product">14 dages returret <br>2 års garanti</span>
-    </div>
-    <div class="grid usp-div">
-      <SfImage
-        :src="require('/assets/images/productsUspBanner/banner_3.svg')"
-        :width="63"
-        :height="71"
-        alt="Vue Storefront Next"
-        style="margin-left: auto; margin-right: auto"
-      />
-      <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
-    </div>
+  <div>
+    <SfImage
+      :src="require('/assets/images/productsUspBanner/banner_mobile_1.webp')"
+      :width="531"
+      :height="120"
+      alt="Banner Mobile"
+      class="usp_banner_products"
+    />
   </div>
 </template>
 
@@ -46,33 +23,22 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
-  .usp_banner_products {
-    height: 120px;
-    width: 531px;
+
+  ::v-deep .usp_banner_products .sf-image{
+    min-width: 100%;
+    min-height: 100%;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 10px;
-    background-color: #f3f3f3;
     margin-top: 7%;
+    /* --- Resize according size of screen --- */
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
     @include for-mobile {
-      width: 100%;
       justify-content: center;
     }
+    
   }
 
-  .usp_text_product {
-    width: 122px;
-    font-family: var(--font-family--primary);
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: center;
-    @include for-mobile {
-    }
-  }
-
-  .usp-div {
-    padding-left: 8%;
-    @include for-mobile {
-      padding-left: 0;
-    }
-  }
 </style>
