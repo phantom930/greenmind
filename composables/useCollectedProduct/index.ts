@@ -32,7 +32,7 @@ const useCollectedProduct = (): any => {
     if (anyLoading.value) {
       return;
     }
-    await updateItemQty({ product: orderLine, quantity, customQuery: { cartUpdateItemQty: 'greenCartUpdateItemQty'} });
+    await updateItemQty({ product: orderLine, quantity: Number(quantity), customQuery: { cartUpdateItemQty: 'greenCartUpdateItemQty'} });
   };
 
   const handleAddOrRemoveAccessory = async (productId: number, accessoryId: number) => {
