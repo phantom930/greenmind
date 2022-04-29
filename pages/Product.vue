@@ -127,9 +127,9 @@ import { SfBreadcrumbs, SfGallery, SfHeading, SfIcon } from '@storefront-ui/vue'
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
-import LazyHydrate from 'vue-lazy-hydration';
 import { productGetters, useUiState, facetGetters } from '~/composables';
 import { product } from '@odoogap/seo';
+import LazyHydrate from 'vue-lazy-hydration';
 
 const { allHead } = product();
 export default defineComponent({
@@ -178,9 +178,9 @@ export default defineComponent({
           alt: product.value.name || 'alt'
         })),
         ...product?.value?.mediaGallery?.map(img => ({
-          mobile: { url: root.$image(img.image, 160, 160, 'test-no-imagefilename') },
-          desktop: { url: root.$image(img.image, mainImageWidth.value, mainImageHeigth.value, 'test-no-imagefilename') },
-          big: { url: root.$image(img.image, mainImageWidth.value, mainImageHeigth.value, 'test-no-imagefilename') },
+          mobile: { url: root.$image(img.image, 160, 160, productGetters.getImageFilename(img)) },
+          desktop: { url: root.$image(img.image, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(img)) },
+          big: { url: root.$image(img.image, mainImageWidth.value, mainImageHeigth.value, productGetters.getImageFilename(img)) },
           alt: product.value.name || 'alt'
         })) || []
 

@@ -147,6 +147,7 @@ module.exports = {
                         id
                         name
                         image
+                        imageFilename
                     }
                     categories{
                         id
