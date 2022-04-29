@@ -3,44 +3,37 @@
     <h3 class="title">
       Payment Methods
     </h3>
-    <div class="payment-method">
-      <div class="method">
-        <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark" />
-        </label>
-        <img :src="require('/assets/images/payment/visa.png')">
+    <div
+      v-for="provider in providerList"
+      :key="provider.id"
+    >
+      <SfHeading
+        :level="3"
+        :title="provider.name"
+        class="sf-heading--left sf-heading--no-underline title"
+      />
+      <div v-if="provider.paymentIcons" class="payment-method">
+        <template>
+          <div
+            v-for="icon in provider.paymentIcons"
+            :key="icon.id"
+            class="method"
+          >
+            <label class="container">
+              <input type="checkbox" checked="checked">
+              <span class="checkmark" />
+            </label>
+            <img :src="$image(icon.image, 57, 25, icon.name)">
+          </div>
+        </template>
       </div>
-      <div class="method">
-        <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark" />
-        </label>
-        <img :src="require('/assets/images/payment/master.png')">
-      </div>
-      <div class="method">
-        <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark" />
-        </label>
-        <img :src="require('/assets/images/payment/visae.png')">
-      </div>
-      <div class="method">
-        <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark" />
-        </label>
-        <p>Cash on delivery</p>
-      </div>
-      <div class="method">
-        <label class="container">
-          <input type="checkbox" checked="checked">
-          <span class="checkmark" />
-        </label>
-        <p>Check</p>
-      </div>
+      <GreenCheckbox
+        v-else
+        v-model="agreeTermsConditions"
+        :has-general-wrapper="false"
+        :label="provider.name"
+      />
     </div>
-
     <span v-if="cartExcedLimitTotalAmount">
       You can't pass over 50000!
     </span>
@@ -58,7 +51,7 @@
 </template>
 
 <script >
-import { SfButton, SfInput, SfSelect } from '@storefront-ui/vue';
+import { SfButton, SfInput, SfSelect, SfHeading } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers } from '~/composables';
 import { ref, computed, defineComponent } from '@vue/composition-api';
@@ -67,9 +60,8 @@ import { useMakeOrder, useCart, cartGetters, orderGetters, usePayment } from '@v
 export default defineComponent({
   name: 'Payment',
   components: {
-    SfButton,
-    SfInput,
-    SfSelect
+    SfHeading,
+    SfButton
     // VsfPaymentProvider: () =>
     //   import('~/components/Checkout/VsfPaymentProvider'),
     // AdyenPaymentProvider: () =>
