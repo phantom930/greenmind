@@ -9,8 +9,6 @@ import Config from '@odoogap/nuxt-config';
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
 
-// const siteMapRoutes = getAppRoutes();
-
 const localesMap = {
   'en-EN': 'en',
   'de-DE': 'de',
@@ -19,8 +17,6 @@ const localesMap = {
 };
 
 const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
-
-console.log(localeIndex);
 
 export default {
   dir: {
@@ -215,10 +211,8 @@ export default {
       changefreq: 'daily',
       priority: 1,
       lastmod: new Date()
-    }
-    // routes () {
-    //   return getAppRoutes();
-    // }
+    },
+    routes: getAppRoutes
   },
 
   styleResources: {

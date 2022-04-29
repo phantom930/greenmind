@@ -1,12 +1,24 @@
 const products = `
-    query {
-        products (pageSize: 500){
-            totalCount
-            products {
-                slug
-            }
-        }
+query {
+  products(pageSize: 500) {
+    totalCount
+    products {
+      slug
     }
+  }
+}
+
 `;
 
-export { products };
+const categories = `
+query {
+  categories(pageSize:300){
+    categories{
+      slug
+    }
+  }
+}
+
+`;
+
+export { products, categories };

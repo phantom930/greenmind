@@ -16,12 +16,21 @@ const fetchProducts = async () => {
   return await axios.post(graphqlBaseUrl, { query: `${queries.products}` }, headers);
 };
 
-const getAppRoutes = async () : Promise<void> => {
+const fetchCategories = async () => {
+  return await axios.post(graphqlBaseUrl, { query: `${queries.categories}` }, headers);
+};
+
+const getAppRoutes = async () : Promise<Array<string>> => {
   consola.info(chalk.bold('ODOO'), ' - Started fetch sitemap dinamic routes...');
   const { data } = await fetchProducts();
+  const { data: categoriesData } = await fetchCategories();
 
   consola.success(chalk.bold('ODOO'), ' - Finished fetch sitemap dinamic routes from odoo!');
-  consola.info(data.data.products.products);
+
+  return [
+    ...data.data.products.products.map(product => product.slug),
+    ...categoriesData.data.categories.categories.map(categories => categories.slug)
+  ];
 };
 
 export default getAppRoutes;
