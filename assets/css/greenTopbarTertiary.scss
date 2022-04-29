@@ -56,14 +56,15 @@
 }
 
 ::v-deep .sf-mega-menu__content {
-  max-width: 1204px;
+  max-width: 1208px;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 12px;
   padding-bottom: 80px;
 }
 
+
 ::v-deep .sf-menu-item__label {
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   color: #1D1F22;
   font-family: "Josefin Sans";
@@ -77,7 +78,8 @@
 
 ::v-deep .sf-list__item {
   color: #43464E;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
+  margin-top: 0px;
   border-bottom: 1px solid transparent;
 }
 
@@ -185,4 +187,75 @@
 
 ::v-deep .dropdown.other-products .sf-mega-menu__menu {
     justify-content: flex-start;
+}
+
+.top-header {
+  z-index: 1;
+}
+
+::v-deep .dropdown.iphones .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 45px;
+}
+
+::v-deep .dropdown.smartphones .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 228px;
+}
+
+::v-deep .dropdown.tablets .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 455px;
+}
+
+::v-deep .dropdown.computers .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 640px;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 815px;
+}
+
+::v-deep .dropdown.accessories .sf-mega-menu__menu {
+  justify-content: flex-start;
+  padding-left: 957px;
+  overflow: visible;
+  transform: translateX(50px);
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+  overflow: visible;
+}
+
+::v-deep .dropdown.accessories {
+  overflow: hidden;
+}
+
+::v-deep .dropdown .sf-mega-menu-column {
+  max-width: 165px;
+}
+
+::v-deep .dropdown .sf-list a {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+:v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {
+  display: none;
+}
+
+::v-deep .dropdown .sf-menu-item__label:hover {
+  color: #7BA393;
+}
+
+::v-deep .sf-mega-menu-column__header {
+  display: none;
+}
+
+::v-deep .dropdown.other-products .sf-mega-menu__menu {
+    justify-content: flex-start;
+    padding-left: 497px;
+    transform: translateX(340px);
 }
