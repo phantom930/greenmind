@@ -108,8 +108,8 @@
           <SfImage
             :width="256"
             :height="276"
-            src="/error/error.svg"
-            class="before-results__picture"
+            src="/error/search_error.webp"
+            class="before-results__picture search_error"
             alt="error"
             loading="lazy"
           />

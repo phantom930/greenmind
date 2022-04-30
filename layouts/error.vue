@@ -1,12 +1,28 @@
 <template>
   <div id="error">
     <SfImage
+      class="image format_error"
+      v-if="isMobile"
+      src="/error/error2.webp"
+      alt="Desktop Error"
+      :width="230"
+      :height="270"
+    />
+    <SfImage
+      v-else
+      class="image format_error"
+      src="/error/error_big2.webp"
+      alt="Mobile Error"
+      :width="430"
+      :height="240"
+    />
+    <!-- <SfImage
       :width="$device.isMobile ? 230 : 412"
       :height="$device.isMobile ? 230 : 412"
       class="image"
       src="/error/error.svg"
       alt="leaves"
-    />
+    /> -->
     <SfHeading
       :title="error.statusCode === 404 ? $t('Page not found') : $t('An error occured')"
       :level="2"
@@ -40,7 +56,28 @@ export default {
 
   components: { SfButton, SfImage, SfHeading },
 
-  props: ['error']
+  props: ['error'],
+
+  data() {
+    return {
+      isMobile: true,
+    };
+  },
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize, { passive: true });
+  },
+  methods: {
+    onResize() {
+      this.isMobile = window.innerWidth < 600;
+    },
+  },
+  beforeDestroy() {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", this.onResize, { passive: true });
+    }
+  },
+
 };
 </script>
 <style lang="scss" scoped>
@@ -100,4 +137,13 @@ export default {
     }
   }
 }
+::v-deep .format_error .sf-image{
+  border-radius: 10px;
+  opacity: 0.7;
+  /* --- Resize according size of screen --- */
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+}
+
 </style>

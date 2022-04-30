@@ -1,17 +1,17 @@
 <template>
   <div
     class="text-center mt-20"
-    style="min-height: 400px"
+    style="min-height: 400px;"
   >
     <SfImage
-      :width="256"
-      :height="176"
-      src="/error/error.svg"
-      class="before-results__picture"
+      :width="230"
+      :height="230"
+      src="/error/search_error.webp"
+      class="before-results__picture search_error"
       alt="error"
       loading="lazy"
     />
-    <p class="before-results__paragraph">
+    <p class="before-results__paragraph mt-3">
       {{ $t("Sorry, we didnt find what youre looking for") }}
     </p>
     <!-- <SfButton
@@ -34,4 +34,10 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
+  
+  ::v-deep .search_error .sf-image{
+    border-radius: 10px;
+    opacity: 0.7;
+  }
+
 </style>
