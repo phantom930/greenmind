@@ -160,14 +160,6 @@
   max-width: unset;
 }
 
-::v-deep .dropdown .sf-mega-menu-column__content .sf-list {
-  display: flex;
-}
-
-::v-deep .dropdown .sf-mega-menu__menu {
-  flex-direction: column;
-}
-
 ::v-deep .dropdown .sf-list a {
   margin-left: 23px;
   margin-right: 23px;
