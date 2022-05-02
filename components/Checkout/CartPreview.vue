@@ -81,7 +81,7 @@
           </div>
           <div class="detail-edit">
             <SfLink
-              link="#"
+              :link="{ name: 'personaldetails' }"
               class="font-bold"
             >
               EDIT
@@ -101,7 +101,7 @@
           </div>
           <div class="detail-edit">
             <SfLink
-              link="#"
+              :link="{ name: 'shipping' }"
               class="font-bold"
             >
               EDIT
@@ -129,7 +129,7 @@
           </div>
           <div class="detail-edit">
             <SfLink
-              link="#"
+              :link="{ name: 'billing' }"
               class="font-bold"
             >
               EDIT
@@ -166,19 +166,17 @@
   </div>
 </template>
 <script lang="ts">
-import { SfHeading, SfButton, SfProperty, SfCharacteristic, SfInput, SfLink } from '@storefront-ui/vue';
+import { SfHeading, SfProperty, SfCharacteristic, SfLink } from '@storefront-ui/vue';
 import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
-import { cartGetters } from '@vue-storefront/odoo';
+import { cartGetters } from '~/composables';
 
 export default defineComponent({
   name: 'CartPreview',
   components: {
     SfHeading,
-    SfButton,
     SfProperty,
     SfCharacteristic,
-    SfInput,
     SfLink
   },
   setup(props, context) {
@@ -201,6 +199,7 @@ export default defineComponent({
     );
 
     return {
+      cart,
       currentStep,
       partner,
       partnerShipping,
