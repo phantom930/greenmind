@@ -12,7 +12,11 @@ export const getItemWebsiteTitle = (orderLine: GreenOrderLine): string =>
 
 export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine;
 
-export const getTotalItems = (cart: GreenCart): number => cart?.order?.websiteOrderLine?.length || null;
+export const getTotalItems = (cart: GreenCart): number => {
+  let total = 0;
+  cart?.order?.websiteOrderLine?.forEach(orderLine => total += orderLine.quantity);
+  return total;
+};
 
 export const getAccessories = (cart: GreenCart): GreenOrderLine[] => cart?.order?.accessoryLines;
 
