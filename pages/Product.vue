@@ -88,7 +88,7 @@
                 {{ $t("Add to Cart") }}
               </GreenButton>
 
-              <GreenButton
+              <!-- <GreenButton
                 type="Secondary"
                 color="Green"
                 shape="Round"
@@ -96,7 +96,7 @@
                 @click="handleStoreStatus"
               >
                 {{ $t("SEE STOCK STATUS IN STORE") }}
-              </GreenButton>
+              </GreenButton> -->
             </div>
           </div>
         </div>
