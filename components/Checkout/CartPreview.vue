@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-5">
     <div v-if="currentStep !== 'revieworder'">
       <div class="highlighted">
         <SfHeading

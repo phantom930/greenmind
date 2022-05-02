@@ -1,7 +1,7 @@
 
 <template>
-  <div id="checkout">
-    <div class="checkout">
+  <div id="checkout ">
+    <div class="checkout mb-10">
       <div class="checkout__main">
         <SfSteps
           :active="currentStepIndex"
