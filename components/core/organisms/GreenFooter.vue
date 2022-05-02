@@ -45,15 +45,20 @@
           Social
         </div>
         <div class="flex justify-around">
-          <SfImage
+          <a
             v-for="item in social"
-            :key="item"
-            :src="require('/assets/images/icons/' + item + '.svg')"
-            alt="item"
-            :width="32"
-            :height="32"
-          />
+            :key="item.name"
+            :href="item.url"
+          >
+            <SfImage
+              :src="require(`/assets/images/icons/${item.name}.svg`)"
+              :alt="item.name"
+              :width="32"
+              :height="32"
+            />
+          </a>
         </div>
+        </a>
       </div>
     </div>
 
@@ -75,15 +80,19 @@
       class="bottom-columns-social desktop-only"
     >
       <div class="footer__socials ">
-        <SfImage
+        <a
           v-for="item in social"
-          :key="item"
-          class="footer__social-image mr-1"
-          :src="require('/assets/images/icons/' + item + '.svg')"
-          :alt="item"
-          :width="32"
-          :height="32"
-        />
+          :key="item.name"
+          :href="item.url"
+        >
+          <SfImage
+            class="footer__social-image mr-1"
+            :src="require(`/assets/images/icons/${item.name}.svg`)"
+            :alt="item.name"
+            :width="32"
+            :height="32"
+          />
+        </a>
       </div>
     </SfFooterColumn>
 
@@ -105,15 +114,10 @@
   </SfFooter>
 </template>
 
-<script>
-import {
-  SfFooter,
-  SfList,
-  SfMenuItem,
-  SfImage
-} from '@storefront-ui/vue';
-
-export default {
+<script lang="ts">
+import { SfFooter, SfList, SfMenuItem, SfImage } from '@storefront-ui/vue';
+import { defineComponent } from '@nuxtjs/composition-api';
+export default defineComponent({
   components: {
     SfFooter,
     SfList,
@@ -222,10 +226,14 @@ export default {
           ]
         }
       ],
-      social: ['facebook', 'pinterest', 'google', 'twitter', 'youtube']
+      social: [
+        { name: 'facebook', url: 'https://www.facebook.com/greenmind.dk' }
+        // { name: 'instagram', url: 'https://www.instagram.com/greenminddk/' },
+        // { name: 'linkedin', url: 'https://www.facebook.com/greenmind.dk' }
+      ]
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
