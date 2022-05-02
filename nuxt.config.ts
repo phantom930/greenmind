@@ -204,6 +204,7 @@ export default {
     detectBrowserLanguage: false
   },
   sitemap: {
+    exclude: ['/checkout/**', '/checkout', '/dashboard/**', '/dashboard'],
     hostname: process.env.SITE_URL || 'https://vue-dev.greenmind.space/',
     i18n: false,
     gzip: true,
