@@ -104,7 +104,7 @@
             />
             <div class="title-subtitle">
               <h2 class="sf-call-to-action__title">
-                Subscribe to Newsletters
+                {{ $t('Subscribe to newsletter') }}
               </h2> <p class="sf-call-to-action__description display-none" />
               <p class="sf-call-to-action__description">
                 Be aware of upcoming sales and events. Receive gifts and special offers!

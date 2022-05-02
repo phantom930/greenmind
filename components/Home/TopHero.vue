@@ -4,9 +4,9 @@
     :class="$device.isMobile ? 'mt-8' : null"
   >
     <SfHeroItem
-      title="Colorful summer dresses are already in store"
+      :title="$t('Colorful summer dresses are already in store')"
       class="top-hero"
-      button-text="SE MERE3"
+      :button-text="$t('See more')"
       :background="$device.isMobile ? '#668F72' : ''"
       :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
       style="background-size: contain; background-position-y: center;"
@@ -38,8 +38,8 @@
     </SfHeroItem>
 
     <SfHeroItem
-      title="Colorful summer dresses are already in store"
-      button-text="SE MERE2"
+      :title="$t('Colorful summer dresses are already in store')"
+      :button-text="$t('See more')"
       class="top-hero"
       :background="$device.isMobile ? '#668F72' : ''"
       :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
@@ -64,8 +64,8 @@
     </SfHeroItem>
 
     <SfHeroItem
-      title="Colorful summer dresses are already in store"
-      button-text="SE MERE"
+      :title="$t('Colorful summer dresses are already in store')"
+      :button-text="$t('See more')"
       class="top-hero"
       :background="$device.isMobile ? '#668F72' : ''"
       :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"

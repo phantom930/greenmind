@@ -51,11 +51,10 @@
               :height="253"
             />
             <SfHeading
-              title="Your cart is empty"
+              :title="$t('Your cart is empty')"
               :level="2"
               class="empty-cart__heading"
-              description="Looks like you haven’t added any items to the bag yet. Start
-              shopping to fill it in."
+              :description="$t('Looks like you haven’t added any items to the bag yet. Start shopping to fill it in.')"
             />
           </div>
         </div>

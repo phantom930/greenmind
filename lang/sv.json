@@ -252,5 +252,14 @@
   "see details": "se detaljer",
   "Sorry, we didn't find what you're looking for.": "Tyvärr, vi hittade inte det du letade efter.",
   "My Cart": "Min vagn",
-  "Confirm & Pay": "Bekräfta och betala"
+  "Confirm & Pay": "Bekräfta och betala",
+  "An error occured": "Ett fel inträffade",
+  "Colorful summer dresses are already in store": "Färgglada sommarklänningar finns redan i butik",
+  "Looks like you haven’t added any items to the bag yet. Start shopping to fill it in.": "Det verkar som att du inte har lagt till några föremål i väskan än. Börja handla för att fylla i.",
+  "Page not found": "sidan hittas inte",
+  "Please go back or try again": "Gå tillbaka eller försök igen",
+  "Save Address": "Spara adress",
+  "Use this address as my default one.": "Använd den här adressen som min standardadress.",
+  "We are sorry that we can’t find the page, please go back or try again": "Vi beklagar att vi inte kan hitta sidan, gå tillbaka eller försök igen",
+  "Your cart is empty": "din vagn är tom"
 }

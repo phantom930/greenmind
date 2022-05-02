@@ -113,9 +113,9 @@
               :height="$device.isMobile ? 142 : 361"
             />
             <SfHeading
-              title="Your cart is empty"
+              :title="$t('Your cart is empty')"
               :level="2"
-              description="Looks like you haven’t added any items to the cart yet. Start shopping to fill it in."
+              :description="$t('Looks like you haven’t added any items to the cart yet. Start shopping to fill it in.')"
             />
             <SfButton
               class="sf-button--full-width empty-cart__button"

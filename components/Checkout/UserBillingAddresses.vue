@@ -24,7 +24,7 @@
       data-cy="billing-details-checkbox_isDefault"
       :selected="setAsDefault"
       name="setAsDefault"
-      label="Use this address as my default one."
+      :label="$t('Use this address as my default one.')"
       class="billing-address-setAsDefault"
       @change="$emit('changeSetAsDefault', $event)"
     />

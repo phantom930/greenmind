@@ -112,7 +112,7 @@
   "Want to go to Greenmind?": "Hvorfor vælge Greenmind?",
   "go back to shopping": "gå tilbage til shopping",
   "Subscribe to newsletter": "Abonner på nyhedsbrev",
-  "See More": "Se Mere",
+  "See More": "Mehr sehen",
   "You can unsubscribe at any time": "Du kan til enhver tid afmelde dig",
   "Purchases": "Indkøb",
   "Add to cart": "Tilføj til kurv",
@@ -252,5 +252,14 @@
   "read more": "Weiterlesen",
   "Sorry, we didn't find what you're looking for.": "Entschuldigung, wir haben nicht gefunden, wonach Sie suchen.",
   "My Cart": "Mein Warenkorb",
-  "Confirm & Pay": "Bestätigen und bezahlen"
+  "Confirm & Pay": "Bestätigen und bezahlen",
+  "An error occured": "Es ist ein Fehler aufgetreten",
+  "Colorful summer dresses are already in store": "Bunte Sommerkleider sind bereits im Store",
+  "Looks like you haven’t added any items to the bag yet. Start shopping to fill it in.": "Sieht so aus, als hätten Sie der Tasche noch keine Artikel hinzugefügt. Beginnen Sie mit dem Einkaufen, um es auszufüllen.",
+  "Page not found": "Seite nicht gefunden",
+  "Please go back or try again": "Bitte gehen Sie zurück oder versuchen Sie es erneut",
+  "Save Address": "Adresse speichern",
+  "Use this address as my default one.": "Verwenden Sie diese Adresse als meine Standardadresse.",
+  "We are sorry that we can’t find the page, please go back or try again": "Es tut uns leid, dass wir die Seite nicht finden können, bitte gehen Sie zurück oder versuchen Sie es erneut",
+  "Your cart is empty": "Ihr Warenkorb ist leer"
 }
