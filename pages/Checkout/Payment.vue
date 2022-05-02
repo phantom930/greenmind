@@ -107,7 +107,6 @@ export default defineComponent({
     const selectedProvider = ref({});
 
     const selectProvider = (provider) => {
-      console.log(provider);
       isPaymentReady.value = false;
       selectedProvider.value = provider;
       context.emit('status');

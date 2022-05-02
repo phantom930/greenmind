@@ -166,16 +166,10 @@
   </div>
 </template>
 <script lang="ts">
-import {
-  SfHeading,
-  SfButton,
-  SfProperty,
-  SfCharacteristic,
-  SfInput,
-  SfLink
-} from '@storefront-ui/vue';
+import { SfHeading, SfButton, SfProperty, SfCharacteristic, SfInput, SfLink } from '@storefront-ui/vue';
 import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
-import { useCart, checkoutGetters, cartGetters } from '@vue-storefront/odoo';
+import { useCart, checkoutGetters } from '@vue-storefront/odoo';
+import { cartGetters } from '@vue-storefront/odoo';
 
 export default defineComponent({
   name: 'CartPreview',
