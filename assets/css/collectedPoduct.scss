@@ -8,7 +8,7 @@
   margin-right: 20px !important;
 }
 ::v-deep .sf-checkbox__checkmark {
-  width: 16px !important;
+  width: 20px !important;
   height: 16px !important;
   margin-right: 2% !important;
 }
@@ -84,6 +84,7 @@
 }
 
 ::v-deep .sf-checkbox__checkmark.is-active {
+  width: 16px !important;
   border: none;
 }
 
