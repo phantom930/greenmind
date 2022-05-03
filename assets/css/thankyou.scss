@@ -161,8 +161,14 @@
     color: var(--_c-greenmind-primary-black);
   }
   ::v-deep .sf-call-to-action {
-    min-height: 115px;
     background-size: cover;
+    @media (min-width: 769px), (max-width: 1024px) {
+        min-height: 210px;
+    }
+    @media (max-width: 768px) {
+        min-height: 115px;
+    }
+
   }
   ::v-deep .sf-button {
     border-radius: 100px;
