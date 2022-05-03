@@ -167,8 +167,8 @@ export default defineComponent({
   },
   methods: {
     change() {
-      this.$emit('change', this.emitValue ? this.value : this.model);
-      this.$emit('input', this.emitValue ? this.value : this.model);
+      this.$emit('change', this.emitValue && this.model ? this.value : this.model);
+      this.$emit('input', this.emitValue && this.model ? this.value : this.model);
     }
   }
 });

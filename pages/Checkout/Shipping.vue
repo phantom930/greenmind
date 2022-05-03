@@ -204,10 +204,6 @@ export default defineComponent({
 
       if (!selectedShippingMethod.value?.id) return false;
 
-      if (!hasSavedShippingAddress.value) return false;
-
-      if (!hasSavedBillingAddress.value) return false;
-
       if (!shippingFormValid.value) return false;
 
       if (!copyShippingToBilling.value && !billingFormValid.value) return false;

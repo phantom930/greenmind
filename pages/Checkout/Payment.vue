@@ -42,6 +42,7 @@
         :has-general-wrapper="false"
         emit-value
         :label="provider.name"
+        @change="selectProvider"
       />
     </div>
 
@@ -109,7 +110,7 @@ export default defineComponent({
 
     const selectProvider = (provider) => {
       isPaymentReady.value = false;
-      selectedProvider.value = provider;
+      selectedProvider.value = provider || {};
       context.emit('status');
     };
 
