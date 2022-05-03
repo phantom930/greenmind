@@ -129,7 +129,7 @@
           </div>
           <div class="detail-edit">
             <SfLink
-              :link="{ name: 'billing' }"
+              :link="{ name: 'shipping' }"
               class="font-bold"
             >
               EDIT

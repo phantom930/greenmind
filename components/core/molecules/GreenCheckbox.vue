@@ -157,6 +157,11 @@ export default defineComponent({
       model
     };
   },
+  watch: {
+    isChecked () {
+      this.model = this.isChecked;
+    }
+  },
   mounted() {
     this.model = this.isChecked;
   },

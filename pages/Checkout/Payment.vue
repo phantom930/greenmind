@@ -40,6 +40,7 @@
         :value="provider"
         :is-checked="selectedProvider.id === provider.id"
         :has-general-wrapper="false"
+        emit-value
         :label="provider.name"
       />
     </div>
@@ -64,7 +65,7 @@
       size="Medium"
       :disabled="!canFinishPayment"
       class="my-5 desktop-only"
-      @click="providerPaymentHandler()"
+      @click="providerPaymentHandler"
     >
       {{ $t("Confirm & Pay") }}
     </GreenButton>

@@ -33,7 +33,7 @@ export default {
       // set the url action from api
       form.value.action = form.value[0]?.dataset?.actionUrl;
       // remove input from api before send form
-      form.value[0].remove();
+      // form.value[0].remove();
 
       // form.value[9].value = '/api/checkout';
       // form.value[10].value = '{"return_url": "/checkout/payment"}';
