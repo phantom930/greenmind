@@ -159,6 +159,13 @@ h4 {
   z-index: 1 !important;
 }
 
+.sf-sidebar__aside {
+    z-index: 21;
+}
+.sf-overlay {
+  z-index: 20;
+}
+
 @include for-mobile {
   .sf-header--has-mobile-search {
     box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.1);

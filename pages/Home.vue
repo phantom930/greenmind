@@ -127,10 +127,10 @@
     </div>
 
     <div v-if="$device.isDesktop" class="between-call-to-action-and-footer" />
-    <!-- <NewsletterModal
+    <NewsletterModal
       :loading="loading"
       @email-submitted="onSubscribe"
-    /> -->
+    />
   </div>
 </template>
 

@@ -100,13 +100,10 @@
     }
   }
   
-  ::v-deep .sf-overlay {
-    z-index: 60;
-  }
+
   
   ::v-deep .sf-sidebar {
     &__aside {
-      z-index: 61;
       width: 434px;
       @include for-mobile {
         width: 100%;
