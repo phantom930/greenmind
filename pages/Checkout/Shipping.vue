@@ -16,7 +16,7 @@
 
     <GreenButton
       v-show="!canAddNewAddress && !hasSavedShippingAddress"
-      type="Tertiary"
+      style-type="Tertiary"
       color="Grey"
       shape="Round"
       size="Medium"
@@ -74,7 +74,7 @@
 
     <GreenButton
       v-show="!canAddNewBillingAddress && !hasSavedBillingAddress"
-      type="Tertiary"
+      style-type="Tertiary"
       color="Grey"
       shape="Round"
       size="Medium"
@@ -104,7 +104,7 @@
 
     <div class="submit-button mb-10">
       <GreenButton
-        type="Primary"
+        style-type="Primary"
         color="Green"
         shape="Round"
         size="Medium"

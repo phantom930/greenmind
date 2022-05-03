@@ -2,6 +2,7 @@
   <div id="hamburguer">
     <SfSidebar
       :visible="isHamburguerMenuOpen"
+      right
       class="sf-sidebar--right"
       @close="toggleHamburguerMenu"
     >

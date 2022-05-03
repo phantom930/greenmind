@@ -8,7 +8,7 @@
       <div class="grid__row">
         <div class="grid__col">
           <SfImage
-            v-if="isMobile"
+            v-if="$device.isMobile"
             src="/homepage/imageAm.webp"
             alt="katherina_trn"
             :width="160"
@@ -28,7 +28,7 @@
         </div>
         <div class="grid__col small">
           <SfImage
-            v-if="isMobile"
+            v-if="$device.isMobile"
             src="/homepage/imageBm.webp"
             alt="katherina_trn"
             :width="160"
@@ -50,7 +50,7 @@
       <div class="grid__row">
         <div class="grid__col small">
           <SfImage
-            v-if="isMobile"
+            v-if="$device.isMobile"
             src="/homepage/imageCm.webp"
             alt="katherina_trn"
             :width="160"
@@ -70,7 +70,7 @@
         </div>
         <div class="grid__col">
           <SfImage
-            v-if="isMobile"
+            v-if="$device.isMobile"
             src="/homepage/imageDm.webp"
             alt="katherina_trn"
             :width="160"
@@ -97,21 +97,11 @@ import {
   SfSection,
   SfImage
 } from '@storefront-ui/vue';
-import {
-  mapMobileObserver,
-  unMapMobileObserver
-} from '@storefront-ui/vue/src/utilities/mobile-observer.js';
 export default {
   name: 'InstagramFeed',
   components: {
     SfSection,
     SfImage
-  },
-  computed: {
-    ...mapMobileObserver()
-  },
-  beforeUnmount() {
-    unMapMobileObserver();
   }
 };
 </script>

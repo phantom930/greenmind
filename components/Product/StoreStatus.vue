@@ -24,7 +24,7 @@
           </div>
           <div>
             <GreenButton
-              type="Primary"
+              style-type="Primary"
               color="Green"
               shape="Round"
               size="small"
@@ -36,9 +36,13 @@
         </div>
         <div class="checkbox-wrap">
           <GreenCheckbox />
-          <p class="label">There’s stock on this stores.</p>
+          <p class="label">
+            There’s stock on this stores.
+          </p>
         </div>
-        <p class="font-bold , text-base pb-4">Stores found: 4</p>
+        <p class="font-bold , text-base pb-4">
+          Stores found: 4
+        </p>
         <div class="flex flex-wrap justify-between stores-list">
           <div class="indi-product">
             <div class="flex justify-between relative items-end stores-data">
@@ -48,50 +52,74 @@
                   width="106"
                   height="141"
                   class="mr-4"
-                />
+                >
                 <div>
-                  <p class="text-xl font-medium">Vesterbrogade</p>
+                  <p class="text-xl font-medium">
+                    Vesterbrogade
+                  </p>
                   <p class="text-sm font-normal">
                     Vesterbrogade 84, 1620 Kbh. V
                   </p>
                   <div class="flex items-center font-normal contact-number">
                     <img
                       :src="require('/assets/images/product/phoneIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">8 (020) 302 00 22</p>
+                    >
+                    <p class="text-xs ml-1">
+                      8 (020) 302 00 22
+                    </p>
                   </div>
                   <div class="flex items-center font-normal contact-email">
                     <img
                       :src="require('/assets/images/product/mailIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">example@email.com</p>
+                    >
+                    <p class="text-xs ml-1">
+                      example@email.com
+                    </p>
                   </div>
                 </div>
               </div>
               <div>
-                <p class="absolute top-0 right-0 store-distance">2 km away</p>
+                <p class="absolute top-0 right-0 store-distance">
+                  2 km away
+                </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
                   <div class="flex justify-between">
-                    <p class="text-xs">Måndag—Torsdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Måndag—Torsdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Fredag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Fredag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Lørdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Lørdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Söndag & Helligdage</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Söndag & Helligdage
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <GreenButton
-              type="Primary"
+              style-type="Primary"
               color="Green"
               shape="Round"
               size="small"
@@ -108,50 +136,74 @@
                   width="106"
                   height="141"
                   class="mr-4"
-                />
+                >
                 <div>
-                  <p class="text-xl font-medium">Vesterbrogade</p>
+                  <p class="text-xl font-medium">
+                    Vesterbrogade
+                  </p>
                   <p class="text-sm font-normal">
                     Vesterbrogade 84, 1620 Kbh. V
                   </p>
                   <div class="flex items-center font-normal contact-number">
                     <img
                       :src="require('/assets/images/product/phoneIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">8 (020) 302 00 22</p>
+                    >
+                    <p class="text-xs ml-1">
+                      8 (020) 302 00 22
+                    </p>
                   </div>
                   <div class="flex items-center font-normal contact-email">
                     <img
                       :src="require('/assets/images/product/mailIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">example@email.com</p>
+                    >
+                    <p class="text-xs ml-1">
+                      example@email.com
+                    </p>
                   </div>
                 </div>
               </div>
               <div>
-                <p class="absolute top-0 right-0 store-distance">2 km away</p>
+                <p class="absolute top-0 right-0 store-distance">
+                  2 km away
+                </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
                   <div class="flex justify-between">
-                    <p class="text-xs">Måndag—Torsdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Måndag—Torsdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Fredag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Fredag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Lørdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Lørdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Söndag & Helligdage</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Söndag & Helligdage
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <GreenButton
-              type="Primary"
+              style-type="Primary"
               color="Green"
               shape="Round"
               size="small"
@@ -168,50 +220,74 @@
                   width="106"
                   height="141"
                   class="mr-4"
-                />
+                >
                 <div>
-                  <p class="text-xl font-medium">Vesterbrogade</p>
+                  <p class="text-xl font-medium">
+                    Vesterbrogade
+                  </p>
                   <p class="text-sm font-normal">
                     Vesterbrogade 84, 1620 Kbh. V
                   </p>
                   <div class="flex items-center font-normal contact-number">
                     <img
                       :src="require('/assets/images/product/phoneIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">8 (020) 302 00 22</p>
+                    >
+                    <p class="text-xs ml-1">
+                      8 (020) 302 00 22
+                    </p>
                   </div>
                   <div class="flex items-center font-normal contact-email">
                     <img
                       :src="require('/assets/images/product/mailIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">example@email.com</p>
+                    >
+                    <p class="text-xs ml-1">
+                      example@email.com
+                    </p>
                   </div>
                 </div>
               </div>
               <div>
-                <p class="absolute top-0 right-0 store-distance">2 km away</p>
+                <p class="absolute top-0 right-0 store-distance">
+                  2 km away
+                </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
                   <div class="flex justify-between">
-                    <p class="text-xs">Måndag—Torsdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Måndag—Torsdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Fredag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Fredag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Lørdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Lørdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Söndag & Helligdage</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Söndag & Helligdage
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <GreenButton
-              type="Primary"
+              style-type="Primary"
               color="Green"
               shape="Round"
               size="small"
@@ -228,50 +304,74 @@
                   width="106"
                   height="141"
                   class="mr-4"
-                />
+                >
                 <div>
-                  <p class="text-xl font-medium">Vesterbrogade</p>
+                  <p class="text-xl font-medium">
+                    Vesterbrogade
+                  </p>
                   <p class="text-sm font-normal">
                     Vesterbrogade 84, 1620 Kbh. V
                   </p>
                   <div class="flex items-center font-normal contact-number">
                     <img
                       :src="require('/assets/images/product/phoneIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">8 (020) 302 00 22</p>
+                    >
+                    <p class="text-xs ml-1">
+                      8 (020) 302 00 22
+                    </p>
                   </div>
                   <div class="flex items-center font-normal contact-email">
                     <img
                       :src="require('/assets/images/product/mailIcon.svg')"
-                    />
-                    <p class="text-xs ml-1">example@email.com</p>
+                    >
+                    <p class="text-xs ml-1">
+                      example@email.com
+                    </p>
                   </div>
                 </div>
               </div>
               <div>
-                <p class="absolute top-0 right-0 store-distance">2 km away</p>
+                <p class="absolute top-0 right-0 store-distance">
+                  2 km away
+                </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
                   <div class="flex justify-between">
-                    <p class="text-xs">Måndag—Torsdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Måndag—Torsdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Fredag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Fredag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Lørdag</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Lørdag
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                   <div class="flex justify-between">
-                    <p class="text-xs">Söndag & Helligdage</p>
-                    <p class="text-xs">10:00 — 18:00</p>
+                    <p class="text-xs">
+                      Söndag & Helligdage
+                    </p>
+                    <p class="text-xs">
+                      10:00 — 18:00
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <GreenButton
-              type="Primary"
+              style-type="Primary"
               color="Green"
               shape="Round"
               size="small"
@@ -329,7 +429,7 @@ export default {
 
     return {
       isStoreModalOpen,
-      toggleStoreModal,
+      toggleStoreModal
     };
   }
 };

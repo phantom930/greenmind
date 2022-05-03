@@ -70,7 +70,7 @@
       </div>
       <div class="submit-button">
         <GreenButton
-          type="Primary"
+          style-type="Primary"
           color="Green"
           shape="Round"
           size="Medium"

@@ -7,7 +7,7 @@
     <template #button>
       <GreenButton
         class="sf-button-call-to-action"
-        type="Primary"
+        style-type="Primary"
         color="Green"
         shape="Round"
       >

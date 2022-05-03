@@ -58,7 +58,7 @@
       You can't pass over 50000!
     </span>
     <GreenButton
-      type="Primary"
+      style-type="Primary"
       color="Green"
       shape="Round"
       size="Medium"

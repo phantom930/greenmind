@@ -40,7 +40,7 @@
             <div class="flex justify-end">
               <GreenButton
                 v-if="hasMoreProductsToLoad"
-                type="Primary"
+                style-type="Primary"
                 color="Green"
                 :loading="buttonLoading"
                 :disabled="buttonLoading"

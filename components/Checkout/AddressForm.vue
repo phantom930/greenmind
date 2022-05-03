@@ -139,7 +139,7 @@
       </div>
       <GreenButton
         v-if="false"
-        type="Primary"
+        style-type="Primary"
         color="Grey"
         shape="Round"
         size="Medium"

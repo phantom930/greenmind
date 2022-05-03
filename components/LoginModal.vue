@@ -12,7 +12,11 @@
         @click:close="toggleLoginModal"
       />
     </template>
-    <transition name="sf-fade" mode="out-in">
+    <transition
+      name="sf-fade"
+      mode="out-in"
+      type="transition"
+    >
       <div v-if="isLogin">
         <div v-show="isForgottenPassword">
           <p class="sign-title">

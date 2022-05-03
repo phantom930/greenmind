@@ -2,6 +2,7 @@
   <transition-group
     tag="div"
     class="notifications"
+    type="transition"
     name="slide-fade"
   >
     <SfNotification

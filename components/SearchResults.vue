@@ -5,7 +5,11 @@
       :title="$t('Search results')"
       class="search"
     >
-      <transition name="sf-fade" mode="out-in">
+      <transition
+        name="sf-fade"
+        mode="out-in"
+        type="transition"
+      >
         <div
           v-if="products && products.length > 0"
           key="results"

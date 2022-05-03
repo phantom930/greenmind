@@ -76,7 +76,7 @@
             </p>
             <div class="buttons">
               <GreenButton
-                type="Primary"
+                style-type="Primary"
                 color="Green"
                 shape="Round"
                 size="Medium"
@@ -89,7 +89,7 @@
               </GreenButton>
 
               <!-- <GreenButton
-                type="Secondary"
+                style-type="Secondary"
                 color="Green"
                 shape="Round"
                 size="Medium"

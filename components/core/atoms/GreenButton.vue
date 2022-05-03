@@ -38,7 +38,7 @@ export default defineComponent({
       type: [String, Object],
       default: null
     },
-    type: {
+    styleType: {
       type: String as PropType<ButtonType>,
       default: ButtonType.Primary
     },
@@ -58,20 +58,20 @@ export default defineComponent({
   emits: ['click'],
   setup (props) {
     const typeClasses : ComputedRef<string> = computed(() => {
-      if (props.type === ButtonType.Primary && props.shape === ButtonShape.Round && props.color === ButtonColor.Green) {
+      if (props.styleType === ButtonType.Primary && props.shape === ButtonShape.Round && props.color === ButtonColor.Green) {
         return 'bg-pine-primary-dark-green__with-hover big-text font-semibold';
       }
-      if (props.type === ButtonType.Primary && props.shape === ButtonShape.Rectangle && props.color === ButtonColor.Green) {
+      if (props.styleType === ButtonType.Primary && props.shape === ButtonShape.Rectangle && props.color === ButtonColor.Green) {
         return 'bg-primary-green';
       }
-      if (props.type === ButtonType.Primary && props.color === ButtonColor.Black) {
+      if (props.styleType === ButtonType.Primary && props.color === ButtonColor.Black) {
         return 'bg-primary-black big-text font-semibold';
       }
-      if (props.type === ButtonType.Tertiary && props.color === ButtonColor.Grey) {
+      if (props.styleType === ButtonType.Tertiary && props.color === ButtonColor.Grey) {
         return 'bg-tertiary-grey big-text text-primary-grey font-semibold';
       }
 
-      switch (props.type) {
+      switch (props.styleType) {
         case ButtonType.Secondary: return 'bg-fern-primary-medium-green__with-hover';
         default: break;
       }

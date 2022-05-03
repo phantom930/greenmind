@@ -3,6 +3,7 @@
     <SfSidebar
       :visible="isWishlistSidebarOpen"
       :button="false"
+      right
       title="My Wishlist"
       class="sidebar sf-sidebar--right"
       @close="toggleWishlistSidebar"

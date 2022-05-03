@@ -3,6 +3,7 @@
     <SfSidebar
       :visible="isCartSidebarOpen"
       :title="$t('My Cart')"
+      right
       class="sf-sidebar--right"
       @close="toggleCartSidebar"
     >
@@ -15,6 +16,7 @@
         />
       </template>
       <transition
+        type="transition"
         name="sf-fade"
         mode="out-in"
       >
@@ -26,6 +28,7 @@
           <div class="collected-product-list">
             <transition-group
               name="sf-fade"
+              type="transition"
               tag="div"
             >
               <LazyGreenCollectedProduct
@@ -60,7 +63,7 @@
         </div>
       </transition>
       <template #content-bottom>
-        <transition name="sf-fade">
+        <transition name="sf-fade" type="transition">
           <div v-if="totalItems">
             <SfProperty
               name="Total price"

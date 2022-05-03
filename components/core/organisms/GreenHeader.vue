@@ -139,7 +139,6 @@ import { useUiHelpers, cartGetters } from '~/composables';
 import SearchResults from '~/components/SearchResults';
 
 import debounce from 'lodash.debounce';
-import { mapMobileObserver } from '@storefront-ui/vue/src/utilities/mobile-observer.js';
 export default {
   components: {
     SfHeader,
@@ -167,8 +166,6 @@ export default {
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { search, result, loading: searchLoading } = useFacet('AppHeader:Search');
-
-    const isMobile = computed(() => mapMobileObserver().isMobile.get());
 
     const cartTotalItems = computed(() => {
       const count = cartGetters.getTotalItems(cart.value);
@@ -223,7 +220,7 @@ export default {
     };
 
     const closeOrFocusSearchBar = () => {
-      if (isMobile.value) {
+      if (root.$device.isMobile) {
         return closeSearch();
       }
       term.value = '';
@@ -243,7 +240,7 @@ export default {
       () => term.value,
       (newVal, oldVal) => {
         const shouldSearchBeOpened =
-          !isMobile.value &&
+          !root.$device.isMobile &&
           term.value.length > 0 &&
           ((!oldVal && newVal) ||
             (newVal.length !== oldVal.length && isSearchOpen.value === false));
@@ -274,7 +271,6 @@ export default {
       changeSearchTerm,
       formatedResult,
       term,
-      isMobile,
       handleSearchMore,
       handleSearch,
       closeSearch,

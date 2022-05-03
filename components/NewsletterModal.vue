@@ -14,6 +14,7 @@
     <transition
       name="sf-fade"
       mode="out-in"
+      type="transition"
     >
       <div>
         <SfHeading

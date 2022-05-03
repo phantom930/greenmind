@@ -124,7 +124,7 @@
       </div> -->
       <div class="submit-button mb-5">
         <GreenButton
-          type="Primary"
+          style-type="Primary"
           color="Green"
           shape="Round"
           size="Medium"

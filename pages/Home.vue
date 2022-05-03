@@ -81,13 +81,13 @@
       </div> -->
     </div>
 
-    <div class="div-popular-products mt-20">
+    <!-- <div class="div-popular-products mt-20">
       <GreenCarousel
         :title="$t('Popular products')"
         :products="products"
         :currency="currency"
       />
-    </div>
+    </div> -->
 
     <div class="pt-40 call-to-hero-bottom-wrapper">
       <div
@@ -113,7 +113,7 @@
             <div class="div-button">
               <GreenButton
                 class="sf-button-call-to-action"
-                type="Primary"
+                style-type="Primary"
                 color="Green"
                 shape="Round"
                 @click="toggleNewsletterModal"
@@ -127,10 +127,10 @@
     </div>
 
     <div class="between-call-to-action-and-footer" />
-    <NewsletterModal
+    <!-- <NewsletterModal
       :loading="loading"
       @email-submitted="onSubscribe"
-    />
+    /> -->
   </div>
 </template>
 
