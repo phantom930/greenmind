@@ -5,7 +5,6 @@
       :button="false"
       position="right"
       title="My Wishlist"
-      class="sidebar sf-sidebar--right"
       @close="toggleWishlistSidebar"
     >
       <template #title>

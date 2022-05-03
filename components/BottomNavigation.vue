@@ -16,18 +16,18 @@
       label="Menu"
       @click="toggleMobileMenu"
     />
-    <SfBottomNavigationItem
+    <!-- <SfBottomNavigationItem
       icon="heart"
       size="20px"
       label="Wishlist"
       @click="toggleWishlistSidebar"
-    />
-    <SfBottomNavigationItem
+    /> -->
+    <!-- <SfBottomNavigationItem
       icon="profile"
       size="20px"
       label="Account"
       @click="handleAccountClick"
-    />
+    /> -->
     <!-- TODO: add logic for label - if on Home then Basket, if on PDC then AddToCart etc. -->
     <SfBottomNavigationItem
       label="Basket"

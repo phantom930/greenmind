@@ -17,7 +17,7 @@
         :height="237"
       />
     </div>
-    <div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-16">
+    <div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
       <div class="flex items-center gap-5">
         <SfImage
           :src="require('/assets/images/homeHero/usp_01.svg')"

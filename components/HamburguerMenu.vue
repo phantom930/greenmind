@@ -3,7 +3,6 @@
     <SfSidebar
       :visible="isHamburguerMenuOpen"
       position="right"
-      class="sf-sidebar--right"
       @close="toggleHamburguerMenu"
     >
       <nuxt-link to="/customer-service">
