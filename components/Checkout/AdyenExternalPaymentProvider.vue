@@ -1,19 +1,18 @@
 <template>
-  <div>
-    <form
-      v-show="false"
-      ref="form"
-      method="post"
-      v-html="paymentExternalResponse"
-    />
-  </div>
+  <div
+    v-show="false"
+    ref="form"
+    method="post"
+    v-html="paymentExternalResponse"
+  />
 </template>
 
 <script>
 /* eslint-disable camelcase */
 
-import { onMounted, ref } from '@nuxtjs/composition-api';
+import { watch, ref } from '@nuxtjs/composition-api';
 import { useAdyenExternalPaymentProvider } from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
 
 export default {
   name: 'AdyenExternalPaymentProvider',
@@ -23,27 +22,32 @@ export default {
       type: Object
     }
   },
-  setup(props, { emit }) {
-    const form = ref('form');
+  setup(props, { root, emit }) {
+    const form = ref(null);
 
     const { paymentExternalResponse, getPaymentExternal } =
       useAdyenExternalPaymentProvider(props.provider);
 
     const sendForm = () => {
-      // set the url action from api
-      form.value.action = form.value[0]?.dataset?.actionUrl;
-      // remove input from api before send form
-      // form.value[0].remove();
 
-      // form.value[9].value = '/api/checkout';
-      // form.value[10].value = '{"return_url": "/checkout/payment"}';
-      form.value.submit();
+      form.value.children?.[0]?.submit();
     };
 
-    onMounted(async () => {
+    const fetchPaymentExternal = async () => {
       await getPaymentExternal();
-      emit('isPaymentReady', true);
-      emit('providerPaymentHandler', sendForm);
+      if (paymentExternalResponse.value?.form !== null) {
+        emit('isPaymentReady', true);
+        emit('providerPaymentHandler', sendForm);
+      }
+    };
+
+    watch(
+      () => props.provider.id,
+      () => fetchPaymentExternal()
+    );
+
+    onSSR(async () => {
+      await fetchPaymentExternal();
     });
 
     return {

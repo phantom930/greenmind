@@ -3,18 +3,12 @@
 </template>
 
 <script>
-import { SfButton, SfRadio } from '@storefront-ui/vue';
 
 export default {
   name: 'WireTransferPaymentProvider',
-
-  components: {
-    SfButton,
-    SfRadio
-  },
-
-  setup() {
-    return {};
+  emits: ['isPaymentReady'],
+  setup (_, { emit }) {
+    emit('isPaymentReady', false);
   }
 };
 </script>

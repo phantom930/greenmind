@@ -65,7 +65,7 @@
       size="Medium"
       :disabled="!canFinishPayment"
       class="my-5 desktop-only"
-      @click="providerPaymentHandler"
+      @click="providerPaymentHandler()"
     >
       {{ $t("Confirm & Pay") }}
     </GreenButton>
@@ -133,7 +133,7 @@ export default defineComponent({
 
     const cartExcedLimitTotalAmount = computed(() => cart?.value?.order?.amountTotal > 50000);
 
-    const canFinishPayment = computed(() => !cartExcedLimitTotalAmount.value);
+    const canFinishPayment = computed(() => !cartExcedLimitTotalAmount.value && isPaymentReady.value);
 
     const providerListHasMoreThanOne = computed(
       () => providerList.value.length > 1
