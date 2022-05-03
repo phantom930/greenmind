@@ -1,11 +1,12 @@
-#checkout {
+  #checkout {
+    
+  }
+  .checkout {
     box-sizing: border-box;
     @include for-desktop {
       max-width: 1240px;
       margin: 0 auto;
     }
-  }
-  .checkout {
     position: relative;
     @include for-desktop {
       display: flex;

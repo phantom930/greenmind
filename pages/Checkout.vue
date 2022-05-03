@@ -1,28 +1,26 @@
 
 <template>
-  <div id="checkout ">
-    <div class="checkout mb-10">
-      <div class="checkout__main">
-        <SfSteps
-          :active="currentStepIndex"
-          :class="{ checkout__steps: true }"
-        >
-          <SfStep
-            v-for="(step, key) in STEPS"
-            :key="key"
-            :name="step"
-          >
-            <nuxt-child @change="handleStepClick" />
-          </SfStep>
-        </SfSteps>
-      </div>
-      <div
-        class="checkout__aside"
+  <div class="checkout mb-10">
+    <div class="checkout__main">
+      <SfSteps
+        :active="currentStepIndex"
+        :class="{ checkout__steps: true }"
       >
-        <transition name="fade">
-          <CheckoutCartPreview key="order-summary" />
-        </transition>
-      </div>
+        <SfStep
+          v-for="(step, key) in STEPS"
+          :key="key"
+          :name="step"
+        >
+          <nuxt-child @change="handleStepClick" />
+        </SfStep>
+      </SfSteps>
+    </div>
+    <div
+      class="checkout__aside"
+    >
+      <transition name="fade">
+        <CheckoutCartPreview key="order-summary" />
+      </transition>
     </div>
   </div>
 </template>

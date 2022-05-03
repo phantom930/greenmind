@@ -64,7 +64,7 @@
       size="Medium"
       :disabled="!canFinishPayment"
       class="my-5 desktop-only"
-      @click="processOrder"
+      @click="providerPaymentHandler()"
     >
       {{ $t("Confirm & Pay") }}
     </GreenButton>
