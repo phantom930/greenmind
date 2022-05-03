@@ -3,8 +3,7 @@
     <SfSidebar
       :visible="isCartSidebarOpen"
       :title="$t('My Cart')"
-      right
-      class="sf-sidebar--right"
+      position="right"
       @close="toggleCartSidebar"
     >
       <template #content-top>

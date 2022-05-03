@@ -17,7 +17,7 @@
           $currency(productGetters.getPrice(product).special)
       "
       :score-rating="false"
-      wishlist-icon="false"
+      :wishlist-icon="false"
       :show-add-to-cart-button="false"
       class="products__product-card hover:drop-shadow-xl"
     >

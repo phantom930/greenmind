@@ -81,13 +81,13 @@
       </div> -->
     </div>
 
-    <!-- <div class="div-popular-products mt-20">
+    <div class="div-popular-products mt-20">
       <GreenCarousel
         :title="$t('Popular products')"
         :products="products"
         :currency="currency"
       />
-    </div> -->
+    </div>
 
     <div class="pt-40 call-to-hero-bottom-wrapper">
       <div

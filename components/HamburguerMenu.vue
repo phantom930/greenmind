@@ -2,7 +2,7 @@
   <div id="hamburguer">
     <SfSidebar
       :visible="isHamburguerMenuOpen"
-      right
+      position="right"
       class="sf-sidebar--right"
       @close="toggleHamburguerMenu"
     >
