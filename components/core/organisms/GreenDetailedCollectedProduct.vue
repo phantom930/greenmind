@@ -12,7 +12,7 @@
         cartGetters.getItemPrice(orderLine).special &&
           $currency(cartGetters.getItemPrice(orderLine).special)
       "
-      :stock="99999"
+
       :qty="cartGetters.getItemQty(orderLine)"
       class="collected-product"
       @input="handleUpdateItem(orderLine, $event)"
@@ -25,6 +25,7 @@
 
         <SfQuantitySelector
           v-model="quantity"
+          :max="quantityInStock"
           aria-label="Quantity"
         />
       </template>
@@ -107,6 +108,8 @@ export default defineComponent({
 
     const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts || []);
 
+    const quantityInStock = computed(() => props.orderLine?.product?.qty || 0);
+
     const quantity = ref(props.orderLine?.quantity || 0);
 
     watch(
@@ -120,6 +123,7 @@ export default defineComponent({
     );
 
     return {
+      quantityInStock,
       quantity,
       loading,
       accessoryIsInCart,

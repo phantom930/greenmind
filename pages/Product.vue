@@ -81,11 +81,11 @@
                 shape="Round"
                 size="Medium"
                 class="mb-3"
-                :disabled="anyLoading"
+                :disabled="anyLoading || !productInStock"
                 :loading="anyLoading"
                 @click="handleAddItem()"
               >
-                {{ $t("Add to Cart") }}
+                {{ productInStock ? $t("Add to Cart") : $t('Out of stock') }}
               </GreenButton>
 
               <!-- <GreenButton
@@ -165,6 +165,7 @@ export default defineComponent({
     const sliderProducts = computed(() => product.value.alternativeProducts || []);
     const accessoryProducts = computed(() => productGetters.getAccessoryProducts(product.value));
     const productGrades = computed(() => productGetters.getGrades(product.value));
+    const productInStock = computed(() => product.value?.isInStock);
 
     const mainImageWidth = computed(() => root.$device.isDesktop ? 442 : 375);
     const mainImageHeigth = computed(() => root.$device.isDesktop ? 664 : 500);
@@ -217,6 +218,8 @@ export default defineComponent({
     });
 
     const handleAddItem = async () => {
+      if (!productInStock.value) return;
+
       const params = {
         products: [{
           id: product.value.id,
@@ -234,6 +237,7 @@ export default defineComponent({
     };
 
     return {
+      productInStock,
       mainImageWidth,
       mainImageHeigth,
       handleSelectNewGrade,

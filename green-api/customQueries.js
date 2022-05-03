@@ -113,6 +113,8 @@ module.exports = {
                     id
                     name
                     image
+                    isInStock
+                    qty
                     imageFilename
                     description
                     smallImage

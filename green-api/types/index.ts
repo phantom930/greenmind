@@ -30,34 +30,36 @@ export interface CreateUpdatePartnerInput {
 }
 
 export interface CombinationInfo {
-    product_id: number,
-    product_template_id: number,
-    display_name: string,
-    display_image: true,
-    price: number,
-    list_price: number,
-    has_discounted_price: boolean,
-    discount: number,
-    discount_perc: number
-    grade_name: number
+    product_id: number;
+    product_template_id: number;
+    display_name: string;
+    display_image: true;
+    price: number;
+    list_price: number;
+    has_discounted_price: boolean;
+    discount: number;
+    discount_perc: number;
+    grade_name: number;
 }
 export interface CombinationInfoGrade {
-    grades: CombinationInfo[]
+    grades: CombinationInfo[];
 }
 
 export interface GreenProduct extends Product {
-    variantAttributeValues?: AttributeValue[],
-    websiteSubtitle?: string
-    imageFilename?: string
-    combinationInfo?: CombinationInfo
-    combinationInfoGrade?: CombinationInfoGrade
-    combinationInfoVariant?: CombinationInfo
+    isInStock?: boolean;
+    qty?: number;
+    variantAttributeValues?: AttributeValue[];
+    websiteSubtitle?: string;
+    imageFilename?: string;
+    combinationInfo?: CombinationInfo;
+    combinationInfoGrade?: CombinationInfoGrade;
+    combinationInfoVariant?: CombinationInfo;
 }
 export interface GreenOrderLine extends OrderLine {
     product?: GreenProduct;
 }
 export interface GreenOrder extends Order {
-    accessoryLines?: OrderLine[]
+    accessoryLines?: GreenOrderLine[];
     orderLines?: GreenOrderLine[];
     websiteOrderLine?: GreenOrderLine[];
 }

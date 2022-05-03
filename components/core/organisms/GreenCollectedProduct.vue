@@ -11,7 +11,7 @@
       cartGetters.getItemPrice(orderLine).special &&
         $currency(cartGetters.getItemPrice(orderLine).special)
     "
-    :stock="99999"
+    :max-qty="quantityInStock"
     :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
     @input="handleUpdateItem(orderLine, $event)"
@@ -79,7 +79,10 @@ export default defineComponent({
 
     const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts || []);
 
+    const quantityInStock = computed(() => props.orderLine?.product?.qty || 0);
+
     return {
+      quantityInStock,
       loading,
       accessoryIsInCart,
       handleAddOrRemoveAccessory,
