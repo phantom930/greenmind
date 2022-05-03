@@ -106,9 +106,12 @@
     }
     .div-call-to-hero-bottom ::v-deep .sf-call-to-action__text-container .sf-image--wrapper {
       transform: translate(0, -8%);
+      @include for-mobile {
+        transform: translate(21%, -28%);
+      }
     }
     .div-call-to-hero-bottom ::v-deep .sf-call-to-action {
-      margin: 2%;
+      margin: 0% 6%;
       border-radius: 14px;
       transform: translate(0, -68%);
     }

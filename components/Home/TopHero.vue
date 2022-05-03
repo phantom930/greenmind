@@ -22,6 +22,7 @@
       </template>
       <template #withImgTag>
         <SfImage
+          v-if="$device.isMobile"
           :src="require('/assets/images/homeHero/home_page_phones.svg')"
           alt="banner_1"
           :width="214"
@@ -49,6 +50,7 @@
       </template>
       <template #withImgTag>
         <SfImage
+          v-if="$device.isMobile"
           :src="require('/assets/images/homeHero/home_page_phones.svg')"
           alt="banner_1"
           :width="214"
@@ -76,6 +78,7 @@
       </template>
       <template #withImgTag>
         <SfImage
+          v-if="$device.isMobile"
           :src="require('/assets/images/homeHero/home_page_phones.svg')"
           alt="banner_1"
           :width="214"
@@ -99,7 +102,10 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 ::v-deep .glide__slides, ::v-deep .glide__track{
-  overflow: visible !important;
+  @include for-mobile {
+    overflow: visible !important;
+  }
+
 }
 ::v-deep .sf-image--wrapper {
   bottom: 30px;
@@ -112,7 +118,10 @@ export default defineComponent({
   }
 }
 ::v-deep .sf-hero__bullets {
-  display: unset;
-  bottom: -20%;
+  @include for-mobile {
+    display: unset;
+    bottom: -20%;
+  }
+
 }
 </style>

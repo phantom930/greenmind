@@ -97,8 +97,8 @@
         <SfCallToAction>
           <template #title>
             <SfImage
-              :width="437"
-              :height="240"
+              :width="$device.isDesktop ? 437 : 221"
+              :height="$device.isDesktop ? 240: 121"
               :src="require('/assets/images/homeHero/samsung_phones.svg')"
               alt="samsumg"
             />
@@ -126,7 +126,7 @@
       </div>
     </div>
 
-    <div class="between-call-to-action-and-footer" />
+    <div v-if="$device.isDesktop" class="between-call-to-action-and-footer" />
     <!-- <NewsletterModal
       :loading="loading"
       @email-submitted="onSubscribe"
