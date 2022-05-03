@@ -3,13 +3,21 @@
     <SfCallToAction
       v-e2e="'thank-you-banner'"
       class="banner"
+      :image="{
+        mobile: '/thankyou/bannerM2.webp',
+        desktop: '/thankyou/bannerD2.webp',
+      }"
+    >
+    <!-- <SfCallToAction
+      v-e2e="'thank-you-banner'"
+      class="banner"
       title="Thank you for your order!"
       :image="{
         mobile: '/thankyou/bannerM.png',
         desktop: '/thankyou/bannerD.png',
       }"
-    >
-      <template #description>
+    > -->
+      <!--<template #description>
         <div class="banner__order-number">
           <span>{{ $t("Order No. ") }}</span>
           <strong>{{ cartGetters.getOrderNumber(cart) }}</strong>
@@ -25,7 +33,7 @@
             Pay
           </SfButton>
         </div>
-      </template>
+      </template>-->
     </SfCallToAction>
     <section class="section">
       <div class="order">
@@ -311,6 +319,14 @@ export default {
   font-weight: 700;
   color: var(--_c-greenmind-primary-black);
 }
+/*::v-deep .sf-call-to-action {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+  max-height: 210px;
+  background-size: 100%;
+  margin-bottom: 3%;
+}*/
 ::v-deep .sf-button {
   border-radius: 100px;
   background-color: var(--_c-greenmind-pine-primary-dark-green);

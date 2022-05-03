@@ -188,6 +188,12 @@ export function getRoutes(themeDir = __dirname) {
       path: '/cookies',
       name: 'cookies',
       component: path.resolve(themeDir, 'pages/cookies.vue')
+    },
+    {
+      /* Checkout -> Thank-You */
+      path: '/checkout/thank-you',
+      name: 'thank-you',
+      component: path.resolve(themeDir, 'pages/Checkout/ThankYou.vue')
     }
   ];
 }
