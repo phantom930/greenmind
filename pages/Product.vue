@@ -47,7 +47,10 @@
             :product-variant-id="combinationInfo.product_id"
             @update="handleSelectNewGrade"
           />
-          <ProductDescription />
+          <ProductDescription
+            :title="combinationInfo.grade_name"
+            :description="combinationInfo.grade_description"
+          />
 
           <div
             v-if="accessoryProducts.length > 0"
@@ -65,6 +68,7 @@
               :description="accessoryProduct.description"
               :price="$currency(accessoryProduct.combinationInfoVariant.price)"
               :has-image="true"
+              :disabled="!productInStock"
               :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.imageFilename)"
               @change="selectAcessories"
             />

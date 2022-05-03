@@ -1,11 +1,10 @@
 <template>
   <div class="description-wrap">
     <div class="title-main">
-      Meget flot
+      {{ title }}
     </div>
     <p class="description-main">
-      Screen: May have micro-scratches which are not noticeable when
-      the screen is turned on. Body: Has visible scratches and/or dents
+      {{ description }}
     </p>
   </div>
 </template>
