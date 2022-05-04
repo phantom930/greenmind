@@ -14,12 +14,12 @@
     }
   }
   
-  @media (min-width: 768px) {
+  /*@media (min-width: 768px) {
     ::v-deep .sf-hero {
       height: 480px;
       margin-top: -75px;
     }
-  }
+  }*/
   
   ::v-deep .top-hero .sf-hero-item__title {
     font: var(--font-family--primary);
@@ -55,7 +55,7 @@
     background-size: 100%;
   }
   ::v-deep .top-hero .sf-hero__bullets {
-    transform: translate3d(-50%, -55px, 0);
+    transform: translate3d(0, 150%, 0);
     --bullet-background: #a5cebe;
   }
   ::v-deep .top-hero .sf-bullet.is-active {

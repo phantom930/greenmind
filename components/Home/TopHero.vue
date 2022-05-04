@@ -1,5 +1,5 @@
 <template>
-  <SfHero
+  <!-- <SfHero
     class="top-hero"
     :class="$device.isMobile ? 'mt-8' : null"
   >
@@ -86,6 +86,26 @@
         />
       </template>
     </SfHeroItem>
+  </SfHero> -->
+  <SfHero
+    class="top-hero mt-1.5"
+  >
+    <nuxt-link to="/sell-to-us">
+      <SfHeroItem
+        class="top-hero-item"
+        :background="$device.isMobile ? '#668F72' : ''"
+        :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_1.webp') : ''"
+      >
+      </SfHeroItem>
+    </nuxt-link>
+    <nuxt-link to="/about-us">
+      <SfHeroItem
+        class="top-hero-item"
+        :background="$device.isMobile ? '#668F72' : ''"
+        :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_2.webp') : ''"
+      >
+      </SfHeroItem>
+    </nuxt-link>
   </SfHero>
 </template>
 <script lang="ts">
@@ -119,9 +139,63 @@ export default defineComponent({
 }
 ::v-deep .sf-hero__bullets {
   @include for-mobile {
-    display: unset;
-    bottom: -20%;
+    display: none;;
   }
-
 }
+
+@media (min-width: 768px), (max-width: 1024px){
+    ::v-deep .top-hero-item {
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 250px;
+    height: auto;
+    width: auto\9;
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
+}
+@media (max-width: 768px) {
+  ::v-deep .top-hero {
+    max-width: 100%;
+    max-height: 250px;
+    height: auto;
+    width: auto\9;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  ::v-deep .top-hero-item {
+    background-position: center;
+    background-size: contain;
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 250px;
+    height: auto;
+    width: auto\9;
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }
+}
+@media (min-width: 1024px) {
+  /*::v-deep .top-hero {
+    max-width: 100%;
+    max-height: 250px;
+    height: auto;
+    width: auto;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+  }*/
+  ::v-deep .top-hero-item {
+    object-fit: contain;
+    background-position: center;
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 250px;
+    height: auto;
+    margin-bottom: 3%;
+  }
+}
+
 </style>
