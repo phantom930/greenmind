@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="localePath( `${productGetters.getSlug(product)}` )">
+  <nuxt-link :to="localePath(`${productGetters.getSlug(product)}`)">
     <SfProductCard
       :key="product.id"
       data-cy="category-product-card"

@@ -133,7 +133,7 @@
 </template>
 <script >
 import { computed, defineComponent, reactive, useRoute, useRouter } from '@nuxtjs/composition-api';
-import { SfBreadcrumbs, SfGallery, SfHeading, SfIcon, SfLoader } from '@storefront-ui/vue';
+import { SfBreadcrumbs, SfGallery, SfHeading, SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';

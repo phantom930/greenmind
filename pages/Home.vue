@@ -82,7 +82,14 @@
     </div>
 
     <div class="div-popular-products mt-20">
+      <div
+        v-if="productsLoading"
+        style="height: 500px"
+      >
+        <SfLoader :loading="productsLoading" />
+      </div>
       <GreenCarousel
+        v-else
         :title="$t('Popular products')"
         :products="products"
         :currency="currency"
@@ -135,7 +142,7 @@
 </template>
 
 <script>
-import { SfImage, SfCallToAction} from '@storefront-ui/vue';
+import { SfImage, SfCallToAction, SfLoader} from '@storefront-ui/vue';
 import { computed } from '@vue/composition-api';
 import { productGetters, useFacet, facetGetters, useNewsLetter } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
@@ -147,10 +154,11 @@ export default {
   components: {
     NewsletterModal,
     SfCallToAction,
-    SfImage
+    SfImage,
+    SfLoader
   },
   setup() {
-    const { result, search } = useFacet();
+    const { result, search, loading: productsLoading } = useFacet();
     const products = computed(() => facetGetters.getProducts(result.value));
     const { toggleNewsletterModal } = useUiState();
     const { loading, sendSubscription } = useNewsLetter();
@@ -185,6 +193,7 @@ export default {
     };
 
     return {
+      productsLoading,
       loading,
       onSubscribe,
       toggleNewsletterModal,
