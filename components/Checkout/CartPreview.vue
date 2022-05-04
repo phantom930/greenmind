@@ -44,6 +44,7 @@
           :value="shippingMethodPrice ? shippingMethodPrice : 'Free'"
           class="sf-property--full-width sf-property--large property"
         />
+
         <SfProperty
           name="Total price"
           :value="$currency(totals.total)"
@@ -53,6 +54,8 @@
             total-price
           "
         />
+
+        <slot name="extra-middle" />
       </div>
     </div>
     <div v-else>

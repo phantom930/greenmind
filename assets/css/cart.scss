@@ -60,10 +60,13 @@
       }
     }
     &__aside {
+      & div {
+        border-radius: 14px;
+        padding-top: 10px;
+      }
       box-sizing: border-box;
       width: 100%;
       background: var(--c-light);
-      padding: var(--spacer-xl) 26px var(--spacer-xl) 26px;
     }
     @include for-desktop {
       display: flex;
@@ -74,7 +77,6 @@
         flex: 0 0 25.5rem;
         order: 1;
         margin: 0 0 0 4.25rem;
-        padding: var(--spacer-xl) 40px var(--spacer-xl) 40px;
       }
     }
   }

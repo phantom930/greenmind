@@ -5,9 +5,6 @@
       :breadcrumbs="breadcrumbs"
     />
     <div class="detailed-cart">
-      <div v-if="totalItems" class="detailed-cart__aside">
-        <CheckoutCartPreview key="order-summary" />
-      </div>
       <div class="detailed-cart__main">
         <transition
           name="sf-fade"
@@ -58,6 +55,34 @@
             </SfButton>
           </div>
         </transition>
+      </div>
+      <div v-if="totalItems" class="detailed-cart__aside">
+        <CheckoutCartPreview key="order-summary">
+          <template #extra-middle>
+            <div class="mt-10">
+              <GreenButton
+                style-type="Primary"
+                color="Green"
+                shape="Round"
+                size="large"
+                @click="$router.go({ name: 'personaldetails' })"
+              >
+                {{ $t("CHECKOUT") }}
+              </GreenButton>
+            </div>
+            <div class="mt-5">
+              <GreenButton
+                style-type="Secondary"
+                color="Green"
+                shape="Round"
+                size="large"
+                @click="$router.go(-1)"
+              >
+                {{ $t("BACK TO SHOPPING") }}
+              </GreenButton>
+            </div>
+          </template>
+        </CheckoutCartPreview>
       </div>
     </div>
   </div>
