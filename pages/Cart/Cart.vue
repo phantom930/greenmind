@@ -60,15 +60,16 @@
         <CheckoutCartPreview key="order-summary">
           <template #extra-middle>
             <div class="mt-10">
-              <GreenButton
-                style-type="Primary"
-                color="Green"
-                shape="Round"
-                size="large"
-                @click="$router.go({ name: 'personaldetails' })"
-              >
-                {{ $t("CHECKOUT") }}
-              </GreenButton>
+              <nuxt-link to="/checkout/personaldetails">
+                <GreenButton
+                  style-type="Primary"
+                  color="Green"
+                  shape="Round"
+                  size="large"
+                >
+                  {{ $t("CHECKOUT") }}
+                </GreenButton>
+              </nuxt-link>
             </div>
             <div class="mt-5">
               <GreenButton

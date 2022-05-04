@@ -20,7 +20,7 @@ const localesMap = {
 const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
 
 export default {
-  hooks: !isDev ? hooks : null,
+  hooks,
   dir: {
     // using to ignore auto-generated routes
     pages: 'routes'
