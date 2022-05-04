@@ -26,7 +26,7 @@ const getFirstParamFromArray = (array) => {
 export default {
   build: {
     async before(builder) {
-      consola.info(chalk.bold('ODOO'), ' - Started fetch / writing product and categories slugs...');
+      consola.info(chalk.bold('ODOO'), ' - Started fetch (product|categories) to build custom routes...');
 
       const { data } = await fetchProducts();
       const { data: categoriesData } = await fetchCategories();
