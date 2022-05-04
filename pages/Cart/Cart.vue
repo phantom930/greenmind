@@ -92,10 +92,8 @@
 import {
   SfButton,
   SfImage,
-  SfProperty,
   SfHeading,
-  SfBreadcrumbs,
-  SfOrderSummary
+  SfBreadcrumbs
 } from '@storefront-ui/vue';
 import { ref } from '@nuxtjs/composition-api';
 import { computed } from '@nuxtjs/composition-api';
@@ -108,9 +106,7 @@ export default {
     SfBreadcrumbs,
     SfImage,
     SfButton,
-    SfHeading,
-    SfProperty,
-    SfOrderSummary
+    SfHeading
   },
   setup() {
     const { isAuthenticated } = useUser();
