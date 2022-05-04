@@ -123,7 +123,7 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="phone"
-          rules="required|digits:9"
+          rules="required"
           slim
         >
           <SfInput
