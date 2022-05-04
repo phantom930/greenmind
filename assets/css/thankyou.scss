@@ -164,9 +164,11 @@
     background-size: cover;
     @media (min-width: 769px), (max-width: 1024px) {
         min-height: 210px;
+        margin-bottom: 5%;
     }
     @media (max-width: 768px) {
         min-height: 115px;
+        margin-bottom: 5%;
     }
 
   }

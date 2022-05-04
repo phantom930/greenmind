@@ -35,76 +35,7 @@
         </div>
       </template>-->
     </SfCallToAction>
-    <section class="section">
-      <div class="order">
-        <SfHeading
-          title="Your Purchase"
-          class="order__heading heading sf-heading--left"
-          :level="3"
-        />
-        <p class="order__paragraph paragraph">
-          {{ $t("Successful placed order") }}
-        </p>
-        <div class="order__contact">
-          <SfHeading
-            :level="6"
-            class="heading sf-heading--left sf-heading--no-underline"
-            title="Primary contacts for any questions"
-          />
-          <div class="contact">
-            <p class="contact__name">
-              {{ companyDetails.name }}
-            </p>
-            <p class="contact__street">
-              {{ companyDetails.street }}
-            </p>
-            <p class="contact__city">
-              {{ companyDetails.city }}
-            </p>
-            <p class="contact__email">
-              {{ companyDetails.email }}
-            </p>
-          </div>
-        </div>
-        <SfButton class="order__notifications-button button-size">
-          {{
-            $t("Allow order notifications")
-          }}
-        </SfButton>
-      </div>
-      <div class="additional-info">
-        <div>
-          <SfHeading
-            title="Your Account"
-            class="heading sf-heading--left"
-            :level="3"
-          />
-          <p class="paragraph">
-            {{ $t("Info after order") }}
-          </p>
-        </div>
-        <div>
-          <SfHeading
-            title="What can we improve"
-            class="heading sf-heading--left"
-            :level="3"
-          />
-          <p class="paragraph">
-            {{ $t("Feedback") }}
-          </p>
-          <SfButton
-            class="
-              feedback-button
-              color-secondary
-              sf-button--full-width
-              button-size
-            "
-          >
-            {{ $t("Send my feedback") }}
-          </SfButton>
-        </div>
-      </div>
-    </section>
+
     <nuxt-link to="/">
       <SfButton class="back-button color-secondary button-size">
         {{

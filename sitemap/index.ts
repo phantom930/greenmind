@@ -4,7 +4,7 @@ const graphqlBaseUrl = integrations.odoo.configuration.graphqlBaseUrl;
 const consola = require('consola');
 const chalk = require('chalk');
 const axios = require('axios');
-const queries = require('./queries');
+const queries = require('../helpers/buildQueries');
 
 const headers = { headers: { 'Content-Type': 'application/json' }};
 

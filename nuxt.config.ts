@@ -2,8 +2,9 @@
 import webpack from 'webpack';
 import theme from './themeConfig';
 import { getRoutes } from './routes';
-import getAppRoutes from './sitemap';
 import { resolve } from 'path';
+import hooks from './hooks';
+import getAppRoutes from './sitemap';
 import Config from '@odoogap/nuxt-config';
 
 const { makeBuild, makeModules } = Config();
@@ -19,6 +20,7 @@ const localesMap = {
 const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
 
 export default {
+  hooks: !isDev ? hooks : null,
   dir: {
     // using to ignore auto-generated routes
     pages: 'routes'
