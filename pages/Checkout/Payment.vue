@@ -98,7 +98,7 @@ export default defineComponent({
   },
   emits: ['status'],
   setup(props, context) {
-    const { cart, load, setCart } = useCart();
+    const { cart, load } = useCart();
 
     const { providerList, getPaymentProviderList } = usePayment(String(cart.value?.order?.id));
     const { order, make, loading } = useMakeOrder();

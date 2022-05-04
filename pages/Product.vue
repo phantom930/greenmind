@@ -1,5 +1,11 @@
 <template>
-  <div id="product">
+  <div
+    v-if="loading"
+    style="height: 500px"
+  >
+    <SfLoader :loading="loading" />
+  </div>
+  <div v-else id="product">
     <SfBreadcrumbs
       class="breadcrumbs desktop-only"
       :breadcrumbs="breadcrumbs"
@@ -127,7 +133,7 @@
 </template>
 <script >
 import { computed, defineComponent, reactive, useRoute, useRouter } from '@nuxtjs/composition-api';
-import { SfBreadcrumbs, SfGallery, SfHeading, SfIcon } from '@storefront-ui/vue';
+import { SfBreadcrumbs, SfGallery, SfHeading, SfIcon, SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
@@ -141,7 +147,7 @@ export default defineComponent({
   components: {
     SfHeading,
     SfGallery,
-    SfIcon,
+    SfLoader,
     SfBreadcrumbs,
     LazyHydrate
   },
@@ -206,6 +212,9 @@ export default defineComponent({
         customQuery: { getProductTemplate: 'greenGetProduct' }
       });
 
+      if (!product.value.id) {
+        root.$nuxt.error({ statusCode: 404, message: '' });
+      }
       addTags([{ prefix: CacheTagPrefix.Product, value: path }]);
     });
 
