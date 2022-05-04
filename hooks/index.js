@@ -31,8 +31,8 @@ export default {
       const { data } = await fetchProducts();
       const { data: categoriesData } = await fetchCategories();
 
-      await fsExtra.writeJson('customRoutes/products.json', getFirstParamFromArray(data.data.products.products));
-      await fsExtra.writeJson('customRoutes/categories.json', getFirstParamFromArray(categoriesData.data.categories.categories));
+      await fsExtra.outputJson('customRoutes/products.json', getFirstParamFromArray(data.data.products.products));
+      await fsExtra.outputJson('customRoutes/categories.json', getFirstParamFromArray(categoriesData.data.categories.categories));
 
       consola.success(chalk.bold('ODOO'), ' - Finish build custom routes!');
     }

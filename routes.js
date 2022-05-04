@@ -1,11 +1,13 @@
 const path = require('path');
-let productPrefixes = require('./customRoutes/products.json');
-productPrefixes = productPrefixes.filter(item => item !== '/product');
-
-let categoriesPrefixes = require('./customRoutes/categories.json');
-categoriesPrefixes = categoriesPrefixes.filter(item => item !== '/category');
+const fsExtra = require('fs-extra');
 
 export function getRoutes(themeDir = __dirname) {
+  let productPrefixes = fsExtra.readJsonSync('./customRoutes/products.json');
+  productPrefixes = productPrefixes.filter(item => item !== '/product');
+
+  let categoriesPrefixes = fsExtra.readJsonSync('./customRoutes/categories.json');
+  categoriesPrefixes = categoriesPrefixes.filter(item => item !== '/category');
+
   return [
     {
       name: 'home',
