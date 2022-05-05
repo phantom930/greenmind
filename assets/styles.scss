@@ -155,15 +155,11 @@ h4 {
   
 }
 
-.topbar {
-  z-index: 1 !important;
-}
-
 .sf-sidebar__aside {
-    z-index: 21;
+    z-index: 2;
 }
 .sf-overlay {
-  z-index: 20;
+  z-index: 1;
 }
 
 @include for-mobile {

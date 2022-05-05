@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-10 justify-between">
+  <div class="flex justify-between">
     <SfCollectedProduct
       :key="cartGetters.getItemSku(orderLine)"
       data-cy="collected-product-cart-sidebar"

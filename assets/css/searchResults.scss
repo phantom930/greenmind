@@ -98,7 +98,7 @@
     text-align: center;
     @include for-desktop {
       padding: 0;
-      height: 100vh;
+      height: 50vh;
     }
     &__picture {
       --image-width: 230px;

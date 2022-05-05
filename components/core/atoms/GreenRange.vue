@@ -53,6 +53,7 @@ export default {
   margin: 35px 0px 60px 7px;
   width: 80%;
   height: 5px;
+  z-index: 0;
 }
 
 ::v-deep .noUi-handle {

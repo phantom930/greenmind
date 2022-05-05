@@ -103,6 +103,7 @@
       <!-- End of Search bar -->
     </SfHeader>
     <SearchResults
+      v-click-outside="closeSearch"
       :visible="isSearchOpen"
       :term="term"
       :search-loading="searchLoading"
