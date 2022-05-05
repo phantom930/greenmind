@@ -10,6 +10,7 @@
     <SfButton
       class="sf-button--email"
       :disabled="loading || !email"
+      @click="subscribe"
     >
       {{ $t("SUBSCRIBE") }}
     </SfButton>

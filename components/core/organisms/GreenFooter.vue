@@ -31,9 +31,11 @@
             v-for="(item, contactIndex) in column.contactChilds"
             :key="contactIndex"
           >
-            <p class="menu-item_p">
-              {{ $t(item) }}
-            </p>
+            <a :href="item.name">
+              <p class="menu-item_p">
+                {{ $t(item.text) }}
+              </p>
+            </a>
           </SfListItem>
         </SfList>
       </SfFooterColumn>
@@ -48,6 +50,7 @@
           <a
             v-for="item in social"
             :key="item.name"
+            target="_blank"
             :href="item.url"
           >
             <SfImage
@@ -58,7 +61,6 @@
             />
           </a>
         </div>
-        </a>
       </div>
     </div>
 
@@ -68,7 +70,7 @@
           v-for="(item, contactIndex) in columns[3].contactChilds"
           :key="contactIndex"
         >
-          {{ $t(item) }}
+          {{ $t(item.text) }}
         </span>
       </div>
 
@@ -83,6 +85,7 @@
         <a
           v-for="item in social"
           :key="item.name"
+          target="_blank"
           :href="item.url"
         >
           <SfImage
@@ -215,8 +218,8 @@ export default defineComponent({
           title: 'Shops',
           contact: true,
           contactChilds: [
-            'Tlf: +45 7875 6535',
-            'mailto: mail@greenmind.dk'
+            { name: 'Tel: +45 7875 6535', text: 'Tlf: +45 7875 6535' },
+            { name: 'mailto: mail@greenmind.dk', text: 'mailto: mail@greenmind.dk' }
           ],
           childs: [
             {
