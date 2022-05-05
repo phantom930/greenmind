@@ -28,8 +28,8 @@
       :level="2"
       :description="
         error.statusCode === 404
-          ? 'We are sorry that we can’t find the page, please go back or try again'
-          : 'Please go back or try again'
+          ? $t('We are sorry that we can’t find the page, please go back or try again')
+          : $t('Please go back or try again')
       "
       class="heading sf-heading--no-underline"
     />
@@ -38,13 +38,13 @@
         link="/"
         class="sf-button--full-width actions__button"
       >
-        Return home
+        {{ $t('Return home') }}
       </SfButton>
       <SfButton
         class="sf-button--full-width sf-button--text actions__button"
         @click="$router.go(-1)"
       >
-        Back
+        {{ $t('Back') }}
       </SfButton>
     </div>
   </div>

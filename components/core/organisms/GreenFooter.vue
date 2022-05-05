@@ -197,10 +197,10 @@ export default defineComponent({
               name: 'Terms of trade',
               slug: '/terms-of-trade'
             },
-            {
-              name: 'GDPR',
-              slug: '/gdpr'
-            },
+            // {
+            //   name: 'GDPR',
+            //   slug: '/gdpr'
+            // },
             {
               name: 'Cookies',
               slug: '/cookies'
@@ -215,8 +215,8 @@ export default defineComponent({
           title: 'Shops',
           contact: true,
           contactChilds: [
-            'Tlf: 78756535',
-            'email: hans@greenmind.dk'
+            'Tlf: +45 7875 6535',
+            'mailto: mail@greenmind.dk'
           ],
           childs: [
             {
