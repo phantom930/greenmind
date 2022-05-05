@@ -106,7 +106,7 @@ export default defineComponent({
 
     const isPaymentReady = ref(false);
     const terms = ref(false);
-    const selectedProvider = ref({});
+    const selectedProvider = ref(false);
 
     const selectProvider = (provider) => {
       isPaymentReady.value = false;
