@@ -6,14 +6,14 @@
         :class="$route.path == '/' ? 'sf-bottom-navigation__item--active' : ''"
         icon="home"
         size="20px"
-        label="Home"
+        :label="$t('Home')"
         @click="isMobileMenuOpen ? toggleMobileMenu() : false"
       />
     </nuxt-link>
     <SfBottomNavigationItem
       icon="menu"
       size="20px"
-      label="Menu"
+      :label="$t('Menu')"
       @click="toggleMobileMenu"
     />
     <!-- <SfBottomNavigationItem
@@ -30,7 +30,7 @@
     /> -->
     <!-- TODO: add logic for label - if on Home then Basket, if on PDC then AddToCart etc. -->
     <SfBottomNavigationItem
-      label="Basket"
+      :label="$t('Basket')"
       icon="add_to_cart"
       @click="toggleCartSidebar"
     >

@@ -44,7 +44,7 @@
     <div class="sf-footer-column smartphone-only border-t">
       <div>
         <div class="sf-footer-column__title">
-          Social
+          {{ $t('Social') }}
         </div>
         <div class="flex justify-around">
           <a

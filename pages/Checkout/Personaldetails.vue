@@ -32,7 +32,7 @@
             >
               <SfInput
                 v-model="form.firstName"
-                label="First name"
+                :label="$t('First name')"
                 name="firstName"
                 class="form__element"
                 required
@@ -50,7 +50,7 @@
             >
               <SfInput
                 v-model="form.lastName"
-                label="Last Name"
+                :label="$t('Last Name')"
                 name="lastName"
                 class="form__element"
                 required
@@ -68,7 +68,7 @@
         >
           <SfInput
             v-model="form.email"
-            label="Your email address"
+            :label="$t('Your email address')"
             name="email"
             class="form__element email-input"
             required
@@ -82,7 +82,7 @@
         v-model="newsLetter"
         :value="newsLetter"
         :has-general-wrapper="false"
-        label="Join newsletter"
+        :label="$t('Join newsletter')"
       />
 
       <!-- <p v-show="invalid" class="title">

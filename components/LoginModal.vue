@@ -58,7 +58,7 @@
                 :valid="!errors[0]"
                 :error-message="errors[0]"
                 name="email"
-                label="Your email addres"
+                :label="$t('Your email addres')"
                 class="form__element"
               />
             </ValidationProvider>
@@ -72,7 +72,7 @@
                   name="password"
                   :icon="{ icon: 'show_password' }"
                   type:icon="text"
-                  label="Your password"
+                  :label="$t('Your password')"
                   :type="showPassword ? 'text' : 'password'"
                   class="form__element"
                   @click:icon="
@@ -87,7 +87,7 @@
                   v-model="rememberMe"
                   data-cy="login-checkbox-remember-me"
                   name="remember-me"
-                  label="Remember me"
+                  :label="$t('Remember me')"
                   class="form__element checkbox"
                 />
                 <SfButton
@@ -188,7 +188,7 @@
                 :valid="!errors[0]"
                 :error-message="errors[0]"
                 name="name"
-                label="Your name"
+                :label="$t('Your name')"
                 class="form__element"
               />
             </ValidationProvider>
@@ -199,7 +199,7 @@
                 :valid="!errors[0]"
                 :error-message="errors[0]"
                 name="Your email address"
-                label="Your email"
+                :label="$t('Your email')"
                 class="form__element"
               />
             </ValidationProvider>
@@ -211,7 +211,7 @@
                 :valid="!errors[0]"
                 :error-message="errors[0]"
                 name="password"
-                label="Password"
+                :label="$t('Password')"
                 :icon="{ icon: 'show_password' }"
                 :type="showPassword ? 'text' : 'password'"
                 class="form__element"
@@ -235,9 +235,9 @@
                   class="form__element"
                 />
                 <p>
-                  I declare that I have read and agree to the
-                  <span>Privacy Policy</span> and
-                  <span>Terms of Use.</span>
+                  {{ $t('I declare that I have read and agree to the') }}
+                  <span>{{ $t('Privacy Policy') }}</span> {{ $t('and') }}
+                  <span>{{ $t('Terms of Use') }}.</span>
                 </p>
               </div>
             </ValidationProvider>
@@ -269,7 +269,7 @@
         </ValidationObserver>
         <div class="bottom">
           <p class="bottom-enjoy">
-            Enjoy these perks with your free account!
+            {{ $t('Enjoy these perks with your free account!') }}
           </p>
           <div class="block lg:flex justify-around">
             <div class="flex additional-account">

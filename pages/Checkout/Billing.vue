@@ -9,7 +9,7 @@
       <div class="form">
         <SfCheckbox
           :selected="sameAsShipping"
-          label="Copy address data from shipping"
+          :label="$t('Copy address data from shipping')"
           name="copyShippingAddress"
           class="form__element"
           @change="handleCheckSameAddress"

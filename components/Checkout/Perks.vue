@@ -3,21 +3,21 @@
     <div class="perk">
       <img :src="require('/assets/images/personaldetails/clock.svg')">
       <p class="label">
-        Faster<br>checkout
+        {{ $t('Faster') }}<br>{{ $t('checkout') }}
       </p>
     </div>
     <div class="perk">
       <img :src="require('/assets/images/personaldetails/coins.svg')">
       <p class="label">
-        Earn credits with every<br>
-        purchase
+        {{ $t('Earn credits with every') }}<br>
+        {{ $t('purchase') }}
       </p>
     </div>
     <div class="perk">
       <img :src="require('/assets/images/personaldetails/award.svg')">
       <p class="label">
-        Full rewards program<br>
-        benefits
+        {{ $t('Full rewards program') }}<br>
+        {{ $t('benefits') }}
       </p>
     </div>
     <div class="perk perk-favourite">
@@ -25,7 +25,7 @@
         :src="require('/assets/images/personaldetails/favourites.svg')"
       >
       <p class="label">
-        Manage your wishlist
+        {{ $t('Manage your wishlist') }}
       </p>
     </div>
   </div>

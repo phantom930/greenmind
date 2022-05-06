@@ -44,14 +44,14 @@
         </div>
       </div>
       <div class="shipping">
-        <p>Shipping:</p>
+        <p>{{ $('Shipping') }}:</p>
         <p class="price">
           Free
         </p>
       </div>
       <div class="total-price">
         <p class="total">
-          Total price:
+          {{ $t('Total price') }}:
         </p>
         <p class="price">
           {{ $currency(totals.total) }}
@@ -65,7 +65,7 @@
           :value="agreeTermsConditions"
           :is-checked="agreeTermsConditions"
           :has-general-wrapper="false"
-          label="I agree to Terms and Conditions"
+          :label="$t('I agree to Terms and Conditions')"
         />
       </div>
       <div class="submit-button">

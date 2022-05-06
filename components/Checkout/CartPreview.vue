@@ -70,7 +70,7 @@
         <div class="personal-detail flex justify-between">
           <div class="detail-adress grow">
             <p class="font-bold mb-4 text-lg">
-              Personal details
+              {{ $t('Personal details') }}
             </p>
             <p class="mb-4">
               <span>{{ partner.name }}</span> <br>{{ partner.street }} –
@@ -87,7 +87,7 @@
               :link="{ name: 'personaldetails' }"
               class="font-bold"
             >
-              EDIT
+              {{ $t('EDIT') }}
             </SfLink>
           </div>
         </div>
@@ -107,7 +107,7 @@
               :link="{ name: 'shipping' }"
               class="font-bold"
             >
-              EDIT
+              {{ $t('EDIT') }}
             </SfLink>
           </div>
         </div>
@@ -122,7 +122,7 @@
         >
           <div class="detail-adress grow">
             <p class="font-bold mb-4 text-lg">
-              Billing address
+              {{ $t('Billing address') }}
             </p>
             <p class="mb-4">
               <span>{{ partnerInvoice.name }}</span> <br>{{ partnerInvoice.street }} –
@@ -135,7 +135,7 @@
               :link="{ name: 'shipping' }"
               class="font-bold"
             >
-              EDIT
+              {{ $t('EDIT') }}
             </SfLink>
           </div>
         </div>
