@@ -66,7 +66,7 @@
 
     <div class="grid">
       <span class="custom-edit-remove-text" @click="handleRemoveItemAndAccessories(orderLine)">
-        REMOVE
+        {{ $t('REMOVE') }}
       </span>
       <span class="self-end custom-price">
         {{ $currency(getPrice(orderLine)) }}
