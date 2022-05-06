@@ -207,7 +207,6 @@ export default defineComponent({
 
     const loadData = () => {
       const splitedName = props.currentAddressData?.name?.split(' ');
-      console.log('🚀 ~ file: AddressForm.vue ~ line 210 ~ loadData ~ props.currentAddressData', props.currentAddressData);
 
       form.lastName = splitedName?.pop() || '';
       form.firstName = splitedName?.join(' ') || '';

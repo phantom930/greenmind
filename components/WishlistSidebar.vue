@@ -89,7 +89,7 @@
               class="sf-property--full-width my-wishlist__total-price"
             >
               <template #name>
-                <span class="my-wishlist__total-price-label">Total price:</span>
+                <span class="my-wishlist__total-price-label">{{ $t('Total price') }}:</span>
               </template>
               <template #value>
                 <SfPrice :regular="$currency(totals.subtotal)" />

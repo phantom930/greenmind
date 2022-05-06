@@ -1,7 +1,7 @@
 <template>
   <div class="payment-page">
     <h3 class="title">
-      Payment Methods
+      {{ $t('Payment list') }}
     </h3>
     <div
       v-for="provider in providerList"

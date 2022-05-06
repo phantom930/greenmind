@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3 class="title">
-      Order Details
+      {{ $t('Order Details') }}
     </h3>
     <div class="orders">
       <a
@@ -38,13 +38,13 @@
     </div>
     <div class="total-price-wrap">
       <div class="subtotal">
-        <p>Subtotal:</p>
+        <p>{{ $t('Subtotal') }}:</p>
         <div class="price">
           {{ $currency(totals.subtotal) }}
         </div>
       </div>
       <div class="shipping">
-        <p>{{ $('Shipping') }}:</p>
+        <p>{{ $t('Shipping') }}:</p>
         <p class="price">
           Free
         </p>

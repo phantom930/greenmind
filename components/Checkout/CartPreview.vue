@@ -4,18 +4,18 @@
       <div class="highlighted">
         <SfHeading
           :level="3"
-          title="Totals"
+          :title="$t('Totals')"
           class="sf-heading--left sf-heading--no-underline title"
         />
       </div>
       <div class="highlighted">
         <SfProperty
-          name="Products"
+          :name="$t('Products')"
           :value="totalItems"
           class="sf-property--full-width sf-property--large property"
         />
         <SfProperty
-          name="Subtotal"
+          :name="$t('Subtotal')"
           :value="$currency(totals.subtotal)"
           :class="[
             'sf-property--full-width',
@@ -40,13 +40,13 @@
           "
         />
         <SfProperty
-          name="Shipping"
-          :value="shippingMethodPrice ? shippingMethodPrice : 'Free'"
+          :name="$t('Shipping')"
+          :value="shippingMethodPrice ? shippingMethodPrice : $t('Free')"
           class="sf-property--full-width sf-property--large property"
         />
 
         <SfProperty
-          name="Total price"
+          :name="$t('Total price')"
           :value="$currency(totals.total)"
           class="
             sf-property--full-width sf-property--large
@@ -62,7 +62,7 @@
       <div class="highlighted">
         <SfHeading
           :level="3"
-          title="Order Review"
+          :title="$t('Order Review')"
           class="sf-heading--left sf-heading--no-underline title"
         />
       </div>
@@ -160,8 +160,8 @@
       <SfCharacteristic
         v-for="characteristic in characteristics"
         :key="characteristic.title"
-        :title="characteristic.title"
-        :description="characteristic.description"
+        :title="$t(characteristic.title)"
+        :description="$t(characteristic.description)"
         :icon="characteristic.icon"
         class="characteristic"
       />
