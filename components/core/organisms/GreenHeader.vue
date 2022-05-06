@@ -46,22 +46,14 @@
             class="sf-button--pure sf-header__action"
             @click="showSearchInputOnMobile = !showSearchInputOnMobile"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="search"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="search" size="1.25rem" />
           </SfButton>
           <SfButton
             v-if="!showSearchInputOnMobile"
             class="sf-button--pure sf-header__action"
             @click="toggleCartSidebar"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="empty_cart"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="empty_cart" size="1.25rem" />
 
             <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
               {{ cartTotalItems }}
@@ -72,11 +64,7 @@
             class="sf-button--pure sf-header__action list"
             @click="toggleHamburguerMenu"
           >
-            <SfIcon
-              class="sf-header__icon"
-              icon="list"
-              size="1.25rem"
-            />
+            <SfIcon class="sf-header__icon" icon="list" size="1.25rem" />
           </SfButton>
         </div>
       </template>
@@ -89,7 +77,7 @@
           class="sf-header__search none"
           :value="term"
           :icon="{
-            icon: !!term || showSearchInputOnMobile ? 'cross' : 'search',
+            icon: isSearchOpen || showSearchInputOnMobile ? 'cross' : 'search',
             size: '1.25rem',
             color: '#43464E',
           }"
@@ -103,7 +91,6 @@
       <!-- End of Search bar -->
     </SfHeader>
     <SearchResults
-      v-click-outside="closeSearch"
       :visible="isSearchOpen"
       :term="term"
       :search-loading="searchLoading"
@@ -225,7 +212,10 @@ export default {
         return closeSearch();
       }
       term.value = '';
-      closeSearch();
+      if (isSearchOpen.value) {
+        return closeSearch();
+      }
+      isSearchOpen.value = true;
       return searchBarRef.value.$el.children[0].focus();
     };
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
@@ -300,5 +290,5 @@ export default {
 </script>
 
 <style lang='scss' scoped >
-@import '~/assets/css/greenHeader.scss';
+@import "~/assets/css/greenHeader.scss";
 </style>
