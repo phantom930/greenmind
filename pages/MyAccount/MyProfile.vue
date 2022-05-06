@@ -181,7 +181,7 @@ export default {
 
 ::v-deep .my-account .sf-tabs__title {
     padding-right: 10px;
-    font-family: "Josefin Sans";
+    font-family: var(--font-family--primary);
 }
 
 ::v-deep .my-account .sf-my-profile .message {
@@ -201,7 +201,7 @@ export default {
 ::v-deep .my-account .form__button {
     background: #32463D;
     color: #fff;
-    font-family: "Josefin sans";
+    font-family: var(--font-family--primary);
     max-width: 215px;
     width: 100%;
     text-align: center;
@@ -233,13 +233,13 @@ export default {
 }
 
 ::v-deep .sf-content-pages__title {
-    font-family: "Josefin Sans";
+    font-family: var(--font-family--primary);
     font-weight: 500;
     font-size: 26px;
 }
 
 ::v-deep .sf-list .sf-list__item .sf-menu-item__label {
-    font-family: "Josefin Sans";
+    font-family: var(--font-family--primary);
     font-weight: 500;
     font-size: 20px;
 }

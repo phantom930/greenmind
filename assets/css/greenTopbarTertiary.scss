@@ -67,7 +67,8 @@
   font-size: 15px;
   font-weight: 400;
   color: #1D1F22;
-  font-family: "Josefin Sans";
+    font-family: var(--font-family--primary);
+
   text-transform: none;
   transition: all 0.3s;
 }
@@ -165,7 +166,7 @@
   margin-right: 23px;
 }
 
-:v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {
+::v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {
   display: none;
 }
 

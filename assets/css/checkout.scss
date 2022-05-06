@@ -40,7 +40,8 @@
   ::v-deep .sf-steps__step {
     color: #8d8f9a;
     font-size: 18px;
-    font-family: "Josefin Sans";
+      font-family: var(--font-family--primary);
+
   }
   
   ::v-deep .checkout__aside div {
@@ -54,7 +55,8 @@
   ::v-deep .checkout__aside .sf-property__name {
     font-size: 18px;
     font-weight: 400;
-    font-family: "Josefin Sans";
+      font-family: var(--font-family--primary);
+
   }
   
   ::v-deep .checkout__aside .sf-property__value {
@@ -70,14 +72,16 @@
   ::v-deep .checkout__aside .sf-characteristic__title {
     font-size: 18px;
     font-weight: 400px;
-    font-family: "Josefin Sans";
+      font-family: var(--font-family--primary);
+
   }
   
   ::v-deep .checkout__aside .sf-characteristic__description {
     font-size: 14px;
     font-weight: 400;
     color: #72757e;
-    font-family: "Josefin Sans";
+      font-family: var(--font-family--primary);
+
   }
   
   ::v-deep .checkout__aside {
