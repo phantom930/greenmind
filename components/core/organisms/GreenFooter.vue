@@ -219,7 +219,7 @@ export default defineComponent({
           contact: true,
           contactChilds: [
             { name: 'Tel: +45 7875 6535', text: 'Tlf: +45 7875 6535' },
-            { name: 'mailto: mail@greenmind.dk', text: 'mailto: mail@greenmind.dk' }
+            { name: 'mailto: mail@greenmind.dk', text: 'mail: mail@greenmind.dk' }
           ],
           childs: [
             {
