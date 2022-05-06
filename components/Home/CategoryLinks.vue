@@ -13,7 +13,7 @@
         class="categoryCardImage"
       />
       <p class="text-center">
-        iPhones
+        {{ $t('iPhones') }}
       </p>
     </nuxt-link>
 
@@ -26,7 +26,7 @@
         class="categoryCardImage"
       />
       <p class="text-center">
-        Smartphones
+        {{ $t('Smartphones') }}
       </p>
     </nuxt-link>
     <nuxt-link :to="localePath(`/tablets`)" class="hover:shadow rounded-md mr-1">
@@ -38,7 +38,7 @@
         class="categoryCardImage"
       />
       <p class="text-center">
-        Tablets
+        {{ $t('Tablets') }}
       </p>
     </nuxt-link>
     <nuxt-link :to="localePath(`/computere`)" class="hover:shadow rounded-md">
@@ -50,7 +50,7 @@
         class="categoryCardImage"
       />
       <p class="text-center">
-        Computers
+        {{ $t('Computers') }}
       </p>
     </nuxt-link>
   </component>
