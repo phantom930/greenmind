@@ -18,6 +18,7 @@ const usePartner = () => {
 
     try {
       const { data } = await context.$odoo.api.createUpdatePartner(params);
+      partner.value = data.createUpdatePartner;
 
       return data;
     } catch (err) {

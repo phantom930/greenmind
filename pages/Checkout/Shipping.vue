@@ -129,7 +129,7 @@ import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading } from '@storefront-ui/vue';
 import { useCart, useCountrySearch, useUser } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
-import { useCheckoutShipping, useCheckoutBilling } from '~/composables';
+import { useCheckoutShipping, useCheckoutBilling, usePartner } from '~/composables';
 
 export default defineComponent({
   name: 'Shipping',
@@ -141,6 +141,7 @@ export default defineComponent({
   },
   emits: ['finish', 'change'],
   setup(_, { emit, refs }) {
+    const { partner } = usePartner();
     const { cart, load: loadCart, setCart } = useCart();
     const { search, countries } = useCountrySearch('countries');
     const { isAuthenticated } = useUser();
@@ -230,11 +231,19 @@ export default defineComponent({
     };
 
     onSSR(async () => {
+
       await search();
       await loadBilling();
       await loadShipping();
       await loadUserShipping();
       await loadUserBilling();
+
+      if (userShipping.value?.length === 0) {
+        userShipping.value.push({
+          name: partner.value?.name,
+          email: partner.value?.email
+        });
+      }
 
       if (!hasSavedShippingAddressDifferentPartnerData.value) {
         canAddNewAddress.value = true;
@@ -247,6 +256,7 @@ export default defineComponent({
     });
 
     return {
+      partner,
       shippingFormValid,
       hasSavedBillingAddress,
       currentBillingAddressId,

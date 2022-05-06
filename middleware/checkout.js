@@ -44,10 +44,10 @@ const checkout = async ({ app, $vsf }) => {
 
   switch (currentPath) {
 
-    case 'personaldetails': validatePersonaDetails(data.cart, app);
-      break;
-    case 'shipping': validateShipping(data.cart, app);
-      break;
+    // case 'personaldetails': validatePersonaDetails(data.cart, app);
+    //   break;
+    // case 'shipping': validateShipping(data.cart, app);
+    //   break;
     case 'revieworder': validateReviewOrder(data.cart, app);
       break;
 
