@@ -76,7 +76,6 @@
       &__aside {
         flex: 0 0 25.5rem;
         order: 1;
-        margin: 0 0 0 4.25rem;
       }
     }
   }
@@ -266,6 +265,7 @@
   ::v-deep .detailed-cart__aside {
     margin-bottom: 5%;
     border-radius: 14px;
+    max-width: 408px;
   }
   ::v-deep .sf-collected-product__title {
     font-family: var(--font-family--primary);

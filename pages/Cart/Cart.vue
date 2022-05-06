@@ -4,7 +4,7 @@
       class="breadcrumbs desktop-only"
       :breadcrumbs="breadcrumbs"
     />
-    <div class="detailed-cart">
+    <div class="detailed-cart gap-10">
       <div class="detailed-cart__main">
         <transition
           name="sf-fade"
@@ -56,7 +56,7 @@
           </div>
         </transition>
       </div>
-      <div v-if="totalItems" class="detailed-cart__aside">
+      <div v-if="true" class="detailed-cart__aside">
         <CheckoutCartPreview key="order-summary">
           <template #extra-middle>
             <div class="mt-10">
@@ -65,7 +65,7 @@
                   style-type="Primary"
                   color="Green"
                   shape="Round"
-                  size="large"
+                  size="Medium"
                 >
                   {{ $t("CHECKOUT") }}
                 </GreenButton>
@@ -76,7 +76,7 @@
                 style-type="Secondary"
                 color="Green"
                 shape="Round"
-                size="large"
+                size="Medium"
                 @click="$router.go(-1)"
               >
                 {{ $t("BACK TO SHOPPING") }}

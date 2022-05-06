@@ -99,7 +99,6 @@ $button-height: 50px;
   }
 }
 .medium {
-
   height: var($button-height);
   width: 280px;
 }
