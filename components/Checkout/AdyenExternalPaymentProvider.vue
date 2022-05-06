@@ -10,7 +10,7 @@
 <script>
 /* eslint-disable camelcase */
 
-import { watch, ref } from '@nuxtjs/composition-api';
+import { watch, ref, onMounted } from '@nuxtjs/composition-api';
 import { useAdyenExternalPaymentProvider } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 
@@ -29,7 +29,6 @@ export default {
       useAdyenExternalPaymentProvider(props.provider);
 
     const sendForm = () => {
-
       form.value.children?.[0]?.submit();
     };
 
@@ -43,7 +42,8 @@ export default {
 
     watch(
       () => props.provider.id,
-      () => fetchPaymentExternal()
+      () => fetchPaymentExternal(),
+      { immediate: true }
     );
 
     onSSR(async () => {
