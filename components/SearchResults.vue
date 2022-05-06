@@ -5,11 +5,7 @@
       :title="$t('Search results')"
       class="search"
     >
-      <transition
-        name="sf-fade"
-        mode="out-in"
-        type="transition"
-      >
+      <transition name="sf-fade" mode="out-in" type="transition">
         <div
           v-if="products && products.length > 0"
           key="results"
@@ -28,9 +24,7 @@
                 class="sf-mega-menu-column__header"
                 @click="megaMenu.changeActive(title)"
               >
-                <template #mobile-nav-icon>
-                  &#8203;
-                </template>
+                <template #mobile-nav-icon> &#8203; </template>
               </SfMenuItem>
             </template>
             <SfList v-if="categories.length">
@@ -56,11 +50,11 @@
                 :label="title"
                 class="sf-mega-menu-column__header search__header"
               >
-                <template #mobile-nav-icon>
-                  &#8203;
-                </template>
+                <template #mobile-nav-icon> &#8203; </template>
                 <template #count>
-                  <span style="margin-left: 45%">Total results: {{ result.total }}</span>
+                  <span style="margin-left: 45%"
+                    >Total results: {{ result.total }}</span
+                  >
                 </template>
               </SfMenuItem>
             </template>
@@ -109,28 +103,28 @@
           </div>
         </div>
         <div v-else class="before-results">
-          <SfImage
-            :width="256"
-            :height="276"
-            src="/error/search_error.webp"
-            class="before-results__picture search_error"
-            alt="error"
-            loading="lazy"
-          />
-          <div v-if="term">
+          <div v-if="termText">
             <div v-if="searchLoading">
               <p class="before-results__paragraph">
                 {{ $t("Loading...") }}
               </p>
             </div>
             <div v-else>
+              <SfImage
+                :width="256"
+                :height="276"
+                src="/error/search_error.webp"
+                class="before-results__picture search_error"
+                alt="error"
+                loading="lazy"
+              />
               <p class="before-results__paragraph">
                 {{ $t("Sorry, we didn't find what you're looking for.") }}
               </p>
             </div>
           </div>
           <div v-else key="no-results">
-            <p class="before-results__paragraph">
+            <p class="before-results__paragraph pt-6">
               {{ $t("You haven’t searched for items yet") }}
             </p>
             <p class="before-results__paragraph">
@@ -194,7 +188,7 @@ export default {
     const products = computed(() => props.result?.products);
 
     const categories = computed(() => props.result?.categories);
-
+    const termText = computed(()=> props.term);
     const { addItem: addItemToCart, isInCart } = useCart();
 
     const higthlightText = (text) => {
@@ -225,7 +219,8 @@ export default {
       categories,
       addItemToCart,
       isInCart,
-      higthlightText
+      higthlightText,
+      termText
     };
   },
   watch: {
@@ -237,5 +232,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import '~/assets/css/searchResults.scss';
+@import "~/assets/css/searchResults.scss";
 </style>
