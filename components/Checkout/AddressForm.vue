@@ -111,7 +111,7 @@
             <SfSelectOption
               v-for="countryOption in countries"
               :key="countryOption.id"
-              name=""
+              name="country"
               country
               :value="String(countryOption.id)"
             >
@@ -215,7 +215,10 @@ export default defineComponent({
       form.street = props.currentAddressData?.street;
       form.phone = props.currentAddressData?.phone;
       form.zip = props.currentAddressData?.zip;
-      form.country.id = String(props.currentAddressData?.country?.id);
+      if (props.currentAddressData?.country) {
+        form.country.id = String(props.currentAddressData?.country?.id);
+      }
+
     };
 
     watch(
@@ -223,10 +226,6 @@ export default defineComponent({
       () => loadData(),
       { deep: true }
     );
-
-    onMounted(()=> {
-      loadData();
-    });
 
     return {
       submitForm,
