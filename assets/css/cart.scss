@@ -158,6 +158,10 @@
     width: 100%;
   }
 
+  ::v-deep .sf-button {
+    width: 100%;
+  }
+
   ::v-deep .sf-heading__description {
     font-family: var(--font-family--primary);
     font-weight: 400;
