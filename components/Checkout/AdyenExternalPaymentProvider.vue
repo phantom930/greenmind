@@ -46,10 +46,6 @@ export default {
       { immediate: true }
     );
 
-    onSSR(async () => {
-      await fetchPaymentExternal();
-    });
-
     return {
       paymentExternalResponse,
       sendForm,
