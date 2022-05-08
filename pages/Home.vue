@@ -114,7 +114,7 @@
                 {{ $t('Subscribe to newsletter') }}
               </h2> <p class="sf-call-to-action__description display-none" />
               <p class="sf-call-to-action__description">
-                Be aware of upcoming sales and events. Receive gifts and special offers!
+                {{ $t('Be aware of upcoming sales and events. Receive gifts and special offers!') }}
               </p>
             </div>
             <div class="div-button">
