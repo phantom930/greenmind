@@ -29,15 +29,19 @@
           <form @submit.prevent="$emit('email-submitted', emailAddress)">
             <ValidationProvider
               v-slot="{ errors }"
+              name="email"
               rules="required|email"
+              slim
             >
               <SfInput
                 v-model="emailAddress"
                 type="email"
+                name="email"
                 :label="$t('Email address')"
+                required
                 :valid="!errors[0]"
                 :error-message="errors[0]"
-                class="modal__input"
+                class="form__element"
               />
             </ValidationProvider>
 
@@ -118,10 +122,6 @@ export default {
   --overlay-z-index: 3;
   --modal-content-padding: var(--spacer-xl);
   &__input,
-  .sf-input__label {
-    --input-font-size: var(--font-size--base);
-    --input-label-font-size: var(--font-size--base);
-  }
   &__button {
     margin: 0 auto;
   }
@@ -132,5 +132,11 @@ export default {
   .sf-scrollable__view-all.sf-button {
     font-weight: var(--font-weight--light);
   }
+}
+::v-deep .sf-input__label {
+  --input-font-size: var(--font-size--base);
+  --input-label-font-size: var(--font-size--base);
+      font-family: var(--font-family--primary);
+
 }
 </style>
