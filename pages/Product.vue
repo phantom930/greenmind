@@ -156,6 +156,7 @@ export default defineComponent({
     const { path } = useRoute().value;
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
+    const { toggleCartSidebar, isCartSidebarOpen } = useUiState();
     const { products, search, loading } = useProduct(`products-${path}`);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
@@ -232,6 +233,10 @@ export default defineComponent({
 
     const handleAddItem = async () => {
       if (!productInStock.value) return;
+
+      if (!isCartSidebarOpen.value) {
+        toggleCartSidebar();
+      }
 
       const params = {
         products: [{
