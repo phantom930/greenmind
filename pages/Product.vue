@@ -234,10 +234,6 @@ export default defineComponent({
     const handleAddItem = async () => {
       if (!productInStock.value) return;
 
-      if (!isCartSidebarOpen.value) {
-        toggleCartSidebar();
-      }
-
       const params = {
         products: [{
           id: product.value.id,
@@ -248,6 +244,10 @@ export default defineComponent({
       };
 
       await addMultipleProductsToCart(params);
+
+      if (!isCartSidebarOpen.value) {
+        toggleCartSidebar();
+      }
     };
 
     const handleStoreStatus = () =>{
