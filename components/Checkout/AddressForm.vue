@@ -152,7 +152,7 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, PropType, watch, ref } from '@nuxtjs/composition-api';
+import { defineComponent, reactive, PropType, watch, ref, onMounted } from '@nuxtjs/composition-api';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { SfInput, SfSelect } from '@storefront-ui/vue';
 import { Address, Country } from '@vue-storefront/odoo-api';
@@ -226,6 +226,10 @@ export default defineComponent({
       () => loadData(),
       { deep: true }
     );
+
+    onMounted(()=> {
+      loadData();
+    });
 
     return {
       submitForm,
