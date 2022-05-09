@@ -163,13 +163,14 @@ export default {
     const { toggleNewsletterModal } = useUiState();
     const { loading, sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
+    const { getFacetsFromURL } = useUiHelpers();
 
     const customQueryProducts = {
       getProductTemplatesList: 'greenGetProductListFormHomePage'
     };
 
     onSSR(async () => {
-      const params = { filter: { hero: true }, customQueryProducts };
+      const params = { ...getFacetsFromURL(), pageSize: 12, customQueryProducts };
 
       await search(params);
     });
