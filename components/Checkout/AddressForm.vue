@@ -105,14 +105,13 @@
               sf-select--underlined
             "
             required
+            value=""
             :valid="!errors[0]"
             :error-message="errors[0]"
           >
             <SfSelectOption
               v-for="countryOption in countries"
               :key="countryOption.id"
-              name="country"
-              country
               :value="String(countryOption.id)"
             >
               {{ countryOption.name }}
@@ -153,7 +152,7 @@
   </ValidationObserver>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, PropType, onMounted, watch, ref } from '@nuxtjs/composition-api';
+import { defineComponent, reactive, PropType, watch, ref } from '@nuxtjs/composition-api';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { SfInput, SfSelect } from '@storefront-ui/vue';
 import { Address, Country } from '@vue-storefront/odoo-api';
@@ -164,7 +163,7 @@ const formInitialState = () =>({
   street: '',
   city: '',
   state: { id: null },
-  country: { id: null },
+  country: { id: '0' },
   zip: '',
   phone: null,
   selectedMethodShipping: null,
@@ -215,8 +214,9 @@ export default defineComponent({
       form.street = props.currentAddressData?.street;
       form.phone = props.currentAddressData?.phone;
       form.zip = props.currentAddressData?.zip;
+
       if (props.currentAddressData?.country) {
-        form.country.id = String(props.currentAddressData?.country?.id);
+        form.country.id = String(props.currentAddressData?.country?.id || '0');
       }
 
     };
