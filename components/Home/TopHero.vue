@@ -106,6 +106,14 @@
       >
       </SfHeroItem>
     </nuxt-link>
+    <nuxt-link to="/how-to-buy">
+      <SfHeroItem
+        class="top-hero-item"
+        :background="$device.isMobile ? '#668F72' : ''"
+        :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_3.webp') : ''"
+      >
+      </SfHeroItem>
+    </nuxt-link>
   </SfHero>
 </template>
 <script lang="ts">
