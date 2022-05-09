@@ -10,14 +10,14 @@
       style="transform: translateY(-34px) mt-1"
     >
       <SfImage
-        :src="require('/assets/images/homeUspBanner/banner_1.svg')"
-        alt="banner_1"
-        class="mb-5"
+        :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+        alt="banner_desktop_1"
+        class="usp_banner_products mb-5"
         :width="1440"
         :height="237"
       />
     </div>
-    <div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
+    <!--<div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
       <div class="flex items-center gap-5">
         <SfImage
           :src="require('/assets/images/homeHero/usp_01.svg')"
@@ -56,7 +56,7 @@
           10 butikker
         </p>
       </div>
-    </div>
+    </div>-->
 
     <div class="layout">
       <HomeCategoryLinks />

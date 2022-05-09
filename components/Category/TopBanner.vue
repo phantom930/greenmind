@@ -1,6 +1,13 @@
 <template>
-  <div class="usp_banner_products flex justify-center content-center gap-1">
-    <div class="flex items-center gap-10">
+  <div>
+    <SfImage
+        :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+        :width="2000"
+        :height="250"
+        class="usp_banner_products"
+        alt="Banner Desktop"
+      />
+    <!--<div class="flex items-center gap-10">
       <SfImage
         :src="require('/assets/images/productsUspBanner/banner_1.svg')"
         :width="iconWidth"
@@ -30,7 +37,7 @@
         style="margin-left: auto; margin-right: auto"
       />
       <span class="usp_text_product">Ombyt i én af vores<br>10 butikker</span>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -52,25 +59,34 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.usp_banner_products {
-  height: 80px;
+
+::v-deep .usp_banner_products .sf-image{
   border-radius: 10px;
-  background-color: #f3f3f3;
+  /* --- Resize according size of screen --- */
+  max-width: 100%;
+  height: auto;
+  width: auto\9;  
+}
+
+/*.usp_banner_products {
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 3%;
   @include for-mobile {
     height: 120px;
     margin: 3% 3% 0 3%;
     padding: 1% 4%;
     justify-content: space-between !important;
   }
-}
-.usp_banner_products div{
+}*/
+/*.usp_banner_products div{
   @include for-mobile {
     flex-direction: column;
     gap: 0 !important;
   }
-}
+}*/
 
-.usp_text_product {
+/*.usp_text_product {
   width: 166px;
   font-family: var(--font-family--primary);
   font-size: 14px;
@@ -81,5 +97,5 @@ export default defineComponent({
     font-size: 12px;
     text-align: center;
   }
-}
+}*/
 </style>
