@@ -106,7 +106,7 @@
       >
       </SfHeroItem>
     </nuxt-link>
-    <nuxt-link to="/how-to-buy">
+    <nuxt-link to="/">
       <SfHeroItem
         class="top-hero-item"
         :background="$device.isMobile ? '#668F72' : ''"
