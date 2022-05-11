@@ -32,10 +32,8 @@
           transition="sf-fade"
           :open="openedHeaders"
         >
-          <template v-for="(facet, i) in facets">
+          <div v-for="(facet, i) in facets" :key="i">
             <SfAccordionItem
-              v-if="facetHasMoreThanOneOption(facet)"
-              :key="i"
               :header="facet.label"
               class="mt-10"
             >
@@ -87,7 +85,12 @@
                 </SfList>
               </template>
             </SfAccordionItem>
-          </template>
+          </div>
+        </sfaccordion>
+      </div>
+    </component>
+  </div>
+</template>
         </SfAccordion>
       </div>
     </component>
@@ -149,7 +152,7 @@ export default defineComponent({
       }
     };
 
-    const openedHeaders = computed(() => Object.keys(query));
+    const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', ' ')));
 
     onMounted(() => {
       selectedFilters.value = facetsFromUrlToFilter();
@@ -174,7 +177,7 @@ export default defineComponent({
 
       if (alreadySelectedIndex === -1) {
         selectedFilters.value.push({
-          filterName: facet.label,
+          filterName: facet.label.replace(' ', '_'),
           label: option.label,
           id: option.id
         });
