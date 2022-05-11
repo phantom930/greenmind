@@ -3,20 +3,28 @@
     <LazyHydrate when-visible>
       <TopBar />
     </LazyHydrate>
+
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
+
     <GreenTopbarTertiary v-if="$device.isDesktopOrTablet" />
-    <StoreStatus />
+
+    <LazyHydrate when-idle>
+      <StoreStatus />
+    </LazyHydrate>
 
     <nuxt :key="$route.fullPath" />
 
     <LazyHydrate when-visible>
       <BottomNavigation />
     </LazyHydrate>
-    <CartSidebar />
+
+    <LazyHydrate when-idle>
+      <CartSidebar />
+    </LazyHydrate>
     <HamburguerMenu />
-    <WishlistSidebar />
+    <!-- <WishlistSidebar /> -->
     <Notification />
     <LazyHydrate when-idle>
       <LoginModal />
