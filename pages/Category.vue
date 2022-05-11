@@ -1,15 +1,15 @@
 <template>
   <div>
-    <CategoryTopBanner v-if="$device.isDesktop" />
+    <LazyCategoryTopBanner v-if="$device.isDesktop" />
 
     <div id="category">
-      <CategoryNavbar />
+      <LazyCategoryNavbar />
 
       <div class="main section">
-        <CategoryTopBanner v-if="$device.isMobile" />
+        <LazyCategoryTopBanner v-if="$device.isMobile" />
 
         <LazyHydrate when-idle>
-          <CategorySidebarFilter
+          <LazyCategorySidebarFilter
             :facets="facets"
             :range-attributes="rangeAttributes"
           />
@@ -51,7 +51,7 @@
             </div>
           </div>
 
-          <CategoryNoResults v-else />
+          <LazyCategoryNoResults v-else />
         </SfLoader>
       </div>
     </div>

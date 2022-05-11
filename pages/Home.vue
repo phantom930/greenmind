@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="layout">
-      <HomeTopHero />
+      <LazyHomeTopHero />
     </div>
 
     <div
@@ -59,7 +59,7 @@
     </div>-->
 
     <div class="layout">
-      <HomeCategoryLinks />
+      <LazyHomeCategoryLinks />
       <!-- <div class="flex justify-between mt-14">
         <HomeCallToActionStand
           :title="$t('Stand')"
@@ -88,7 +88,7 @@
       >
         <SfLoader :loading="productsLoading" />
       </div>
-      <GreenCarousel
+      <LazyGreenCarousel
         v-else
         :title="$t('Popular products')"
         :products="products"
@@ -134,7 +134,7 @@
     </div>
 
     <div v-if="$device.isDesktop" class="between-call-to-action-and-footer" />
-    <NewsletterModal
+    <LazyNewsletterModal
       :loading="loading"
       @email-submitted="onSubscribe"
     />

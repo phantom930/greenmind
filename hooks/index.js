@@ -32,7 +32,7 @@ export default {
       const { data: categoriesData } = await fetchCategories();
 
       await fsExtra.outputJson('customRoutes/products.json', getFirstParamFromArray(data.data.products.products));
-      await fsExtra.outputJson('customRoutes/categories.json', getFirstParamFromArray(categoriesData.data.categories.categories));
+      await fsExtra.outputJson('customRoutes/categories.json', categoriesData.data.categories.categories.map(item => item.slug));
 
       consola.success(chalk.bold('ODOO'), ' - Finish build custom routes!');
     }

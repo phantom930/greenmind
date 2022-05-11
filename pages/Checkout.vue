@@ -19,7 +19,7 @@
       class="checkout__aside"
     >
       <transition name="fade">
-        <CheckoutCartPreview key="order-summary" />
+        <LazyCheckoutCartPreview key="order-summary" />
       </transition>
     </div>
   </div>

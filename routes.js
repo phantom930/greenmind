@@ -20,17 +20,18 @@ export function getRoutes(themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/Cart/Cart.vue')
     },
     {
-      name: 'category',
-      path: '/category/:slug_1+',
-      component: path.resolve(themeDir, 'pages/Category.vue'),
-      alias: categoriesPrefixes.map(alias => `${alias}/:slug_1+`)
-    },
-    {
       name: 'product',
-      path: '/product/:slug_2+',
+      path: '/:slug_2+',
       component: path.resolve(themeDir, 'pages/Product.vue'),
       alias: productPrefixes.map(alias => `${alias}/:slug_2+`)
     },
+    {
+      name: 'category',
+      path: '/category',
+      component: path.resolve(themeDir, 'pages/Category.vue'),
+      alias: categoriesPrefixes.map(alias => `${alias}`)
+    },
+
     {
       name: 'checkout',
       path: '/checkout',

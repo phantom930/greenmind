@@ -48,12 +48,12 @@
         />
         <div class="product__price-and-rating" />
         <div>
-          <ProductSelectGrade
+          <LazyProductSelectGrade
             :product-grades="productGrades"
             :product-variant-id="combinationInfo.product_id"
             @update="handleSelectNewGrade"
           />
-          <ProductDescription
+          <LazyProductDescription
             :title="combinationInfo.grade_name"
             :description="combinationInfo.grade_description"
           />
@@ -111,15 +111,15 @@
           </div>
         </div>
 
-        <BannerProducts />
+        <LazyBannerProducts />
 
         <LazyHydrate when-idle>
-          <ProductTabs :product="product" />
+          <LazyProductTabs :product="product" />
         </LazyHydrate>
       </div>
     </div>
     <div class="product_carousel">
-      <GreenCarousel
+      <LazyGreenCarousel
         v-if="sliderProducts.length > 0"
         :item="sliderProducts"
         :feature1="storage"

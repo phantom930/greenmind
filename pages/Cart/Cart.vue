@@ -57,7 +57,7 @@
         </transition>
       </div>
       <div v-if="true" class="detailed-cart__aside">
-        <CheckoutCartPreview key="order-summary">
+        <LazyCheckoutCartPreview key="order-summary">
           <template #extra-middle>
             <div class="mt-10">
               <nuxt-link to="/checkout/personaldetails">
@@ -83,7 +83,7 @@
               </GreenButton>
             </div>
           </template>
-        </CheckoutCartPreview>
+        </LazyCheckoutCartPreview>
       </div>
     </div>
   </div>
