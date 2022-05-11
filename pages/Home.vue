@@ -147,7 +147,7 @@ import { computed } from '@vue/composition-api';
 import { productGetters, useFacet, facetGetters, useNewsLetter } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 import { useUiState } from '~/composables';
-import { useUiNotification, useUiHelpers } from '~/composables';
+import { useUiNotification } from '~/composables';
 import NewsletterModal from '~/components/NewsletterModal.vue';
 
 export default {
@@ -163,14 +163,13 @@ export default {
     const { toggleNewsletterModal } = useUiState();
     const { loading, sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
-    const { getFacetsFromURL } = useUiHelpers();
 
     const customQueryProducts = {
       getProductTemplatesList: 'greenGetProductListFormHomePage'
     };
 
     onSSR(async () => {
-      const params = { ...getFacetsFromURL(), pageSize: 12, customQueryProducts };
+      const params = { filter: { hero: true }, customQueryProducts };
 
       await search(params);
     });
