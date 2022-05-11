@@ -24,6 +24,7 @@
         <LazyGreenRange
           v-model="price"
           :initial-price="price"
+          :range-prices="rangeAttributes"
           @change="selectPrice"
         />
         <SfAccordion
