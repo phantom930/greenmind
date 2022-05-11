@@ -7,7 +7,10 @@ const axios = require('axios');
 const fsExtra = require('fs-extra');
 const queries = require('../helpers/buildQueries');
 
-const headers = { headers: { 'Content-Type': 'application/json' }};
+const headers = { headers: {
+  'Content-Type': 'application/json',
+  'resquest-host': 'vue-dev.greenmind.space'
+}};
 
 const fetchProducts = async () => {
   return await axios.post(graphqlBaseUrl, { query: `${queries.products}` }, headers);
