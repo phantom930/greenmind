@@ -27,6 +27,9 @@
     @include for-mobile {
       width: 110px;
     }
+    & span {
+      width: 100%;
+    }
   }
   
   .prices-wrap .price-wrap {

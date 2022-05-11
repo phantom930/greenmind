@@ -6,10 +6,9 @@
         <a href="/standbeskrivelser">{{ $t('read more') }}</a>
       </div>
       <div class="prices-wrap">
-        <nuxt-link
+        <div
           v-for="(grade, index) in productGrades"
           :key="index"
-          v-slot="{ navigate }"
           custom
           :to="{ name: 'product', params: {id: grade.product_id }}"
           class="price-discount-wrap"
@@ -17,7 +16,6 @@
         >
           <span
             role="link"
-            @click="navigate"
             @keypress.enter="navigate"
           >
             <div
@@ -37,7 +35,7 @@
             </div>
 
           </span>
-        </nuxt-link>
+        </div>
       </div>
     </div>
   </div>
