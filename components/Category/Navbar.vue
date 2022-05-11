@@ -29,7 +29,7 @@
       </LazyHydrate>
 
       <div class="navbar__title ">
-        <SfHeading :title="currentRootCategory.name" />
+        <SfHeading :title="currentCategory.name" />
       </div>
       <div class="navbar__sort desktop-only">
         <span class="navbar__label">{{ $t("Sort by") }}:</span>
@@ -83,7 +83,7 @@ export default defineComponent({
     const { result } = useFacet();
     const { changeSorting } = useUiHelpers();
     const { toggleFilterSidebar } = useUiState();
-    const { currentRootCategory } = useUiCategoryHelpers(result.value);
+    const { currentRootCategory, currentCategory } = useUiCategoryHelpers(result.value);
     const { params, query } = route.value;
 
     const sortBy = computed(() =>
@@ -94,7 +94,7 @@ export default defineComponent({
       facetGetters.getBreadcrumbs({
         input: {
           params,
-          currentRootCategory: currentRootCategory.value
+          currentRootCategory: currentCategory.value
         }
       })
     );
@@ -103,7 +103,8 @@ export default defineComponent({
       currentRootCategory,
       breadcrumbs,
       sortBy,
-      changeSorting
+      changeSorting,
+      currentCategory
     };
   }
 });

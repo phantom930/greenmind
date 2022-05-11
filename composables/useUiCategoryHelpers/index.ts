@@ -1,4 +1,4 @@
-import { computed, ComputedRef } from '@nuxtjs/composition-api';
+import { computed, ComputedRef, useRoute } from '@nuxtjs/composition-api';
 import { FacetSearchResult } from '@vue-storefront/core';
 import { facetGetters } from '@vue-storefront/odoo';
 import { Category } from '@vue-storefront/odoo-api';
@@ -11,17 +11,26 @@ type useUiCategoryHelper = {
 }
 
 const useUiHelpers = (result : FacetSearchResult<FacetResultsData>): useUiCategoryHelper => {
+  const { path } = useRoute().value;
+
   const categoryTree = computed(() =>
     facetGetters.getCategoryTree(result)
   );
 
-  const currentCategory = computed<Category>(() => {
-    const emptyCategory = {} as any;
-    const categories = result?.data?.categories || [emptyCategory];
-    return categories[0] || emptyCategory;
-  });
+  const currentRootCategory = computed(() => result?.data?.categories?.[0] || { childs: []});
 
-  const currentRootCategory = computed(() => result?.data?.categories?.[0] || {});
+  const currentCategory = computed<Category>(() => {
+    let category = null;
+    currentRootCategory.value?.childs?.forEach(element => {
+      element?.childs?.forEach(element => {
+        if (element.slug === path) {
+          category = element;
+        }
+      });
+    });
+
+    return category;
+  });
 
   return {
     currentRootCategory,

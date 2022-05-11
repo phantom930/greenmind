@@ -10,6 +10,7 @@
 
         <LazyHydrate when-idle>
           <LazyCategorySidebarFilter
+            :show-filters="showProducts"
             :facets="facets"
             :range-attributes="rangeAttributes"
           />

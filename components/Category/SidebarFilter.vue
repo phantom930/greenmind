@@ -15,6 +15,7 @@
       />
       <div class="filters">
         <SfHeading
+          v-show="showFilters"
           :key="`filter-title-price`"
           :level="4"
           title="Price"
@@ -22,6 +23,7 @@
         />
 
         <LazyGreenRange
+          v-show="showFilters"
           v-model="price"
           :initial-price="price"
           :range-prices="rangeAttributes"
@@ -91,11 +93,6 @@
     </component>
   </div>
 </template>
-        </SfAccordion>
-      </div>
-    </component>
-  </div>
-</template>
 
 <script>
 import { ref, onMounted, defineComponent, useRoute, computed } from '@nuxtjs/composition-api';
@@ -128,6 +125,10 @@ export default defineComponent({
     rangeAttributes: {
       type: Object,
       default: () => ({})
+    },
+    showFilters: {
+      type: Boolean,
+      default: false
     }
   },
   setup() {
@@ -152,7 +153,7 @@ export default defineComponent({
       }
     };
 
-    const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', ' ')));
+    const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', '')));
 
     onMounted(() => {
       selectedFilters.value = facetsFromUrlToFilter();
