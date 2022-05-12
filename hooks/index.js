@@ -9,7 +9,7 @@ const queries = require('../helpers/buildQueries');
 
 const headers = { headers: {
   'Content-Type': 'application/json',
-  'resquest-host': ''
+  'resquest-host': 'vue-dev.greenmind.space'
 }};
 
 const cleanPath = (path) => {
