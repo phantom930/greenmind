@@ -198,10 +198,9 @@
     }
   }
 
-  ::v-deep .usp_banner_products .sf-image{
-    border-radius: 10px;
-    /* --- Resize according size of screen --- */
-    max-width: 100%;
-    height: auto;
-    width: auto\9;    
+  ::v-deep .usp_banner_products  {
+    & .sf-image--placeholder {
+      width: 200px;
+      height: 237px;
+    }
   }

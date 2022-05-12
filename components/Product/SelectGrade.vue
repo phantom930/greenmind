@@ -3,7 +3,9 @@
     <div class="link-prices-wrap">
       <div class="links">
         <p>{{ $t('Select stand') }}</p>
-        <a href="/standbeskrivelser">{{ $t('read more') }}</a>
+        <nuxt-link to="/stand-descriptions">
+          {{ $t('read more') }}
+        </nuxt-link>
       </div>
       <div class="prices-wrap">
         <div
