@@ -4,6 +4,7 @@
     class="product__tabs"
   >
     <SfTab
+      v-if="description"
       data-cy="product-tab_description"
       title="Description"
     >
