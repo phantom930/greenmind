@@ -46,14 +46,22 @@
             class="sf-button--pure sf-header__action"
             @click="showSearchInputOnMobile = !showSearchInputOnMobile"
           >
-            <SfIcon class="sf-header__icon" icon="search" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="search"
+              size="1.25rem"
+            />
           </SfButton>
           <SfButton
             v-if="!showSearchInputOnMobile"
             class="sf-button--pure sf-header__action"
-            @click="toggleCartSidebar"
+            @click="handleToggleCartSidebar"
           >
-            <SfIcon class="sf-header__icon" icon="empty_cart" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="empty_cart"
+              size="1.25rem"
+            />
 
             <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
               {{ cartTotalItems }}
@@ -62,9 +70,13 @@
           <SfButton
             v-if="!showSearchInputOnMobile"
             class="sf-button--pure sf-header__action list"
-            @click="toggleHamburguerMenu"
+            @click="handleToggleHamburguerMenu"
           >
-            <SfIcon class="sf-header__icon" icon="list" size="1.25rem" />
+            <SfIcon
+              class="sf-header__icon"
+              icon="list"
+              size="1.25rem"
+            />
           </SfButton>
         </div>
       </template>
@@ -120,7 +132,6 @@ import {
   categoryGetters,
   useFacet
 } from '@vue-storefront/odoo';
-import { clickOutside } from '@storefront-ui/vue/src/utilities/directives/click-outside/click-outside-directive.js';
 import { computed, ref, watch } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers, cartGetters } from '~/composables';
@@ -138,7 +149,6 @@ export default {
     SfOverlay,
     SfBadge
   },
-  directives: { clickOutside },
   setup(props, { root }) {
     const showSearchInputOnMobile = ref(false);
     const searchBarRef = ref(null);
@@ -167,11 +177,22 @@ export default {
       formatedResult.value = null;
     };
 
-    const closeSearch = () => {
+    const closeSearch = (e) => {
       showSearchInputOnMobile.value = false;
       if (!isSearchOpen.value) return;
       term.value = '';
       isSearchOpen.value = false;
+    };
+
+    const handleToggleCartSidebar = () => {
+      closeSearch();
+      toggleCartSidebar();
+
+    };
+
+    const handleToggleHamburguerMenu = () => {
+      closeSearch();
+      toggleHamburguerMenu();
     };
 
     const handleSearch = debounce(async (paramValue) => {
@@ -249,6 +270,8 @@ export default {
     });
 
     return {
+      handleToggleHamburguerMenu,
+      handleToggleCartSidebar,
       showSearchInputOnMobile,
       accountIcon,
       closeOrFocusSearchBar,
