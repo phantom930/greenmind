@@ -1,12 +1,12 @@
 <template>
   <div>
     <SfImage
-        :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
-        :width="2000"
-        :height="250"
-        class="usp_banner_products"
-        alt="Banner Desktop"
-      />
+      :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+      :width="2000"
+      :height="250"
+      class="usp_banner_products"
+      alt="Banner Desktop"
+    />
     <!--<div class="flex items-center gap-10">
       <SfImage
         :src="require('/assets/images/productsUspBanner/banner_1.svg')"
@@ -65,9 +65,17 @@ export default defineComponent({
   /* --- Resize according size of screen --- */
   max-width: 100%;
   height: auto;
-  width: auto\9;  
+  width: auto\9;
 }
-
+ ::v-deep .usp_banner_products  {
+    display: flex;
+    justify-content: center;
+    & .sf-image--placeholder {
+      text-align: center;
+      width: 200px;
+      height: 200px;
+    }
+  }
 /*.usp_banner_products {
   height: 200px;
   border-radius: 10px;
