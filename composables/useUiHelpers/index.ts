@@ -52,9 +52,7 @@ const useUiHelpers = (): any => {
   };
 
   const getCatLinkForSearch = (category: Category): string => {
-    const splitedSlug = category.slug.split('-');
-
-    return `${category.slug}/${category.id}`;
+    return category.slug;
   };
 
   const changeSorting = (sort: string) => {
