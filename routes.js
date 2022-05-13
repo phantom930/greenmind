@@ -220,7 +220,7 @@ export function getRoutes(themeDir = __dirname) {
       /* Cookies */
       path: '/cookies',
       name: 'cookies',
-      component: path.resolve(themeDir, 'pages/cookies.vue')
+      component: path.resolve(themeDir, 'pages/Cookies.vue')
     },
     {
 
