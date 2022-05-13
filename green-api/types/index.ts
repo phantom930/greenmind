@@ -40,6 +40,8 @@ export interface CombinationInfo {
     discount: number;
     discount_perc: number;
     grade_name: number;
+    slug: string;
+    stock_qty: number;
 }
 export interface CombinationInfoGrade {
     grades: CombinationInfo[];

@@ -199,12 +199,8 @@ export default defineComponent({
       ]
     );
 
-    const handleSelectNewGrade = async (productdId) => {
-      await search({
-        id: productdId
-      });
-
-      router.push(products.value.slug);
+    const handleSelectNewGrade = async (slug) => {
+      router.push(slug);
     };
 
     onSSR(async () => {

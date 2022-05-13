@@ -8,25 +8,21 @@
         </nuxt-link>
       </div>
       <div class="prices-wrap">
-        <div
+        <button
           v-for="(grade, index) in productGrades"
           :key="index"
           custom
-          :to="{ name: 'product', params: {id: grade.product_id }}"
           class="price-discount-wrap"
           :class="isSelectedGrade(grade) ? 'active' : ''"
         >
-          <span
-            role="link"
-            @keypress.enter="navigate"
-          >
+          <span role="link">
             <div
-              class="price-wrap cursor-pointer"
+              class="price-wrap"
               @click="chooseGrade(grade)"
             >
-              <p> {{ grade.grade_name }} </p>
+              <p v-for="(name, index) in breakName(grade.grade_name)" :key="index"> {{ name }} </p>
               <div class="price">
-                {{ $currency(grade.price) }}
+                {{ isPriceLessThanFiveOrWithoutstock(grade) ? $t('Out of stock') :$currency(grade.price) }}
               </div>
             </div>
             <div
@@ -37,7 +33,7 @@
             </div>
 
           </span>
-        </div>
+        </button>
       </div>
     </div>
   </div>
@@ -67,12 +63,23 @@ export default defineComponent({
     const chooseGrade = (info : CombinationInfo) => {
       if (isSelectedGrade(info)) return;
 
-      emit('update', info.product_id);
+      emit('update', info.slug);
+    };
+
+    const breakName = (name: string) : string[] => name.split('-');
+
+    const isPriceLessThanFiveOrWithoutstock = (info : CombinationInfo): boolean => {
+      if (info.stock_qty === 0 || info.price < 5) {
+        return true;
+      }
+      return false;
     };
 
     return {
       isSelectedGrade,
-      chooseGrade
+      chooseGrade,
+      breakName,
+      isPriceLessThanFiveOrWithoutstock
     };
   }
 });
