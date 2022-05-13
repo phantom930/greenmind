@@ -59,8 +59,8 @@
 <script >
 import { computed, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { SfBreadcrumbs, SfHeading, SfSelect, SfButton, SfIcon } from '@storefront-ui/vue';
-import { facetGetters, useFacet } from '@vue-storefront/odoo';
-import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
+import { useFacet } from '@vue-storefront/odoo';
+import { useUiCategoryHelpers, useUiHelpers, useUiState, facetGetters} from '~/composables';
 
 import frag from 'vue-frag';
 import LazyHydrate from 'vue-lazy-hydration';
@@ -84,19 +84,14 @@ export default defineComponent({
     const { changeSorting } = useUiHelpers();
     const { toggleFilterSidebar } = useUiState();
     const { currentRootCategory, currentCategory } = useUiCategoryHelpers(result.value);
-    const { params, query } = route.value;
+    const { query } = route.value;
 
     const sortBy = computed(() =>
       facetGetters.getSortOptions({ input: { sort: query?.sort } } || '')
     );
 
     const breadcrumbs = computed(() =>
-      facetGetters.getBreadcrumbs({
-        input: {
-          params,
-          currentRootCategory: currentCategory.value
-        }
-      })
+      facetGetters.getBreadcrumbs(currentCategory.value)
     );
     return {
       toggleFilterSidebar,
