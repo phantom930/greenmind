@@ -4,7 +4,7 @@
       GreenMind's Privatlivspolitik
     </h1>
 
-    1. Indledning
+    <!-- 1. Indledning
     Dit privatliv er vigtigt for os. For bedre at beskytte dit privatliv beskriver vi i denne privatlivspolitik, hvordan GreenMind A/S ("GreenMind", "vi", "os", "vores") som dataansvarlig indsamler, behandler og bruger de personoplysninger, so vi indsamler om vores kunder mv. i forbindelse med:
     1. 	Brug af vores hjemmeside
     2. 	Køb i webshop
@@ -114,6 +114,6 @@
     I har skrevet i jeres privatlivspolitik, at I også bruger oplysninger, fx navn og kontaktoplysninger, til at måle og forbedre jeres serviceniveau. Kan I uddybe, hvordan personoplysningerne bruges til dette?
 
     Gældende fra: 25. maj 2018
-    Senest opdateret: 12. februar 2021
+    Senest opdateret: 12. februar 2021 -->
   </div>
 </template>
