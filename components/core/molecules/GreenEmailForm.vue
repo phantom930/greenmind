@@ -1,20 +1,34 @@
 <template>
-  <form @submit.prevent="subscribe">
-    <SfInput
-      v-model="email"
-      class="sf-input--outline sf-input--email"
-      type="email"
-      :placeholder="$t('Type your email')"
-      @submit.prevent="subscribe"
-    />
-    <SfButton
-      class="sf-button--email"
-      :disabled="loading || !email"
-      @click="subscribe"
-    >
-      {{ $t("SUBSCRIBE") }}
-    </SfButton>
-  </form>
+  <ValidationObserver
+    v-slot="{ invalid }"
+    key="log-in"
+  >
+    <form @submit.prevent="subscribe">
+      <ValidationProvider
+        v-slot="{ errors }"
+        name="email"
+        rules="required|email"
+        slim
+      >
+        <SfInput
+          v-model="email"
+          class="sf-input--outline sf-input--email"
+          type="email"
+          :valid="!errors[0]"
+          :error-message="errors[0]"
+          :placeholder="$t('Type your email')"
+          @submit.prevent="subscribe"
+        />
+      </validationprovider>
+      <SfButton
+        class="sf-button--email"
+        :disabled="loading || invalid"
+        @click="subscribe"
+      >
+        {{ $t("SUBSCRIBE") }}
+      </SfButton>
+    </form>
+  </ValidationObserver>
 </template>
 
 <script>
@@ -22,10 +36,14 @@ import { SfInput, SfButton } from '@storefront-ui/vue';
 import { useUiNotification } from '~/composables';
 import { useNewsLetter } from '@vue-storefront/odoo';
 import { ref } from '@nuxtjs/composition-api';
+import { ValidationProvider, ValidationObserver } from 'vee-validate';
+
 export default {
   components: {
     SfInput,
-    SfButton
+    SfButton,
+    ValidationProvider,
+    ValidationObserver
   },
   setup() {
     const { sendSubscription, loading } = useNewsLetter();
@@ -73,6 +91,11 @@ form {
     position: relative;
     right: 96px;
   }
+}
+
+::v-deep .sf-input__error-message {
+  color: white;
+  margin-left: 16px;
 }
 
 .sf-input--email {
