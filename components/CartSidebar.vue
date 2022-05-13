@@ -83,14 +83,14 @@
                 {{ $t("checkout") }}
               </SfButton>
             </nuxt-link>
-            <nuxt-link to="/cart">
+            <!-- <nuxt-link to="/cart">
               <SfButton
                 class="sf-button--full-width details_button"
                 @click="toggleCartSidebar"
               >
                 {{ $t("see details") }}
               </SfButton>
-            </nuxt-link>
+            </nuxt-link> -->
           </div>
           <div v-else>
             <SfButton

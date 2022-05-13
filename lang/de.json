@@ -116,9 +116,9 @@
   "You can unsubscribe at any time": "Ved at tilmelde dig nyhedsbrevet accepterer du samtidigt Green Mind’s privatlivspolitik:",
   "Purchases": "Indkøb",
   "Add to cart": "Tilføj til kurv",
-  "checkout": "kassen",
+  "checkout": "Gå til kassen",
   "see details": "se detaljer",
-  "CHECKOUT": "KASSEN",
+  "CHECKOUT": "Gå til kassen",
   "BACK TO SHOPPING": "TILBAGE TIL SHOPPING",
   "GO TO SHIPPING": "GÅ TIL FORSENDELSE",
   "GO TO REVIEW ORDER": "GÅ TIL GENNEMGÅ ORDRE",
@@ -344,5 +344,6 @@
   "Total items": "Gesamtanzahl",
   "Payment list": "Zahlungsarten",
   "REMOVE": "LÖSCHEN",
-  "Be aware of upcoming sales and events. Receive gifts and special offers!": "Informieren Sie sich über bevorstehende Verkäufe und Veranstaltungen. Erhalten Sie Geschenke und Sonderangebote!"
+  "Be aware of upcoming sales and events. Receive gifts and special offers!": "Informieren Sie sich über bevorstehende Verkäufe und Veranstaltungen. Erhalten Sie Geschenke und Sonderangebote!",
+  "By subscribing to the newsletter, you also accept Green Minds privacy policy": "Mit der Anmeldung zum Newsletter akzeptieren Sie auch die Datenschutzerklärung von Green Mind:"
 }

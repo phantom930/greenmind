@@ -122,12 +122,14 @@
         <ValidationProvider
           v-slot="{ errors }"
           name="phone"
-          rules="required"
+          rules="required|digits:8"
           slim
         >
           <SfInput
             v-model="form.phone"
             :label="$t('Phone number')"
+            type="number"
+            :max="8"
             name="phone"
             class="form__element form__element--half-even form__element--half"
             required
