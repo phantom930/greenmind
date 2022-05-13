@@ -94,7 +94,7 @@
         <div class="personal-detail flex justify-between">
           <div class="detail-adress grow">
             <p class="font-bold mb-4 text-lg">
-              Shipping details
+              {{ $t('Shipping details') }}
             </p>
             <p class="mb-4">
               <span>{{ partnerShipping.name }}</span> <br>{{ partnerShipping.street }} –
