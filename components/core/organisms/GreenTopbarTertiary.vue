@@ -14,7 +14,7 @@
             >
               <SfMegaMenuColumn title="iPhones">
                 <SfList>
-                  <nuxt-link to="/telefoner/iphones/iphone-13">
+                  <nuxt-link to="/cell-phones/iphones/iphone-13">
                     <SfListItem><SfMenuItem :label="$t('iPhone 13 Series')" /></SfListItem>
                   </nuxt-link>
                   <nuxt-link to="/telefoner/iphones/iphone-12">
@@ -31,7 +31,7 @@
               <SfMegaMenuColumn title="iPhones">
                 <SfList>
                   <nuxt-link to="/telefoner/iphones/iphone-xs">
-                    <SfListItem><SfMenuItem :label="$t('iPhone Xs Series')" /></SfListItem>
+                    <SfListItem><SfMenuItem :label="$t('iPhone Xs')" /></SfListItem>
                   </nuxt-link>
                   <nuxt-link to="/telefoner/iphones/iphone-xr">
                     <SfListItem><SfMenuItem :label="$t('iPhone Xr')" /></SfListItem>

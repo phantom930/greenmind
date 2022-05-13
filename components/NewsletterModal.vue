@@ -58,7 +58,13 @@
         <SfHeading
           :description="$t('You can unsubscribe at any time')"
           :level="3"
-        />
+        >
+          <template #description>
+            <nuxt-link to="/gdpr">
+              {{ $t('read more') }}
+            </nuxt-link>
+          </template>
+        </SfHeading>
       </div>
     </transition>
   </SfModal>

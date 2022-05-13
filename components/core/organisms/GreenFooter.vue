@@ -135,11 +135,11 @@ export default defineComponent({
           childs: [
             {
               name: 'iPhones',
-              slug: '/iphones'
+              slug: '/telefoner/iphones'
             },
             {
               name: 'Smartphones',
-              slug: '/smartphones'
+              slug: '/telefoner/smartphones'
             },
             {
               name: 'Tablets',
@@ -155,7 +155,7 @@ export default defineComponent({
             },
             {
               name: 'Other products',
-              slug: '/andre-produkter'
+              slug: '/andre'
             }
           ]
         },
@@ -200,10 +200,6 @@ export default defineComponent({
               name: 'Terms of trade',
               slug: '/terms-of-trade'
             },
-            // {
-            //   name: 'GDPR',
-            //   slug: '/gdpr'
-            // },
             {
               name: 'Cookies',
               slug: '/cookies'
@@ -211,6 +207,10 @@ export default defineComponent({
             {
               name: 'FAQ',
               slug: '/faq'
+            },
+            {
+              name: 'GDPR',
+              slug: '/gdpr'
             }
           ]
         },

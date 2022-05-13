@@ -4,7 +4,7 @@
     class="category_card flex"
     :settings="settings"
   >
-    <nuxt-link :to="localePath(`/iphones`)" class="hover:shadow rounded-md mr-1">
+    <nuxt-link to="/iphones" class="hover:shadow rounded-md mr-1">
       <SfImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_1.webp')"
         alt="iPhones"
@@ -17,7 +17,7 @@
       </p>
     </nuxt-link>
 
-    <nuxt-link :to="localePath(`/smartphones`)" class="hover:shadow rounded-md mr-1">
+    <nuxt-link to="/smartphones" class="hover:shadow rounded-md mr-1">
       <SfImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_2.webp')"
         alt="Smartphones"
@@ -29,7 +29,7 @@
         {{ $t('Smartphones') }}
       </p>
     </nuxt-link>
-    <nuxt-link :to="localePath(`/tablets`)" class="hover:shadow rounded-md mr-1">
+    <nuxt-link to="/tablets" class="hover:shadow rounded-md mr-1">
       <SfImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_3.webp')"
         alt="Tablets"
@@ -41,7 +41,7 @@
         {{ $t('Tablets') }}
       </p>
     </nuxt-link>
-    <nuxt-link :to="localePath(`/computere`)" class="hover:shadow rounded-md">
+    <nuxt-link to="/computere" class="hover:shadow rounded-md">
       <SfImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_4.webp')"
         alt="Computers"
