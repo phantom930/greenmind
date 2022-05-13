@@ -16,7 +16,7 @@
         >
           <SfMenuItem
             :label="$t(item.name)"
-            :link="localePath(`${item.slug}`)"
+            :link="item.slug"
           />
         </SfListItem>
       </SfList>

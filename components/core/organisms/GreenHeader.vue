@@ -294,10 +294,10 @@ export default {
   data() {
     return {
       sbCategories: [
-        {
-          name: 'SÆLG TIL OS',
-          slug: 'sell-to-us'
-        },
+        // {
+        //   name: 'SÆLG TIL OS',
+        //   slug: 'sell-to-us'
+        // },
         {
           name: 'REPARATION',
           slug: 'reparation'

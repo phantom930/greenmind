@@ -1,27 +1,5 @@
 <template>
-  <div>
-    <SfImage
-      class="footer__social-image"
-      :src="require('/assets/images/footer/emarket.svg')"
-      alt="emarket"
-      :width="size"
-      :height="size"
-    />
-    <SfImage
-      class="footer__social-image"
-      :src="require('/assets/images/footer/emarket.svg')"
-      alt="emarket"
-      :width="size"
-      :height="size"
-    />
-    <SfImage
-      class="footer__social-image"
-      :src="require('/assets/images/footer/emarket.svg')"
-      alt="emarket"
-      :width="size"
-      :height="size"
-    />
-  </div>
+  <div />
 </template>
 
 <script lang="ts">
@@ -38,6 +16,14 @@ export default defineComponent({
     return {
       size
     };
+  },
+  head: {
+    script: [
+      {
+        src: 'https://widget.emaerket.dk/js/7e5413feebe9ed1205f0aedc91685109',
+        async: true
+      }
+    ]
   }
 });
 </script>
