@@ -95,7 +95,7 @@ ul {
 }
 
 
-table td {
+.sell-table table td {
     width: 50%;
     border: 1px solid #000;
     line-height: 20px;
@@ -103,19 +103,19 @@ table td {
     min-height: 20px;
 }
 
-table tr {
+.sell-table tr {
     min-height: 20px;
 }
 
-table {
+.sell-table {
     border-collapse: collapse;
 }
 
-table {
+.sell-table {
     margin-bottom: 50px;
 }
 
 
-table .first-row td {
+.sell-table .first-row td {
     max-width: 33%;
 }
