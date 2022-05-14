@@ -36,10 +36,10 @@ export default {
     sv: '/stand-descriptions'
   },
   reparation: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/reparation',
+    da: '/reparation',
+    de: '/reparation',
+    sv: '/reparation'
   },
   iphoneReparation: {
     en: '/iphone-reparation',
@@ -78,16 +78,16 @@ export default {
     sv: '/why'
   },
   howToSell: {
-    en: '/howToSell',
-    da: '/howToSell',
-    de: '/howToSell',
-    sv: '/howToSell'
+    en: '/how-to-sell',
+    da: '/how-to-sell',
+    de: '/how-to-sell',
+    sv: '/how-to-sell'
   },
   howToBuy: {
-    en: '/howToBuy',
-    da: '/howToBuy',
-    de: '/howToBuy',
-    sv: '/howToBuy'
+    en: '/how-to-buy',
+    da: '/how-to-buy',
+    de: '/how-to-buy',
+    sv: '/how-to-buy'
   },
   customerService: {
     en: '/customer-service',
