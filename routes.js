@@ -22,7 +22,7 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
     },
     {
       name: 'product',
-      path: '/:slug_2+',
+      path: '/product/:slug_2+',
       component: path.resolve(themeDir, 'pages/Product.vue'),
       alias: productPrefixes.map(alias => `${alias}/:slug_2+`)
     },
