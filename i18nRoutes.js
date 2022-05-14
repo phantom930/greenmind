@@ -24,10 +24,10 @@ export default {
     sv: '/price'
   },
   aboutUs: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/about-us',
+    da: '/about-us',
+    de: '/about-us',
+    sv: '/about-us'
   },
   standDescriptions: {
     en: '/stand-descriptions',
@@ -48,10 +48,10 @@ export default {
     sv: '/iphone-reparation'
   },
   androidReparation: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/android-reparation',
+    da: '/android-reparation',
+    de: '/android-reparation',
+    sv: '/android-reparation'
   },
   tabletReparation: {
     en: '/tablet-reparation',
@@ -60,10 +60,10 @@ export default {
     sv: '/tablet-reparation'
   },
   computerReparation: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/computer-reparation',
+    da: '/computer-reparation',
+    de: '/computer-reparation',
+    sv: '/computer-reparation'
   },
   circular: {
     en: '/what-is-circular-economy-for-mobilephones',
@@ -72,22 +72,22 @@ export default {
     sv: '/what-is-circular-economy-for-mobilephones'
   },
   why: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/why',
+    da: '/why',
+    de: '/why',
+    sv: '/why'
   },
   howToSell: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/howToSell',
+    da: '/howToSell',
+    de: '/howToSell',
+    sv: '/howToSell'
   },
   howToBuy: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/howToBuy',
+    da: '/howToBuy',
+    de: '/howToBuy',
+    sv: '/howToBuy'
   },
   customerService: {
     en: '/customer-service',
@@ -96,10 +96,10 @@ export default {
     sv: '/customer-service'
   },
   freight: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/freight',
+    da: '/freight',
+    de: '/freight',
+    sv: '/freight'
   },
   termsOfTrade: {
     en: '/terms-of-trade',
@@ -108,10 +108,10 @@ export default {
     sv: '/terms-of-trade'
   },
   faq: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/faq',
+    da: '/faq',
+    de: '/faq',
+    sv: '/faq'
   },
   shops: {
     en: '/shops',
@@ -120,15 +120,15 @@ export default {
     sv: '/shops'
   },
   gdpr: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/gdpr',
+    da: '/gdpr',
+    de: '/gdpr',
+    sv: '/gdpr'
   },
   cookies: {
-    en: '/product',
-    da: '/producten',
-    de: '/produkte',
-    sv: '/produkte'
+    en: '/cookies',
+    da: '/cookies',
+    de: '/cookies',
+    sv: '/cookies'
   }
 };
