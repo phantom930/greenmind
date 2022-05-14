@@ -55,7 +55,7 @@ export default {
   },
   router: {
     extendRoutes(routes) {
-      getRoutes(`${__dirname}`)
+      getRoutes(localeIndex, `${__dirname}`)
         .forEach((route) => routes.unshift(route));
     },
     middleware: ['checkout']

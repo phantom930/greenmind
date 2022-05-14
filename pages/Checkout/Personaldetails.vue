@@ -86,7 +86,7 @@
       />
 
       <span class="italic text-sm">{{ $t('By subscribing to the newsletter, you also accept Green Minds privacy policy') }}</span>
-      <nuxt-link to="/gdpr" class="italic text-sm underline">
+      <nuxt-link :to="{ name: 'gdpr' }" class="italic text-sm underline">
         {{ $t('read more') }}
       </nuxt-link>
 

@@ -3,7 +3,7 @@
     <div class="link-prices-wrap">
       <div class="links">
         <p>{{ $t('Select stand') }}</p>
-        <nuxt-link to="/stand-descriptions">
+        <nuxt-link :to="{ name: 'stand-descriptions' }">
           {{ $t('read more') }}
         </nuxt-link>
       </div>

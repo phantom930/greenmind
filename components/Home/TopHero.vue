@@ -90,29 +90,26 @@
   <SfHero
     class="top-hero mt-1.5"
   >
-    <nuxt-link to="/sell-to-us">
+    <nuxt-link :to="{ name: 'sell-to-us' }">
       <SfHeroItem
         class="top-hero-item"
         :background="$device.isMobile ? '#668F72' : ''"
         :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_1.webp') : ''"
-      >
-      </SfHeroItem>
+      />
     </nuxt-link>
-    <nuxt-link to="/about-us">
+    <nuxt-link :to="{ name: 'about-us' }">
       <SfHeroItem
         class="top-hero-item"
         :background="$device.isMobile ? '#668F72' : ''"
         :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_2.webp') : ''"
-      >
-      </SfHeroItem>
+      />
     </nuxt-link>
     <nuxt-link to="/">
       <SfHeroItem
         class="top-hero-item"
         :background="$device.isMobile ? '#668F72' : ''"
         :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_3.webp') : ''"
-      >
-      </SfHeroItem>
+      />
     </nuxt-link>
   </SfHero>
 </template>

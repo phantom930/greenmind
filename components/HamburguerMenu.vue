@@ -5,7 +5,7 @@
       position="right"
       @close="toggleHamburguerMenu"
     >
-      <nuxt-link to="/customer-service">
+      <nuxt-link :to="{ name: 'customer-service' }">
         <SfButton
           style="margin-top: 15%;"
           class="sf-button_hamburguer_item"
@@ -19,7 +19,7 @@
           {{ $t('Customer Service') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/sell-to-us">
+      <nuxt-link :to="{ name: 'sell-to-us' }">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -32,7 +32,7 @@
           {{ $t('Sell to us') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/reparation">
+      <nuxt-link :to="{ name: 'reparation' }">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -45,7 +45,7 @@
           {{ $t('Reparation') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/shops">
+      <nuxt-link :to="{ name: 'shops' }">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -58,7 +58,7 @@
           {{ $t('Find store') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link to="/about-us">
+      <nuxt-link :to="{ name: 'about-us' }">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"
@@ -71,7 +71,7 @@
           {{ $t('About us') }}
         </SfButton>
       </nuxt-link>
-      <!--<nuxt-link to="/blog">
+      <!--<nuxt-link :to="{ name: 'blog' }">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"

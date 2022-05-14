@@ -60,7 +60,7 @@
           :level="3"
         >
           <template #description>
-            <nuxt-link to="/gdpr">
+            <nuxt-link :to="{ name: 'gdpr' }">
               {{ $t('read more') }}
             </nuxt-link>
           </template>
