@@ -19,7 +19,7 @@
           {{ $t('Customer Service') }}
         </SfButton>
       </nuxt-link>
-      <nuxt-link :to="{ name: 'sell-to-us' }">
+      <nuxt-link :to="{ name: 'how-to-sell' }">
         <SfButton
           class="sf-button_hamburguer_item"
           @click="toggleHamburguerMenu"

@@ -90,7 +90,7 @@
   <SfHero
     class="top-hero mt-1.5"
   >
-    <nuxt-link :to="{ name: 'sell-to-us' }">
+    <nuxt-link :to="{ name: 'how-to-sell' }">
       <SfHeroItem
         class="top-hero-item"
         :background="$device.isMobile ? '#668F72' : ''"
