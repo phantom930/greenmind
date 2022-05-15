@@ -1,101 +1,102 @@
 <template>
-  <SfLoader
-    :class="{ loader: loading }"
-    :loading="loading"
-    style="min-height: 530px;"
+  <div
+    v-if="loading"
+    style="height: 500px"
   >
-    <div v-if="product.id">
-      <SfBreadcrumbs
-        class="breadcrumbs desktop-only"
-        :breadcrumbs="breadcrumbs"
-      />
-      <div class="product">
-        <LazyHydrate when-idle>
-          <SfGallery
-            :images="productGallery"
-            :image-width="mainImageWidth"
-            :image-height="mainImageHeigth"
-            :thumb-width="160"
-            :thumb-height="160"
-            :nuxt-img-config="{ fit: 'cover' }"
-            :thumb-nuxt-img-config="{ fit: 'cover' }"
-            class="product__gallery"
-          >
-            <template v-if="$device.isMobile" #thumbs>
-              <div />
-            </template>
-          </SfGallery>
-        </LazyHydrate>
-        <div class="product__info">
-          <div class="product__header">
-            <SfHeading
-              :title="productGetters.getName(product)"
-              :level="3"
-              class="sf-heading--no-underline sf-heading--left product_title"
-            />
+    <SfLoader :loading="loading" />
+  </div>
+  <div v-else id="product">
+    <SfBreadcrumbs
+      class="breadcrumbs desktop-only"
+      :breadcrumbs="breadcrumbs"
+    />
+    <div class="product">
+      <LazyHydrate when-idle>
+        <SfGallery
+          :images="productGallery"
+          :image-width="mainImageWidth"
+          :image-height="mainImageHeigth"
+          :thumb-width="160"
+          :thumb-height="160"
+          :nuxt-img-config="{ fit: 'cover' }"
+          :thumb-nuxt-img-config="{ fit: 'cover' }"
+          class="product__gallery"
+        >
+          <template v-if="$device.isMobile" #thumbs>
+            <div />
+          </template>
+        </SfGallery>
+      </LazyHydrate>
+      <div class="product__info">
+        <div class="product__header">
+          <SfHeading
+            :title="productGetters.getName(product)"
+            :level="3"
+            class="sf-heading--no-underline sf-heading--left product_title"
+          />
           <!-- <SfIcon
             icon="drag"
             size="xxl"
             color="var(--c-text-disabled)"
             class="product__drag-icon smartphone-only"
           /> -->
-          </div>
-          <SfHeading
-            :title="product.websiteSubtitle"
-            :level="3"
-            class="sf-heading--no-underline sf-heading--left product_variants"
+        </div>
+        <SfHeading
+          :title="product.websiteSubtitle"
+          :level="3"
+          class="sf-heading--no-underline sf-heading--left product_variants"
+        />
+        <div class="product__price-and-rating" />
+        <div>
+          <LazyProductSelectGrade
+            :product-grades="productGrades"
+            :product-variant-id="combinationInfo.product_id"
+            @update="handleSelectNewGrade"
           />
-          <div class="product__price-and-rating" />
-          <div>
-            <LazyProductSelectGrade
-              :product-grades="productGrades"
-              :product-variant-id="combinationInfo.product_id"
-              @update="handleSelectNewGrade"
-            />
-            <LazyProductDescription
-              :title="combinationInfo.grade_name"
-              :description="combinationInfo.grade_description"
-            />
+          <LazyProductDescription
+            :title="combinationInfo.grade_name"
+            :description="combinationInfo.grade_description"
+          />
 
-            <div
-              v-if="accessoryProducts.length > 0"
-              class="checkbox-title-wrap"
-            >
-              <div class="title">
-                {{ $t("Purchases") }}
-              </div>
-              <GreenCheckbox
-                v-for="accessoryProduct in product.accessoryProducts"
-                :key="accessoryProduct.id"
-                :value="accessoryProduct.id"
-                :emit-value="true"
-                :title="accessoryProduct.name"
-                :description="accessoryProduct.description"
-                :price="$currency(accessoryProduct.combinationInfoVariant.price)"
-                :has-image="true"
-                :disabled="!productInStock"
-                :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.imageFilename)"
-                @change="selectAcessories"
-              />
+          <div
+            v-if="accessoryProducts.length > 0"
+            class="checkbox-title-wrap"
+          >
+            <div class="title">
+              {{ $t("Purchases") }}
             </div>
+            <GreenCheckbox
+              v-for="accessoryProduct in product.accessoryProducts"
+              :key="accessoryProduct.id"
+              :value="accessoryProduct.id"
+              :emit-value="true"
+              :title="accessoryProduct.name"
+              :description="accessoryProduct.description"
+              :price="$currency(accessoryProduct.combinationInfoVariant.price)"
+              :has-image="true"
+              :disabled="!productInStock"
+              :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.imageFilename)"
+              @change="selectAcessories"
+            />
+          </div>
 
-            <div class="total-price-buttons">
-              <p class="total-price">
-                {{ $currency(combinationInfo.price) }}
-              </p>
-              <div class="buttons">
-                <GreenButton
-                  style-type="Primary"
-                  color="Green"
-                  shape="Round"
-                  size="Medium"
-                  class="mb-3"
-                  :disabled="anyLoading || !productInStock"
-                  :loading="anyLoading"
-                  @click="handleAddItem()"
-                >
-                  {{ productInStock ? $t("Add to Cart") : $t('Out of stock') }}
-                </GreenButton>
+          <div class="total-price-buttons">
+            <p class="total-price">
+              {{ $currency(combinationInfo.price) }}
+            </p>
+            <div class="buttons">
+              <GreenButton
+                style-type="Primary"
+                color="Green"
+                shape="Round"
+                size="Medium"
+                class="mb-3"
+                :disabled="anyLoading || !productInStock"
+                :loading="anyLoading"
+                @click="handleAddItem()"
+              >
+                {{ productInStock ? $t("Add to Cart") : $t('Out of stock') }}
+              </GreenButton>
 
               <!-- <GreenButton
                 style-type="Secondary"
@@ -106,27 +107,26 @@
               >
                 {{ $t("SEE STOCK STATUS IN STORE") }}
               </GreenButton> -->
-              </div>
             </div>
           </div>
-
-          <LazyBannerProducts />
-
-          <LazyHydrate when-idle>
-            <LazyProductTabs :product="product" />
-          </LazyHydrate>
         </div>
-      </div>
-      <div class="product_carousel">
-        <LazyGreenCarousel
-          v-if="sliderProducts.length > 0"
-          :item="sliderProducts"
-          :carousel_title="$t('Popular products')"
-          style="padding-top: 5%"
-        />
+
+        <LazyBannerProducts />
+
+        <LazyHydrate when-idle>
+          <LazyProductTabs :product="product" />
+        </LazyHydrate>
       </div>
     </div>
-  </SfLoader>
+    <div class="product_carousel">
+      <LazyGreenCarousel
+        v-if="sliderProducts.length > 0"
+        :item="sliderProducts"
+        :carousel_title="$t('Popular products')"
+        style="padding-top: 5%"
+      />
+    </div>
+  </div>
 </template>
 <script >
 import { computed, defineComponent, reactive, useRoute, useRouter } from '@nuxtjs/composition-api';
