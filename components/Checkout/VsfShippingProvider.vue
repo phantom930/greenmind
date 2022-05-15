@@ -49,6 +49,8 @@ export default defineComponent({
 
     onMounted(async () => {
       await load();
+
+      selectMethod(shippingMethods.value[0].id);
     });
 
     return {
