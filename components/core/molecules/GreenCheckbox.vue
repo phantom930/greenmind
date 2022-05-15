@@ -16,6 +16,7 @@
       v-if="hasGeneralWrapper"
       #label
     >
+      <slot name="label" />
       <div
         class="general_wrapper"
       >

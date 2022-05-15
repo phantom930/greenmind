@@ -63,9 +63,16 @@
           v-model="agreeTermsConditions"
           :value="agreeTermsConditions"
           :is-checked="agreeTermsConditions"
-          :has-general-wrapper="false"
-          :label="$t('I agree to Terms and Conditions')"
-        />
+          :has-general-wrapper="true"
+        >
+          <template #label>
+            <span> {{ 'I agree to' }}
+              <nuxt-link :to="{ name: 'terms-of-trade' }">
+                {{ $t(' Terms and conditions') }}
+              </nuxt-link>
+            </span>
+          </template>
+        </GreenCheckbox>
       </div>
       <div class="submit-button">
         <GreenButton
