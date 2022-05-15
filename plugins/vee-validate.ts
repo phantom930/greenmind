@@ -1,9 +1,14 @@
 /* eslint-disable camelcase */
 import { extend } from 'vee-validate';
-import { min, email, required, digits } from 'vee-validate/dist/rules';
+import { min, email, required, digits, max } from 'vee-validate/dist/rules';
 extend('min', {
   ...min,
-  message: 'This field must have be greater than 0'
+  message: field => `This field must have be ${field}`
+});
+
+extend('max', {
+  ...max,
+  message: field => `This field must have be ${field}`
 });
 
 extend('email', {
@@ -13,7 +18,7 @@ extend('email', {
 
 extend('digits', {
   ...digits,
-  message: 'This field must have all digits'
+  message: field => `This field must have ${field} digits`
 });
 
 extend('required', {

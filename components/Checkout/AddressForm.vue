@@ -60,14 +60,15 @@
         </ValidationProvider>
         <ValidationProvider
           v-slot="{ errors }"
-          name="zipCode"
-          rules="required"
+          name="between 3-4"
+          rules="required|min:3|max:4"
           slim
         >
           <SfInput
             v-model="form.zip"
             :label="$t('Zip Code')"
             name="zipCode"
+            type="number"
             class="form__element form__element--half form__element--half"
             required
             :valid="!errors[0]"
@@ -121,7 +122,7 @@
 
         <ValidationProvider
           v-slot="{ errors }"
-          name="phone"
+          name="8"
           rules="required|digits:8"
           slim
         >
@@ -129,8 +130,6 @@
             v-model="form.phone"
             :label="$t('Phone number')"
             type="number"
-            :max="8"
-            name="phone"
             class="form__element form__element--half-even form__element--half"
             required
             :valid="!errors[0]"
@@ -165,7 +164,7 @@ const formInitialState = () =>({
   street: '',
   city: '',
   state: { id: null },
-  country: { id: '0' },
+  country: { id: '59' },
   zip: '',
   phone: null,
   selectedMethodShipping: null,
