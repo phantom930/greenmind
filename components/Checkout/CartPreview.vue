@@ -73,9 +73,7 @@
               {{ $t('Personal details') }}
             </p>
             <p class="mb-4">
-              <span>{{ partner.name }}</span> <br>{{ partner.street }} –
-              {{ partner.zip }}<br>
-              {{ partner.city }}, {{ partner.country ? partner.country.name : '' }}
+              <span>{{ partner.name }}</span> <br>
             </p>
             <p>{{ partner.email }}</p>
             <p class="mb-4">
@@ -97,9 +95,10 @@
               {{ $t('Shipping details') }}
             </p>
             <p class="mb-4">
-              <span>{{ partnerShipping.name }}</span> <br>{{ partnerShipping.street }} –
+              <span>{{ partnerShipping.name }}</span> <br>
+              <span v-if="partnerShipping.street">{{ partnerShipping.street }} –</span>
               {{ partnerShipping.zip }}<br>
-              {{ partnerShipping.city }}, {{ partnerShipping.country ? partnerShipping.country.name : '' }}
+              <span v-if="partnerShipping.city">{{ partnerShipping.city }}, {{ partnerShipping.country ? partnerShipping.country.name : '' }}</span>
             </p>
           </div>
           <div class="detail-edit">
@@ -125,9 +124,10 @@
               {{ $t('Billing address') }}
             </p>
             <p class="mb-4">
-              <span>{{ partnerInvoice.name }}</span> <br>{{ partnerInvoice.street }} –
+              <span>{{ partnerInvoice.name }}</span> <br>
+              <span v-if="partnerInvoice.street">{{ partnerShipping.street }} –</span>
               {{ partnerInvoice.zip }}<br>
-              {{ partnerInvoice.city }}, {{ partnerInvoice.country ? partnerInvoice.country.name : '' }}
+              <span v-if="partnerInvoice.city">{{ partnerInvoice.city }}, {{ partnerInvoice.country ? partnerInvoice.country.name : '' }}</span>
             </p>
           </div>
           <div class="detail-edit">

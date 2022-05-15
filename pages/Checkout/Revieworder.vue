@@ -31,7 +31,6 @@
                 </div>
               </template>
             </div>
-            <div class="code">MSD23-345-324</div>
           </div>
         </div>
       </a>
@@ -46,7 +45,7 @@
       <div class="shipping">
         <p>{{ $t('Shipping') }}:</p>
         <p class="price">
-          Free
+          Gratis
         </p>
       </div>
       <div class="total-price">

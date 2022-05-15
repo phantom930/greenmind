@@ -5,6 +5,7 @@
       <SfSteps
         :active="currentStepIndex"
         :class="{ checkout__steps: true }"
+        @change="handleStepByNumber"
       >
         <SfStep
           v-for="(step, key) in STEPS"
@@ -55,7 +56,13 @@ export default defineComponent({
     const handleStepClick = (step) => {
       router.push(`/checkout/${step}`);
     };
+    const handleStepByNumber = (stepNumber) => {
+      const stepNameIndex = Object.keys(STEPS)[stepNumber];
+
+      router.push({ name: stepNameIndex});
+    };
     return {
+      handleStepByNumber,
       handleStepClick,
       STEPS,
       currentStepIndex,
