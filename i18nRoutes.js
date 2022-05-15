@@ -73,20 +73,20 @@ export default {
   },
   why: {
     en: '/why',
-    da: '/why',
-    de: '/why',
+    da: '/hvorfor-greenmind',
+    de: '/hvorfor-greenmind',
     sv: '/why'
   },
   howToSell: {
     en: '/how-to-sell',
-    da: '/how-to-sell',
-    de: '/how-to-sell',
+    da: '/saadan-saelger-du',
+    de: '/saadan-saelger-du',
     sv: '/how-to-sell'
   },
   howToBuy: {
     en: '/how-to-buy',
-    da: '/how-to-buy',
-    de: '/how-to-buy',
+    da: '/saadan-koeber-du',
+    de: '/saadan-koeber-du',
     sv: '/how-to-buy'
   },
   customerService: {
