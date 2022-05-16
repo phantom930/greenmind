@@ -97,8 +97,8 @@ export default {
   },
   freight: {
     en: '/freight',
-    da: '/freight',
-    de: '/freight',
+    da: '/fragt-retur',
+    de: '/fragt-retur',
     sv: '/freight'
   },
   termsOfTrade: {
