@@ -14,3 +14,10 @@ Tip - Add to your /etc/hosts
 4. yarn dev
 5. You can access with http://vue-dev.greenmind.space.local:3000
 ```
+
+## Env vars used
+NODE_ENV - for enviroments 
+NODE_LOCALE - for translations
+COOKIEBOT_KEY - key for cookiebot
+BACKEND_BASE_URL or PUBLIC_PATH or BASE_URL - for api
+SITE_URL - for sitemap host url
