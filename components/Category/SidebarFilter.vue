@@ -131,9 +131,9 @@ export default defineComponent({
       default: false
     }
   },
-  setup() {
+  setup(props) {
     const selectedFilters = ref([]);
-    const price = ref([0, 8000]);
+    const price = ref([0, props.rangeAttributes.maxPrice]);
     const { toInteger } = useCurrency();
     const { query } = useRoute().value;
     const { toggleFilterSidebar, isFilterSidebarOpen } = useUiState();
@@ -153,7 +153,7 @@ export default defineComponent({
       }
     };
 
-    const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', '')));
+    const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', ' ')));
 
     onMounted(() => {
       selectedFilters.value = facetsFromUrlToFilter();
