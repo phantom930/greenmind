@@ -14,9 +14,15 @@
             <img :src="$image(cartGetters.getItemImage(orderLine), 82, 104, cartGetters.getItemImageFilename(orderLine))">
           </div>
           <div class="product-info">
-            <div class="product-title">
-              {{ cartGetters.getItemTitle(orderLine) }} | {{ cartGetters.getItemWebsiteTitle(orderLine) }}
+            <div class="product-title flex justify-between">
+              <div>
+                {{ cartGetters.getItemTitle(orderLine) }} | {{ cartGetters.getItemWebsiteTitle(orderLine) }}
+              </div>
+              <div class="price">
+                {{ $currency(cartGetters.getItemPrice(orderLine).regular) }}
+              </div>
             </div>
+
             <div>
               <template v-for="(accessory, acessoryIndex) in productGetters.getAccessoryProducts(orderLine.product)">
                 <div
@@ -31,6 +37,7 @@
                 </div>
               </template>
             </div>
+
           </div>
         </div>
       </a>

@@ -14,7 +14,7 @@ export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.webs
 
 export const getTotalItems = (cart: GreenCart): number => {
   let total = 0;
-  cart?.order?.websiteOrderLine?.forEach(orderLine => total += orderLine.quantity);
+  cart?.order?.orderLines?.forEach(orderLine => total += orderLine.quantity);
   return total;
 };
 
