@@ -58,6 +58,24 @@
             :error-message="errors[0]"
           />
         </ValidationProvider>
+
+        <ValidationProvider
+          v-slot="{ errors }"
+          name="streetTwoName"
+          rules="required"
+          slim
+        >
+          <SfInput
+            v-model="form.street2"
+            :label="`${$t('Street name')} 2` "
+            name="streetTwoName"
+            class="form__element"
+            required
+            :valid="!errors[0]"
+            :error-message="errors[0]"
+          />
+        </ValidationProvider>
+
         <ValidationProvider
           v-slot="{ errors }"
           name="between 3-4"
@@ -162,6 +180,7 @@ const formInitialState = () =>({
   firstName: '',
   lastName: '',
   street: '',
+  street2: '',
   city: '',
   state: { id: null },
   country: { id: '59' },
@@ -213,6 +232,7 @@ export default defineComponent({
       form.city = props.currentAddressData?.city;
       form.id = props.currentAddressData?.id;
       form.street = props.currentAddressData?.street;
+      form.street2 = props.currentAddressData?.street2;
       form.phone = props.currentAddressData?.phone;
       form.zip = props.currentAddressData?.zip;
 
