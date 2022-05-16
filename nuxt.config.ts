@@ -47,10 +47,12 @@ export default {
       }
     ],
     script: [
-      { 'data-blockingmode': 'auto',
+      {
+        'data-blockingmode': 'auto',
         id: 'CookieDeclaration',
         type: 'text/javascript',
-        src: `https://consent.cookiebot.com/${cookieBotKey}/cd.js`
+        src: `https://consent.cookiebot.com/${cookieBotKey}/cd.js`,
+        async: true
       }
     ],
     link: [

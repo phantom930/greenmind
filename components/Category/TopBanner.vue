@@ -4,6 +4,7 @@
       :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
       :width="2000"
       :height="250"
+      loading="eager"
       class="usp_banner_products"
       alt="Banner Desktop"
     />
