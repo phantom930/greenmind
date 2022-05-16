@@ -35,7 +35,6 @@ const validateReviewOrder = (cart, app) => {
 };
 
 const checkout = async ({ app, $vsf }) => {
-
   const currentPath = app.context.route.fullPath.split('/checkout/')[1];
   if (!currentPath) return;
 

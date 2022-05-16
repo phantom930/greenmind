@@ -183,7 +183,7 @@ export default defineComponent({
     SfLink
   },
   setup(props, context) {
-    const { cart, removeItem, updateItemQty, applyCoupon } = useCart();
+    const { cart, applyCoupon } = useCart();
     const currentStep = computed(() =>
       context.root.$route.path.split('/').pop()
     );
@@ -215,8 +215,6 @@ export default defineComponent({
       totals,
       promoCode,
       showPromoCode,
-      removeItem,
-      updateItemQty,
       checkoutGetters,
       cartGetters,
       applyCoupon,

@@ -68,7 +68,7 @@
           <template #label>
             <span> {{ 'I agree to' }}
               <nuxt-link :to="{ name: 'terms-of-trade' }">
-                {{ $t(' Terms and conditions') }}
+                {{ $t('Terms and conditions') }}
               </nuxt-link>
             </span>
           </template>
@@ -101,6 +101,7 @@
 import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
 import { SfButton } from '@storefront-ui/vue';
 import { useCart } from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
 import { cartGetters, productGetters } from '~/composables';
 
 export default defineComponent({
@@ -109,10 +110,15 @@ export default defineComponent({
     SfButton
   },
   setup(props, { root }) {
-    const { cart } = useCart();
+    const { cart, load, setCart } = useCart();
     const orderLines = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const agreeTermsConditions = ref(false);
+
+    onSSR(async () => {
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoad' } });
+    });
 
     return {
       cart,
