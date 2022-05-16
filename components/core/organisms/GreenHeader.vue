@@ -214,6 +214,7 @@ export default {
         fetchCategory: true,
         customQueryProducts
       });
+
       formatedResult.value = {
         total: result?.value?.data?.totalProducts,
         products: result?.value?.data?.products,

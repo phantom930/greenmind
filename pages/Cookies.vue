@@ -18,6 +18,23 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from '@vue/composition-api';
+
+export default defineComponent({
+  setup() {
+
+  },
+  head() {
+    return {
+      script: [
+        { id: 'CookieDeclaration', type: 'text/javascript', src: `https://consent.cookiebot.com/${this.$config.cookieBotKey}/cd.js`, async: true, body: true }
+      ]
+    };
+  }
+});
+</script>
+
 <style scoped lang="scss">
 @import '~/assets/css/infoPages.scss';
 </style>

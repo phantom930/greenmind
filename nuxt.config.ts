@@ -9,6 +9,7 @@ import Config from '@odoogap/nuxt-config';
 
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
+const cookieBotKey = process.env.COOKIEBOT_KEY || 'd2da6edf-44b1-4063-a6ef-fe4f37edeb0c';
 
 const localesMap = {
   'en-EN': 'en',
@@ -43,6 +44,13 @@ export default {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
+      }
+    ],
+    script: [
+      { 'data-blockingmode': 'auto',
+        id: 'CookieDeclaration',
+        type: 'text/javascript',
+        src: `https://consent.cookiebot.com/${cookieBotKey}/cd.js`
       }
     ],
     link: [
@@ -121,6 +129,7 @@ export default {
   ],
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
+    cookieBotKey,
     localeIndex,
     theme
   },
