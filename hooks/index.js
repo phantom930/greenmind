@@ -1,5 +1,6 @@
 const { integrations } = require('../middleware.config');
 const graphqlBaseUrl = integrations.odoo.configuration.graphqlBaseUrl;
+const isDev = process.env.NODE_ENV !== 'production';
 
 const consola = require('consola');
 const chalk = require('chalk');
@@ -9,7 +10,7 @@ const queries = require('../helpers/buildQueries');
 
 const headers = { headers: {
   'Content-Type': 'application/json',
-  'resquest-host': 'vue-dev.greenmind.space'
+  'resquest-host': isDev ? '' : 'vue-dev.greenmind.space'
 }};
 
 const cleanPath = (path) => {
