@@ -32,9 +32,9 @@
         Overtagelse af garanti<br>
         Vi overtager evt. rest-garanti på enhed
       </p>
-      <p class="font-bold">
+      <h3 class="font-bold">
         Overtagelse af garanti og reklamationsret
-      </p>
+      </h3>
       <p class="text mb">
         Når du får repareret din smartphone eller tablet hos GreenMind, så skal du ikke være nervøs
         for at miste garantien eller reklamationsretten på dit produkt. Vi overtager nemlig begge dele,

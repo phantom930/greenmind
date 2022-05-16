@@ -4,9 +4,9 @@
       <h1 class="font-bold title">
         Sådan køber du
       </h1>
-      <p class="font-bold">
+      <h3 class="font-bold">
         Køb brugt med god samvittighed
-      </p>
+      </h3>
       <p class="text">
         Er du en af dem, der er lidt ligeglad med, om det er sidste års model – bare du får god kvalitet?
       </p>
@@ -14,9 +14,9 @@
         Køb din iPhone, Samsung Galaxy, Nokia Lumia eller iPad hos GreenMind. Vi køber bl.a.
         brugt elektronik af dem, der altid skal have det nyeste, så du kan købe brugt med god samvittighed.
       </p>
-      <p class="font-bold">
+      <h3 class="font-bold">
         Nemt og smart
-      </p>
+      </h3>
       <p class="text">
         Der er tusindvis af kroner at spare på brugt kvalitetselektronik hos GreenMind.
         Ofte er den primære forskel på sidste års model og den nyeste designmæssige fordele.
@@ -34,9 +34,9 @@
           at de er den retmæssige ejer.
         </li>
       </ul>
-      <p class="font-bold">
+      <h3 class="font-bold">
         Find GreenMind
-      </p>
+      </h3>
       <p class="text">
         Klik <nuxt-link :to="{ name: 'shops' }" class="underline y-link">
           her
