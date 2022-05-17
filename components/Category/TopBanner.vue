@@ -1,9 +1,11 @@
 <template>
   <div>
     <SfImage
-      :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+      image-tag="nuxt-img"
+      src="/homepage/banner_desktop_1.webp"
       :width="2000"
       :height="250"
+
       class="usp_banner_products"
       alt="Banner Desktop"
     />
