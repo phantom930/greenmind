@@ -9,7 +9,7 @@
       class="flex justify-center"
       style="transform: translateY(-34px) mt-1"
     >
-      <SfImage
+      <GreenImage
         :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
         alt="banner_desktop_1"
         class="usp_banner_products mb-5"
@@ -103,7 +103,7 @@
       >
         <SfCallToAction>
           <template #title>
-            <SfImage
+            <GreenImage
               :width="$device.isDesktop ? 437 : 221"
               :height="$device.isDesktop ? 240: 121"
               :src="require('/assets/images/homeHero/samsung_phones.svg')"
@@ -142,20 +142,21 @@
 </template>
 
 <script>
-import { SfImage, SfCallToAction, SfLoader} from '@storefront-ui/vue';
+import { SfCallToAction, SfLoader} from '@storefront-ui/vue';
 import { computed } from '@vue/composition-api';
 import { productGetters, useFacet, facetGetters, useNewsLetter } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 import { useUiState } from '~/composables';
 import { useUiNotification } from '~/composables';
 import NewsletterModal from '~/components/NewsletterModal.vue';
+import GreenImage from '~/components/core/atoms/GreenImage.vue';
 
 export default {
   components: {
     NewsletterModal,
     SfCallToAction,
-    SfImage,
-    SfLoader
+    SfLoader,
+    GreenImage
   },
   setup() {
     const { result, search, loading: productsLoading } = useFacet();

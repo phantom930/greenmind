@@ -5,7 +5,7 @@
     :settings="settings"
   >
     <nuxt-link to="/iphones" class="hover:shadow rounded-md mr-1">
-      <SfImage
+      <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_1.webp')"
         alt="iPhones"
         :width="295"
@@ -18,7 +18,7 @@
     </nuxt-link>
 
     <nuxt-link to="/smartphones" class="hover:shadow rounded-md mr-1">
-      <SfImage
+      <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_2.webp')"
         alt="Smartphones"
         :width="295"
@@ -30,7 +30,7 @@
       </p>
     </nuxt-link>
     <nuxt-link to="/tablets" class="hover:shadow rounded-md mr-1">
-      <SfImage
+      <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_3.webp')"
         alt="Tablets"
         :width="295"
@@ -42,7 +42,7 @@
       </p>
     </nuxt-link>
     <nuxt-link to="/computere" class="hover:shadow rounded-md">
-      <SfImage
+      <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_4.webp')"
         alt="Computers"
         :width="295"
@@ -58,11 +58,13 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { SfImage, SfCarousel } from '@storefront-ui/vue';
+import { SfCarousel } from '@storefront-ui/vue';
+import GreenImage from '../core/atoms/GreenImage.vue';
 
 export default defineComponent({
   components: {
-    SfImage, SfCarousel
+    SfCarousel,
+    GreenImage
   },
   setup() {
     const settings = {
