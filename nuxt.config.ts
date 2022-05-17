@@ -47,7 +47,11 @@ export default {
       }
     ],
     script: [
-      { id: 'CookieDeclaration', type: 'text/javascript', src: `https://consent.cookiebot.com/${z}/cd.js`, async: true, body: true }
+      { id: 'CookieDeclaration',
+        type: 'text/javascript',
+        src: `https://consent.cookiebot.com/${cookieBotKey}/cd.js`,
+        async: true
+      }
     ],
     link: [
       {
