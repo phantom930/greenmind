@@ -36,13 +36,13 @@
           Alle produkter bliver registreret i vores system, så vi kan sikre, at det er den retmæssige ejer, der sælger til os.
         </li>
         <li class="text mb">
-          Al elektronik bliver renset og nulstillet
+          Al elektronik bliver renset og nulstillet, og alt data slettes.
         </li>
         <li class="text mb">
           Som køber har du 2 års garanti.
         </li>
         <li class="text mb">
-          Alle produkter bliver registreret i vores system, så vi kan sikre, at det er den retmæssige ejer, der sælger til os.
+          Hvis vi repararer din telefon eller computer så overtager vi evt. garanti og reklamationsret.
         </li>
       </ul>
       <p class="font-bold">
