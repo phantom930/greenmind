@@ -148,6 +148,7 @@
             v-model="form.phone"
             :label="$t('Phone number')"
             type="number"
+            name="8"
             class="form__element form__element--half-even form__element--half"
             required
             :valid="!errors[0]"

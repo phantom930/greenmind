@@ -4,7 +4,7 @@
       <h2 class="font-bold">
         Butikker
       </h2>
-      <h3 class="font-bold">
+      <h3 class="font-bold mb-5">
         GREENMIND
       </h3>
       <table>
@@ -25,75 +25,75 @@
             Kolding
           </td>
           <td>
-            Kolding Storcenter
-            Butiksnummer 1192
-            Skovvangen 42
+            Kolding Storcenter <br>
+            Butiksnummer 1192 <br>
+            Skovvangen 42 <br>
             6000 Kolding
           </td>
           <td>
-            Mandag – Fredag: kl. 10-20 *
+            Mandag – Fredag: kl. 10-20 * <br>
+            Lørdag – Søndag: kl. 10-17 * <br>
+          </td>
+        </tr>
+        <tr>
+          <td>Odense SØ</td>
+          <td>
+            Rosengårdcentret <br>
+            Butik 88 – Gul Gade <br>
+            Ørbækvej 75 <br>
+            5220 Odense
+          </td>
+          <td>
+            Mandag – Fredag: kl. 10-19 * <br>
             Lørdag – Søndag: kl. 10-17 *
           </td>
         </tr>
         <tr>
           <td>Odense SØ</td>
           <td>
-            Rosengårdcentret
-            Butik 88 – Gul Gade
-            Ørbækvej 75
+            Rosengårdcentret <br>
+            Butik 88 – Gul Gade <br>
+            Ørbækvej 75 <br>
             5220 Odense
           </td>
           <td>
-            Mandag – Fredag: kl. 10-19 *
-            Lørdag – Søndag: kl. 10-17 *
-          </td>
-        </tr>
-        <tr>
-          <td>Odense SØ</td>
-          <td>
-            Rosengårdcentret
-            Butik 88 – Gul Gade
-            Ørbækvej 75
-            5220 Odense
-          </td>
-          <td>
-            Mandag – Fredag: kl. 10-19 *
+            Mandag – Fredag: kl. 10-19 * <br>
             Lørdag – Søndag: kl. 10-17 *
           </td>
         </tr>
         <tr>
           <td>Odense C</td>
           <td>
-            Kongensgade 43
+            Kongensgade 43 <br>
             5000 Odense C
           </td>
           <td>
-            Mandag – Torsdag: 10-18 *
-            Fredag: 10-19 *
-            Lørdag: 10-16 *
+            Mandag – Torsdag: 10-18 * <br>
+            Fredag: 10-19 * <br>
+            Lørdag: 10-16 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td>Rødovre</td>
           <td>
-            Rødovre Centrum
-            Butiksnummer 164
-            (v. indgang 1C, st.).
-            Rødovre Centrum 1C
+            Rødovre Centrum <br>
+            Butiksnummer 164 <br>
+            (v. indgang 1C, st.). <br>
+            Rødovre Centrum 1C <br>
             2610 Rødovre
           </td>
           <td>
-            Mandag – Fredag: kl. 10-19 *
+            Mandag – Fredag: kl. 10-19 * <br>
             Lørdag – Søndag: kl. 10-18 *
           </td>
         </tr>
       </table>
 
-      <h3 class="italic">
+      <h4 class="italic">
         * Åbningstider for værkstedet er de samme som i butikken, men værkstedet er lukket i weekenden.
-      </h3>
-      <h3 class="font-bold">
+      </h4>
+      <h3 class="font-bold mt-10">
         BLUECITY
       </h3>
       <h4 class="mb-3">
@@ -104,127 +104,137 @@
       <table>
         <tr>
           <td>
-            København (Field’s)
+            København (Field’s) <br>
             (BlueCity)
           </td>
           <td>
-            Arne Jacobsens Álle 12
+            Arne Jacobsens Álle 12 <br>
             2300 København
           </td>
           <td>
-            Mandag – Fredag: kl. 10-20 *
+            Mandag – Fredag: kl. 10-20 * <br>
             Lørdag – Søndag: kl. 10-20 *
           </td>
         </tr>
         <tr>
           <td>
-            København (Vesterbrogade)
+            København <br>
+            (Vesterbrogade) <br>
             (BlueCity)
           </td>
           <td>
-            Vesterbrogade 84
+            Vesterbrogade 84 <br>
             1620 København v
           </td>
           <td>
-            Mandag – Fredag: 10-18 *
-            Lørdag: 10-15 *
-            Søndag: Lukket
-            Salgelse
+            Mandag – Fredag: 10-18 * <br>
+            Lørdag: 10-15 * <br>
+            Søndag: Lukket <br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Salgelse <br>
             (BlueCity)
-            Nygade 7
+          </td>
+          <td>
+            Nygade 7 <br>
             4200 Slagelse
-            Mandag – Fredag: 10-17:30 *
-            Lørdag: 10-14 *
+          </td>
+          <td>
+            Mandag – Fredag: 10-17:30 * <br>
+            Lørdag: 10-14 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td>
-            Køge (BlueCity)
+            Køge  <br>
+            (BlueCity)
           </td>
           <td>
-            Nørregade 14
+            Nørregade 14 <br>
             4600 Køge
           </td>
           <td>
-            Mandag – Fredag: 10-17 *
-            Lørdag: 10-15 *
+            Mandag – Fredag: 10-17 * <br>
+            Lørdag: 10-15 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td>
-            Næstved
+            Næstved <br>
             (BlueCity)
           </td>
           <td>
-            Kindhestegade 28
+            Kindhestegade 28 <br>
             4700 Næstved
           </td>
           <td>
-            Mandag – Torsdag: 10-17:30 *
-            Fredag: 10-18 *
-            Lørdag: 10-15 *
+            Mandag – Torsdag: 10-17:30 * <br>
+            Fredag: 10-18 * <br>
+            Lørdag: 10-15 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td>
-            Vejle
+            Vejle <br>
             (BlueCity)
           </td>
           <td>
-            Borgvold 12
+            Borgvold 12 <br>
             7100 Vejle
           </td>
           <td>
-            Mandag – Torsdag: 10-17:30 *
-            Fredag: 10-18 *
-            Lørdag: 10-15 *
+            Mandag – Torsdag: 10-17:30 * <br>
+            Fredag: 10-18 * <br>
+            Lørdag: 10-15 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td>
-            Aalborg
+            Aalborg <br>
             (BlueCity)
           </td>
           <td>
-            Bispensgade 27 C
+            Bispensgade 27 C <br>
             9000 Aalborg
           </td>
           <td>
-            Mandag – Fredag: 10-18 *
-            Lørdag: 10-16 *
+            Mandag – Fredag: 10-18 * <br>
+            Lørdag: 10-16 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td>
-            Aalborg
+            Aalborg <br>
             (BlueCity)
           </td>
           <td>
-            Hadsundvej 70
+            Hadsundvej 70 <br>
             9000 Aalborg
           </td>
           <td>
-            Mandag – Fredag: 8-17:30 *
-            Lørdag: 8-16 *
+            Mandag – Fredag: 8-17:30 * <br>
+            Lørdag: 8-16 * <br>
             Søndag: Lukket
           </td>
         </tr>
       </table>
-      <h3 class="italic">
+      <h4 class="italic">
         * Åbningstider for værkstedet er de samme som i butikken, men værkstedet er lukket i weekenden.
-      </h3>
+      </h4>
 
-      <h3 class="font-bold">
+      <h3 class="font-bold mt-10">
         Køb og salg af brugte iPhones, Macbooks, laptops og telefoner, samt iPhone og Android reparation
       </h3>
       GreenMind er din kilde til brugt elektronik til en billig pris og uden abonnement. Vi sælger desuden brugt MAC computere og med hele 2 års garanti. Er det iPhone reparation i København, Aarhus, Aalborg, Odense eller Frederiksberg du søger? Vi har service centre i disse byer og kan hjælpe dig, ofte på timebasis. Vi ønsker at være de førende inden for både reparationer og salg af brugte mobiltelefoner, tablets og computere. For at være det, er det afgørende, at vi kan være så tæt på vores kunder som overhovedet muligt. Derfor har vi i dag hele 6 butikker fordelt over hele landet. Næsten lige meget, hvor du befinder dig, så er der ikke langt til en af vores butikker.
 
-      <h3 class="font-bold">
+      <h3 class="font-bold mt-5">
         Stort udvalg af mobiltelefoner uden mobilabonnement
       </h3>
       I København finder du os både på Nørrebro, på Frederiksberg og ikke mindst i Indre by. Alle vores butikker er let tilgængelige både i bil, på cykel og med offentlig transport. Vi har åbent på alle hverdage fra kl. 10-18 og lørdage fra kl. 10-16 (dog er der lukket på Nørrebro om lørdagen).
@@ -253,6 +263,10 @@ table tr {
 
 table {
     border-collapse: collapse;
+}
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 </style>
