@@ -14,8 +14,7 @@
         Mandag til fredag kl. <span class="bold">10:00 - 16:00</span>
       </p>
       <p class="text">
-        Så har du spørgsmål, ris eller ros, er du altid velkommen til at kontakte os på telefon eller mail,
-        så vender vi tilbage til dig hurtigst muligt.
+        Så har du spørgsmål, ris eller ros, er du altid velkommen til at kontakte os på telefon eller mail, så vender vi tilbage til dig hurtigst muligt.
       </p>
       <p class="text">
         Ring til os: <span class="font-bold">+45 4697 5050</span>

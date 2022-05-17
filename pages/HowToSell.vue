@@ -47,7 +47,7 @@
       </p>
       <ul class="list-disc">
         <li class="text">
-          Find din enhed på hjemmesiden, besvar et par spørgsmål og få en pris
+          Jo bedre stand produktet er i, jo bedre pris får du.
         </li>
         <li class="text">
           Ønsker du at købe et andet produkt i vores butik eller onlineshop, kan vi give dig en endnu bedre pris for dit produkt.
@@ -59,8 +59,7 @@
           Bemærk at personalet til enhver tid kan afvise at købe en vare.
         </li>
         <li class="text">
-          Herefter kan du enten bruge beløbet i butikken, onlineshoppen eller få pengene overført til din bankkonto.
-          Ved bankoverførsel går der normalt 2 bankdage før pengene indgår på din konto. I sjældne tilfælde kan der dog gå op til 4 bankdage.
+          Herefter kan du enten bruge beløbet i butikken, onlineshoppen eller få pengene udbetalt til din NemKonto.
         </li>
       </ul>
 

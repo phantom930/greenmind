@@ -33,6 +33,9 @@
           mail@greenmind.dk
         </a>
       </p>
+      <p class="text">
+        Du kan ikke fortryde købet ved at nægte at modtage varen uden samtidig at give os besked.
+      </p>
 
       <h3 class="font-bold subtitle">
         Fortrydelse af en del af købet
@@ -59,6 +62,7 @@
         Tilbagebetaling af købsbeløbet
       </h3>
       <p class="text">
+        Tilbagebetaling af købsbeløbet
         Hvis du fortryder dit køb, får du dine penge tilbage. Hvis varen er værdiforringet, fratrækker vi det beløb, du hæfter for. Vi refunderer betalinger modtaget fra dig, eksl. leveringsomkostninger, senest 14 dage fra den dag, hvor vi har modtaget din besked om, at du vil fortryde aftalen. Vi tilbagefører pengene med samme betalingsmiddel, som du benyttede ved købet, medmindre vi har aftalt andet. Vi kan tilbageholde betalingen indtil vi har modtaget varen, medmindre du sender os dokumentation for at have returneret den.
       </p>
 
