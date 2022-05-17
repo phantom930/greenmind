@@ -10,7 +10,8 @@
       style="transform: translateY(-34px) mt-1"
     >
       <SfImage
-        :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+        image-tag="nuxt-img"
+        src="/homepage/banner_desktop_1.webp"
         alt="banner_desktop_1"
         class="usp_banner_products mb-5"
         :width="1440"
