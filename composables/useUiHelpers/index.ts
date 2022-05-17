@@ -34,10 +34,10 @@ const useUiHelpers = (): any => {
       sort: { [sort[0]]: sort[1] },
       pageSize,
       currentPage: page,
-      minPrice: price?.[0] || null,
-      maxPrice: price?.[1] || null,
       fetchCategory: true,
       filter: {
+        minPrice: Number(price?.[0]) || null,
+        maxPrice: Number(price?.[1]) || null,
         categorySlug: path === '/' ? null : path,
         categoryId,
         attribValues: filters
