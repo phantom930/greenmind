@@ -92,4 +92,10 @@ export default defineComponent({
 });
 </script>
 <style scoped lang="scss">
+@include for-mobile {
+  ::v-deep .sf-carousel__wrapper {
+    margin: 0;
+    max-width: 100%;
+  }
+}
 </style>
