@@ -84,12 +84,8 @@ form {
   height: 32px;
   margin-top: 22px;
   width: fit-content;
-}
-
-@media (max-width: 1024px) {
-  form {
-    position: relative;
-    right: 96px;
+  @media (max-width: 1024px) {
+    width: 100%;
   }
 }
 
@@ -107,6 +103,10 @@ form {
   background-color: #f1f2f3;
   --input-border: none;
   --input-bar-display: none;
+   @media (max-width: 1024px) {
+     width: 100%;
+   }
+
 }
 .sf-button--email {
   border-radius: 40px;
@@ -115,6 +115,13 @@ form {
   left: 349px;
   transform: scale(0.8, 0.8);
   --button-background: #7ba393;
+  @media (max-width: 1024px) {
+    position: absolute;
+    left: unset;
+    right: 7px;
+    height: inherit;
+  }
+
 }
 .sf-button--email:hover {
   --button-background: #78a886;

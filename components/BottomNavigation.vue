@@ -1,21 +1,19 @@
 <template>
   <!-- TODO: create logic with isActive prop for BottomNavigationItems -->
   <SfBottomNavigation class="navigation-bottom smartphone-only">
-    <nuxt-link to="/">
-      <SfBottomNavigationItem
-        :class="$route.path == '/' ? 'sf-bottom-navigation__item--active' : ''"
-        icon="home"
-        size="20px"
-        :label="$t('Home')"
-        @click="isMobileMenuOpen ? toggleMobileMenu() : false"
-      />
-    </nuxt-link>
     <SfBottomNavigationItem
+      :class="$route.path == '/' ? 'sf-bottom-navigation__item--active' : ''"
+      icon="home"
+      size="20px"
+      :label="$t('Home')"
+      @click="$router.push('/')"
+    />
+    <!-- <SfBottomNavigationItem
       icon="menu"
       size="20px"
       :label="$t('Menu')"
       @click="toggleMobileMenu"
-    />
+    /> -->
     <!-- <SfBottomNavigationItem
       icon="heart"
       size="20px"

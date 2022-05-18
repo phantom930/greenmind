@@ -23,7 +23,9 @@
     <LazyHydrate when-idle>
       <CartSidebar />
     </LazyHydrate>
-    <HamburguerMenu />
+    <LazyHydrate when-idle>
+      <HamburguerMenu />
+    </LazyHydrate>
     <!-- <WishlistSidebar /> -->
     <Notification />
     <LazyHydrate when-idle>

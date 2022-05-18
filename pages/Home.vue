@@ -9,11 +9,11 @@
       style="transform: translateY(-34px) mt-1"
     >
       <GreenImage
-        :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+        :src="require($device.isDesktop ? '/assets/images/homeUspBanner/banner_desktop_1.webp' : '/assets/images/productsUspBanner/banner_mobile_1.webp')"
         alt="banner_desktop_1"
         class="usp_banner_products mb-5"
-        :width="$device.isDesktop ? 1440 : 540"
-        :height="$device.isDesktop ? 237: 110"
+        :width="$device.isDesktop ? 1440 : 531"
+        :height="$device.isDesktop ? 237: 120"
       />
     </div>
     <!--<div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
