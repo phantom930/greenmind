@@ -131,7 +131,7 @@ export default defineComponent({
       default: false
     }
   },
-  setup(props) {
+  setup(props, { root }) {
     const selectedFilters = ref([]);
     const price = ref([0, props.rangeAttributes.maxPrice]);
     const { toInteger } = useCurrency();
@@ -165,6 +165,9 @@ export default defineComponent({
 
     const applyFilters = () => {
       changeFilters(selectedFilters.value);
+      if (root.$device.isMobile) {
+        toggleFilterSidebar();
+      }
     };
 
     const isFilterSelected = (option) => {
