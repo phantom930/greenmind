@@ -51,20 +51,6 @@
           </td>
         </tr>
         <tr>
-          <td class="text">Odense SØ</td>
-          <td class="text">
-            Rosengårdcentret <br>
-            Butik 88 – Gul Gade <br>
-            Ørbækvej 75 <br>
-            5220 Odense
-          </td>
-          <td class="text">
-            Mandag – Fredag: kl. 10-19 * <br>
-            Lørdag: kl. 10-17 * <br>
-            Søndag: kl. 10-17 *
-          </td>
-        </tr>
-        <tr>
           <td class="text">Odense C</td>
           <td class="text">
             Kongensgade 43 <br>
