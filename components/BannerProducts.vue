@@ -1,7 +1,7 @@
 <template>
   <div>
-    <SfImage
-      :src="require('/assets/images/productsUspBanner/banner_mobile_1.webp')"
+    <GreenImage
+      :src="require($device.isDesktop ? '/assets/images/homeUspBanner/banner_desktop_1.webp' : '/assets/images/productsUspBanner/banner_mobile_1.webp')"
       :width="531"
       :height="120"
       alt="Banner Mobile"
@@ -12,11 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { SfImage } from '@storefront-ui/vue';
 export default defineComponent({
-  components: {
-    SfImage
-  },
   setup() {
 
   }
@@ -38,7 +34,7 @@ export default defineComponent({
     @include for-mobile {
       justify-content: center;
     }
-    
+
   }
 
 </style>

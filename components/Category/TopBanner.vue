@@ -1,7 +1,7 @@
 <template>
   <div>
     <GreenImage
-      :src="require('/assets/images/homeUspBanner/banner_desktop_1.webp')"
+      :src="require($device.isDesktop ? '/assets/images/homeUspBanner/banner_desktop_1.webp' : '/assets/images/productsUspBanner/banner_mobile_1.webp')"
       :width="2000"
       :height="250"
       class="usp_banner_products"
