@@ -51,13 +51,13 @@
 
                   <img
                     v-if="isOpen"
-                    :src="require('/assets/images/category/arrow-down.svg')"
-                    class="pr-5"
+                    :src="require('/assets/images/category/arrow-up.svg')"
+                    class="pr-3.5"
                   >
                   <img
                     v-else
-                    :src="require('/assets/images/category/arrow-up.svg')"
-                    class="pr-3.5"
+                    :src="require('/assets/images/category/arrow-down.svg')"
+                    class="pr-5"
                   >
                 </div>
               </template>
@@ -89,6 +89,30 @@
             </SfAccordionItem>
           </div>
         </sfaccordion>
+      </div>
+      <div class="smartphone-only mt-10">
+        <GreenButton
+          style-type="Primary"
+          color="Green"
+          shape="Round"
+          size="Max"
+          @click="applyFilters"
+        >
+          {{ $t("Done") }}
+        </GreenButton>
+
+        <nuxt-link :to="currentCategory.slug">
+          <GreenButton
+            class="mt-5"
+            style-type="Tertiary"
+            color="Grey"
+            shape="Round"
+            size="Max"
+            @click="toggleFilterSidebar"
+          >
+            {{ $t("Cancel") }}
+          </GreenButton>
+        </nuxt-link>
       </div>
     </component>
   </div>
@@ -126,12 +150,17 @@ export default defineComponent({
       type: Object,
       default: () => ({})
     },
+    currentCategory: {
+      type: Object,
+      default: () => ({})
+    },
     showFilters: {
       type: Boolean,
       default: false
     }
   },
-  setup(props, { root }) {
+  emits: ['reset'],
+  setup(props, { root, emit }) {
     const selectedFilters = ref([]);
     const price = ref([0, props.rangeAttributes.maxPrice]);
     const { toInteger } = useCurrency();
@@ -151,6 +180,10 @@ export default defineComponent({
 
         price.value = splitedPriceFromUrl.map((item) => parseInt(item));
       }
+    };
+
+    const reset = () => {
+      emit('reset');
     };
 
     const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', ' ')));
@@ -185,12 +218,14 @@ export default defineComponent({
           label: option.label,
           id: option.id
         });
-        applyFilters();
+
+        root.$device.isDesktop ? applyFilters() : '';
+
         return;
       }
 
       selectedFilters.value.splice(alreadySelectedIndex, 1);
-      applyFilters();
+      root.$device.isDesktop ? applyFilters() : '';
     };
 
     const selectPrice = (values) => {
@@ -206,7 +241,7 @@ export default defineComponent({
 
       if (selectedValue) {
         selectedValue.id = newValue;
-        applyFilters();
+        root.$device.isDesktop ? applyFilters() : '';
 
         return;
       }
@@ -217,10 +252,11 @@ export default defineComponent({
         id: newValue
       });
 
-      applyFilters();
+      root.$device.isDesktop ? applyFilters() : '';
     };
 
     return {
+      applyFilters,
       isFilterSidebarOpen,
       toggleFilterSidebar,
       openedHeaders,
@@ -230,7 +266,8 @@ export default defineComponent({
       selectedFilters,
       facetHasMoreThanOneOption,
       isFilterSelected,
-      isFacetColor
+      isFacetColor,
+      reset
     };
   }
 });

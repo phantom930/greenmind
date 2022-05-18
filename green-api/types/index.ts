@@ -16,6 +16,7 @@ export enum ButtonSize {
     Small = 'Small',
     Medium = 'Medium',
     Large = 'Large',
+    Max = 'Max',
 }
 export enum ButtonColor {
     Green = 'Green',

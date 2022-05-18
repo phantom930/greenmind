@@ -110,6 +110,10 @@ $button-height: 50px;
     width: 343px;
   }
 }
+.max {
+  height: var($button-height);
+  width: 100%;
+}
 
 .big-text {
   font-size: 16px !important;

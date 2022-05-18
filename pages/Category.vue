@@ -13,6 +13,7 @@
             :show-filters="showProducts"
             :facets="facets"
             :range-attributes="rangeAttributes"
+            :current-category="currentCategory"
           />
         </LazyHydrate>
 
@@ -60,7 +61,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
+import { computed, defineComponent, ref, useRouter } from '@nuxtjs/composition-api';
 import { SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
@@ -80,9 +81,11 @@ export default defineComponent({
 
     const { getFacetsFromURL } = useUiHelpers();
     const { result, search, loading } = useFacet();
-    const { categoryTree, currentRootCategory } = useUiCategoryHelpers(
+    const { categoryTree, currentCategory } = useUiCategoryHelpers(
       result.value
     );
+
+    const { push } = useRouter();
     const { addTags } = useCache();
 
     const products = computed(() => facetGetters.getProducts(result.value));
@@ -131,7 +134,7 @@ export default defineComponent({
       addTags([
         {
           prefix: CacheTagPrefix.Category,
-          value: currentRootCategory.value?.id || params.slug_2
+          value: currentCategory.value?.id || params.slug_2
         }
       ]);
     });
@@ -142,7 +145,7 @@ export default defineComponent({
       hasMoreProductsToLoad,
       buttonLoading,
       changeItemsPerPage,
-      currentRootCategory,
+      currentCategory,
       products,
       categoryTree,
       loading,
