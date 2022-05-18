@@ -9,8 +9,8 @@
       </h3>
       <table>
         <tr>
-          <td>Aarhus</td>
-          <td>
+          <td class="text">Aarhus</td>
+          <td class="text">
             Guldsmedgade 2 <br>
             8000 Aarhus C
           </td>
@@ -21,53 +21,56 @@
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Kolding
           </td>
-          <td>
+          <td class="text">
             Kolding Storcenter <br>
             Butiksnummer 1192 <br>
             Skovvangen 42 <br>
             6000 Kolding
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: kl. 10-20 * <br>
-            Lørdag – Søndag: kl. 10-17 * <br>
+            Lørdag: kl. 10-17 * <br>
+            Søndag: kl. 10-17 *
           </td>
         </tr>
         <tr>
-          <td>Odense SØ</td>
-          <td>
+          <td class="text">Odense SØ</td>
+          <td class="text">
             Rosengårdcentret <br>
             Butik 88 – Gul Gade <br>
             Ørbækvej 75 <br>
             5220 Odense
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: kl. 10-19 * <br>
-            Lørdag – Søndag: kl. 10-17 *
+            Lørdag: kl. 10-17 * <br>
+            Søndag: kl. 10-17 *
           </td>
         </tr>
         <tr>
-          <td>Odense SØ</td>
-          <td>
+          <td class="text">Odense SØ</td>
+          <td class="text">
             Rosengårdcentret <br>
             Butik 88 – Gul Gade <br>
             Ørbækvej 75 <br>
             5220 Odense
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: kl. 10-19 * <br>
-            Lørdag – Søndag: kl. 10-17 *
+            Lørdag: kl. 10-17 * <br>
+            Søndag: kl. 10-17 *
           </td>
         </tr>
         <tr>
-          <td>Odense C</td>
-          <td>
+          <td class="text">Odense C</td>
+          <td class="text">
             Kongensgade 43 <br>
             5000 Odense C
           </td>
-          <td>
+          <td class="text">
             Mandag – Torsdag: 10-18 * <br>
             Fredag: 10-19 * <br>
             Lørdag: 10-16 * <br>
@@ -75,17 +78,18 @@
           </td>
         </tr>
         <tr>
-          <td>Rødovre</td>
-          <td>
+          <td class="text">Rødovre</td>
+          <td class="text">
             Rødovre Centrum <br>
             Butiksnummer 164 <br>
             (v. indgang 1C, st.). <br>
             Rødovre Centrum 1C <br>
             2610 Rødovre
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: kl. 10-19 * <br>
-            Lørdag – Søndag: kl. 10-18 *
+            Lørdag: kl. 10-18 * <br>
+            Søndag: kl. 10-18 *
           </td>
         </tr>
       </table>
@@ -103,75 +107,76 @@
       <span>Bemærk dog, at I BlueCity butikker behandler vi desværre ikke forsikringssager.</span>
       <table>
         <tr>
-          <td>
+          <td class="text">
             København (Field’s) <br>
             (BlueCity)
           </td>
-          <td>
-            Arne Jacobsens Álle 12 <br>
-            2300 København
+          <td class="text">
+            Arne Jacobsens Allé 12 <br>
+            2300 København S
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: kl. 10-20 * <br>
-            Lørdag – Søndag: kl. 10-20 *
+            Lørdag: kl. 10-20 * <br>
+            Søndag: kl. 10-20 *
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             København <br>
             (Vesterbrogade) <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Vesterbrogade 84 <br>
-            1620 København v
+            1620 København V
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: 10-18 * <br>
             Lørdag: 10-15 * <br>
-            Søndag: Lukket <br>
+            Søndag: Lukket
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Salgelse <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Nygade 7 <br>
             4200 Slagelse
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: 10-17:30 * <br>
             Lørdag: 10-14 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Køge  <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Nørregade 14 <br>
             4600 Køge
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: 10-17 * <br>
             Lørdag: 10-15 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Næstved <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Kindhestegade 28 <br>
             4700 Næstved
           </td>
-          <td>
+          <td class="text">
             Mandag – Torsdag: 10-17:30 * <br>
             Fredag: 10-18 * <br>
             Lørdag: 10-15 * <br>
@@ -179,15 +184,15 @@
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Vejle <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Borgvold 12 <br>
             7100 Vejle
           </td>
-          <td>
+          <td class="text">
             Mandag – Torsdag: 10-17:30 * <br>
             Fredag: 10-18 * <br>
             Lørdag: 10-15 * <br>
@@ -195,30 +200,30 @@
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Aalborg <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Bispensgade 27 C <br>
             9000 Aalborg
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: 10-18 * <br>
             Lørdag: 10-16 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
-          <td>
+          <td class="text">
             Aalborg <br>
             (BlueCity)
           </td>
-          <td>
+          <td class="text">
             Hadsundvej 70 <br>
             9000 Aalborg
           </td>
-          <td>
+          <td class="text">
             Mandag – Fredag: 8-17:30 * <br>
             Lørdag: 8-16 * <br>
             Søndag: Lukket
