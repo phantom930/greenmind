@@ -18,7 +18,7 @@
           v-show="showFilters"
           :key="`filter-title-price`"
           :level="4"
-          title="Price"
+          :title="$t('Price')"
           class="filters__title sf-heading--left"
         />
 

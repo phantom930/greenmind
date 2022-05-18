@@ -64,6 +64,9 @@ li {
     margin: 0 auto;
     padding-top: 200px;
     padding-bottom: 200px;
+    @include for-mobile {
+        padding: 5% 5%;
+    }
 }
 
 /* .mb {
@@ -92,6 +95,9 @@ li {
 
 ul {
     transform: translateX(20px);
+    @include for-mobile {
+        width: 95%;
+    }
 }
 
 
