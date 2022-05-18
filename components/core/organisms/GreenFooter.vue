@@ -5,6 +5,7 @@
     class="footer"
   >
     <SfFooterColumn
+      :ref="productColumn.title"
       :title="$t(productColumn.title)"
     >
       <SfList>
@@ -22,6 +23,7 @@
 
     <SfFooterColumn
       v-for="(column, index) in columns"
+      :ref="column.title"
       :key="index"
       :title="$t(column.title)"
     >
@@ -265,6 +267,12 @@ export default defineComponent({
         // { name: 'linkedin', url: 'https://www.facebook.com/greenmind.dk' }
       ]
     };
+  },
+  mounted() {
+    this.$refs[this.productColumn.title].isColumnOpen = false;
+    this.columns.forEach(element => {
+      this.$refs[element.title][0].isColumnOpen = false;
+    });
   }
 });
 </script>
