@@ -346,5 +346,22 @@ module.exports = {
         phone
       }
     }`
+  }),
+  greenNullShippingMethod: ({variables}) => ({
+    variables,
+    mutation: gql `
+    mutation{
+      setShippingMethod{
+          order{
+            id
+            name
+            shippingMethod{
+              id
+              name
+              price
+            }
+          }
+      }
+    }`
   })
 };

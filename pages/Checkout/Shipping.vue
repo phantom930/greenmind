@@ -45,7 +45,6 @@
 
     <VsfShippingProvider
       name="selectedMethodShipping"
-      :selected-shipping-method-id="selectedShippingMethod.id"
     />
 
     <SfHeading

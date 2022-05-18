@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SfRadio
+    <!-- <SfRadio
       v-for="method in shippingMethods"
       :key="method.id"
       v-model="selectedMethod"
@@ -19,7 +19,7 @@
       <div class="shipping__description">
         {{ method.name }}
       </div>
-    </SfRadio>
+    </SfRadio> -->
   </div>
 </template>
 
@@ -48,9 +48,9 @@ export default defineComponent({
     const isSelected = (id) => String(props?.selectedShippingMethodId) === id;
 
     onMounted(async () => {
-      await load();
-
-      selectMethod(shippingMethods.value[0].id);
+      // await load();
+      await save({ shippingMethod: {}, customQuery: { setShippingMethod: 'greenNullShippingMethod' }});
+      // selectMethod(shippingMethods.value[0].id);
     });
 
     return {
