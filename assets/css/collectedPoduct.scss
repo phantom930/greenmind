@@ -91,3 +91,7 @@
 .collected-product {
   min-height: 290px;
 }
+
+::v-deep .sf-collected-product__quantity-wrapper {
+  display: none;
+}
