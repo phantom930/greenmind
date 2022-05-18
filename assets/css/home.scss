@@ -77,6 +77,9 @@
   
   .title-subtitle {
     min-width: 411px;
+    @include for-mobile{
+      min-width: 100%;
+    }
   }
   
   .div-call-to-hero-bottom ::v-deep .sf-call-to-action .sf-image--wrapper{

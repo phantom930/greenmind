@@ -93,22 +93,19 @@
     <nuxt-link :to="{ name: 'how-to-sell' }">
       <SfHeroItem
         class="top-hero-item"
-        :background="$device.isMobile ? '#668F72' : ''"
-        :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_1.webp') : ''"
+        :image="require('/assets/images/homeHero/homeHero2_1.webp')"
       />
     </nuxt-link>
     <nuxt-link :to="{ name: 'about-us' }">
       <SfHeroItem
         class="top-hero-item"
-        :background="$device.isMobile ? '#668F72' : ''"
-        :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_2.webp') : ''"
+        :image="require('/assets/images/homeHero/homeHero2_2.webp')"
       />
     </nuxt-link>
     <nuxt-link to="/">
       <SfHeroItem
         class="top-hero-item"
-        :background="$device.isMobile ? '#668F72' : ''"
-        :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero2_3.webp') : ''"
+        :image="require('/assets/images/homeHero/homeHero2_3.webp')"
       />
     </nuxt-link>
   </SfHero>
