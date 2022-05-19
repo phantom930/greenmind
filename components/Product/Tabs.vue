@@ -65,6 +65,15 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+
+::v-deep .sf-tabs__title {
+  @include for-mobile {
+    pointer-events: none;
+    span {
+      display: none;
+    }
+  }
+}
 .product__additional-info {
     color: var(--c-link);
     @include font(--additional-info-font, var(--font-weight--light), var(--font-size--sm), 1.6,  var(--font-family--primary));
