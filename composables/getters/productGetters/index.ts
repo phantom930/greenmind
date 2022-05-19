@@ -13,7 +13,37 @@ const getImageFilename = (product: GreenProduct) : string => product?.imageFilen
 const getAttributesWithoutGrade = (product: GreenProduct) : AttributeValue[] =>
   product?.variantAttributeValues ?.filter(attribute => attribute?.attribute?.name !== 'Grade');
 
-const getSchemaAttributeValues = (product: GreenProduct) : AttributeValue[] => product?.schemaAttributeValues || [];
+const getSchemaAttributeValues = (product: GreenProduct) : AttributeValue[] => {
+  const groupedByName = new Map();
+  const returnArray : AttributeValue[] = [];
+  product.schemaAttributeValues.forEach((item) => {
+    if (!groupedByName.has(item.attribute.name)) {
+      groupedByName.set(item.attribute.name, []);
+    }
+    groupedByName.get(item.attribute.name).push(item);
+  });
+
+  groupedByName.forEach((item, index) => {
+    if (item.length > 1) {
+      return returnArray.push({
+        attribute: {
+          id: 0,
+          name: String(index)
+        },
+        id: 0,
+        search: '',
+        displayType: '',
+        name: item.map(child => child.name).reduce((acc, current) => acc += `, ${current}`)
+      });
+    }
+
+    returnArray.push(item[0]);
+  });
+
+  console.log(groupedByName);
+
+  return returnArray || [];
+};
 
 const getters = {
   ...productGetters,
