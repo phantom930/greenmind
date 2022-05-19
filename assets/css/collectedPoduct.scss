@@ -23,6 +23,16 @@
   width: 100%;
 }
 
+::v-deep .sf-collected-product__remove.sf-collected-product__remove--text {
+  display: none;
+}
+
+::v-deep .sf-collected-product__remove{
+  @include for-mobile {
+    display: flex;
+  }
+}
+
 .custom-product-title {
   font-size: 20px;
   line-height: 24px;

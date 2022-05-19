@@ -25,6 +25,9 @@
     <template #configuration>
       <div />
     </template>
+    <template #more-actions>
+      <div />
+    </template>
 
     <template #price>
       <span class="green-collected-product__price">
@@ -52,14 +55,14 @@
 </template>
 
 <script lang="ts">
-import { SfCollectedProduct } from '@storefront-ui/vue';
+import { SfCollectedProduct, SfIcon, SfButton } from '@storefront-ui/vue';
 import { cartGetters, useCollectedProduct } from '~/composables';
 import { defineComponent, computed, PropType } from '@nuxtjs/composition-api';
 import { GreenOrderLine } from '~/green-api/types';
 
 export default defineComponent({
   components: {
-    SfCollectedProduct
+    SfCollectedProduct, SfIcon, SfButton
   },
   props: {
     orderLine: {
@@ -96,6 +99,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import '~/assets/css/collectedPoduct.scss';
 </style>

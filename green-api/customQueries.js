@@ -354,12 +354,7 @@ module.exports = {
       setShippingMethod{
           order{
             id
-            name
-            shippingMethod{
-              id
-              name
-              price
-            }
+            amountDelivery
           }
       }
     }`
