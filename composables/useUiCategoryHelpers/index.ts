@@ -20,7 +20,8 @@ const useUiHelpers = (result : FacetSearchResult<FacetResultsData>): useUiCatego
   const currentRootCategory = computed(() => result?.data?.categories?.[0] || { childs: []});
 
   const currentCategory = computed<Category | any>(() => {
-    let category = { name: '' };
+    let category = { name: '', slug: '' };
+
     currentRootCategory.value?.childs?.forEach(element => {
       element?.childs?.forEach(element => {
         if (element.slug === path) {

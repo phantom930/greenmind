@@ -202,7 +202,7 @@ export default defineComponent({
     const canGoReviewOrder = computed(() => {
       // if (canAddNewAddress.value) return false;
 
-      if (!selectedShippingMethod.value?.id) return false;
+      // if (!selectedShippingMethod.value?.id) return false;
 
       if (!shippingFormValid.value) return false;
 
