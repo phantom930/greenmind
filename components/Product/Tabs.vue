@@ -51,14 +51,9 @@ export default defineComponent({
   setup(props) {
 
     const description = computed(() => productGetters.getDescription(props.product));
-    const attributesWithoutGrade = computed(() => [...productGetters.getAttributesValues(props.product),
-      { attribute: { name: 'STØRRELSE'}, name: '13.84 x 6.73 x0.73 cm'},
-      { attribute: { name: 'VÆGT'}, name: '148 gram'},
-      { attribute: { name: 'LAGERPLADS'}, name: '64 GB'},
-      { attribute: { name: 'BATTERIKAPACITET'}, name: '90%'},
-      { attribute: { name: 'SIMKORTTYPE'}, name: 'NanoSIM'},
-      { attribute: { name: 'STIKTYPE'}, name: 'Lightning'},
-      { attribute: { name: 'SKÆRM'}, name: '4.7 ” 750 x 1334 True Tone-skærm'}
+    const attributesWithoutGrade = computed(() => [
+      ...productGetters.getAttributesValues(props.product),
+      ...productGetters.getSchemaAttributeValues(props.product)
     ]);
 
     return {

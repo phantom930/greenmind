@@ -140,6 +140,13 @@ module.exports = {
                         name
                       }
                     }
+                    schemaAttributeValues{
+                      id
+                      name
+                      attribute {
+                        name
+                      }
+                    }
                     currency {
                         id
                         name

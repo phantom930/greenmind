@@ -52,6 +52,7 @@ export interface GreenProduct extends Product {
     isInStock?: boolean;
     qty?: number;
     variantAttributeValues?: AttributeValue[];
+    schemaAttributeValues?: AttributeValue[];
     websiteSubtitle?: string;
     imageFilename?: string;
     combinationInfo?: CombinationInfo;

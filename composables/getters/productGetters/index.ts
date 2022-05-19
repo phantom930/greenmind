@@ -13,8 +13,11 @@ const getImageFilename = (product: GreenProduct) : string => product?.imageFilen
 const getAttributesWithoutGrade = (product: GreenProduct) : AttributeValue[] =>
   product?.variantAttributeValues ?.filter(attribute => attribute?.attribute?.name !== 'Grade');
 
+const getSchemaAttributeValues = (product: GreenProduct) : AttributeValue[] => product?.schemaAttributeValues || [];
+
 const getters = {
   ...productGetters,
+  getSchemaAttributeValues,
   getAccessoryProducts,
   getAttributesWithoutGrade,
   getAttributesValues,
