@@ -13,6 +13,7 @@
           :key="index"
           custom
           class="price-discount-wrap"
+          :disabled="isProductStockEmpty(grade)"
           :class="isSelectedGrade(grade) ? 'active' : ''"
         >
           <span role="link">
@@ -60,22 +61,25 @@ export default defineComponent({
     const isSelectedGrade = (info : CombinationInfo): boolean =>
       props.productVariantId === info.product_id;
 
-    const chooseGrade = (info : CombinationInfo) => {
-      if (isSelectedGrade(info)) return;
-
-      emit('update', info.slug);
-    };
-
     const breakName = (name: string) : string[] => name.split('-');
 
+    const isProductStockEmpty = (info : CombinationInfo): boolean => info.stock_qty === 0;
+
     const isPriceLessThanFiveOrWithoutstock = (info : CombinationInfo): boolean => {
-      if (info.stock_qty === 0 || info.price < 5) {
+      if (isProductStockEmpty(info) || info.price < 5) {
         return true;
       }
       return false;
     };
 
+    const chooseGrade = (info : CombinationInfo) => {
+      if (isSelectedGrade(info) || isProductStockEmpty(info)) return;
+
+      emit('update', info.slug);
+    };
+
     return {
+      isProductStockEmpty,
       isSelectedGrade,
       chooseGrade,
       breakName,

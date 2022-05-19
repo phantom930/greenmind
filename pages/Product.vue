@@ -82,7 +82,7 @@
 
           <div class="total-price-buttons">
             <p class="total-price">
-              {{ $currency(combinationInfo.price) }}
+              {{ productInStock ? $currency(combinationInfo.price) : $t('Out of stock') }}
             </p>
             <div class="buttons">
               <GreenButton
