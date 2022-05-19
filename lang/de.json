@@ -350,5 +350,10 @@
   "Name: A to Z": "Alfabetisk, A til A",
   "Name: Z to A": "Alfabetisk, A til A",
   "Price: High to Low": "Pris, faldende",
-  "Price: Low to High": "Pris, stigende"
+  "Price: Low to High": "Pris, stigende",
+  "This field must have be": "Dieses Feld muss sein",
+  "This field is required.": "Dieses Feld wird benötigt.",
+  "This field must be an email": "Dieses Feld muss eine E-Mail sein",
+  "This field must have": "Dieses Feld muss vorhanden sein",
+  "digits": "Ziffern"
 }

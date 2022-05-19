@@ -1,27 +1,37 @@
 /* eslint-disable camelcase */
-import { extend } from 'vee-validate';
+import { extend, localize } from 'vee-validate';
 import { min, email, required, digits, max } from 'vee-validate/dist/rules';
-extend('min', {
-  ...min,
-  message: field => `This field must have be ${field}`
-});
+import { Plugin } from '@nuxt/types';
 
-extend('max', {
-  ...max,
-  message: field => `This field must have be ${field}`
-});
+const veeValidatePlugin : Plugin = ({ i18n }) => {
 
-extend('email', {
-  ...email,
-  message: 'This field must be an email'
-});
+  console.log();
 
-extend('digits', {
-  ...digits,
-  message: field => `This field must have ${field} digits`
-});
+  extend('min', {
+    ...min,
+    message: field => `${i18n.t('This field must have be')} ${field}`
+  });
 
-extend('required', {
-  ...required,
-  message: 'This field is required.'
-});
+  extend('max', {
+    ...max,
+    message: field => `${i18n.t('This field must have be')} ${field}`
+  });
+
+  extend('email', {
+    ...email,
+    message: i18n.t('This field must be an email')?.toString()
+  });
+
+  extend('digits', {
+    ...digits,
+    message: field => `${i18n.t('This field must have')} ${field} ${i18n.t('digits')}`
+  });
+
+  extend('required', {
+    ...required,
+    message: i18n.t('This field is required.')?.toString()
+  });
+
+};
+
+export default veeValidatePlugin;

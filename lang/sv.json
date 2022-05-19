@@ -349,5 +349,11 @@
   "Name: A to Z": "Namn: A till Ö",
   "Name: Z to A": "Namn: Z till A",
   "Price: High to Low": "Pris: Högt till Lågt",
-  "Price: Low to High": "Pris: Lågt till Högt"
+  "Price: Low to High": "Pris: Lågt till Högt",
+  "Select sorting": "Välj sortering",
+  "This field must have be": "Detta fält måste ha varit",
+  "This field is required.": "Detta fält är obligatoriskt.",
+  "This field must be an email": "Detta fält måste vara ett e-postmeddelande",
+  "This field must have": "Detta fält måste ha",
+  "digits": "siffror"
 }
