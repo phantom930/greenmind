@@ -41,7 +41,7 @@
         />
         <SfProperty
           :name="$t('Shipping')"
-          :value="shippingMethodPrice ? shippingMethodPrice : $t('Free')"
+          :value="shippingMethodPrice ? $currency(shippingMethodPrice) : $t('Free')"
           class="sf-property--full-width sf-property--large property"
         />
 

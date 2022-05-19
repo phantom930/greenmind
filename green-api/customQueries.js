@@ -359,10 +359,15 @@ module.exports = {
     mutation: gql `
     mutation{
       setShippingMethod{
-          order{
+        order{
+          id
+          name
+          shippingMethod{
             id
-            amountDelivery
+            name
+            price
           }
+        }
       }
     }`
   })

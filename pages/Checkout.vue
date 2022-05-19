@@ -27,8 +27,10 @@
 </template>
 <script lang="ts">
 import { SfSteps } from '@storefront-ui/vue';
+import { useCart } from '@vue-storefront/odoo';
 import { computed } from '@nuxtjs/composition-api';
 import { useRouter, useRoute, defineComponent } from '@nuxtjs/composition-api';
+import { onSSR } from '@vue-storefront/core';
 
 const STEPS = {
   personaldetails: 'Personal details',
@@ -46,6 +48,7 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const { load, setCart } = useCart();
 
     const currentStep = computed(() =>
       route.value.path?.split('/').pop()
@@ -61,6 +64,11 @@ export default defineComponent({
 
       router.push({ name: stepNameIndex});
     };
+
+    onSSR(async () => {
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoad' } });
+    });
     return {
       handleStepByNumber,
       handleStepClick,

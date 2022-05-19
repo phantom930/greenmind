@@ -52,7 +52,7 @@
       <div class="shipping">
         <p>{{ $t('Shipping') }}:</p>
         <p class="price">
-          Gratis
+          {{ shippingMethodPrice ? $currency(shippingMethodPrice) : $t('Free') }}
         </p>
       </div>
       <div class="total-price">
@@ -107,7 +107,7 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
 import { SfButton } from '@storefront-ui/vue';
-import { useCart } from '@vue-storefront/odoo';
+import { useCart, checkoutGetters } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 import { cartGetters, productGetters } from '~/composables';
 
@@ -117,17 +117,16 @@ export default defineComponent({
     SfButton
   },
   setup(props, { root }) {
-    const { cart, load, setCart } = useCart();
+    const { cart } = useCart();
     const orderLines = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const agreeTermsConditions = ref(false);
 
-    onSSR(async () => {
-      setCart(null);
-      await load({ customQuery: { cartLoad: 'greenCartLoad' } });
-    });
-
+    const shippingMethodPrice = computed(() =>
+      checkoutGetters.getShippingMethodPrice(cart.value?.order?.shippingMethod)
+    );
     return {
+      shippingMethodPrice,
       cart,
       agreeTermsConditions,
       cartGetters,

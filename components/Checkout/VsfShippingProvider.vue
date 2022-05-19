@@ -27,6 +27,7 @@
 import { SfRadio } from '@storefront-ui/vue';
 import { ref, onMounted, watch, defineComponent } from '@nuxtjs/composition-api';
 import { useShippingProvider } from '@vue-storefront/odoo';
+import { onSSR } from '@vue-storefront/core';
 
 export default defineComponent({
   name: 'VsfShippingProvider',
@@ -47,7 +48,7 @@ export default defineComponent({
 
     const isSelected = (id) => String(props?.selectedShippingMethodId) === id;
 
-    onMounted(async () => {
+    onSSR(async () => {
       // await load();
       await save({ shippingMethod: {}, customQuery: { setShippingMethod: 'greenNullShippingMethod' }});
       // selectMethod(shippingMethods.value[0].id);
