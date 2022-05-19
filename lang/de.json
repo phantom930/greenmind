@@ -345,5 +345,10 @@
   "Payment list": "Zahlungsarten",
   "REMOVE": "LÖSCHEN",
   "Be aware of upcoming sales and events. Receive gifts and special offers!": "Informieren Sie sich über bevorstehende Verkäufe und Veranstaltungen. Erhalten Sie Geschenke und Sonderangebote!",
-  "By subscribing to the newsletter, you also accept Green Minds privacy policy": "Mit der Anmeldung zum Newsletter akzeptieren Sie auch die Datenschutzerklärung von Green Mind:"
+  "By subscribing to the newsletter, you also accept Green Minds privacy policy": "Mit der Anmeldung zum Newsletter akzeptieren Sie auch die Datenschutzerklärung von Green Mind:",
+  "Select sorting": "Select sorting",
+  "Name: A to Z": "Alfabetisk, A til A",
+  "Name: Z to A": "Alfabetisk, A til A",
+  "Price: High to Low": "Pris, faldende",
+  "Price: Low to High": "Pris, stigende"
 }

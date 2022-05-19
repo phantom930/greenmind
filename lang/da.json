@@ -345,5 +345,10 @@
   "Payment list": "Betalingsmetoder",
   "REMOVE": "FJERNE",
   "Be aware of upcoming sales and events. Receive gifts and special offers!": "Ved at tilmelde dig vores nyhedsbrev er du altid den første der får besked om tilbud, konkurrencer og andet godt!",
-  "By subscribing to the newsletter, you also accept Green Minds privacy policy": "Ved at tilmelde dig nyhedsbrevet accepterer du samtidigt Green Mind’s privatlivspolitik: "
+  "By subscribing to the newsletter, you also accept Green Minds privacy policy": "Ved at tilmelde dig nyhedsbrevet accepterer du samtidigt Green Mind’s privatlivspolitik: ",
+  "Select sorting": "Vælg sortering",
+  "Name: A to Z": "Alfabetisk, A til Å",
+  "Name: Z to A": "Alfabetisk, Å til A",
+  "Price: High to Low": "Pris, faldende",
+  "Price: Low to High": "Pris, stigende"
 }
