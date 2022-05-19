@@ -16,11 +16,9 @@
       </h3>
       <p class="text">
         Du vil modtage et Track & Trace-nummer på mail, når vi afsender ordren, så du kan følge ordren hele vejen.
-      </p>
-      <p class="text">
+
         På vores hjemmeside kan du se hvilke varer der er på lager, og bestiller du et produkt der er på lager, så afsender din ordre hurtigst muligt. Derfor vil forsendelse normalt ske den første eller anden hverdag, efter bestillingen er modtaget.
-      </p>
-      <p class="text">
+
         Vi leverer kun til kunder i Danmark (We do not deliver to addresses outside Denmark). Der leveres ikke til Færøerne og Grønland.
       </p>
 
@@ -62,7 +60,6 @@
         Tilbagebetaling af købsbeløbet
       </h3>
       <p class="text">
-        Tilbagebetaling af købsbeløbet
         Hvis du fortryder dit køb, får du dine penge tilbage. Hvis varen er værdiforringet, fratrækker vi det beløb, du hæfter for. Vi refunderer betalinger modtaget fra dig, eksl. leveringsomkostninger, senest 14 dage fra den dag, hvor vi har modtaget din besked om, at du vil fortryde aftalen. Vi tilbagefører pengene med samme betalingsmiddel, som du benyttede ved købet, medmindre vi har aftalt andet. Vi kan tilbageholde betalingen indtil vi har modtaget varen, medmindre du sender os dokumentation for at have returneret den.
       </p>
 
@@ -85,20 +82,18 @@
         Du skal reklamere inden for ”rimelig tid” efter, at du har opdaget fejlen. Hvis du reklamerer inden for to måneder efter, at fejlen er opdaget, vil reklamationen altid være rettidig.
       </p>
       <p class="text">
-        Ved reklamation af vare, kontakt venligst vores kundeservice på  <a href="mailto: mail@greenmind.dk">
-          mail@greenmind.dk
-        </a>, for at få tilsendt en gratis returlabel. Varen skal altid sendes tilbage i forsvarlig emballage.
+        Ved reklamation af vare, kontakt venligst vores kundeservice på  <a href="mailto: mail@greenmind.dk">mail@greenmind.dk</a>, for at få tilsendt en gratis returlabel. Varen skal altid sendes tilbage i forsvarlig emballage.
       </p>
       <p class="text">
         Varen sendes til: Den adresse der fremgår af din købskvittering.
       </p>
       <p class="text">
+        Vi modtager kun pakker, som sendes direkte til vores adresser. Du kan også fortryde købet ved at give os besked og aflevere den personligt i en af vores butikker.
+      </p>
+      <p class="text">
         Find butikker, og adresser <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
           her
         </nuxt-link>
-      </p>
-      <p class="text">
-        Vi modtager kun pakker, som sendes direkte til vores adresser. Du kan også fortryde købet ved at give os besked og aflevere den personligt i en af vores butikker.
       </p>
     </div>
   </div>
