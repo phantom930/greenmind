@@ -190,10 +190,10 @@ export default defineComponent({
     });
 
     const loadUser = () => {
-      if (cart.value.order?.partner && !cart.value.order?.partner?.name?.includes('Public')) {
-        form.email = cart.value.order?.partner.email;
-        form.firstName = cart.value.order?.partner?.name?.split(' ')[0];
-        form.lastName = cart.value.order?.partner?.name?.split(' ')[1];
+      if (cart.value?.order?.partner && !cart.value?.order?.partner?.name?.includes('Public')) {
+        form.email = cart.value?.order?.partner.email;
+        form.firstName = cart?.value?.order?.partner?.name?.split(' ')[0];
+        form.lastName = cart?.value.order?.partner?.name?.split(' ')[1];
       }
     };
 

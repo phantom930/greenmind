@@ -40,8 +40,6 @@ const getSchemaAttributeValues = (product: GreenProduct) : AttributeValue[] => {
     returnArray.push(item[0]);
   });
 
-  console.log(groupedByName);
-
   return returnArray || [];
 };
 

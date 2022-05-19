@@ -40,6 +40,7 @@
           "
         />
         <SfProperty
+          v-if="!isPersonalOrShippingPage"
           :name="$t('Shipping')"
           :value="shippingMethodPrice ? $currency(shippingMethodPrice) : $t('Free')"
           class="sf-property--full-width sf-property--large property"
@@ -170,7 +171,7 @@
 </template>
 <script lang="ts">
 import { SfHeading, SfProperty, SfCharacteristic, SfLink } from '@storefront-ui/vue';
-import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
+import { computed, ref, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
 import { cartGetters } from '~/composables';
 
@@ -184,6 +185,7 @@ export default defineComponent({
   },
   setup(props, context) {
     const { cart, applyCoupon } = useCart();
+    const { name } = useRoute().value;
     const currentStep = computed(() =>
       context.root.$route.path.split('/').pop()
     );
@@ -201,7 +203,10 @@ export default defineComponent({
       checkoutGetters.getShippingMethodPrice(cart.value?.order?.shippingMethod)
     );
 
+    const isPersonalOrShippingPage = computed(() => ['personaldetails', 'shipping'].includes(name));
+
     return {
+      isPersonalOrShippingPage,
       cart,
       currentStep,
       partner,
