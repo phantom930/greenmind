@@ -5,15 +5,11 @@
         Hvorfor GreenMind?
       </h1>
       <p class="text">
-        Danskerne er rigtig glade for elektronik. Vi køber mere og mere.
-        Men vi smider også mere og mere ud.
+        Danskerne er rigtig glade for elektronik. Vi køber mere og mere. Men vi smider også mere og mere ud.<br>
 
-        Vi bruger f.eks. i gennemsnit kun vores mobil i 18 mdr. og TV’et bliver allerede skiftet ud efter 2 år.
-        Og selvom vi er rigtig gode til at skifte mobilen ud, gemmer vi næsten altid den gamle.
-        For den er for god til at smide ud og for besværlig at sælge.
+        Vi bruger f.eks. i gennemsnit kun vores mobil i 18 mdr. og TV’et bliver allerede skiftet ud efter 2 år. Og selvom vi er rigtig gode til at skifte mobilen ud, gemmer vi næsten altid den gamle. For den er for god til at smide ud og for besværlig at sælge.<br>
 
-        Men det er ikke alle, der bare skal have den sidste nye Samsung Galaxy, Nokia Lumia eller iPhone.
-        Hvis kvaliteten er i orden, er sidste års model helt perfekt.
+        Men det er ikke alle, der bare skal have den sidste nye Samsung Galaxy, Nokia Lumia eller iPhone. Hvis kvaliteten er i orden, er sidste års model helt perfekt.<br>
 
         Derfor har vi startet GreenMind, der gør det nemt og sikkert at sælge og købe brugt elektronik.
       </p>
