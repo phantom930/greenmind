@@ -8,9 +8,8 @@
         Køb brugt med god samvittighed
       </h3>
       <p class="text">
-        Er du en af dem, der er lidt ligeglad med, om det er sidste års model – bare du får god kvalitet?
-      </p>
-      <p class="text">
+        Er du en af dem, der er lidt ligeglad med, om det er sidste års model – bare du får god kvalitet?<br>
+
         Køb din iPhone, Samsung Galaxy, Nokia Lumia eller iPad hos GreenMind. Vi køber bl.a.
         brugt elektronik af dem, der altid skal have det nyeste, så du kan købe brugt med god samvittighed.
       </p>
@@ -18,9 +17,7 @@
         Nemt og smart
       </h3>
       <p class="text">
-        Der er tusindvis af kroner at spare på brugt kvalitetselektronik hos GreenMind.
-        Ofte er den primære forskel på sidste års model og den nyeste designmæssige fordele.
-        Vi har desuden en række procedurer, der sikrer, at du får en vare, der fungerer og er renset for den tidligere ejers data.
+        Der er tusindvis af kroner at spare på brugt kvalitetselektronik hos GreenMind. Ofte er den primære forskel på sidste års model og den nyeste designmæssige fordele. Vi har desuden en række procedurer, der sikrer, at du får en vare, der fungerer og er renset for den tidligere ejers data.
       </p>
       <ul class="list-disc">
         <li class="text">
@@ -30,8 +27,7 @@
           Du får 2 års garanti på brugt elektronik købt hos GreenMind, gældende fra købstidspunktet.
         </li>
         <li class="text">
-          Alle, som sælger til GreenMind, bliver registreret i vores system og skal vise gyldig billed- og adresselegitimation for at sikre,
-          at de er den retmæssige ejer.
+          Alle, som sælger til GreenMind, bliver registreret i vores system og skal vise gyldig billed- og adresselegitimation for at sikre, at de er den retmæssige ejer.
         </li>
       </ul>
       <h3 class="font-bold">
