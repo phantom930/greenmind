@@ -16,10 +16,6 @@
 
     <nuxt :key="$route.fullPath" />
 
-    <LazyHydrate when-visible>
-      <BottomNavigation />
-    </LazyHydrate>
-
     <LazyHydrate when-idle>
       <CartSidebar />
     </LazyHydrate>
