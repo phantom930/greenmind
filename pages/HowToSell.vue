@@ -9,7 +9,7 @@
         Prisgaranti
       </h3>
       <p class="text">
-        Vi slår alle andre firmaers opkøbspriser på nettet.Butikkerne vurderer prisen på dit produkt baseret på standen.
+        Vi slår alle andre firmaers opkøbspriser på nettet. Butikkerne vurderer prisen på dit produkt baseret på standen.
       </p>
 
       <h3 class="font-bold">
@@ -17,7 +17,7 @@
       </h3>
 
       <p class="text">
-        Vi renser, nulstiller og sletter dine data, så e-mails, private billeder og videoer ikke ender i de forkerte hænder. Du handler udelukkende med GreenMind og vi behandler alle dine oplysninger fortroligt.
+        Vi renser, nulstiller og sletter dine data, så e-mails, private billeder og videoer ikke ender i de forkerte hænder. Du handler udelukkende med GreenMind A/S og vi behandler alle dine oplysninger fortroligt.
       </p>
 
       <h3 class="font-bold">
@@ -26,16 +26,13 @@
 
       <ul class="list-disc">
         <li class="text">
-          Produktet skal være opladet Hvis det er en mobil, tablet, bærbar eller lignende der bruger batteri, skal du sørge for at produktet er opladet,
-          så personalet kan tjekke udstyrets stand.
+          Produktet skal være opladet Hvis det er en mobil, tablet, bærbar eller lignende der bruger batteri, skal du sørge for at produktet er opladet, så personalet kan tjekke udstyrets stand.
         </li>
         <li class="text">
-          Medbring ID gyldig billede- og adresselegitimation.
-          Alle som sælger til GreenMind bliver registreret i vores system for at sikre at du er den retmæssige ejer.
+          Medbring ID gyldig billede- og adresselegitimation. Alle som sælger til GreenMind bliver registreret i vores system for at sikre at du er den retmæssige ejer.
         </li>
         <li class="text">
-          Medbring ekstraudstyr
-          For at opnå den bedste pris, skal du altid huske at medbringe originalt ekstraudstyr, såsom oplader, controller osv.
+          Medbring alt ekstraudstyr for at opnå den bedste pris. Produktet er mere værd hvis du også husker at medbringe originalt ekstraudstyr, såsom oplader, controller osv.
         </li>
       </ul>
 
@@ -53,7 +50,7 @@
           Ønsker du at købe et andet produkt i vores butik eller onlineshop, kan vi give dig en endnu bedre pris for dit produkt.
         </li>
         <li class="text">
-          Når du accepterer prisen, er handlen bindende for begge parter. Vi forbeholder os dog retten til at ophæve handlen såfremt det viser sig, at varen ikke tilhører dig, eller hvis varen har en ikke uvæsentlig defekt
+          Når du accepterer prisen, er handlen bindende for begge parter. Vi forbeholder os dog retten til at ophæve handlen såfremt det viser sig, at varen ikke tilhører dig, eller hvis varen har en ikke uvæsentlig defekt eller skade, som du ikke oplyste om forud for salget.
         </li>
         <li class="text">
           Bemærk at personalet til enhver tid kan afvise at købe en vare.
