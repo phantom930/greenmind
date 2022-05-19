@@ -197,7 +197,7 @@ export default defineComponent({
     );
 
     const handleSelectNewGrade = async (slug) => {
-      router.push(slug);
+      router.push({ path: slug, params: { keepScroll: true}});
     };
 
     onSSR(async () => {
