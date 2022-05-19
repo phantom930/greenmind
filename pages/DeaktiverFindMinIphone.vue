@@ -146,3 +146,4 @@
 <style lang="scss" scoped>
 @import '~/assets/css/infoPages.scss';
 </style>
+
