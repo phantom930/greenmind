@@ -3,9 +3,9 @@
   <div class="text-wrap">
 
     <div class="container">
-      <h1 class="font-bold title mb">Deaktivering af Find My iPhone</h1>
+      <h1 class="font-bold title mb">Deaktivering af Find Min iPhone</h1>
       <h3 class="font-bold subtitle mb">
-          Guide til deaktivering af Find My iPhone på iPhones, iPads, iMac og Macbooks.
+          Guide til deaktivering af Find Min iPhone på iPhones, iPads, iMac og Macbooks.
       </h3>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/u4DbFC8P11s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <h3 class="font-bold subtitle mb">Brug for hjælp?</h3>
