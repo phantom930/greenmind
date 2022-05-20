@@ -14,8 +14,8 @@
       </h3>
       <p class="text mb">
         Download følgebrevet, udfyld alle punkter og print det ud – følgebrevet kan hentes her:<br>
-        PRIVATKUNDE <download “GreenMind_foelgebrev_privat_20220517.pdf><br>
-        FORSIKRINGSKUNDE <download “GreenMind_foelgebrev_forsikring_20220517.pdf>
+        <a href="/assets/images/GreenMind_foelgebrev_privat_20220517.pdf">PRIVATKUNDE</a><br>
+        <a href="/assets/images/GreenMind_foelgebrev_forsikring_20220517.pdf">FORSIKRINGSKUNDE</a>
       </p>
       <h3 class="font-bold">
         Trin 2, backup
@@ -28,7 +28,9 @@
       </h3>
       <p class="text mb">
         Hvis du indleverer en iPhone, iPad, iMac eller Macbook er det vigtigt at du deaktiverer Find My iPhone.<br>
-        <a href=”greenmind.dk/deaktivering-af-find-min-iphone”>Deaktivering af Find Min iPhone</a><br>
+        <nuxt-link :to="{ name: 'deaktivering-af-find-min-iphone' }" class="underline text-center y-link">
+          Deaktivering af Find Min iPhone
+        </nuxt-link>
         Årsagen er at vi ikke kan teste, og i nogle tilfælde heller ikke reparere, Apple produkter, hvis ikke “Find My iPhone” er deaktiveret.
       </p>
       <h3 class="font-bold">
