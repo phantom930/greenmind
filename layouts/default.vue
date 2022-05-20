@@ -7,12 +7,11 @@
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
+    <LazyHeaderTopbarTertiary v-if="$device.isDesktopOrTablet" />
 
-    <GreenTopbarTertiary v-if="$device.isDesktopOrTablet" />
-
-    <LazyHydrate when-idle>
+    <!-- <LazyHydrate when-idle>
       <StoreStatus />
-    </LazyHydrate>
+    </LazyHydrate> -->
 
     <nuxt :key="$route.fullPath" />
 
@@ -42,6 +41,7 @@ import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
 import StoreStatus from '~/components/Product/StoreStatus.vue';
+import TopbarTertiary from '~/components/Header/TopbarTertiary.vue';
 
 export default {
   name: 'DefaultLayout',
@@ -53,7 +53,8 @@ export default {
     HamburguerMenu,
     WishlistSidebar,
     StoreStatus,
-    Notification
+    Notification,
+    TopbarTertiary
   },
   setup () {
   }

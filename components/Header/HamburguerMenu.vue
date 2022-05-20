@@ -5,6 +5,8 @@
       position="right"
       @close="toggleHamburguerMenu"
     >
+      <HeaderMegaMenu v-if="$device.isMobile" />
+
       <nuxt-link :to="{ name: 'customer-service' }">
         <SfButton
           style="margin-top: 15%;"

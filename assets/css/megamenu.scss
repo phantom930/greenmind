@@ -1,24 +1,9 @@
 ::v-deep .sf-search-bar{
     display: none;
 }
-::v-deep .sf-header__icons{
-    display: none;
-}
-
-::v-deep .header-links {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
 
 ::v-deep .sf-header-navigation-item {
   display: block;
-}
-
-::v-deep .sf-header__navigation {
-  width: 100%;
-  z-index: 1;
 }
 
 ::v-deep .sf-header-navigation-item__link {
@@ -180,10 +165,6 @@
 
 ::v-deep .dropdown.other-products .sf-mega-menu__menu {
     justify-content: flex-start;
-}
-
-.top-header {
-  z-index: 1;
 }
 
 ::v-deep .dropdown.iphones .sf-mega-menu__menu {

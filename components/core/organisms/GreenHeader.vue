@@ -8,7 +8,7 @@
     >
       <template #logo />
       <template #navigation>
-        <div class="grid grid-cols-3 auto-cols-min header-links">
+        <div v-if="$device.isDesktopOrTablet" class="grid grid-cols-3 auto-cols-min header-links">
           <SfHeaderNavigationItem
             v-for="(category, index) in sbCategories"
             :key="index"
