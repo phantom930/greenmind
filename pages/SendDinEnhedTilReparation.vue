@@ -2,35 +2,60 @@
   <div class="text-wrap">
     <div class="container">
       <h1 class="font-bold title mb">
-        Reparation
+        Send din enhed til reparation
       </h1>
       <p class="text mb">
-        Find en butik nær dig og få din telefon repareret i dag. Hos GreenMind ønsker vi at være de førende inden for både reparationer og salg af brugte smartphones, tablets og computere. For at være det, er det afgørende, at vi kan være så tæt på vores kunder som overhovedet muligt. Derfor har vi i dag butikker fordelt over hele landet. Som kunde skal du som regel ikke vente længe på, at vi reparerer din enhed. Mens du venter, sørger vi for en behagelig atmosfære i vores butikker, hvor du samtidig finder et stort udvalg af brugt elektronik. Hvis du er i tvivl om, hvad der er galt med din telefon, så kan vores medarbejdere også hurtigt hjælpe dig. Det tager os som regel ikke lang tid at finde ud, hvad der skal gøres og komme med en eventuel pris.<br>
-        <a href="/butikker" class="underline y-link">FIND DIN NÆRMESTE GREENMIND AFDELING</a>
-      </p>
-      <h3 class="font-bold subtitle mb text-center">
-        GreenMind afdelinger
-      </h3>
-      <p class="text mb text-center">
-        Vi har værksteder i alle vores butikker.
-        Hvis vi ikke har travlt når du kommer, kan du få repareret din enhed mens du venter.
-      </p>
-      <p class="text mb text-center">
-        Danmarks mest erfarne<br>
-        Over 250.000 reparationer siden 2009<br>
-        Hurtig service<br>
-        Reparation på timebasis i alle butikker<br>
-        Kvalitet i højsædet<br>
-        Kun de bedste reservedele<br>
-        Overtagelse af garanti<br>
-        Vi overtager evt. rest-garanti på enhed
+        Guide til indsendelse af enhed til reparation hos GreenMind A/S (forsikringskunder bedes følge instrukserne i det tilsendte infobrev).<br>
+        Du kan også altid aflevere din enhed i én af vores butikker. Læs mere her:<br>
+        <a href=”greenmind.dk/butikker”>Butikker</a>
       </p>
       <h3 class="font-bold">
-        Overtagelse af garanti og reklamationsret
+        Trin 1, følgebrev
       </h3>
       <p class="text mb">
-        Når du får repareret din smartphone eller tablet hos GreenMind, så skal du ikke være nervøs for at miste garantien eller reklamationsretten på dit produkt. Vi overtager nemlig begge dele, når vi har haft din smartphone eller tablet inde til reparation. <br>
-        <a href="/handelsebetingelser" class="underline y-link">Læs GreenMinds hendelsbetingelser her.</a>
+        Download følgebrevet, udfyld alle punkter og print det ud – følgebrevet kan hentes her:<br>
+        PRIVATKUNDE <download “GreenMind_foelgebrev_privat_20220517.pdf><br>
+        FORSIKRINGSKUNDE <download “GreenMind_foelgebrev_forsikring_20220517.pdf>
+      </p>
+      <h3 class="font-bold">
+        Trin 2, backup
+      </h3>
+      <p class="text mb">
+        Foretag backup af dit data på enheden. GreenMind A/S kan ikke stilles til ansvar for tab af data i forbindelse med reparationen.
+      </p>
+      <h3 class="font-bold">
+        Trin 3, Deaktivering af Find My iPhone
+      </h3>
+      <p class="text mb">
+        Hvis du indleverer en iPhone, iPad, iMac eller Macbook er det vigtigt at du deaktiverer Find My iPhone.<br>
+        <a href=”greenmind.dk/deaktivering-af-find-min-iphone”>Deaktivering af Find Min iPhone</a><br>
+        Årsagen er at vi ikke kan teste, og i nogle tilfælde heller ikke reparere, Apple produkter, hvis ikke “Find My iPhone” er deaktiveret.
+      </p>
+      <h3 class="font-bold">
+        Trin 4, følgebrev
+      </h3>
+      <p class="text mb">
+        Vedlæg det udfyldte følgebrev i forsendelsen sammen med din defekte enhed.<br>
+        Send kun følgebrevet og din defekte enhed inkl. batteri og intet andet.<br>
+        Tilbehør som beskyttelsescover, oplader og SIM-kort skal ikke sendes med.
+      </p>
+      <h3 class="font-bold">
+        Trin 5, selve forsendelsen
+      </h3>
+      <p class="text mb">
+        Send pakken til vores pakkeværksted på følgende adresse:<br>
+        GreenMind A/S<br>
+        C/O Blue House<br>
+        Brudelysvej 23<br>
+        2880 Bagsværd
+      </p>
+      <h3 class="font-bold">
+        Trin 6, modtagelse og betaling
+      </h3>
+      <p class="text mb">
+        Vi modtager din enhed og udfører reparationen.<br>
+        Derefter sender vi dig et betalingslink til din e-mail.<br>
+        Når betalingen for reparationen er gennemført, sender vi din reparerede enhed retur til dig.
       </p>
     </div>
   </div>
