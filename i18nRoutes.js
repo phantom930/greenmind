@@ -1,9 +1,9 @@
 export default {
   environment: {
-    en: '/environmental',
-    da: '/miljoe',
-    de: '/miljoe',
-    sv: '/miljoe'
+    en: '/environment',
+    da: '/miljoe-og-baeredygtighed',
+    de: '/miljoe-og-baeredygtighed',
+    sv: '/environment'
   },
   winter: {
     en: '/winter-holidays-advice',
@@ -34,6 +34,24 @@ export default {
     da: '/standbeskrivelser',
     de: '/standbeskrivelser',
     sv: '/standbeskrivelser'
+  },
+  readyAndroidDelivery: {
+    en: '/ready-android-delivery',
+    da: '/klargoer-din-android-enhed',
+    de: '/klargoer-din-android-enhed',
+    sv: '/ready-android-delivery'
+  },
+  disableFindMinIphone: {
+    en: '/disable-find-iphone',
+    da: '/deaktivering-af-find-min-iphone',
+    de: '/deaktivering-af-find-min-iphone',
+    sv: '/disable-find-iphone'
+  },
+  sendDeviceRepair: {
+    en: '/send-device-repair',
+    da: '/send-din-enhed-til-reparation',
+    de: '/send-din-enhed-til-reparation',
+    sv: '/send-device-repair'
   },
   reparation: {
     en: '/repair',

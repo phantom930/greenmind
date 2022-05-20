@@ -20,7 +20,7 @@
       <CartSidebar />
     </LazyHydrate>
     <LazyHydrate when-idle>
-      <HamburguerMenu />
+      <LazyHeaderHamburguerMenu />
     </LazyHydrate>
     <!-- <WishlistSidebar /> -->
     <Notification />
@@ -37,7 +37,7 @@
 import BottomNavigation from '~/components/BottomNavigation.vue';
 import TopBar from '~/components/TopBar.vue';
 import CartSidebar from '~/components/CartSidebar.vue';
-import HamburguerMenu from '~/components/HamburguerMenu.vue';
+import HamburguerMenu from '~/components/Header/HamburguerMenu.vue';
 import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';

@@ -180,11 +180,15 @@ export default defineComponent({
           {
             name: 'Computers',
             slug: '/computere'
-          },
-          {
-            name: 'Accessories',
-            slug: '/tilbehoer'
           }
+          // {
+          //   name: 'Accessories',
+          //   slug: '/tilbehor'
+          // },
+          // {
+          //   name: 'Other products',
+          //   slug: '/andre'
+          // }
         ]
       },
       columns: [
@@ -206,6 +210,18 @@ export default defineComponent({
             {
               name: 'Reparation',
               slug: 'reparation'
+            },
+            {
+              name: 'Stand descriptions',
+              slug: 'standDescriptions'
+            },
+            {
+              name: 'Environment',
+              slug: 'environment'
+            },
+            {
+              name: 'Price guarantee',
+              slug: 'price-guarantee'
             }
 
             /* {
@@ -238,8 +254,20 @@ export default defineComponent({
               slug: 'faq'
             },
             {
-              name: 'Privatlivspolitik',
+              name: 'GDPR',
               slug: 'gdpr'
+            },
+            {
+              name: 'Prepare your Android device for submission',
+              slug: 'readyAndroidDelivery'
+            },
+            {
+              name: 'Disable Find My iPhone',
+              slug: 'disableFindMinIphone'
+            },
+            {
+              name: 'Send your device for repair',
+              slug: 'sendDeviceRepair'
             }
           ]
         }
@@ -247,7 +275,7 @@ export default defineComponent({
       contactColumn: {
         title: 'Shops',
         contactChilds: [
-          { name: 'Tel: +45 4697 5050', text: 'Tlf: +45 4697 5050' },
+          { name: 'Tfl: +45 4697 5050', text: 'Tel: +45 4697 5050' },
           { name: 'mailto: mail@greenmind.dk', text: 'emailSendTo' }
         ],
         childs: [

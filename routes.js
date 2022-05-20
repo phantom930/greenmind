@@ -94,12 +94,27 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/PriceGuarantee.vue')
     },
     {
+      name: 'readyAndroidDelivery',
+      path: `${i18nRoutes.readyAndroidDelivery[localeIndex]}`,
+      component: path.resolve(themeDir, 'pages/ReadyAndroidForDelivery.vue')
+    },
+    {
+      name: 'disableFindMinIphone',
+      path: `${i18nRoutes.disableFindMinIphone[localeIndex]}`,
+      component: path.resolve(themeDir, 'pages/DisableFindMinIphone.vue')
+    },
+    {
+      name: 'sendDeviceRepair',
+      path: `${i18nRoutes.sendDeviceRepair[localeIndex]}`,
+      component: path.resolve(themeDir, 'pages/DisableFindMinIphone.vue')
+    },
+    {
       name: 'about-us',
       path: `${i18nRoutes.aboutUs[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/AboutUs.vue')
     },
     {
-      name: 'stand-descriptions',
+      name: 'standDescriptions',
       path: `${i18nRoutes.standDescriptions[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/StandDescriptions.vue')
     },

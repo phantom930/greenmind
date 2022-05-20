@@ -3,10 +3,12 @@
     <template #navigation>
       <div class="header-links">
         <div class="dropdown-wrap">
-          <a
-            href="/telefoner/iphones"
+          <nuxt-link
+            to="/telefoner/iphones"
             class="custom-link"
-          >IPHONES</a>
+          >
+            IPHONES
+          </nuxt-link>
           <div class="dropdown iphones">
             <SfMegaMenu
               title="iPhones"
@@ -91,6 +93,9 @@
                   <nuxt-link to="/telefoner/smartphones/google-pixel">
                     <SfListItem><SfMenuItem :label="$t('Google Pixel')" /></SfListItem>
                   </nuxt-link>
+                  <!-- <nuxt-link to="/telefoner/smartphones/xiaomi">
+                    <SfListItem><SfMenuItem :label="$t('Xiaomi')" /></SfListItem>
+                  </nuxt-link> -->
                   <nuxt-link to="/telefoner/smartphones">
                     <SfListItem><SfMenuItem :label="$t('All Smartphones')" /></SfListItem>
                   </nuxt-link>
@@ -124,9 +129,9 @@
                   <nuxt-link to="/tablets/android">
                     <SfListItem><SfMenuItem :label="$t('Android Tablets')" /></SfListItem>
                   </nuxt-link>
-                  <!--<nuxt-link to="/tablets/windows">
+                  <!-- <nuxt-link to="/tablets/windows">
                     <SfListItem><SfMenuItem :label="$t('Windows Tablets')" /></SfListItem>
-                  </nuxt-link>-->
+                  </nuxt-link> -->
                   <nuxt-link to="/tablets">
                     <SfListItem><SfMenuItem :label="$t('All Tablets')" /></SfListItem>
                   </nuxt-link>
@@ -202,9 +207,9 @@
                   <nuxt-link to="/tv-og-lyd">
                     <SfListItem><SfMenuItem :label="$t('TV & Sound')" /></SfListItem>
                   </nuxt-link>
-                  <!--<nuxt-link to="/kamera-og-billede">
+                  <!-- <nuxt-link to="/kamera-og-billede">
                     <SfListItem><SfMenuItem :label="$t('Camera & Photo')" /></SfListItem>
-                  </nuxt-link>-->
+                  </nuxt-link> -->
                   <nuxt-link to="/konsoller">
                     <SfListItem><SfMenuItem :label="$t('Consoles')" /></SfListItem>
                   </nuxt-link>

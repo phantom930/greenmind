@@ -294,7 +294,6 @@
   "iPhone Xr": "iPhone XR",
   "iPhone Xs": "iPhone Xs",
   "Return home": "Gehen Sie zur Startseite",
-  "Tlf: +45 7875 6535": "Telefon: +45 7875 6535",
   "mailto: mail@greenmind.dk": "mailto: mail@greenmind.dk",
   "Back": "Zurück",
   "Looks like you haven’t added any items to the cart yet. Start shopping to fill it in.": "Sieht so aus, als hätten Sie dem Warenkorb noch keine Artikel hinzugefügt. Beginnen Sie mit dem Einkaufen, um es auszufüllen.",
@@ -355,5 +354,12 @@
   "This field is required.": "Dieses Feld wird benötigt.",
   "This field must be an email": "Dieses Feld muss eine E-Mail sein",
   "This field must have": "Dieses Feld muss vorhanden sein",
-  "digits": "Ziffern"
-}
+  "digits": "Ziffern",
+  "Disable Find My iPhone": "Deaktivieren Sie „Mein iPhone suchen“.",
+  "Environment": "Umwelt & Nachhaltigkeit",
+  "Prepare your Android device for submission": "Bereiten Sie Ihr Android-Gerät für die Einreichung vor",
+  "Price guarantee": "Preisgarantie",
+  "Send your device for repair": "Senden Sie Ihr Gerät zur Reparatur ein",
+  "Stand descriptions": "Standbeschreibungen",
+  "Tel: +45 4697 5050": "Tel: +45 4697 5050",
+  "Tlf: +45 4697 5050": "Tlf: +45 4697 5050"
