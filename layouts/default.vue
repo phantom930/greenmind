@@ -1,7 +1,7 @@
 <template>
   <div>
     <LazyHydrate when-visible>
-      <TopBar />
+      <HeaderTopBar />
     </LazyHydrate>
 
     <LazyHydrate when-idle>
@@ -33,30 +33,16 @@
 </template>
 
 <script>
-import BottomNavigation from '~/components/BottomNavigation.vue';
-import TopBar from '~/components/TopBar.vue';
 import CartSidebar from '~/components/CartSidebar.vue';
-import HamburguerMenu from '~/components/Header/HamburguerMenu.vue';
-import WishlistSidebar from '~/components/WishlistSidebar.vue';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
-import StoreStatus from '~/components/Product/StoreStatus.vue';
-import TopbarTertiary from '~/components/Header/TopbarTertiary.vue';
 
 export default {
   name: 'DefaultLayout',
   components: {
     LazyHydrate,
-    TopBar,
-    BottomNavigation,
     CartSidebar,
-    HamburguerMenu,
-    WishlistSidebar,
-    StoreStatus,
-    Notification,
-    TopbarTertiary
-  },
-  setup () {
+    Notification
   }
 };
 </script>

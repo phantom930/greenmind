@@ -3,7 +3,7 @@
     <SfHeader
       class="sf-header--has-mobile-search"
       :class="{
-        'header-on-top': isSearchOpen,
+        'header-on-top': isSearchOpen
       }"
     >
       <template #logo />
@@ -60,6 +60,7 @@
             <SfIcon
               class="sf-header__icon"
               icon="empty_cart"
+              :color="isCartSidebarOpen ? '#78A886' : ''"
               size="1.25rem"
             />
 
@@ -76,6 +77,7 @@
               class="sf-header__icon"
               icon="list"
               size="1.25rem"
+              :color="isHamburguerMenuOpen ? '#78A886' : ''"
             />
           </SfButton>
         </div>
@@ -158,7 +160,7 @@ export default {
     const searchSize = ref(12);
 
     const { changeSearchTerm } = useUiHelpers();
-    const { toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
+    const { isCartSidebarOpen, isHamburguerMenuOpen, toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
       useUiState();
 
     const { load: loadUser, isAuthenticated } = useUser();
@@ -271,6 +273,8 @@ export default {
     });
 
     return {
+      isCartSidebarOpen,
+      isHamburguerMenuOpen,
       handleToggleHamburguerMenu,
       handleToggleCartSidebar,
       showSearchInputOnMobile,
