@@ -5,13 +5,12 @@
         Sådan køber du
       </h1>
       <h3 class="font-bold">
-        Køb brugt med god samvittighed
+        Spar penge - og spar miljøet! De to ting går hånd i hånd hos os
       </h3>
       <p class="text">
         Er du en af dem, der er lidt ligeglad med, om det er sidste års model – bare du får god kvalitet?<br>
-
-        Køb din iPhone, Samsung Galaxy, Nokia Lumia eller iPad hos GreenMind. Vi køber bl.a.
-        brugt elektronik af dem, der altid skal have det nyeste, så du kan købe brugt med god samvittighed.
+        <br>
+        Køb din iPhone, Samsung Galaxy, OnePlus eller iPad hos GreenMind A/S. Vi køber bl.a. brugt elektronik af dem, der altid skal have det nyeste, så du kan købe brugt og derved spare penge og samtidigt gøre noget godt for miljøet.
       </p>
       <h3 class="font-bold">
         Nemt og smart
@@ -24,19 +23,20 @@
           Alle brugte produkter bliver renset, nulstillet og klargjort for at sikre, at du får en vare, der er uden fejl og mangler.
         </li>
         <li class="text">
-          Du får 2 års garanti på brugt elektronik købt hos GreenMind, gældende fra købstidspunktet.
+          Du får 3 års garanti på brugt elektronik købt hos GreenMind A/S, gældende fra købstidspunktet.
         </li>
         <li class="text">
-          Alle, som sælger til GreenMind, bliver registreret i vores system og skal vise gyldig billed- og adresselegitimation for at sikre, at de er den retmæssige ejer.
+          Alle, som sælger til GreenMind A/S, bliver registreret i vores system og skal vise gyldig billed- og adresselegitimation for at sikre, at de er den retmæssige ejer.
         </li>
       </ul>
       <h3 class="font-bold">
         Find GreenMind
       </h3>
       <p class="text">
-        Klik <nuxt-link :to="{ name: 'shops' }" class="underline y-link">
-          her
-        </nuxt-link> og se, hvor du kan købe brugt elektronik.
+        Klik herunder og se, hvor du kan købe brugt elektronik:<br>
+        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+          Find butik
+        </nuxt-link>
       </p>
     </div>
   </div>
