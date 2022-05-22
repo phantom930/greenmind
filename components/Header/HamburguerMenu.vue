@@ -108,9 +108,9 @@
           {{ $t('Blog') }}
         </SfButton>
       </nuxt-link>-->
-      <SfDivider
+      <!-- <SfDivider
         style="margin: 5% 0 5% 0;"
-      />
+      /> -->
       <!--<SfButton
         class="sf-button_hamburguer_item"
         @click="loginHamburguer"
@@ -130,6 +130,7 @@ import { SfSidebar, SfButton, SfIcon, SfDivider } from '@storefront-ui/vue';
 import { useUser } from '@vue-storefront/odoo';
 import { ref } from '@nuxtjs/composition-api';
 import { useUiState } from '~/composables';
+import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
   name: 'Hamburgure',
@@ -137,7 +138,8 @@ export default {
     SfSidebar,
     SfButton,
     SfIcon,
-    SfDivider
+    SfDivider,
+    LazyHydrate
   },
   setup() {
     const { isHamburguerMenuOpen, toggleHamburguerMenu, loginHamburguer } = useUiState();

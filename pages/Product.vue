@@ -153,12 +153,20 @@ export default defineComponent({
     const { path } = useRoute().value;
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
-    const { toggleCartSidebar, isCartSidebarOpen } = useUiState();
+    const { toggleCartSidebar, isCartSidebarOpen, toggleHamburguerMenu, isHamburguerMenuOpen } = useUiState();
     const { products, search, loading } = useProduct(`products-${path}`);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
     const { addTags } = useCache();
     const router = useRouter();
+
+    // router.beforeEach((guard)=> {
+    //   if (isHamburguerMenuOpen.value) {
+    //     toggleHamburguerMenu();
+    //   }
+
+    //   console.log(guard);
+    // });
 
     const product = computed(() => {
       return {

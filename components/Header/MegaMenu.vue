@@ -1,3 +1,4 @@
+
 <template>
   <SfMegaMenu
     ref="megaMenu"
@@ -5,9 +6,12 @@
     :is-absolute="isAbsolute"
   >
     <SfMegaMenuColumn v-show="isOpened('iphones')" title="iPhones">
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
-          <SfMenuItem :label="$t('iPhone 13 Series')" link="/telefoner/iphones/iphone-13" />
+          <SfMenuItem
+            :label="$t('iPhone 13 Series')"
+            link="/telefoner/iphones/iphone-13"
+          />
         </SfListItem>
         <SfListItem>
           <SfMenuItem :label="$t('iPhone 12 Series')" link="/telefoner/iphones/iphone-12" />
@@ -19,7 +23,7 @@
           <SfMenuItem :label="$t('iPhone 11 Series')" link="/telefoner/iphones/iphone-11" />
         </SfListItem>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('iPhone Xs')" link="/telefoner/iphones/iphone-xs" />
         </SfListItem>
@@ -33,7 +37,7 @@
           <SfMenuItem :label="$t('iPhone 8')" link="/telefoner/iphones/iphone-8" />
         </SfListItem>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('All iPhones')" link="/telefoner/iphones" />
         </SfListItem>
@@ -44,7 +48,7 @@
     </SfMegaMenuColumn>
 
     <SfMegaMenuColumn v-show="isOpened('smartphones')" title="Smartphones">
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Samsung Galaxy')" link="/telefoner/smartphones/samsung-galaxy" />
         </SfListItem>
@@ -58,7 +62,7 @@
           <SfMenuItem :label="$t('Sony')" link="/telefoner/smartphones/sony" />
         </SfListItem>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Motorola')" link="/telefoner/smartphones/motorola" />
         </SfListItem>
@@ -72,7 +76,7 @@
           <SfMenuItem :label="$t('All Smartphones')" link="/telefoner/smartphones" />
         </SfListItem>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Smartphone Accessories')" link="/telefoner/telefon-tilbehoer" />
         </SfListItem>
@@ -80,7 +84,7 @@
     </SfMegaMenuColumn>
 
     <SfMegaMenuColumn v-show="isOpened('tablets')" title="Tablets">
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Apple iPads')" link="/tablets/ipads/" />
         </SfListItem>
@@ -94,7 +98,7 @@
           <SfListItem><SfMenuItem :label="$t('All Tablets')" /></SfListItem>
         </nuxt-link>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Tablet Accessories')" link="/tablets/tilbehoer" />
         </SfListItem>
@@ -102,7 +106,7 @@
     </SfMegaMenuColumn>
 
     <SfMegaMenuColumn v-show="isOpened('computers')" title="Computers">
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Apple MacBooks')" link="/computere/baerbare/apple-macbooks" />
         </SfListItem>
@@ -116,7 +120,7 @@
           <SfMenuItem :label="$t('Windows Desktops')" link="/computere/stationaere/windows-stationaere" />
         </SfListItem>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Gaming Desktops')" link="/computere/gaming-pc/gaming-stationaer" />
         </SfListItem>
@@ -130,7 +134,7 @@
     </SfMegaMenuColumn>
 
     <SfMegaMenuColumn v-show="isOpened('other')" title="Other Products">
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Smartwatches')" link="/smartwatches" />
         </SfListItem>
@@ -147,7 +151,7 @@
     </SfMegaMenuColumn>
 
     <SfMegaMenuColumn v-show="isOpened('accessories')" title="Accessories">
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('iPhone Accessories')" link="/telefoner/iphones/iphone-tilbehoer" />
         </SfListItem>
@@ -161,7 +165,7 @@
           <SfMenuItem :label="$t('Consoles Accessories')" link="/konsoller/konsol-tilbehoer" />
         </SfListItem>
       </SfList>
-      <SfList>
+      <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('TV & Sound Accessories')" link="/tv-og-lyd/tilbehoer" />
         </SfListItem>
@@ -172,6 +176,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watch } from '@nuxtjs/composition-api';
 import { SfMegaMenu, SfList, SfMenuItem } from '@storefront-ui/vue';
+import { useUiState } from '~/composables';
 
 export default defineComponent({
   components: {
@@ -193,13 +198,14 @@ export default defineComponent({
       default: ''
     }
   },
-  emits: ['bar-active'],
+  emits: ['bar-active', 'clicked'],
   setup (props, { root, emit }) {
     const isOpened = (title: string) : boolean => (title === props.currentOpened) || root.$device.isMobile;
     const megaMenu = ref(null);
 
     const menuBar = computed(() => megaMenu.value?.$children?.[0]);
     const barIsActive = computed(() => megaMenu.value?.$data.active);
+    const { toggleHamburguerMenu, isHamburguerMenuOpen } = useUiState();
 
     watch(
       () => barIsActive.value,
@@ -213,7 +219,14 @@ export default defineComponent({
       }
     );
 
+    const handleCloseMenu = () => {
+      if (isHamburguerMenuOpen.value) {
+        toggleHamburguerMenu();
+      }
+    };
+
     return {
+      handleCloseMenu,
       barIsActive,
       megaMenu,
       isOpened

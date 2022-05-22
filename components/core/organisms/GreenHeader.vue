@@ -187,6 +187,9 @@ export default {
     };
 
     const handleToggleCartSidebar = () => {
+      if (isHamburguerMenuOpen.value) {
+        toggleHamburguerMenu();
+      }
       closeSearch();
       toggleCartSidebar();
 
