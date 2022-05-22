@@ -242,7 +242,7 @@ export default defineComponent({
               slug: 'faq'
             },
             {
-              name: 'GDPR',
+              name: 'Privatlivspolitik',
               slug: 'gdpr'
             }
           ]
@@ -251,7 +251,7 @@ export default defineComponent({
       contactColumn: {
         title: 'Shops',
         contactChilds: [
-          { name: 'Tel: +45 7875 6535', text: 'Tlf: +45 7875 6535' },
+          { name: 'Tel: +45 4697 5050', text: 'Tlf: +45 4697 5050' },
           { name: 'mailto: mail@greenmind.dk', text: 'emailSendTo' }
         ],
         childs: [
@@ -262,9 +262,9 @@ export default defineComponent({
         ]
       },
       social: [
-        { name: 'facebook', url: 'https://www.facebook.com/greenmind.dk' }
-        // { name: 'instagram', url: 'https://www.instagram.com/greenminddk/' },
-        // { name: 'linkedin', url: 'https://www.facebook.com/greenmind.dk' }
+        { name: 'facebook', url: 'https://www.facebook.com/greenmind.dk' },
+        { name: 'instagram', url: 'https://www.instagram.com/greenminddk' },
+        { name: 'linkedin', url: 'https://www.linkedin.com/company/greenminddk' }
       ]
     };
   },
