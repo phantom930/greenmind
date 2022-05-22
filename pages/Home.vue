@@ -124,7 +124,7 @@
                 shape="Round"
                 @click="toggleNewsletterModal"
               >
-                {{ $t('See More') }}
+                {{ $t('Subscribe') }}
               </GreenButton>
             </div>
           </template>
