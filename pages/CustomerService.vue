@@ -20,10 +20,7 @@
         Ring til os: <span class="font-bold">+45 4697 5050</span>
       </p>
       <p class="text">
-        Send en mail:
-        <a href="mailto: mail@greenmind.dk">
-          mail@greenmind.dk
-        </a>
+        Send en mail: <a href="mailto: mail@greenmind.dk">mail@greenmind.dk</a>
       </p>
     </div>
   </div>
