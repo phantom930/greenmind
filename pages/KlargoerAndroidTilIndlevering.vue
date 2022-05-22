@@ -10,9 +10,9 @@
       <h3 class="font-bold subtitle mb">Trin 1, backup</h3>
       <p class="text mb">
           Husk altid at tage backup af din data, før du sletter oplysninger fra din telefon. Det er din måde at sikre, at intet bliver tabt i processen om at skifte enhed. Så sikrer du også, at din data ikke bliver misbrugt af enhedens fremtidige ejer, eller at feriebillederne fra Mallorca med svigermor forsvinder.<br>
-
+          <br>
           Start med at tilslutte din telefon til computeren via et kabel, så den får adgang til telefonens lager. Her kan du kopiere data'en over i f.eks., Dropbox, OneDrive eller Google Drive.<br>
-
+          <br>
           Vi anbefaler også at bruge Google's egen app der hedder: Google Fotos, her sørger den automatisk for at alle dine billeder altid er at finde i skyen. Det bliver ikke meget nemmere end det.
       </p>
       <h3 class="font-bold subtitle mb">Trin 2, deaktivering Factory Reset Protection</h3>
@@ -35,7 +35,7 @@
           </li>
         </ul>
       </p>
-      <h3 class="font-bold subtitle mb">Trin 3, krypter data, og blive sikret mod gendannelse</h3>
+      <h3 class="font-bold subtitle mb">Trin 3, krypter data, og bliv sikret mod gendannelse</h3>
       <p class="text mb">
           Næste skridt er at sikre at din data er krypteret. Det lyder fancy og det er det også. Den sikrer at din data ikke er synlig og brugbar, før man har indtastet en kode. Denne kryptering er standard for alle nyere telefoner, hvor du bare behøver at gå til Sikkerhedsmenuen og trykke ”Beskyt krypterede data”. Denne funktion er især vigtig, hvis du er uheldig med en køber, der ønsker at genskabe din gamle data på mobilen. Den kan nemlig ikke bruges til noget for fremmede, når først den er låst med krypteringsnøglen.
       </p>
