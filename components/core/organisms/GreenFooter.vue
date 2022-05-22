@@ -183,11 +183,7 @@ export default defineComponent({
           },
           {
             name: 'Accessories',
-            slug: '/tilbehor'
-          },
-          {
-            name: 'Other products',
-            slug: '/andre'
+            slug: '/tilbehoer'
           }
         ]
       },

@@ -4,7 +4,7 @@
       <div class="header-links">
         <div class="dropdown-wrap">
           <a
-            href="/iphones"
+            href="/telefoner/iphones"
             class="custom-link"
           >IPHONES</a>
           <div class="dropdown iphones">
@@ -49,7 +49,7 @@
                   <nuxt-link to="/telefoner/iphones">
                     <SfListItem><SfMenuItem :label="$t('All iPhones')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/telefoner/iphones/iphone-tilbehoer">
+                  <nuxt-link to="/tilbehoer/mobil-tilbehoer/iphone-tilbehoer">
                     <SfListItem><SfMenuItem :label="$t('iPhone Accessories')" /></SfListItem>
                   </nuxt-link>
                 </SfList>
@@ -91,9 +91,6 @@
                   <nuxt-link to="/telefoner/smartphones/google-pixel">
                     <SfListItem><SfMenuItem :label="$t('Google Pixel')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/telefoner/smartphones/xiaomi">
-                    <SfListItem><SfMenuItem :label="$t('Xiaomi')" /></SfListItem>
-                  </nuxt-link>
                   <nuxt-link to="/telefoner/smartphones">
                     <SfListItem><SfMenuItem :label="$t('All Smartphones')" /></SfListItem>
                   </nuxt-link>
@@ -101,7 +98,7 @@
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="Smartphones">
                 <SfList>
-                  <nuxt-link to="/telefoner/telefon-tilbehoer">
+                  <nuxt-link to="/tilbehoer/mobil-tilbehoer">
                     <SfListItem><SfMenuItem :label="$t('Smartphone Accessories')" /></SfListItem>
                   </nuxt-link>
                 </SfList>
@@ -127,9 +124,9 @@
                   <nuxt-link to="/tablets/android">
                     <SfListItem><SfMenuItem :label="$t('Android Tablets')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/tablets/windows">
+                  <!--<nuxt-link to="/tablets/windows">
                     <SfListItem><SfMenuItem :label="$t('Windows Tablets')" /></SfListItem>
-                  </nuxt-link>
+                  </nuxt-link>-->
                   <nuxt-link to="/tablets">
                     <SfListItem><SfMenuItem :label="$t('All Tablets')" /></SfListItem>
                   </nuxt-link>
@@ -137,7 +134,7 @@
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="Tablets">
                 <SfList>
-                  <nuxt-link to="/tablets/tilbehoer">
+                  <nuxt-link to="/tilbehoer/tablet-tilbehoer">
                     <SfListItem><SfMenuItem :label="$t('Tablet Accessories')" /></SfListItem>
                   </nuxt-link>
                 </SfList>
@@ -157,13 +154,13 @@
             >
               <SfMegaMenuColumn title="Computers">
                 <SfList>
-                  <nuxt-link to="/computere/laptops/apple/macbooks">
+                  <nuxt-link to="/computere/baerbare/apple-macbooks">
                     <SfListItem><SfMenuItem :label="$t('Apple MacBooks')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/computere/desktops/apple">
+                  <nuxt-link to="/computere/apple-stationaere">
                     <SfListItem><SfMenuItem :label="$t('Apple Desktops')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/computere/laptops/windows/">
+                  <nuxt-link to="/computere/baerbare/windows-baerbare">
                     <SfListItem><SfMenuItem :label="$t('Windows Laptops')" /></SfListItem>
                   </nuxt-link>
                   <nuxt-link to="/computere/stationaere/windows-stationaere">
@@ -173,13 +170,13 @@
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="Computers">
                 <SfList>
-                  <nuxt-link to="/computere/gaming-pc/gaming-stationaer">
+                  <!--<nuxt-link to="/computere/gaming-pc/gaming-stationaer">
                     <SfListItem><SfMenuItem :label="$t('Gaming Desktops')" /></SfListItem>
                   </nuxt-link>
                   <nuxt-link to="/computere/gaming-pc/gaming-baerbar">
                     <SfListItem><SfMenuItem :label="$t('Gaming Laptops')" /></SfListItem>
-                  </nuxt-link>
-                  <nuxt-link to="/computere/computer-tilbehoer">
+                  </nuxt-link>-->
+                  <nuxt-link to="/tilbehoer/computer-tilbehoer">
                     <SfListItem><SfMenuItem :label="$t('Computer Accessories')" /></SfListItem>
                   </nuxt-link>
                 </SfList>
@@ -205,9 +202,9 @@
                   <nuxt-link to="/tv-og-lyd">
                     <SfListItem><SfMenuItem :label="$t('TV & Sound')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/kamera-og-billede">
+                  <!--<nuxt-link to="/kamera-og-billede">
                     <SfListItem><SfMenuItem :label="$t('Camera & Photo')" /></SfListItem>
-                  </nuxt-link>
+                  </nuxt-link>-->
                   <nuxt-link to="/konsoller">
                     <SfListItem><SfMenuItem :label="$t('Consoles')" /></SfListItem>
                   </nuxt-link>
@@ -228,23 +225,26 @@
             >
               <SfMegaMenuColumn title="Accessories">
                 <SfList>
-                  <nuxt-link to="/telefoner/iphones/iphone-tilbehoer">
+                  <nuxt-link to="/tilbehoer/mobil-tilbehoer/iphone-tilbehoer">
                     <SfListItem><SfMenuItem :label="$t('iPhone Accessories')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/telefoner/telefon-tilbehoer">
+                  <nuxt-link to="/tilbehoer/mobil-tilbehoer">
                     <SfListItem><SfMenuItem :label="$t('Smartphone Accessories')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/computere/computer-tilbehoer">
-                    <SfListItem><SfMenuItem :label="$t('Computer Accessories')" /></SfListItem>
+                  <nuxt-link to="/tilbehoer/tablet-tilbehoer">
+                    <SfListItem><SfMenuItem :label="$t('Tablet Accessories')" /></SfListItem>
                   </nuxt-link>
-                  <nuxt-link to="/konsoller/konsol-tilbehoer">
-                    <SfListItem><SfMenuItem :label="$t('Consoles Accessories')" /></SfListItem>
+                  <nuxt-link to="/tilbehoer/computer-tilbehoer">
+                    <SfListItem><SfMenuItem :label="$t('Computer Accessories')" /></SfListItem>
                   </nuxt-link>
                 </SfList>
               </SfMegaMenuColumn>
               <SfMegaMenuColumn title="Accessories">
                 <SfList>
-                  <nuxt-link to="/tv-og-lyd/tilbehoer">
+                  <nuxt-link to="/tilbehoer/konsol-tilbehoer">
+                    <SfListItem><SfMenuItem :label="$t('Consoles Accessories')" /></SfListItem>
+                  </nuxt-link>
+                  <nuxt-link to="/tilbehoer/tv-og-lyd">
                     <SfListItem><SfMenuItem :label="$t('TV & Sound Accessories')" /></SfListItem>
                   </nuxt-link>
                 </SfList>
