@@ -7,7 +7,9 @@
       <p class="text mb">
         Guide til indsendelse af enhed til reparation hos GreenMind A/S (forsikringskunder bedes følge instrukserne i det tilsendte infobrev).<br>
         Du kan også altid aflevere din enhed i én af vores butikker. Læs mere her:<br>
-        <a href=”greenmind.dk/butikker”>Butikker</a>
+        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+          Find butik
+        </nuxt-link>
       </p>
       <h3 class="font-bold">
         Trin 1, følgebrev
