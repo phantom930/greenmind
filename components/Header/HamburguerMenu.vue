@@ -42,7 +42,7 @@
             {{ $t('Customer Service') }}
           </SfButton>
         </nuxt-link>
-        <nuxt-link :to="{ name: 'how-to-sell' }">
+        <!-- <nuxt-link :to="{ name: 'how-to-sell' }">
           <SfButton
             class="sf-button_hamburguer_item"
             @click="toggleHamburguerMenu"
@@ -54,7 +54,7 @@
             />
             {{ $t('Sell to us') }}
           </SfButton>
-        </nuxt-link>
+        </nuxt-link> -->
         <nuxt-link :to="{ name: 'reparation' }">
           <SfButton
             class="sf-button_hamburguer_item"

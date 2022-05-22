@@ -49,7 +49,7 @@
         <SfMegaMenu title="Other Products" visible />
       </div> -->
         </div>
-        <div class="dropdown-wrap">
+        <div class="dropdown-wrap" @mouseover="open('accessories')">
           <nuxt-link to="/tilbehoer" class="custom-link">
             {{ $t("Accessories") }}
           </nuxt-link>

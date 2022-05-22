@@ -5,7 +5,11 @@
     :visible="isVisible"
     :is-absolute="isAbsolute"
   >
-    <SfMegaMenuColumn v-show="isOpened('iphones')" title="iPhones">
+    <SfMegaMenuColumn
+      v-show="isOpened('iphones')"
+      class="menu-column-iphones"
+      title="iPhones"
+    >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem
@@ -47,7 +51,11 @@
       </SfList>
     </SfMegaMenuColumn>
 
-    <SfMegaMenuColumn v-show="isOpened('smartphones')" title="Smartphones">
+    <SfMegaMenuColumn
+      v-show="isOpened('smartphones')"
+      class="menu-column-smartphones"
+      title="Smartphones"
+    >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Samsung Galaxy')" link="/telefoner/smartphones/samsung-galaxy" />
@@ -83,7 +91,11 @@
       </SfList>
     </SfMegaMenuColumn>
 
-    <SfMegaMenuColumn v-show="isOpened('tablets')" title="Tablets">
+    <SfMegaMenuColumn
+      v-show="isOpened('tablets')"
+      class="menu-column-tablets"
+      title="Tablets"
+    >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Apple iPads')" link="/tablets/ipads/" />
@@ -94,9 +106,9 @@
         <!-- <nuxt-link to="/tablets/windows">
                     <SfListItem><SfMenuItem :label="$t('Windows Tablets')" /></SfListItem>
                   </nuxt-link> -->
-        <nuxt-link to="/tablets">
-          <SfListItem><SfMenuItem :label="$t('All Tablets')" /></SfListItem>
-        </nuxt-link>
+        <SfListItem>
+          <SfMenuItem :label="$t('All Tablets')" link="/tablets" />
+        </SfListItem>
       </SfList>
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
@@ -105,7 +117,11 @@
       </SfList>
     </SfMegaMenuColumn>
 
-    <SfMegaMenuColumn v-show="isOpened('computers')" title="Computers">
+    <SfMegaMenuColumn
+      v-show="isOpened('computers')"
+      class="menu-column-apple"
+      title="Computers"
+    >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Apple MacBooks')" link="/computere/baerbare/apple-macbooks" />
@@ -133,7 +149,11 @@
       </SfList>
     </SfMegaMenuColumn>
 
-    <SfMegaMenuColumn v-show="isOpened('other')" title="Other Products">
+    <SfMegaMenuColumn
+      v-show="isOpened('other')"
+      class="menu-column-others"
+      title="Other Products"
+    >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('Smartwatches')" link="/smartwatches" />
@@ -150,7 +170,11 @@
       </SfList>
     </SfMegaMenuColumn>
 
-    <SfMegaMenuColumn v-show="isOpened('accessories')" title="Accessories">
+    <SfMegaMenuColumn
+      v-show="isOpened('accessories')"
+      class="menu-column-accessories"
+      title="Accessories"
+    >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
           <SfMenuItem :label="$t('iPhone Accessories')" link="/telefoner/iphones/iphone-tilbehoer" />

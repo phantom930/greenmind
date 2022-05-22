@@ -12,20 +12,6 @@
   color: #1D1F22;
 }
 
-::v-deep .dropdown {
-  display: none;
-  position: absolute;
-  top: 69px;
-  left: 0;
-  width: 100%;
-  background: #fff;
-}
-
-::v-deep .dropdown-wrap:hover .dropdown {
-  display: block;
-  background: #1D1F22;
-}
-
 ::v-deep .dropdown-wrap:hover .custom-link {
   border-bottom: 2px solid #78a495;
 }
@@ -102,47 +88,38 @@
   border-bottom: 2px solid #78a495;
 }
 
-::v-deep .dropdown.iphones .sf-mega-menu__menu {
+::v-deep .menu-column-iphones {
   justify-content: flex-start;
   padding-left: 25px;
 }
 
-::v-deep .dropdown.smartphones .sf-mega-menu__menu {
+::v-deep .menu-column-smartphones {
   justify-content: flex-start;
   padding-left: 208px;
 }
 
-::v-deep .dropdown.tablets .sf-mega-menu__menu {
+::v-deep .menu-column-tablets {
   justify-content: flex-start;
   padding-left: 435px;
 }
 
-::v-deep .dropdown.computers .sf-mega-menu__menu {
+::v-deep .menu-column-apple {
   justify-content: flex-start;
   padding-left: 620px;
 }
 
-::v-deep .dropdown.other-products .sf-mega-menu__menu {
+::v-deep .menu-column-others {
   justify-content: flex-start;
   padding-left: 815px;
 }
 
-::v-deep .dropdown.accessories .sf-mega-menu__menu {
+::v-deep .menu-column-accessories {
   justify-content: flex-start;
   padding-left: 1030px;
+}
+
+::v-deep .sf-mega-menu__menu {
   overflow: visible;
-}
-
-::v-deep .dropdown.other-products .sf-mega-menu__menu {
-  overflow: visible;
-}
-
-::v-deep .dropdown.accessories {
-  overflow: hidden;
-}
-
-::v-deep .dropdown .sf-mega-menu-column {
-  max-width: unset;
 }
 
 ::v-deep .sf-list {
@@ -166,64 +143,19 @@
   display: none;
 }
 
-::v-deep .dropdown.other-products .sf-mega-menu__menu {
-    justify-content: flex-start;
-}
-
-::v-deep .dropdown.iphones .sf-mega-menu__menu {
-  justify-content: flex-start;
-  padding-left: 45px;
-}
-
-::v-deep .dropdown.smartphones .sf-mega-menu__menu {
-  justify-content: flex-start;
-  padding-left: 228px;
-}
-
-::v-deep .dropdown.tablets .sf-mega-menu__menu {
-  justify-content: flex-start;
-  padding-left: 455px;
-}
-
-::v-deep .dropdown.computers .sf-mega-menu__menu {
-  justify-content: flex-start;
-  padding-left: 640px;
-}
-
-::v-deep .dropdown.other-products .sf-mega-menu__menu {
-  justify-content: flex-start;
-  padding-left: 815px;
-}
-
-::v-deep .dropdown.accessories .sf-mega-menu__menu {
-  justify-content: flex-start;
-  padding-left: 957px;
-  overflow: visible;
-  transform: translateX(50px);
-}
-
-::v-deep .dropdown.other-products .sf-mega-menu__menu {
-  overflow: visible;
-}
-
-::v-deep .dropdown.accessories {
-  overflow: hidden;
-}
-
-::v-deep .dropdown .sf-mega-menu-column {
+::v-deep .sf-mega-menu-column {
   max-width: 165px;
 }
 
-::v-deep .dropdown .sf-list a {
-  margin-left: 25px;
-  margin-right: 25px;
+::v-deep .sf-list a {
+  margin: 16px 25px;
 }
 
 :v-deep .sf-mega-menu-column .f-mega-menu-column__header.sf-menu-item {
   display: none;
 }
 
-::v-deep .dropdown .sf-menu-item__label:hover {
+::v-deep .sf-menu-item__label:hover {
   color: #7BA393;
 }
 
@@ -231,11 +163,6 @@
   display: none;
 }
 
-::v-deep .dropdown.other-products .sf-mega-menu__menu {
-    justify-content: flex-start;
-    padding-left: 497px;
-    transform: translateX(340px);
-}
 ::v-deep .sf-header__icons{
   display: none;
 }
