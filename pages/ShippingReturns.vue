@@ -26,10 +26,10 @@
         Fortrydelsesret
       </h3>
       <p class="text">
-        Som forbruger har du har 14 dages fortrydelsesret, når du handler hos os. Fortrydelsesfristen udløber 14 dage efter den dag, du har modtaget din vare. Hvis du har bestilt flere forskellige varer i samme køb, men de leveres enkeltvist, løber fristen fra den dag, hvor du modtager den sidste vare. Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb. Ønsker du at fortryde dit køb skal du sende en mail til
+        Som forbruger har du har 14 dages fortrydelsesret, når du handler hos os. Fortrydelsesfristen udløber 14 dage efter den dag, du har modtaget din vare. Hvis du har bestilt flere forskellige varer i samme køb, men de leveres enkelvist, løber fristen fra den dag, hvor du modtager den sidste vare. Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb. Ønsker du at fortryde dit køb skal du sende en mail til
         <a href="mailto: mail@greenmind.dk">
           mail@greenmind.dk
-        </a>
+        </a>.
       </p>
       <p class="text">
         Du kan ikke fortryde købet ved at nægte at modtage varen uden samtidig at give os besked.
@@ -67,13 +67,17 @@
         Varen sendes til: Den adresse der fremgår af din købskvittering.
       </p>
       <p class="text">
-        Find butikker, og adresser <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
-          her
+        Eller du kan indlevere varen i én af vores mange butikker:<br>
+        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+          Find butik
         </nuxt-link>
+      </p>
+      <p class="text">
+        Vi modtager kun pakker, som sendes direkte til vores adresser. Du kan også fortryde købet ved at give os besked og aflevere den personligt i en af vores butikker.
       </p>
 
       <h3 class="font-bold subtitle">
-        Garanti
+        Reklamation
       </h3>
       <p class="text">
         Når du handler hos os som forbruger, gælder købelovens regler for varekøb. Det betyder, at du har reklamationsret i 24 måneder. Kontakt os altid inden du sender en vare. Hvis din reklamation er berettiget, betyder det, at du enten kan få varen repareret, ombyttet, pengene tilbage eller et afslag i prisen, afhængig af den konkrete situation.
@@ -82,17 +86,24 @@
         Du skal reklamere inden for ”rimelig tid” efter, at du har opdaget fejlen. Hvis du reklamerer inden for to måneder efter, at fejlen er opdaget, vil reklamationen altid være rettidig.
       </p>
       <p class="text">
-        Ved reklamation af vare, kontakt venligst vores kundeservice på  <a href="mailto: mail@greenmind.dk">mail@greenmind.dk</a>, for at få tilsendt en gratis returlabel. Varen skal altid sendes tilbage i forsvarlig emballage.
+        Ved reklamation af vare, kontakt venligst vores kundeservice, for at få tilsendt en gratis returlabel. Varen skal altid sendes tilbage i forsvarlig emballage.<br>
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
+        </nuxt-link><br>
       </p>
       <p class="text">
         Varen sendes til: Den adresse der fremgår af din købskvittering.
       </p>
       <p class="text">
-        Vi modtager kun pakker, som sendes direkte til vores adresser. Du kan også fortryde købet ved at give os besked og aflevere den personligt i en af vores butikker.
+        Eller du kan indlevere varen i én af vores mange butikker:<br>
+        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+          Find butik
+        </nuxt-link>
       </p>
       <p class="text">
-        Find butikker, og adresser <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
-          her
+        Vi modtager kun pakker, som sendes direkte til vores adresser. Du kan også fortryde købet ved at give os besked og aflevere den personligt i en af vores butikker.<br>
+      <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+          Find butik
         </nuxt-link>
       </p>
     </div>
