@@ -4,7 +4,7 @@
       <h2 class="font-bold">
         Butikker
       </h2>
-      <h3 class="font-bold mb-5">
+      <h3 class="font-bold subtitle">
         GREENMIND
       </h3>
       <table>
@@ -83,7 +83,7 @@
       <h4 class="italic">
         * Åbningstider for værkstedet er de samme som i butikken, men værkstedet er lukket i weekenden.
       </h4>
-      <h3 class="font-bold mt-10">
+      <h3 class="font-bold subtitle">
         BLUECITY
       </h3>
       <h4 class="mb-3">
@@ -220,19 +220,22 @@
         * Åbningstider for værkstedet er de samme som i butikken, men værkstedet er lukket i weekenden.
       </h4>
 
-      <h3 class="font-bold mt-10">
+      <h3 class="font-bold subtitle">
         Køb og salg af brugte iPhones, Macbooks, laptops og telefoner, samt iPhone og Android reparation
       </h3>
+      <p>
       GreenMind er din kilde til brugt elektronik til en billig pris og uden abonnement. Vi sælger desuden brugt MAC computere og med hele 2 års garanti. Er det iPhone reparation i København, Aarhus, Aalborg, Odense eller Frederiksberg du søger? Vi har service centre i disse byer og kan hjælpe dig, ofte på timebasis. Vi ønsker at være de førende inden for både reparationer og salg af brugte mobiltelefoner, tablets og computere. For at være det, er det afgørende, at vi kan være så tæt på vores kunder som overhovedet muligt. Derfor har vi i dag hele 6 butikker fordelt over hele landet. Næsten lige meget, hvor du befinder dig, så er der ikke langt til en af vores butikker.
-
-      <h3 class="font-bold mt-5">
+      </p>
+      <h3 class="font-bold subtitle">
         Stort udvalg af mobiltelefoner uden mobilabonnement
       </h3>
-      I København finder du os både på Nørrebro, på Frederiksberg og ikke mindst i Indre by. Alle vores butikker er let tilgængelige både i bil, på cykel og med offentlig transport. Vi har åbent på alle hverdage fra kl. 10-18 og lørdage fra kl. 10-16 (dog er der lukket på Nørrebro om lørdagen).
-      Som kunde skal du som regel ikke vente længe på, at vi reparerer din enhed. Mens du venter, sørger vi for en behagelig atmosfære i vores butikker, hvor du samtidig finder et stort udvalg af brugt elektronik.
-      Hvis du er i tvivl om, hvad der er galt med din telefon, så kan vores medarbejdere også hurtigt hjælpe dig. Det tager os som regel ikke lang tid at finde ud, hvad der skal gøres og komme med en eventuel pris.
-
+      <p>
+      I København finder du os både på Nørrebro, på Frederiksberg og ikke mindst i Indre by. Alle vores butikker er let tilgængelige både i bil, på cykel og med offentlig transport. Vi har åbent på alle hverdage fra kl. 10-18 og lørdage fra kl. 10-16 (dog er der lukket på Nørrebro om lørdagen).<br>
+      Som kunde skal du som regel ikke vente længe på, at vi reparerer din enhed. Mens du venter, sørger vi for en behagelig atmosfære i vores butikker, hvor du samtidig finder et stort udvalg af brugt elektronik.<br>
+      Hvis du er i tvivl om, hvad der er galt med din telefon, så kan vores medarbejdere også hurtigt hjælpe dig. Det tager os som regel ikke lang tid at finde ud, hvad der skal gøres og komme med en eventuel pris.<br>
+      <br>
       Hos GreenMind finder du et stort udvalg af secondhand elektronik med 2 års garanti. I butikken finder du særligt et stort udvalg af brugte iPhones, lige fra de ældre modeller til de helt nye modeller, som f.eks. en brugt iPhone 13 Pro Max. Vores udvalg byder ikke bare på brugte iPhones men også brugte smartphones fra andre populære mærker som Samsung Galaxy, Huawei, OnePlus og andre brugte Android smartphones. Ligeledes har vi et stort udvalg af brugte MacBooks, laptops fra kendte brands som Lenovo, ASUS, Acer og desktop computere. Er du derimod på udkig efter en trådløs højtaler eller høretelefoner, kan du også finde dette hos GreenMind.Vi har selvfølgelig også et stort udvalg af tilbehør til din secondhand elektronik. Se vores udvalg på hjemmesiden, eller kig forbi én af vores butikker og se vores flotte udvalg af bæredygtige covers fra mærker som Pela, A Good Company og Greylime.
+      </p>
     </div>
   </div>
 </template>
