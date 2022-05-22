@@ -39,19 +39,19 @@ export default {
     en: '/ready-android-delivery',
     da: '/klargoer-din-android-enhed',
     de: '/klargoer-din-android-enhed',
-    sv: '/ready-android-delivery'
+    sv: '/klargoer-din-android-enhed'
   },
   disableFindMinIphone: {
     en: '/disable-find-iphone',
     da: '/deaktivering-af-find-min-iphone',
     de: '/deaktivering-af-find-min-iphone',
-    sv: '/disable-find-iphone'
+    sv: '/deaktivering-af-find-min-iphone'
   },
   sendDeviceRepair: {
     en: '/send-device-repair',
     da: '/send-din-enhed-til-reparation',
     de: '/send-din-enhed-til-reparation',
-    sv: '/send-device-repair'
+    sv: '/send-din-enhed-til-reparation'
   },
   reparation: {
     en: '/repair',
@@ -148,23 +148,5 @@ export default {
     da: '/cookies',
     de: '/cookies',
     sv: '/cookies'
-  },
-  klargoerAndroid: {
-    en: '/prepare-android',
-    da: '/klargoer-android',
-    de: '/klargoer-android',
-    sv: '/klargoer-android'
-  },
-  deaktiverFindMiniPhone: {
-    en: '/deaktivate-find-my-iphone',
-    da: '/deaktiver-find-min-iphone',
-    de: '/deaktiver-find-min-iphone',
-    sv: '/deaktiver-find-min-iphone'
-  },
-  sendTilRep: {
-    en: '/ship-device-for-repair',
-    da: '/send-enhed-til-reparation',
-    de: '/send-enhed-til-reparation',
-    sv: '/send-enhed-til-reparation'
   }
 };
