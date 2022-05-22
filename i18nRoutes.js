@@ -1,66 +1,66 @@
 export default {
   environment: {
-    en: '/environment',
+    en: '/environmental',
     da: '/miljoe',
     de: '/miljoe',
-    sv: '/environment'
+    sv: '/miljoe'
   },
   winter: {
-    en: '/winter',
+    en: '/winter-holidays-advice',
     da: '/vinterferie-raad',
     de: '/vinterferie-raad',
-    sv: '/winter'
+    sv: '/vinterferie-raad'
   },
   howToChooseRightIpad: {
     en: '/how-do-you-choose-the-right-ipad',
     da: '/sadan-vaelger-du-den-rette-ipad',
     de: '/sadan-vaelger-du-den-rette-ipad',
-    sv: '/how-do-you-choose-the-right-ipad'
+    sv: '/sadan-vaelger-du-den-rette-ipad'
   },
   price: {
-    en: '/price',
+    en: '/priceguarantee',
     da: '/prisgaranti',
     de: '/prisgaranti',
-    sv: '/price'
+    sv: '/prisgaranti'
   },
   aboutUs: {
     en: '/about-us',
-    da: '/about-us',
-    de: '/about-us',
-    sv: '/about-us'
+    da: '/om-os',
+    de: '/om-os',
+    sv: '/om-os'
   },
   standDescriptions: {
     en: '/stand-descriptions',
     da: '/standbeskrivelser',
     de: '/standbeskrivelser',
-    sv: '/stand-descriptions'
+    sv: '/standbeskrivelser'
   },
   reparation: {
-    en: '/reparation',
+    en: '/repair',
     da: '/reparation',
     de: '/reparation',
     sv: '/reparation'
   },
   iphoneReparation: {
-    en: '/iphone-reparation',
+    en: '/iphone-repair',
     da: '/iphone-reparation',
     de: '/iphone-reparation',
     sv: '/iphone-reparation'
   },
   androidReparation: {
-    en: '/android-reparation',
+    en: '/android-repair',
     da: '/android-reparation',
     de: '/android-reparation',
     sv: '/android-reparation'
   },
   tabletReparation: {
-    en: '/tablet-reparation',
+    en: '/tablet-repair',
     da: '/tablet-reparation',
     de: '/tablet-reparation',
     sv: '/tablet-reparation'
   },
   computerReparation: {
-    en: '/computer-reparation',
+    en: '/computer-repair',
     da: '/computer-reparation',
     de: '/computer-reparation',
     sv: '/computer-reparation'
@@ -69,19 +69,19 @@ export default {
     en: '/what-is-circular-economy-for-mobilephones',
     da: '/hvad-er-cirkulaer-oekonomi-for-mobiltelefoner',
     de: '/hvad-er-cirkulaer-oekonomi-for-mobiltelefoner',
-    sv: '/what-is-circular-economy-for-mobilephones'
+    sv: '/hvad-er-cirkulaer-oekonomi-for-mobiltelefoner'
   },
   why: {
-    en: '/why',
+    en: '/why-greenmind',
     da: '/hvorfor-greenmind',
     de: '/hvorfor-greenmind',
-    sv: '/why'
+    sv: '/hvorfor-greenmind'
   },
   howToSell: {
     en: '/how-to-sell',
     da: '/saadan-saelger-du',
     de: '/saadan-saelger-du',
-    sv: '/how-to-sell'
+    sv: '/saadan-saelger-du'
   },
   howToBuy: {
     en: '/how-to-buy',
@@ -93,19 +93,19 @@ export default {
     en: '/customer-service',
     da: '/kundeservice',
     de: '/kundeservice',
-    sv: '/customer-service'
+    sv: '/kundeservice'
   },
   freight: {
-    en: '/freight',
-    da: '/fragt-retur',
-    de: '/fragt-retur',
-    sv: '/freight'
+    en: '/shipping-return',
+    da: '/levering-retur',
+    de: '/levering-retur',
+    sv: '/levering-retur'
   },
   termsOfTrade: {
     en: '/terms-of-trade',
     da: '/handelsbetingelser',
     de: '/handelsbetingelser',
-    sv: '/terms-of-trade'
+    sv: '/handelsbetingelser'
   },
   faq: {
     en: '/faq',
@@ -117,18 +117,36 @@ export default {
     en: '/shops',
     da: '/butikker',
     de: '/butikker',
-    sv: '/shops'
+    sv: '/butikker'
   },
   gdpr: {
-    en: '/gdpr',
-    da: '/gdpr',
-    de: '/gdpr',
-    sv: '/gdpr'
+    en: '/privacypolicy',
+    da: '/privatlivspolitik',
+    de: '/privatlivspolitik',
+    sv: '/privatlivspolitik'
   },
   cookies: {
     en: '/cookies',
     da: '/cookies',
     de: '/cookies',
     sv: '/cookies'
+  },
+  klargoerAndroid: {
+    en: '/prepare-android',
+    da: '/klargoer-android',
+    de: '/klargoer-android',
+    sv: '/klargoer-android'
+  },
+  deaktiverFindMiniPhone: {
+    en: '/deaktivate-find-my-iphone',
+    da: '/deaktiver-find-min-iphone',
+    de: '/deaktiver-find-min-iphone',
+    sv: '/deaktiver-find-min-iphone'
+  },
+  sendTilRep: {
+    en: '/ship-device-for-repair',
+    da: '/send-enhed-til-reparation',
+    de: '/send-enhed-til-reparation',
+    sv: '/send-enhed-til-reparation'
   }
 };

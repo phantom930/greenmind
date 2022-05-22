@@ -185,17 +185,17 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
     },
     {
       name: 'klargoer-android',
-      path: `${i18nRoutes.cookies[localeIndex]}`,
+      path: `${i18nRoutes.klargoerAndroid[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/KlargoerAndroidTilIndlevering.vue')
     }
     {
-      name: 'klargoer-iphone',
-      path: `${i18nRoutes.cookies[localeIndex]}`,
+      name: 'deaktiver-find-min-iphone',
+      path: `${i18nRoutes.deaktiverFindMiniPhone[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/DeaktiverFindMinIphone.vue')
     }
     {
       name: 'send-til-rep',
-      path: `${i18nRoutes.cookies[localeIndex]}`,
+      path: `${i18nRoutes.sendTilRep[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/SendDinEnhedTilReparation.vue')
     }
   ];
