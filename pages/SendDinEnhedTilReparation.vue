@@ -30,7 +30,7 @@
       </h3>
       <p class="text mb">
         Hvis du indleverer en iPhone, iPad, iMac eller Macbook er det vigtigt at du deaktiverer Find My iPhone.<br>
-        <nuxt-link :to="{ name: 'deaktivering-af-find-min-iphone' }" class="underline text-center y-link">
+        <nuxt-link :to="{ name: 'deaktiver-find-min-iphone' }" class="underline text-center y-link">
           Deaktivering af Find Min iPhone
         </nuxt-link>
         Årsagen er at vi ikke kan teste, og i nogle tilfælde heller ikke reparere, Apple produkter, hvis ikke “Find My iPhone” er deaktiveret.
