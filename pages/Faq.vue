@@ -6,8 +6,8 @@
       <h3 class="font-bold subtitle">Skal jeg bestille tid til min reparation?</h3>
       <p>
         Vi har ikke tidsbestilling på reparationer, så du kommer bare ind forbi en af vores butikker, når det passer dig. Du er meget velkommen til at kontakte os forud for dit besøg, for at forhøre dig om forventet reparationstid den pågældende dag. <br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
-          Kontakt kundeservice.
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
         </nuxt-link>
       </p>
 
@@ -44,8 +44,8 @@
       <h3 class="font-bold subtitle">Hvordan fungerer overtagelse af garanti og reklamationsret?</h3>
       <p>
         Det foregår ved, at vi overtager de resterende måneder af garantien og reklamationsretten på enheden, hvis den bliver repareret af os.
-        <nuxt-link :to="{ name: 'terms' }" class="underline text-center y-link">
-          Læs GreenMinds hendelsbetingelser her.
+        <nuxt-link :to="{ name: 'terms-of-trade' }" class="underline text-center y-link">
+          Læs GreenMinds handelsbetingelser
         </nuxt-link>
       </p>
 
@@ -79,12 +79,12 @@
 
       <h3 class="font-bold subtitle">Hvad med min selvrisiko?</h3>
       <p>
-        Proceduren vedr. selvrisiko varierer fra forsikringsselskab til forsikringsselskab. GreenMind opkræver selvrisikoen på vegne af nogle forsikringsselskaber, og andre forsikringsselskaber opkræver den selv. Hvis du er i tvivl om, hvordan selvrisikoen opkræves i din reparationssag, bedes du sende en e-mail til <a href=”mailto:forsikring@greenmind.dk>forsikring@greenmind.dk</a>.
+        Proceduren vedr. selvrisiko varierer fra forsikringsselskab til forsikringsselskab. GreenMind opkræver selvrisikoen på vegne af nogle forsikringsselskaber, og andre forsikringsselskaber opkræver den selv. Hvis du er i tvivl om, hvordan selvrisikoen opkræves i din reparationssag, bedes du sende en e-mail til <a href=”mailto:forsikring@greenmind.dk">forsikring@greenmind.dk</a>.
       </p>
 
       <h3 class="font-bold subtitle">Skal jeg sende tilbehør med, når jeg sender min telefon til jer?</h3>
       <p>
-        Nej. Det eneste du skal sende til os, er din forsikringsanmeldte enhed og en kopi af din købskvittering på enheden, hvis du har den. Kopi af købskvittering kan alternativt sendes til os pr. mail på <a href=”mailto:forsikring@greenmind.dk>forsikring@greenmind.dk</a>. Tilbehør som covers, opladere etc. og SIM-kort skal altså ikke sendes med. GreenMind kan ikke stilles til ansvar for bortkommet tilbehør.
+        Nej. Det eneste du skal sende til os, er din forsikringsanmeldte enhed og en kopi af din købskvittering på enheden, hvis du har den. Kopi af købskvittering kan alternativt sendes til os pr. mail på <a href=”mailto:forsikring@greenmind.dk">forsikring@greenmind.dk</a>. Tilbehør som covers, opladere etc. og SIM-kort skal altså ikke sendes med. GreenMind kan ikke stilles til ansvar for bortkommet tilbehør.
       </p>
 
       <h3 class="font-bold subtitle">Vil min garanti stadig gælde efter reparationen af min forsikringsanmeldte enhed?</h3>
@@ -100,8 +100,8 @@
       <h3 class="font-bold subtitle">Skal jeg bestille tid eller blot komme forbi?</h3>
       <p>
         Hos GreenMind tager vi ikke imod tidsbestilling, men beder vores kunder om at komme forbi butikkerne, når det passer dem. Vi bestræber os på altid at have bemanding til at kunne behandle de enheder, som kommer ind til reparation – dog med forbehold for perioder med spidsbelastning, manglende reservedele og forlænget reparationstid ved diagnoser. Der er typisk travlt om eftermiddagen omkring fyraften, men som kunde kan man altid ringe på forhånd og høre om, hvor lang kø der er på den pågældende reparation inden man tager af sted.<br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
-          Kontakt kundeservice.
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
         </nuxt-link>
       </p>
 
@@ -123,7 +123,7 @@
         </li>
       </ul>
       <p>
-        Hvis du ønsker at benytte dig af et af disse tilbud, så skal du blot skrive en mail til <a href=”mailto:forsikring@greenmind.dk>forsikring@greenmind.dk</a>. Fragtlabel og fragtemballage bliver ikke sendt ud automatisk, men udleveres kun efter anmodning, som beskrevet ovenfor. Bemærk også, at pakken ikke må afleveres i en postkasse. Den skal afleveres i en pakkeshop.Vælger du selv at sende enheden ind uden brug af vores fragtlabel, så anmoder vi om, at du sender enheden som en pakke med et forsendelsesnummer således, at indholdet er forsikret.
+        Hvis du ønsker at benytte dig af et af disse tilbud, så skal du blot skrive en mail til <a href=”mailto:forsikring@greenmind.dk">forsikring@greenmind.dk</a>. Fragtlabel og fragtemballage bliver ikke sendt ud automatisk, men udleveres kun efter anmodning, som beskrevet ovenfor. Bemærk også, at pakken ikke må afleveres i en postkasse. Den skal afleveres i en pakkeshop.Vælger du selv at sende enheden ind uden brug af vores fragtlabel, så anmoder vi om, at du sender enheden som en pakke med et forsendelsesnummer således, at indholdet er forsikret.
       </p>
 
       <h3 class="font-bold subtitle">Tilbyder I lånetelefoner ved reparationerne?</h3>
@@ -152,8 +152,8 @@ For at være sikker på, at du får en god oplevelse med din nye iPhone, iPad el
       <h3 class="font-bold subtitle">Kan jeg få en kvittering på min ombytningsenhed fra greenmind.dk?</h3>
       <p>
         Hvis du ønsker en kvittering på ombytningsenheden, så skal du blot rette henvendelse til vores kundeservice. Du behøver dog ikke kvitteringen ved evt. reklamationer til os, da det er nok blot at henvende sig med reparationsnummeret.<br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
-          Kontakt kundeservice.
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
         </nuxt-link>
       </p>
 
@@ -178,16 +178,16 @@ For at være sikker på, at du får en god oplevelse med din nye iPhone, iPad el
       <h3 class="font-bold subtitle">Hvor kan jeg indlevere produktet?</h3>
       <p>
         Computere kan indleveres i alle vores butikker. Reparation af computere vil blive udført på vores centrale værksted.<br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
-          Kontakt kundeservice.
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
         </nuxt-link>
       </p>
 
       <h3 class="font-bold subtitle">Kan jeg sende min computer til jer?</h3>
       <p>
         Ja. Såfremt du ønsker at sende produktet skal FØR afsendelse være oprettet en sag, og forsendelsen skal være markeret med et sagsnummer.<br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
-          Kontakt kundeservice.
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
         </nuxt-link>
       </p>
 
@@ -202,8 +202,8 @@ For at være sikker på, at du får en god oplevelse med din nye iPhone, iPad el
       <h3 class="font-bold subtitle">Hvad koster en reparation?</h3>
       <p>
         Pris på reparation af diverse computere kræver altid en diagnose på vores værksted. For vejledende prisoverslag er du dog velkommen til at sende en mail til vores Kundeservice med oplysning om fejlbeskrivelse og enhedens serienummer.<br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
-          Kontakt kundeservice.
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
         </nuxt-link>
       </p>
 
@@ -262,7 +262,7 @@ For at være sikker på, at du får en god oplevelse med din nye iPhone, iPad el
 
       <h3 class="font-bold subtitle">Kan jeg fortryde mit køb på jeres webshop?</h3>
       <p>Ja. Du har altid 14 dages fortrydelsesret på dit køb, hvis du køber dit produkt via vores webshop. Læs mere i vores handelsbetingelser for brug af fortrydelsesretten.<br>
-      <nuxt-link :to="{ name: 'terms' }" class="underline text-center y-link">
+      <nuxt-link :to="{ name: 'terms-of-trade' }" class="underline text-center y-link">
           Handelsbetingelser
         </nuxt-link>
       </p>
@@ -270,7 +270,7 @@ For at være sikker på, at du får en god oplevelse med din nye iPhone, iPad el
       <h3 class="font-bold subtitle">Hvad gør jeg, hvis min købte smartphone eller tablet ikke virker?</h3>
       <p>
         Oplever du mod forventning problemer med din smartphone eller tablet, så skal du blot henvende dig i en af vores butikker eller kontakte vores Kundeservice. Hos os har du altid 24 måneders garanti på din smartphone eller tablet – uanset hvilken stand den er købt i.<br>
-        <nuxt-link :to="{ name: 'customerservice' }" class="underline text-center y-link">
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
           Kontakt kundeservice
         </nuxt-link><br>
         <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
@@ -281,7 +281,7 @@ For at være sikker på, at du får en god oplevelse med din nye iPhone, iPad el
       <h3 class="font-bold subtitle">Hvordan sælger jeg min smartphone eller tablet til jer?</h3>
       <p>
         Læs nærmere mere under Sælg til os.<br>
-        <nuxt-link :to="{ name: 'howtosell' }" class="underline text-center y-link">
+        <nuxt-link :to="{ name: 'how-to-sell' }" class="underline text-center y-link">
           Sælg til os
         </nuxt-link>
       </p>
