@@ -26,10 +26,10 @@
 
       <ul class="list-disc">
         <li class="text">
-          Produktet skal være opladet Hvis det er en mobil, tablet, bærbar eller lignende der bruger batteri, skal du sørge for at produktet er opladet, så personalet kan tjekke udstyrets stand.
+          Produktet skal være opladet. Hvis det er en mobil, tablet, bærbar eller lignende der bruger batteri, skal du sørge for at produktet er opladet, så personalet kan tjekke udstyrets stand.
         </li>
         <li class="text">
-          Medbring ID gyldig billede- og adresselegitimation. Alle som sælger til GreenMind bliver registreret i vores system for at sikre at du er den retmæssige ejer.
+          Medbring ID gyldig billede- og adresselegitimation. Alle som sælger til GreenMind A/S bliver registreret i vores system for at sikre at du er den retmæssige ejer.
         </li>
         <li class="text">
           Medbring alt ekstraudstyr for at opnå den bedste pris. Produktet er mere værd hvis du også husker at medbringe originalt ekstraudstyr, såsom oplader, controller osv.
@@ -50,7 +50,7 @@
           Ønsker du at købe et andet produkt i vores butik eller onlineshop, kan vi give dig en endnu bedre pris for dit produkt.
         </li>
         <li class="text">
-          Når du accepterer prisen, er handlen bindende for begge parter. Vi forbeholder os dog retten til at ophæve handlen såfremt det viser sig, at varen ikke tilhører dig, eller hvis varen har en ikke uvæsentlig defekt eller skade, som du ikke oplyste om forud for salget.
+          Når du accepterer prisen, er handlen bindende for begge parter. Vi forbeholder os dog retten til at ophæve handlen såfremt det viser sig, at varen ikke tilhører dig, eller hvis varen har en ikke uvæsentlig defekt eller skade, som du ikke oplyste os om, forud for salget.
         </li>
         <li class="text">
           Bemærk at personalet til enhver tid kan afvise at købe en vare.
@@ -72,7 +72,7 @@
       </p>
       <ul class="list-disc">
         <li class="text">
-          Ved at sælge til GreenMind, sørger vi for at jeres virksomhed er i compliance med GDPR-lovgivningen, da datasletning, altid er indeholdt i vores priser.
+          Ved at sælge til GreenMind A/S, sørger vi for at jeres virksomhed er i compliance med GDPR-lovgivningen, da datasletning, altid er indeholdt i vores priser.
         </li>
         <li class="text">
           Såfremt I vælger at lade jeres medarbejdere beholde udgåede enheder, er det stadig vigtigt, at få dokumentation/certifikat på at jeres enheder er dataslettet, så i til enhver tid kan dokumentere at i har behandlet fortrolige/personfølsomme oplysninger efter lovgivningen.
