@@ -2,25 +2,8 @@
   <div class="text-wrap">
     <div class="container">
       <h1 class="font-bold title">
-        Fragt og retur
+        Returnering
       </h1>
-      <h3 class="font-bold subtitle">
-        Fragtpriser
-      </h3>
-      <p class="text">
-        Fragt til privatadresse koster kr. 69,-.
-      </p>
-
-      <h3 class="font-bold subtitle">
-        Leveringstid
-      </h3>
-      <p class="text">
-        Du vil modtage et Track & Trace-nummer på mail, når vi afsender ordren, så du kan følge ordren hele vejen.
-
-        På vores hjemmeside kan du se hvilke varer der er på lager, og bestiller du et produkt der er på lager, så afsender din ordre hurtigst muligt. Derfor vil forsendelse normalt ske den første eller anden hverdag, efter bestillingen er modtaget.
-
-        Vi leverer kun til kunder i Danmark (We do not deliver to addresses outside Denmark). Der leveres ikke til Færøerne og Grønland.
-      </p>
 
       <h3 class="font-bold subtitle">
         Fortrydelsesret
