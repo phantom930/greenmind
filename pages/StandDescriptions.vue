@@ -59,10 +59,10 @@
           Produktet er fuldt funktionsdygtigt.
         </li>
         <li class="text">
-          Produktet kan have mindre kosmetiske skrammer og ridser.
+          Produktet kan have en højere grad af kosmetiske skrammer og ridser samt buler i metalramme, cover eller lakering
         </li>
         <li class="text">
-          Der kan være små ridser i skærmen, men ingen, som forstyrrer billedet eller evt. Touch-funktionen.
+          Der kan være ridser i skærmen, men ingen, som forstyrrer billedet eller evt. touch-funktionen
         </li>
         <li class="text">
           Ladekabel medfølger (0,5m).
