@@ -213,7 +213,7 @@ export default defineComponent({
             },
             {
               name: 'Stand descriptions',
-              slug: 'standDescriptions'
+              slug: 'stand-descriptions'
             },
             {
               name: 'Environment',
