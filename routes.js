@@ -115,7 +115,7 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/AboutUs.vue')
     },
     {
-      name: 'standDescriptions',
+      name: 'stand-descriptions',
       path: `${i18nRoutes.standDescriptions[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/StandDescriptions.vue')
     },
