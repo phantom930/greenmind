@@ -46,9 +46,9 @@
       />
     </div>
 
-    <abstract-payment-observer v-if="selectedProvider.name">
+    <abstract-payment-observer v-if="selectedProvider.provider">
       <component
-        :is="getComponentProviderByName(selectedProvider.name)"
+        :is="getComponentProviderByName(selectedProvider.provider)"
         class="py-8"
         :provider="selectedProvider"
         @isPaymentReady="isPaymentReady = arguments[0]"
