@@ -76,9 +76,9 @@
 <script >
 import { SfHeading, SfImage } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
-import { cartGetters, useCart, useMakeOrder, usePayment } from '@vue-storefront/odoo';
+import { cartGetters, useCart, useMakeOrder } from '@vue-storefront/odoo';
 import { computed, defineComponent, ref } from '@vue/composition-api';
-import { useUiHelpers } from '~/composables';
+import { useUiHelpers, usePayment } from '~/composables';
 
 export default defineComponent({
   name: 'Payment',

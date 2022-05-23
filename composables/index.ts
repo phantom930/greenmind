@@ -8,12 +8,14 @@ import useUiStyleState from './useUiStyleState';
 import useCheckoutShipping from './useCheckoutShipping';
 import useCheckoutBilling from './useCheckoutBilling';
 import usePartner from './usePartner';
+import usePayment from './usePayment';
 
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
 import facetGetters from './getters/facetGetters';
 
 export {
+  usePayment,
   useUiHelpers,
   useUiNotification,
   useUiCategoryHelpers,

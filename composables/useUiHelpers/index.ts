@@ -111,12 +111,12 @@ const useUiHelpers = (): any => {
     return false;
   };
 
-  const getComponentProviderByName = (name: string): string => {
-    if (!name) throw new Error('Provider without name');
+  const getComponentProviderByName = (provider: string): string => {
+    if (!provider) throw new Error('Provider without provider');
 
-    const upperName = name.toLocaleUpperCase();
+    const upperName = provider.toLocaleUpperCase();
 
-    if (upperName.includes('ADYEN')) {
+    if (upperName.includes('ADYEN_OG')) {
       return 'AdyenExternalPaymentProvider';
     }
 
