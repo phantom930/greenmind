@@ -107,7 +107,7 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
     {
       name: 'sendDeviceRepair',
       path: `${i18nRoutes.sendDeviceRepair[localeIndex]}`,
-      component: path.resolve(themeDir, 'pages/DisableFindMinIphone.vue')
+      component: path.resolve(themeDir, 'pages/SendDinEnhedTilReparation.vue')
     },
     {
       name: 'about-us',
