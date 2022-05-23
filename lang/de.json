@@ -58,7 +58,7 @@
   "Item": "Artikel",
   "Go back": "Go back",
   "Continue to shipping": "Weiter zum Versand",
-  "I agree to": "Ich stimme zu",
+  "I agree to": "Jeg accepterer",
   "Terms and conditions": "Allgemeine Geschäftsbedingungen",
   "Pay for order": "Für Bestellung bezahlen",
   "Log into your account": "In dein Konto einloggen",
@@ -120,7 +120,7 @@
   "see details": "se detaljer",
   "CHECKOUT": "Gå til kassen",
   "BACK TO SHOPPING": "TILBAGE TIL SHOPPING",
-  "GO TO SHIPPING": "GÅ TIL FORSENDELSE",
+  "GO TO SHIPPING": "Fortsæt",
   "GO TO REVIEW ORDER": "GÅ TIL GENNEMGÅ ORDRE",
   "GO TO PAYMENT": "GÅ TIL BETALING",
   "Customer Service": "Kundeservice",
@@ -361,5 +361,7 @@
   "Price guarantee": "Preisgarantie",
   "Send your device for repair": "Senden Sie Ihr Gerät zur Reparatur ein",
   "Stand descriptions": "Standbeschreibungen",
-  "Tel: +45 4697 5050": "Tel: +45 4697 5050"
+  "Tel: +45 4697 5050": "Tel: +45 4697 5050",
+  "Thank you for your order": "Tak for din ordre"
+
 }

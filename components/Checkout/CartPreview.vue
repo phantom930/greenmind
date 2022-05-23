@@ -97,9 +97,10 @@
             </p>
             <p class="mb-4">
               <span>{{ partnerShipping.name }}</span> <br>
-              <span v-if="partnerShipping.street">{{ partnerShipping.street }} –</span>
-              {{ partnerShipping.zip }}<br>
-              <span v-if="partnerShipping.city">{{ partnerShipping.city }}, {{ partnerShipping.country ? partnerShipping.country.name : '' }}</span>
+              <span v-if="partnerShipping.street">{{ partnerShipping.street }}</span><br v-if="partnerShipping.street2">
+              <span v-if="partnerShipping.street2">{{ partnerShipping.street2 }}</span><br>
+              <span>{{ partnerShipping.zip }} </span>
+              <span v-if="partnerShipping.city">{{ partnerShipping.city }}</span>
             </p>
           </div>
           <div class="detail-edit">
@@ -126,9 +127,10 @@
             </p>
             <p class="mb-4">
               <span>{{ partnerInvoice.name }}</span> <br>
-              <span v-if="partnerInvoice.street">{{ partnerShipping.street }} –</span>
-              {{ partnerInvoice.zip }}<br>
-              <span v-if="partnerInvoice.city">{{ partnerInvoice.city }}, {{ partnerInvoice.country ? partnerInvoice.country.name : '' }}</span>
+              <span v-if="partnerInvoice.street">{{ partnerInvoice.street }}</span><br v-if="partnerInvoice.street2">
+              <span v-if="partnerInvoice.street2">{{ partnerInvoice.street2 }}</span><br>
+              <span>{{ partnerInvoice.zip }} </span>
+              <span v-if="partnerInvoice.city">{{ partnerInvoice.city }}</span>
             </p>
           </div>
           <div class="detail-edit">

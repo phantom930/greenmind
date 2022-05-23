@@ -96,7 +96,7 @@
   "Home": "Hem",
   "How do you sell?": "Hur säljer du?",
   "How to buy?": "Hur köper man?",
-  "I agree to": "Jag går med på",
+  "I agree to": "Jeg accepterer",
   "I confirm subscription": "Jag bekräftar prenumerationen",
   "I forgot my password?": "Jag har glömt mitt lösenord?",
   "I want to create an account": "Jag vill skapa ett konto",
@@ -361,5 +361,7 @@
   "Price guarantee": "Prisgaranti",
   "Send your device for repair": "Skicka din enhet för reparation",
   "Stand descriptions": "Monterbeskrivningar",
-  "Tel: +45 4697 5050": "Tel: +45 4697 5050"
+  "Tel: +45 4697 5050": "Tel: +45 4697 5050",
+  "Thank you for your order": "Tak for din ordre"
+
 }

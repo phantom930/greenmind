@@ -3,7 +3,7 @@
     <SfHeading
       :level="3"
       :title="$t('Shipping Details')"
-      class="sf-heading--left sf-heading--no-underline title"
+      class="sf-heading--left sf-heading--no-underline title mb-5"
     />
 
     <!-- <CheckoutUserShippingAddresses
@@ -27,11 +27,11 @@
       {{ $t("Add new address") }}
     </GreenButton>
 
-    <SfHeading
+    <!-- <SfHeading
       :level="3"
       :title="$t('Select shipping method')"
       class="sf-heading--left sf-heading--no-underline title"
-    />
+    /> -->
 
     <CheckoutAddressForm
       v-if="canAddNewAddress"

@@ -6,7 +6,7 @@ import { Plugin } from '@nuxt/types';
 const veeValidatePlugin : Plugin = ({ i18n }) => {
   extend('min', {
     ...min,
-    message: field => `${i18n.t('This field must have be')} ${field}`
+    message: field => `${i18n.t('This field must have be')} ${field} ${i18n.t('digits')}`
   });
 
   extend('max', {

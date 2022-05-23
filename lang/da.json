@@ -171,7 +171,7 @@
   "see details": "se detaljer",
   "CHECKOUT": "Gå til kassen",
   "BACK TO SHOPPING": "FORTSÆT MED AT HANDLE",
-  "GO TO SHIPPING": "GÅ TIL FORSENDELSE",
+  "GO TO SHIPPING": "Fortsæt",
   "GO TO REVIEW ORDER": "FORTSÆT",
   "GO TO PAYMENT": "GÅ TIL BETALING",
   "Customer Service": "Kundeservice",
@@ -358,9 +358,10 @@
   "Name: Z to A": "Alfabetisk, Å til A",
   "Price: High to Low": "Pris, faldende",
   "Price: Low to High": "Pris, stigende",
-  "This field must have be": "Dette felt skal have været",
+  "This field must have be": "Dette felt skal indeholde",
   "This field is required.": "Dette felt er påkrævet.",
   "This field must be an email": "Dette felt skal være en e-mail",
   "This field must have": "Dette felt skal have",
-  "digits": "cifre"
+  "digits": "cifre",
+  "Thank you for your order": "Tak for din ordre"
 }

@@ -1,45 +1,14 @@
 <template>
   <div id="thank-you">
-    <SfCallToAction
-      v-e2e="'thank-you-banner'"
-      class="banner"
-      :image="{
-        mobile: require('/assets/images/thankyou/bannerM2.webp'),
-        desktop: require('/assets/images/thankyou/bannerD2.webp'),
-      }"
-    >
-    <!-- <SfCallToAction
-      v-e2e="'thank-you-banner'"
-      class="banner"
-      title="Thank you for your order!"
-      :image="{
-        mobile: '/thankyou/bannerM.png',
-        desktop: '/thankyou/bannerD.png',
-      }"
-    > -->
-      <!--<template #description>
-        <div class="banner__order-number">
-          <span>{{ $t("Order No. ") }}</span>
-          <strong>{{ cartGetters.getOrderNumber(cart) }}</strong>
-        </div>
-        <div
-          v-if="paymentRefused"
-          class="banner__order-number"
-        >
-          <SfButton
-            class="sf-button--pure sf-header__action"
-            @click="redirectToPayment"
-          >
-            Pay
-          </SfButton>
-        </div>
-      </template>-->
-    </SfCallToAction>
+    <SfHeading
+      :title="$t('Your cart is empty')"
+      :level="2"
+    />
 
     <nuxt-link to="/">
       <SfButton class="back-button color-secondary button-size">
         {{
-          $t("Go back to shop")
+          $t("Thank you for your order")
         }}
       </SfButton>
     </nuxt-link>
@@ -47,14 +16,13 @@
 </template>
 
 <script>
-import { SfHeading, SfButton, SfCallToAction } from '@storefront-ui/vue';
+import { SfHeading, SfButton } from '@storefront-ui/vue';
 import { ref, onMounted } from '@nuxtjs/composition-api';
 import { usePayment, useCart, cartGetters } from '@vue-storefront/odoo';
 export default {
   components: {
     SfHeading,
-    SfButton,
-    SfCallToAction
+    SfButton
   },
   emits: ['changeStep'],
   setup(props, { root, emit }) {

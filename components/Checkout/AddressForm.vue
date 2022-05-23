@@ -59,26 +59,16 @@
           />
         </ValidationProvider>
 
-        <ValidationProvider
-          v-slot="{ errors }"
+        <SfInput
+          v-model="form.street2"
+          :label="`${$t('Street name')} 2` "
           name="streetTwoName"
-          rules="required"
-          slim
-        >
-          <SfInput
-            v-model="form.street2"
-            :label="`${$t('Street name')} 2` "
-            name="streetTwoName"
-            class="form__element"
-            required
-            :valid="!errors[0]"
-            :error-message="errors[0]"
-          />
-        </ValidationProvider>
+          class="form__element"
+        />
 
         <ValidationProvider
           v-slot="{ errors }"
-          name="between 3-4"
+          name="3-4"
           rules="required|min:3|max:4"
           slim
         >
