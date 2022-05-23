@@ -214,20 +214,15 @@ export default defineComponent({
             {
               name: 'Stand descriptions',
               slug: 'stand-descriptions'
-            },
-            {
-              name: 'Environment',
-              slug: 'environment'
-            },
-            {
-              name: 'Price guarantee',
-              slug: 'price-guarantee'
             }
-
-            /* {
-              name: 'Blog',
-              slug: '/blog'
-            }*/
+            //{
+            //  name: 'Environment',
+            //  slug: 'environment'
+            //},
+            //{
+            //  name: 'Price guarantee',
+            //  slug: 'price-guarantee'
+            //}
           ]
         },
         {
