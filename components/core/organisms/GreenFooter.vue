@@ -238,7 +238,7 @@ export default defineComponent({
               slug: 'customer-service'
             },
             {
-              name: 'Returnering',
+              name: 'freight',
               slug: 'freight-return'
             },
             {
@@ -287,8 +287,8 @@ export default defineComponent({
       },
       social: [
         { name: 'facebook', url: 'https://www.facebook.com/greenmind.dk' }
-        //{ name: 'instagram', url: 'https://www.instagram.com/greenminddk' },
-        //{ name: 'linkedin', url: 'https://www.linkedin.com/company/greenminddk' }
+        // { name: 'instagram', url: 'https://www.instagram.com/greenminddk' },
+        // { name: 'linkedin', url: 'https://www.linkedin.com/company/greenminddk' }
       ]
     };
   },
