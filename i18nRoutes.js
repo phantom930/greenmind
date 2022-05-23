@@ -115,9 +115,9 @@ export default {
   },
   freight: {
     en: '/shipping-return',
-    da: '/levering-retur',
-    de: '/levering-retur',
-    sv: '/levering-retur'
+    da: '/returnering',
+    de: '/returnering',
+    sv: '/returnering'
   },
   termsOfTrade: {
     en: '/terms-of-trade',
