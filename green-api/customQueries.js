@@ -311,7 +311,7 @@ module.exports = {
   greenAddAddress: ({variables}) => ({
     variables,
     mutation: gql `
-    mutation addAddress($name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $street2: String!, $zip: String!, $type: AddressEnum! ) {
+    mutation addAddress($name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $street2: String, $zip: String!, $type: AddressEnum! ) {
       addAddress(type: $type, address: {name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, street2: $street2, zip: $zip}) {
         id
         name 
@@ -334,7 +334,7 @@ module.exports = {
   greenUpdateAddress: ({variables}) => ({
     variables,
     mutation: gql `
-    mutation updateAddress($id: Int!, $name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $street2: String!, $zip: String!) {
+    mutation updateAddress($id: Int!, $name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $street2: String, $zip: String!) {
       updateAddress( address: {id: $id,name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, street2: $street2, zip: $zip}) {
         id
         name 
