@@ -90,7 +90,7 @@
         GreenMind og BlueCity er i færd med at fusionere og du kan derfor også besøge vores BlueCity butikker og få samme gode priser.
       </h4>
 
-      <span>Bemærk dog, at I BlueCity butikker behandler vi desværre ikke forsikringssager.</span>
+      <span>Bemærk, at i BlueCity butikker behandler vi desværre ikke forsikringssager, dog med undtagelse af Vesterbrogade i København.</span>
       <table>
         <tr>
           <td class="text">
@@ -125,7 +125,7 @@
         </tr>
         <tr>
           <td class="text">
-            Salgelse <br>
+            Slagelse <br>
             (BlueCity)
           </td>
           <td class="text">
@@ -182,6 +182,22 @@
             Mandag – Torsdag: 10-17:30 * <br>
             Fredag: 10-18 * <br>
             Lørdag: 10-15 * <br>
+            Søndag: Lukket
+          </td>
+        </tr>
+        <tr>
+          <td class="text">
+            Århus <br>
+            (BlueCity)
+          </td>
+          <td class="text">
+            Ryesgade 28 <br>
+            8000 Århus C
+          </td>
+          <td class="text">
+            Mandag – Torsdag: 10-18 * <br>
+            Fredag: 10-19 * <br>
+            Lørdag: 10-17 * <br>
             Søndag: Lukket
           </td>
         </tr>
