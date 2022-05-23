@@ -132,21 +132,14 @@
           style-type="Primary"
           color="Green"
           shape="Round"
-          size="Medium"
-          class="my-5 desktop-only"
+          :size="$device.isMobile ? 'Max' : 'Medium'"
+          class="my-5"
           :disabled="invalid || loading"
           :loading="loading"
           @click="handleSubmit(handleFormSubmit)"
         >
           {{ $t("GO TO SHIPPING") }}
         </GreenButton>
-
-        <SfButton
-          class="color-primary sf-button shipping-btn smartphone-only"
-          @click="$router.push('/')"
-        >
-          {{ $t("BACK TO SHOPPING") }}
-        </SfButton>
       </div>
     </ValidationObserver>
   </div>

@@ -106,7 +106,7 @@
         style-type="Primary"
         color="Green"
         shape="Round"
-        size="Medium"
+        :size="$device.isMobile ? 'Max' : 'Medium'"
         :disabled="!canGoReviewOrder || loadingBilling || loadingShipping"
         :loading="loadingBilling || loadingShipping"
         @click="handleGoToReviewOrder"
@@ -115,7 +115,7 @@
       </GreenButton>
       <SfButton
         class="color-primary sf-button revieworder_button mt-4 smartphone-only"
-        @click="$router.push('/checkout/personaldetails')"
+        @click="$router.push({ name: 'shipping'})"
       >
         {{ $t("GO BACK") }}
       </SfButton>

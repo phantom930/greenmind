@@ -86,7 +86,7 @@
           style-type="Primary"
           color="Green"
           shape="Round"
-          size="Medium"
+          :size="$device.isMobile ? 'Max' : 'Medium'"
           :disabled="!agreeTermsConditions"
           @click="$router.push('/checkout/payment')"
         >
@@ -95,7 +95,7 @@
 
         <SfButton
           class="color-primary sf-button payment-btn mt-4 smartphone-only"
-          @click="$router.push('/checkout/shipping')"
+          @click="$router.push({ name: 'revieworder'})"
         >
           {{ $t("GO BACK") }}
         </SfButton>

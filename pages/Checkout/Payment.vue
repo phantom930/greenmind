@@ -63,9 +63,9 @@
       style-type="Primary"
       color="Green"
       shape="Round"
-      size="Medium"
+      :size="$device.isMobile ? 'Max' : 'Medium'"
       :disabled="!canFinishPayment"
-      class="my-5 desktop-only"
+      class="my-5"
       @click="providerPaymentHandler()"
     >
       {{ $t("Confirm & Pay") }}
