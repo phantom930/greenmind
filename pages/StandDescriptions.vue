@@ -1,102 +1,101 @@
 <template>
-  
+
   <div class="text-wrap">
     <div class="container">
-      <h1 class="title"></h1>
-      <p class="text italic mb">Som ny</p>
+      <h1 class="font-bold title">
+        Standbeskrivelser
+      </h1>
 
-      <table class="table-page-six">
-        <tr>
-          <td></td>
-          <td class="text">Produktet er fuldt funktionsdygtigt</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Produktet fremstår som nyt, men kan have ganske små og ubetydelige ridser, som kun ses helt tæt på</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Ladekabel medfølger (0,5m)</td>
-        </tr>
-      </table>
+      <h3 class="font-bold">
+        Ny vare
+      </h3>
+      <ul class="list-disc">
+        <li class="text">
+          Produktet er i uåbnet emballage.
+        </li>
+        <li class="text">
+          Alle enheder ved GreenMind A/S er solgt brugt, hvilket vil sige at enheder, selvom de sælges som “Ny” af stand, så har de tidligere været i hænderne af en anden.
+        </li>
+      </ul>
 
+      <h3 class="font-bold">
+        Brugt - Som ny
+      </h3>
+      <ul class="list-disc">
+        <li class="text">
+          Produktet er fuldt funktionsdygtigt.
+        </li>
+        <li class="text">
+          Produktet fremstår som nyt, men kan have ganske små og ubetydelige ridser, som kun ses helt tæt på.
+        </li>
+        <li class="text">
+          Ladekabel medfølger (0,5m).
+        </li>
+      </ul>
 
-      <p class="text italic mb">Meget flot stand</p>
+      <h3 class="font-bold">
+        Brugt - Meget flot stand
+      </h3>
+      <ul class="list-disc">
+        <li class="text">
+          Produktet er fuldt funktionsdygtigt.
+        </li>
+        <li class="text">
+          Produktet kan have mindre kosmetiske skrammer og ridser.
+        </li>
+        <li class="text">
+          Der kan være små ridser i skærmen, men ingen, som forstyrrer billedet eller evt. touch-funktionen).
+        </li>
+        <li class="text">
+          Ladekabel medfølger (0,5m).
+        </li>
+      </ul>
 
-      <table class="table-page-six">
-        <tr>
-          <td></td>
-          <td class="text">Produktet er fuldt funktionsdygtigt</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Produktet kan have mindre kosmetiske skrammer og ridser</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Der kan være små ridser i skærmen, men ingen, som forstyrrer billedet eller evt. touch-funktionen)</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Ladekabel medfølger (0,5m)</td>
-        </tr>
-      </table>
+      <h3 class="font-bold">
+        Brugt - Okay stand
+      </h3>
+      <ul class="list-disc">
+        <li class="text">
+          Produktet er fuldt funktionsdygtigt.
+        </li>
+        <li class="text">
+          Produktet kan have mindre kosmetiske skrammer og ridser.
+        </li>
+        <li class="text">
+          Der kan være små ridser i skærmen, men ingen, som forstyrrer billedet eller evt. Touch-funktionen.
+        </li>
+        <li class="text">
+          Ladekabel medfølger (0,5m).
+        </li>
+      </ul>
 
-
-      <p class="text italic mb">Okay stand</p>
-
-      <table class="table-page-six">
-        <tr>
-          <td></td>
-          <td class="text">Produktet er fuldt funktionsdygtigt</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Produktet kan have mindre kosmetiske skrammer og ridser</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Der kan være små ridser i skærmen, men ingen, som forstyrrer billedet eller evt. touch-funktionen</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Ladekabel medfølger (0,5m)</td>
-        </tr>
-      </table>
-
-
-      <p class="text italic mb">Slidt stand</p>
-
-      <table class="table-page-six">
-        <tr>
-          <td></td>
-          <td class="text">Produktet er fuldt funktionsdygtigt</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Produktet har en høj grad af ridser og buler i metalramme, cover eller lakering</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Mindre revner i hjørner og kanter</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Mindre skærmfejl som "burn-in", farvefejl og lignende, men ingen som forstyrrer evt. touch-funktionen</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Ladekabel medfølger (0,5m)</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td class="text">Kan du ikke leve med ovenstående på din enhed, er slidt stand ikke for dig. Gå i stedet efter en af vores andre stande.</td>
-        </tr>
-      </table>
+      <h3 class="font-bold">
+        Brugt - Slidt stand
+      </h3>
+      <ul class="list-disc">
+        <li class="text">
+          Produktet er fuldt funktionsdygtigt.
+        </li>
+        <li class="text">
+          Produktet har en høj grad af ridser og buler i metalramme, cover eller lakering.
+        </li>
+        <li class="text">
+          Mindre revner i hjørner og kanter.
+        </li>
+        <li class="text">
+          Mindre skærmfejl som "burn-in", farvefejl og lignende, men ingen som forstyrrer evt. touch-funktionen.
+        </li>
+        <li class="text">
+          Ladekabel medfølger (0,5m).
+        </li>
+        <li class="text">
+          Kan du ikke leve med ovenstående på din enhed, er slidt stand ikke for dig. Gå i stedet efter en af vores andre stande.
+        </li>
+      </ul>
 
     </div>
   </div>
-  
+
 </template>
 
 <style lang="scss" scoped>
