@@ -238,7 +238,7 @@ export default defineComponent({
               slug: 'customer-service'
             },
             {
-              name: 'Shipping and returns',
+              name: 'Returnering',
               slug: 'freight-return'
             },
             {
