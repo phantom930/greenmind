@@ -2,19 +2,21 @@
   <div class="text-wrap">
     <div class="container">
       <h1 class="font-bold title mb">
-        GreenMind's Privatlivspolitik
+        Privatlivspolitik
       </h1>
 
       <h3 class="font-bold">
-        1. Indledning time for change
+        1. Indledning
       </h3>
       <p class="text mb">
-        Dit privatliv er vigtigt for os. For bedre at beskytte dit privatliv beskriver vi i denne privatlivspolitik, hvordan GreenMind A/S ("GreenMind", "vi", "os", "vores") som dataansvarlig indsamler, behandler og bruger de personoplysninger, so vi indsamler om vores kunder mv. i forbindelse med:
+        Dit privatliv er vigtigt for os. For bedre at beskytte dit privatliv beskriver vi i denne privatlivspolitik, hvordan GreenMind A/S ("GreenMind", "vi", "os", "vores") som dataansvarlig indsamler, behandler og bruger de personoplysninger, som vi indsamler om vores kunder mv. i forbindelse med:
         <ol class="list-decimal list-inside">
           <li class="my-3">
             Brug af vores hjemmeside
           </li>
-          <li>Køb i webshop</li>
+          <li class="my-3">
+            Køb i webshop
+          </li>
           <li class="my-3">
             Salg af udstyr til GreenMind
           </li>
@@ -22,14 +24,13 @@
             Nyhedsbrev og markedsføring
           </li>
           <li class="my-3">
-            Ved at tilmelde GreenMinds nyhedsbrev siger du ja tak, send e-mails fra GreenMind med nyheder og tilbud. Du er opmærksom på, at du til enhver tid kan trække dit samtykke tilbage ved at afmelde nyhedsbrevet i de e-mails, du modtager.
+            Ved at tilmelde GreenMinds nyhedsbrev siger du ja tak, send e-mails fra GreenMind med nyheder og tilbud. Du er opmærksom på, at du til enhver tid kan trække dit samtykke tilbage ved at afmelde nyhedsbrevet i de e-mails, du modtager
           </li>
           <li class="my-3">
             Når du kommunikerer med os
           </li>
 
-          Vi oplyser om alle disse forhold, fordi vi er forpligtede hertil efter databeskyttelsesforordningen (GDPR). Du kan i det følgende læse om de enkelte sammenhænge og formål, hvor vi behandler dine personoplysninger.
-          Du kan nederst i afsnittet <span class="font-bold">"Generel information om rettigheder og klagemulighed mv."</span> læse om dine rettigheder, ligesom du kan se, hvordan du kontakter os.
+          Vi oplyser om alle disse forhold, fordi vi er forpligtede hertil efter databeskyttelsesforordningen (GDPR). Du kan i det følgende læse om de enkelte sammenhænge og formål, hvor vi behandler dine personoplysninger. Du kan nederst i afsnittet <span class="font-bold">"Generel information om rettigheder og klagemulighed mv."</span> læse om dine rettigheder, ligesom du kan se, hvordan du kontakter os.
         </ol>
       </p>
 
@@ -44,42 +45,33 @@
         2.1 Din brug af hjemmesiden (cookies mv.)
       </h4>
       <p class="text mb">
-        Når du besøger vores hjemmeside, registrerer vi via cookies oplysninger om dine besøg, herunder fx oplysninger om din IP-adresse, din browsertype, besøgstidspunktet, de hjemmesider der linkes fra, de hjemmesider der besøges, de features der anvendes, samt det indhold der besøges. Disse oplysninger kan i nogle tilfælde omfatte personoplysninger.
-        Formål og retsgrundlag
-        Vi registrerer ovenstående oplysninger for at kunne tilbyde en sikker, stabil og kundevenlig brugeroplevelse på vores hjemmeside samt føre statistik over vores besøgende, og - i visse tilfælde - målrette markedsføring, baseret på brugerens adfærd. Retsgrundlaget for behandlingen er cookiebekendtgørelsens § 3, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f (for nødvendige funktionalitetscookies), idet vi forfølger vores legitime interesse i at kunne opretholde funktionaliteten og sikkerheden af hjemmesiden og cookiebekendtgørelsens § 4, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a (for øvrige cookies). Du kan læse mere om vores brug af cookies i vores særskilte
-        <nuxt-link :to="{ name: 'cookies' }" class="underline ylink">
-          Cookiepolitik.
-        </nuxt-link>
-      </p>
-      <h5>Opbevaring</h5>
-      <p class="text mb">
-        Oplysninger i forbindelse med vores anvendelse af cookies slettes som udgangspunkt når cookien bliver slettet fra din enhed, og afhænger således af den konkrete cookie. Du kan læse mere om de forskellige cookies, herunder levetiden, samt mulighederne for deaktivering mv., i vores særskilte
-        <nuxt-link :to="{ name: 'cookies' }" class="underline ylink">
-          Cookiepolitik.
+        Når du besøger vores hjemmeside, registrerer vi via cookies oplysninger om dine besøg, herunder fx oplysninger om din IP-adresse, din browsertype, besøgstidspunktet, de hjemmesider der linkes fra, de hjemmesider der besøges, de features der anvendes, samt det indhold der besøges. Disse oplysninger kan i nogle tilfælde omfatte personoplysninger. Formål og retsgrundlag Vi registrerer ovenstående oplysninger for at kunne tilbyde en sikker, stabil og kundevenlig brugeroplevelse på vores hjemmeside samt føre statistik over vores besøgende, og - i visse tilfælde - målrette markedsføring, baseret på brugerens adfærd. Retsgrundlaget for behandlingen er cookiebekendtgørelsens § 3, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f (for nødvendige funktionalitetscookies), idet vi forfølger vores legitime interesse i at kunne opretholde funktionaliteten og sikkerheden af hjemmesiden og cookiebekendtgørelsens § 4, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a (for øvrige cookies). Du kan læse mere om vores brug af cookies på vores særskilte Cookie side.
+        </p>
+        <p class="text mb">
+        Oplysninger i forbindelse med vores anvendelse af cookies slettes som udgangspunkt når cookien bliver slettet fra din enhed, og afhænger således af den konkrete cookie. Du kan læse mere om de forskellige cookies, herunder levetiden, samt mulighederne for deaktivering mv., på vores Cookies side:<br>
+        <nuxt-link :to="{ name: 'cookies' }" class="underline text-center y-link">
+          Cookies
         </nuxt-link>
       </p>
       <h4 class="font-medium">
         2.2 Køb i webshop
       </h4>
       <p class="text mb">
-        Når du køber et produkt, indsamler vi en række oplysninger om dig, herunder dit navn, dine kontaktoplysninger, konto- og betalingsoplysninger samt din adresse.
-        Formål og retsgrundlag
-        Formålet er, at vi kan registrere og gennemføre din ordre, samt levere det eller de produkter, du har bestilt i webshoppen. Herudover bliver oplysningerne brugt for at kunne yde support til dig.
+        Når du køber et produkt, indsamler vi en række oplysninger om dig, herunder dit navn, dine kontaktoplysninger, konto- og betalingsoplysninger samt din adresse.<br>
+        Formål og retsgrundlag Formålet er, at vi kan registrere og gennemføre din ordre, samt levere det eller de produkter, du har bestilt i webshoppen. Herudover bliver oplysningerne brugt for at kunne yde support til dig.<br>
         Retsgrundlaget for behandlingen er databeskyttelsesforordningens artikel 6, stk. 1, litra b, idet behandlingen sker for at vi kan opfylde den købsaftale, du har indgået med os.
-        Opbevaring
-        Oplysningerne opbevares som udgangspunkt i 5 år fra udgangen af det regnskabsår, som oplysningerne relaterer sig til, i henhold til de bogføringsregler, vi er underlagt, jf. bl.a. bogføringslovens kapitel 5.
-        Øvrige oplysninger, som du giver til os i forbindelse med køb af varer i vores webshop, opbevares som udgangspunkt i 3 år fra købet. Oplysninger i vores webshop-system vil dog blive anonymiseret allerede efter 12 måneder.
+      </p>
+      <p class="text mb">
+        Oplysninger om dig opbevares som udgangspunkt i 5 år fra udgangen af det regnskabsår, som oplysningerne relaterer sig til, i henhold til de bogføringsregler, vi er underlagt, jf. bl.a. bogføringslovens kapitel 5. Øvrige oplysninger, som du giver til os i forbindelse med køb af varer i vores webshop, opbevares som udgangspunkt i 1 år fra købet.
       </p>
 
       <h4 class="font-medium">
         2.3 Ved salg af dit udstyr til GreenMind
       </h4>
       <p class="text mb">
-        Ved vores køb af dit brugte udstyr, vil vi bede dig om navn, adresse, telefonnummer og e-mail.
-        Formål og retsgrundlag
-        Formålet med behandlingen af personoplysningerne er, at vi kan administrere kundeforholdet, herunder kontakte dig i forbindelse med eventuelle opfølgende spørgsmål, reklamationer samt vores iagttagelse af bogføringsmæssige forpligtelser mv.
-        Retsgrundlaget for behandlingen af personoplysninger i forbindelse med vores køb af dit udstyr til GreenMind er databeskyttelsesforordningens artikel 6, stk. 1, litra f, idet vi forfølger de legitime interesser, der er nævnt ovenfor.
-        Opbevaring
+        Ved vores køb af dit brugte udstyr, vil vi bede dig om navn, adresse, telefonnummer og e-mail.<br>
+        <br>
+        Formålet med behandlingen af personoplysningerne er, at vi kan administrere kundeforholdet, herunder kontakte dig i forbindelse med eventuelle opfølgende spørgsmål, reklamationer samt vores iagttagelse af bogføringsmæssige forpligtelser mv. Retsgrundlaget for behandlingen af personoplysninger i forbindelse med vores køb af dit udstyr til GreenMind er databeskyttelsesforordningens artikel 6, stk. 1, litra f, idet vi forfølger de legitime interesser, der er nævnt ovenfor.<br>
         Oplysningerne opbevares som udgangspunkt i 5 år fra udgangen af det regnskabsår, som oplysningerne relaterer sig til, jf. bl.a. bogføringslovens kapitel 5.
       </p>
 
@@ -176,7 +168,8 @@
       <p class="text mb">
         Hvis du ikke er tilfreds med vores svar, har du mulighed for at klage til Datatilsynet. Det gælder generelt, at hvis du er utilfreds med den måde, dine personoplysninger er blevet behandlet på, kan du klage til Datatilsynet, som derefter undersøger sagen og træffer en afgørelse.
         Du finder Datatilsynets kontaktoplysninger på <a href="#" class="underline ylink">www.datatilsynet.dk.</a>
-        Du kan læse mere om dine rettigheder i Datatilsynets vejledning om registreredes rettigheder, som du ligeledes finder på <a href="#" class="underline ylink">www.datatilsynet.dk.</a>
+        Du kan læse mere om dine rettigheder i Datatilsynets vejledning om registreredes rettigheder, som du ligeledes finder på <a href="#" class="underline ylink">www.datatilsynet.dk.</a><br>
+        <br>
         NB! Du kan skrive til Datatilsynet via Digital Post på Borger.dk, hvor fremsendelsen af din henvendelse sker sikkert (krypteret). Vi anbefaler, at du bruger Digital Post, hvis din henvendelse indeholder fortrolige eller følsomme personoplysninger.
       </p>
 
@@ -191,23 +184,18 @@
         7. Kontaktoplysninger
       </h3>
       <p class="text mb">
-        Hvis du har nogle spørgsmål til vores privatlivspolitik, kan du kontakte os online på: info@bluecity.dk
-        Ønske om at få slettet dine personlige data kan sendes via denne online formular: <a href="https://www.bluecity.dk/right-to-be-forgotten" class="underline ylink">https://www.bluecity.dk/right-to-be-forgotten</a>
-        Ønske om at få adgang til dine personlige data kan sendes via denne online formular: <a href="https://www.bluecity.dk/data-portability" class="underline ylink">https://www.bluecity.dk/data-portability</a>
-        Du kan også sende et brev til:
-        GreenMind A/S
-        c/o Blue House
-        Brudelysvej 21B
-        2880 Bagsværd
-        For at beskytte dine personoplysninger kan vi i visse tilfælde bede dig om at bekræfte din identitet, før vi kan imødekomme din anmodning. Det vil derfor være praktisk, hvis du kontakter os via e-mail (eller vores online formular), samt inkluderer en henvisning til et evt. ordrenummer eller lignende i din henvendelse.
-
-        I har skrevet i jeres privatlivspolitik, at I også bruger oplysninger, fx navn og kontaktoplysninger, til at måle og forbedre jeres serviceniveau. Kan I uddybe, hvordan personoplysningerne bruges til dette?
-      </p>
-      <p class="font-bold">
-        Gældende fra: 25. maj 2018
-      </p>
-      <p class="font-bold">
-        Senest opdateret: 12. februar 2021
+        Hvis du har nogle spørgsmål til vores privatlivspolitik, kan du kontakte os vores kundeservice. Dette gælder også hvis du ønsker at gøre brug af dine rettigheder, som f.eks. Right to be forgotten:<br>
+        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+          Kontakt kundeservice
+        </nuxt-link><br>
+        <br>
+        Du kan også sende et brev til:<br>
+        GreenMind A/S<br>
+        c/o Blue House<br>
+        Brudelysvej 21B<br>
+        2880 Bagsværd<br>
+        <br>
+        For at beskytte dine personoplysninger kan vi i visse tilfælde bede dig om at bekræfte din identitet, før vi kan imødekomme din anmodning. Det vil derfor være praktisk, hvis du kontakter os via e-mail, samt inkluderer en henvisning til et evt. ordrenummer eller lignende i din henvendelse.
       </p>
     </div>
   </div>
