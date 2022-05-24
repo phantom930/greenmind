@@ -1,6 +1,6 @@
 # Greenmind
 
-https://www.bluecity.dk + https://greenmind.dk
+https://greenmind.dk
 
 ## How to start?
 
