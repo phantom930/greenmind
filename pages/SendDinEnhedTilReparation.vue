@@ -16,8 +16,12 @@
       </h3>
       <p class="text mb">
         Download følgebrevet, udfyld alle punkter og print det ud – følgebrevet kan hentes her:<br>
-        <a href="/assets/images/GreenMind_foelgebrev_privat_20220517.pdf">PRIVATKUNDE</a><br>
-        <a href="/assets/images/GreenMind_foelgebrev_forsikring_20220517.pdf">FORSIKRINGSKUNDE</a>
+        <nuxt-link :to="{ name: 'foelgebrev_forsikring' }" class="underline text-center y-link">
+          FORSIKRINGSKUNDE
+        </nuxt-link><br>
+        <nuxt-link :to="{ name: 'foelgebrev_privat' }" class="underline text-center y-link">
+          PRIVATKUNDE
+        </nuxt-link>
       </p>
       <h3 class="font-bold">
         Trin 2, backup
