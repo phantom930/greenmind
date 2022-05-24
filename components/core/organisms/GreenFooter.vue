@@ -214,6 +214,18 @@ export default defineComponent({
             {
               name: 'Stand descriptions',
               slug: 'stand-descriptions'
+            },
+            {
+              name: 'GDPR',
+              slug: 'gdpr'
+            },
+            {
+              name: 'Cookies',
+              slug: 'cookies'
+            },
+            {
+              name: 'Terms of trade',
+              slug: 'terms-of-trade'
             }
             //{
             //  name: 'Environment',
@@ -233,25 +245,10 @@ export default defineComponent({
               slug: 'customer-service'
             },
             {
-              name: 'freight',
+              name: 'Returnering',
               slug: 'freight-return'
             },
-            {
-              name: 'Terms of trade',
-              slug: 'terms-of-trade'
-            },
-            {
-              name: 'Cookies',
-              slug: 'cookies'
-            },
-            {
-              name: 'FAQ',
-              slug: 'faq'
-            },
-            {
-              name: 'GDPR',
-              slug: 'gdpr'
-            },
+
             {
               name: 'Prepare your Android device for submission',
               slug: 'readyAndroidDelivery'
@@ -263,6 +260,10 @@ export default defineComponent({
             {
               name: 'Send your device for repair',
               slug: 'sendDeviceRepair'
+            },
+            {
+              name: 'FAQ',
+              slug: 'faq'
             }
           ]
         }
