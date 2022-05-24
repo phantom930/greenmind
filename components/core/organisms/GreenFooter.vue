@@ -136,7 +136,7 @@
       <FooterEmailMarketIcons />
     </div>
 
-    <GreenEmailForm class="col-start-3 col-end-5 " />
+    <!--<GreenEmailForm class="col-start-3 col-end-5 " />-->
 
     <div class="mobile-only mt-12 mb-10 flex justify-center smartphone-only">
       <SfImage
