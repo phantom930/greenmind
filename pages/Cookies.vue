@@ -15,7 +15,12 @@
         Cookiebot informationer
       </h3>
       <p class="text mb">
-      <script id="CookieDeclaration" src=https://consent.cookiebot.com/d2da6edf-44b1-4063-a6ef-fe4f37edeb0c/cd.js type="text/javascript" async></script>
+        <script
+          id="CookieDeclaration"
+          :src="`https://consent.cookiebot.com/${$config.cookieBotKey}/cd.js`"
+          type="text/javascript"
+          async
+        />
       </p>
     </div>
   </div>
