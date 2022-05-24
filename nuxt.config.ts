@@ -49,8 +49,10 @@ export default {
     script: [
       {
         id: 'Cookiebot',
+        hid: 'Cookiebot',
         type: 'text/javascript',
-        src: `https://consent.cookiebot.com/${cookieBotKey}/cd.js`,
+        'data-cbid': cookieBotKey,
+        src: 'https://consent.cookiebot.com/uc.js',
         async: true
       }
     ],
