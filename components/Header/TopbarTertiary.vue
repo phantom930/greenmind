@@ -42,7 +42,7 @@
       </div> -->
         </div>
         <div class="dropdown-wrap" @mouseover="open('other')">
-          <nuxt-link to="/andre" class="custom-link">
+          <nuxt-link to="/" class="custom-link">
             {{ $t("Other Products") }}
           </nuxt-link>
           <!-- <div class="dropdown other-products">
