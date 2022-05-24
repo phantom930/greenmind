@@ -298,10 +298,10 @@
         Nævnenes Hus<br>
         Toldboden 2<br>
         8800 Viborg<br>
-        <a href="https://www.naevneneshus.dk" class="underline ylink">www.naevneneshus.dk</a><br>
+        <a href="https://www.naevneneshus.dk" class="underline ylink" target="_blank">www.naevneneshus.dk</a><br>
         <br>
         Har du bopæl i et andet EU-land end Danmark, kan du klage til EU-Kommissionens online klageportal her –
-        <a href="https://ec.europa.eu/odr" class="underline ylink">https://ec.europa.eu/odr</a><br>
+        <a href="https://ec.europa.eu/odr" class="underline ylink" target="_blank">https://ec.europa.eu/odr</a><br>
       </p>
     </div>
   </div>
