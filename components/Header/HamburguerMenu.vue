@@ -81,7 +81,7 @@
             {{ $t('Find store') }}
           </SfButton>
         </nuxt-link>
-        <nuxt-link :to="{ name: 'about-us' }">
+        <!--<nuxt-link :to="{ name: 'about-us' }">
           <SfButton
             class="sf-button_hamburguer_item"
             @click="toggleHamburguerMenu"
@@ -93,7 +93,7 @@
             />
             {{ $t('About us') }}
           </SfButton>
-        </nuxt-link>
+        </nuxt-link>-->
       </div>
       <!--<nuxt-link :to="{ name: 'blog' }">
         <SfButton
