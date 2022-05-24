@@ -36,7 +36,7 @@ export default {
     '~/components/core/molecules'
   ],
   head: {
-    title: 'Vue Storefront',
+    title: 'GreenMind',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -178,7 +178,7 @@ export default {
       { name: 'DE', label: 'Germany' }
     ],
     currencies: [
-      { name: 'DKK', label: 'DenMark' },
+      { name: 'DKK', label: 'Kroner' },
       { name: 'EUR', label: 'Euro' },
       { name: 'USD', label: 'Dollar' }
     ],
