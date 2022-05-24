@@ -16,14 +16,14 @@ const getAttributesWithoutGrade = (product: GreenProduct) : AttributeValue[] =>
 const getSchemaAttributeValues = (product: GreenProduct) : AttributeValue[] => {
   const groupedByName = new Map();
   const returnArray : AttributeValue[] = [];
-  product.schemaAttributeValues.forEach((item) => {
+  product?.schemaAttributeValues?.forEach((item) => {
     if (!groupedByName.has(item.attribute.name)) {
       groupedByName.set(item.attribute.name, []);
     }
     groupedByName.get(item.attribute.name).push(item);
   });
 
-  groupedByName.forEach((item, index) => {
+  groupedByName?.forEach((item, index) => {
     if (item.length > 1) {
       return returnArray.push({
         attribute: {
