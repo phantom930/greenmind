@@ -148,5 +148,17 @@ export default {
     da: '/cookies',
     de: '/cookies',
     sv: '/cookies'
+  },
+  foelgebrevForsikring: {
+    en: '/GreenMind_foelgebrev_forsikring_20220517.pdf',
+    da: '/GreenMind_foelgebrev_forsikring_20220517.pdf',
+    de: '/GreenMind_foelgebrev_forsikring_20220517.pdf',
+    sv: '/GreenMind_foelgebrev_forsikring_20220517.pdf'
+  },
+  foelgebrevPrivat: {
+    en: '/GreenMind_foelgebrev_privat_20220517.pdf',
+    da: '/GreenMind_foelgebrev_privat_20220517.pdf',
+    de: '/GreenMind_foelgebrev_privat_20220517.pdf',
+    sv: '/GreenMind_foelgebrev_privat_20220517.pdf'
   }
 };

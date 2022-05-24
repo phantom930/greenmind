@@ -198,6 +198,16 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       name: 'cookies',
       path: `${i18nRoutes.cookies[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/Cookies.vue')
+    },
+    {
+      name: 'foelgebrev_forsikring',
+      path: `${i18nRoutes.foelgebrevForsikring[localeIndex]}`,
+      component: path.resolve(themeDir, 'assets/images/GreenMind_foelgebrev_forsikring_20220517.pdf')
+    },
+    {
+      name: 'foelgebrev_privat',
+      path: `${i18nRoutes.foelgebrevPrivat[localeIndex]}`,
+      component: path.resolve(themeDir, 'assets/images/GreenMind_foelgebrev_privat_20220517.pdf')
     }
   ];
 }
