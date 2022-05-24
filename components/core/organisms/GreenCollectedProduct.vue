@@ -20,7 +20,7 @@
     <template #title>
       <span class="custom-product-title"> {{ cartGetters.getItemTitle(orderLine) }} </span>
       <span class="custom-subtitle"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
-      <span class="custom-stand"> Stand: Meget flat </span>
+      <span class="custom-stand"> {{ cartGetters.getStandGradeName(orderLine) }} </span>
     </template>
     <template #configuration>
       <div />

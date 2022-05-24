@@ -21,7 +21,7 @@
       <template #title>
         <span class="custom-product-title "> {{ cartGetters.getItemTitle(orderLine) }} </span>
         <span class="custom-subtitle mt-3"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
-        <span class="custom-stand mt-1 mb-3"> Stand: Meget flat </span>
+        <span class="custom-stand mt-1 mb-3"> {{ cartGetters.getStandGradeName(orderLine) }} </span>
 
         <SfQuantitySelector
           v-model="quantity"

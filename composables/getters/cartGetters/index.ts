@@ -10,6 +10,10 @@ export const getItemImageFilename = (orderLine: GreenOrderLine): string =>
 export const getItemWebsiteTitle = (orderLine: GreenOrderLine): string =>
   orderLine?.product?.websiteSubtitle || 'Subtitle';
 
+export const getStandGradeName = (orderLine: GreenOrderLine): string => {
+  return orderLine?.product?.combinationInfoVariant?.grade_name || '';
+};
+
 export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine;
 
 export const getTotalItems = (cart: GreenCart): number => {
@@ -46,7 +50,8 @@ const getters = {
   getAccessories,
   getPrice,
   accessoryIsInCart,
-  getItemImageFilename
+  getItemImageFilename,
+  getStandGradeName
 };
 
 export default getters;

@@ -40,7 +40,7 @@ export interface CombinationInfo {
     has_discounted_price: boolean;
     discount: number;
     discount_perc: number;
-    grade_name: number;
+    grade_name: string;
     slug: string;
     stock_qty: number;
 }
