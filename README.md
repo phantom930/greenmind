@@ -1,6 +1,6 @@
 # Greenmind
 
-https://greenmind.dk
+Hos GreenMind finder du secondhand elektronik med 3 års garanti. Køb brugt elektronik til fordelagtige priser og gør en forskel for miljøet.
 
 ## How to start?
 
