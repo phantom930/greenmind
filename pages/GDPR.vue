@@ -6,7 +6,7 @@
       </h1>
 
       <h3 class="font-bold">
-        1. Indledning
+        1. Indledning time for change
       </h3>
       <p class="text mb">
         Dit privatliv er vigtigt for os. For bedre at beskytte dit privatliv beskriver vi i denne privatlivspolitik, hvordan GreenMind A/S ("GreenMind", "vi", "os", "vores") som dataansvarlig indsamler, behandler og bruger de personoplysninger, so vi indsamler om vores kunder mv. i forbindelse med:
