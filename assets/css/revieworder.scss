@@ -4,7 +4,11 @@
       margin-bottom: 47px;
     }
   }
-  
+  ::v-deep .sf-heading__title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #1d1f22;
+  }
   .review-order .title {
     font-size: 34px;
     font-weight: 700;

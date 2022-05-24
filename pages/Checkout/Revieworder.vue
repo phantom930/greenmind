@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h3 class="title">
-      {{ $t('Order Details') }}
-    </h3>
+    <SfHeading
+      :level="3"
+      :title="$t('Order Details')"
+      class="sf-heading--left sf-heading--no-underline title mb-5"
+    />
     <div class="orders">
       <a
         v-for="(orderLine, index) in orderLines"
@@ -106,15 +108,14 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
-import { SfButton } from '@storefront-ui/vue';
+import { SfButton, SfHeading } from '@storefront-ui/vue';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
-import { onSSR } from '@vue-storefront/core';
 import { cartGetters, productGetters } from '~/composables';
 
 export default defineComponent({
   name: 'Revieworder',
   components: {
-    SfButton
+    SfButton, SfHeading
   },
   setup(props, { root }) {
     const { cart } = useCart();
