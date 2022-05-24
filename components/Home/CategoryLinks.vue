@@ -4,7 +4,7 @@
     class="category_card flex"
     :settings="settings"
   >
-    <nuxt-link to="/iphones" class="hover:shadow rounded-md mr-1">
+    <nuxt-link to="/telefoner/iphones" class="hover:shadow rounded-md mr-1">
       <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_1.webp')"
         alt="iPhones"
@@ -17,7 +17,7 @@
       </p>
     </nuxt-link>
 
-    <nuxt-link to="/smartphones" class="hover:shadow rounded-md mr-1">
+    <nuxt-link to="/telefoner/smartphones" class="hover:shadow rounded-md mr-1">
       <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_2.webp')"
         alt="Smartphones"
