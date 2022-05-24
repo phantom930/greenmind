@@ -27,7 +27,7 @@
               </div>
             </div>
             <div
-              v-if="grade.has_discounted_price"
+              v-if="grade.has_discounted_price && !isPriceLessThanFiveOrWithoutstock(grade)"
               class="discount"
             >
               {{ $currency(grade.list_price) }}
