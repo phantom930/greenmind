@@ -59,8 +59,8 @@ export default {
     link: [
       {
         rel: 'icon',
-        type: 'image/png',
-        href: '/assets/images/favicon.png'
+        type: 'image/x-icon',
+        href: '/assets/images/favicon.ico'
       }
     ]
   },
