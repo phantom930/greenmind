@@ -187,12 +187,12 @@
         </tr>
         <tr>
           <td class="text">
-            Århus <br>
+            Aarhus <br>
             (BlueCity)
           </td>
           <td class="text">
             Ryesgade 28 <br>
-            8000 Århus C
+            8000 Aarhus C
           </td>
           <td class="text">
             Mandag – Torsdag: 10-18 * <br>
