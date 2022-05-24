@@ -173,7 +173,7 @@
       <h3 class="font-bold subtitle">Vejledning til indsendelse af enhed med posten</h3>
       <p class="text">
         Vi sender kun enheder som pakkepost og vi anbefaler på det kraftigste, at du gør det samme ved indsendelse af din enhed. På den måde er du forsikret, såfremt den ikke måtte nå frem eller forsvinde under fragten. Se en trin for trin-guide til indsendelse af enhed til reparation her:<br>
-        <nuxt-link :to="{ name: 'TBD' }" class="underline text-center y-link">
+        <nuxt-link :to="{ name: 'sendDeviceRepair' }" class="underline text-center y-link">
           Send din enhed til reparation
         </nuxt-link><br>
       </p>
@@ -251,7 +251,7 @@
       <h3 class="font-bold subtitle">Persondata</h3>
       <p class="text">
         Læs om GreenMind A/S' privatlivspolitik her:<br>
-        <nuxt-link :to="{ name: 'TBD' }" class="underline text-center y-link">
+        <nuxt-link :to="{ name: 'gdpr' }" class="underline text-center y-link">
           Privatlivspolitik
         </nuxt-link>
       </p>
@@ -272,7 +272,7 @@
         Oplysninger afgivet til GreenMind videregives eller sælges på ingen måde til tredjepart, og vi registrerer ingen personfølsomme oplysninger. Som registreret hos GreenMind har du altid ret til at gøre indsigelse mod registreringen. Du har også ret til indsigt i, hvilke oplysninger, der er registreret om dig.<br>
         <br>
         Læs hele vores Privatlivspolitik her:<br>
-        <nuxt-link :to="{ name: 'TBD' }" class="underline text-center y-link">
+        <nuxt-link :to="{ name: 'gdpr' }" class="underline text-center y-link">
           Privatlivspolitik
         </nuxt-link><br>
         <br>
