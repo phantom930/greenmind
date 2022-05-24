@@ -111,7 +111,7 @@
     <SfMegaMenuColumn
       v-show="isOpened('computers')"
       class="menu-column-apple"
-      title="Computers"
+      title="Computere"
     >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
@@ -139,7 +139,7 @@
     <SfMegaMenuColumn
       v-show="isOpened('other')"
       class="menu-column-others"
-      title="Other Products"
+      title="Andre produkter"
     >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
@@ -157,7 +157,7 @@
     <SfMegaMenuColumn
       v-show="isOpened('accessories')"
       class="menu-column-accessories"
-      title="Accessories"
+      title="Tilbehør"
     >
       <SfList @click.native="handleCloseMenu">
         <SfListItem>
