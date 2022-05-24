@@ -11,6 +11,7 @@
       </p>
       <br>
       <br>
+      <script id="CookieDeclaration" src=https://consent.cookiebot.com/d2da6edf-44b1-4063-a6ef-fe4f37edeb0c/cd.js type="text/javascript" async></script>
       <br>
     </div>
   </div>
@@ -24,15 +25,7 @@ export default defineComponent({
   },
   head() {
     return {
-      script: [
-        {
-          id: 'CookieDeclaration',
-          type: 'text/javascript',
-          src: `https://consent.cookiebot.com/${this.$config.cookieBotKey}/cd.js`,
-          async: true,
-          body: true
-        }
-      ]
+
     };
   }
 });
