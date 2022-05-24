@@ -16,8 +16,8 @@
       </h3>
       <p class="text mb">
         Download følgebrevet, udfyld alle punkter og print det ud – følgebrevet kan hentes her:<br>
-        <a href="/static/GreenMind_foelgebrev_forsikring_20220517.pdf" class="underline y-link">FORSIKRINGSKUNDE</a><br>
-        <a href="/static/GreenMind_foelgebrev_privat_20220517.pdf" class="underline y-link">PRIVATKUNDE</a>
+        <a href="/GreenMind_foelgebrev_forsikring_20220517.pdf" download="greenmind_foelgebrev.pdf" class="underline y-link">FORSIKRINGSKUNDE</a><br>
+        <a href="/GreenMind_foelgebrev_privat_20220517.pdf" download="greenmind_foelgebrev.pdf" class="underline y-link">PRIVATKUNDE</a>
       </p>
       <h3 class="font-bold">
         Trin 2, backup
