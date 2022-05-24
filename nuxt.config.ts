@@ -47,7 +47,8 @@ export default {
       }
     ],
     script: [
-      { id: 'CookieDeclaration',
+      {
+        id: 'Cookiebot',
         type: 'text/javascript',
         src: `https://consent.cookiebot.com/${cookieBotKey}/cd.js`,
         async: true
