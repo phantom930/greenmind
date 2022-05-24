@@ -4,13 +4,13 @@
       <div class="header-links" @mouseleave="close">
         <div class="dropdown-wrap" @mouseover="open('iphones')">
           <nuxt-link to="/telefoner/iphones" class="custom-link">
-            iPhones
+            IPHONES
           </nuxt-link>
           <div class="dropdown iphones" />
         </div>
         <div class="dropdown-wrap" @mouseover="open('smartphones')">
           <nuxt-link to="/telefoner/smartphones" class="custom-link">
-            Smartphones
+            SMARTPHONES
           </nuxt-link>
           <!-- <div class="dropdown smartphones">
         <SfMegaMenu title="Smartphones" visible />
@@ -18,7 +18,7 @@
         </div>
         <div class="dropdown-wrap" @mouseover="open('tablets')">
           <nuxt-link to="/tablets" class="custom-link">
-            Tablets
+            TABLETS
           </nuxt-link>
           <div class="dropdown tablets">
             <!-- <SfMegaMenu
@@ -35,15 +35,23 @@
             to="/computere"
             class="custom-link"
           >
-            Computere
+            {{ $t("COMPUTERS") }}
           </nuxt-link>
           <!-- <div class="dropdown computers">
         <SfMegaMenu title="Computers" visible />
       </div> -->
         </div>
+        <div class="dropdown-wrap" @mouseover="open('other')">
+          <nuxt-link to="/andre" class="custom-link">
+            {{ $t("Other Products") }}
+          </nuxt-link>
+          <!-- <div class="dropdown other-products">
+        <SfMegaMenu title="Other Products" visible />
+      </div> -->
+        </div>
         <div class="dropdown-wrap" @mouseover="open('accessories')">
           <nuxt-link to="/tilbehoer" class="custom-link">
-            Tilbehør
+            {{ $t("Accessories") }}
           </nuxt-link>
           <!-- <div class="dropdown accessories">
         <SfMegaMenu title="Accessories" visible />
