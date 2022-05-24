@@ -60,7 +60,7 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: '/assets/images/favicon.ico'
+        href: '/favicon.ico'
       }
     ]
   },
