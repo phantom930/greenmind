@@ -71,6 +71,9 @@ export default {
     },
     middleware: ['checkout']
   },
+  serverMiddleware: [
+    '~/serverMiddleware/redirects'
+  ],
   pwa: {
     manifest: {
       name: 'Greenmind',
