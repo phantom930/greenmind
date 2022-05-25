@@ -24,7 +24,7 @@
           class="sf-header__logo"
         >
           <SfImage
-            :width="250"
+            :width="61"
             :height="35"
             src="/icons/GreenMind_logo_stacked_green_02.svg"
             alt="GreenMind"
