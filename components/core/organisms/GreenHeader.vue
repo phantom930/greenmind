@@ -24,10 +24,10 @@
           class="sf-header__logo"
         >
           <SfImage
-            :width="35"
+            :width="250"
             :height="35"
-            src="/icons/logo.svg"
-            alt="Vue Storefront Next"
+            src="/icons/GreenMind_logo_horizontal_green_02.svg"
+            alt="GreenMind"
             class="sf-header__logo-image"
           />
         </nuxt-link>
