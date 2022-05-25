@@ -90,7 +90,7 @@
         GreenMind og BlueCity er i færd med at fusionere og du kan derfor også besøge vores BlueCity butikker og få samme gode priser.
       </h4>
 
-      <span>Bemærk, at i BlueCity butikker behandler vi desværre ikke forsikringssager, dog med undtagelse af Vesterbrogade i København.</span>
+      <span>Bemærk, at i BlueCity butikker behandler vi desværre ikke forsikringssager, dog med undtagelse af Vesterbrogade i København og Bispensgade i Aalborg.</span>
       <table>
         <tr>
           <td class="text">
@@ -227,7 +227,7 @@
           </td>
           <td class="text">
             Mandag – Fredag: 8-17:30 * <br>
-            Lørdag: 8-16 * <br>
+            Lørdag: 10-16 * <br>
             Søndag: Lukket
           </td>
         </tr>
