@@ -19,14 +19,29 @@
           />
         </div>
         <nuxt-link
+          v-if="$device.isMobile"
           v-show="!showSearchInputOnMobile"
           :to="localePath('/')"
           class="sf-header__logo"
         >
           <SfImage
-            :width="122"
-            :height="70"
+            :width="61"
+            :height="35"
             src="/icons/GreenMind_logo_stacked_green_02.svg"
+            alt="GreenMind"
+            class="sf-header__logo-image"
+          />
+        </nuxt-link>
+        <nuxt-link
+          v-if="!$device.isMobile"
+          v-show="!showSearchInputOnMobile"
+          :to="localePath('/')"
+          class="sf-header__logo"
+        >
+          <SfImage
+            :width="250"
+            :height="35"
+            src="/icons/GreenMind_logo_horizontal_green_02.svg"
             alt="GreenMind"
             class="sf-header__logo-image"
           />
