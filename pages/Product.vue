@@ -76,7 +76,7 @@
               :has-image="true"
               :disabled="!productInStock"
               :image="$image(accessoryProduct.image, 82, 70, accessoryProduct.imageFilename)"
-              @change="selectAcessories"
+              @change="selectAcessories(accessoryProduct.id)"
             />
           </div>
 
@@ -159,14 +159,6 @@ export default defineComponent({
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
     const { addTags } = useCache();
     const router = useRouter();
-
-    // router.beforeEach((guard)=> {
-    //   if (isHamburguerMenuOpen.value) {
-    //     toggleHamburguerMenu();
-    //   }
-
-    //   console.log(guard);
-    // });
 
     const product = computed(() => {
       return {
