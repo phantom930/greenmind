@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import webpack from 'webpack';
 import theme from './themeConfig';
@@ -22,6 +23,9 @@ const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
 
 export default {
   hooks,
+  server: {
+    host: '0.0.0.0'
+  },
   dir: {
     // using to ignore auto-generated routes
     pages: 'routes'
@@ -69,16 +73,26 @@ export default {
       getRoutes(localeIndex, `${__dirname}`)
         .forEach((route) => routes.unshift(route));
     },
-    middleware: ['checkout']
+    middleware: ['checkout', 'redirects']
   },
-  serverMiddleware: [
-    '~/serverMiddleware/redirects'
-  ],
+
   pwa: {
+    meta: {
+      name: 'Greenmind',
+      theme_color: '#fff',
+      description: 'Greenmind Description',
+      lang: localeIndex
+    },
+    icon: {
+      source: '/logo.png',
+      fileName: 'logo.png'
+    },
     manifest: {
       name: 'Greenmind',
+      short_name: 'Greenmind',
+      description: 'Greenmind Description',
       lang: localeIndex,
-      useWebmanifestExtension: false
+      background_color: '#fff'
     }
   },
   googleFonts: {
@@ -137,7 +151,8 @@ export default {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
     cookieBotKey,
     localeIndex,
-    theme
+    theme,
+    redirects: []
   },
   modules: makeModules(['@nuxtjs/sitemap', '@nuxtjs/i18n']),
   nuxtPrecompress: {
