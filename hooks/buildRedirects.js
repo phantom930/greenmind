@@ -9,7 +9,7 @@ export default async () => {
   consola.info(chalk.bold('ODOO'), ' - Started fetch ODOO redirects...');
 
   const { data } = await axios.get(redirectUrl);
-  await fsExtra.writeJson('serverMiddleware/redirects.json', data);
+  await fsExtra.writeJson('helpers/redirects.json', data);
 
   consola.success(chalk.bold('ODOO'), ' - Redirects.json written!');
 };
