@@ -111,7 +111,9 @@
           </div>
         </div>
 
-        <LazyBannerProducts />
+        <LazyHydrate when-idle>
+          <LazyBannerProducts />
+        </LazyHydrate>
 
         <LazyHydrate when-idle>
           <LazyProductTabs :product="product" />
@@ -119,12 +121,14 @@
       </div>
     </div>
     <div class="product_carousel">
-      <LazyGreenCarousel
-        v-if="sliderProducts.length > 0"
-        :item="sliderProducts"
-        :carousel_title="$t('Popular products')"
-        style="padding-top: 5%"
-      />
+      <LazyHydrate when-idle>
+        <LazyGreenCarousel
+          v-if="sliderProducts.length > 0"
+          :item="sliderProducts"
+          :carousel_title="$t('Popular products')"
+          style="padding-top: 5%"
+        />
+      </LazyHydrate>
     </div>
   </div>
 </template>

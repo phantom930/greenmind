@@ -6,7 +6,9 @@
       <LazyCategoryNavbar />
 
       <div class="main section">
-        <LazyCategoryTopBanner v-if="$device.isMobile" />
+        <LazyHydrate when-idle>
+          <LazyCategoryTopBanner v-if="$device.isMobile" />
+        </LazyHydrate>
 
         <LazyHydrate when-idle>
           <LazyCategorySidebarFilter
