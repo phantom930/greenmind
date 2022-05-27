@@ -44,6 +44,7 @@ export default defineComponent({
   components: {
     SfSteps
   },
+  layout: 'checkout',
   middleware: 'checkout',
   setup() {
     const router = useRouter();
