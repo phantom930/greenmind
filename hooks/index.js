@@ -4,7 +4,7 @@ export default {
   build: {
     async before(builder) {
       await buildRoutes();
-      await buildRedirects();
+      await buildRedirects(builder);
     }
   }
 };

@@ -12,8 +12,7 @@ module.exports = {
       configuration: {
         odooBaseUrl,
         graphqlBaseUrl,
-        redirectsRefreshToken,
-        refreshRedirects: false
+        redirectsRefreshToken
       },
       extensions: (extensions) => [
         ...extensions,

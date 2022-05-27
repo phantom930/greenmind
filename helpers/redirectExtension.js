@@ -1,5 +1,4 @@
 const axios = require('axios');
-const fsExtra = require('fs-extra');
 
 export default ({ app, configuration }) => {
   app.get('/redirects/refresh/:token', (req, res) => {
@@ -7,8 +6,9 @@ export default ({ app, configuration }) => {
 
     if (token === configuration.redirectsRefreshToken) {
       axios.get(`${configuration.odooBaseUrl}vsf/redirects`)
-        .then(async ({data}) => {
-          await fsExtra.writeJson('helpers/redirects.json', data);
+        .then(async ({ data }) => {
+          console.log(app.context);
+          app.context.$config.redirects = data;
         });
 
       return res.send('Refresh redirects succcefuly!');

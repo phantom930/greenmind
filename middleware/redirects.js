@@ -1,9 +1,8 @@
 export default async ({ app, redirect }) => {
 
-  const { default: list } = await import('../helpers/redirects.json');
-
+  const redirects = app.context.$config.redirects;
   const currentPath = app.context.route.fullPath;
-  const route = list.find(item => item.from === currentPath);
+  const route = redirects.find(item => item.from === currentPath);
 
   if (route) {
     redirect(301, route.to);
