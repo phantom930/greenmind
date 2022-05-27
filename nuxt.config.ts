@@ -70,7 +70,7 @@ export default {
       getRoutes(localeIndex, `${__dirname}`)
         .forEach((route) => routes.unshift(route));
     },
-    middleware: ['checkout', 'redirects']
+    middleware: ['checkout']
   },
 
   pwa: {
@@ -89,7 +89,8 @@ export default {
       short_name: 'Greenmind',
       description: 'Greenmind Description',
       lang: localeIndex,
-      background_color: '#fff'
+      background_color: '#fff',
+      start_url: ''
     }
   },
   googleFonts: {
