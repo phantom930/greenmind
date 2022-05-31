@@ -21,7 +21,9 @@ order {
   amountDelivery
   dateOrder
   orderUrl
+  lastTransaction
   stage
+  totalCount
   websiteOrderLine {
     id
     name

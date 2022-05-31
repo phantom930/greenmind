@@ -148,5 +148,11 @@ export default {
     da: '/cookies',
     de: '/cookies',
     sv: '/cookies'
+  },
+  paymentResponse: {
+    en: '/payment-response',
+    da: '/betaling-svar',
+    de: '/betaling-svar',
+    sv: '/betaling-svar'
   }
 };

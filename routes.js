@@ -67,8 +67,8 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       ]
     },
     {
-      name: 'thank-you',
-      path: '/checkout/thank-you',
+      name: 'paymentResponse',
+      path: `${i18nRoutes.paymentResponse[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/Checkout/ThankYou.vue')
     },
 
