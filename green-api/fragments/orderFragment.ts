@@ -12,14 +12,13 @@ const coreProductAttribs = `
   websiteSubtitle
 `;
 
-const query = `
+module.exports = `
 order {
   id
   name
   amountTotal
   amountTax
   amountDelivery
-  dateOrder
   orderUrl
   stage
   totalCount
@@ -100,5 +99,3 @@ order {
   }
 }
 `;
-
-module.exports = query;

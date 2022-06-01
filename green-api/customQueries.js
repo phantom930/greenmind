@@ -1,5 +1,6 @@
 const gql = require('graphql-tag');
 const orderFragment = require('./fragments/orderFragment.ts');
+const productCategoryParentChainFragment = require('./fragments/productCategoryParentChainFragment.ts');
 
 module.exports = {
   greenGetProductList: ({variables}) => ({
@@ -35,7 +36,6 @@ module.exports = {
       }
       products {
         id
-        firstVariant
         websiteSubtitle
         smallImage
         price
@@ -45,7 +45,6 @@ module.exports = {
         imageFilename
         slug
         sku
-        isInWishlist
         status
         combinationInfoVariant
         categories {
@@ -120,13 +119,10 @@ module.exports = {
                     smallImage
                     slug
                     qty
-                    typeId
                     sku
                     status
                     price
                     websiteSubtitle
-                    isInWishlist
-                    firstVariant
                     combinationInfoVariant
                     combinationInfoGrade
                     productTemplate{
@@ -162,6 +158,7 @@ module.exports = {
                         id
                         slug
                         name
+                        ${productCategoryParentChainFragment}
                     }
                     alternativeProducts{
                       id
