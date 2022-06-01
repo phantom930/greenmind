@@ -60,7 +60,11 @@
         </li>
       </ul>
 
-      <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+      <nuxt-link
+        :to="{ name: 'shops' }"
+        class="underline text-center y-link"
+        title="Find butik"
+      >
         Find butik
       </nuxt-link>
 

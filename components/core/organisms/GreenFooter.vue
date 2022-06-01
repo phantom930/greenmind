@@ -49,7 +49,7 @@
           v-for="(item, childIndex) in contactColumn.childs"
           :key="childIndex"
         >
-          <nuxt-link :to="{ name: item.slug }">
+          <nuxt-link :to="{ name: item.slug }" :title="$t(item.name)">
             <p class="menu-item_p">
               {{ $t(item.name) }}
             </p>
@@ -227,14 +227,14 @@ export default defineComponent({
               name: 'Terms of trade',
               slug: 'terms-of-trade'
             }
-            //{
+            // {
             //  name: 'Environment',
             //  slug: 'environment'
-            //},
-            //{
+            // },
+            // {
             //  name: 'Price guarantee',
             //  slug: 'price-guarantee'
-            //}
+            // }
           ]
         },
         {

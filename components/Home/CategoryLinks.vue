@@ -8,6 +8,7 @@
       <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_1.webp')"
         alt="iPhones"
+        :title="$t('iPhones')"
         :width="295"
         :height="295"
         class="categoryCardImage"
@@ -22,6 +23,7 @@
         :src="require('/assets/images/categoryCards/homeCategoryCard2_2.webp')"
         alt="Smartphones"
         :width="295"
+        :title="$t('Smartphones')"
         :height="295"
         class="categoryCardImage"
       />
@@ -34,6 +36,7 @@
         :src="require('/assets/images/categoryCards/homeCategoryCard2_3.webp')"
         alt="Tablets"
         :width="295"
+        :title="$t('Tablets')"
         :height="295"
         class="categoryCardImage"
       />
@@ -45,6 +48,7 @@
       <GreenImage
         :src="require('/assets/images/categoryCards/homeCategoryCard2_4.webp')"
         alt="Computers"
+        :title="$t('Computers')"
         :width="295"
         :height="295"
         class="categoryCardImage"

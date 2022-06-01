@@ -46,10 +46,14 @@
       </h4>
       <p class="text mb">
         Når du besøger vores hjemmeside, registrerer vi via cookies oplysninger om dine besøg, herunder fx oplysninger om din IP-adresse, din browsertype, besøgstidspunktet, de hjemmesider der linkes fra, de hjemmesider der besøges, de features der anvendes, samt det indhold der besøges. Disse oplysninger kan i nogle tilfælde omfatte personoplysninger. Formål og retsgrundlag Vi registrerer ovenstående oplysninger for at kunne tilbyde en sikker, stabil og kundevenlig brugeroplevelse på vores hjemmeside samt føre statistik over vores besøgende, og - i visse tilfælde - målrette markedsføring, baseret på brugerens adfærd. Retsgrundlaget for behandlingen er cookiebekendtgørelsens § 3, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra f (for nødvendige funktionalitetscookies), idet vi forfølger vores legitime interesse i at kunne opretholde funktionaliteten og sikkerheden af hjemmesiden og cookiebekendtgørelsens § 4, jf. databeskyttelsesforordningens artikel 6, stk. 1, litra a (for øvrige cookies). Du kan læse mere om vores brug af cookies på vores særskilte Cookie side.
-        </p>
-        <p class="text mb">
+      </p>
+      <p class="text mb">
         Oplysninger i forbindelse med vores anvendelse af cookies slettes som udgangspunkt når cookien bliver slettet fra din enhed, og afhænger således af den konkrete cookie. Du kan læse mere om de forskellige cookies, herunder levetiden, samt mulighederne for deaktivering mv., på vores Cookies side:<br>
-        <nuxt-link :to="{ name: 'cookies' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'cookies' }"
+          class="underline text-center y-link"
+          title="Cookies"
+        >
           Cookies
         </nuxt-link>
       </p>
@@ -185,7 +189,11 @@
       </h3>
       <p class="text mb">
         Hvis du har nogle spørgsmål til vores privatlivspolitik, kan du kontakte os vores kundeservice. Dette gælder også hvis du ønsker at gøre brug af dine rettigheder, som f.eks. Right to be forgotten:<br>
-        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'customer-service' }"
+          class="underline text-center y-link"
+          title="Kontakt kundeservice"
+        >
           Kontakt kundeservice
         </nuxt-link><br>
         <br>

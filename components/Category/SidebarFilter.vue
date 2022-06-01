@@ -101,7 +101,7 @@
           {{ $t("Done") }}
         </GreenButton>
 
-        <nuxt-link :to="currentCategory.slug">
+        <nuxt-link :to="currentCategory.slug" :title="currentCategory.slug">
           <GreenButton
             class="mt-5"
             style-type="Tertiary"

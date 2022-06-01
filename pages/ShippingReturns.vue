@@ -51,7 +51,11 @@
       </p>
       <p class="text">
         Eller du kan indlevere varen i én af vores mange butikker:<br>
-        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'shops' }"
+          class="underline text-center y-link"
+          title="Find butik"
+        >
           Find butik
         </nuxt-link>
       </p>
@@ -70,7 +74,11 @@
       </p>
       <p class="text">
         Ved reklamation af vare, kontakt venligst vores kundeservice, for at få tilsendt en gratis returlabel. Varen skal altid sendes tilbage i forsvarlig emballage.<br>
-        <nuxt-link :to="{ name: 'customer-service' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'customer-service' }"
+          class="underline text-center y-link"
+          title="Kontakt kundeservice"
+        >
           Kontakt kundeservice
         </nuxt-link><br>
       </p>
@@ -79,13 +87,21 @@
       </p>
       <p class="text">
         Eller du kan indlevere varen i én af vores mange butikker:<br>
-        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'shops' }"
+          class="underline text-center y-link"
+          title="Find butik"
+        >
           Find butik
         </nuxt-link>
       </p>
       <p class="text">
         Vi modtager kun pakker, som sendes direkte til vores adresser. Du kan også fortryde købet ved at give os besked og aflevere den personligt i en af vores butikker.<br>
-      <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'shops' }"
+          class="underline text-center y-link"
+          title="Find butik"
+        >
           Find butik
         </nuxt-link>
       </p>

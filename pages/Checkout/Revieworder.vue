@@ -76,7 +76,7 @@
         >
           <template #label>
             <span> {{ 'I agree to' }}
-              <nuxt-link :to="{ name: 'terms-of-trade' }">
+              <nuxt-link :to="{ name: 'terms-of-trade' }" :title="$t('Terms and conditions')">
                 {{ $t('Terms and conditions') }}
               </nuxt-link>
             </span>

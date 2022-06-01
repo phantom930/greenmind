@@ -7,7 +7,11 @@
       <p class="text mb">
         Guide til indsendelse af enhed til reparation hos GreenMind A/S (forsikringskunder bedes følge instrukserne i det tilsendte infobrev).<br>
         Du kan også altid aflevere din enhed i én af vores butikker. Læs mere her:<br>
-        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'shops' }"
+          class="underline text-center y-link"
+          title="Find butik"
+        >
           Find butik
         </nuxt-link>
       </p>
@@ -16,8 +20,18 @@
       </h3>
       <p class="text mb">
         Download følgebrevet, udfyld alle punkter og print det ud – følgebrevet kan hentes her:<br>
-        <a href="/GreenMind_foelgebrev_forsikring_20220517.pdf" download="greenmind_foelgebrev.pdf" class="underline y-link">FORSIKRINGSKUNDE</a><br>
-        <a href="/GreenMind_foelgebrev_privat_20220517.pdf" download="greenmind_foelgebrev.pdf" class="underline y-link">PRIVATKUNDE</a>
+        <a
+          href="/GreenMind_foelgebrev_forsikring_20220517.pdf"
+          download="greenmind_foelgebrev.pdf"
+          class="underline y-link"
+          title="FORSIKRINGSKUNDE"
+        >FORSIKRINGSKUNDE</a><br>
+        <a
+          href="/GreenMind_foelgebrev_privat_20220517.pdf"
+          download="greenmind_foelgebrev.pdf"
+          class="underline y-link"
+          title="PRIVATKUNDE"
+        >PRIVATKUNDE</a>
       </p>
       <h3 class="font-bold">
         Trin 2, backup
@@ -30,7 +44,11 @@
       </h3>
       <p class="text mb">
         Hvis du indleverer en iPhone, iPad, iMac eller Macbook er det vigtigt at du deaktiverer Find My iPhone.<br>
-        <nuxt-link :to="{ name: 'disableFindMinIphone' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'disableFindMinIphone' }"
+          class="underline text-center y-link"
+          title="Deaktivering af Find Min iPhone"
+        >
           Deaktivering af Find Min iPhone
         </nuxt-link>
         Årsagen er at vi ikke kan teste, og i nogle tilfælde heller ikke reparere, Apple produkter, hvis ikke “Find My iPhone” er deaktiveret.
@@ -68,5 +86,4 @@
 <style lang="scss" scoped>
 @import '~/assets/css/infoPages.scss';
 </style>
-
 

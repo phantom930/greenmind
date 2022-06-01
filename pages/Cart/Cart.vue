@@ -60,7 +60,7 @@
         <LazyCheckoutCartPreview key="order-summary">
           <template #extra-middle>
             <div class="mt-10">
-              <nuxt-link to="/checkout/personaldetails">
+              <nuxt-link to="/checkout/personaldetails" :title="$t('CHECKOUT')">
                 <GreenButton
                   style-type="Primary"
                   color="Green"

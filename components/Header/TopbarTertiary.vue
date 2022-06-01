@@ -3,13 +3,21 @@
     <template #navigation>
       <div class="header-links" @mouseleave="close">
         <div class="dropdown-wrap" @mouseover="open('iphones')">
-          <nuxt-link to="/telefoner/iphones" class="custom-link">
+          <nuxt-link
+            to="/telefoner/iphones"
+            class="custom-link"
+            title="IPHONES"
+          >
             IPHONES
           </nuxt-link>
           <div class="dropdown iphones" />
         </div>
         <div class="dropdown-wrap" @mouseover="open('smartphones')">
-          <nuxt-link to="/telefoner/smartphones" class="custom-link">
+          <nuxt-link
+            to="/telefoner/smartphones"
+            class="custom-link"
+            title="SMARTPHONES"
+          >
             SMARTPHONES
           </nuxt-link>
           <!-- <div class="dropdown smartphones">
@@ -17,7 +25,11 @@
       </div> -->
         </div>
         <div class="dropdown-wrap" @mouseover="open('tablets')">
-          <nuxt-link to="/tablets" class="custom-link">
+          <nuxt-link
+            to="/tablets"
+            class="custom-link"
+            title="TABLETS"
+          >
             TABLETS
           </nuxt-link>
           <div class="dropdown tablets">
@@ -34,6 +46,7 @@
           <nuxt-link
             to="/computere"
             class="custom-link"
+            :title="$t('COMPUTERS')"
           >
             {{ $t("COMPUTERS") }}
           </nuxt-link>
@@ -42,7 +55,11 @@
       </div> -->
         </div>
         <div class="dropdown-wrap" @mouseover="open('other')">
-          <nuxt-link to="/" class="custom-link">
+          <nuxt-link
+            to="/"
+            class="custom-link"
+            :title="$t('Other Products')"
+          >
             {{ $t("Other Products") }}
           </nuxt-link>
           <!-- <div class="dropdown other-products">
@@ -50,7 +67,11 @@
       </div> -->
         </div>
         <div class="dropdown-wrap" @mouseover="open('accessories')">
-          <nuxt-link to="/tilbehoer" class="custom-link">
+          <nuxt-link
+            to="/tilbehoer"
+            class="custom-link"
+            :title="$t('Accessories')"
+          >
             {{ $t("Accessories") }}
           </nuxt-link>
           <!-- <div class="dropdown accessories">

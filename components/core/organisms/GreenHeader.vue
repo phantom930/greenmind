@@ -21,6 +21,7 @@
         <nuxt-link
           v-if="$device.isMobile"
           v-show="!showSearchInputOnMobile"
+          title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
         >
@@ -35,6 +36,7 @@
         <nuxt-link
           v-if="!$device.isMobile"
           v-show="!showSearchInputOnMobile"
+          title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
         >

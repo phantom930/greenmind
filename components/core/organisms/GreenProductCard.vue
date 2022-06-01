@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="productGetters.getSlug(product)">
+  <nuxt-link :to="productGetters.getSlug(product)" :title="productGetters.getName(product)">
     <SfProductCard
       :key="product.id"
       data-cy="category-product-card"

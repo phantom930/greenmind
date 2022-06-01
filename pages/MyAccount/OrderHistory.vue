@@ -46,6 +46,7 @@
           >
             <SfTableData class="products__name">
               <nuxt-link
+                :title="orderGetters.getItemName(item)"
                 :to="
                   '/p/' +
                     orderGetters.getItemSku(item) +

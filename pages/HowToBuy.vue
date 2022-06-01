@@ -34,7 +34,11 @@
       </h3>
       <p class="text">
         Klik herunder og se, hvor du kan købe brugt elektronik:<br>
-        <nuxt-link :to="{ name: 'shops' }" class="underline text-center y-link">
+        <nuxt-link
+          :to="{ name: 'shops' }"
+          class="underline text-center y-link"
+          title="Find butik"
+        >
           Find butik
         </nuxt-link>
       </p>

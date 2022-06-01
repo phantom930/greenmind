@@ -75,7 +75,7 @@
                 <SfPrice :regular="$currency(totals)" />
               </template>
             </SfProperty>
-            <nuxt-link to="/checkout/personaldetails">
+            <nuxt-link to="/checkout/personaldetails" :title="$t('Personal details')">
               <SfButton
                 class="sf-button--full-width checkout_button mb-4"
                 @click="toggleCartSidebar"

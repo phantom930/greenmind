@@ -7,7 +7,11 @@
       </template>
       <template #navigation>
         <div v-show="$device.isDesktop" class="">
-          <nuxt-link class="flex" to="/">
+          <nuxt-link
+            class="flex"
+            to="/"
+            :title="$t('Go back to shop')"
+          >
             <SfIcon
               class="sf-header__icon mr-3"
               size="1.25rem"
@@ -18,6 +22,7 @@
         </div>
         <nuxt-link
           v-if="$device.isMobile"
+          title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
         >
@@ -31,6 +36,7 @@
         </nuxt-link>
         <nuxt-link
           v-if="!$device.isMobile"
+          title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
         >

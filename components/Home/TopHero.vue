@@ -90,19 +90,19 @@
   <SfHero
     class="top-hero mt-1.5"
   >
-    <nuxt-link :to="{ name: 'how-to-sell' }">
+    <nuxt-link :to="{ name: 'how-to-sell' }" :title="$t('How do you sell?')">
       <SfHeroItem
         class="top-hero-item"
         :image="require('/assets/images/homeHero/homeHero2_1.webp')"
       />
     </nuxt-link>
-    <nuxt-link :to="{ name: 'about-us' }">
+    <nuxt-link :to="{ name: 'about-us' }" :title="$t('How to buy?')">
       <SfHeroItem
         class="top-hero-item"
         :image="require('/assets/images/homeHero/homeHero2_2.webp')"
       />
     </nuxt-link>
-    <nuxt-link to="/">
+    <nuxt-link to="/" :title="$t('Return home')">
       <SfHeroItem
         class="top-hero-item"
         :image="require('/assets/images/homeHero/homeHero2_3.webp')"

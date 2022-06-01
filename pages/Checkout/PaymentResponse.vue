@@ -4,7 +4,7 @@
       :title="$t('Your cart is empty')"
       :level="2"
     />
-    <nuxt-link to="/">
+    <nuxt-link to="/" :title="$t('Thank you for your order')">
       <SfButton class="back-button color-secondary button-size">
         {{
           $t("Thank you for your order")
