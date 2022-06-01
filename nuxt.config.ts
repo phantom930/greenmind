@@ -76,7 +76,7 @@ export default {
   pwa: {
     meta: {
       name: 'Greenmind',
-      theme_color: '#fff',
+      theme_color: '#32463D',
       description: 'Greenmind Description',
       lang: localeIndex
     },
@@ -86,6 +86,7 @@ export default {
     },
     manifest: {
       name: 'Greenmind',
+      theme_color: '#32463D',
       short_name: 'Greenmind',
       description: 'Greenmind Description',
       lang: localeIndex,
@@ -190,6 +191,7 @@ export default {
     }
   },
   i18n: {
+    baseUrl: process.env.SITE_URL || 'https://vue-dev.greenmind.space',
     strategy: 'no_prefix',
     countries: [
       { name: 'US', label: 'United States' },

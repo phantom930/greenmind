@@ -70,7 +70,9 @@ import { onSSR } from '@vue-storefront/core';
 import { facetGetters, useFacet } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
+import { category } from '@odoogap/seo';
 
+const { allHead } = category();
 export default defineComponent({
   name: 'Category',
   components: { SfLoader, LazyHydrate },
@@ -156,6 +158,16 @@ export default defineComponent({
       facets,
       showProducts
     };
+  },
+  head () {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+
+    return allHead(
+      {
+        ...i18nHead,
+        title: 'Category page',
+        description: 'Category description'
+      });
   }
 });
 </script>

@@ -282,7 +282,10 @@ export default defineComponent({
     };
   },
   head() {
+    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
+
     return {
+      ...i18nHead,
       title: this.product?.jsonLdname,
       meta: [
         {
