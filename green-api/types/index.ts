@@ -50,6 +50,7 @@ export interface CombinationInfoGrade {
 
 export interface GreenProduct extends Product {
     isInStock?: boolean;
+    jsonLd?: any;
     qty?: number;
     variantAttributeValues?: AttributeValue[];
     schemaAttributeValues?: AttributeValue[];

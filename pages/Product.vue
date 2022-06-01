@@ -282,7 +282,20 @@ export default defineComponent({
     };
   },
   head() {
-    return allHead(this.product);
+    return {
+      title: this.product?.jsonLdname,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.product?.seoDescription
+        }
+      ],
+      script: [{
+        type: 'application/ld+json',
+        json: this.product?.jsonLd
+      }]
+    };
   }
 });
 </script>

@@ -118,6 +118,7 @@ module.exports = {
                     description
                     smallImage
                     slug
+                    jsonLd
                     qty
                     sku
                     status

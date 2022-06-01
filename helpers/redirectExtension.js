@@ -7,7 +7,6 @@ export default ({ app, configuration }) => {
     if (token === configuration.redirectsRefreshToken) {
       axios.get(`${configuration.odooBaseUrl}vsf/redirects`)
         .then(async ({ data }) => {
-          console.log(app.context);
           app.context.$config.redirects = data;
         });
 
