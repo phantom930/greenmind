@@ -28,7 +28,11 @@
         Trin 1, log ind
       </h3>
       <p class="text mb">
-        Log ind på <a href="”https://www.icloud.com”" class="underline text-indigo-900 hover:text-red-500 visited:text-red-500">www.icloud.com</a> med dit Apple-ID og adgangskode.
+        Log ind på <a
+          href="”https://www.icloud.com”"
+          class="underline text-indigo-900 hover:text-red-500 visited:text-red-500"
+          title="link icloud"
+        >www.icloud.com</a> med dit Apple-ID og adgangskode.
       </p>
       <h3 class="font-bold subtitle mb">
         Trin 2, klik på “Find my iPhone”/“Find min iPhone”

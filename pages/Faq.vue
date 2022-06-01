@@ -91,7 +91,7 @@
         Er der studierabat på reparationerne hos jer?
       </h3>
       <p>
-        Nej, desværre ikke. Vi har dog ofte kampagner, hvor vi yder rabat på udvalgte produkter/reparationer. Disse vil blive annonceret på vores <a href="”https://www.facebook.com/greenmind.dk”">Facebook-side</a> og igennem vores nyhedsbrev.
+        Nej, desværre ikke. Vi har dog ofte kampagner, hvor vi yder rabat på udvalgte produkter/reparationer. Disse vil blive annonceret på vores <a href="”https://www.facebook.com/greenmind.dk”" title="Facebook link">Facebook-side</a> og igennem vores nyhedsbrev.
       </p>
 
       <h3 class="font-bold subtitle">
@@ -117,14 +117,14 @@
         Hvad med min selvrisiko?
       </h3>
       <p>
-        Proceduren vedr. selvrisiko varierer fra forsikringsselskab til forsikringsselskab. GreenMind opkræver selvrisikoen på vegne af nogle forsikringsselskaber, og andre forsikringsselskaber opkræver den selv. Hvis du er i tvivl om, hvordan selvrisikoen opkræves i din reparationssag, bedes du sende en e-mail til <a href="”mailto:forsikring@greenmind.dk&quot;">forsikring@greenmind.dk</a>.
+        Proceduren vedr. selvrisiko varierer fra forsikringsselskab til forsikringsselskab. GreenMind opkræver selvrisikoen på vegne af nogle forsikringsselskaber, og andre forsikringsselskaber opkræver den selv. Hvis du er i tvivl om, hvordan selvrisikoen opkræves i din reparationssag, bedes du sende en e-mail til <a href="”mailto:forsikring@greenmind.dk&quot;" title="Link foresikring">forsikring@greenmind.dk</a>.
       </p>
 
       <h3 class="font-bold subtitle">
         Skal jeg sende tilbehør med, når jeg sender min telefon til jer?
       </h3>
       <p>
-        Nej. Det eneste du skal sende til os, er din forsikringsanmeldte enhed og en kopi af din købskvittering på enheden, hvis du har den. Kopi af købskvittering kan alternativt sendes til os pr. mail på <a href="”mailto:forsikring@greenmind.dk&quot;">forsikring@greenmind.dk</a>. Tilbehør som covers, opladere etc. og SIM-kort skal altså ikke sendes med. GreenMind kan ikke stilles til ansvar for bortkommet tilbehør.
+        Nej. Det eneste du skal sende til os, er din forsikringsanmeldte enhed og en kopi af din købskvittering på enheden, hvis du har den. Kopi af købskvittering kan alternativt sendes til os pr. mail på <a href="”mailto:forsikring@greenmind.dk&quot;" title="Link forsikring">forsikring@greenmind.dk</a>. Tilbehør som covers, opladere etc. og SIM-kort skal altså ikke sendes med. GreenMind kan ikke stilles til ansvar for bortkommet tilbehør.
       </p>
 
       <h3 class="font-bold subtitle">
@@ -179,7 +179,7 @@
         </li>
       </ul>
       <p>
-        Hvis du ønsker at benytte dig af et af disse tilbud, så skal du blot skrive en mail til <a href="”mailto:forsikring@greenmind.dk&quot;">forsikring@greenmind.dk</a>. Fragtlabel og fragtemballage bliver ikke sendt ud automatisk, men udleveres kun efter anmodning, som beskrevet ovenfor. Bemærk også, at pakken ikke må afleveres i en postkasse. Den skal afleveres i en pakkeshop.Vælger du selv at sende enheden ind uden brug af vores fragtlabel, så anmoder vi om, at du sender enheden som en pakke med et forsendelsesnummer således, at indholdet er forsikret.
+        Hvis du ønsker at benytte dig af et af disse tilbud, så skal du blot skrive en mail til <a href="”mailto:forsikring@greenmind.dk&quot;" title="Link forsikring">forsikring@greenmind.dk</a>. Fragtlabel og fragtemballage bliver ikke sendt ud automatisk, men udleveres kun efter anmodning, som beskrevet ovenfor. Bemærk også, at pakken ikke må afleveres i en postkasse. Den skal afleveres i en pakkeshop.Vælger du selv at sende enheden ind uden brug af vores fragtlabel, så anmoder vi om, at du sender enheden som en pakke med et forsendelsesnummer således, at indholdet er forsikret.
       </p>
 
       <h3 class="font-bold subtitle">

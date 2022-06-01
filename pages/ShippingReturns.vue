@@ -10,7 +10,7 @@
       </h3>
       <p class="text">
         Som forbruger har du har 14 dages fortrydelsesret, når du handler hos os. Fortrydelsesfristen udløber 14 dage efter den dag, du har modtaget din vare. Hvis du har bestilt flere forskellige varer i samme køb, men de leveres enkelvist, løber fristen fra den dag, hvor du modtager den sidste vare. Fristen indebærer, at du har 14 dage fra modtagelsen til at give os besked om, at du vil fortryde dit køb. Ønsker du at fortryde dit køb skal du sende en mail til
-        <a href="mailto: mail@greenmind.dk">
+        <a href="mailto: mail@greenmind.dk" title="Link mail to greenmind">
           mail@greenmind.dk
         </a>.
       </p>

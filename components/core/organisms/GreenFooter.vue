@@ -65,7 +65,7 @@
           v-for="(item, contactIndex) in contactColumn.contactChilds"
           :key="contactIndex"
         >
-          <a :href="item.name">
+          <a :href="item.name" :title="$t(item.text)">
             <p class="menu-item_p">
               {{ $t(item.text) }}
             </p>
