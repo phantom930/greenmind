@@ -4,7 +4,6 @@
       :title="$t('Your cart is empty')"
       :level="2"
     />
-
     <nuxt-link to="/">
       <SfButton class="back-button color-secondary button-size">
         {{
@@ -18,7 +17,7 @@
 <script>
 import { SfHeading, SfButton } from '@storefront-ui/vue';
 import { ref, onMounted } from '@nuxtjs/composition-api';
-import { usePayment, useCart, cartGetters } from '@vue-storefront/odoo';
+import { usePayment, cartGetters } from '@vue-storefront/odoo';
 export default {
   components: {
     SfHeading,
@@ -28,8 +27,8 @@ export default {
   setup(props, { root, emit }) {
     emit('changeStep', 4);
 
+    const paymentResponse = ref(null);
     const { getPaymentConfirmation } = usePayment();
-    const { cart } = useCart();
 
     const companyDetails = ref({
       name: 'Divante Headquarter',
@@ -39,7 +38,8 @@ export default {
     });
 
     onMounted(async () => {
-      await getPaymentConfirmation();
+      const data = await getPaymentConfirmation({ customQuery: { paymentConfirmation: 'greenConfirmationPayment' }});
+      paymentResponse.value = data;
     });
 
     const redirectToPayment = () => {
@@ -48,7 +48,7 @@ export default {
 
     return {
       cartGetters,
-      cart,
+      paymentResponse,
       redirectToPayment,
       companyDetails
     };

@@ -121,13 +121,6 @@ export default defineComponent({
 
     const processOrder = async () => {
       await make();
-
-      // const thankYouPath = {
-      //   name: 'thank-you',
-      //   query: { order: orderGetters.getId(order.value) }
-      // };
-      // context.root.$router.push(context.root.localePath(thankYouPath));
-      // setCart(null);
     };
 
     const providerPaymentHandler = () => {};

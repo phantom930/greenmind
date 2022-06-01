@@ -1893,11 +1893,6 @@
     serve-static "^1.14.1"
     workbox-cdn "^5.1.4"
 
-"@nuxtjs/redirect-module@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/redirect-module/-/redirect-module-0.3.1.tgz#90a6986882337401cb0576cdf9479d4e3b552cce"
-  integrity sha512-yL2unrYfUSqs+4cUtkQvEQMsuTeCOlQd+Y5sTqMZzWBadF8h01tCVDG95zmOTNIiCupb+sQho2Tixwl1f826aw==
-
 "@nuxtjs/sitemap@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/sitemap/-/sitemap-2.4.0.tgz#6a9fa1c35e161f87375d59949d973568cec40614"
@@ -2703,10 +2698,10 @@
     lodash "^4.17.15"
     nuxt-purgecss "^1.0.0"
 
-"@vue-storefront/odoo-api@1.4.0-rc.16":
-  version "1.4.0-rc.16"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo-api/-/odoo-api-1.4.0-rc.16.tgz#6b47ac54143e001061340ad138034166273a4321"
-  integrity sha512-JuWxesgHmnmFGwVtpXzLGHXcKXdtguwBNUAPv4Kocifc5hWAD3GuRkZ2uNO54udkzkWGEsdQezlPP6iYgGmj0A==
+"@vue-storefront/odoo-api@1.4.0-rc.20":
+  version "1.4.0-rc.20"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo-api/-/odoo-api-1.4.0-rc.20.tgz#500c47970dbf70912a7bd8c02691ec88fd379b94"
+  integrity sha512-e6RwZB9ZfwHip9mdITHVPayuSctFOEK7ioihOSa9lD8sn4Zoi+1nm89+cmtuIKxzqL6s78y43/KurWXZYWMzfw==
   dependencies:
     "@vue-storefront/core" "2.5.6"
     apollo-cache-inmemory "^1.6.6"
@@ -2718,14 +2713,14 @@
     graphql-tag "^2.12.4"
     isomorphic-fetch "^3.0.0"
 
-"@vue-storefront/odoo@1.4.0-rc.16":
-  version "1.4.0-rc.16"
-  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo/-/odoo-1.4.0-rc.16.tgz#9277e49a894ba887041efd7d7b73eea176984735"
-  integrity sha512-/FqnOBa/cN9Yjad2PaKqxqOeVkPSbZoFtAK6e9NlXVqfChoyjJGEr6XcYGX8zSXnDeLQDWlLQC7SURuTmizoyg==
+"@vue-storefront/odoo@1.4.0-rc.20":
+  version "1.4.0-rc.20"
+  resolved "https://registry.yarnpkg.com/@vue-storefront/odoo/-/odoo-1.4.0-rc.20.tgz#b5504d605e3ebf53ace5cf8cd74861ce4af11441"
+  integrity sha512-hP3M/JPCX2HRVpz8lMwsIEwLvvCGppvAoAXE24SZAOQFDNmv4C3JaTFg21yt3MuTTBNUwN+7ux3+4isTKnXSDg==
   dependencies:
     "@nuxtjs/composition-api" "0.31.0"
     "@vue-storefront/core" "2.5.6"
-    "@vue-storefront/odoo-api" "1.4.0-rc.16"
+    "@vue-storefront/odoo-api" "1.4.0-rc.20"
 
 "@vue-storefront/redis-cache@^1.0.1":
   version "1.0.1"

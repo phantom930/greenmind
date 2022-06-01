@@ -67,8 +67,8 @@ export interface GreenPaymentTransaction extends PaymentTransaction {
     state?: string
 }
 export interface GreenOrder extends Order {
-    totalCount: number,
-    lastTransaction: GreenPaymentTransaction,
+    totalCount?: number,
+    lastTransaction?: GreenPaymentTransaction,
     accessoryLines?: GreenOrderLine[];
     orderLines?: GreenOrderLine[];
     websiteOrderLine?: GreenOrderLine[];

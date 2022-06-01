@@ -370,5 +370,30 @@ module.exports = {
         }
       }
     }`
+  }),
+  greenConfirmationPayment: ({variables}) => ({
+    variables,
+    query: gql `
+    query {
+      paymentConfirmation{
+        order{
+          lastTransaction{
+            payment{
+              name
+              amount
+              paymentReference
+            }
+            acquirer
+            state{
+              id
+              reference
+            }
+            amount
+            
+          }
+    
+        }
+      }
+    }`
   })
 };

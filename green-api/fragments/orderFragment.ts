@@ -21,7 +21,10 @@ order {
   amountDelivery
   dateOrder
   orderUrl
-  lastTransaction
+  lastTransaction{
+    id
+    reference
+  }
   stage
   totalCount
   websiteOrderLine {
