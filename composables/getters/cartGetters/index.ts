@@ -16,13 +16,7 @@ export const getStandGradeName = (orderLine: GreenOrderLine): string => {
 
 export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine;
 
-export const getTotalItems = (cart: GreenCart): number => {
-  let total = 0;
-  cart?.order?.orderLines
-    ?.filter(orderLine => !orderLine.name?.toUpperCase().includes('WEBSHIPPER'))
-    ?.forEach(orderLine => total += orderLine.quantity);
-  return total;
-};
+export const getTotalItems = (cart: GreenCart): number => cart?.order?.totalCount || 0;
 
 export const getAccessories = (cart: GreenCart): GreenOrderLine[] => cart?.order?.accessoryLines;
 
