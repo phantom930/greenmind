@@ -52,11 +52,13 @@
                   <img
                     v-if="isOpen"
                     :src="require('/assets/images/category/arrow-up.svg')"
+                    alt="arrow-up"
                     class="pr-3.5"
                   >
                   <img
                     v-else
                     :src="require('/assets/images/category/arrow-down.svg')"
+                    alt="arrow-down"
                     class="pr-5"
                   >
                 </div>

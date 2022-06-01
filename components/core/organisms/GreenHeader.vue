@@ -15,6 +15,7 @@
             data-cy="app-header-top-categories"
             class="nav-item"
             :label="category.name"
+            :title="category.name"
             :link="{ name: category.slug }"
           />
         </div>

@@ -13,6 +13,7 @@
         <template #icon>
           <img
             v-show="currentAddressId === address.id"
+            alt="checkmark"
             class="sf-address-picker-icon"
             :src="require('/assets/images/checkout/checkmark.svg')"
           >

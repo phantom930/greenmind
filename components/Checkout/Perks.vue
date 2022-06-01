@@ -1,20 +1,20 @@
 <template>
   <div class="perks">
     <div class="perk">
-      <img :src="require('/assets/images/personaldetails/clock.svg')">
+      <img :src="require('/assets/images/personaldetails/clock.svg')" alt="clock">
       <p class="label">
         {{ $t('Faster') }}<br>{{ $t('checkout') }}
       </p>
     </div>
     <div class="perk">
-      <img :src="require('/assets/images/personaldetails/coins.svg')">
+      <img :src="require('/assets/images/personaldetails/coins.svg')" alt="coins">
       <p class="label">
         {{ $t('Earn credits with every') }}<br>
         {{ $t('purchase') }}
       </p>
     </div>
     <div class="perk">
-      <img :src="require('/assets/images/personaldetails/award.svg')">
+      <img :src="require('/assets/images/personaldetails/award.svg')" alt="award">
       <p class="label">
         {{ $t('Full rewards program') }}<br>
         {{ $t('benefits') }}

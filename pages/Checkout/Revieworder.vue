@@ -13,7 +13,7 @@
       >
         <div class="img-info-wrap">
           <div class="image-container">
-            <img :src="$image(cartGetters.getItemImage(orderLine), 82, 104, cartGetters.getItemImageFilename(orderLine))">
+            <img :src="$image(cartGetters.getItemImage(orderLine), 82, 104, cartGetters.getItemImageFilename(orderLine))" :alt="cartGetters.getItemTitle(orderLine)">
           </div>
           <div class="product-info">
             <div class="product-title flex justify-between">
