@@ -1,6 +1,6 @@
 const products = `
 query {
-  products(pageSize: 500) {
+  products(pageSize: 1500) {
     totalCount
     products {
       slug
@@ -12,7 +12,7 @@ query {
 
 const categories = `
 query {
-  categories(pageSize:300){
+  categories(pageSize:1000){
     categories{
       slug
     }

@@ -5,7 +5,8 @@ import { Category } from '@vue-storefront/odoo-api';
 import { useContext } from '@nuxtjs/composition-api';
 
 const iterateNested = (category : Category, breadcrumbs: Array<any>) => {
-  if (category.parent) {
+
+  if (category?.parent) {
     breadcrumbs.push({
       text: category.name,
       link: category?.slug
