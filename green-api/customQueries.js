@@ -382,12 +382,8 @@ module.exports = {
               paymentReference
             }
             acquirer
-            state{
-              id
-              reference
-            }
+            state
             amount
-            
           }
     
         }

@@ -7,18 +7,19 @@
     <nuxt-link to="/" :title="$t('Thank you for your order')">
       <SfButton class="back-button color-secondary button-size">
         {{
-          $t("Thank you for your order")
+          paymentSuccess ? $t("Thank you for your order") : $t('There is a problem with the order')
         }}
       </SfButton>
     </nuxt-link>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { SfHeading, SfButton } from '@storefront-ui/vue';
-import { ref, onMounted } from '@nuxtjs/composition-api';
+import { ref, onMounted, defineComponent, computed, Ref } from '@nuxtjs/composition-api';
 import { usePayment, cartGetters } from '@vue-storefront/odoo';
-export default {
+import { PaymentTransactionState } from '~/green-api/types';
+export default defineComponent({
   components: {
     SfHeading,
     SfButton
@@ -28,7 +29,8 @@ export default {
     emit('changeStep', 4);
 
     const paymentResponse = ref(null);
-    const { getPaymentConfirmation } = usePayment();
+    const paymentStatus : Ref<PaymentTransactionState> = ref(null);
+    const { getPaymentConfirmation } = usePayment('');
 
     const companyDetails = ref({
       name: 'Divante Headquarter',
@@ -40,20 +42,29 @@ export default {
     onMounted(async () => {
       const data = await getPaymentConfirmation({ customQuery: { paymentConfirmation: 'greenConfirmationPayment' }});
       paymentResponse.value = data;
+      paymentStatus.value = paymentResponse.value.order?.lastTransaction.state;
+
     });
 
     const redirectToPayment = () => {
       return root.$router.push('/checkout/payment');
     };
 
+    const paymentSuccess = computed(() =>
+      paymentStatus.value === 'Authorized' ||
+      paymentStatus.value === 'Confirmed'
+    );
+
     return {
+      paymentStatus,
       cartGetters,
       paymentResponse,
+      paymentSuccess,
       redirectToPayment,
       companyDetails
     };
   }
-};
+});
 </script>
 <style lang="scss" scoped>
 @import '~/assets/css/thankyou.scss';

@@ -364,5 +364,6 @@
   "This field must be an email": "Dette felt skal være en e-mail",
   "This field must have": "Dette felt skal have",
   "digits": "cifre",
-  "Thank you for your order": "Tak for din ordre"
+  "Thank you for your order": "Tak for din ordre",
+  "There is a problem with the order": "Der er et problem med ordren"
 }

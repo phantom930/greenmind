@@ -1,6 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { Product, AttributeValue, OrderLine, GraphQlProductParam, Order, Cart, PaymentTransaction } from '@vue-storefront/odoo-api';
 
+export declare enum PaymentTransactionState {
+    Draft = 'Draft',
+    Pending = 'Pending',
+    Authorized = 'Authorized',
+    Confirmed = 'Confirmed',
+    Canceled = 'Canceled',
+    Error = 'Error'
+}
+
 export enum ButtonType {
     Primary = 'Primary',
     Secondary = 'Secondary',
@@ -65,7 +74,7 @@ export interface GreenOrderLine extends OrderLine {
 }
 
 export interface GreenPaymentTransaction extends PaymentTransaction {
-    state?: string
+    state?: PaymentTransactionState
 }
 export interface GreenOrder extends Order {
     totalCount?: number,
