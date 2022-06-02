@@ -72,7 +72,7 @@ import LazyHydrate from 'vue-lazy-hydration';
 import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
 import { category } from '@odoogap/seo';
 
-const { allHead } = category();
+const { jsonLdStrucutredData } = category();
 export default defineComponent({
   name: 'Category',
   components: { SfLoader, LazyHydrate },
@@ -162,12 +162,28 @@ export default defineComponent({
   head () {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
 
-    return allHead(
-      {
-        ...i18nHead,
-        title: 'Category page',
-        description: 'Category description'
-      });
+    return {
+      htmlAttrs: i18nHead.htmlAttrs,
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${this.$config.siteUrl + this.$router.currentRoute.fullPath}`
+        }
+      ],
+      title: 'Category page',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Category description'
+        }
+      ],
+      script: [{
+        type: 'application/ld+json',
+        json: jsonLdStrucutredData
+      }]
+    };
   }
 });
 </script>

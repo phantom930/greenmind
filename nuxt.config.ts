@@ -148,6 +148,7 @@ export default {
   ],
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
+    siteUrl: process.env.SITE_URL || 'https://vue-dev.greenmind.space',
     cookieBotKey,
     localeIndex,
     theme,
