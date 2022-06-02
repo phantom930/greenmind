@@ -91,7 +91,7 @@
         Er der studierabat på reparationerne hos jer?
       </h3>
       <p>
-        Nej, desværre ikke. Vi har dog ofte kampagner, hvor vi yder rabat på udvalgte produkter/reparationer. Disse vil blive annonceret på vores <a href="”https://www.facebook.com/greenmind.dk”" title="Facebook link">Facebook-side</a> og igennem vores nyhedsbrev.
+        Nej, desværre ikke. Vi har dog ofte kampagner, hvor vi yder rabat på udvalgte produkter/reparationer. Disse vil blive annonceret på vores <a href="”https://facebook.com/greenmind.dk”" title="Facebook link">Facebook-side</a> og igennem vores nyhedsbrev.
       </p>
 
       <h3 class="font-bold subtitle">

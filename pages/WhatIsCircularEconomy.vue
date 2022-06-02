@@ -31,15 +31,15 @@
       <div class="text italic">
         Kilder:
         <a
-          href="https://www.thebalance.com/e-waste-recycling-facts-and-figures-2878189"
+          href="https://thebalance.com/e-waste-recycling-facts-and-figures-2878189"
           class="underline y-link"
           title="Link thebalance"
         >
-          https://www.thebalance.com/e-waste-recycling-facts-and-figures-2878189
+          https://thebalance.com/e-waste-recycling-facts-and-figures-2878189
         </a><br>
         og<br>
-        <a href="https://www.statista.com/statistics/412108/global-smartphone-shipments-global-region/" class="underline y-link">
-          https://www.statista.com/statistics/412108/global-smartphone-shipments-global-region/
+        <a href="https://statista.com/statistics/412108/global-smartphone-shipments-global-region/" class="underline y-link">
+          https://statista.com/statistics/412108/global-smartphone-shipments-global-region/
         </a>
       </div>
     </div>

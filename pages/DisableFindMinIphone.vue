@@ -10,7 +10,7 @@
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/u4DbFC8P11s"
+        src="https://youtube.com/embed/u4DbFC8P11s"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -29,7 +29,7 @@
       </h3>
       <p class="text mb">
         Log ind på <a
-          href="”https://www.icloud.com”"
+          href="”https://icloud.com”"
           class="underline text-indigo-900 hover:text-red-500 visited:text-red-500"
           title="link icloud"
         >www.icloud.com</a> med dit Apple-ID og adgangskode.

@@ -417,7 +417,7 @@
         Toldboden 2<br>
         8800 Viborg<br>
         <a
-          href="https://www.naevneneshus.dk"
+          href="https://naevneneshus.dk"
           class="underline ylink"
           target="_blank"
         >www.naevneneshus.dk</a><br>
