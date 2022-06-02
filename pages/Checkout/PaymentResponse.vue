@@ -1,6 +1,7 @@
 <template>
   <div id="thank-you">
     <SfHeading
+      v-if="paymentSuccess"
       :title="$t('Your cart is empty')"
       :level="2"
     />
