@@ -55,14 +55,14 @@
 </template>
 
 <script lang="ts">
-import { SfCollectedProduct, SfIcon, SfButton } from '@storefront-ui/vue';
+import { SfCollectedProduct } from '@storefront-ui/vue';
 import { cartGetters, useCollectedProduct } from '~/composables';
 import { defineComponent, computed, PropType } from '@nuxtjs/composition-api';
 import { GreenOrderLine } from '~/green-api/types';
 
 export default defineComponent({
   components: {
-    SfCollectedProduct, SfIcon, SfButton
+    SfCollectedProduct
   },
   props: {
     orderLine: {
