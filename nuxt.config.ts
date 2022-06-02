@@ -240,6 +240,7 @@ export default {
     exclude: ['/checkout/**', '/checkout', '/dashboard/**', '/dashboard'],
     hostname: process.env.SITE_URL || 'https://vue-dev.greenmind.space/',
     i18n: false,
+    cacheTime: process.env.SITEMAP_CACHE || 6000,
     gzip: true,
     defaults: {
       changefreq: 'daily',

@@ -20,6 +20,7 @@ Tip - Add to your /etc/hosts
 NODE_ENV - for enviroments
 NODE_LOCALE - for translations
 COOKIEBOT_KEY - key for cookiebot
+SITEMAP_CACHE - sitemap cache in miliseconds (6000 = 1min) 
 BASE_URL - for api
 BACKEND_BASE_URL - for api through local network
 PUBLIC_PATH - for CDN url
