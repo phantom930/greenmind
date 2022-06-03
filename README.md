@@ -19,8 +19,8 @@ Tip - Add to your /etc/hosts
 
 NODE_ENV - for enviroments
 NODE_LOCALE - for translations
-COOKIEBOT_KEY - key for cookiebot
-SITEMAP_CACHE - sitemap cache in miliseconds (6000 = 1min) 
+COOKIEBOT_KEY - key for cookiebot (default d2da6edf-44b1-4063-a6ef-fe4f37edeb0c)
+REDIRECT_INVALITION_TOKEN - token to refresh redirects (default green-123)
 BASE_URL - for api
 BACKEND_BASE_URL - for api through local network
 PUBLIC_PATH - for CDN url
