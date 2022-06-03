@@ -4,6 +4,7 @@ const graphqlBaseUrl = `${odooBaseUrl}graphql/vsf`;
 const customQueries = require('./green-api/customQueries');
 const apis = require('./green-api/api');
 const redirectExtension = require('./helpers/redirectExtension');
+const redirectRefreshExtension = require('./helpers/redirectRefreshExtension');
 
 module.exports = {
   integrations: {
@@ -23,6 +24,10 @@ module.exports = {
         {
           name: 'redirect-extension',
           extendApp: redirectExtension.default
+        },
+        {
+          name: 'redirect-refresh-extension',
+          extendApp: redirectRefreshExtension.default
         }
       ],
       customQueries

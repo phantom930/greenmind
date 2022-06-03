@@ -1,8 +1,10 @@
+const axios = require('axios');
 export default async ({ app, redirect }) => {
-
-  const redirects = app.context.$config.redirects;
   const currentPath = app.context.route.fullPath;
-  const route = redirects.find(item => item.from === currentPath);
+  const config = app.context.$vsf.$odoo.config.app.$config;
+  const { data } = await axios.get(`${config.siteUrl}/api/redirects/${config.redirectRefreshExtension}`);
+
+  const route = data.find(item => item.from === currentPath);
 
   if (route) {
     redirect(301, route.to);

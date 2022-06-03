@@ -1,16 +1,13 @@
-const axios = require('axios');
+const fsExtra = require('fs-extra');
 
 export default ({ app, configuration }) => {
-  app.get('/redirects/refresh/:token', (req, res) => {
+  app.get('/redirects/:token', (req, res) => {
     const token = req.params.token;
 
     if (token === configuration.redirectsRefreshToken) {
-      axios.get(`${configuration.odooBaseUrl}vsf/redirects`)
-        .then(async ({ data }) => {
-          app.context.$config.redirects = data;
-        });
+      const data = fsExtra.readFileSync('customRoutes/redirects.json');
 
-      return res.send('Refresh redirects succcefuly!');
+      return res.send(data);
     }
 
     return res.send('Wrong redirect token');

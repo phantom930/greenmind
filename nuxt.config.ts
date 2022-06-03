@@ -148,11 +148,11 @@ export default {
   ],
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
-    siteUrl: process.env.SITE_URL || 'https://vue-dev.greenmind.space',
+    siteUrl: isDev ? 'http://localhost:3000' : process.env.SITE_URL || 'https://vue-dev.greenmind.space',
+    redirectRefreshExtension: process.env.REDIRECT_INVALITION_TOKEN || 'green-123',
     cookieBotKey,
     localeIndex,
-    theme,
-    redirects: []
+    theme
   },
   modules: makeModules(['@nuxtjs/sitemap', '@nuxtjs/i18n']),
   nuxtPrecompress: {
