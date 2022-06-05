@@ -25,6 +25,12 @@ order {
   websiteOrderLine {
     id
     name
+    accessories{
+      id
+      product{
+        id
+      }
+    }
     product {
       ${coreProductAttribs}
       combinationInfoVariant
@@ -35,6 +41,7 @@ order {
           image
           price
       }
+      
     }
     quantity
     priceTotal
@@ -46,13 +53,13 @@ order {
       id
     }
   }
-  orderLines {
+  orderLines {  
     id
     name
     product {
       ${coreProductAttribs}
     }
-    quantity
+    quantity 
     priceTotal
   }
   partnerInvoice {

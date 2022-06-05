@@ -71,6 +71,7 @@ export interface GreenProduct extends Product {
 }
 export interface GreenOrderLine extends OrderLine {
     product?: GreenProduct;
+    accessories?: GreenOrderLine[]
 }
 
 export interface GreenPaymentTransaction extends PaymentTransaction {
