@@ -59,6 +59,8 @@
     flex: 1;
   }
   .collected-product {
+    min-height: 335px;
+    min-width: 380px;
     margin: 0 0 var(--spacer-sm) 0;
     --image-height: 12.5rem;
     &__properties {
@@ -92,6 +94,7 @@
     &:hover {
       --cp-save-opacity: 1;
       --cp-compare-opacity: 1;
+    
       @include for-desktop {
         .collected-product__properties {
           display: none;

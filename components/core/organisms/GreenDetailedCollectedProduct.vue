@@ -59,8 +59,8 @@
         :disabled="loading"
         :title="acessoryProduct.name"
         :price="$currency(acessoryProduct.price)"
-        :is-checked="orderLineHasAccessory(orderLine, acessoryProduct.id)"
-        @change="handleAddOrRemoveAccessory(orderLine, acessoryProduct.id)"
+        :is-checked="orderLineHasAccessory(acessoryProduct.id)"
+        @change="handleAddOrRemoveAccessory(acessoryProduct.id)"
       />
     </div>
 
@@ -78,7 +78,7 @@
 <script lang="ts">
 import { SfCollectedProduct, SfQuantitySelector } from '@storefront-ui/vue';
 import { cartGetters, useCollectedProduct } from '~/composables';
-import { defineComponent, PropType, computed, ref, watch } from '@nuxtjs/composition-api';
+import { defineComponent, PropType, computed, ref, watch, toRefs } from '@nuxtjs/composition-api';
 import { GreenOrderLine } from '~/green-api/types';
 
 export default defineComponent({
@@ -97,6 +97,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const { orderLine } = toRefs(props);
     const {
       handleRemoveItemAndAccessories,
       handleAddOrRemoveAccessory,
@@ -104,7 +105,7 @@ export default defineComponent({
       orderLineHasAccessory,
       getPrice,
       loading
-    } = useCollectedProduct();
+    } = useCollectedProduct(orderLine);
 
     const accessoryProducts = computed(() => props.orderLine?.product?.accessoryProducts || []);
 
