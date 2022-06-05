@@ -59,8 +59,8 @@
         :disabled="loading"
         :title="acessoryProduct.name"
         :price="$currency(acessoryProduct.price)"
-        :is-checked="accessoryIsInCart(acessoryProduct.id)"
-        @change="handleAddOrRemoveAccessory(orderLine.product.id, acessoryProduct.id)"
+        :is-checked="orderLineHasAccessory(orderLine, acessoryProduct.id)"
+        @change="handleAddOrRemoveAccessory(orderLine, acessoryProduct.id)"
       />
     </div>
 
@@ -101,7 +101,7 @@ export default defineComponent({
       handleRemoveItemAndAccessories,
       handleAddOrRemoveAccessory,
       handleUpdateItem,
-      accessoryIsInCart,
+      orderLineHasAccessory,
       getPrice,
       loading
     } = useCollectedProduct();
@@ -126,13 +126,13 @@ export default defineComponent({
       quantityInStock,
       quantity,
       loading,
-      accessoryIsInCart,
       handleAddOrRemoveAccessory,
       accessoryProducts,
       cartGetters,
       getPrice,
       handleRemoveItemAndAccessories,
-      handleUpdateItem
+      handleUpdateItem,
+      orderLineHasAccessory
     };
   }
 });

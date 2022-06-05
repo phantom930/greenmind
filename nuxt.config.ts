@@ -254,6 +254,7 @@ export default {
     scss: [require.resolve('@storefront-ui/shared/styles/_helpers.scss', { paths: [process.cwd()] })]
   },
   build: makeBuild({
+    // watch: ['.nuxt/routes.json'],
     transpile: ['vee-validate/dist/rules', '/^@storefront-ui/'],
     plugins: [
       new webpack.DefinePlugin({
