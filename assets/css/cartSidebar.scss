@@ -59,8 +59,8 @@
     flex: 1;
   }
   .collected-product {
-    min-height: 335px;
-    min-width: 380px;
+    min-height: 335px !important;
+    min-width: 380px !important;
     margin: 0 0 var(--spacer-sm) 0;
     --image-height: 12.5rem;
     &__properties {
