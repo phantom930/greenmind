@@ -28,7 +28,7 @@ export const getBreadcrumbsByProduct = (product: GreenProduct): AgnosticBreadcru
 
   breadcrumbs.push({
     text: `${product?.name || ''} ${product?.websiteSubtitle || ''}` || '',
-    link: ''
+    link: product.slug
   });
   return breadcrumbs;
 };
