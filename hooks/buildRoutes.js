@@ -28,7 +28,7 @@ const fetchCategories = async () => {
 const removeLastItemFromArray = (array) => {
   const slugs = array?.map(item =>item.slug.split('/'));
   const splited = slugs.map(item => ({
-    name: item.at(-1),
+    name: item[item.length - 1],
     path: `${cleanPath(`${item.slice(0, -1).join('/')}`)}/:slug`
   }));
   return [...new Set(splited)];
