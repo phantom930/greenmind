@@ -3,11 +3,20 @@ const fsExtra = require('fs-extra');
 import i18nRoutes from './i18nRoutes';
 
 export function getRoutes(localeIndex, themeDir = __dirname) {
-  let productPrefixes = fsExtra.readJsonSync('./customRoutes/products.json');
-  productPrefixes = productPrefixes.filter(item => item !== '/product');
+  const productPrefixes = fsExtra.readJsonSync('./customRoutes/products.json');
+  const productRoutes = productPrefixes.map(item => ({
+    name: item.name,
+    path: item.path,
+    component: path.resolve(themeDir, 'pages/Product.vue')
+  }));
 
   let categoriesPrefixes = fsExtra.readJsonSync('./customRoutes/categories.json');
   categoriesPrefixes = categoriesPrefixes.filter(item => item !== '/category');
+  const categoryRoutes = categoriesPrefixes.map(item => ({
+    name: item,
+    path: item,
+    component: path.resolve(themeDir, 'pages/Product.vue')
+  }));
 
   return [
     {
@@ -21,17 +30,25 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/Cart/Cart.vue')
     },
     {
-      name: 'product',
-      path: '/product/:slug_2+',
-      component: path.resolve(themeDir, 'pages/Product.vue'),
-      alias: productPrefixes.map(alias => `${alias}/:slug_2+`)
+      name: 'test',
+      path: '/cell-phones/smartphones/samsung-galaxy/galaxy-s-series/galaxy-s8/galaxy-s8/:slug',
+      component: path.resolve(themeDir, 'pages/Product.vue')
+
     },
-    {
-      name: 'category',
-      path: '/category',
-      component: path.resolve(themeDir, 'pages/Category.vue'),
-      alias: categoriesPrefixes.map(alias => `${alias}`)
-    },
+    ...productRoutes,
+    ...categoryRoutes,
+    // {
+    //   name: 'product',
+    //   path: '/product/:slug_2+',
+    //   component: path.resolve(themeDir, 'pages/Product.vue'),
+    //   alias: productPrefixes.map(alias => `${alias}/:slug_2+`)
+    // },
+    // {
+    //   name: 'category',
+    //   path: '/category',
+    //   component: path.resolve(themeDir, 'pages/Category.vue'),
+    //   alias: categoriesPrefixes.map(alias => `${alias}`)
+    // },
 
     {
       name: 'checkout',

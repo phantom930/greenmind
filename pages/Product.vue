@@ -282,17 +282,7 @@ export default defineComponent({
     };
   },
   head() {
-    const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true });
-
     return {
-      htmlAttrs: i18nHead.htmlAttrs,
-      link: [
-        {
-          hid: 'canonical',
-          rel: 'canonical',
-          href: `${this.$config.siteUrl + this.$router.currentRoute.fullPath}`
-        }
-      ],
       title: this.product?.jsonLdname,
       meta: [
         {
