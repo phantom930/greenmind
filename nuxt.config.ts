@@ -70,7 +70,7 @@ export default {
       getRoutes(localeIndex, `${__dirname}`)
         .forEach((route) => routes.unshift(route));
     },
-    middleware: ['checkout', 'redirects']
+    middleware: ['checkout']
   },
 
   pwa: {
