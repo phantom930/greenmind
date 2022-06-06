@@ -15,7 +15,7 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
   const categoryRoutes = categoriesPrefixes.map(item => ({
     name: item,
     path: item,
-    component: path.resolve(themeDir, 'pages/Product.vue')
+    component: path.resolve(themeDir, 'pages/Category.vue')
   }));
 
   return [
