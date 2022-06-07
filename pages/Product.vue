@@ -290,11 +290,11 @@ export default defineComponent({
           name: 'description',
           content: this.product?.description
         },
-        { hid: 'og-type', property: 'og:type', content: 'website' },
-        { hid: 'og-title', property: 'og:title', content: this.combinationInfo.grade_name },
-        { hid: 'og-desc', property: 'og:og:description', content: this.combinationInfo.grade_description },
-        { hid: 'og-image', property: 'og:image', content: this.productGallery?.[0]?.desktop?.url},
-        { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' }
+        { hid: 'twitter-type', name: 'twitter:card', content: 'summary_large_image' },
+        { hid: 'twitter-title', property: 'twitter:title', content: this.combinationInfo.grade_name },
+        { hid: 'twitter-desc', property: 'twitter:description', content: this.combinationInfo.grade_description },
+        { hid: 'twitter-image', property: 'twitter:image', content: this.productGallery?.[0]?.desktop?.url },
+        { hid: 'twitter-image:alt', property: 'twitter:image:alt', content: this.productGallery?.alt }
       ],
       script: [{
         type: 'application/ld+json',
