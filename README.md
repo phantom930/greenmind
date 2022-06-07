@@ -13,6 +13,7 @@ Tip - Add to your /etc/hosts
 3. yarn build # (required) GreenMind project need build to fetch dinamic routes from ODOO
 4. yarn dev
 5. You can access with http://vue-dev.greenmind.space.local:3000
+6. Or yarn dev-default 
 ```
 
 ## Env vars used
