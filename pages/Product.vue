@@ -293,9 +293,9 @@ export default defineComponent({
         { hid: 'twitter-site', name: 'twitter:site', content: '@greenmind' },
         { hid: 'twitter-type', name: 'twitter:card', content: 'summary_large_image' },
         { hid: 'twitter-title', name: 'twitter:title', content: this.combinationInfo.grade_name },
-        { hid: 'twitter-desc', name: 'twitter:description', content: this.combinationInfo.grade_description },
+        { hid: 'twitter-desc', name: 'twitter:description', content: this.combinationInfo.display_name },
         { hid: 'twitter-image', name: 'twitter:image', content: this.productGallery?.[0]?.desktop?.url },
-        { hid: 'twitter-image:alt', name: 'twitter:image:alt', content: this.productGallery?.alt }
+        { hid: 'twitter-image:alt', name: 'twitter:image:alt', content: this.productGallery?.[0]?.alt }
       ],
       script: [{
         type: 'application/ld+json',
