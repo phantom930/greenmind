@@ -292,10 +292,10 @@ export default defineComponent({
         },
         { hid: 'twitter-site', name: 'twitter:site', content: '@greenmind' },
         { hid: 'twitter-type', name: 'twitter:card', content: 'summary_large_image' },
-        { hid: 'twitter-title', name: 'twitter:title', content: this.combinationInfo?.display_name },
-        { hid: 'twitter-desc', name: 'twitter:description', content: this.product?.description },
-        { hid: 'twitter-image', name: 'twitter:image', content: this.productGallery?.[0]?.desktop?.url },
-        { hid: 'twitter-image:alt', name: 'twitter:image:alt', content: this.productGallery?.[0]?.alt }
+        { hid: 'twitter-title', name: 'twitter:title', content: this.combinationInfo?.display_name || ''},
+        { hid: 'twitter-desc', name: 'twitter:description', content: this.product?.description || '' },
+        { hid: 'twitter-image', name: 'twitter:image', content: this.productGallery?.[0]?.desktop?.url || '' },
+        { hid: 'twitter-image:alt', name: 'twitter:image:alt', content: this.productGallery?.[0]?.alt || 'product_image' }
       ],
       script: [{
         type: 'application/ld+json',
