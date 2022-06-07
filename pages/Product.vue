@@ -288,8 +288,13 @@ export default defineComponent({
         {
           hid: 'description',
           name: 'description',
-          content: this.product?.seoDescription
-        }
+          content: this.product?.description
+        },
+        { hid: 'og-type', property: 'og:type', content: 'website' },
+        { hid: 'og-title', property: 'og:title', content: this.combinationInfo.grade_name },
+        { hid: 'og-desc', property: 'og:og:description', content: this.combinationInfo.grade_description },
+        { hid: 'og-image', property: 'og:image', content: this.productGallery?.[0]?.desktop?.url},
+        { hid: 't-type', name: 'twitter:card', content: 'summary_large_image' }
       ],
       script: [{
         type: 'application/ld+json',
