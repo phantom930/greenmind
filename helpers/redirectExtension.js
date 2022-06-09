@@ -17,8 +17,7 @@ export default ({ app, configuration }) => {
       buildProcess.on('exit', () => {
         consola.info(chalk.bold('ODOO'), ' - Finish rebuild app!');
 
-        child.exec('pm2 kill');
-        child.exec('pm2 start');
+        child.exec('pm2 reload');
       });
 
       return res.send(data);
