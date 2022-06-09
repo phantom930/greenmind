@@ -56,6 +56,13 @@ export default {
         src: 'https://consent.cookiebot.com/uc.js',
         async: true
       }
+      // {
+      //   id: 'clerk',
+      //   hid: 'clerk',
+      //   type: 'text/javascript',
+      //   src: 'https://cdn.clerk.io/clerk.js',
+      //   async: true
+      // }
     ],
     link: [
       {
@@ -104,7 +111,7 @@ export default {
     display: 'swap'
   },
   loading: { color: '#fff' },
-  plugins: ['~/plugins/getImage.ts', '~/plugins/vee-validate.ts', '~/plugins/dkkCustomCurrency.ts'],
+  plugins: ['~/plugins/getImage.ts', '~/plugins/vee-validate.ts', '~/plugins/dkkCustomCurrency.ts', '~/plugins/clerkIo.client.ts'],
   device: {
     refreshOnResize: true
   },
