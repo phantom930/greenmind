@@ -6,6 +6,7 @@ import { getRoutes } from './routes';
 import { resolve } from 'path';
 import hooks from './hooks';
 import getAppRoutes from './sitemap';
+import redirect from './customRoutes/redirects.json';
 import Config from '@odoogap/nuxt-config';
 
 const { makeBuild, makeModules } = Config();
@@ -77,7 +78,7 @@ export default {
       getRoutes(localeIndex, `${__dirname}`)
         .forEach((route) => routes.unshift(route));
     },
-    middleware: ['checkout']
+    middleware: ['checkout', 'redirects']
   },
 
   pwa: {
@@ -161,7 +162,12 @@ export default {
     localeIndex,
     theme
   },
-  modules: makeModules(['@nuxtjs/sitemap', '@nuxtjs/i18n']),
+  modules: makeModules([
+    '@nuxtjs/sitemap',
+    '@nuxtjs/i18n',
+    ['@nuxtjs/redirect-module', { statusCode: 301 }]
+  ]),
+  redirect,
   nuxtPrecompress: {
     enabled: !isDev,
     report: false,
