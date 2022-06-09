@@ -23,7 +23,7 @@ export default ({ app, configuration }) => {
       return res.send('');
     }
 
-    return res.send('Wrong redirect token');
+    return res.send('Wrong rebuild token');
 
   });
 };
