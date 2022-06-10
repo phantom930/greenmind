@@ -20,7 +20,7 @@ export default ({ app, configuration }) => {
       });
 
       consola.info(chalk.bold('ODOO'), ' - App reloaded!');
-      return res.send('');
+      return res.send('Started rebuild...');
     }
 
     return res.send('Wrong rebuild token');
