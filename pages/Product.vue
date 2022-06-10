@@ -70,7 +70,7 @@
               :key="accessoryProduct.id"
               :value="accessoryProduct.id"
               :emit-value="true"
-              :title="accessoryProduct.name"
+              :title="accessoryProduct.combinationInfoVariant.display_name"
               :description="accessoryProduct.description"
               :price="$currency(accessoryProduct.combinationInfoVariant.price)"
               :has-image="true"
