@@ -122,7 +122,8 @@
       </template>
       <!-- End of Search bar -->
     </SfHeader>
-    <SearchResults
+    <div v-html="test" />
+    <!-- <SearchResults
       :visible="isSearchOpen"
       :term="term"
       :search-loading="searchLoading"
@@ -130,7 +131,7 @@
       @close="closeSearch"
       @seeMore="handleSearchMore"
       @removeSearchResults="removeSearchResults"
-    />
+    /> -->
     <SfOverlay :visible="isSearchOpen" />
   </div>
 </template>
@@ -293,7 +294,30 @@ export default {
       ]);
     });
 
+    const test = `<span 
+  class="clerk"
+  
+  data-api="search/predictive"
+  data-limit="6"
+      
+  data-instant-search="#search">
+  
+  <dl class="product-search-result-list">
+    <dt>Products matching <i>{{ query }}</i></dt>
+    
+    {% for product in products %}
+      <dd class="product clerk-instant-search-key-selectable">
+        <h2 class="product-name">{{ product.name }}</h2> 
+        <img src="{{ product.image }}" title="{{ product.name }}" />
+        <div class="price">\${{ product.price | money }}</div>
+        <a href="{{ product.url }}">Buy Now</a>
+      </dd>
+    {% endfor %}
+  </dl>
+</span>`;
+
     return {
+      test,
       isCartSidebarOpen,
       isHamburguerMenuOpen,
       handleToggleHamburguerMenu,
