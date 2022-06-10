@@ -7,7 +7,7 @@ export default ({ app, configuration }) => {
   app.get('/rebuild/:token', (req, res) => {
     const token = req.params.token;
 
-    if (token === configuration.redirectsRefreshToken) {
+    if (token === configuration.rebuildRefreshToken) {
 
       const buildProcess = child.exec('export NODE_ENV=production && yarn build --quiet');
 
