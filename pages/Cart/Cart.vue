@@ -39,6 +39,7 @@
               :src="require('@storefront-ui/shared/icons/empty_cart.svg')"
               alt="Empty cart"
               class="empty-cart__image"
+              :placeholder="require('~/static/default_image.png')"
               :width="$device.isMobile ? 210 : 531"
               :height="$device.isMobile ? 142 : 361"
             />

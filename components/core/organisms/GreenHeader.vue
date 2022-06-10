@@ -27,6 +27,7 @@
           class="sf-header__logo"
         >
           <SfImage
+            placeholder="default_image.png"
             :width="61"
             :height="35"
             src="/icons/GreenMind_logo_stacked_green_02.svg"
@@ -42,6 +43,7 @@
           class="sf-header__logo"
         >
           <SfImage
+            placeholder="default_image.png"
             :width="250"
             :height="35"
             src="/icons/GreenMind_logo_horizontal_green_02.svg"

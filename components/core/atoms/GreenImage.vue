@@ -4,6 +4,12 @@ import { SfImage } from '@storefront-ui/vue';
 
 export default defineComponent({
   extends: SfImage,
+  props: {
+    placeholder: {
+      type: String,
+      default: () => '/default_image.png'
+    }
+  },
   computed: {
     attributes() {
       return this.imageTag === 'img' || this.imageTag === ''
