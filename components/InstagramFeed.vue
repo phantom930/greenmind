@@ -9,7 +9,7 @@
         <div class="grid__col">
           <SfImage
             v-if="$device.isMobile"
-            placeholder="default_image.png"
+            
             src="/homepage/imageAm.webp"
             alt="katherina_trn"
             :width="160"
@@ -19,7 +19,7 @@
           </SfImage>
           <SfImage
             v-else
-            placeholder="default_image.png"
+            
             src="/homepage/imageAd.webp"
             alt="katherina_trn"
             :width="470"
@@ -31,7 +31,7 @@
         <div class="grid__col small">
           <SfImage
             v-if="$device.isMobile"
-            placeholder="default_image.png"
+            
             src="/homepage/imageBm.webp"
             alt="katherina_trn"
             :width="160"
@@ -41,7 +41,7 @@
           </SfImage>
           <SfImage
             v-else
-            placeholder="default_image.png"
+            
             src="/homepage/imageCd.webp"
             alt="katherina_trn"
             :width="470"
@@ -55,7 +55,7 @@
         <div class="grid__col small">
           <SfImage
             v-if="$device.isMobile"
-            placeholder="default_image.png"
+            
             src="/homepage/imageCm.webp"
             alt="katherina_trn"
             :width="160"
@@ -65,7 +65,7 @@
           </SfImage>
           <SfImage
             v-else
-            placeholder="default_image.png"
+            
             src="/homepage/imageBd.webp"
             alt="katherina_trn"
             :width="470"
@@ -77,7 +77,7 @@
         <div class="grid__col">
           <SfImage
             v-if="$device.isMobile"
-            placeholder="default_image.png"
+            
             src="/homepage/imageDm.webp"
             alt="katherina_trn"
             :width="160"

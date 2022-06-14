@@ -87,7 +87,7 @@
             :href="item.url"
           >
             <SfImage
-              placeholder="default_image.png"
+              
               :src="require(`/assets/images/icons/${item.name}.svg`)"
               :alt="item.name"
               :width="32"
@@ -123,7 +123,7 @@
           :href="item.url"
         >
           <SfImage
-            placeholder="default_image.png"
+            
             class="footer__social-image mr-1"
             :src="require(`/assets/images/icons/${item.name}.svg`)"
             :alt="item.name"
@@ -142,7 +142,7 @@
 
     <div class="mobile-only mt-12 mb-10 flex justify-center smartphone-only">
       <SfImage
-        placeholder="default_image.png"
+        
         :width="35"
         :height="35"
         src="/icons/logo.svg"

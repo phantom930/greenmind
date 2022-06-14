@@ -46,7 +46,6 @@
         >
           <div class="empty-cart__banner">
             <SfImage
-              placeholder="default_image.png"
               alt="Empty bag"
               class="empty-cart__image"
               :src="require(`/assets/images/cart/${!$device.isMobile ? 'empty_cart_big.svg' : 'empty_cart.svg'}`)"

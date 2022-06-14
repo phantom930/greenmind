@@ -15,7 +15,7 @@
       </GreenButton>
       <SfImage
         v-if="image"
-        placeholder="default_image.png"
+        
         :width="363"
         :height="358"
         :src="image"

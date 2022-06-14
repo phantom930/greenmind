@@ -1,5 +1,6 @@
 :root {
   --font-family--primary: "Josefin Sans"; 
+  --font-family--secondary: "Josefin Sans"; 
   --line-height--primary: 24px;
   @include generate-color-variants(--_c-greenmind-primary-black, #1d1f22);
   @include generate-color-variants(--_c-greenmind-secondary-black, #43464E);

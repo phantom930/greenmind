@@ -27,7 +27,7 @@
           class="sf-header__logo"
         >
           <SfImage
-            placeholder="default_image.png"
+
             :width="61"
             :height="35"
             src="/icons/GreenMind_logo_stacked_green_02.svg"
@@ -43,7 +43,7 @@
           class="sf-header__logo"
         >
           <SfImage
-            placeholder="default_image.png"
+
             :width="250"
             :height="35"
             src="/icons/GreenMind_logo_horizontal_green_02.svg"
@@ -124,8 +124,8 @@
       </template>
       <!-- End of Search bar -->
     </SfHeader>
-    <div v-html="test" />
-    <!-- <SearchResults
+    <!-- <div v-html="test" /> -->
+    <SearchResults
       :visible="isSearchOpen"
       :term="term"
       :search-loading="searchLoading"
@@ -133,7 +133,7 @@
       @close="closeSearch"
       @seeMore="handleSearchMore"
       @removeSearchResults="removeSearchResults"
-    /> -->
+    />
     <SfOverlay :visible="isSearchOpen" />
   </div>
 </template>
