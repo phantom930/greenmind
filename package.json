@@ -60,6 +60,7 @@
     "eslint-plugin-vue": "^8.5.0",
     "husky": "^7.0.4",
     "nuxt": "2.15.6",
+    "nuxt-breakpoints": "^1.1.9",
     "nuxt-i18n": "^6.5.0",
     "nuxt-precompress": "^0.5.9",
     "redis-tag-cache": "^1.2.1",

@@ -1,13 +1,19 @@
 <template>
   <div>
-    <LazyCategoryTopBanner v-if="$device.isDesktop" />
+    <LazyHydrate when-idle>
+      <LazyCategoryTopBanner v-if="!mobileOrTabletSize" />
+    </LazyHydrate>
 
     <div id="category">
       <LazyCategoryNavbar />
 
       <div class="main section">
         <LazyHydrate when-idle>
-          <LazyCategoryTopBanner v-if="$device.isMobile" />
+          <LazyCategoryTopBanner
+            v-if="mobileOrTabletSize"
+            :width="939"
+            :height="300"
+          />
         </LazyHydrate>
 
         <LazyHydrate when-idle>
@@ -78,7 +84,7 @@ export default defineComponent({
   components: { SfLoader, LazyHydrate },
   transition: 'fade',
   emits: ['close'],
-  setup() {
+  setup(props, { root }) {
     const uiState = useUiState();
     const pageSize = ref(21);
     const buttonLoading = ref(false);
@@ -102,6 +108,8 @@ export default defineComponent({
       minPrice: result.value?.data?.minPrice,
       maxPrice: result.value?.data?.maxPrice
     }));
+
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const pagination = computed(() => facetGetters.getPagination(result.value));
 
@@ -144,6 +152,7 @@ export default defineComponent({
     });
 
     return {
+      mobileOrTabletSize,
       rangeAttributes,
       ...uiState,
       hasMoreProductsToLoad,

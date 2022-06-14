@@ -165,7 +165,16 @@ export default {
   modules: makeModules([
     '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
-    ['@nuxtjs/redirect-module', { statusCode: 301 }]
+    ['@nuxtjs/redirect-module', { statusCode: 301 }],
+    ['nuxt-breakpoints', {
+      breakpoints: {
+        sm: 640,
+        md: 768,
+        lg: 1024,
+        xl: 1280,
+        '2xl': 1536
+      }
+    }]
   ]),
   redirect,
   nuxtPrecompress: {

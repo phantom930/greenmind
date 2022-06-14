@@ -34,6 +34,7 @@
       "@nuxtjs/device",
       "@nuxt/image",
       "cookie-universal-nuxt/types",
+      "nuxt-breakpoints/types"
     ]
   },
   "exclude": [

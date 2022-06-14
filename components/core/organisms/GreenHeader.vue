@@ -20,14 +20,13 @@
           />
         </div>
         <nuxt-link
-          v-if="$device.isMobile"
+          v-if="mobileOrTabletSize"
           v-show="!showSearchInputOnMobile"
           title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
         >
           <SfImage
-
             :width="61"
             :height="35"
             src="/icons/GreenMind_logo_stacked_green_02.svg"
@@ -36,7 +35,7 @@
           />
         </nuxt-link>
         <nuxt-link
-          v-if="!$device.isMobile"
+          v-if="!mobileOrTabletSize"
           v-show="!showSearchInputOnMobile"
           title="GreenMind"
           :to="localePath('/')"
@@ -62,7 +61,7 @@
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
           <SfButton
-            v-if="$device.isMobile && !showSearchInputOnMobile"
+            v-if="mobileOrTabletSize && !showSearchInputOnMobile"
             class="sf-button--pure sf-header__action"
             @click="showSearchInputOnMobile = !showSearchInputOnMobile"
           >
@@ -104,7 +103,7 @@
       </template>
       <template #search>
         <SfSearchBar
-          v-show="$device.isDesktop || showSearchInputOnMobile"
+          v-show="!mobileOrTabletSize || showSearchInputOnMobile"
           ref="searchBarRef"
           :placeholder="$t('Search for items and promotions')"
           aria-label="Search"
@@ -255,8 +254,10 @@ export default {
       await handleSearch(term.value);
     };
 
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
+
     const closeOrFocusSearchBar = () => {
-      if (root.$device.isMobile) {
+      if (mobileOrTabletSize.value) {
         return closeSearch();
       }
       term.value = '';
@@ -279,7 +280,7 @@ export default {
       () => term.value,
       (newVal, oldVal) => {
         const shouldSearchBeOpened =
-          !root.$device.isMobile &&
+          !mobileOrTabletSize.value &&
           term.value.length > 0 &&
           ((!oldVal && newVal) ||
             (newVal.length !== oldVal.length && isSearchOpen.value === false));
@@ -320,6 +321,7 @@ export default {
 
     return {
       test,
+      mobileOrTabletSize,
       isCartSidebarOpen,
       isHamburguerMenuOpen,
       handleToggleHamburguerMenu,

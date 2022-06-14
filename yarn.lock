@@ -9896,6 +9896,14 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
+nuxt-breakpoints@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/nuxt-breakpoints/-/nuxt-breakpoints-1.1.9.tgz#43e8a7cbf6129666a99d5b5e33d2306e662b069d"
+  integrity sha512-hddM0+fwwVUivMyG+vtZzayz0n9KuUiuU9C1zSzdwkQ3+NKO0tI8jzymWTBoay1GNQlQsb43L6dxTSTVPoWIhQ==
+  dependencies:
+    lodash "^4.17.15"
+    resize-observer-polyfill "^1.5.1"
+
 nuxt-i18n@^6.5.0:
   version "6.28.1"
   resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.28.1.tgz#63e3e809fa41d855c5c7c443c0074eecaa97d273"
@@ -11885,6 +11893,11 @@ requrl@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/requrl/-/requrl-3.0.2.tgz#d376104193b02a2d874dde68454c2db2dfeb0fac"
   integrity sha512-f3gjR6d8MhOpn46PP+DSJywbmxi95fxQm3coXBFwognjFLla9X6tr8BdNyaIKNOEkaRbRcm0/zYAqN19N1oyhg==
+
+resize-observer-polyfill@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-alpn@^1.0.0:
   version "1.2.1"

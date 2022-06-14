@@ -7,7 +7,7 @@
     <LazyHydrate when-idle>
       <GreenHeader />
     </LazyHydrate>
-    <LazyHeaderTopbarTertiary v-if="$device.isDesktopOrTablet" />
+    <LazyHeaderTopbarTertiary class="hidden lg:block" />
 
     <!-- <LazyHydrate when-idle>
       <StoreStatus />

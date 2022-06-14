@@ -9,7 +9,7 @@
         <div />
       </template>
 
-      <div v-show="$device.isMobile">
+      <div v-show="mobileOrTabletSize">
         <LazyHydrate when-visible>
           <HeaderTopBar />
         </LazyHydrate>
@@ -19,7 +19,6 @@
         </LazyHydrate>
       </div>
       <HeaderMegaMenu
-        v-if="$device.isMobile"
         :is-visible="true"
         @bar-active="showBottomLinks = !arguments[0]"
       />
@@ -126,9 +125,9 @@
   </div>
 </template>
 <script>
-import { SfSidebar, SfButton, SfIcon, SfDivider } from '@storefront-ui/vue';
+import { SfSidebar, SfButton, SfIcon } from '@storefront-ui/vue';
 import { useUser } from '@vue-storefront/odoo';
-import { ref } from '@nuxtjs/composition-api';
+import { ref, computed } from '@nuxtjs/composition-api';
 import { useUiState } from '~/composables';
 import LazyHydrate from 'vue-lazy-hydration';
 
@@ -138,15 +137,16 @@ export default {
     SfSidebar,
     SfButton,
     SfIcon,
-    SfDivider,
     LazyHydrate
   },
-  setup() {
+  setup(_, {root}) {
     const { isHamburguerMenuOpen, toggleHamburguerMenu, loginHamburguer } = useUiState();
     const { isAuthenticated } = useUser();
     const showBottomLinks = ref(true);
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     return {
+      mobileOrTabletSize,
       showBottomLinks,
       isAuthenticated,
       isHamburguerMenuOpen,

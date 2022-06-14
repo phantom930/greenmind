@@ -211,7 +211,9 @@ export default defineComponent({
   },
   emits: ['bar-active', 'clicked'],
   setup (props, { root, emit }) {
-    const isOpened = (title: string) : boolean => (title === props.currentOpened) || root.$device.isMobile;
+
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
+    const isOpened = (title: string) : boolean => (title === props.currentOpened) || mobileOrTabletSize.value;
     const megaMenu = ref(null);
 
     const menuBar = computed(() => megaMenu.value?.$children?.[0]);

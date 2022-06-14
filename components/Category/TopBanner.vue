@@ -49,8 +49,10 @@ export default defineComponent({
   setup(_, { root }) {
     const iconWidth = computed(() => root.$device.isMobile ? 50 : 74);
     const iconHeight = computed(() => root.$device.isMobile ? 52 : 69);
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     return {
+      mobileOrTabletSize,
       iconWidth,
       iconHeight
     };
