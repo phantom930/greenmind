@@ -18,7 +18,8 @@
           :image-height="mainImageHeigth"
           :thumb-width="160"
           :thumb-height="160"
-          :nuxt-img-config="{ fit: 'cover' }"
+          image-tag="nuxt-picture"
+          :nuxt-img-config="{ fit: 'cover', sizes: 'lg:500px xl:500px' }"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
         >
