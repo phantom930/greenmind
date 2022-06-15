@@ -1,14 +1,14 @@
 <template>
   <div>
     <component
-      :is="$device.isMobile ? 'SfSidebar' : 'div'"
+      :is="mobileOrTabletSize ? 'SfSidebar' : 'div'"
       class="sidebar sidebar-filters"
       :visible="isFilterSidebarOpen"
       title="Filters"
       @close="toggleFilterSidebar"
     >
       <SfHeading
-        v-if="$device.isDesktop"
+        v-if="!mobileOrTabletSize"
         :level="4"
         :title="$t('Filters')"
         class="filters-title pb-5 sf-heading--left"
@@ -187,6 +187,7 @@ export default defineComponent({
     const reset = () => {
       emit('reset');
     };
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const openedHeaders = computed(() => Object.keys(query).map(item => item.replace('_', ' ')));
 
@@ -200,7 +201,7 @@ export default defineComponent({
 
     const applyFilters = () => {
       changeFilters(selectedFilters.value);
-      if (root.$device.isMobile) {
+      if (mobileOrTabletSize.value) {
         toggleFilterSidebar();
       }
     };
@@ -221,13 +222,13 @@ export default defineComponent({
           id: option.id
         });
 
-        root.$device.isDesktop ? applyFilters() : '';
+        !mobileOrTabletSize.value ? applyFilters() : '';
 
         return;
       }
 
       selectedFilters.value.splice(alreadySelectedIndex, 1);
-      root.$device.isDesktop ? applyFilters() : '';
+      !mobileOrTabletSize.value ? applyFilters() : '';
     };
 
     const selectPrice = (values) => {
@@ -243,7 +244,7 @@ export default defineComponent({
 
       if (selectedValue) {
         selectedValue.id = newValue;
-        root.$device.isDesktop ? applyFilters() : '';
+        !mobileOrTabletSize.value ? applyFilters() : '';
 
         return;
       }
@@ -254,10 +255,11 @@ export default defineComponent({
         id: newValue
       });
 
-      root.$device.isDesktop ? applyFilters() : '';
+      !mobileOrTabletSize.value ? applyFilters() : '';
     };
 
     return {
+      mobileOrTabletSize,
       applyFilters,
       isFilterSidebarOpen,
       toggleFilterSidebar,
