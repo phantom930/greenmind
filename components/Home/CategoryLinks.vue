@@ -73,18 +73,18 @@ export default defineComponent({
   setup() {
     const settings = {
       type: 'carousel',
-      rewind: true,
+      rewind: false,
       perView: 4,
       slidePerPage: true,
       gap: 19,
+      peek: {
+        before: 0,
+        after: 0
+      },
       breakpoints: {
         gap: 15,
-        1279: {
-          perView: 2,
-          peek: {
-            before: 10,
-            after: 50
-          }
+        1023: {
+          perView: 2
         }
       }
     };

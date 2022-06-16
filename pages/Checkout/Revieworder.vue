@@ -75,7 +75,7 @@
           :has-general-wrapper="true"
         >
           <template #label>
-            <span> {{ 'I agree to' }}
+            <span> {{ $t('I agree to') }}
               <nuxt-link :to="{ name: 'terms-of-trade' }" :title="$t('Terms and conditions')">
                 {{ $t('Terms and conditions') }}
               </nuxt-link>
