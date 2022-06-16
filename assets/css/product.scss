@@ -13,6 +13,10 @@
   }
 }
 
+::v-deep img {
+  height: max-content !important;
+}
+
 .product {
     @include for-desktop {
       display: flex;
@@ -233,13 +237,27 @@
     margin-bottom: 40px;
   }
 
+  
+
   .image-wrapper img{
+    display: flex;
     @include for-mobile {
       width: 100%;
     }
   }
 
-  ::v-deep .sf-image--wrapper {
-    display: flex;
-    justify-content: center;
+  @media (max-width: 1024px) {
+    ::v-deep .glide__slides {
+      place-content: center;
+    }
+    ::v-deep .sf-gallery__stage {
+      margin-top: 30px;
+      align-self: center;
+    }
+    ::v-deep .sf-image--wrapper picture{
+      align-items: center;
+      display: flex;
+      justify-content: center;
   }
+  }
+  

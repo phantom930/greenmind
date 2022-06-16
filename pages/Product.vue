@@ -18,8 +18,9 @@
           :image-height="mainImageHeigth"
           :thumb-width="160"
           :thumb-height="160"
+          :slider-options="{ classes: 'items-center'}"
           image-tag="nuxt-picture"
-          :nuxt-img-config="{ fit: 'cover', sizes: 'lg:500px xl:500px' }"
+          :nuxt-img-config="{ fit: 'cover', sizes: `md:${mainImageWidth}px`}"
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
         >
@@ -140,10 +141,8 @@ import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import { productGetters, useUiState, facetGetters } from '~/composables';
-import { product } from '@odoogap/seo';
 import LazyHydrate from 'vue-lazy-hydration';
 
-const { allHead } = product();
 export default defineComponent({
   name: 'Product',
   components: {
@@ -158,7 +157,7 @@ export default defineComponent({
     const { path } = useRoute().value;
     const selectedAcessories = reactive(new Set([]));
     const { toggleStoreModal } = useUiState();
-    const { toggleCartSidebar, isCartSidebarOpen, toggleHamburguerMenu, isHamburguerMenuOpen } = useUiState();
+    const { toggleCartSidebar, isCartSidebarOpen } = useUiState();
     const { products, search, loading } = useProduct(`products-${path}`);
     const { products: relatedProducts, loading: relatedLoading } = useProduct('relatedProducts');
     const { addMultipleProductsToCart, loading: addLoading } = useMultipleProduct();
@@ -180,9 +179,15 @@ export default defineComponent({
     const productGrades = computed(() => productGetters.getGrades(product.value));
     const productInStock = computed(() => product.value?.isInStock);
 
-    const mainImageWidth = computed(() => root.$device.isDesktop ? 442 : 375);
-    const mainImageHeigth = computed(() => root.$device.isDesktop ? 664 : 500);
+    const smallerThanLargeSize = computed(() => root.$breakpoints.sLg);
+    const mainImageWidth = computed(() => {
+      return root.$breakpoints.sSm ? 375 : root.$breakpoints.sLg ? 288 : 442;
+    });
+    const mainImageHeigth = computed(() => {
+      return root.$breakpoints.sSm ? 500 : root.$breakpoints.sLg ? 375 : 664;
+    });
 
+    console.log(mainImageWidth.value);
     const productGallery = computed(() =>
       [
         ...productGetters.getGallery(product.value).map((img) => ({
