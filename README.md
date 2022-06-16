@@ -23,6 +23,7 @@ NODE_LOCALE - for translations
 COOKIEBOT_KEY - key for cookiebot (default d2da6edf-44b1-4063-a6ef-fe4f37edeb0c)
 REBUILD_TOKEN - token to refresh aplication (default green-123)
 BASE_URL - for api
+GTAG_KEY - key for google tags
 BACKEND_BASE_URL - for api through local network
 PUBLIC_PATH - for CDN url
 SITE_URL - for sitemap host url

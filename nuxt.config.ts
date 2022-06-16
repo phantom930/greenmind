@@ -12,6 +12,7 @@ import Config from '@odoogap/nuxt-config';
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
 const cookieBotKey = process.env.COOKIEBOT_KEY || 'd2da6edf-44b1-4063-a6ef-fe4f37edeb0c';
+const gtagKey = process.env.GTAG_KEY || 'G-YYZ9TG2MS2';
 
 const localesMap = {
   'en-EN': 'en',
@@ -60,6 +61,13 @@ export default {
         type: 'text/javascript',
         'data-cbid': cookieBotKey,
         src: 'https://consent.cookiebot.com/uc.js',
+        async: true
+      },
+      {
+        id: 'gTag',
+        hid: 'gTag',
+        type: 'text/javascript',
+        src: `https://www.googletagmanager.com/gtag/js?id=${gtagKey}"`,
         async: true
       }
       // {
@@ -117,7 +125,13 @@ export default {
     display: 'swap'
   },
   loading: { color: '#fff' },
-  plugins: ['~/plugins/getImage.ts', '~/plugins/vee-validate.ts', '~/plugins/dkkCustomCurrency.ts', '~/plugins/clerkIo.client.ts'],
+  plugins: [
+    '~/plugins/getImage.ts',
+    '~/plugins/vee-validate.ts',
+    '~/plugins/dkkCustomCurrency.ts',
+    '~/plugins/clerkIo.client.ts',
+    '~/plugins/googleTag.client.ts'
+  ],
   device: {
     refreshOnResize: true
   },
@@ -164,6 +178,7 @@ export default {
     siteUrl: isDev ? 'http://localhost:3000' : process.env.SITE_URL || 'https://vue-dev.greenmind.space',
     redirectRefreshExtension: process.env.REDIRECT_INVALITION_TOKEN || 'green-123',
     cookieBotKey,
+    gtagKey,
     localeIndex,
     theme
   },

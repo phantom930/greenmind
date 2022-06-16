@@ -19,40 +19,41 @@
             :link="{ name: category.slug }"
           />
         </div>
-        <nuxt-link
-          v-if="mobileOrTabletSize"
-          v-show="!showSearchInputOnMobile"
-          title="GreenMind"
-          :to="localePath('/')"
-          class="sf-header__logo"
-        >
-          <SfImage
-            :width="61"
-            :height="35"
-            src="/icons/GreenMind_logo_stacked_green_02.svg"
-            alt="GreenMind"
-            class="sf-header__logo-image"
-          />
-        </nuxt-link>
-        <nuxt-link
-          v-if="!mobileOrTabletSize"
-          v-show="!showSearchInputOnMobile"
-          title="GreenMind"
-          :to="localePath('/')"
-          class="sf-header__logo"
-        >
-          <SfImage
+        <div id="logo">
+          <nuxt-link
+            v-if="mobileOrTabletSize"
+            v-show="!showSearchInput"
+            title="GreenMind"
+            :to="localePath('/')"
+            class="sf-header__logo"
+          >
+            <SfImage
+              :width="61"
+              :height="35"
+              src="/icons/GreenMind_logo_stacked_green_02.svg"
+              alt="GreenMind"
+              class="sf-header__logo-image"
+            />
+          </nuxt-link>
+          <nuxt-link
+            v-if="!mobileOrTabletSize"
+            title="GreenMind"
+            :to="localePath('/')"
+            class="sf-header__logo"
+          >
+            <SfImage
 
-            :width="250"
-            :height="35"
-            src="/icons/GreenMind_logo_horizontal_green_02.svg"
-            alt="GreenMind"
-            class="sf-header__logo-image"
-          />
-        </nuxt-link>
+              :width="250"
+              :height="35"
+              src="/icons/GreenMind_logo_horizontal_green_02.svg"
+              alt="GreenMind"
+              class="sf-header__logo-image"
+            />
+          </nuxt-link>
+        </div>
       </template>
       <template #header-icons>
-        <div class="sf-header__icons">
+        <div class="sf-header__icons justify-self-end	">
           <!-- temporary removed -->
           <!-- <SfButton
             class="sf-button--pure sf-header__action"
@@ -61,9 +62,9 @@
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
           <SfButton
-            v-if="mobileOrTabletSize && !showSearchInputOnMobile"
+            v-if="!showSearchInput"
             class="sf-button--pure sf-header__action"
-            @click="showSearchInputOnMobile = !showSearchInputOnMobile"
+            @click="showSearchInput = !showSearchInput"
           >
             <SfIcon
               class="sf-header__icon"
@@ -72,7 +73,7 @@
             />
           </SfButton>
           <SfButton
-            v-if="!showSearchInputOnMobile"
+            v-if="!showSearchInput"
             class="sf-button--pure sf-header__action"
             @click="handleToggleCartSidebar"
           >
@@ -80,7 +81,7 @@
               class="sf-header__icon"
               icon="empty_cart"
               :color="isCartSidebarOpen ? '#78A886' : ''"
-              size="1.25rem"
+              size="1.40rem"
             />
 
             <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
@@ -88,7 +89,7 @@
             </SfBadge>
           </SfButton>
           <SfButton
-            v-if="!showSearchInputOnMobile"
+            v-if="!showSearchInput"
             class="sf-button--pure sf-header__action list"
             @click="handleToggleHamburguerMenu"
           >
@@ -102,24 +103,30 @@
         </div>
       </template>
       <template #search>
-        <SfSearchBar
-          v-show="!mobileOrTabletSize || showSearchInputOnMobile"
-          ref="searchBarRef"
-          :placeholder="$t('Search for items and promotions')"
-          aria-label="Search"
-          class="sf-header__search none"
-          :value="term"
-          :icon="{
-            icon: isSearchOpen || showSearchInputOnMobile ? 'cross' : 'search',
-            size: '1.25rem',
-            color: '#43464E',
-          }"
-          @input="handleSearch"
-          @keydown.enter="handleSearch($event)"
-          @focus="isSearchOpen = true"
-          @keydown.esc="closeSearch"
-          @click:icon="closeOrFocusSearchBar"
-        />
+        <transition
+          type="transition"
+          name="sf-fade"
+          mode="out-in"
+        >
+          <SfSearchBar
+            v-show="showSearchInput"
+            ref="searchBarRef"
+            :placeholder="$t('Search for items and promotions')"
+            aria-label="Search"
+            class="sf-header__search none"
+            :value="term"
+            :icon="{
+              icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
+              size: '1.25rem',
+              color: '#43464E',
+            }"
+            @input="handleSearch"
+            @keydown.enter="handleSearch($event)"
+            @focus="isSearchOpen = true"
+            @keydown.esc="closeSearch"
+            @click:icon="closeOrFocusSearchBar"
+          />
+        </transition>
       </template>
       <!-- End of Search bar -->
     </SfHeader>
@@ -172,7 +179,7 @@ export default {
     SfBadge
   },
   setup(props, { root }) {
-    const showSearchInputOnMobile = ref(false);
+    const showSearchInput = ref(false);
     const searchBarRef = ref(null);
     const term = ref(null);
     const formatedResult = ref(null);
@@ -200,7 +207,7 @@ export default {
     };
 
     const closeSearch = (e) => {
-      showSearchInputOnMobile.value = false;
+      showSearchInput.value = false;
       if (!isSearchOpen.value) return;
       term.value = '';
       isSearchOpen.value = false;
@@ -277,13 +284,23 @@ export default {
     };
 
     watch(
+      () => showSearchInput.value,
+      () => {
+        const element = root.$el.querySelector('.sf-header__actions');
+        if (mobileOrTabletSize.value) {
+          element.style['grid-template-columns'] = showSearchInput.value ? '1fr' : '2fr 1fr';
+        }
+        if (!mobileOrTabletSize.value) {
+          element.style['grid-template-columns'] = '2fr 1fr';
+        }
+      }
+    );
+
+    watch(
       () => term.value,
       (newVal, oldVal) => {
-        const shouldSearchBeOpened =
-          !mobileOrTabletSize.value &&
-          term.value.length > 0 &&
-          ((!oldVal && newVal) ||
-            (newVal.length !== oldVal.length && isSearchOpen.value === false));
+        const shouldSearchBeOpened = term.value.length > 0 && ((!oldVal && newVal) || (newVal.length !== oldVal.length && isSearchOpen.value === false));
+
         if (shouldSearchBeOpened) {
           isSearchOpen.value = true;
         }
@@ -299,6 +316,7 @@ export default {
 
     const test = `<span 
   class="clerk"
+  
   
   data-api="search/predictive"
   data-limit="6"
@@ -326,7 +344,7 @@ export default {
       isHamburguerMenuOpen,
       handleToggleHamburguerMenu,
       handleToggleCartSidebar,
-      showSearchInputOnMobile,
+      showSearchInput,
       accountIcon,
       closeOrFocusSearchBar,
       cartTotalItems,

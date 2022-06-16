@@ -4,18 +4,6 @@
       <LazyHomeTopHero />
     </div>
 
-    <div
-      class="flex justify-center"
-      style="transform: translateY(-34px) mt-1"
-    >
-      <GreenImage
-        :src="require(mobileOrTabletSize ? '/assets/images/productsUspBanner/banner_mobile_1.webp' : '/assets/images/homeUspBanner/banner_desktop_1.webp')"
-        alt="banner_desktop_1"
-        class="usp_banner_products mb-5"
-        :width="$breakpoints.xs ? 531 : 1440"
-        :height="$breakpoints.xs ? 120 : 237"
-      />
-    </div>
     <!--<div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
       <div class="flex items-center gap-5">
         <SfImage
@@ -59,6 +47,14 @@
 
     <div class="layout">
       <LazyHomeCategoryLinks />
+
+      <GreenImage
+        :src="require(mobileOrTabletSize ? '/assets/images/productsUspBanner/banner_mobile_1.webp' : '/assets/images/homeUspBanner/banner_desktop_1.webp')"
+        alt="banner_desktop_1"
+        class="usp_banner_products mt-5"
+        :width="$breakpoints.xs ? 531 : 1440"
+        :height="$breakpoints.xs ? 120 : 237"
+      />
       <!-- <div class="flex justify-between mt-14">
         <HomeCallToActionStand
           :title="$t('Stand')"

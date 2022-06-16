@@ -35,6 +35,7 @@
     "@nuxtjs/amp": "^0.5.4",
     "@nuxtjs/device": "^2.1.0",
     "@nuxtjs/google-fonts": "^1.3.0",
+    "@nuxtjs/google-gtag": "^1.0.4",
     "@nuxtjs/i18n": "^7.2.2",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/redirect-module": "^0.3.1",
