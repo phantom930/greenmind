@@ -1,8 +1,5 @@
-import { Plugin } from '@nuxt/types';
-
-declare let window: any;
-
-const googleTag: Plugin = (context) => {
+/* eslint-disable no-undef */
+const googleTag = (context) => {
   const key = context.app.$config.gtagKey;
 
   window.dataLayer = window.dataLayer || [];

@@ -130,7 +130,7 @@ export default {
     '~/plugins/vee-validate.ts',
     '~/plugins/dkkCustomCurrency.ts',
     '~/plugins/clerkIo.client.ts',
-    '~/plugins/googleTag.client.ts'
+    '~/plugins/googleTag.client.js'
   ],
   device: {
     refreshOnResize: true
