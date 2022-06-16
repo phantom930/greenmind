@@ -46,6 +46,11 @@ export default {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
+      },
+      {
+        hid: 'Facebook-domain-verification',
+        name: 'facebook-domain-verification',
+        content: 'ef18vp0ug7n4ctpw1qkopdjz8a90qy'
       }
     ],
     script: [
