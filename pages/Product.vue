@@ -176,7 +176,6 @@ export default defineComponent({
     const productGrades = computed(() => productGetters.getGrades(product.value));
     const productInStock = computed(() => product.value?.isInStock);
 
-    const smallerThanLargeSize = computed(() => root.$breakpoints.sLg);
     const mainImageWidth = computed(() => {
       return root.$breakpoints.sSm ? 375 : root.$breakpoints.sLg ? 288 : 442;
     });
@@ -184,7 +183,6 @@ export default defineComponent({
       return root.$breakpoints.sSm ? 500 : root.$breakpoints.sLg ? 375 : 664;
     });
 
-    console.log(mainImageWidth.value);
     const productGallery = computed(() =>
       [
         ...productGetters.getGallery(product.value).map((img) => ({
