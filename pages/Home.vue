@@ -103,8 +103,8 @@
         <SfCallToAction>
           <template #title>
             <GreenImage
-              :width="$device.isDesktop ? 437 : 221"
-              :height="$device.isDesktop ? 240: 121"
+              :width="mobileOrTabletSize ? 221 : 437"
+              :height="mobileOrTabletSize ? 121 : 240"
               :src="require('/assets/images/homeHero/samsung_phones.svg')"
               alt="samsumg"
             />
