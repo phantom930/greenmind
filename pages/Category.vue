@@ -1,21 +1,9 @@
 <template>
   <div>
-    <LazyHydrate when-idle>
-      <LazyCategoryTopBanner v-if="!mobileOrTabletSize" />
-    </LazyHydrate>
-
     <div id="category">
-      <LazyCategoryNavbar />
+      <LazyCategoryNavbar class="mt-7" />
 
       <div class="main section">
-        <LazyHydrate when-idle>
-          <LazyCategoryTopBanner
-            v-if="mobileOrTabletSize"
-            :width="939"
-            :height="300"
-          />
-        </LazyHydrate>
-
         <LazyHydrate when-idle>
           <LazyCategorySidebarFilter
             :show-filters="showProducts"
@@ -64,6 +52,15 @@
           <LazyCategoryNoResults v-else />
         </SfLoader>
       </div>
+      <LazyHydrate when-idle>
+        <LazyCategoryTopBanner
+          v-if="mobileOrTabletSize"
+          class="mb-7"
+          :width="939"
+          :height="300"
+        />
+        <LazyCategoryTopBanner v-else class="mb-7" />
+      </LazyHydrate>
     </div>
   </div>
 </template>

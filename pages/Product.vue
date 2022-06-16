@@ -44,20 +44,17 @@
           /> -->
         </div>
         <SfHeading
+
           :title="product.websiteSubtitle"
           :level="3"
           class="sf-heading--no-underline sf-heading--left product_variants"
         />
-        <div class="product__price-and-rating" />
         <div>
           <LazyProductSelectGrade
+            v-if="productGrades.length > 0"
             :product-grades="productGrades"
             :product-variant-id="combinationInfo.product_id"
             @update="handleSelectNewGrade"
-          />
-          <LazyProductDescription
-            :title="combinationInfo.grade_name"
-            :description="combinationInfo.grade_description"
           />
 
           <div
@@ -82,7 +79,7 @@
             />
           </div>
 
-          <div class="total-price-buttons">
+          <div class="total-price-buttons mt-7">
             <p class="total-price">
               {{ productInStock ? $currency(combinationInfo.price) : $t('Out of stock') }}
             </p>

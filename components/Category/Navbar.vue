@@ -29,7 +29,7 @@
       </LazyHydrate>
 
       <div class="navbar__title ">
-        <SfHeading :title="currentCategory.name" />
+        <SfHeading :title="currentCategory.name || currentRootCategory.name" />
       </div>
       <div class="navbar__sort desktop-only">
         <span class="navbar__label">{{ $t("Sort by") }}:</span>
@@ -91,7 +91,7 @@ export default defineComponent({
     );
 
     const breadcrumbs = computed(() =>
-      facetGetters.getBreadcrumbs(currentCategory.value)
+      facetGetters.getBreadcrumbs(currentCategory.value?.name ? currentCategory.value : currentRootCategory.value)
     );
     return {
       toggleFilterSidebar,
@@ -140,7 +140,7 @@ export default defineComponent({
       align-items: center;
       margin: 0 16% 0 auto;
       @include for-mobile {
-        margin: 0 29% 0 auto;
+        margin: 0 35% 0 auto;
       }
     }
     &__title .sf-heading__title {
@@ -156,7 +156,7 @@ export default defineComponent({
       }
     }
     &__select {
-      --select-width: 220px;
+      --select-width: 170px;
       --select-padding: 0;
       --select-height: auto;
       --select-selected-padding: 0 var(--spacer-lg) 0 var(--spacer-2xs);

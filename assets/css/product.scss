@@ -152,6 +152,11 @@
     margin: var(--spacer-base) auto var(--spacer-lg);
     text-transform: capitalize;
   }
+
+  ::v-deep .sf-breadcrumbs__list-item:not(:last-child)::after {
+    padding: 0px 4px
+  }
+
   @keyframes moveicon {
     0% {
       transform: translate3d(0, 0, 0);
