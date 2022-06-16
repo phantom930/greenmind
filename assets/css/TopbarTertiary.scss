@@ -13,7 +13,7 @@
 }
 
 ::v-deep .dropdown-wrap:hover .custom-link {
-  border-bottom: 2px solid #78a495;
+  border-bottom: 1px solid #78a495;
 }
 
 ::v-deep .dropdown-wrap {
@@ -78,7 +78,7 @@
   padding-left: 5px;
   padding-right: 5px;
   margin-top: 31px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   text-align: center;
   border-bottom: 2px solid transparent;
   transition: border 0.3s;

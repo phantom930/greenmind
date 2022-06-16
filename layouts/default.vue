@@ -5,7 +5,7 @@
     </LazyHydrate>
 
     <LazyHydrate when-idle>
-      <GreenHeader />
+      <GreenHeader class="mb-3" />
     </LazyHydrate>
     <LazyHeaderTopbarTertiary class="hidden lg:block" />
 
