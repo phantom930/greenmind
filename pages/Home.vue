@@ -9,11 +9,11 @@
       style="transform: translateY(-34px) mt-1"
     >
       <GreenImage
-        :src="require($device.isDesktop ? '/assets/images/homeUspBanner/banner_desktop_1.webp' : '/assets/images/productsUspBanner/banner_mobile_1.webp')"
+        :src="require(mobileOrTabletSize ? '/assets/images/productsUspBanner/banner_mobile_1.webp' : '/assets/images/homeUspBanner/banner_desktop_1.webp')"
         alt="banner_desktop_1"
         class="usp_banner_products mb-5"
-        :width="$device.isDesktop ? 1440 : 531"
-        :height="$device.isDesktop ? 237: 120"
+        :width="$breakpoints.xs ? 531 : 1440"
+        :height="$breakpoints.xs ? 120 : 237"
       />
     </div>
     <!--<div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
@@ -157,12 +157,13 @@ export default {
     SfLoader,
     GreenImage
   },
-  setup() {
+  setup(props, { root }) {
     const { result, search, loading: productsLoading } = useFacet();
     const products = computed(() => facetGetters.getProducts(result.value));
     const { toggleNewsletterModal } = useUiState();
     const { loading, sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const customQueryProducts = {
       getProductTemplatesList: 'greenGetProductListFormHomePage'
@@ -192,6 +193,7 @@ export default {
     };
 
     return {
+      mobileOrTabletSize,
       productsLoading,
       loading,
       onSubscribe,
