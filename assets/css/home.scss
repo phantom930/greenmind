@@ -202,6 +202,11 @@
   }
 
   ::v-deep .usp_banner_products  {
+    & img {
+      @media (min-width: 1024px) {
+        border-radius: 1rem;
+      }
+    }
     & .sf-image--placeholder {
       width: 200px;
       height: 237px;
