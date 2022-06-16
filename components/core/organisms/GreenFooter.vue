@@ -100,6 +100,9 @@
 
     <div class="sf-footer-column smartphone-only flex p-6 justify-between">
       <div class="flex flex-col">
+        <div class="sf-footer-column__title sf-heading pl-0">
+          {{ $t('Contact') }}
+        </div>
         <span
           v-for="(item, contactIndex) in contactColumn.contactChilds"
           :key="contactIndex"
@@ -123,7 +126,6 @@
           :href="item.url"
         >
           <SfImage
-
             class="footer__social-image mr-1"
             :src="require(`/assets/images/icons/${item.name}.svg`)"
             :alt="item.name"
@@ -139,17 +141,6 @@
     </div>
 
     <!--<GreenEmailForm class="col-start-3 col-end-5 " />-->
-
-    <div class="mobile-only mt-12 mb-10 flex justify-center smartphone-only">
-      <SfImage
-
-        :width="35"
-        :height="35"
-        src="/icons/logo.svg"
-        alt="Vue Storefront Next"
-        class="sf-header__logo-image "
-      />
-    </div>
   </SfFooter>
 </template>
 
