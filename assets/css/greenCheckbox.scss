@@ -34,7 +34,7 @@
     color: var(--_c-greenmind-secondary-black);
   }
   ::v-deep .sf-checkbox__checkmark {
-    width: 26px;
+    width: 23px;
     height: 23px;
     &.is-active {
       background: var(--_c-greenmind-fern-primary-medium-green, transparent);
@@ -47,5 +47,6 @@
   }
   
   ::v-deep .sf-checkbox__container{
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 14fr;
   }

@@ -12,7 +12,8 @@
     />
     <div class="product">
       <LazyHydrate when-idle>
-        <SfGallery
+        <GreenGallery
+          :bullets="$breakpoints.sMd"
           :images="productGallery"
           :image-width="mainImageWidth"
           :image-height="mainImageHeigth"
@@ -24,10 +25,10 @@
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
         >
-          <template v-if="$device.isMobile" #thumbs>
+          <template v-if="$breakpoints.sMd" #thumbs>
             <div />
           </template>
-        </SfGallery>
+        </GreenGallery>
       </LazyHydrate>
       <div class="product__info">
         <div class="product__header">
@@ -144,7 +145,6 @@ export default defineComponent({
   name: 'Product',
   components: {
     SfHeading,
-    SfGallery,
     SfLoader,
     SfBreadcrumbs,
     LazyHydrate

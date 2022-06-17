@@ -9,7 +9,7 @@
     error-message=""
     valid
     :disabled="disabled"
-    style="--checkbox-border-radius: 100px; margin-right: 7px"
+    style="--checkbox-border-radius: 1rem;"
     @change="change"
   >
     <template
