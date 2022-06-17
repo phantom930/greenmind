@@ -4,47 +4,6 @@
       <LazyHomeTopHero />
     </div>
 
-    <!--<div v-else class="usp-mobile flex grid rounded-lg m-6 py-10 px-12">
-      <div class="flex items-center gap-5">
-        <SfImage
-          :src="require('/assets/images/homeHero/usp_01.svg')"
-          alt="banner_1"
-          :width="74"
-          :height="69"
-        />
-        <p>
-          Produkter er testet
-          af egne eksperter
-        </p>
-      </div>
-
-      <div class="flex items-center gap-5">
-        <SfImage
-          :src="require('/assets/images/homeHero/usp_02.svg')"
-          alt="banner_1"
-          :width="74"
-          :height="69"
-        />
-        <p>
-          14 dages returret
-          2 års garanti
-        </p>
-      </div>
-
-      <div class="flex items-center gap-5">
-        <SfImage
-          :src="require('/assets/images/homeHero/usp_03.svg')"
-          alt="banner_1"
-          :width="74"
-          :height="69"
-        />
-        <p>
-          Ombyt i én af vores
-          10 butikker
-        </p>
-      </div>
-    </div>-->
-
     <div class="layout">
       <LazyHomeCategoryLinks />
 
@@ -76,7 +35,7 @@
       </div> -->
     </div>
 
-    <div class="div-popular-products mt-20">
+    <div class="div-popular-products mt-7 lg:mt-20">
       <div
         v-if="productsLoading"
         style="height: 500px"

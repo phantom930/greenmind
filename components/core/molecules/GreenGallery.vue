@@ -42,16 +42,21 @@
           </ul>
         </div>
         <div
-          v-if="bullets"
-          class="glide__bullets"
-          data-glide-el="controls[nav]"
+          v-if="bullets && images.length > 0"
+          class="bullets"
         >
-          <button
+          <SfBullets
+            :total="images.length"
+            :current="activeIndex"
+            data-testid="hero-bullets"
+            @click="go($event)"
+          />
+          <!-- <button
             v-for="(picture, index) in images"
             :key="index"
             class="glide__bullet"
             :data-glide-dir="`=${index}`"
-          />
+          /> -->
         </div>
       </div>
       <transition name="sf-fade">
@@ -116,54 +121,25 @@
 </template>
 <script>
 import { defineComponent } from '@vue/composition-api';
-import { SfGallery } from '@storefront-ui/vue';
-import Glide, { Controls } from '@glidejs/glide/dist/glide.modular.esm';
+import { SfGallery, SfBullets } from '@storefront-ui/vue';
 
 export default defineComponent({
+  components: {
+    SfBullets
+  },
   extends: SfGallery,
   props: {
     bullets: {
       type: Boolean,
       default: false
     }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      // handle slider with swipe and transitions with Glide.js
-      // https://glidejs.com/docs/
-      if (this.images.length < 1) return;
-      const glide = new Glide(this.$refs.glide, this.updatedSliderOptions);
-      glide.on('run', () => {
-        this.go(glide.index);
-      });
-      glide.mount({ Controls });
-      this.glide = glide;
-    });
   }
 
 });
 </script>
 <style lang="scss">
 @import "~@storefront-ui/shared/styles/components/molecules/SfGallery.scss";
-@import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
-.glide__bullets {
-    text-align: center;
+.bullets ol{
+    justify-content: center;
 }
-.glide__bullet{
-    background-color: var(--_c-greenmind-primary-grey);
-    border: 3px solid var(--_c-greenmind-primary-grey);
-    width: 8px;    height: 8px;
-    &:hover {
-        border: 3px solid var(--_c-greenmind-fern-secondary-medium-green) !important;
-        background-color: var(--_c-greenmind-fern-secondary-medium-green) !important;;
-        box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.6);
-
-    }
-}
-.glide__bullet--active{
-    background-color: var(--_c-greenmind-fern-secondary-medium-green) !important;
-    box-shadow: 0px 4px 11px rgba(29, 31, 34, 0.6);
-    border: none;
-}
-
 </style>
