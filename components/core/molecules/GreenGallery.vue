@@ -42,7 +42,7 @@
           </ul>
         </div>
         <div
-          v-if="bullets && images.length > 0"
+          v-if="bullets && images.length > 1"
           class="bullets"
         >
           <SfBullets
