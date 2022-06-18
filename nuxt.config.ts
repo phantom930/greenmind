@@ -13,6 +13,7 @@ const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
 const cookieBotKey = process.env.COOKIEBOT_KEY || 'd2da6edf-44b1-4063-a6ef-fe4f37edeb0c';
 const gtagKey = process.env.GTAG_KEY || 'G-YYZ9TG2MS2';
+const gtmKey = process.env.GTM_KEY || 'GTM-K9V7Q37';
 
 const localesMap = {
   'en-EN': 'en',
@@ -185,6 +186,7 @@ export default {
   modules: makeModules([
     '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
+    '@nuxtjs/gtm',
     ['@nuxtjs/redirect-module', { statusCode: 301 }],
     ['nuxt-breakpoints', {
       breakpoints: {
@@ -197,6 +199,12 @@ export default {
     }]
   ]),
   redirect,
+  gtm: {
+    id: gtmKey,
+    debug: false,
+    enabled: !isDev,
+    pageTracking: true
+  },
   nuxtPrecompress: {
     enabled: !isDev,
     report: false,
