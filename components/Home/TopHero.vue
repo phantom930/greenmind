@@ -1,124 +1,53 @@
 <template>
-  <!-- <SfHero
-    class="top-hero"
-    :class="$device.isMobile ? 'mt-8' : null"
-  >
-    <SfHeroItem
-      :title="$t('Colorful summer dresses are already in store')"
-      class="top-hero"
-      :button-text="$t('See more')"
-      :background="$device.isMobile ? '#668F72' : ''"
-      :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-      style="background-size: contain; background-position-y: center;"
-    >
-      <template #call-to-action>
-        <GreenButton
-          v-if="!$device.isMobile"
-          style-type="Tertiary"
-          color="Grey"
-        >
-          {{ $t('See More') }}
-        </GreenButton>
-      </template>
-      <template #withImgTag>
-        <SfImage
-          v-if="$device.isMobile"
-          :src="require('/assets/images/homeHero/home_page_phones.svg')"
-          alt="banner_1"
-          :width="214"
-          :height="223"
-        />
-      </template>
-    </SfHeroItem>
-
-    <SfHeroItem
-      :title="$t('Colorful summer dresses are already in store')"
-      :button-text="$t('See more')"
-      class="top-hero"
-      :background="$device.isMobile ? '#668F72' : ''"
-      :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-      style="background-size: contain; background-position-y: center"
-    >
-      <template #call-to-action>
-        <GreenButton
-          v-if="!$device.isMobile"
-          style-type="Tertiary"
-          color="Grey"
-        >
-          {{ $t('See More') }}
-        </GreenButton>
-      </template>
-      <template #withImgTag>
-        <SfImage
-          v-if="$device.isMobile"
-          :src="require('/assets/images/homeHero/home_page_phones.svg')"
-          alt="banner_1"
-          :width="214"
-          :height="223"
-        />
-      </template>
-    </SfHeroItem>
-
-    <SfHeroItem
-      :title="$t('Colorful summer dresses are already in store')"
-      :button-text="$t('See more')"
-      class="top-hero"
-      :background="$device.isMobile ? '#668F72' : ''"
-      :image="!$device.isMobile ? require('/assets/images/homeHero/homeHero_1.svg') : ''"
-      style="background-size: contain; background-position-y: center"
-    >
-      <template #call-to-action>
-        <GreenButton
-          v-if="!$device.isMobile"
-          style-type="Tertiary"
-          color="Grey"
-        >
-          {{ $t('See More') }}
-        </GreenButton>
-      </template>
-      <template #withImgTag>
-        <SfImage
-          v-if="$device.isMobile"
-          :src="require('/assets/images/homeHero/home_page_phones.svg')"
-          alt="banner_1"
-          :width="214"
-          :height="223"
-        />
-      </template>
-    </SfHeroItem>
-  </SfHero> -->
-  <SfHero
-    class="top-hero mt-1.5"
-  >
+  <SfHero class="top-hero mt-1.5">
+    <nuxt-link :to="{ name: 'home' }" :title="$t('Home')">
+      <SfHeroItem
+        class="top-hero-item"
+        :image="require(`/assets/images/homeHero/homeHero_1.webp`)"
+      />
+    </nuxt-link>
     <nuxt-link :to="{ name: 'how-to-sell' }" :title="$t('How do you sell?')">
       <SfHeroItem
         class="top-hero-item"
-        :image="require('/assets/images/homeHero/homeHero2_1.webp')"
+        :image="require('/assets/images/homeHero/homeHero_2.webp')"
       />
     </nuxt-link>
-    <nuxt-link :to="{ name: 'about-us' }" :title="$t('How to buy?')">
+    <nuxt-link :to="{ name: 'reparation'}" :title="$t('Reparation')">
       <SfHeroItem
         class="top-hero-item"
-        :image="require('/assets/images/homeHero/homeHero2_2.webp')"
+        :image="require('/assets/images/homeHero/homeHero_3.webp')"
       />
     </nuxt-link>
-    <nuxt-link to="/" :title="$t('Return home')">
+    <nuxt-link :to="{ name: 'home'}" :title="$t('Home')">
       <SfHeroItem
         class="top-hero-item"
-        :image="require('/assets/images/homeHero/homeHero2_3.webp')"
+        :image="require('/assets/images/homeHero/homeHero_4.webp')"
       />
     </nuxt-link>
   </SfHero>
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
-import { SfHero, SfImage } from '@storefront-ui/vue';
+import { computed } from '@nuxtjs/composition-api';
+import { SfHero } from '@storefront-ui/vue';
 export default defineComponent({
   components: {
-    SfHero, SfImage
+    SfHero
   },
-  setup() {
+  setup(props, { root }) {
+    const getSufixSize = computed(() => {
+      if (root.$breakpoints.sLg) return '_768';
 
+      if (root.$breakpoints.sMd) return '_576';
+
+      if (root.$breakpoints.sSm) return '_384';
+
+      return '';
+    });
+
+    return {
+      getSufixSize
+    };
   }
 });
 </script>
@@ -145,50 +74,11 @@ export default defineComponent({
   }
 }
 
-@media (min-width: 768px), (max-width: 1024px){
-    ::v-deep .top-hero-item {
-    background-position: center;
-    background-size: cover;
-    border-radius: 10px;
-    max-width: 100%;
-    max-height: 250px;
-    height: auto;
-    width: auto\9;
-    margin-top: 1%;
-    margin-bottom: 2%;
-  }
-}
-@media (max-width: 768px) {
-  ::v-deep .top-hero {
-    max-width: 100%;
-    max-height: 250px;
-    height: auto;
-    width: auto\9;
-    margin-top: 2%;
-    margin-bottom: 2%;
-  }
-  ::v-deep .top-hero-item {
-    background-position: center;
-    background-size: contain;
-    border-radius: 10px;
-    max-width: 100%;
-    max-height: 250px;
-    height: auto;
-    width: auto\9;
-    margin-top: 1%;
-    margin-bottom: 2%;
-  }
+::v-deep .nuxt-link-active {
+  width: 100%;
 }
 @media (min-width: 1024px) {
-  /*::v-deep .top-hero {
-    max-width: 100%;
-    max-height: 250px;
-    height: auto;
-    width: auto;
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-top: 1%;
-  }*/
+
   ::v-deep .top-hero-item {
     object-fit: contain;
     background-position: center;
@@ -197,6 +87,54 @@ export default defineComponent({
     max-height: 250px;
     height: auto;
     margin-bottom: 3%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+    .top-hero {
+      max-height: 16rem;
+    }
+
+    ::v-deep .top-hero-item {
+      background-position-y: 10px;
+      background-size: contain;
+      border-radius: 10px;
+      max-width: 100%;
+      width: auto\9;
+      margin-bottom: 2%;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 767px){
+  .top-hero {
+    max-height: 11.5rem;
+  }
+  ::v-deep .top-hero-item {
+    background-position-y: 13px;
+    background-position-y: 10px;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-hero {
+    max-height: 8.5rem;
+  }
+  ::v-deep .top-hero-item {
+    background-position-y: 13px;
+    background-position-y: 10px;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 400px) {
+  .top-hero {
+    max-height: 6.5rem;
+  }
+  ::v-deep .top-hero-item {
+    background-position-y: 13px;
+    background-position-y: 10px;
+    background-size: contain;
   }
 }
 
