@@ -31,6 +31,11 @@
       <div class="navbar__title ">
         <SfHeading :title="currentCategory.name || currentRootCategory.name" />
       </div>
+
+      <SfBreadcrumbs
+        class="breadcrumbs smartphone-only"
+        :breadcrumbs="breadcrumbs"
+      />
       <div class="navbar__sort desktop-only">
         <span class="navbar__label">{{ $t("Sort by") }}:</span>
         <LazyHydrate on-interaction>
@@ -139,8 +144,8 @@ export default defineComponent({
       display: flex;
       align-items: center;
       margin: 0 16% 0 auto;
-      @include for-mobile {
-        margin: 0 35% 0 auto;
+      @media (max-width: 500px){
+        margin: 0 10% 0 auto;
       }
     }
     &__title .sf-heading__title {

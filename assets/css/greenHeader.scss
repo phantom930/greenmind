@@ -4,6 +4,10 @@
       --header-padding: 0;
     }
   }
+
+  ::v-deep .sf-link:first-child {
+    padding-left: 0;
+  }
   .header-on-top {
     z-index: 2;
   }

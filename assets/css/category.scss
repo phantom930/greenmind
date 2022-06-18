@@ -15,7 +15,10 @@
   }
   ::v-deep .breadcrumbs {
     --breadcrumbs-font: var(--font-family--primary);
-    margin-top: auto;
+    @media (max-width: 500px){
+      max-width: 25%;
+    }
+
   }
   
  
