@@ -53,6 +53,11 @@ export default {
         hid: 'Facebook-domain-verification',
         name: 'facebook-domain-verification',
         content: 'ef18vp0ug7n4ctpw1qkopdjz8a90qy'
+      },
+      {
+        hid: 'Google-site-verification',
+        name: 'google-site-verification',
+        content: 'AIYIV7nc1Lm3ntUPUE02Z-4a6VTJAc3udymwuqcXSPY'
       }
     ],
     script: [
