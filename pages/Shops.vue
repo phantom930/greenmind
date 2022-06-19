@@ -52,8 +52,7 @@
         </tr>
         <tr>
           <td class="text">
-            Slagelse <br>
-            (BlueCity)
+            Slagelse
           </td>
           <td class="text">
             Nygade 7 <br>
@@ -67,8 +66,7 @@
         </tr>
         <tr>
           <td class="text">
-            Køge  <br>
-            (BlueCity)
+            Køge
           </td>
           <td class="text">
             Nørregade 14 <br>
@@ -82,8 +80,7 @@
         </tr>
         <tr>
           <td class="text">
-            Næstved <br>
-            (BlueCity)
+            Næstved
           </td>
           <td class="text">
             Kindhestegade 28 <br>
@@ -125,7 +122,8 @@
         </tr>
         <tr>
           <td class="text">
-            Aalborg
+            Aalborg<br>
+            (Bispensgade)
           </td>
           <td class="text">
             Bispensgade 27 C <br>
@@ -139,7 +137,8 @@
         </tr>
         <tr>
           <td class="text">
-            Aalborg
+            Aalborg<br>
+            (Hadsundvej)
           </td>
           <td class="text">
             Hadsundvej 70 <br>
@@ -154,7 +153,7 @@
         <tr>
           <td class="text">
             Aarhus<br>
-            Guldsmedegade
+            (Guldsmedegade)
           </td>
           <td class="text">
             Guldsmedgade 2 <br>
@@ -169,7 +168,7 @@
         <tr>
           <td class="text">
             Aarhus<br>
-            Ryesgade
+            (Ryesgade)
           </td>
           <td class="text">
             Ryesgade 28 <br>
