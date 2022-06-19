@@ -83,14 +83,15 @@
                 {{ $t("checkout") }}
               </SfButton>
             </nuxt-link>
-            <!-- <nuxt-link to="/cart">
-              <SfButton
-                class="sf-button--full-width details_button"
-                @click="toggleCartSidebar"
-              >
-                {{ $t("see details") }}
-              </SfButton>
-            </nuxt-link> -->
+            <GreenButton
+              style-type="Tertiary"
+              color="Grey"
+              shape="Round"
+              size="Max"
+              @click="toggleCartSidebar"
+            >
+              {{ $t("Go back shopping") }}
+            </GreenButton>
           </div>
           <div v-else>
             <SfButton

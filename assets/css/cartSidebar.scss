@@ -58,11 +58,15 @@
   .collected-product-list {
     flex: 1;
   }
+
+  ::v-deep .sf-collected-product__main {
+    min-width: 260px;
+  }
   .collected-product {
-    min-height: 335px !important;
-    min-width: 380px !important;
-    margin: 0 0 var(--spacer-sm) 0;
-    --image-height: 12.5rem;
+    min-height: 340px !important;
+    min-width: 416px !important;
+    padding: 0;
+    margin: 8px 0px 18px 0 !important;
     &__properties {
       margin: var(--spacer-xs) 0 0 0;
       display: flex;
@@ -107,7 +111,7 @@
   
   ::v-deep .sf-sidebar {
     &__aside {
-      width: 434px;
+      width: 465px;
       @include for-mobile {
         width: 100%;
       }
