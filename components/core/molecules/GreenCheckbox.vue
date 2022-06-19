@@ -49,7 +49,7 @@
           v-else
           class="img-description-wrap"
         >
-          <div class="description-wrap">
+          <div class="description-wrap" :class="{ 'divide-y-2': border }">
             <div class="title-link">
               <div class="product-title">
                 {{ title }}
@@ -61,7 +61,7 @@
             </p>
           </div>
         </div>
-        <div class="price">
+        <div class="price ">
           {{ price }}
         </div>
       </div>
@@ -81,6 +81,10 @@ export default defineComponent({
     event: 'change'
   },
   props: {
+    border: {
+      type: Boolean,
+      default: false
+    },
     title: {
       type: String,
       default: ''

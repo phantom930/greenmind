@@ -30,9 +30,9 @@ export default {
 ::v-deep .sf-button {
   padding: 0;
   background: transparent;
-  border-bottom: 1px solid #fff;
   font-weight: 500;
   font-size: 14px;
+  cursor: unset;
 }
 ::v-deep .sf-button:active {
   text-decoration: none;

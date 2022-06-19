@@ -17,6 +17,11 @@
       display: none;
     }
   }
+
+  ::v-deep .sf-header__actions > .sf-search-bar.sf-header__search {
+    display: none;
+  }
+
   .cart-badge {
     background-color: var(--_c-greenmind-fern-primary-medium-green);
     position: absolute;

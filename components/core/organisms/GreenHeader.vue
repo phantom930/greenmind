@@ -53,7 +53,7 @@
         </div>
       </template>
       <template #header-icons>
-        <div class="sf-header__icons justify-self-end	">
+        <div class="sf-header__icons justify-self-end	justify-end">
           <!-- temporary removed -->
           <!-- <SfButton
             class="sf-button--pure sf-header__action"
@@ -61,53 +61,6 @@
           >
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
-          <SfButton
-            v-if="!showSearchInput"
-            class="sf-button--pure sf-header__action"
-            @click="showSearchInput = !showSearchInput"
-          >
-            <SfIcon
-              class="sf-header__icon"
-              icon="search"
-              size="1.25rem"
-            />
-          </SfButton>
-          <SfButton
-            v-if="!showSearchInput"
-            class="sf-button--pure sf-header__action"
-            @click="handleToggleCartSidebar"
-          >
-            <SfIcon
-              class="sf-header__icon"
-              icon="empty_cart"
-              :color="isCartSidebarOpen ? '#78A886' : ''"
-              size="1.40rem"
-            />
-
-            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
-              {{ cartTotalItems }}
-            </SfBadge>
-          </SfButton>
-          <SfButton
-            v-if="!showSearchInput"
-            class="sf-button--pure sf-header__action list"
-            @click="handleToggleHamburguerMenu"
-          >
-            <SfIcon
-              class="sf-header__icon"
-              icon="list"
-              size="1.25rem"
-              :color="isHamburguerMenuOpen ? '#78A886' : ''"
-            />
-          </SfButton>
-        </div>
-      </template>
-      <template #search>
-        <transition
-          type="transition"
-          name="sf-fade"
-          mode="out-in"
-        >
           <SfSearchBar
             v-show="showSearchInput"
             ref="searchBarRef"
@@ -126,8 +79,46 @@
             @keydown.esc="closeSearch"
             @click:icon="closeOrFocusSearchBar"
           />
-        </transition>
+          <SfButton
+            v-if="!showSearchInput"
+            class="sf-button--pure sf-header__action"
+            @click="showSearchInput = !showSearchInput"
+          >
+            <SfIcon
+              class="sf-header__icon"
+              icon="search"
+              size="1.25rem"
+            />
+          </SfButton>
+          <SfButton
+            class="sf-button--pure sf-header__action"
+            @click="handleToggleCartSidebar"
+          >
+            <SfIcon
+              class="sf-header__icon"
+              icon="empty_cart"
+              :color="isCartSidebarOpen ? '#78A886' : ''"
+              size="1.40rem"
+            />
+
+            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
+              {{ cartTotalItems }}
+            </SfBadge>
+          </SfButton>
+          <SfButton
+            class="sf-button--pure sf-header__action list"
+            @click="handleToggleHamburguerMenu"
+          >
+            <SfIcon
+              class="sf-header__icon"
+              icon="list"
+              size="1.25rem"
+              :color="isHamburguerMenuOpen ? '#78A886' : ''"
+            />
+          </SfButton>
+        </div>
       </template>
+
       <!-- End of Search bar -->
     </SfHeader>
     <!-- <div v-html="test" /> -->
@@ -288,7 +279,7 @@ export default {
       () => {
         const element = root.$el.querySelector('.sf-header__actions');
         if (mobileOrTabletSize.value) {
-          element.style['grid-template-columns'] = showSearchInput.value ? '1fr' : '2fr 1fr';
+          element.style['grid-template-columns'] = showSearchInput.value ? '62%' : '2fr 1fr';
         }
         if (!mobileOrTabletSize.value) {
           element.style['grid-template-columns'] = '2fr 1fr';
