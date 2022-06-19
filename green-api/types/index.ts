@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { Product, AttributeValue, OrderLine, GraphQlProductParam, Order, Cart, PaymentTransaction } from '@vue-storefront/odoo-api';
+import { Product, AttributeValue, OrderLine, GraphQlProductParam, Order, Cart, PaymentTransaction, Partner } from '@vue-storefront/odoo-api';
 
 export declare enum PaymentTransactionState {
     Draft = 'Draft',
@@ -79,12 +79,17 @@ export interface GreenOrderLine extends OrderLine {
 export interface GreenPaymentTransaction extends PaymentTransaction {
     state?: PaymentTransactionState
 }
+
+export interface GreenPartner extends Partner {
+    company?: Partner
+}
 export interface GreenOrder extends Order {
     totalCount?: number,
     lastTransaction?: GreenPaymentTransaction,
     accessoryLines?: GreenOrderLine[];
     orderLines?: GreenOrderLine[];
     websiteOrderLine?: GreenOrderLine[];
+    partner?: GreenPartner
 }
 
 export interface GreenCart extends Cart {

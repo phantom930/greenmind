@@ -84,6 +84,10 @@ order {
     email
     city
     zip
+    company{
+      id
+      name
+    }
   }
   partnerShipping {
     id

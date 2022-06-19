@@ -25,6 +25,7 @@ REBUILD_TOKEN - token to refresh aplication (default green-123)
 BASE_URL - for api
 GTAG_KEY - key for google tags
 GTM_KEY - key for google tag manager
+CLERK_PUBLIC_KEY - key for clerk io
 BACKEND_BASE_URL - for api through local network
 PUBLIC_PATH - for CDN url
 SITE_URL - for sitemap host url

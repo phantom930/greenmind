@@ -2,6 +2,7 @@
 /* eslint-disable */
 declare let Clerk: any;
 import { Plugin } from '@nuxt/types';
+const clerkioKey = process.env.CLERK_PUBLIC_KEY || 'CEhYajX1WwY3uAClBKte5UC6qAC6d7W1';
 
 declare module '@nuxt/types' {
   interface Context {
@@ -18,4 +19,4 @@ declare module '@nuxt/types' {
   };
 })(window, document);
 
- Clerk('config', { key: 'cwppy7UDiUKsPzVDsuxdUW3Vffw8JP8z' })
+ Clerk('config', { key: clerkioKey })
