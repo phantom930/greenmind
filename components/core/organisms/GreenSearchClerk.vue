@@ -9,16 +9,13 @@ export default defineComponent({
 
   data: () => ({
     html: `<span class="clerk"
-  data-template="@instant-search"
-
-  data-instant-search="#search"
-
-  data-instant-search-suggestions="6"
-  data-instant-search-categories="6"
-  data-instant-search-pages="6"
-
-  data-instant-search-positioning="right"
-></span>`
+            data-template="@instant-search"
+            data-instant-search="#search"
+            data-instant-search-suggestions="6"
+            data-instant-search-categories="6"
+            data-instant-search-pages="6"
+            data-instant-search-positioning="right"
+          ></span>`
   })
 });
 </script>

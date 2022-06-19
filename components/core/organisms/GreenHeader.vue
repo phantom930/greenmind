@@ -80,7 +80,7 @@
           <SfButton
             v-if="!showSearchInput"
             class="sf-button--pure sf-header__action"
-            @click="showSearchInput = !showSearchInput"
+            @click="toggleSearchBar"
           >
             <SfIcon
               class="sf-header__icon"
@@ -203,6 +203,11 @@ export default {
 
     };
 
+    const toggleSearchBar = () => {
+      showSearchInput.value = !showSearchInput.value;
+      searchBarRef.value.$el.children[0].focus();
+    };
+
     const handleToggleHamburguerMenu = () => {
       closeSearch();
       toggleHamburguerMenu();
@@ -262,6 +267,7 @@ export default {
     });
 
     return {
+      toggleSearchBar,
       mobileOrTabletSize,
       isCartSidebarOpen,
       isHamburguerMenuOpen,
