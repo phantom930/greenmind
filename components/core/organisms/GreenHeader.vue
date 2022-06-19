@@ -73,8 +73,6 @@
               size: '1.25rem',
               color: '#43464E',
             }"
-            @input="handleSearch"
-            @keydown.enter="handleSearch($event)"
             @focus="isSearchOpen = true"
             @keydown.esc="closeSearch"
             @click:icon="closeOrFocusSearchBar"
@@ -121,8 +119,8 @@
 
       <!-- End of Search bar -->
     </SfHeader>
-    <!-- <div v-html="test" /> -->
-    <SearchResults
+    <GreenSearchClerk />
+    <!-- <SearchResults
       :visible="isSearchOpen"
       :term="term"
       :search-loading="searchLoading"
@@ -130,7 +128,7 @@
       @close="closeSearch"
       @seeMore="handleSearchMore"
       @removeSearchResults="removeSearchResults"
-    />
+    /> -->
     <SfOverlay :visible="isSearchOpen" />
   </div>
 </template>
@@ -146,18 +144,11 @@ import {
   SfHeader
 } from '@storefront-ui/vue';
 import { useUiState } from '~/composables';
-import {
-  useCart,
-  useUser,
-  categoryGetters,
-  useFacet
-} from '@vue-storefront/odoo';
+import { useCart, useUser, useFacet } from '@vue-storefront/odoo';
 import { computed, ref, watch } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers, cartGetters } from '~/composables';
-import SearchResults from '~/components/SearchResults';
 
-import debounce from 'lodash.debounce';
 export default {
   components: {
     SfHeader,
@@ -165,7 +156,6 @@ export default {
     SfIcon,
     SfButton,
     SfSearchBar,
-    SearchResults,
     SfOverlay,
     SfBadge
   },
@@ -216,40 +206,6 @@ export default {
     const handleToggleHamburguerMenu = () => {
       closeSearch();
       toggleHamburguerMenu();
-    };
-
-    const handleSearch = debounce(async (paramValue) => {
-      if (!paramValue?.target) {
-        term.value = paramValue;
-      } else {
-        term.value = paramValue.target.value;
-      }
-      if (term.value.length < 2) return;
-
-      const customQueryProducts = {
-        getProductTemplatesList: 'greenGetProductList'
-      };
-
-      await search({
-        search: term.value,
-        pageSize: searchSize.value,
-        currentPage: 1,
-        fetchCategory: true,
-        customQueryProducts
-      });
-
-      formatedResult.value = {
-        total: result?.value?.data?.totalProducts,
-        products: result?.value?.data?.products,
-        categories: result?.value?.data?.categories
-          .filter((category) => category.childs === null)
-          .map((category) => categoryGetters.getTree(category))
-      };
-    }, 100);
-
-    const handleSearchMore = async () => {
-      searchSize.value += 12;
-      await handleSearch(term.value);
     };
 
     const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
@@ -305,31 +261,7 @@ export default {
       ]);
     });
 
-    const test = `<span 
-  class="clerk"
-  
-  
-  data-api="search/predictive"
-  data-limit="6"
-      
-  data-instant-search="#search">
-  
-  <dl class="product-search-result-list">
-    <dt>Products matching <i>{{ query }}</i></dt>
-    
-    {% for product in products %}
-      <dd class="product clerk-instant-search-key-selectable">
-        <h2 class="product-name">{{ product.name }}</h2> 
-        <img src="{{ product.image }}" title="{{ product.name }}" />
-        <div class="price">\${{ product.price | money }}</div>
-        <a href="{{ product.url }}">Buy Now</a>
-      </dd>
-    {% endfor %}
-  </dl>
-</span>`;
-
     return {
-      test,
       mobileOrTabletSize,
       isCartSidebarOpen,
       isHamburguerMenuOpen,
@@ -348,8 +280,6 @@ export default {
       changeSearchTerm,
       formatedResult,
       term,
-      handleSearchMore,
-      handleSearch,
       closeSearch,
       searchLoading
     };
