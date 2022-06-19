@@ -4,63 +4,35 @@
       <h2 class="font-bold">
         Butikker
       </h2>
-      <h3 class="font-bold subtitle">
-        GREENMIND
-      </h3>
       <table>
         <tr>
-          <td class="text">Aarhus</td>
           <td class="text">
-            Guldsmedgade 2 <br>
-            8000 Aarhus C
+            København <br>
+            (Vesterbrogade)
           </td>
           <td class="text">
-            Mandag – Fredag: kl. 10-18 * <br>
-            Lørdag: kl. 10-16 * <br>
+            Vesterbrogade 84 <br>
+            1620 København V
+          </td>
+          <td class="text">
+            Mandag – Fredag: 10-18 * <br>
+            Lørdag: 10-15 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td class="text">
-            Kolding
+            København <br>
+            (Field’s)
           </td>
           <td class="text">
-            Kolding Storcenter <br>
-            Butiksnummer 1192 <br>
-            Skovvangen 42 <br>
-            6000 Kolding
+            Arne Jacobsens Allé 12 <br>
+            2300 København S
           </td>
           <td class="text">
             Mandag – Fredag: kl. 10-20 * <br>
-            Lørdag: kl. 10-17 * <br>
-            Søndag: kl. 10-17 *
-          </td>
-        </tr>
-        <tr>
-          <td class="text">Odense SØ</td>
-          <td class="text">
-            Rosengårdcentret <br>
-            Butik 88 – Gul Gade <br>
-            Ørbækvej 75 <br>
-            5220 Odense
-          </td>
-          <td class="text">
-            Mandag – Fredag: kl. 10-19 * <br>
-            Lørdag: kl. 10-17 * <br>
-            Søndag: kl. 10-17 *
-          </td>
-        </tr>
-        <tr>
-          <td class="text">Odense C</td>
-          <td class="text">
-            Kongensgade 43 <br>
-            5000 Odense C
-          </td>
-          <td class="text">
-            Mandag – Torsdag: 10-18 * <br>
-            Fredag: 10-19 * <br>
-            Lørdag: 10-16 * <br>
-            Søndag: Lukket
+            Lørdag: kl. 10-20 * <br>
+            Søndag: kl. 10-20 *
           </td>
         </tr>
         <tr>
@@ -76,51 +48,6 @@
             Mandag – Fredag: kl. 10-19 * <br>
             Lørdag: kl. 10-18 * <br>
             Søndag: kl. 10-18 *
-          </td>
-        </tr>
-      </table>
-
-      <h4 class="italic">
-        * Åbningstider for værkstedet er de samme som i butikken, men værkstedet er lukket i weekenden.
-      </h4>
-      <h3 class="font-bold subtitle">
-        BLUECITY
-      </h3>
-      <h4 class="mb-3">
-        GreenMind og BlueCity er i færd med at fusionere og du kan derfor også besøge vores BlueCity butikker og få samme gode priser.
-      </h4>
-
-      <span>Bemærk, at i BlueCity butikker behandler vi desværre ikke forsikringssager, dog med undtagelse af Vesterbrogade i København og Bispensgade i Aalborg.</span>
-      <table>
-        <tr>
-          <td class="text">
-            København (Field’s) <br>
-            (BlueCity)
-          </td>
-          <td class="text">
-            Arne Jacobsens Allé 12 <br>
-            2300 København S
-          </td>
-          <td class="text">
-            Mandag – Fredag: kl. 10-20 * <br>
-            Lørdag: kl. 10-20 * <br>
-            Søndag: kl. 10-20 *
-          </td>
-        </tr>
-        <tr>
-          <td class="text">
-            København <br>
-            (Vesterbrogade) <br>
-            (BlueCity)
-          </td>
-          <td class="text">
-            Vesterbrogade 84 <br>
-            1620 København V
-          </td>
-          <td class="text">
-            Mandag – Fredag: 10-18 * <br>
-            Lørdag: 10-15 * <br>
-            Søndag: Lukket
           </td>
         </tr>
         <tr>
@@ -170,25 +97,79 @@
           </td>
         </tr>
         <tr>
+          <td class="text">Odense SØ</td>
           <td class="text">
-            Vejle <br>
-            (BlueCity)
+            Rosengårdcentret <br>
+            Butik 88 – Gul Gade <br>
+            Ørbækvej 75 <br>
+            5220 Odense
           </td>
           <td class="text">
-            Borgvold 12 <br>
-            7100 Vejle
+            Mandag – Fredag: kl. 10-19 * <br>
+            Lørdag: kl. 10-17 * <br>
+            Søndag: kl. 10-17 *
+          </td>
+        </tr>
+        <tr>
+          <td class="text">Odense C</td>
+          <td class="text">
+            Kongensgade 43 <br>
+            5000 Odense C
           </td>
           <td class="text">
-            Mandag – Torsdag: 10-17:30 * <br>
-            Fredag: 10-18 * <br>
-            Lørdag: 10-15 * <br>
+            Mandag – Torsdag: 10-18 * <br>
+            Fredag: 10-19 * <br>
+            Lørdag: 10-16 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td class="text">
-            Aarhus <br>
-            (BlueCity)
+            Aalborg
+          </td>
+          <td class="text">
+            Bispensgade 27 C <br>
+            9000 Aalborg
+          </td>
+          <td class="text">
+            Mandag – Fredag: 10-18 * <br>
+            Lørdag: 10-16 * <br>
+            Søndag: Lukket
+          </td>
+        </tr>
+        <tr>
+          <td class="text">
+            Aalborg
+          </td>
+          <td class="text">
+            Hadsundvej 70 <br>
+            9000 Aalborg
+          </td>
+          <td class="text">
+            Mandag – Fredag: 8-17:30 * <br>
+            Lørdag: 10-16 * <br>
+            Søndag: Lukket
+          </td>
+        </tr>
+        <tr>
+          <td class="text">
+            Aarhus<br>
+            Guldsmedegade
+          </td>
+          <td class="text">
+            Guldsmedgade 2 <br>
+            8000 Aarhus C
+          </td>
+          <td class="text">
+            Mandag – Fredag: kl. 10-18 * <br>
+            Lørdag: kl. 10-16 * <br>
+            Søndag: Lukket
+          </td>
+        </tr>
+        <tr>
+          <td class="text">
+            Aarhus<br>
+            Ryesgade
           </td>
           <td class="text">
             Ryesgade 28 <br>
@@ -203,39 +184,40 @@
         </tr>
         <tr>
           <td class="text">
-            Aalborg <br>
-            (BlueCity)
+            Vejle
           </td>
           <td class="text">
-            Bispensgade 27 C <br>
-            9000 Aalborg
+            Borgvold 12 <br>
+            7100 Vejle
           </td>
           <td class="text">
-            Mandag – Fredag: 10-18 * <br>
-            Lørdag: 10-16 * <br>
+            Mandag – Torsdag: 10-17:30 * <br>
+            Fredag: 10-18 * <br>
+            Lørdag: 10-15 * <br>
             Søndag: Lukket
           </td>
         </tr>
         <tr>
           <td class="text">
-            Aalborg <br>
-            (BlueCity)
+            Kolding
           </td>
           <td class="text">
-            Hadsundvej 70 <br>
-            9000 Aalborg
+            Kolding Storcenter <br>
+            Butiksnummer 1192 <br>
+            Skovvangen 42 <br>
+            6000 Kolding
           </td>
           <td class="text">
-            Mandag – Fredag: 8-17:30 * <br>
-            Lørdag: 10-16 * <br>
-            Søndag: Lukket
+            Mandag – Fredag: kl. 10-20 * <br>
+            Lørdag: kl. 10-17 * <br>
+            Søndag: kl. 10-17 *
           </td>
         </tr>
       </table>
       <h4 class="italic">
         * Åbningstider for værkstedet er de samme som i butikken, men værkstedet er lukket i weekenden.
       </h4>
-
+      <br>
       <h3 class="font-bold subtitle">
         Køb og salg af brugte iPhones, Macbooks, laptops og telefoner, samt iPhone og Android reparation
       </h3>
