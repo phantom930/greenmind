@@ -8,7 +8,7 @@
   margin-right: 20px !important;
 }
 ::v-deep .sf-checkbox__checkmark {
-  width: 20px !important;
+  width: 16px !important;
   height: 16px !important;
   margin-right: 2% !important;
 }
@@ -83,10 +83,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.checkbox-info-wrap .price {
-  padding-top: 3px;
 }
 
 ::v-deep .general_wrapper .img-description-wrap {

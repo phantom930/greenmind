@@ -48,7 +48,7 @@
           :price="$currency(acessoryProduct.price)"
           :is-checked="orderLineHasAccessory(acessoryProduct.id)"
           :border="true"
-          class="mb-3"
+          class="mb-5"
           @change="handleAddOrRemoveAccessory(acessoryProduct.id)"
         />
       </div>

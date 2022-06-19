@@ -61,7 +61,7 @@
             </p>
           </div>
         </div>
-        <div class="price ">
+        <div class="price self-end">
           {{ price }}
         </div>
       </div>
