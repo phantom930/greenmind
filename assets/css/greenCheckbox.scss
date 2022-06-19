@@ -42,8 +42,8 @@
   }
 
   .checkbox_image {
-    max-width: 82px;
-    max-height: 70px;
+    width: 80px;
+    aspect-ratio: 1/1;
   }
   
   ::v-deep .sf-checkbox__container{

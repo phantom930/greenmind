@@ -72,8 +72,10 @@ export default defineComponent({
   },
   setup() {
     const settings = {
-      type: 'carousel',
+      type: 'slider',
+      bound: false,
       rewind: false,
+      dragDistance: false,
       perView: 4,
       slidePerPage: true,
       gap: 19,
