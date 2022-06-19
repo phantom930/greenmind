@@ -65,8 +65,13 @@
   .collected-product {
     min-height: 340px !important;
     min-width: 416px !important;
+    max-width: 600px !important;
     padding: 0;
     margin: 8px 0px 18px 0 !important;
+    @include for-mobile {
+      width: 100% !important;
+      min-width: 70% !important;
+    }
     &__properties {
       margin: var(--spacer-xs) 0 0 0;
       display: flex;

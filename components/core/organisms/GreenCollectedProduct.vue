@@ -34,7 +34,7 @@
         {{ $currency(getPrice(orderLine)) }}
       </span>
 
-      <div class="mt-3">
+      <div class="mt-3 w-8/12 md:w-full">
         <span v-if="accessoryProducts.length >0" class="green-collected-product__checkbox-title mb-1">
           {{ $t('Acquisition') }}
         </span>

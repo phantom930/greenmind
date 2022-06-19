@@ -73,7 +73,6 @@
               size: '1.25rem',
               color: '#43464E',
             }"
-            @focus="isSearchOpen = true"
             @keydown.esc="closeSearch"
             @click:icon="closeOrFocusSearchBar"
           />
@@ -224,7 +223,6 @@ export default {
         return closeSearch();
       }
       isSearchOpen.value = true;
-      return searchBarRef.value.$el.children[0].focus();
     };
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
     const handleAccountClick = () => {
