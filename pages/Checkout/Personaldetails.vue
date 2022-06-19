@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <ValidationObserver
-      v-slot="{ handleSubmit, invalid }"
-      ref="formRef"
-    >
-      <!-- <div v-show="invalid" class="button-wrap">
+  <ValidationObserver
+    v-slot="{ handleSubmit, invalid }"
+    ref="formRef"
+    tag="div"
+  >
+    <!-- <div v-show="invalid" class="button-wrap">
         <button
           class="color-primary sf-button login-btn"
           type="button"
@@ -15,56 +15,70 @@
 
         <p>or fill the details below:</p>
       </div> -->
-      <SfHeading
-        :level="3"
-        :title="$t('Personal details')"
-        class="sf-heading--left sf-heading--no-underline title"
-      />
+    <SfHeading
+      :level="3"
+      :title="$t('Personal details')"
+      class="sf-heading--left sf-heading--no-underline title"
+    />
 
-      <form class="form" @submit="handleSubmit(handleFormSubmit)">
-        <div class="first-name-last-name">
-          <div class="lastname">
-            <ValidationProvider
-              v-slot="{ errors }"
-              name="firstName"
-              rules="required"
-              slim
-            >
-              <SfInput
-                v-model="form.firstName"
-                :label="$t('First name')"
-                name="firstName"
-                class="form__element"
-                required
-                :valid="!errors[0]"
-                :error-message="errors[0]"
-              />
-            </ValidationProvider>
-          </div>
-          <div class="lastname">
-            <ValidationProvider
-              v-slot="{ errors }"
-              name="lastname"
-              rules="required"
-              slim
-            >
-              <SfInput
-                v-model="form.lastName"
-                :label="$t('Last Name')"
-                name="lastName"
-                class="form__element"
-                required
-                :valid="!errors[0]"
-                :error-message="errors[0]"
-              />
-            </ValidationProvider>
-          </div>
-        </div>
+    <form class="form flex flex-wrap" @submit="handleSubmit(handleFormSubmit)">
+      <div class="flex gap-4 w-full mb-7 flex-wrap md:flex-nowrap">
+        <ValidationProvider
+          v-slot="{ errors }"
+          name="firstName"
+          rules="required"
+          slim
+          class="w-full md:w-6/12"
+        >
+          <SfInput
+            v-model="form.firstName"
+            :label="$t('First name')"
+            name="firstName"
+            class="form__element"
+            required
+            :valid="!errors[0]"
+            :error-message="errors[0]"
+          />
+        </ValidationProvider>
+        <ValidationProvider
+          v-slot="{ errors }"
+          name="lastname"
+          rules="required"
+          slim
+          class="w-full md:w-6/12"
+        >
+          <SfInput
+            v-model="form.lastName"
+            :label="$t('Last Name')"
+            name="lastName"
+            class="form__element"
+            required
+            :valid="!errors[0]"
+            :error-message="errors[0]"
+          />
+        </ValidationProvider>
+      </div>
+      <div class="flex gap-4 w-full mb-7 flex-wrap md:flex-nowrap">
+        <SfInput
+          v-model="form.companyName"
+          :label="$t('Company name')"
+          name="companyName"
+          class="form__element w-full md:w-6/12"
+        />
+        <SfInput
+          v-model="form.vat"
+          :label="$t('Vat')"
+          name="vat"
+          class="form__element w-full md:w-6/12"
+        />
+      </div>
+      <div class="flex justify-between w-full">
         <ValidationProvider
           v-slot="{ errors }"
           name="email"
           rules="required|email"
           slim
+          class="w-full"
         >
           <SfInput
             v-model="form.email"
@@ -76,25 +90,27 @@
             :error-message="errors[0]"
           />
         </ValidationProvider>
-      </form>
+      </div>
+    </form>
 
-      <GreenCheckbox
-        v-model="newsLetter"
-        :value="newsLetter"
-        :has-general-wrapper="false"
-        :label="$t('Join newsletter')"
-      />
+    <GreenCheckbox
+      v-model="newsLetter"
+      :value="newsLetter"
+      :has-general-wrapper="false"
+      class="mt-10"
+      :label="$t('Join newsletter')"
+    />
 
-      <span class="italic text-sm">{{ $t('By subscribing to the newsletter, you also accept Green Minds privacy policy') }}</span>
-      <nuxt-link
-        :to="{ name: 'gdpr' }"
-        class="italic text-sm underline"
-        :title="$t('read more')"
-      >
-        {{ $t('read more') }}
-      </nuxt-link>
+    <span class="italic text-sm">{{ $t('By subscribing to the newsletter, you also accept Green Minds privacy policy') }}</span>
+    <nuxt-link
+      :to="{ name: 'gdpr' }"
+      class="italic text-sm underline"
+      :title="$t('read more')"
+    >
+      {{ $t('read more') }}
+    </nuxt-link>
 
-      <!-- <p v-show="invalid" class="title">
+    <!-- <p v-show="invalid" class="title">
         Enjoy these perks with your free account!
       </p>
 
@@ -131,22 +147,21 @@
           />
         </ValidationProvider>
       </div> -->
-      <div class="submit-button mb-5">
-        <GreenButton
-          style-type="Primary"
-          color="Green"
-          shape="Round"
-          :size="$device.isMobile ? 'Max' : 'Medium'"
-          class="my-5"
-          :disabled="invalid || loading"
-          :loading="loading"
-          @click="handleSubmit(handleFormSubmit)"
-        >
-          {{ $t("GO TO SHIPPING") }}
-        </GreenButton>
-      </div>
-    </ValidationObserver>
-  </div>
+    <div class="submit-button mb-5">
+      <GreenButton
+        style-type="Primary"
+        color="Green"
+        shape="Round"
+        :size="$device.isMobile ? 'Max' : 'Medium'"
+        class="my-5"
+        :disabled="invalid || loading"
+        :loading="loading"
+        @click="handleSubmit(handleFormSubmit)"
+      >
+        {{ $t("GO TO SHIPPING") }}
+      </GreenButton>
+    </div>
+  </ValidationObserver>
 </template>
 
 <script >
@@ -183,6 +198,8 @@ export default defineComponent({
       firstName: '',
       lastName: '',
       password: '',
+      companyName: '',
+      vat: '',
       email: null
     });
 
@@ -197,11 +214,13 @@ export default defineComponent({
     const goToShipping = () => emit('change', 'shipping');
 
     const handleFormSubmit = async () => {
-      // if (wantRegister.value) {
-      await createUpdatePartner({ email: form.email, subscribeNewsletter: newsLetter.value, name: `${form.firstName} ${form.lastName}` });
-      // } else {
-      //
-      // }
+      await createUpdatePartner({
+        email: form.email,
+        subscribeNewsletter: newsLetter.value,
+        name: `${form.firstName} ${form.lastName}`,
+        companyName: form.companyName,
+        vat: form.vat
+      });
 
       if (error.value) {
         send({ message: error?.value?.message, type: 'danger' });

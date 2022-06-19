@@ -5,8 +5,8 @@ const createUpdatePartner = async (context, params) => {
   const response = await apolloClient.mutate({
     variables: params,
     mutation: gql`
-      mutation ($subscribeNewsletter: Boolean!, $email: String!, $name: String!) {
-        createUpdatePartner(name: $name, email: $email, subscribeNewsletter: $subscribeNewsletter) {
+      mutation ($subscribeNewsletter: Boolean!, $email: String!, $name: String!, $companyName: String, $vat: String) {
+        createUpdatePartner(name: $name, email: $email, subscribeNewsletter: $subscribeNewsletter, companyName: $companyName, vat: $vat) {
             id
             name
             email

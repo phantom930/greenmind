@@ -229,3 +229,15 @@ h4 {
       margin: 0 !important;
   }
 }
+
+.sf-input__wrapper {
+  height: 55px;
+  input {
+    outline: none !important;
+    padding: 0;
+    padding-top: 20px;
+  }
+  label {
+    padding: 0;
+  }
+}
