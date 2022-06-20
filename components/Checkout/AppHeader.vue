@@ -21,7 +21,7 @@
           </nuxt-link>
         </div>
         <nuxt-link
-          v-if="mobileOrTabletSize"
+          v-show="mobileOrTabletSize"
           title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
@@ -35,7 +35,7 @@
           />
         </nuxt-link>
         <nuxt-link
-          v-if="!mobileOrTabletSize"
+          v-show="!mobileOrTabletSize"
           title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"

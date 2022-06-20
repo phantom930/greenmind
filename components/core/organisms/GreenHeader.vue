@@ -21,8 +21,7 @@
         </div>
         <div id="logo">
           <nuxt-link
-            v-if="mobileOrTabletSize"
-            v-show="!showSearchInput"
+            v-show="mobileOrTabletSize && !showSearchInput"
             title="GreenMind"
             :to="localePath('/')"
             class="sf-header__logo"
@@ -36,7 +35,7 @@
             />
           </nuxt-link>
           <nuxt-link
-            v-if="!mobileOrTabletSize"
+            v-show="!mobileOrTabletSize"
             title="GreenMind"
             :to="localePath('/')"
             class="sf-header__logo"
@@ -77,7 +76,7 @@
             @click:icon="closeOrFocusSearchBar"
           />
           <SfButton
-            v-if="!showSearchInput"
+            v-show="!showSearchInput"
             class="sf-button--pure sf-header__action"
             @click="toggleSearchBar"
           >
@@ -98,7 +97,7 @@
               size="1.40rem"
             />
 
-            <SfBadge v-if="cartTotalItems" class="sf-badge--number cart-badge">
+            <SfBadge v-show="cartTotalItems" class="sf-badge--number cart-badge">
               {{ cartTotalItems }}
             </SfBadge>
           </SfButton>

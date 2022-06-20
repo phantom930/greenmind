@@ -8,7 +8,7 @@
     >
       <template #content-top>
         <SfProperty
-          v-if="totalItems"
+          v-show="totalItems"
           class="sf-property--large cart-summary desktop-only"
           :name="$t('Total items')"
           :value="totalItems"
