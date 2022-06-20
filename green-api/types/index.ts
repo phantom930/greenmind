@@ -35,8 +35,6 @@ export enum ButtonColor {
 
 export interface CreateUpdatePartnerInput {
     subscribeNewsletter?: boolean
-    companyName?: string
-    vat?: string
     name: string
     email: string
 }

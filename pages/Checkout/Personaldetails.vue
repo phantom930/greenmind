@@ -58,20 +58,6 @@
           />
         </ValidationProvider>
       </div>
-      <div class="flex gap-4 w-full mb-7 flex-wrap md:flex-nowrap">
-        <SfInput
-          v-model="form.companyName"
-          :label="$t('Company name')"
-          name="companyName"
-          class="form__element w-full md:w-6/12"
-        />
-        <SfInput
-          v-model="form.vat"
-          :label="$t('Vat')"
-          name="vat"
-          class="form__element w-full md:w-6/12"
-        />
-      </div>
       <div class="flex justify-between w-full">
         <ValidationProvider
           v-slot="{ errors }"
@@ -217,9 +203,7 @@ export default defineComponent({
       await createUpdatePartner({
         email: form.email,
         subscribeNewsletter: newsLetter.value,
-        name: `${form.firstName} ${form.lastName}`,
-        companyName: form.companyName,
-        vat: form.vat
+        name: `${form.firstName} ${form.lastName}`
       });
 
       if (error.value) {
