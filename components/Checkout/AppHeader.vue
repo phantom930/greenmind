@@ -6,7 +6,7 @@
         <div />
       </template>
       <template #navigation>
-        <div v-show="$device.isDesktop" class="">
+        <div v-show="!mobileOrTabletSize" class="">
           <nuxt-link
             class="flex"
             to="/"
@@ -21,7 +21,7 @@
           </nuxt-link>
         </div>
         <nuxt-link
-          v-if="$device.isMobile"
+          v-if="mobileOrTabletSize"
           title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
@@ -35,7 +35,7 @@
           />
         </nuxt-link>
         <nuxt-link
-          v-if="!$device.isMobile"
+          v-if="!mobileOrTabletSize"
           title="GreenMind"
           :to="localePath('/')"
           class="sf-header__logo"
@@ -48,8 +48,7 @@
             class="sf-header__logo-image"
           />
         </nuxt-link>
-      </template>
-      <template #header-icons>
+
         <div class="sf-header__icons">
           <img
             :src="require('/assets/images/checkout/lock.svg')"
@@ -57,6 +56,9 @@
           >
           <span class="secure-payment ml-5">{{ $t('Secure Payment') }}</span>
         </div>
+      </template>
+      <template #header-icons>
+        <div />
       </template>
     </SfHeader>
   </div>
@@ -67,13 +69,15 @@ import { SfHeader, SfIcon, SfImage } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
 import { useCart, useUser } from '@vue-storefront/odoo';
 import { useUiState } from '~/composables';
+import { computed } from '@nuxtjs/composition-api';
 
 export default {
   components: {
     SfHeader, SfImage, SfIcon
   },
-  setup() {
+  setup(props, { root }) {
     useUiState();
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const { load: loadUser } = useUser();
     const { load: loadCart } = useCart();
@@ -86,6 +90,7 @@ export default {
     });
 
     return {
+      mobileOrTabletSize
     };
   }
 };
@@ -94,6 +99,17 @@ export default {
 <style lang='scss' scoped >
 @import "~/assets/css/greenHeader.scss";
 
+::v-deep .sf-header__actions, ::v-deep .sf-header__navigation {
+  display: flex !important;
+  justify-content: space-between;
+}
+::v-deep .sf-header__navigation {
+  width: 100%;
+  @media (max-width: 1024px) {
+    margin: var(--header-navigation-margin, 0 calc(var(--spacer-sm) * -1));
+  }
+
+}
 .secure-payment {
   font-weight: 400;
   font-size: 12px;
