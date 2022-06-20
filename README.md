@@ -21,7 +21,7 @@ Tip - Add to your /etc/hosts
 NODE_ENV - for enviroments
 NODE_LOCALE - for translations
 COOKIEBOT_KEY - key for cookiebot (default d2da6edf-44b1-4063-a6ef-fe4f37edeb0c)
-REBUILD_TOKEN - token to refresh aplication (default green-123)
+INVALIDATION_KEY - token to refresh aplication (default 0ead60c3-d118-40be-9519-d531462ddc60)
 BASE_URL - for api
 GTAG_KEY - key for google tags
 GTM_KEY - key for google tag manager
