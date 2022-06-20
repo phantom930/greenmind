@@ -4,14 +4,12 @@
       <LazyCategoryNavbar class="mt-7" />
 
       <div class="main section">
-        <LazyHydrate when-idle>
-          <LazyCategorySidebarFilter
-            :show-filters="showProducts"
-            :facets="facets"
-            :range-attributes="rangeAttributes"
-            :current-category="currentCategory"
-          />
-        </LazyHydrate>
+        <LazyCategorySidebarFilter
+          :show-filters="showProducts"
+          :facets="facets"
+          :range-attributes="rangeAttributes"
+          :current-category="currentCategory"
+        />
 
         <SfLoader
           :class="{ loading }"
