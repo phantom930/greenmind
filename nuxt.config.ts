@@ -182,7 +182,7 @@ export default {
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
     siteUrl: isDev ? 'http://localhost:3000' : process.env.SITE_URL || 'https://vue-dev.greenmind.space',
-    redirectRefreshExtension: process.env.REDIRECT_INVALITION_TOKEN || 'green-123',
+    rebuildRefreshToken: process.env.REBUILD_TOKEN || '0ead60c3-d118-40be-9519-d531462ddc60',
     cookieBotKey,
     gtagKey,
     localeIndex,
