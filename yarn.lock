@@ -1980,10 +1980,10 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
-"@odoogap/nuxt-config@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@odoogap/nuxt-config/-/nuxt-config-0.0.5.tgz#88403454c61b98738d327ea562bd585e370be39b"
-  integrity sha512-E+e6A6qL264oXM/AAvJIaLZyBvJr8XgNOj5tGZ1BpXKbFSy2rZ3LKDtRqF2r6Lzi2vyY/u+RSqHWspcbnZqY2Q==
+"@odoogap/nuxt-config@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@odoogap/nuxt-config/-/nuxt-config-0.0.7.tgz#405aa5873f239df8cb90e88bd1d426c82cc9f490"
+  integrity sha512-2rFcr6+rGSGmY3xGgZakk8hK8BziP5SYa+kSCmATEDRIudtKzfvt8fRHNAhSEE9ew9fOsrNC+DGnBiI9UA0zGQ==
   dependencies:
     "@types/jest" "^27.4.1"
 

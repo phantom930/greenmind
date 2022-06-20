@@ -25,7 +25,7 @@
           :thumb-nuxt-img-config="{ fit: 'cover' }"
           class="product__gallery"
         >
-          <template v-if="$breakpoints.sMd" #thumbs>
+          <template v-show="$breakpoints.sMd" #thumbs>
             <div />
           </template>
         </GreenGallery>

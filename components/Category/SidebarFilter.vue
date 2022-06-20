@@ -8,23 +8,23 @@
       @close="toggleFilterSidebar"
     >
       <SfHeading
-        v-if="!mobileOrTabletSize"
+        :class="{ hidden: mobileOrTabletSize }"
         :level="4"
         :title="$t('Filters')"
         class="filters-title pb-5 sf-heading--left"
       />
       <div class="filters">
         <SfHeading
-          v-show="showFilters"
           :key="`filter-title-price`"
+          :class="{ hidden: !showFilters }"
           :level="4"
           :title="$t('Price')"
           class="filters__title sf-heading--left"
         />
 
         <LazyGreenRange
-          v-show="showFilters"
           v-model="price"
+          :class="{ hidden: !showFilters }"
           :initial-price="price"
           :range-prices="rangeAttributes"
           @change="selectPrice"
@@ -50,20 +50,20 @@
                   </h4>
 
                   <img
-                    v-if="isOpen"
+                    :class="{ hidden: !isOpen }"
                     :src="require('/assets/images/category/arrow-up.svg')"
                     alt="arrow-up"
                     class="pr-3.5"
                   >
                   <img
-                    v-else
+                    :class="{ hidden: isOpen }"
                     :src="require('/assets/images/category/arrow-down.svg')"
                     alt="arrow-down"
                     class="pr-5"
                   >
                 </div>
               </template>
-              <div v-if="isFacetColor(facet)" class="flex flex-wrap">
+              <div v-show="isFacetColor(facet)" class="flex flex-wrap">
                 <SfColor
                   v-for="option in facet.options"
                   :key="`${facet.id}-${option.value}`"
@@ -73,21 +73,19 @@
                   @click="() => selectFilter(facet, option)"
                 />
               </div>
-              <template v-else>
-                <SfList>
-                  <SfListItem
-                    v-for="option in facet.options"
-                    :key="`${facet.id}-${option.value}`"
-                  >
-                    <SfCheckbox
-                      class="mt-3"
-                      :label="option.label"
-                      :selected="isFilterSelected(option)"
-                      @change="() => selectFilter(facet, option)"
-                    />
-                  </SfListItem>
-                </SfList>
-              </template>
+              <SfList v-show="!isFacetColor(facet)">
+                <SfListItem
+                  v-for="option in facet.options"
+                  :key="`${facet.id}-${option.value}`"
+                >
+                  <SfCheckbox
+                    class="mt-3"
+                    :label="option.label"
+                    :selected="isFilterSelected(option)"
+                    @change="() => selectFilter(facet, option)"
+                  />
+                </SfListItem>
+              </SfList>
             </SfAccordionItem>
           </div>
         </sfaccordion>

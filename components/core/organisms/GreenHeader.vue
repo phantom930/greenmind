@@ -97,7 +97,7 @@
               size="1.40rem"
             />
 
-            <SfBadge v-show="cartTotalItems" class="sf-badge--number cart-badge">
+            <SfBadge class="sf-badge--number cart-badge" :class="{ hidden: !cartTotalItems }">
               {{ cartTotalItems }}
             </SfBadge>
           </SfButton>
