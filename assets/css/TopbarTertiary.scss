@@ -55,7 +55,10 @@
   border-bottom: 1px solid transparent;
 }
 
-::v-deep .sf-list__item:hover {
+::v-deep .sf-list__item a{
+  border-bottom: 1px solid transparent;
+}
+::v-deep .sf-list__item a:hover{
   border-bottom: 1px solid #7BA393;
   color: #7BA393;
 }
