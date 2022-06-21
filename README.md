@@ -29,5 +29,6 @@ CLERK_PUBLIC_KEY - key for clerk io
 BACKEND_BASE_URL - for api through local network
 PUBLIC_PATH - for CDN url
 SITE_URL - for sitemap host url
+BASE_DOMAIN - to build routes, redirects (sended in request-host to enable multi language)
 PORT - node port
 HOST - netork interface

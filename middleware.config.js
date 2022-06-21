@@ -1,5 +1,6 @@
 const odooBaseUrl = process.env.BACKEND_BASE_URL || process.env.BASE_URL || 'https://web-dev.greenmind.space/';
 const rebuildRefreshToken = process.env.INVALIDATION_KEY || '0ead60c3-d118-40be-9519-d531462ddc60';
+const baseDomain = process.env.BASE_DOMAIN || 'vue-dev.greenmind.space';
 const graphqlBaseUrl = `${odooBaseUrl}graphql/vsf`;
 const customQueries = require('./green-api/customQueries');
 const apis = require('./green-api/api');
@@ -12,7 +13,8 @@ module.exports = {
       configuration: {
         odooBaseUrl,
         graphqlBaseUrl,
-        rebuildRefreshToken
+        rebuildRefreshToken,
+        baseDomain
       },
       extensions: (extensions) => [
         ...extensions,

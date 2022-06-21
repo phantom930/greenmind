@@ -8,7 +8,7 @@ const queries = require('../helpers/buildQueries');
 
 const headers = { headers: {
   'Content-Type': 'application/json',
-  'resquest-host': 'vue-dev.greenmind.space'
+  'resquest-host': integrations.odoo.configuration.baseDomain
 }};
 
 const fetchProducts = async () => {
