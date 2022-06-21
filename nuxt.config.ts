@@ -14,6 +14,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const cookieBotKey = process.env.COOKIEBOT_KEY || 'd2da6edf-44b1-4063-a6ef-fe4f37edeb0c';
 const gtagKey = process.env.GTAG_KEY || 'G-YYZ9TG2MS2';
 const gtmKey = process.env.GTM_KEY || 'GTM-K9V7Q37';
+const klaviyoKey = process.env.KLAVIYO_KEY || 'NzYWAu';
 
 const localesMap = {
   'en-EN': 'en',
@@ -75,14 +76,14 @@ export default {
         type: 'text/javascript',
         src: `https://www.googletagmanager.com/gtag/js?id=${gtagKey}"`,
         async: true
+      },
+      {
+        id: 'Klaviyo',
+        hid: 'Klaviyo',
+        type: 'text/javascript',
+        src: `https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=${klaviyoKey}"`,
+        async: true
       }
-      // {
-      //   id: 'clerk',
-      //   hid: 'clerk',
-      //   type: 'text/javascript',
-      //   src: 'https://cdn.clerk.io/clerk.js',
-      //   async: true
-      // }
     ],
     link: [
       {
