@@ -244,6 +244,7 @@ export default defineComponent({
 
       await addMultipleProductsToCart(params);
 
+      // eslint-disable-next-line no-undef
       Clerk('cart', 'add', product.value.id);
       if (!isCartSidebarOpen.value) {
         toggleCartSidebar();

@@ -50,6 +50,8 @@
 </template>
 
 <script lang="ts">
+declare let Clerk: any;
+
 import { SfProductCard } from '@storefront-ui/vue';
 import { productGetters } from '~/composables';
 import { defineComponent, PropType, computed } from '@nuxtjs/composition-api';
