@@ -102,6 +102,7 @@ import { productGetters, useFacet, facetGetters, useNewsLetter } from '@vue-stor
 import { onSSR } from '@vue-storefront/core';
 import { useUiState } from '~/composables';
 import { useUiNotification } from '~/composables';
+import { useCache, CacheTagPrefix } from '@vue-storefront/cache';
 import NewsletterModal from '~/components/NewsletterModal.vue';
 import GreenImage from '~/components/core/atoms/GreenImage.vue';
 
@@ -113,11 +114,12 @@ export default {
     GreenImage
   },
   setup(props, { root }) {
+    const { addTags } = useCache();
     const { result, search, loading: productsLoading } = useFacet();
-    const products = computed(() => facetGetters.getProducts(result.value));
     const { toggleNewsletterModal } = useUiState();
     const { loading, sendSubscription } = useNewsLetter();
     const { send } = useUiNotification();
+    const products = computed(() => facetGetters.getProducts(result.value));
     const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const customQueryProducts = {
@@ -128,6 +130,8 @@ export default {
       const params = { filter: { hero: true }, customQueryProducts };
 
       await search(params);
+
+      addTags([{ prefix: CacheTagPrefix.View, value: 'Home' }]);
     });
 
     const onSubscribe = async (emailAddress) => {
