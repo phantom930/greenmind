@@ -23,8 +23,9 @@ NODE_LOCALE - for translations
 COOKIEBOT_KEY - key for cookiebot (default d2da6edf-44b1-4063-a6ef-fe4f37edeb0c)
 INVALIDATION_KEY - token to refresh aplication (default 0ead60c3-d118-40be-9519-d531462ddc60)
 BASE_URL - for api
-GTAG_KEY - key for google tags
-GTM_KEY - key for google tag manager
+KLAVIYO_KEY - key for klaviyo (default NzYWAu)
+GTAG_KEY - key for google tags (default G-YYZ9TG2MS2)
+GTM_KEY - key for google tag manager (default GTM-K9V7Q37)
 CLERK_PUBLIC_KEY - key for clerk io
 BACKEND_BASE_URL - for api through local network
 PUBLIC_PATH - for CDN url
