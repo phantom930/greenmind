@@ -46,8 +46,8 @@
           </td>
           <td class="text">
             Mandag – Fredag: kl. 10-19 * <br>
-            Lørdag: kl. 10-18 * <br>
-            Søndag: kl. 10-18 *
+            Lørdag: kl. 10-17 * <br>
+            Søndag: kl. 10-17 *
           </td>
         </tr>
         <tr>
