@@ -1,5 +1,10 @@
 <template>
-  <nuxt-link :to="productGetters.getSlug(product)" :title="productGetters.getName(product)">
+  <nuxt-link
+    :to="productGetters.getSlug(product)"
+    :title="productGetters.getName(product)"
+    :data-clerk-product-id="product.id"
+    @click="clerkClick"
+  >
     <SfProductCard
       :key="product.id"
       data-cy="category-product-card"
@@ -74,7 +79,11 @@ export default defineComponent({
     const productDiscontPerc = computed(() => props.product?.combinationInfoVariant?.discount_perc);
     const priceWithDiscount = computed(() => props.product?.combinationInfoVariant?.price || 0);
 
+    const clerkClick = () => {
+      Clerk('click', '*[data-clerk-product-id]');
+    };
     return {
+      clerkClick,
       priceWithDiscount,
       productDiscontPerc,
       productHasDiscont,

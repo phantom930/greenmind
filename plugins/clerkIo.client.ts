@@ -4,11 +4,6 @@ declare let Clerk: any;
 import { Plugin } from '@nuxt/types';
 const clerkioKey = process.env.CLERK_PUBLIC_KEY || 'CEhYajX1WwY3uAClBKte5UC6qAC6d7W1';
 
-declare module '@nuxt/types' {
-  interface Context {
-    $clerk(): any
-  }
-}
 
 (function(w: any, d: Document) {
   const e = d.createElement('script'); e.type = 'text/javascript'; e.async = true;
@@ -19,4 +14,4 @@ declare module '@nuxt/types' {
   };
 })(window, document);
 
- Clerk('config', { key: clerkioKey })
+ Clerk('config', { key: clerkioKey, visitor: 'auto', debug: { enable: true } })
