@@ -61,9 +61,9 @@
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
           <SfSearchBar
-            v-show="showSearchInput && !mobileOrTabletSize"
+            v-if="showSearchInput && !mobileOrTabletSize"
             ref="searchBarRef"
-            :style="{'transform: scale(0.7)': showSearchInput}"
+            style="width:278px"
             :placeholder="$t('Search for items and promotions')"
             aria-label="Search"
             class="sf-header__search none"
@@ -79,7 +79,7 @@
           <SfButton
             :class="{ hidden: showSearchInput}"
             class="sf-button--pure sf-header__action"
-            @click="toggleSearchBar"
+            @click.prevent="toggleSearchBar"
           >
             <SfIcon
               class="sf-header__icon"
@@ -119,7 +119,7 @@
           mode="out-in"
           type="transition"
         >
-          <div v-if="showSearchInput && mobileOrTabletSize" class="flex">
+          <div v-if="showSearchInput && mobileOrTabletSize" class="flex col-start-1 col-end-3">
             <SfSearchBar
               ref="searchBarRef"
               :placeholder="$t('Search for items and promotions')"
@@ -225,7 +225,8 @@ export default {
 
     const toggleSearchBar = () => {
       showSearchInput.value = !showSearchInput.value;
-      searchBarRef.value?.$el?.children[0].focus();
+      console.log(searchBarRef.value?.$el?.children[0]?.children[0]);
+      searchBarRef.value?.$el?.children[0]?.children[0].focus();
     };
 
     const handleToggleHamburguerMenu = () => {

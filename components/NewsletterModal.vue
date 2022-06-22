@@ -15,7 +15,7 @@
             :title="$t('Subscribe to newsletter')"
             class="modal__title desktop-only"
           />
-          <div v-if="isNewsletterModalOpen" class="klaviyo-form-Tspemz" />
+          <div class="klaviyo-form-Tspemz" />
         </div>
       </transition>
     </template>
