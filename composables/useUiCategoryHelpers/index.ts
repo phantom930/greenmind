@@ -22,10 +22,14 @@ const useUiHelpers = (result : FacetSearchResult<FacetResultsData>): useUiCatego
   const currentCategory = computed<Category | any>(() => {
     let category = { name: '', slug: '' };
 
-    currentRootCategory.value?.childs?.forEach(element => {
-      element?.childs?.forEach(element => {
-        if (element.slug === path) {
-          category = element;
+    result?.data?.categories?.forEach(element => {
+
+      if (element.slug === path) {
+        category = element;
+      }
+      element?.childs?.forEach(childElement => {
+        if (childElement.slug === path) {
+          category = childElement;
         }
       });
     });

@@ -121,6 +121,10 @@ export default defineComponent({
       getProductTemplatesList: 'greenGetProductList'
     };
 
+    const customQueryCategories = {
+      getCategory: 'greenGetCategories'
+    };
+
     const changeItemsPerPage = async () => {
       buttonLoading.value = true;
       pageSize.value += 21;
@@ -135,7 +139,7 @@ export default defineComponent({
     };
 
     onSSR(async () => {
-      const params = { ...getFacetsFromURL(), customQueryProducts };
+      const params = { ...getFacetsFromURL(), customQueryProducts, customQueryCategories };
 
       await search(params);
       addTags([
@@ -158,7 +162,7 @@ export default defineComponent({
       categoryTree,
       loading,
       pagination,
-
+      result,
       facets,
       showProducts
     };
