@@ -72,7 +72,6 @@
               </p>
             </div>
             <div class="div-button">
-              <div class="klaviyo-form-Tspemz" />
               <GreenButton
                 class="sf-button-call-to-action"
                 style-type="Primary"

@@ -34,12 +34,6 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       path: '/cart',
       component: path.resolve(themeDir, 'pages/Cart/Cart.vue')
     },
-    {
-      name: 'test',
-      path: '/cell-phones/smartphones/samsung-galaxy/galaxy-s-series/galaxy-s8/galaxy-s8/:slug',
-      component: path.resolve(themeDir, 'pages/Product.vue')
-
-    },
     ...productRoutes,
     ...categoryRoutes,
     // {

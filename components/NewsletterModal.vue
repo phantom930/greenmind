@@ -3,70 +3,22 @@
     :visible="isNewsletterModalOpen"
     @close="closeModal"
   >
-    <template #modal-bar>
-      <SfBar
-        class="modal__title smartphone-only"
-        :close="true"
-        :title="$t('Subscribe to newsletter')"
-        @click:close="closeModal"
-      />
+    <template #default>
+      <transition
+        name="sf-fade"
+        mode="out-in"
+        type="transition"
+      >
+        <div>
+          <SfHeading
+            :level="3"
+            :title="$t('Subscribe to newsletter')"
+            class="modal__title desktop-only"
+          />
+          <div v-if="isNewsletterModalOpen" class="klaviyo-form-Tspemz" />
+        </div>
+      </transition>
     </template>
-    <transition
-      name="sf-fade"
-      mode="out-in"
-      type="transition"
-    >
-      <div>
-        <SfHeading
-          :level="3"
-          :title="$t('Subscribe to newsletter')"
-          class="modal__title desktop-only"
-        />
-        <ValidationObserver
-          v-slot="{ invalid }"
-          key="log-in"
-        >
-          <form @submit.prevent="$emit('email-submitted', emailAddress)">
-            <ValidationProvider
-              v-slot="{ errors }"
-              name="email"
-              rules="required|email"
-              slim
-            >
-              <SfInput
-                v-model="emailAddress"
-                type="email"
-                name="email"
-                :label="$t('Email address')"
-                required
-                :valid="!errors[0]"
-                :error-message="errors[0]"
-                class="form__element"
-              />
-            </ValidationProvider>
-
-            <SfButton
-              class="modal__button"
-              type="submit"
-              :disabled="loading || invalid"
-            >
-              {{ $t('I confirm subscription') }}
-            </SfButton>
-          </form>
-        </ValidationObserver>
-
-        <SfHeading
-          :description="$t('You can unsubscribe at any time')"
-          :level="3"
-        >
-          <template #description>
-            <nuxt-link :to="{ name: 'gdpr' }" :title="$t('GDPR')">
-              {{ $t('read more') }}
-            </nuxt-link>
-          </template>
-        </SfHeading>
-      </div>
-    </transition>
   </SfModal>
 </template>
 <script>
