@@ -118,8 +118,7 @@ export default {
       short_name: 'Greenmind',
       description: 'Greenmind Description',
       lang: localeIndex,
-      background_color: '#fff',
-      start_url: ''
+      background_color: '#fff'
     }
   },
   googleFonts: {
