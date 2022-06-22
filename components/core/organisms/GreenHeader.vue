@@ -21,7 +21,7 @@
         </div>
         <div id="logo">
           <nuxt-link
-            v-show="mobileOrTabletSize"
+            v-show="mobileOrTabletSize && !showSearchInput"
             title="GreenMind"
             :to="localePath('/')"
             class="sf-header__logo"
@@ -52,7 +52,7 @@
         </div>
       </template>
       <template #header-icons>
-        <div class="flex justify-self-end	justify-end">
+        <div class="sf-header__icons justify-self-end	justify-end">
           <!-- temporary removed -->
           <!-- <SfButton
             class="sf-button--pure sf-header__action"
@@ -61,9 +61,8 @@
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
           <SfSearchBar
-            v-if="showSearchInput && !mobileOrTabletSize"
+            v-show="showSearchInput"
             ref="searchBarRef"
-            style="width:278px"
             :placeholder="$t('Search for items and promotions')"
             aria-label="Search"
             class="sf-header__search none"
@@ -77,9 +76,9 @@
             @click:icon="closeOrFocusSearchBar"
           />
           <SfButton
-            :class="{ hidden: showSearchInput}"
+            v-show="!showSearchInput"
             class="sf-button--pure sf-header__action"
-            @click.prevent="toggleSearchBar"
+            @click="toggleSearchBar"
           >
             <SfIcon
               class="sf-header__icon"
@@ -114,28 +113,6 @@
             />
           </SfButton>
         </div>
-        <transition
-          name="sf-fade"
-          mode="out-in"
-          type="transition"
-        >
-          <div v-if="showSearchInput && mobileOrTabletSize" class="flex col-start-1 col-end-3">
-            <SfSearchBar
-              ref="searchBarRef"
-              :placeholder="$t('Search for items and promotions')"
-              aria-label="Search"
-              class="sf-header__search none"
-              :value="term"
-              :icon="{
-                icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
-                size: '1.25rem',
-                color: '#43464E',
-              }"
-              @keydown.esc="closeSearch"
-              @click:icon="closeOrFocusSearchBar"
-            />
-          </div>
-        </transition>
       </template>
 
       <!-- End of Search bar -->
@@ -186,6 +163,7 @@ export default {
     const term = ref(null);
     const formatedResult = ref(null);
     const isSearchOpen = ref(false);
+    const searchSize = ref(12);
 
     const { changeSearchTerm } = useUiHelpers();
     const { isCartSidebarOpen, isHamburguerMenuOpen, toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
@@ -193,7 +171,7 @@ export default {
 
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
-    const { loading: searchLoading } = useFacet('AppHeader:Search');
+    const { search, result, loading: searchLoading } = useFacet('AppHeader:Search');
 
     const cartTotalItems = computed(() => {
       const count = cartGetters.getTotalItems(cart.value);
@@ -225,8 +203,7 @@ export default {
 
     const toggleSearchBar = () => {
       showSearchInput.value = !showSearchInput.value;
-      console.log(searchBarRef.value?.$el?.children[0]?.children[0]);
-      searchBarRef.value?.$el?.children[0]?.children[0].focus();
+      searchBarRef.value.$el.children[0].focus();
     };
 
     const handleToggleHamburguerMenu = () => {
@@ -260,7 +237,7 @@ export default {
       () => {
         const element = root.$el.querySelector('.sf-header__actions');
         if (mobileOrTabletSize.value) {
-          element.style['grid-template-columns'] = showSearchInput.value ? '1fr 1fr fit-content' : '2fr 1fr';
+          element.style['grid-template-columns'] = showSearchInput.value ? '62%' : '2fr 1fr';
         }
         if (!mobileOrTabletSize.value) {
           element.style['grid-template-columns'] = '2fr 1fr';
