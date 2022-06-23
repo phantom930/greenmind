@@ -59,7 +59,7 @@
           </SfButton> -->
           <SfSearchBar
             v-show="isSearchOpen && !mobileOrTabletSize"
-            ref="searchBarRef"
+            ref="desktopBarRef"
             style="width: 290px;"
             :placeholder="$t('Search for items and promotions')"
             aria-label="Search"
@@ -178,16 +178,25 @@ export default {
   },
   setup(props, { root }) {
     const searchBarRef = ref(null);
+    const desktopBarRef = ref(null);
     const term = ref(null);
     const formatedResult = ref(null);
 
     const { changeSearchTerm } = useUiHelpers();
-    const { isCartSidebarOpen, isSearchOpen, toggleSearch, isHamburguerMenuOpen, toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
-      useUiState();
+    const { isCartSidebarOpen,
+      isSearchOpen,
+      toggleSearch,
+      isHamburguerMenuOpen,
+      toggleCartSidebar,
+      toggleLoginModal,
+      toggleHamburguerMenu
+    } = useUiState();
 
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
     const { loading: searchLoading } = useFacet('AppHeader:Search');
+
+    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const cartTotalItems = computed(() => {
       const count = cartGetters.getTotalItems(cart.value);
@@ -217,15 +226,19 @@ export default {
 
     const toggleSearchBar = () => {
       toggleSearch();
-      searchBarRef.value?.$el?.children[0]?.children[0].focus();
+      root.$nextTick(() => {
+        if (mobileOrTabletSize.value) {
+          searchBarRef.value?.$el?.children[0]?.children[0].focus();
+          return;
+        }
+        desktopBarRef.value?.$el?.children[0]?.children[0].focus();
+      });
     };
 
     const handleToggleHamburguerMenu = () => {
       closeSearch();
       toggleHamburguerMenu();
     };
-
-    const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const closeOrFocusSearchBar = () => {
       term.value = '';
@@ -262,6 +275,7 @@ export default {
     });
 
     return {
+      desktopBarRef,
       toggleSearchBar,
       mobileOrTabletSize,
       isCartSidebarOpen,
