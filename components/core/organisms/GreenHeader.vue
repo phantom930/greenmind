@@ -2,9 +2,6 @@
   <div>
     <SfHeader
       class="sf-header--has-mobile-search"
-      :class="{
-        'header-on-top': isSearchOpen
-      }"
     >
       <template #logo />
       <template #navigation>
@@ -61,14 +58,15 @@
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
           <SfSearchBar
-            v-show="showSearchInput && !mobileOrTabletSize"
+            v-show="isSearchOpen && !mobileOrTabletSize"
             ref="searchBarRef"
+            style="width: 290px;"
             :placeholder="$t('Search for items and promotions')"
             aria-label="Search"
             class="sf-header__search none"
             :value="term"
             :icon="{
-              icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
+              icon: isSearchOpen ? 'cross' : 'search',
               size: '1.25rem',
               color: '#43464E',
             }"
@@ -77,7 +75,7 @@
           />
 
           <SfButton
-            v-show="!showSearchInput"
+            v-if="!isSearchOpen"
             class="sf-button--pure sf-header__action"
             @click.prevent="toggleSearchBar"
           >
@@ -117,18 +115,17 @@
         <transition
           name="sf-fade"
           mode="out-in"
-          type="transition"
         >
           <div class="flex col-start-1 col-end-3">
             <SfSearchBar
-              v-show="showSearchInput && mobileOrTabletSize"
+              v-show="isSearchOpen && mobileOrTabletSize"
               ref="searchBarRef"
               :placeholder="$t('Search for items and promotions')"
               aria-label="Search"
               class="sf-header__search none"
               :value="term"
               :icon="{
-                icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
+                icon: isSearchOpen ? 'cross' : 'search',
                 size: '1.25rem',
                 color: '#43464E',
               }"
@@ -144,7 +141,13 @@
 
     <GreenSearchClerk />
 
-    <SfOverlay :visible="isSearchOpen" />
+    <SfOverlay
+      :visible="isSearchOpen"
+      :class="{
+        'top-32': isSearchOpen && !mobileOrTabletSize,
+        'top-48': isSearchOpen && mobileOrTabletSize
+      }"
+    />
   </div>
 </template>
 
@@ -163,7 +166,6 @@ import { useCart, useUser, useFacet } from '@vue-storefront/odoo';
 import { computed, ref, watch } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers, cartGetters } from '~/composables';
-import { Portal, PortalTarget, MountingPortal } from 'portal-vue';
 export default {
   components: {
     SfHeader,
@@ -172,20 +174,15 @@ export default {
     SfButton,
     SfSearchBar,
     SfOverlay,
-    SfBadge,
-    Portal,
-    PortalTarget,
-    MountingPortal
+    SfBadge
   },
   setup(props, { root }) {
-    const showSearchInput = ref(false);
     const searchBarRef = ref(null);
     const term = ref(null);
     const formatedResult = ref(null);
-    const isSearchOpen = ref(false);
 
     const { changeSearchTerm } = useUiHelpers();
-    const { isCartSidebarOpen, isHamburguerMenuOpen, toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
+    const { isCartSidebarOpen, isSearchOpen, toggleSearch, isHamburguerMenuOpen, toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
       useUiState();
 
     const { load: loadUser, isAuthenticated } = useUser();
@@ -205,10 +202,8 @@ export default {
     };
 
     const closeSearch = (e) => {
-      showSearchInput.value = false;
-      if (!isSearchOpen.value) return;
+      toggleSearch();
       term.value = '';
-      isSearchOpen.value = false;
     };
 
     const handleToggleCartSidebar = () => {
@@ -221,8 +216,7 @@ export default {
     };
 
     const toggleSearchBar = () => {
-      showSearchInput.value = !showSearchInput.value;
-      console.log(searchBarRef.value?.$el?.children[0]?.children[0]);
+      toggleSearch();
       searchBarRef.value?.$el?.children[0]?.children[0].focus();
     };
 
@@ -234,15 +228,10 @@ export default {
     const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const closeOrFocusSearchBar = () => {
-      if (mobileOrTabletSize.value) {
-        return closeSearch();
-      }
       term.value = '';
-      if (isSearchOpen.value) {
-        return closeSearch();
-      }
-      isSearchOpen.value = true;
+      closeSearch();
     };
+
     // TODO: https://github.com/DivanteLtd/vue-storefront/issues/4927
     const handleAccountClick = () => {
       if (isAuthenticated.value) {
@@ -253,25 +242,14 @@ export default {
     };
 
     watch(
-      () => showSearchInput.value,
+      () => isSearchOpen.value,
       () => {
         const element = root.$el.querySelector('.sf-header__actions');
         if (mobileOrTabletSize.value) {
-          element.style['grid-template-columns'] = showSearchInput.value ? '1fr 1fr fit-content' : '2fr 1fr';
+          element.style['grid-template-columns'] = isSearchOpen.value ? '1fr 1fr fit-content' : '2fr 1fr';
         }
         if (!mobileOrTabletSize.value) {
           element.style['grid-template-columns'] = '2fr 1fr';
-        }
-      }
-    );
-
-    watch(
-      () => term.value,
-      (newVal, oldVal) => {
-        const shouldSearchBeOpened = term.value.length > 0 && ((!oldVal && newVal) || (newVal.length !== oldVal.length && isSearchOpen.value === false));
-
-        if (shouldSearchBeOpened) {
-          isSearchOpen.value = true;
         }
       }
     );
@@ -290,12 +268,12 @@ export default {
       isHamburguerMenuOpen,
       handleToggleHamburguerMenu,
       handleToggleCartSidebar,
-      showSearchInput,
+      isSearchOpen,
+      toggleSearch,
       accountIcon,
       closeOrFocusSearchBar,
       cartTotalItems,
       removeSearchResults,
-      isSearchOpen,
       searchBarRef,
       handleAccountClick,
       toggleCartSidebar,

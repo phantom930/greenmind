@@ -91,6 +91,7 @@
 <script lang="ts">
 import { SfHeader } from '@storefront-ui/vue';
 import { defineComponent, ref } from '@nuxtjs/composition-api';
+import { useUiState } from '~/composables';
 
 export default defineComponent({
   components: {
@@ -99,8 +100,12 @@ export default defineComponent({
   setup() {
     const isVisible = ref(false);
     const currentOpened = ref('');
+    const { isSearchOpen } = useUiState();
 
     const open = (value) => {
+      if (isSearchOpen.value) {
+        return;
+      }
       currentOpened.value = value;
       isVisible.value = true;
     };

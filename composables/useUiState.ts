@@ -9,13 +9,19 @@ const state = reactive({
   isCategoryGridView: true,
   isFilterSidebarOpen: false,
   isMobileMenuOpen: false,
-  isHamburguerMenuOpen: false
+  isHamburguerMenuOpen: false,
+  isSearchOpen: false
 });
 
 const useUiState = () => {
   const isMobileMenuOpen = computed(() => state.isMobileMenuOpen);
   const toggleMobileMenu = () => {
     state.isMobileMenuOpen = !state.isMobileMenuOpen;
+  };
+
+  const isSearchOpen = computed(() => state.isSearchOpen);
+  const toggleSearch = () => {
+    state.isSearchOpen = !state.isSearchOpen;
   };
 
   const isCartSidebarOpen = computed(() => state.isCartSidebarOpen);
@@ -89,7 +95,9 @@ const useUiState = () => {
     toggleFilterSidebar,
     toggleMobileMenu,
     toggleHamburguerMenu,
-    loginHamburguer
+    loginHamburguer,
+    isSearchOpen,
+    toggleSearch
   };
 };
 

@@ -15,11 +15,6 @@ export default defineComponent({
             data-instant-search-pages="6"
             data-instant-search-positioning="right"
           ></span>`
-  }),
-  mounted() {
-    // setTimeout(() => {
-
-    // }, 2000);
-  }
+  })
 });
 </script>
