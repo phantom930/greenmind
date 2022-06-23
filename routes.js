@@ -25,11 +25,6 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/Home.vue')
     },
     {
-      name: 'clerk',
-      path: '/clerk',
-      component: path.resolve(themeDir, 'pages/Clerk.vue')
-    },
-    {
       name: 'cart',
       path: '/cart',
       component: path.resolve(themeDir, 'pages/Cart/Cart.vue')

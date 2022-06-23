@@ -192,6 +192,7 @@ export default {
     '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
     '@nuxtjs/gtm',
+    'portal-vue/nuxt',
     ['@nuxtjs/redirect-module', { statusCode: 301 }],
     ['nuxt-breakpoints', {
       breakpoints: {

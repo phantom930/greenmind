@@ -21,7 +21,7 @@
         </div>
         <div id="logo">
           <nuxt-link
-            v-show="mobileOrTabletSize && !showSearchInput"
+            v-show="mobileOrTabletSize"
             title="GreenMind"
             :to="localePath('/')"
             class="sf-header__logo"
@@ -52,7 +52,7 @@
         </div>
       </template>
       <template #header-icons>
-        <div class="sf-header__icons justify-self-end	justify-end">
+        <div class="flex justify-self-end	justify-end">
           <!-- temporary removed -->
           <!-- <SfButton
             class="sf-button--pure sf-header__action"
@@ -60,25 +60,29 @@
           >
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
-          <SfSearchBar
-            v-show="showSearchInput"
-            ref="searchBarRef"
-            :placeholder="$t('Search for items and promotions')"
-            aria-label="Search"
-            class="sf-header__search none"
-            :value="term"
-            :icon="{
-              icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
-              size: '1.25rem',
-              color: '#43464E',
-            }"
-            @keydown.esc="closeSearch"
-            @click:icon="closeOrFocusSearchBar"
-          />
+          <portal to="dest">
+            <SfSearchBar
+              ref="searchBarRef"
+              :placeholder="$t('Search for items and promotions')"
+              aria-label="Search"
+              class="sf-header__search none"
+              :value="term"
+              :icon="{
+                icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
+                size: '1.25rem',
+                color: '#43464E',
+              }"
+              @keydown.esc="closeSearch"
+              @click:icon="closeOrFocusSearchBar"
+            />
+          </portal>
+
+          <portal-target v-if="!mobileOrTabletSize" name="dest" />
+
           <SfButton
-            v-show="!showSearchInput"
+            :class="{ hidden: showSearchInput}"
             class="sf-button--pure sf-header__action"
-            @click="toggleSearchBar"
+            @click.prevent="toggleSearchBar"
           >
             <SfIcon
               class="sf-header__icon"
@@ -113,20 +117,22 @@
             />
           </SfButton>
         </div>
+        <transition
+          name="sf-fade"
+          mode="out-in"
+          type="transition"
+        >
+          <div class="flex col-start-1 col-end-3">
+            <portal-target v-if="mobileOrTabletSize" name="dest" />
+          </div>
+        </transition>
       </template>
 
       <!-- End of Search bar -->
     </SfHeader>
+
     <GreenSearchClerk />
-    <!-- <SearchResults
-      :visible="isSearchOpen"
-      :term="term"
-      :search-loading="searchLoading"
-      :result="formatedResult"
-      @close="closeSearch"
-      @seeMore="handleSearchMore"
-      @removeSearchResults="removeSearchResults"
-    /> -->
+
     <SfOverlay :visible="isSearchOpen" />
   </div>
 </template>
@@ -146,7 +152,7 @@ import { useCart, useUser, useFacet } from '@vue-storefront/odoo';
 import { computed, ref, watch } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';
 import { useUiHelpers, cartGetters } from '~/composables';
-
+import { Portal, PortalTarget, MountingPortal } from 'portal-vue';
 export default {
   components: {
     SfHeader,
@@ -155,7 +161,10 @@ export default {
     SfButton,
     SfSearchBar,
     SfOverlay,
-    SfBadge
+    SfBadge,
+    Portal,
+    PortalTarget,
+    MountingPortal
   },
   setup(props, { root }) {
     const showSearchInput = ref(false);
@@ -163,7 +172,6 @@ export default {
     const term = ref(null);
     const formatedResult = ref(null);
     const isSearchOpen = ref(false);
-    const searchSize = ref(12);
 
     const { changeSearchTerm } = useUiHelpers();
     const { isCartSidebarOpen, isHamburguerMenuOpen, toggleCartSidebar, toggleLoginModal, toggleHamburguerMenu } =
@@ -171,7 +179,7 @@ export default {
 
     const { load: loadUser, isAuthenticated } = useUser();
     const { load: loadCart, cart } = useCart();
-    const { search, result, loading: searchLoading } = useFacet('AppHeader:Search');
+    const { loading: searchLoading } = useFacet('AppHeader:Search');
 
     const cartTotalItems = computed(() => {
       const count = cartGetters.getTotalItems(cart.value);
@@ -203,7 +211,8 @@ export default {
 
     const toggleSearchBar = () => {
       showSearchInput.value = !showSearchInput.value;
-      searchBarRef.value.$el.children[0].focus();
+      console.log(searchBarRef.value?.$el?.children[0]?.children[0]);
+      searchBarRef.value?.$el?.children[0]?.children[0].focus();
     };
 
     const handleToggleHamburguerMenu = () => {
@@ -237,7 +246,7 @@ export default {
       () => {
         const element = root.$el.querySelector('.sf-header__actions');
         if (mobileOrTabletSize.value) {
-          element.style['grid-template-columns'] = showSearchInput.value ? '62%' : '2fr 1fr';
+          element.style['grid-template-columns'] = showSearchInput.value ? '1fr 1fr fit-content' : '2fr 1fr';
         }
         if (!mobileOrTabletSize.value) {
           element.style['grid-template-columns'] = '2fr 1fr';
