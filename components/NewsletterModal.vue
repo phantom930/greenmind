@@ -4,20 +4,14 @@
     @close="closeModal"
   >
     <template #default>
-      <transition
-        name="sf-fade"
-        mode="out-in"
-        type="transition"
-      >
-        <div>
-          <SfHeading
-            :level="3"
-            :title="$t('Subscribe to newsletter')"
-            class="modal__title desktop-only"
-          />
-          <div class="klaviyo-form-Tspemz" />
-        </div>
-      </transition>
+      <div>
+        <SfHeading
+          :level="3"
+          :title="$t('Subscribe to newsletter')"
+          class="modal__title desktop-only"
+        />
+        <div class="klaviyo-form-Tspemz" />
+      </div>
     </template>
   </SfModal>
 </template>

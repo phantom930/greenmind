@@ -77,7 +77,7 @@
           <SfButton
             v-if="!isSearchOpen"
             class="sf-button--pure sf-header__action"
-            @click.prevent="toggleSearchBar"
+            @click.prevent="handleToggleSearch"
           >
             <SfIcon
               class="sf-header__icon"
@@ -147,6 +147,7 @@
         'top-32': isSearchOpen && !mobileOrTabletSize,
         'top-48': isSearchOpen && mobileOrTabletSize
       }"
+      @click="toggleSearch"
     />
   </div>
 </template>
@@ -206,10 +207,6 @@ export default {
       isAuthenticated.value ? 'profile_fill' : 'profile'
     );
 
-    const removeSearchResults = () => {
-      formatedResult.value = null;
-    };
-
     const closeSearch = (e) => {
       toggleSearch();
       term.value = '';
@@ -219,12 +216,15 @@ export default {
       if (isHamburguerMenuOpen.value) {
         toggleHamburguerMenu();
       }
-      closeSearch();
       toggleCartSidebar();
 
     };
 
-    const toggleSearchBar = () => {
+    const handleToggleHamburguerMenu = () => {
+      toggleHamburguerMenu();
+    };
+
+    const handleToggleSearch = () => {
       toggleSearch();
       root.$nextTick(() => {
         if (mobileOrTabletSize.value) {
@@ -233,11 +233,6 @@ export default {
         }
         desktopBarRef.value?.$el?.children[0]?.children[0].focus();
       });
-    };
-
-    const handleToggleHamburguerMenu = () => {
-      closeSearch();
-      toggleHamburguerMenu();
     };
 
     const closeOrFocusSearchBar = () => {
@@ -276,18 +271,16 @@ export default {
 
     return {
       desktopBarRef,
-      toggleSearchBar,
       mobileOrTabletSize,
       isCartSidebarOpen,
       isHamburguerMenuOpen,
       handleToggleHamburguerMenu,
       handleToggleCartSidebar,
       isSearchOpen,
-      toggleSearch,
+      handleToggleSearch,
       accountIcon,
       closeOrFocusSearchBar,
       cartTotalItems,
-      removeSearchResults,
       searchBarRef,
       handleAccountClick,
       toggleCartSidebar,
