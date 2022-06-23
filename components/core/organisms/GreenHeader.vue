@@ -147,7 +147,7 @@
         'top-32': isSearchOpen && !mobileOrTabletSize,
         'top-48': isSearchOpen && mobileOrTabletSize
       }"
-      @click="toggleSearch"
+      @click="handleToggleSearch"
     />
   </div>
 </template>
