@@ -278,7 +278,7 @@ export default defineComponent({
       social: [
         { name: 'facebook', url: 'https://facebook.com/greenmind.dk' },
         { name: 'instagram', url: 'https://instagram.com/greenminddk' },
-        { name: 'linkedin', url: 'https://linkedin.com/company/greenminddk' }
+        { name: 'linkedin', url: 'https://www.linkedin.com/company/greenmind-a-s' }
       ]
     };
   },
