@@ -60,27 +60,24 @@
           >
             <SfIcon :icon="accountIcon" size="1.25rem" />
           </SfButton> -->
-          <portal to="dest">
-            <SfSearchBar
-              ref="searchBarRef"
-              :placeholder="$t('Search for items and promotions')"
-              aria-label="Search"
-              class="sf-header__search none"
-              :value="term"
-              :icon="{
-                icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
-                size: '1.25rem',
-                color: '#43464E',
-              }"
-              @keydown.esc="closeSearch"
-              @click:icon="closeOrFocusSearchBar"
-            />
-          </portal>
-
-          <portal-target v-if="!mobileOrTabletSize" name="dest" />
+          <SfSearchBar
+            v-show="showSearchInput && !mobileOrTabletSize"
+            ref="searchBarRef"
+            :placeholder="$t('Search for items and promotions')"
+            aria-label="Search"
+            class="sf-header__search none"
+            :value="term"
+            :icon="{
+              icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
+              size: '1.25rem',
+              color: '#43464E',
+            }"
+            @keydown.esc="closeSearch"
+            @click:icon="closeOrFocusSearchBar"
+          />
 
           <SfButton
-            :class="{ hidden: showSearchInput}"
+            v-show="!showSearchInput"
             class="sf-button--pure sf-header__action"
             @click.prevent="toggleSearchBar"
           >
@@ -123,7 +120,21 @@
           type="transition"
         >
           <div class="flex col-start-1 col-end-3">
-            <portal-target v-if="mobileOrTabletSize" name="dest" />
+            <SfSearchBar
+              v-show="showSearchInput && mobileOrTabletSize"
+              ref="searchBarRef"
+              :placeholder="$t('Search for items and promotions')"
+              aria-label="Search"
+              class="sf-header__search none"
+              :value="term"
+              :icon="{
+                icon: isSearchOpen || showSearchInput ? 'cross' : 'search',
+                size: '1.25rem',
+                color: '#43464E',
+              }"
+              @keydown.esc="closeSearch"
+              @click:icon="closeOrFocusSearchBar"
+            />
           </div>
         </transition>
       </template>
@@ -298,6 +309,7 @@ export default {
   },
   data() {
     return {
+      startClerk: false,
       sbCategories: [
         // {
         //   name: 'SÆLG TIL OS',
@@ -313,6 +325,11 @@ export default {
         }
       ]
     };
+  },
+  mounted () {
+    setTimeout(() => {
+      this.startClerk = true;
+    }, 2000);
   }
 };
 </script>
