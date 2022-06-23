@@ -9,6 +9,8 @@ import getAppRoutes from './sitemap';
 import redirect from './customRoutes/redirects.json';
 import Config from '@odoogap/nuxt-config';
 
+const removeLastBar = (url) => url[url.length - 1] === '/' ? url.slice(0, -1) : url;
+
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
 const cookieBotKey = process.env.COOKIEBOT_KEY || 'd2da6edf-44b1-4063-a6ef-fe4f37edeb0c';
@@ -181,7 +183,7 @@ export default {
   ],
   publicRuntimeConfig: {
     baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
-    siteUrl: isDev ? 'http://localhost:3000' : process.env.SITE_URL || 'https://vue-dev.greenmind.space',
+    siteUrl: isDev ? 'http://localhost:3000' : removeLastBar(process.env.SITE_URL || 'https://vue-dev.greenmind.space'),
     rebuildRefreshToken: process.env.INVALIDATION_KEY || '0ead60c3-d118-40be-9519-d531462ddc60',
     cookieBotKey,
     gtagKey,
@@ -248,7 +250,7 @@ export default {
     }
   },
   i18n: {
-    baseUrl: process.env.SITE_URL || 'https://vue-dev.greenmind.space',
+    baseUrl: removeLastBar(process.env.SITE_URL || 'https://vue-dev.greenmind.space/'),
     strategy: 'no_prefix',
     countries: [
       { name: 'US', label: 'United States' },
