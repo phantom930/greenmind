@@ -50,7 +50,7 @@
           class="underline y-link"
           title="Link Butiker"
         >butikker</a>, skal du blot fremvise dokumentation for det billigere produkt
-        til vores personale. Ønsker du at benytte vores prisgaranti online, skal du kontakte vores kundeservice på kundeservice@bluecity.dk.
+        til vores personale. Ønsker du at benytte vores prisgaranti online, skal du kontakte vores kundeservice.
       </p>
     </div>
   </div>
