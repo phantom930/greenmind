@@ -3,7 +3,6 @@
     :to="productGetters.getSlug(product)"
     :title="productGetters.getName(product)"
     :data-clerk-product-id="product.id"
-    @click="clerkClick"
   >
     <SfProductCard
       :key="product.id"
@@ -12,19 +11,24 @@
       :image-width="imageWidth"
       :image-height="imageHeight"
       :title="productGetters.getName(product)"
-      :image="$image(productGetters.getCoverImage(product), imageWidth, imageHeight, productGetters.getImageFilename(product))"
+      :image="
+        $image(
+          productGetters.getCoverImage(product),
+          imageWidth,
+          imageHeight,
+          productGetters.getImageFilename(product)
+        )
+      "
       :nuxt-img-config="{ fit: 'cover' }"
       image-tag="nuxt-img"
       :badge-label="productHasDiscont ? `-${productDiscontPerc}%` : null"
       :regular-price="$currency(productGetters.getPrice(product).regular)"
-      :special-price="
-        productGetters.getPrice(product).special &&
-          $currency(productGetters.getPrice(product).special)
-      "
+      :special-price=" productGetters.getPrice(product).special && $currency(productGetters.getPrice(product).special) "
       :score-rating="false"
       :wishlist-icon="false"
       :show-add-to-cart-button="false"
       class="products__product-card hover:drop-shadow-xl"
+      @click.native="clerkClick"
     >
       <div
         slot="title"
@@ -34,16 +38,15 @@
           productGetters.getName(product)
         }}</span>
         <span class="green-product-card__description">
-          {{ product.websiteSubtitle || '-' }}
+          {{ product.websiteSubtitle || "-" }}
         </span>
       </div>
 
-      <div
-        slot="price"
-        class="price-flex flex justify-center items-baseline"
-      >
-        <span class="green-product-card__fra">{{ $t('From') }}</span>
-        <span class="green-product-card__price">{{ $currency(priceWithDiscount) }}</span>
+      <div slot="price" class="price-flex flex justify-center items-baseline">
+        <span class="green-product-card__fra">{{ $t("From") }}</span>
+        <span class="green-product-card__price">{{
+          $currency(priceWithDiscount)
+        }}</span>
       </div>
     </SfProductCard>
   </nuxt-link>
@@ -76,7 +79,6 @@ export default defineComponent({
     }
   },
   setup(props) {
-
     const productHasDiscont = computed(() => props.product?.combinationInfoVariant?.has_discounted_price);
     const productDiscontPerc = computed(() => props.product?.combinationInfoVariant?.discount_perc);
     const priceWithDiscount = computed(() => props.product?.combinationInfoVariant?.price || 0);
@@ -96,5 +98,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/css/greenProductCard.scss';
+@import "~/assets/css/greenProductCard.scss";
 </style>

@@ -4,6 +4,8 @@ import { cartGetters } from '~/composables';
 import { computed, Ref } from '@nuxtjs/composition-api';
 import { GreenOrderLine } from '~/green-api/types';
 
+declare let Clerk: any;
+
 const useCollectedProduct = (orderLine: Ref<GreenOrderLine>): any => {
 
   const { updateItemQty, cart, loading } = useCart();
@@ -23,6 +25,7 @@ const useCollectedProduct = (orderLine: Ref<GreenOrderLine>): any => {
     }
 
     await removeMultipleProductsFromCart({ lineIds: [orderLine.id], customQuery: { cartRemoveMultipleItems: 'greenCartRemoveMultipleItem'} });
+    Clerk('cart', 'remove', orderLine?.product?.id);
   };
 
   const handleUpdateItem = async (orderLine: GreenOrderLine, quantity: number) => {
@@ -48,6 +51,7 @@ const useCollectedProduct = (orderLine: Ref<GreenOrderLine>): any => {
 
     await addMultipleProductsToCart(buildParamsToMultipleAdd(accessoryToIds));
 
+    Clerk('cart', 'remove', accessoryProductId);
   };
 
   const handleAddAccessory = async (accessoryProductId: number) => {
@@ -56,6 +60,8 @@ const useCollectedProduct = (orderLine: Ref<GreenOrderLine>): any => {
     const accessoryToIds = [accessoryProductId, ...accessoriesAlreadyInOrderLine];
 
     await addMultipleProductsToCart(buildParamsToMultipleAdd(accessoryToIds));
+
+    Clerk('cart', 'add', accessoryProductId);
   };
 
   const handleAddOrRemoveAccessory = async (accessoryProductId: number) => {
@@ -82,3 +88,4 @@ const useCollectedProduct = (orderLine: Ref<GreenOrderLine>): any => {
 };
 
 export default useCollectedProduct;
+

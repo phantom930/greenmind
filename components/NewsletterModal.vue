@@ -10,7 +10,7 @@
           :title="$t('Subscribe to newsletter')"
           class="modal__title desktop-only"
         />
-        <div class="klaviyo-form-Tspemz" />
+        <div v-if="isNewsletterModalOpen" class="klaviyo-form-Tspemz" />
       </div>
     </template>
   </SfModal>
@@ -18,25 +18,16 @@
 <script>
 import {
   SfModal,
-  SfHeading,
-  SfInput,
-  SfButton,
-  SfBar
+  SfHeading
 } from '@storefront-ui/vue';
 import { ref } from '@nuxtjs/composition-api';
 import { useUiState } from '~/composables';
-import { ValidationProvider, ValidationObserver } from 'vee-validate';
 
 export default {
   name: 'NewsletterModal',
   components: {
-    ValidationProvider,
-    ValidationObserver,
     SfModal,
-    SfHeading,
-    SfInput,
-    SfButton,
-    SfBar
+    SfHeading
   },
   props: {
     loading: {
