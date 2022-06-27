@@ -312,6 +312,12 @@ export default {
   },
   build: makeBuild({
     // watch: ['.nuxt/routes.json'],
+    babel: {
+      compact: true,
+      plugins: [
+        ['@babel/plugin-proposal-private-property-in-object', { loose: true }]
+      ]
+    },
     transpile: ['vee-validate/dist/rules', '/^@storefront-ui/'],
     plugins: [
       new webpack.DefinePlugin({
