@@ -1,9 +1,9 @@
 /* eslint-disable max-statements-per-line */
 /* eslint-disable */
-
-import { clerkioKey } from '../ENV';
 declare let Clerk: any;
 import { Plugin } from '@nuxt/types';
+const clerkioKey = process.env.CLERK_PUBLIC_KEY || 'CEhYajX1WwY3uAClBKte5UC6qAC6d7W1';
+
 
 (function(w: any, d: Document) {
   const e = d.createElement('script'); e.type = 'text/javascript'; e.async = true;
