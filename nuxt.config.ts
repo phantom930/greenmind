@@ -9,14 +9,20 @@ import getAppRoutes from './sitemap';
 import redirect from './customRoutes/redirects.json';
 import Config from '@odoogap/nuxt-config';
 
-const removeLastBar = (url) => url[url.length - 1] === '/' ? url.slice(0, -1) : url;
+import {
+  cookieBotKey,
+  gtagKey,
+  gtmKey,
+  klaviyoKey,
+  nodeLocale,
+  baseURL,
+  siteUrl,
+  rebuildRefreshToken,
+  sitemapCacheTime
+} from './ENV';
 
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
-const cookieBotKey = process.env.COOKIEBOT_KEY || 'd2da6edf-44b1-4063-a6ef-fe4f37edeb0c';
-const gtagKey = process.env.GTAG_KEY || 'G-YYZ9TG2MS2';
-const gtmKey = process.env.GTM_KEY || 'GTM-K9V7Q37';
-const klaviyoKey = process.env.KLAVIYO_KEY || 'NzYWAu';
 
 const localesMap = {
   'en-EN': 'en',
@@ -25,7 +31,7 @@ const localesMap = {
   'sv-SV': 'sv'
 };
 
-const localeIndex = localesMap[process.env.NODE_LOCALE] || 'en';
+const localeIndex = localesMap[nodeLocale];
 
 export default {
   // hooks,
@@ -182,9 +188,9 @@ export default {
     ['@vue-storefront/odoo/nuxt', { }]
   ],
   publicRuntimeConfig: {
-    baseURL: process.env.PUBLIC_PATH || process.env.BASE_URL || 'https://web-dev.greenmind.space/',
-    siteUrl: isDev ? 'http://localhost:3000' : removeLastBar(process.env.SITE_URL || 'https://vue-dev.greenmind.space'),
-    rebuildRefreshToken: process.env.INVALIDATION_KEY || '0ead60c3-d118-40be-9519-d531462ddc60',
+    baseURL,
+    siteUrl,
+    rebuildRefreshToken,
     cookieBotKey,
     gtagKey,
     localeIndex,
@@ -249,7 +255,7 @@ export default {
     }
   },
   i18n: {
-    baseUrl: removeLastBar(process.env.SITE_URL || 'https://vue-dev.greenmind.space/'),
+    baseUrl: siteUrl,
     strategy: 'no_prefix',
     countries: [
       { name: 'US', label: 'United States' },
@@ -295,9 +301,9 @@ export default {
   },
   sitemap: {
     exclude: ['/checkout/**', '/checkout', '/dashboard/**', '/dashboard'],
-    hostname: process.env.SITE_URL || 'https://vue-dev.greenmind.space/',
+    hostname: siteUrl,
     i18n: false,
-    cacheTime: process.env.SITEMAP_CACHE || 6000,
+    cacheTime: sitemapCacheTime,
     gzip: true,
     defaults: {
       changefreq: 'daily',

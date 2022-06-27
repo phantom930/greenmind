@@ -33,3 +33,17 @@ SITE_URL - for sitemap host url
 BASE_DOMAIN - to build routes, redirects (sended in request-host to enable multi language)
 PORT - node port
 HOST - netork interface
+
+## Env vars set for dev build
+export CLERK_PUBLIC_KEY=CEhYajX1WwY3uAClBKte5UC6qAC6d7W1
+export COOKIEBOT_KEY=d2da6edf-44b1-4063-a6ef-fe4f37edeb0c
+export GTAG_KEY=G-YYZ9TG2MS2
+export GTM_KEY=GTM-K9V7Q37
+export KLAVIYO_KEY=NzYWAu
+export NODE_LOCALE=en-EN
+export PUBLIC_PATH=https://web-dev.greenmind.space/
+export SITE_URL=http://localhost:3000
+export INVALIDATION_KEY=0ead60c3-d118-40be-9519-d531462ddc60
+export SITEMAP_CACHE=6000
+export BACKEND_BASE_URL=https://web-dev.greenmind.space/
+export BASE_DOMAIN=vue-dev.greenmind.space
