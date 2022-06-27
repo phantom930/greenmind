@@ -1,4 +1,3 @@
-const consola = require('consola');
 const chalk = require('chalk');
 
 const isDev = process.env.NODE_ENV !== 'production';
