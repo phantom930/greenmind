@@ -91,6 +91,13 @@ export default {
         type: 'text/javascript',
         src: `https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=${klaviyoKey}`,
         async: true
+      },
+      {
+        id: 'elvium_positions',
+        hid: 'elvium_positions',
+        type: 'text/javascript',
+        src: `https://app.elvium.com/packs/js/export_job_postings.js`,
+        async: true
       }
     ],
     link: [
