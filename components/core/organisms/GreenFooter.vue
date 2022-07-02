@@ -220,11 +220,11 @@ export default defineComponent({
             {
               name: 'Terms of trade',
               slug: 'terms-of-trade'
+            },
+            {
+             name: 'Job hos GreenMind',
+             slug: 'job'
             }
-            // {
-            //  name: 'Environment',
-            //  slug: 'environment'
-            // },
             // {
             //  name: 'Price guarantee',
             //  slug: 'price-guarantee'

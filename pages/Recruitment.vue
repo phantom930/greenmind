@@ -2,7 +2,7 @@
   <div class="text-wrap">
     <div class="container">
       <h1 class="font-bold title mb">
-        Om GreenMind
+        Søg job hos GreenMind
       </h1>
     </div>
     <p class="text mb">
