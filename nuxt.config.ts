@@ -87,8 +87,8 @@ export default {
         async: true
       },
       {
-        id: 'elvium_positions',
-        hid: 'elvium_positions',
+        id: 'ElviumJobPostings',
+        hid: 'ElviumJobPostings',
         type: 'text/javascript',
         src: `https://app.elvium.com/packs/js/export_job_postings.js`,
         async: true
