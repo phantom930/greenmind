@@ -154,5 +154,11 @@ export default {
     da: '/betaling-svar',
     de: '/betaling-svar',
     sv: '/betaling-svar'
+  },
+  recruitment: {
+    en: '/job-at-greenmind',
+    da: '/job-hos-greenmind',
+    de: '/job-hos-greenmind',
+    sv: '/job-hos-greenmind'
   }
 };

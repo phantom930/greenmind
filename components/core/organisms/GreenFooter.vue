@@ -223,7 +223,7 @@ export default defineComponent({
             },
             {
              name: 'Job hos GreenMind',
-             slug: 'job'
+             slug: 'recruitment'
             }
             // {
             //  name: 'Price guarantee',

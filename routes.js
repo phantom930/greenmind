@@ -211,7 +211,7 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       component: path.resolve(themeDir, 'pages/Cookies.vue')
     },
     {
-      name: 'job',
+      name: 'recruitment',
       path: `${i18nRoutes.recruitment[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/Recruitment.vue')
     }
