@@ -17,14 +17,6 @@
         Ledige stillinger hos GreenMind
       </h3>
       <div id="elvium_positions"></div>
-      script: [
-      {
-        id: 'ElviumJobPostings',
-        hid: 'ElviumJobPostings',
-        type: 'text/javascript',
-        src: 'https://app.elvium.com/packs/js/export_job_postings.js',
-        async: true
-      }]
       <script>
         new ElviumJobPostings('#elvium_positions', 'greenmind', 'da', {
           domain: 'https://app.elvium.com',
