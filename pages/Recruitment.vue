@@ -16,7 +16,9 @@
       <h3 class="font-bold subtitle mb">
         Ledige stillinger hos GreenMind
       </h3>
-      <iframe src="https://app.elvium.com/da/organizations/greenmind/job_postings/export?tree=true&referer_host=greenmind.dk" height="100%" width="100%" title="jobs"></iframe>
+      <div id="job-iframe">
+        <iframe src="https://app.elvium.com/da/organizations/greenmind/job_postings/export?tree=true&referer_host=greenmind.dk" height="800" width="100%" title="jobs"></iframe>
+      </div>
       <div id="elvium_positions"></div>
       <script type="application/javascript" src="https://app.elvium.com/packs/js/export_job_postings.js"></script>
       <script>
