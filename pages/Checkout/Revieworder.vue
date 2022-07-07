@@ -117,7 +117,7 @@ export default defineComponent({
   components: {
     SfButton, SfHeading
   },
-  setup(props, { root }) {
+  setup() {
     const { cart } = useCart();
     const orderLines = computed(() => cartGetters.getItems(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));

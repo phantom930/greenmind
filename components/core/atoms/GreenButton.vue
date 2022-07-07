@@ -178,7 +178,7 @@ $button-height: 50px;
   position: absolute;
   width: 16px;
   height: 16px;
-  margin: 0px 6px 0px 11px;
+  //margin: 0px 6px 0px 11px;
   border: 4px solid var(--_c-greenmind-pine-primary-dark-green);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

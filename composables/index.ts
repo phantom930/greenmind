@@ -9,12 +9,14 @@ import useCheckoutShipping from './useCheckoutShipping';
 import useCheckoutBilling from './useCheckoutBilling';
 import usePartner from './usePartner';
 import usePayment from './usePayment';
+import useGiftCard from './useGiftCard';
 
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
 import facetGetters from './getters/facetGetters';
 
 export {
+  useGiftCard,
   usePayment,
   useUiHelpers,
   useUiNotification,
