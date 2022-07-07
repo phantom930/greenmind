@@ -43,6 +43,12 @@ order {
       }
       
     }
+    giftCard {
+      id
+    }
+    coupon {
+      id
+    }
     quantity
     priceTotal
   }
@@ -61,6 +67,12 @@ order {
     }
     quantity 
     priceTotal
+    giftCard {
+      id
+    }
+    coupon {
+      id
+    }
   }
   partnerInvoice {
     id

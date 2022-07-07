@@ -18,7 +18,8 @@
           <div class="product-info">
             <div class="product-title flex justify-between">
               <div>
-                {{ cartGetters.getItemTitle(orderLine) }} | {{ cartGetters.getItemWebsiteTitle(orderLine) }}
+                {{ cartGetters.getItemTitle(orderLine) }}
+                {{ cartGetters.getItemWebsiteTitle(orderLine) ? `| ${cartGetters.getStandGradeName(orderLine)}` : '' }}
               </div>
               <div class="price">
                 {{ $currency(cartGetters.getItemPrice(orderLine).regular) }}

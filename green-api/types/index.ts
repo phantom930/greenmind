@@ -43,6 +43,14 @@ export interface ApplyGiftCardInput {
     promo: string
 }
 
+export interface GiftCard {
+    id: number;
+}
+
+export interface Coupon {
+    id: number;
+}
+
 export interface CombinationInfo {
     product_id: number;
     product_template_id: number;
@@ -76,6 +84,8 @@ export interface GreenProduct extends Product {
 export interface GreenOrderLine extends OrderLine {
     product?: GreenProduct;
     accessories?: GreenOrderLine[]
+    giftCard?: GiftCard
+    coupon?: Coupon
 }
 
 export interface GreenPaymentTransaction extends PaymentTransaction {

@@ -8,7 +8,7 @@ export const getItemImageFilename = (orderLine: GreenOrderLine): string =>
   orderLine?.product?.imageFilename || 'Product filename';
 
 export const getItemWebsiteTitle = (orderLine: GreenOrderLine): string =>
-  orderLine?.product?.websiteSubtitle || 'Subtitle';
+  orderLine?.product?.websiteSubtitle || null;
 
 export const getStandGradeName = (orderLine: GreenOrderLine): string => {
   return orderLine?.product?.combinationInfoVariant?.grade_name || '';
@@ -25,6 +25,10 @@ export const accessoryIsInCart = (cart: GreenCart, acessoryId: number): boolean 
 };
 
 export const getPrice = (cart: GreenCart, orderLine: GreenOrderLine): number => {
+  if (orderLine.coupon || orderLine.giftCard) {
+    return cartGetters.getItemPrice(orderLine).regular;
+  }
+
   let totalAccessoryValue = 0;
   orderLine.product?.accessoryProducts?.forEach(accessory => {
     if (accessoryIsInCart(cart, accessory.id)) {
