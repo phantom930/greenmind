@@ -1,4 +1,5 @@
-    .div-popular-products {
+// home page scss
+.div-popular-products {
         background-color: #F3F3F3;
         @include for-mobile {
             padding-bottom: 30px;
@@ -13,13 +14,6 @@
         background-color: #F3F3F3;
     }
   }
-  
-  /*@media (min-width: 768px) {
-    ::v-deep .sf-hero {
-      height: 480px;
-      margin-top: -75px;
-    }
-  }*/
   
   ::v-deep .top-hero .sf-hero-item__title {
     font: var(--font-family--primary);

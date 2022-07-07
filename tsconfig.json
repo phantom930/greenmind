@@ -9,7 +9,7 @@
       "esnext.asynciterable",
       "dom"
     ],
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "esModuleInterop": true,
     "allowJs": true,
     "sourceMap": true,

@@ -14,25 +14,6 @@
         :width="$breakpoints.xs ? 531 : 1440"
         :height="$breakpoints.xs ? 120 : 237"
       />
-      <!-- <div class="flex justify-between mt-14">
-        <HomeCallToActionStand
-          :title="$t('Stand')"
-          :image="require('/assets/images/homeHero/image_01.svg')"
-          background="#CABDBD"
-        />
-        <HomeCallToActionStand
-          :title="$t('Stand')"
-          :image="require('/assets/images/homeHero/image_02.svg')"
-          description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
-          background="#D6D4D4"
-        />
-        <HomeCallToActionStand
-          :title="$t('Stand')"
-          :image="require('/assets/images/homeHero/image_03.svg')"
-          description="Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands."
-          background="#E0D6C9"
-        />
-      </div> -->
     </div>
 
     <div class="div-popular-products mt-7 lg:mt-20">
@@ -88,7 +69,7 @@
     </div>
 
     <div v-if="$device.isDesktop" class="between-call-to-action-and-footer" />
-    <LazyNewsletterModal
+    <NewsletterModal
       :loading="loading"
       @email-submitted="onSubscribe"
     />
@@ -174,5 +155,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/css/home.scss';
+@import '~/assets/css/home/index.scss';
 </style>
