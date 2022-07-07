@@ -11,6 +11,7 @@
       cartGetters.getItemPrice(orderLine).special &&
         $currency(cartGetters.getItemPrice(orderLine).special)
     "
+    :class="orderLine.coupon || orderLine.giftCard ? 'gift-coupon' : ''"
     :max-qty="quantityInStock"
     :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"

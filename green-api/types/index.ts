@@ -42,6 +42,9 @@ export interface CreateUpdatePartnerInput {
 export interface ApplyGiftCardInput {
     promo: string
 }
+export interface ApplyCouponInput {
+    promo: string
+}
 
 export interface GiftCard {
     id: number;

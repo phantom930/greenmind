@@ -10,6 +10,7 @@ import useCheckoutBilling from './useCheckoutBilling';
 import usePartner from './usePartner';
 import usePayment from './usePayment';
 import useGiftCard from './useGiftCard';
+import useCoupon from './useCoupon';
 
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
@@ -28,6 +29,7 @@ export {
   useCollectedProduct,
   useCheckoutBilling,
   usePartner,
+  useCoupon,
 
   facetGetters,
   productGetters,

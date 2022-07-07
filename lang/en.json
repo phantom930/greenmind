@@ -20,7 +20,10 @@
   "Change password your account": "If you want to change the password to access your account, enter the following information",
   "Change": "Change",
   "Clear all": "Clear all",
+  "Enter Gift code": "Enter Gift code",
   "Color": "Color",
+  "Job hos GreenMind": "Job hos GreenMind",
+  "Enter Coupon code": "Enter Coupon code",
   "Commercial information": "and agree to receive personalized commercial information from Brand name by email",
   "Contact details updated": "Keep your addresses and contact details updated.",
   "Contact us": "Contact us",
@@ -370,5 +373,4 @@
   "Thank you for your order": "Thank you for your order",
   "There is a problem with the order": "There is a problem with the order",
   "Secure Payment": "Secure Payment"
-
 }

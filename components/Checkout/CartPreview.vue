@@ -144,34 +144,63 @@
         </div>
       </div>
     </div>
-    <div class="highlighted promo-code">
+    <div class="highlighted promo-code text-center">
       <SfInput
-        v-model="promoCode"
+        v-model="couponCode"
         data-cy="cart-preview-input_promoCode"
-        name="promoCode"
-        :label="$t('Enter promo code')"
-        class="sf-input--filled promo-code__input total-input"
+        name="couponCode"
+        :label="$t('Enter Coupon code')"
+        class="sf-input--filled promo-code__input total-input mt-5 text-left"
       />
       <GreenButton
         class="promo-code__button"
-        :disabled="loading || !promoCode"
-        :loading="loading"
+        :disabled="loadingCoupon || !couponCode"
+        :loading="loadingCoupon"
         style-type="Primary"
         color="Grey"
         shape="Round"
-        @click="handleAddGiftCard"
+        @click="handleAddCouponCode"
       >
-        <!-- :class="promoCodeAdded ? 'promo-added' : ''" -->
-        <!-- <SfIcon
+        <span>{{ $t("Apply") }}</span>
+      </GreenButton>
+    </div>
+    <div class="highlighted promo-code text-center mb-8">
+      <span class="mb-3 text-fern-secondary underline" @click="showGiftCard = !showGiftCard">Pay with gift card</span>
+      <transition
+        name="sf-fade"
+        mode="out-in"
+        type="transition"
+      >
+        <template v-if="showGiftCard">
+          <SfInput
+            v-model="giftCode"
+            data-cy="cart-preview-input_promoCode"
+            name="promoCode"
+            :label="$t('Enter Gift code')"
+            class="sf-input--filled promo-code__input total-input mt-5 text-left"
+          />
+          <GreenButton
+            class="promo-code__button"
+            :disabled="loading || !giftCode"
+            :loading="loading"
+            style-type="Primary"
+            color="Grey"
+            shape="Round"
+            @click="handleAddGiftCard"
+          >
+            <!-- :class="promoCodeAdded ? 'promo-added' : ''" -->
+            <!-- <SfIcon
           v-if="promoCodeAdded"
           icon="cross"
           color="white"
           size="sm"
         /> -->
-        <span>{{ $t("Apply") }}</span>
-      </GreenButton>
+            <span>{{ $t("Apply") }}</span>
+          </GreenButton>
+        </template>
+      </transition>
     </div>
-    <div class="highlighted">
+    <div class="highlighted pt-10">
       <SfCharacteristic
         v-for="characteristic in characteristics"
         :key="characteristic.title"
@@ -187,7 +216,7 @@
 import { SfHeading, SfProperty, SfCharacteristic, SfLink, SfInput, SfButton, SfIcon } from '@storefront-ui/vue';
 import { computed, ref, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
-import { cartGetters, useGiftCard, useUiNotification } from '~/composables';
+import { cartGetters, useGiftCard, useUiNotification, useCoupon } from '~/composables';
 
 export default defineComponent({
   name: 'CartPreview',
@@ -201,8 +230,9 @@ export default defineComponent({
     SfIcon
   },
   setup(props, context) {
-    const { cart, applyCoupon, load, setCart } = useCart();
+    const { cart, load, setCart } = useCart();
     const { applyGiftCard, loading, error } = useGiftCard();
+    const { applyCoupon, loading: loadingCoupon, error: errorCoupon } = useCoupon();
     const { name } = useRoute().value;
     const { send } = useUiNotification();
 
@@ -210,8 +240,10 @@ export default defineComponent({
       context.root.$route.path.split('/').pop()
     );
     const listIsHidden = ref(false);
+    const showGiftCard = ref(false);
     const promoCodeAdded = ref(false);
-    const promoCode = ref('');
+    const giftCode = ref('');
+    const couponCode = ref('');
     const showPromoCode = ref(false);
     const partner = computed(() => cart?.value?.order?.partner || {});
     const partnerShipping = computed(() => cart?.value?.order?.partnerShipping || {});
@@ -227,7 +259,7 @@ export default defineComponent({
     const isPersonalOrShippingPage = computed(() => ['personaldetails', 'shipping'].includes(name));
 
     const handleAddGiftCard = async () => {
-      await applyGiftCard(promoCode.value);
+      await applyGiftCard(giftCode.value);
 
       if (error.value) {
         send({ message: error.value, type: 'danger' });
@@ -239,14 +271,29 @@ export default defineComponent({
       promoCodeAdded.value = true;
     };
 
+    const handleAddCouponCode = async () => {
+      await applyCoupon(couponCode.value);
+
+      if (errorCoupon.value) {
+        send({ message: errorCoupon.value, type: 'danger' });
+        errorCoupon.value = null;
+        return;
+      }
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoad' } });
+    };
+
     const handleRemoveGiftCard = () => {
 
     };
 
     return {
+      handleAddCouponCode,
+      showGiftCard,
       handleRemoveGiftCard,
       promoCodeAdded,
       isPersonalOrShippingPage,
+      loadingCoupon,
       cart,
       handleAddGiftCard,
       loading,
@@ -260,7 +307,8 @@ export default defineComponent({
       listIsHidden,
       products,
       totals,
-      promoCode,
+      giftCode,
+      couponCode,
       showPromoCode,
       checkoutGetters,
       cartGetters,

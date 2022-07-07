@@ -2,10 +2,7 @@
     box-sizing: border-box;
     width: 100%;
     background-color: var(--c-light);
-    padding: var(--spacer-xl) var(--spacer-xl) 0;
-    @include for-mobile {
-      padding: var(--spacer-xl) var(--spacer-lg) 0;
-    }
+    padding: 0 var(--spacer-xl) 0;
     &:last-child {
       padding-bottom: var(--spacer-xl);
     }
@@ -41,15 +38,15 @@
     height: 18px !important;
   }
   .promo-code {
-    // display: flex;
-    // align-items: flex-start;
+    height: 65px;
     &__button {
       width: 100px;
       --button-height: var(--spacer-lg);
-      position: absolute;
-      top: 44px;
-      right: 45px;
+      position: relative;
+      top: -58px;
+      left: 223px;
       padding: 8px
+   
     }
     &__input {
       --input-background: var(--c-white);
@@ -57,6 +54,17 @@
       border-radius: 100px !important;
     }
     position: relative;
+  }
+  @media (max-width: 1024px) {
+    .promo-code {
+      &__button {
+        position: relative;
+        top: -59px;
+        left: 100%;
+        margin-left: -105px;
+        height: 33px;
+      } 
+    }
   }
   
   
