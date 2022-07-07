@@ -31,7 +31,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ $currency(getPrice(orderLine)) }}
+        {{ orderLine.giftCard || orderLine.coupon ? $currency(cartGetters.getItemPrice(orderLine).regular) : $currency(getPrice(orderLine)) }}
       </span>
 
       <div class="mt-3 w-8/12 md:w-full">

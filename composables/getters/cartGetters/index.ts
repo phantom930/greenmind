@@ -16,6 +16,8 @@ export const getStandGradeName = (orderLine: GreenOrderLine): string => {
 
 export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine;
 
+export const getDiscountPrice = (orderLine: GreenOrderLine): string => `${String(orderLine.priceTotal)?.replace('-', '')} Discount`;
+
 export const getTotalItems = (cart: GreenCart): number => cart?.order?.totalCount || 0;
 
 export const getAccessories = (cart: GreenCart): GreenOrderLine[] => cart?.order?.accessoryLines;
@@ -25,10 +27,6 @@ export const accessoryIsInCart = (cart: GreenCart, acessoryId: number): boolean 
 };
 
 export const getPrice = (cart: GreenCart, orderLine: GreenOrderLine): number => {
-  if (orderLine.coupon || orderLine.giftCard) {
-    return cartGetters.getItemPrice(orderLine).regular;
-  }
-
   let totalAccessoryValue = 0;
   orderLine.product?.accessoryProducts?.forEach(accessory => {
     if (accessoryIsInCart(cart, accessory.id)) {
@@ -49,7 +47,8 @@ const getters = {
   getPrice,
   accessoryIsInCart,
   getItemImageFilename,
-  getStandGradeName
+  getStandGradeName,
+  getDiscountPrice
 };
 
 export default getters;
