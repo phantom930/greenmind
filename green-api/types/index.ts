@@ -39,6 +39,10 @@ export interface CreateUpdatePartnerInput {
     email: string
 }
 
+export interface ApplyGiftCardInput {
+    promo: string
+}
+
 export interface CombinationInfo {
     product_id: number;
     product_template_id: number;
