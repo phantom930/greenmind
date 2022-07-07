@@ -25,7 +25,7 @@
     </div>
   </div>
 </template>
-<script lang="ts">
+<script >
 import { SfSteps } from '@storefront-ui/vue';
 import { useCart } from '@vue-storefront/odoo';
 import { computed } from '@nuxtjs/composition-api';
@@ -46,7 +46,7 @@ export default defineComponent({
   },
   layout: 'checkout',
   middleware: 'checkout',
-  setup() {
+  setup(props, context) {
     const router = useRouter();
     const route = useRoute();
     const { load, setCart } = useCart();
@@ -67,8 +67,12 @@ export default defineComponent({
     };
 
     onSSR(async () => {
+
       setCart(null);
-      await load({ customQuery: { cartLoad: 'greenCartLoad' } });
+      const { data } = await context.root.context.$vsf.$odoo.api.cartLoadWithUpdate({ updatePrices: true });
+
+      setCart(data.cart);
+      // await load({ customQuery: { cartLoad: 'greenCartLoad' } });
     });
     return {
       handleStepByNumber,
