@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-5">
+  <div class="py-5">
     <div v-if="currentStep !== 'revieworder'">
       <div class="highlighted">
         <SfHeading
@@ -165,7 +165,7 @@
       </GreenButton>
     </div>
     <div class="highlighted promo-code text-center mb-8">
-      <span class="mb-3 text-fern-secondary underline" @click="showGiftCard = !showGiftCard">Pay with gift card</span>
+      <span class="mb-3 text-fern-secondary underline cursor-pointer" @click="showGiftCard = !showGiftCard">{{ $t('Pay with gift card') }}</span>
       <transition
         name="sf-fade"
         mode="out-in"
@@ -213,7 +213,7 @@
   </div>
 </template>
 <script lang="ts">
-import { SfHeading, SfProperty, SfCharacteristic, SfLink, SfInput, SfButton, SfIcon } from '@storefront-ui/vue';
+import { SfHeading, SfProperty, SfCharacteristic, SfLink, SfInput } from '@storefront-ui/vue';
 import { computed, ref, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
 import { cartGetters, useGiftCard, useUiNotification, useCoupon } from '~/composables';
@@ -225,9 +225,7 @@ export default defineComponent({
     SfProperty,
     SfCharacteristic,
     SfLink,
-    SfInput,
-    SfButton,
-    SfIcon
+    SfInput
   },
   setup(props, context) {
     const { cart, load, setCart } = useCart();

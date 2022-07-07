@@ -200,8 +200,8 @@ module.exports = {
   greenCartLoad: ({variables}) => ({
     variables,
     query: gql`
-    query {
-      cart {
+    query($updatePrices: Boolean){
+      cart(updatePrices: $updatePrices){
         ${orderFragment}
       }
     }`

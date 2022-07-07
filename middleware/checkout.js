@@ -38,7 +38,7 @@ const checkout = async ({ app, $vsf }) => {
   const currentPath = app.context.route.fullPath.split('/checkout/')[1];
   if (!currentPath) return;
 
-  const { data } = await $vsf.$odoo.api.cartLoad({ cartLoad: 'greenCartLoad' });
+  const { data } = await $vsf.$odoo.api.cartLoadWithUpdate({ updatePrices: true });
   if (!data) return;
 
   switch (currentPath) {
