@@ -144,7 +144,7 @@
         </div>
       </div>
     </div>
-    <!-- <div class="highlighted promo-code">
+    <div class="highlighted promo-code">
       <SfInput
         v-model="promoCode"
         data-cy="cart-preview-input_promoCode"
@@ -152,13 +152,25 @@
         :label="$t('Enter promo code')"
         class="sf-input--filled promo-code__input total-input"
       />
-      <SfButton
+      <GreenButton
         class="promo-code__button"
-        @click="() => applyCoupon({ couponCode: promoCode })"
+        :disabled="loading || !promoCode"
+        :loading="loading"
+        style-type="Primary"
+        color="Grey"
+        shape="Round"
+        @click="handleAddGiftCard"
       >
-        {{ $t("Apply") }}
-      </SfButton>
-    </div> -->
+        <!-- :class="promoCodeAdded ? 'promo-added' : ''" -->
+        <!-- <SfIcon
+          v-if="promoCodeAdded"
+          icon="cross"
+          color="white"
+          size="sm"
+        /> -->
+        <span>{{ $t("Apply") }}</span>
+      </GreenButton>
+    </div>
     <div class="highlighted">
       <SfCharacteristic
         v-for="characteristic in characteristics"
@@ -172,10 +184,10 @@
   </div>
 </template>
 <script lang="ts">
-import { SfHeading, SfProperty, SfCharacteristic, SfLink } from '@storefront-ui/vue';
+import { SfHeading, SfProperty, SfCharacteristic, SfLink, SfInput, SfButton, SfIcon } from '@storefront-ui/vue';
 import { computed, ref, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
-import { cartGetters } from '~/composables';
+import { cartGetters, useGiftCard, useUiNotification } from '~/composables';
 
 export default defineComponent({
   name: 'CartPreview',
@@ -183,15 +195,22 @@ export default defineComponent({
     SfHeading,
     SfProperty,
     SfCharacteristic,
-    SfLink
+    SfLink,
+    SfInput,
+    SfButton,
+    SfIcon
   },
   setup(props, context) {
-    const { cart, applyCoupon } = useCart();
+    const { cart, applyCoupon, load, setCart } = useCart();
+    const { applyGiftCard, loading, error } = useGiftCard();
     const { name } = useRoute().value;
+    const { send } = useUiNotification();
+
     const currentStep = computed(() =>
       context.root.$route.path.split('/').pop()
     );
     const listIsHidden = ref(false);
+    const promoCodeAdded = ref(false);
     const promoCode = ref('');
     const showPromoCode = ref(false);
     const partner = computed(() => cart?.value?.order?.partner || {});
@@ -207,9 +226,30 @@ export default defineComponent({
 
     const isPersonalOrShippingPage = computed(() => ['personaldetails', 'shipping'].includes(name));
 
+    const handleAddGiftCard = async () => {
+      await applyGiftCard(promoCode.value);
+
+      if (error.value) {
+        send({ message: error.value, type: 'danger' });
+        error.value = null;
+        return;
+      }
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoad' } });
+      promoCodeAdded.value = true;
+    };
+
+    const handleRemoveGiftCard = () => {
+
+    };
+
     return {
+      handleRemoveGiftCard,
+      promoCodeAdded,
       isPersonalOrShippingPage,
       cart,
+      handleAddGiftCard,
+      loading,
       currentStep,
       partner,
       partnerShipping,
