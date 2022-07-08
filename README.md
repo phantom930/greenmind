@@ -52,11 +52,11 @@ export GTAG_KEY=G-YYZ9TG2MS2
 export GTM_KEY=GTM-K9V7Q37
 export KLAVIYO_KEY=NzYWAu
 export NODE_LOCALE=en-EN
-export PUBLIC_PATH=https://rune.greenmind.systems/
-export SITE_URL=http://localhost:3000
+export PUBLIC_PATH=https://vue-dev.greenmind.space/
+export SITE_URL=https://vue-dev.greenmind.space/
 export INVALIDATION_KEY=0ead60c3-d118-40be-9519-d531462ddc60
 export SITEMAP_CACHE=6000
-export BACKEND_BASE_URL=https://vue-dev.greenmind.space/
+export BACKEND_BASE_URL=https://web-dev.greenmind.space/
 export BASE_URL=https://web-dev.greenmind.space/
 export BASE_DOMAIN=vue-dev.greenmind.space
 ```

@@ -34,7 +34,7 @@ if (!isDev) {
   klaviyoKey = process.env.KLAVIYO_KEY || pushToNotDefined('KLAVIYO_KEY');
   nodeLocale = process.env.NODE_LOCALE || pushToNotDefined('NODE_LOCALE');
   baseURL = process.env.PUBLIC_PATH || process.env.BASE_URL || pushToNotDefined('PUBLIC_PATH or BASE_URL');
-  siteUrl = removeLastBar(process.env.SITE_URL || pushToNotDefined('SITE_URL'));
+  siteUrl = process.env.SITE_URL ? removeLastBar(process.env.SITE_URL) : pushToNotDefined('SITE_URL');
   rebuildRefreshToken = process.env.INVALIDATION_KEY || pushToNotDefined('INVALIDATION_KEY');
   sitemapCacheTime = Number(process.env.SITEMAP_CACHE || pushToNotDefined('SITEMAP_CACHE'));
   // TODO: BACKEND_BASE_URL NOT being used in production yet
