@@ -134,12 +134,12 @@
 </template>
 <script >
 import { computed, defineComponent, reactive, useRoute, useRouter } from '@nuxtjs/composition-api';
-import { SfBreadcrumbs, SfGallery, SfHeading, SfLoader } from '@storefront-ui/vue';
+import { SfBreadcrumbs, SfHeading, SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
-import { productGetters, useUiState, facetGetters } from '~/composables';
 import LazyHydrate from 'vue-lazy-hydration';
+import { facetGetters, productGetters, useUiState } from '~/composables';
 
 export default defineComponent({
   name: 'Product',

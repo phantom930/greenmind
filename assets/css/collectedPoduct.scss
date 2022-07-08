@@ -101,8 +101,11 @@
 }
 
 .gift-coupon {
-  height: 200px !important;
+  height: 40px !important;
   min-height: 0 !important;
+}
+.gift-coupon:nth-child(1) {
+  display: none !important;
 }
 
 ::v-deep .sf-collected-product__quantity-wrapper {

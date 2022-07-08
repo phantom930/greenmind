@@ -144,7 +144,7 @@
         </div>
       </div>
     </div>
-    <div class="highlighted promo-code text-center">
+    <!-- <div class="highlighted promo-code text-center">
       <SfInput
         v-model="couponCode"
         data-cy="cart-preview-input_promoCode"
@@ -163,8 +163,8 @@
       >
         <span>{{ $t("Apply") }}</span>
       </GreenButton>
-    </div>
-    <div class="highlighted promo-code text-center mb-8">
+    </div> -->
+    <!-- <div class="highlighted promo-code text-center mb-8">
       <span class="mb-3 text-fern-secondary underline cursor-pointer" @click="showGiftCard = !showGiftCard">{{ $t('Pay with gift card') }}</span>
       <transition-group
         name="sf-fade"
@@ -190,18 +190,11 @@
             shape="Round"
             @click="handleAddGiftCard"
           >
-            <!-- :class="promoCodeAdded ? 'promo-added' : ''" -->
-            <!-- <SfIcon
-          v-if="promoCodeAdded"
-          icon="cross"
-          color="white"
-          size="sm"
-        /> -->
             <span>{{ $t("Apply") }}</span>
           </GreenButton>
         </template>
       </transition-group>
-    </div>
+    </div> -->
     <div class="highlighted pt-10">
       <SfCharacteristic
         v-for="characteristic in characteristics"

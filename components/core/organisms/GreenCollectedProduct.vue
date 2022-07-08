@@ -11,13 +11,16 @@
       cartGetters.getItemPrice(orderLine).special &&
         $currency(cartGetters.getItemPrice(orderLine).special)
     "
-    :class="orderLine.coupon || orderLine.giftCard ? 'gift-coupon' : ''"
+    :class="isGiftCardOrCoupon ? 'gift-coupon' : ''"
     :max-qty="quantityInStock"
     :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
     @input="handleUpdateItem(orderLine, $event)"
     @click:remove="handleRemoveItemAndAccessories(orderLine)"
   >
+    <template #image>
+      <div v-if="isGiftCardOrCoupon" />
+    </template>
     <template #title>
       <span class="custom-product-title"> {{ cartGetters.getItemTitle(orderLine) }} </span>
       <span class="custom-subtitle"> {{ cartGetters.getItemWebsiteTitle(orderLine) }} </span>
@@ -32,7 +35,7 @@
 
     <template #price>
       <span class="green-collected-product__price">
-        {{ orderLine.giftCard || orderLine.coupon ? $currency(cartGetters.getItemPrice(orderLine).regular) : $currency(getPrice(orderLine)) }}
+        {{ isGiftCardOrCoupon ? $currency(cartGetters.getItemPrice(orderLine).regular) : $currency(getPrice(orderLine)) }}
       </span>
 
       <div class="mt-3 w-8/12 md:w-full">
@@ -88,7 +91,10 @@ export default defineComponent({
 
     const quantityInStock = computed(() => props.orderLine?.product?.qty || 0);
 
+    const isGiftCardOrCoupon = computed(() => props.orderLine?.giftCard || props.orderLine.coupon);
+
     return {
+      isGiftCardOrCoupon,
       quantityInStock,
       loading,
       orderLineHasAccessory,
