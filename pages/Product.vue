@@ -52,14 +52,14 @@
         />
         <div>
           <LazyProductSelectGrade
-            v-if="productGrades.length > 0"
+            v-if="productGrades && productGrades.length > 0"
             :product-grades="productGrades"
             :product-variant-id="combinationInfo.product_id"
             @update="handleSelectNewGrade"
           />
 
           <div
-            v-if="accessoryProducts.length > 0"
+            v-if="accessoryProducts && accessoryProducts.length > 0"
             class="checkbox-title-wrap"
           >
             <div class="title">
@@ -123,7 +123,7 @@
     <div class="product_carousel">
       <LazyHydrate when-idle>
         <LazyGreenCarousel
-          v-if="sliderProducts.length > 0"
+          v-if="sliderProducts && sliderProducts.length > 0"
           :item="sliderProducts"
           :carousel_title="$t('Popular products')"
           style="padding-top: 5%"
