@@ -315,7 +315,6 @@ export default {
     exclude: ['/checkout/**', '/checkout', '/dashboard/**', '/dashboard'],
     hostname: siteUrl,
     i18n: false,
-    cacheTime: sitemapCacheTime,
     gzip: true,
     defaults: {
       changefreq: 'daily',
