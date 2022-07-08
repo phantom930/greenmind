@@ -79,7 +79,7 @@
       </div>
     </form>
 
-    <GreenCheckbox
+    <!-- <GreenCheckbox
       v-model="newsLetter"
       :value="newsLetter"
       :has-general-wrapper="false"
@@ -87,14 +87,14 @@
       :label="$t('Join newsletter')"
     />
 
-    <span class="italic text-sm">{{ $t('By subscribing to the newsletter, you also accept Green Minds privacy policy') }}</span>
-    <nuxt-link
+    <span class="italic text-sm">{{ $t('By subscribing to the newsletter, you also accept Green Minds privacy policy') }}</span> -->
+    <!-- <nuxt-link
       :to="{ name: 'gdpr' }"
       class="italic text-sm underline"
       :title="$t('read more')"
     >
       {{ $t('read more') }}
-    </nuxt-link>
+    </nuxt-link> -->
 
     <!-- <p v-show="invalid" class="title">
         Enjoy these perks with your free account!
