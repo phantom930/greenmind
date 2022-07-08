@@ -25,7 +25,7 @@ HOST - netork interface
 NODE_ENV - for enviroments
 NODE_LOCALE - for translations
 BASE_URL - for odoo backend api
-BACKEND_BASE_URL - for odoo backend api through local network
+BACKEND_BASE_URL - for odoo backend api through local network (NOT currently being used in Production)
 PUBLIC_PATH - for CDN url
 SITE_URL - for sitemap host url
 BASE_DOMAIN - to build routes, redirects (sended in request-host to enable multi language)
