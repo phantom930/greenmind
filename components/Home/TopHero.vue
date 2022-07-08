@@ -1,11 +1,11 @@
 <template>
   <SfHero class="top-hero mt-1.5">
-    <nuxt-link :to="{ name: 'home' }" :title="$t('Home')">
+    <!-- <nuxt-link :to="{ name: 'home' }" :title="$t('Home')">
       <SfHeroItem
         class="top-hero-item"
         :image="require(`/assets/images/homeHero/homeHero_red.webp`)"
       />
-    </nuxt-link>
+    </nuxt-link> -->
     <nuxt-link :to="{ name: 'home' }" :title="$t('Home')">
       <SfHeroItem
         class="top-hero-item"
