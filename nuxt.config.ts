@@ -21,6 +21,18 @@ import {
   sitemapCacheTime
 } from './ENV';
 
+console.log({
+  cookieBotKey,
+  gtagKey,
+  gtmKey,
+  klaviyoKey,
+  nodeLocale,
+  baseURL,
+  siteUrl,
+  rebuildRefreshToken,
+  sitemapCacheTime
+});
+
 const { makeBuild, makeModules } = Config();
 const isDev = process.env.NODE_ENV !== 'production';
 
