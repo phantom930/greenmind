@@ -38,7 +38,7 @@ if (!isDev) {
   rebuildRefreshToken = process.env.INVALIDATION_KEY || pushToNotDefined('INVALIDATION_KEY');
   sitemapCacheTime = Number(process.env.SITEMAP_CACHE || pushToNotDefined('SITEMAP_CACHE'));
   // TODO: BACKEND_BASE_URL NOT being used in production yet
-  odooBaseUrl = process.env.BASE_URL
+  odooBaseUrl = process.env.BASE_URL;
   // odooBaseUrl = process.env.BACKEND_BASE_URL || pushToNotDefined('BACKEND_BASE_URL');
   baseDomain = process.env.BASE_DOMAIN || pushToNotDefined('BASE_DOMAIN');
 }

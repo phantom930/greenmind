@@ -56,6 +56,7 @@ export PUBLIC_PATH=https://rune.greenmind.systems/
 export SITE_URL=http://localhost:3000
 export INVALIDATION_KEY=0ead60c3-d118-40be-9519-d531462ddc60
 export SITEMAP_CACHE=6000
-export BACKEND_BASE_URL=https://rune.greenmind.systems/
+export BACKEND_BASE_URL=https://vue-dev.greenmind.space/
+export BASE_URL=https://web-dev.greenmind.space/
 export BASE_DOMAIN=vue-dev.greenmind.space
 ```
