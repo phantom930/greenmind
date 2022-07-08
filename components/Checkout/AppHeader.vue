@@ -80,12 +80,10 @@ export default {
     const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
     const { load: loadUser } = useUser();
-    const { load: loadCart } = useCart();
 
     onSSR(async () => {
       await Promise.all([
-        loadUser(),
-        loadCart({ customQuery: { cartLoad: 'greenCartLoad' } })
+        loadUser()
       ]);
     });
 

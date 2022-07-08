@@ -39,6 +39,8 @@ const checkout = async ({ app, $vsf }) => {
   if (!currentPath) return;
 
   const { data } = await $vsf.$odoo.api.cartLoadWithUpdate({ updatePrices: true });
+  $vsf.$odoo.cart = data.cart;
+
   if (!data) return;
 
   switch (currentPath) {

@@ -27,10 +27,8 @@
 </template>
 <script >
 import { SfSteps } from '@storefront-ui/vue';
-import { useCart } from '@vue-storefront/odoo';
 import { computed } from '@nuxtjs/composition-api';
 import { useRouter, useRoute, defineComponent } from '@nuxtjs/composition-api';
-import { onSSR } from '@vue-storefront/core';
 
 const STEPS = {
   personaldetails: 'Personal details',
@@ -46,10 +44,9 @@ export default defineComponent({
   },
   layout: 'checkout',
   middleware: 'checkout',
-  setup(props, context) {
+  setup() {
     const router = useRouter();
     const route = useRoute();
-    const { load, setCart } = useCart();
 
     const currentStep = computed(() =>
       route.value.path?.split('/').pop()
@@ -66,14 +63,6 @@ export default defineComponent({
       router.push({ name: stepNameIndex});
     };
 
-    onSSR(async () => {
-
-      setCart(null);
-      const { data } = await context.root.context.$vsf.$odoo.api.cartLoadWithUpdate({ updatePrices: true });
-
-      setCart(data.cart);
-      // await load({ customQuery: { cartLoad: 'greenCartLoad' } });
-    });
     return {
       handleStepByNumber,
       handleStepClick,
