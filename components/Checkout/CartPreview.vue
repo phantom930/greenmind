@@ -144,32 +144,48 @@
         </div>
       </div>
     </div>
-    <!-- <div class="highlighted promo-code text-center">
-      <SfInput
-        v-model="couponCode"
-        data-cy="cart-preview-input_promoCode"
-        name="couponCode"
-        :label="$t('Enter Coupon code')"
-        class="sf-input--filled promo-code__input total-input mt-5 text-left"
-      />
-      <GreenButton
-        class="promo-code__button"
-        :disabled="loadingCoupon || !couponCode"
-        :loading="loadingCoupon"
-        style-type="Primary"
-        color="Grey"
-        shape="Round"
-        @click="handleAddCouponCode"
+    <div class="highlighted promo-code text-center mt-5">
+      <span class="mb-3 text-fern-secondary underline cursor-pointer" @click="showCoupon = !showCoupon">{{ $t('Use coupon') }}</span>
+
+      <transition-group
+        name="sf-fade"
+        mode="out-in"
+        type="transition"
+        tag="div"
+        style="max-height: 45px"
       >
-        <span>{{ $t("Apply") }}</span>
-      </GreenButton>
-    </div> -->
-    <!-- <div class="highlighted promo-code text-center mb-8">
+        <template v-if="showCoupon">
+          <SfInput
+            key="input"
+            v-model="couponCode"
+            data-cy="cart-preview-input_promoCode"
+            name="couponCode"
+            :label="$t('Enter Coupon code')"
+            class="sf-input--filled promo-code__input total-input mt-5 text-left"
+          />
+          <GreenButton
+            key="button"
+            class="promo-code__button"
+            :disabled="loadingCoupon || !couponCode"
+            :loading="loadingCoupon"
+            style-type="Primary"
+            color="Grey"
+            shape="Round"
+            @click="handleAddCouponCode"
+          >
+            <span>{{ $t("Apply") }}</span>
+          </GreenButton>
+        </template>
+      </transition-group>
+    </div>
+    <div class="highlighted promo-code text-center mb-8 mt-5">
       <span class="mb-3 text-fern-secondary underline cursor-pointer" @click="showGiftCard = !showGiftCard">{{ $t('Pay with gift card') }}</span>
       <transition-group
         name="sf-fade"
         mode="out-in"
         type="transition"
+        tag="div"
+        style="max-height: 45px"
       >
         <template v-if="showGiftCard">
           <SfInput
@@ -194,7 +210,7 @@
           </GreenButton>
         </template>
       </transition-group>
-    </div> -->
+    </div>
     <div class="highlighted pt-10">
       <SfCharacteristic
         v-for="characteristic in characteristics"
@@ -234,6 +250,7 @@ export default defineComponent({
     );
     const listIsHidden = ref(false);
     const showGiftCard = ref(false);
+    const showCoupon = ref(false);
     const promoCodeAdded = ref(false);
     const giftCode = ref('');
     const couponCode = ref('');
@@ -281,6 +298,7 @@ export default defineComponent({
     };
 
     return {
+      showCoupon,
       handleAddCouponCode,
       showGiftCard,
       handleRemoveGiftCard,
