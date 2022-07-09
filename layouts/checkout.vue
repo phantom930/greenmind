@@ -56,7 +56,6 @@ export default {
 
     });
 
-    console.log(partnerIsSaved.value);
     if (!partnerIsSaved.value) {
       return router.push('/checkout/personaldetails');
     }
