@@ -14,7 +14,7 @@
     "dev-default": "nuxt",
     "dev": "nuxt --hostname vue-dev.greenmind.space.local --port 3000",
     "generate": "nuxt generate",
-    "start": "nuxt start",
+    "start": "cross-env NODE_ENV=production nuxt start",
     "precommit": "lint-staged",
     "update:check": "ncu",
     "update:update": "ncu -u",
