@@ -28,9 +28,7 @@ export default {
   setup (props, context) {
     const { setCart } = useCart();
 
-    onSSR(async () => {
-      setCart(context.root.context.$vsf.$odoo.cart);
-    });
+    setCart(context.root.context.$vsf.$odoo.cart);
   }
 };
 </script>
