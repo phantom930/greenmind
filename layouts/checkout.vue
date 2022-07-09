@@ -33,9 +33,9 @@ export default {
       setCart(context.root.context.$vsf.$odoo.cart);
     });
 
-    onMounted(() => {
+    onMounted(async () => {
       setCart(null);
-      const { data } = await context.root.context.$vsf.$odoo.api.cartLoadWithUpdate({ updatePrices: true });
+      const { data } = await context.root.context.$vsf.$odoo.api.cartLoadWithUpdate({ updatePrice: true });
       setCart(data.cart);
     });
   }
