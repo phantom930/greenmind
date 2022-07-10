@@ -235,6 +235,10 @@ export default defineComponent({
           title: 'Help',
           childs: [
             {
+              name: 'Customer service',
+              slug: 'customer-service'
+            },
+            {
               name: 'Returnering',
               slug: 'freight-return'
             },
@@ -261,10 +265,9 @@ export default defineComponent({
       contactColumn: {
         title: 'Shops',
         contactChilds: [
-          {
-              name: 'Customer service',
-              slug: 'customer-service'
-          }
+          { name: 'Tlf: +45 4697 5050', text: 'Tel: +45 4697 5050' },
+          { name: 'mailto: mail@greenmind.dk', text: 'emailSendTo' },
+          { name: 'Customer service', slug: 'customer-service' }
         ],
         childs: [
           {
