@@ -153,21 +153,6 @@
         <tr>
           <td class="text">
             Aarhus<br>
-            (Guldsmedegade)
-          </td>
-          <td class="text">
-            Guldsmedgade 2 <br>
-            8000 Aarhus C
-          </td>
-          <td class="text">
-            Mandag – Fredag: kl. 10-18 * <br>
-            Lørdag: kl. 10-16 * <br>
-            Søndag: Lukket
-          </td>
-        </tr>
-        <tr>
-          <td class="text">
-            Aarhus<br>
             (Ryesgade)
           </td>
           <td class="text">
