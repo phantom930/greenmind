@@ -264,17 +264,15 @@ export default defineComponent({
       ],
       contactColumn: {
         title: 'Shops',
+        contactChilds: [
+          { name: 'Tlf: +45 4697 5050', text: 'Tel: +45 4697 5050' },
+          { name: 'mailto: mail@greenmind.dk', text: 'emailSendTo' },
+          { name: 'Customer service', slug: 'customer-service' }
+        ],
         childs: [
           {
             name: 'Find store',
             slug: 'shops'
-          }
-        ]
-        title: 'Kontakt',
-        childs: [
-          {
-            name: 'Customer service',
-            slug: 'customer-service'
           }
         ]
       },
