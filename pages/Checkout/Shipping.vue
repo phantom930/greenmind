@@ -141,7 +141,7 @@ export default defineComponent({
   emits: ['finish', 'change'],
   setup(_, { emit, refs }) {
     const { partner } = usePartner();
-    const { cart, load: loadCart, setCart } = useCart();
+    const { cart } = useCart();
     const { search, countries } = useCountrySearch('countries');
     const { isAuthenticated } = useUser();
 
