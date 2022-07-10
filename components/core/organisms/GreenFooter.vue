@@ -260,7 +260,7 @@ export default defineComponent({
       ],
       contactColumn: {
         title: 'Shops',
-        contactChilds: [
+        childs: [
           {
               name: 'Customer service',
               slug: 'customer-service'
