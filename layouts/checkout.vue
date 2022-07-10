@@ -22,7 +22,7 @@ import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
 import { onSSR } from '@vue-storefront/core';
 import { useCart } from '@vue-storefront/odoo';
-import { onMounted } from '@nuxtjs/composition-api';
+import { useRouter, useStore } from '@nuxtjs/composition-api';
 
 export default {
   name: 'DefaultLayout',
