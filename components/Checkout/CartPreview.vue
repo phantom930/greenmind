@@ -1,7 +1,7 @@
 <template>
   <div class="py-5">
     <div v-if="currentStep !== 'revieworder'">
-      <div class="highlighted">
+      <div class="highlighted mb-5">
         <SfHeading
           :level="3"
           :title="$t('Totals')"

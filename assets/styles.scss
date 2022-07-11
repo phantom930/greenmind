@@ -230,6 +230,10 @@ h4 {
   }
 }
 
+.gift-coupon > .sf-collected-product__aside {
+  display: none !important;
+}
+
 .sf-input__wrapper {
   height: 55px;
   input {

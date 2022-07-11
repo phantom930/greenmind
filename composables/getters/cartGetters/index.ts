@@ -14,7 +14,9 @@ export const getStandGradeName = (orderLine: GreenOrderLine): string => {
   return orderLine?.product?.combinationInfoVariant?.grade_name || '';
 };
 
-export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine;
+export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine.sort(item => {
+  if (item.coupon || item.giftCard) return 1;
+});
 
 export const getDiscountPrice = (orderLine: GreenOrderLine): string => `${String(orderLine.priceTotal)?.replace('-', '')} Discount`;
 
