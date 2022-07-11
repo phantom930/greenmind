@@ -91,7 +91,7 @@
           shape="Round"
           :size="$device.isMobile ? 'Max' : 'Medium'"
           :disabled="!agreeTermsConditions"
-          @click="$router.push('/checkout/payment')"
+          @click="$emit('change', 'payment')"
         >
           {{ $t("GO TO PAYMENT") }}
         </GreenButton>
