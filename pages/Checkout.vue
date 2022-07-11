@@ -89,7 +89,6 @@ export default defineComponent({
         return;
       }
 
-      console.log('load ');
       setCart(null);
       await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
       router.push(`/checkout/${step}`);
