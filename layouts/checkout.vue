@@ -37,6 +37,9 @@ export default {
       next();
     });
 
+    const cart = JSON.parse(JSON.stringify(store.getters.getCheckoutCart));
+    setCart(cart);
+
     onSSR(async () => {
       setCart(context.root.context.$vsf.$odoo.cart);
     });
