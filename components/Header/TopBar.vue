@@ -3,7 +3,7 @@
     <template #center>
       <nuxt-link
         :to="{ name: 'discountCampaign' }"
-        class="underline text-center y-link"
+        class="underline text-center y-link sf-button"
         title="SE AKTIVE KAMPAGNER"
       >
         SE AKTIVE KAMPAGNER
