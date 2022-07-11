@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { computed, useRoute, useRouter } from '@nuxtjs/composition-api';
+import { computed, onMounted, useRoute, useRouter } from '@nuxtjs/composition-api';
 import { onSSR } from '@vue-storefront/core';
 import { usePartner } from '~/composables';
 import { useCart } from '@vue-storefront/odoo';
@@ -50,16 +50,21 @@ export default {
 
     onSSR(async () => {
       await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
-
     });
 
-    if (!partnerIsSaved.value) {
-      return router.push('/checkout/personaldetails');
-    }
+    onMounted(() => {
+      if (cart.value?.order?.websiteOrderLine.length === 0) {
+        return router.push('/');
+      }
+      if (!partnerIsSaved.value) {
+        return router.push('/checkout/personaldetails');
+      }
 
-    if (!hasPartnerShipping.value || !hasPartnerInvoice.value) {
-      return router.push('/checkout/shipping');
-    }
+      if (!hasPartnerShipping.value || !hasPartnerInvoice.value) {
+        return router.push('/checkout/shipping');
+      }
+    });
+
   }
 };
 </script>
