@@ -27,8 +27,9 @@
 </template>
 <script >
 import { SfSteps } from '@storefront-ui/vue';
-import { computed } from '@nuxtjs/composition-api';
-import { useRouter, useRoute, defineComponent } from '@nuxtjs/composition-api';
+import { useCart } from '@vue-storefront/odoo';
+import { usePartner } from '~/composables';
+import { computed, useRouter, useRoute, defineComponent } from '@nuxtjs/composition-api';
 
 const STEPS = {
   personaldetails: 'Personal details',
@@ -43,10 +44,14 @@ export default defineComponent({
     SfSteps
   },
   layout: 'checkout',
-  middleware: 'checkout',
   setup() {
     const router = useRouter();
     const route = useRoute();
+    const { load, cart, setCart } = useCart();
+    const { partner } = usePartner();
+
+    partner.value.name = cart?.value?.order?.partnerShipping?.name || null;
+    partner.value.email = cart?.value?.order?.partnerShipping?.email || null;
 
     const currentStep = computed(() =>
       route.value.path?.split('/').pop()
@@ -54,16 +59,68 @@ export default defineComponent({
     const currentStepIndex = computed(() =>
       Object.keys(STEPS).findIndex((s) => s === currentStep.value)
     );
-    const handleStepClick = (step) => {
+
+    const hasPartnerShipping = computed(() =>
+      cart.value?.order?.partnerShipping?.id !== null &&
+      cart.value?.order?.partnerShipping?.email !== null &&
+      cart.value?.order?.partnerShipping?.country !== null &&
+      cart.value?.order?.partnerShipping?.name !== null
+    );
+
+    const hasPartnerInvoice = computed(() =>
+      cart.value?.order?.partnerInvoice?.id !== null &&
+      cart.value?.order?.partnerInvoice?.email !== null &&
+      cart.value?.order?.partnerInvoice?.country !== null &&
+      cart.value?.order?.partnerInvoice?.name !== null
+    );
+
+    const partnerIsSaved = computed(() => partner?.value?.name && !partner?.value?.name?.toUpperCase()?.includes('PUBLIC'));
+
+    const handleStepClick = async(step) => {
+      if (!partnerIsSaved.value) {
+        return;
+      }
+
+      if (step === 'revieworder' && (!hasPartnerShipping.value || !hasPartnerInvoice.value)) {
+        return;
+      }
+
+      if (step === 'payment' && (!hasPartnerShipping.value || !hasPartnerInvoice.value) && !partnerIsSaved.value) {
+        return;
+      }
+
+      console.log('load ');
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
       router.push(`/checkout/${step}`);
     };
-    const handleStepByNumber = (stepNumber) => {
+
+    const handleStepByNumber = async (stepNumber) => {
       const stepNameIndex = Object.keys(STEPS)[stepNumber];
+      if (!partnerIsSaved.value) {
+        return;
+      }
+
+      if (stepNameIndex === 'revieworder' && (!hasPartnerShipping.value || !hasPartnerInvoice.value)) {
+        return;
+      }
+
+      if (stepNameIndex === 'payment' && (!hasPartnerShipping.value || !hasPartnerInvoice.value) && (partner === null || !partner?.value?.name || !partner?.value?.email)) {
+        return;
+      }
+
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
 
       router.push({ name: stepNameIndex});
     };
 
     return {
+      cart,
+      hasPartnerInvoice,
+      hasPartnerShipping,
+      partner,
+      partnerIsSaved,
       handleStepByNumber,
       handleStepClick,
       STEPS,

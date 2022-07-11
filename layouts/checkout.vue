@@ -14,11 +14,12 @@
 </template>
 
 <script>
+import { computed, useRoute, useRouter } from '@nuxtjs/composition-api';
+import { onSSR } from '@vue-storefront/core';
+import { usePartner } from '~/composables';
+import { useCart } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import Notification from '~/components/Notification';
-import { onSSR } from '@vue-storefront/core';
-import { useCart } from '@vue-storefront/odoo';
-import { useRouter, useStore } from '@nuxtjs/composition-api';
 
 export default {
   name: 'DefaultLayout',
@@ -26,24 +27,40 @@ export default {
     LazyHydrate,
     Notification
   },
-  setup (props, context) {
+  setup () {
     const router = useRouter();
-    const store = useStore();
-    const { setCart } = useCart();
+    const route = useRoute();
+    const { load, cart } = useCart();
+    const { partner } = usePartner();
 
-    router.beforeResolve(async (to, from, next) => {
-      const cart = JSON.parse(JSON.stringify(store.getters.getCheckoutCart));
-      setCart(cart);
-      next();
-    });
+    const hasPartnerShipping = computed(() =>
+      cart.value?.order?.partnerShipping?.id !== null &&
+      cart.value?.order?.partnerShipping?.email !== null &&
+      cart.value?.order?.partnerShipping?.country !== null &&
+      cart.value?.order?.partnerShipping?.name !== null
+    );
+    const hasPartnerInvoice = computed(() =>
+      cart.value?.order?.partnerInvoice?.id !== null &&
+      cart.value?.order?.partnerInvoice?.email !== null &&
+      cart.value?.order?.partnerInvoice?.country !== null &&
+      cart.value?.order?.partnerInvoice?.name !== null
+    );
 
-    const cart = JSON.parse(JSON.stringify(store.getters.getCheckoutCart));
-    setCart(cart);
+    const partnerIsSaved = computed(() => partner?.value?.name && !partner?.value?.name?.toUpperCase()?.includes('PUBLIC'));
 
     onSSR(async () => {
-      setCart(context.root.context.$vsf.$odoo.cart);
+      await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
+
     });
 
+    console.log(partnerIsSaved.value);
+    if (!partnerIsSaved.value) {
+      return router.push('/checkout/personaldetails');
+    }
+
+    if (!hasPartnerShipping.value || !hasPartnerInvoice.value) {
+      return router.push('/checkout/shipping');
+    }
   }
 };
 </script>

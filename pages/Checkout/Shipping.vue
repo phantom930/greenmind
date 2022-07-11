@@ -124,7 +124,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref, defineComponent } from '@nuxtjs/composition-api';
+import { computed, ref, defineComponent, useRouter } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading } from '@storefront-ui/vue';
 import { useCart, useCountrySearch, useUser } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
@@ -140,6 +140,7 @@ export default defineComponent({
   },
   emits: ['finish', 'change'],
   setup(_, { emit, refs }) {
+    const router = useRouter();
     const { partner } = usePartner();
     const { cart } = useCart();
     const { search, countries } = useCountrySearch('countries');
