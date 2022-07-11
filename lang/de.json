@@ -52,7 +52,7 @@
   "Billing address": "Rechnungsadresse",
   "Same as shipping address": "Wie Versandadresse",
   "Payment method": "Zahlungsmethode",
-  "Apply": "Übernehmen",
+  "Apply": "Benyt",
   "Update password": "Passwort aktualisieren",
   "Update personal data": "Persönliche Daten aktualisieren",
   "Item": "Artikel",
@@ -372,5 +372,7 @@
   "Secure Payment": "Sichere Bezahlung",
   "Subscribe": "Abonnieren",
   "There is a problem with the order": "Es gibt ein Problem mit der Bestellung",
-  "Tlf: +45 4697 5050": "Telefon: +45 4697 5050"
+  "Tlf: +45 4697 5050": "Telefon: +45 4697 5050",
+  "Use coupon": "Benyt rabatkode",
+  "Pay with gift card": "Betal med gavekort"
 }

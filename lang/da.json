@@ -6,7 +6,7 @@
   "Add to compare": "Tilføj for at sammenligne",
   "Additional Information": "Yderligere information",
   "Allow order notifications": "Tillad notifikationer",
-  "Apply": "ansøge",
+  "Apply": "Benyt",
   "Back to homepage": "Tilbage til startsiden",
   "Billing address": "Faktureringsadresse",
   "Billing": "Fakturering",
@@ -372,5 +372,7 @@
   "Enter Gift code": "Indtast gavekode",
   "Job hos GreenMind": "Job hos GreenMind",
   "Secure Payment": "Sikker betaling",
-  "Tlf: +45 4697 5050": "Tlf: +45 4697 5050"
+  "Tlf: +45 4697 5050": "Tlf: +45 4697 5050",
+  "Use coupon": "Benyt rabatkode",
+  "Pay with gift card": "Betal med gavekort"
 }

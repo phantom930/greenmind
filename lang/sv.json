@@ -15,7 +15,7 @@
   "Android smartwatch": "Android smartklocka",
   "Apple stationary": "Apple stationär",
   "Apple watch": "Äpple klocka",
-  "Apply": "Tillämpa",
+  "Apply": "Benyt",
   "Attention!": "Uppmärksamhet!",
   "BACK TO SHOPPING": "TILLBAKA TILL SHOPPING",
   "Back to homepage": "tillbaka till startsidan",
@@ -372,5 +372,7 @@
   "Secure Payment": "Säker betalning",
   "Subscribe": "Prenumerera",
   "There is a problem with the order": "Det är ett problem med beställningen",
-  "Tlf: +45 4697 5050": "Tlf: +45 4697 5050"
+  "Tlf: +45 4697 5050": "Tlf: +45 4697 5050",
+  "Use coupon": "Benyt rabatkode",
+  "Pay with gift card": "Betal med gavekort"
 }

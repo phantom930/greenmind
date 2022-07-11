@@ -23,7 +23,7 @@
         Send en mail: <a href="mailto: mail@greenmind.dk">mail@greenmind.dk</a>
       </p>
       <p class="text">
-        <i><strong>OBS:</stong> Vi oplever i øjeblikket højere trafik end normalt i vores kundeservice, hvorfor der er risiko for forlænget svaretider på telefon og mail. Du har også muligheden for at henvende dig i en af vores butikker, der altid kan hjælpe dig godt på vej.</i>
+        <i><strong>OBS:</strong> Vi oplever i øjeblikket højere trafik end normalt i vores kundeservice, hvorfor der er risiko for forlænget svaretider på telefon og mail. Du har også muligheden for at henvende dig i en af vores butikker, der altid kan hjælpe dig godt på vej.</i>
       </p>
     </div>
   </div>
