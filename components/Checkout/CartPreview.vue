@@ -156,7 +156,7 @@
         </div>
       </div>
     </div>
-    <div class="highlighted promo-code text-center mt-5">
+    <!-- <div class="highlighted promo-code text-center mt-5">
       <span class="mb-3 text-fern-secondary underline cursor-pointer" @click="showCoupon = !showCoupon">{{ $t('Use coupon') }}</span>
 
       <transition-group
