@@ -214,6 +214,11 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       name: 'recruitment',
       path: `${i18nRoutes.recruitment[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/Recruitment.vue')
+    },
+    {
+      name: 'discountCampaign',
+      path: `${i18nRoutes.discountCampaign[localeIndex]}`,
+      component: path.resolve(themeDir, 'pages/DiscountCampaigns.vue')
     }
   ];
 }

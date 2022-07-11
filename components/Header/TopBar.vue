@@ -1,7 +1,13 @@
 <template>
   <SfTopBar class="topbar">
     <template #center>
-      <SfButton>{{ $t("See Offer") }}</SfButton>
+      <nuxt-link
+        :to="{ name: 'discountCampaign' }"
+        class="underline text-center y-link"
+        title="SE AKTIVE KAMPAGNER"
+      >
+        SE AKTIVE KAMPAGNER
+      </nuxt-link>
     </template>
   </SfTopBar>
 </template>

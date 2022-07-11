@@ -160,5 +160,11 @@ export default {
     da: '/job-hos-greenmind',
     de: '/job-hos-greenmind',
     sv: '/job-hos-greenmind'
+  },
+  discountCampaign: {
+    en: '/aktive-kampagner',
+    da: '/aktive-kampagner',
+    de: '/aktive-kampagner',
+    sv: '/aktive-kampagner'
   }
 };
