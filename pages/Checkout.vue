@@ -77,6 +77,9 @@ export default defineComponent({
     const partnerIsSaved = computed(() => partner?.value?.name && !partner?.value?.name?.toUpperCase()?.includes('PUBLIC'));
 
     const handleStepClick = async(step) => {
+      setCart(null);
+      await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
+
       if (!partnerIsSaved.value) {
         return;
       }
@@ -88,9 +91,6 @@ export default defineComponent({
       if (step === 'payment' && (!hasPartnerShipping.value || !hasPartnerInvoice.value) && !partnerIsSaved.value) {
         return;
       }
-
-      setCart(null);
-      await load({ customQuery: { cartLoad: 'greenCartLoadUpdate' } });
       router.push(`/checkout/${step}`);
     };
 
