@@ -1,6 +1,7 @@
 <template>
-  <div class="text-wrap">
-     <span class="clerk" data-template="@discount-campaign-page"></span>
+  <div
+    class="clerk"
+    data-template="@discount-campaign-page">
   </div>
 </template>
 
