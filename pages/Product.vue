@@ -133,14 +133,14 @@
   </div>
 </template>
 <script >
-import { computed, defineComponent, reactive, useRoute, useRouter } from '@nuxtjs/composition-api';
+import { computed, defineComponent, reactive, useRoute, useRouter, onMounted } from '@nuxtjs/composition-api';
 import { SfBreadcrumbs, SfHeading, SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { facetGetters, productGetters, useUiState } from '~/composables';
-
+import {setTrackViewItem} from "~/resources/tracking";
 export default defineComponent({
   name: 'Product',
   components: {
@@ -217,6 +217,14 @@ export default defineComponent({
       }
       addTags([{ prefix: CacheTagPrefix.Product, value: path }]);
     });
+
+
+    onMounted(() => {
+       if(product.value) {
+        setTrackViewItem(products.value);
+      }
+    })
+
 
     const selectAcessories = (accessory) => {
       if (selectedAcessories.has(accessory)) {
