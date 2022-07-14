@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, useRouter } from '@nuxtjs/composition-api';
+import { computed, defineComponent, ref, useRouter, watch } from '@nuxtjs/composition-api';
 import { SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
@@ -72,6 +72,7 @@ import { facetGetters, useFacet } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
 import { category } from '@odoogap/seo';
+import { setTrackViewItemList } from "~/resources/tracking";
 
 const { jsonLdStrucutredData } = category();
 export default defineComponent({
@@ -149,6 +150,12 @@ export default defineComponent({
         }
       ]);
     });
+
+    watch(products, () => {
+      if(products.value.length > 0) {
+        setTrackViewItemList(currentCategory.value.id.toString(), currentCategory.value.name, products.value)
+      }
+    })
 
     return {
       mobileOrTabletSize,

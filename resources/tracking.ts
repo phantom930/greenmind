@@ -1,34 +1,59 @@
 import { Category, Product } from "@vue-storefront/odoo-api";
 
 const trackViewItem = (currency: string, value: number, products: IGAProduct[]) => {
-  (window as any).dataLayer?.push({ ecommerce: null })
-  (window as any).dataLayer?.push({
-    event: "view_item",
-    ecommerce: {
-      currency: currency,
-      value: value,
-      items: [...products]
-    },
-  });
+  (window as any)?.dataLayer?.push({ ecommerce: null })
+    (window as any)?.dataLayer?.push({
+      event: "view_item",
+      ecommerce: {
+        currency: currency,
+        value: value,
+        items: [...products]
+      }, 'debug_mode': true
+    });
+}
 
+const trackViewItemList = (itemListId: string, itemListName: string, products: IGAProduct[]) => {
+  (window as any)?.dataLayer?.push({ ecommerce: null })
+    (window as any)?.dataLayer?.push({
+      event: "view_item_list",
+      ecommerce: {
+        item_list_id: null,
+        item_list_name: null,
+        items: [...products]
+      },
+      'debug_mode': true
+    });
 }
 
 export const setTrackViewItem = (product: Product) => {
   const mappedProduct = mapProduct(product);
-  trackViewItem(product.currency.name, product.price, [mappedProduct]);
+  const itemValue = product.hasDiscountedPrice ? product.priceAfterDiscount : product.price;
 
+  trackViewItem(product.currency.name, itemValue, [mappedProduct]);
 }
 
-const mapProduct = (product: Product): IGAProduct => {
+export const setTrackViewItemList = (itemListId: string, itemListName: string, products: Product[]) => {
+  const mappedProducts = products.map((product, index) => {
+    return mapProduct(product, index)
+  })
+
+  trackViewItemList(itemListId, itemListName, mappedProducts);
+}
+
+
+
+const mapProduct = (product: Product, index = 0): IGAProduct => {
   return {
     item_id: product.sku,
     item_name: product.name,
     affiliation: "Greenmind.dk",
-    currency: product.currency.name,
-    index: 0,
+    currency: product.currency?.name,
+    index: index,
     ...mapCategories(product.categories[0]),
     price: product.price,
-    quantity: product.qty,
+    discount: product.hasDiscountedPrice ? product.price - product.priceAfterDiscount : null,
+    quantity: product?.qty,
+    item_variant: product.attributeValues[0].name,
   }
 }
 
@@ -37,7 +62,9 @@ const mapCategories = (category: Category) => {
   const categories = getCategories(category);
 
   categories.forEach((categoryName, index) => {
-    categoriesObj[`item_category${index ? index : ''}`] = categoryName
+    if (5 > index) {
+      categoriesObj[`item_category${index ? index : ''}`] = categoryName
+    }
   })
 
   return categoriesObj;
@@ -54,7 +81,6 @@ const getCategories = (category: Category, mappedCategories = []) => {
   }
   return mappedCategories;
 }
-
 
 export interface IGAProduct {
   item_id: string;
