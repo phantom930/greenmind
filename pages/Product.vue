@@ -140,7 +140,7 @@ import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { facetGetters, productGetters, useUiState } from '~/composables';
-import {setTrackViewItem} from "~/resources/tracking";
+import {setAddToCart, setTrackViewItem} from "~/resources/tracking";
 export default defineComponent({
   name: 'Product',
   components: {
@@ -249,6 +249,8 @@ export default defineComponent({
       };
 
       await addMultipleProductsToCart(params);
+
+      setAddToCart(product.value);
 
       // eslint-disable-next-line no-undef
       Clerk('cart', 'add', product.value.id);

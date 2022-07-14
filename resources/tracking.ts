@@ -35,6 +35,30 @@ const trackSelectItem = (itemListId: string, itemListName: string, products: IGA
     });
 }
 
+const trackViewCart = (currency: string, value: number, products: IGAProduct[]) => {
+    (window as any)?.dataLayer?.push({
+      event: "view_cart",
+      ecommerce: {
+        currency: currency,
+        value: value,
+        items: [...products]
+      },
+      'debug_mode': true
+    });
+}
+
+const trackAddToCart = (currency: string, value: number, products: IGAProduct[]) => {
+    (window as any)?.dataLayer?.push({
+      event: "add_to_cart",
+      ecommerce: {
+        currency: currency,
+        value: value,
+        items: [...products]
+      },
+      'debug_mode': true
+    });
+}
+
 
 export const setTrackViewItem = (product: Product) => {
   const mappedProduct = mapProduct(product);
@@ -54,6 +78,27 @@ export const setTrackSelectItem = (itemListId: string, itemListName: string, pro
   const mappedProduct = mapProduct(product);
 
   trackSelectItem(itemListId, itemListName, [mappedProduct]);
+}
+
+// TODO fix when product data is added
+export const setTrackViewCart = (currency: string, value: number, products: Product[]) => {
+  const mappedProducts = products.map((product, index) => {
+    return mapProduct(product, index)
+  });
+
+  // Currency can be undefined apparently
+  const getCurrency: string = currency ? currency : mappedProducts[0].currency;
+
+  // trackViewCart(getCurrency, value, mappedProducts);
+}
+
+
+export const setAddToCart = (product: Product ) => {
+  const mappedProduct = mapProduct(product);
+  const currency = mappedProduct.currency;
+  const itemValue = product.hasDiscountedPrice ? product.priceAfterDiscount : product.price;
+
+  trackAddToCart(currency, itemValue, [mappedProduct]);
 }
 
 const mapProduct = (product: Product, index = 0): IGAProduct => {
