@@ -133,7 +133,7 @@
   </div>
 </template>
 <script >
-import { computed, defineComponent, reactive, useRoute, useRouter, onMounted } from '@nuxtjs/composition-api';
+import { computed, defineComponent, reactive, useRoute, useRouter, watch } from '@nuxtjs/composition-api';
 import { SfBreadcrumbs, SfHeading, SfLoader } from '@storefront-ui/vue';
 import { CacheTagPrefix, useCache } from '@vue-storefront/cache';
 import { onSSR } from '@vue-storefront/core';
@@ -218,13 +218,11 @@ export default defineComponent({
       addTags([{ prefix: CacheTagPrefix.Product, value: path }]);
     });
 
-
-    onMounted(() => {
-       if(product.value) {
+    watch(products, () => {
+       if(products.value) {
         setTrackViewItem(products.value);
       }
     })
-
 
     const selectAcessories = (accessory) => {
       if (selectedAcessories.has(accessory)) {

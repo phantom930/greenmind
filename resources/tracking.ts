@@ -1,7 +1,6 @@
 import { Category, Product } from "@vue-storefront/odoo-api";
 
 const trackViewItem = (currency: string, value: number, products: IGAProduct[]) => {
-  (window as any)?.dataLayer?.push({ ecommerce: null })
     (window as any)?.dataLayer?.push({
       event: "view_item",
       ecommerce: {
@@ -13,23 +12,34 @@ const trackViewItem = (currency: string, value: number, products: IGAProduct[]) 
 }
 
 const trackViewItemList = (itemListId: string, itemListName: string, products: IGAProduct[]) => {
-  (window as any)?.dataLayer?.push({ ecommerce: null })
     (window as any)?.dataLayer?.push({
       event: "view_item_list",
       ecommerce: {
-        item_list_id: null,
-        item_list_name: null,
+        item_list_id: itemListId,
+        item_list_name: itemListName,
         items: [...products]
       },
       'debug_mode': true
     });
 }
 
+const trackSelectItem = (itemListId: string, itemListName: string, products: IGAProduct[]) => {
+    (window as any)?.dataLayer?.push({
+      event: "select_item",
+      ecommerce: {
+        item_list_id: itemListId,
+        item_list_name: itemListName,
+        items: [...products]
+      },
+      'debug_mode': true
+    });
+}
+
+
 export const setTrackViewItem = (product: Product) => {
   const mappedProduct = mapProduct(product);
   const itemValue = product.hasDiscountedPrice ? product.priceAfterDiscount : product.price;
-
-  trackViewItem(product.currency.name, itemValue, [mappedProduct]);
+  trackViewItem(product.currency?.name, itemValue, [mappedProduct]);
 }
 
 export const setTrackViewItemList = (itemListId: string, itemListName: string, products: Product[]) => {
@@ -40,20 +50,27 @@ export const setTrackViewItemList = (itemListId: string, itemListName: string, p
   trackViewItemList(itemListId, itemListName, mappedProducts);
 }
 
+export const setTrackSelectItem = (itemListId: string, itemListName: string, product: Product) => {
+  const mappedProduct = mapProduct(product);
 
+  trackSelectItem(itemListId, itemListName, [mappedProduct]);
+}
 
 const mapProduct = (product: Product, index = 0): IGAProduct => {
+  const categories = product.categories ? product.categories[0] : null;
+  const mappedCategories  = categories ? mapCategories(categories) : { };
   return {
-    item_id: product.sku,
-    item_name: product.name,
+    item_id: product?.sku,
+    item_name: product?.name,
     affiliation: "Greenmind.dk",
     currency: product.currency?.name,
     index: index,
-    ...mapCategories(product.categories[0]),
-    price: product.price,
+    ...mappedCategories,
+    price: product?.price,
     discount: product.hasDiscountedPrice ? product.price - product.priceAfterDiscount : null,
     quantity: product?.qty,
-    item_variant: product.attributeValues[0].name,
+    // @ts-ignore
+    item_variant: product.variantAttributeValues! ? product.variantAttributeValues![0].name : null,
   }
 }
 
