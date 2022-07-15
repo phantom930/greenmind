@@ -74,9 +74,9 @@ export const setTrackViewItemList = (itemListId: string, itemListName: string, p
   trackViewItemList(itemListId, itemListName, mappedProducts);
 }
 
-export const setTrackSelectItem = (itemListId: string, itemListName: string, product: Product) => {
+export const setTrackSelectItem = (itemListId: string, itemListName: string, product: Product, index: number) => {
   const mappedProduct = mapProduct(product);
-
+  mappedProduct.index = index;
   trackSelectItem(itemListId, itemListName, [mappedProduct]);
 }
 

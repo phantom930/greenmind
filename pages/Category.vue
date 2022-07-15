@@ -26,11 +26,12 @@
               class="products__grid"
             >
               <LazyGreenProductCard
-                v-for="product in products"
+                v-for="(product, index) in products"
                 :key="product.id"
                 :product="product"
                 :image-width="$device.isMobile ? 160 : 248"
                 :image-height="$device.isMobile ? 206 : 375"
+                @click.native="trackSelectItem(product, index)"
               />
             </transition-group>
             <div class="flex justify-end">
@@ -72,7 +73,7 @@ import { facetGetters, useFacet } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { useUiCategoryHelpers, useUiHelpers, useUiState } from '~/composables';
 import { category } from '@odoogap/seo';
-import { setTrackViewItemList } from "~/resources/tracking";
+import { setTrackSelectItem, setTrackViewItemList } from "~/resources/tracking";
 
 const { jsonLdStrucutredData } = category();
 export default defineComponent({
@@ -152,10 +153,18 @@ export default defineComponent({
     });
 
     watch(products, () => {
-      if(products.value.length > 0) {
+      if(products.value.length > 0 && currentCategory.value) {
         setTrackViewItemList(currentCategory.value.id.toString(), currentCategory.value.name, products.value)
       }
     })
+
+
+    const trackSelectItem  = (product, index) => {
+      if(!product && currentCategory.value) {
+        return;
+      }
+      setTrackSelectItem(currentCategory.value.id.toString(), currentCategory.value.name, product, index)
+    }
 
     return {
       mobileOrTabletSize,
@@ -171,7 +180,8 @@ export default defineComponent({
       pagination,
       result,
       facets,
-      showProducts
+      showProducts,
+      trackSelectItem
     };
   },
   head () {
