@@ -19,6 +19,13 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
   }));
 
   return [
+
+    /* Dynamic content Pages */
+    {
+      name: 'paymentResponse',
+      path: '/*',
+      component: path.resolve(themeDir, 'pages/DynamicPage.vue')
+    },
     {
       name: 'home',
       path: '/',
@@ -85,7 +92,6 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
 
     /* Static Pages */
     {
-
       name: 'environment',
       path: `${i18nRoutes.environment[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/Environment.vue')
@@ -220,5 +226,6 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
       path: `${i18nRoutes.discountCampaign[localeIndex]}`,
       component: path.resolve(themeDir, 'pages/DiscountCampaigns.vue')
     }
+
   ];
 }
