@@ -39,6 +39,7 @@ module.exports = {
         websiteSubtitle
         smallImage
         price
+        manufacturerName
         name
         description
         image
@@ -118,6 +119,7 @@ module.exports = {
                     description
                     smallImage
                     slug
+                    manufacturerName
                     jsonLd
                     qty
                     sku

@@ -79,6 +79,7 @@ export interface GreenProduct extends Product {
     variantAttributeValues?: AttributeValue[];
     schemaAttributeValues?: AttributeValue[];
     websiteSubtitle?: string;
+    manufacturerName?: string;
     imageFilename?: string;
     combinationInfo?: CombinationInfo;
     combinationInfoGrade?: CombinationInfoGrade;
