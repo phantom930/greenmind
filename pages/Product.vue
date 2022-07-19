@@ -221,6 +221,8 @@ export default defineComponent({
     watch(products, () => {
        if(products.value) {
         setTrackViewItem(products.value);
+
+        Clerk("call", "log/product", {product: products.value.id});
       }
     })
 
@@ -254,10 +256,13 @@ export default defineComponent({
 
       // eslint-disable-next-line no-undef
       Clerk('cart', 'add', product.value.id);
+
       if (!isCartSidebarOpen.value) {
         toggleCartSidebar();
       }
     };
+
+
 
     const handleStoreStatus = () =>{
       toggleStoreModal();
