@@ -72,6 +72,16 @@ export interface CombinationInfoGrade {
     grades: CombinationInfo[];
 }
 
+export interface GoogleAnalytics {
+    item_id: number;
+    currency: string;
+    item_brand: string;
+    item_category: string;
+    item_category2: string;
+    item_category3: string;
+    item_category4: string;
+}
+
 export interface GreenProduct extends Product {
     isInStock?: boolean;
     jsonLd?: any;
@@ -79,6 +89,7 @@ export interface GreenProduct extends Product {
     variantAttributeValues?: AttributeValue[];
     schemaAttributeValues?: AttributeValue[];
     websiteSubtitle?: string;
+    googleAnalytics?: GoogleAnalytics;
     manufacturerName?: string;
     imageFilename?: string;
     combinationInfo?: CombinationInfo;

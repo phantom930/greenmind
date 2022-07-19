@@ -5,6 +5,7 @@ const coreProductAttribs = `
   imageFilename
   description
   smallImage
+  googleAnalytics
   slug
   qty
   status
