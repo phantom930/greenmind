@@ -16,10 +16,13 @@
 </template>
 
 <script lang="ts">
+declare let Clerk: any;
+
 import { SfHeading, SfButton } from '@storefront-ui/vue';
-import { ref, onMounted, defineComponent, computed, Ref } from '@nuxtjs/composition-api';
+import { ref, onMounted, defineComponent, computed, Ref, watch } from '@nuxtjs/composition-api';
 import { usePayment, cartGetters } from '@vue-storefront/odoo';
 import { PaymentTransactionState } from '~/green-api/types';
+import { Order } from "@vue-storefront/odoo/lib/composables/types";
 export default defineComponent({
   components: {
     SfHeading,
@@ -43,7 +46,7 @@ export default defineComponent({
     onMounted(async () => {
       const data = await getPaymentConfirmation({ customQuery: { paymentConfirmation: 'greenConfirmationPayment' }});
       paymentResponse.value = data;
-      paymentStatus.value = paymentResponse.value.order?.lastTransaction.state;
+       paymentStatus.value = paymentResponse.value.order?.lastTransaction.state;
 
     });
 
@@ -55,6 +58,18 @@ export default defineComponent({
       paymentStatus.value === 'Authorized' ||
       paymentStatus.value === 'Confirmed'
     );
+
+    watch(paymentSuccess, () => {
+      if(!paymentSuccess) {
+        return;
+      }
+      const clerkProducts = paymentResponse.value.orderLines.map((orderLine) => {
+        return {id: orderLine.id, quantity: orderLine.quantity, price: orderLine.priceTotal}});
+
+      console.log(clerkProducts)
+      // Clerk("call", "log/sale", {sale: paymentResponse.value.id, products: });
+
+    })
 
     return {
       paymentStatus,
