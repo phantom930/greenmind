@@ -1,109 +1,180 @@
 import { Category, Product } from "@vue-storefront/odoo-api";
 
 const trackViewItem = (currency: string, value: number, products: IGAProduct[]) => {
-    (window as any)?.dataLayer?.push({
-      event: "view_item",
-      ecommerce: {
-        currency: currency,
-        value: value,
-        items: [...products]
-      }, 'debug_mode': true
-    });
-}
+  (window as any)?.dataLayer?.push({
+    event: "view_item",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
 
 const trackViewItemList = (itemListId: string, itemListName: string, products: IGAProduct[]) => {
-    (window as any)?.dataLayer?.push({
-      event: "view_item_list",
-      ecommerce: {
-        item_list_id: itemListId,
-        item_list_name: itemListName,
-        items: [...products]
-      },
-      'debug_mode': true
-    });
-}
+  (window as any)?.dataLayer?.push({
+    event: "view_item_list",
+    ecommerce: {
+      item_list_id: itemListId,
+      item_list_name: itemListName,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
 
 const trackSelectItem = (itemListId: string, itemListName: string, products: IGAProduct[]) => {
-    (window as any)?.dataLayer?.push({
-      event: "select_item",
-      ecommerce: {
-        item_list_id: itemListId,
-        item_list_name: itemListName,
-        items: [...products]
-      },
-      'debug_mode': true
-    });
-}
+  (window as any)?.dataLayer?.push({
+    event: "select_item",
+    ecommerce: {
+      item_list_id: itemListId,
+      item_list_name: itemListName,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
 
 const trackViewCart = (currency: string, value: number, products: IGAProduct[]) => {
-    (window as any)?.dataLayer?.push({
-      event: "view_cart",
-      ecommerce: {
-        currency: currency,
-        value: value,
-        items: [...products]
-      },
-      'debug_mode': true
-    });
-}
+  (window as any)?.dataLayer?.push({
+    event: "view_cart",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
 
 const trackAddToCart = (currency: string, value: number, products: IGAProduct[]) => {
-    (window as any)?.dataLayer?.push({
-      event: "add_to_cart",
-      ecommerce: {
-        currency: currency,
-        value: value,
-        items: [...products]
-      },
-      'debug_mode': true
-    });
-}
+  (window as any)?.dataLayer?.push({
+    event: "add_to_cart",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
 
+const trackRemoveFromCart = (currency: string, value: number, products: IGAProduct[]) => {
+  (window as any)?.dataLayer?.push({
+    event: "remove_from_cart",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
+
+const trackAddPaymentInfo = (currency: string, value: number, paymentType: string, products: IGAProduct[], coupon?: string) => {
+  (window as any)?.dataLayer?.push({
+    event: "add_payment_info",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      payment_type: paymentType,
+      coupon: coupon,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
+
+const trackAddShippingInfo = (currency: string, value: number, shippingTier: string, products: IGAProduct[], coupon?: string) => {
+  (window as any)?.dataLayer?.push({
+    event: "add_shipping_info",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      shipping_tier: shippingTier,
+      coupon: coupon,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
+
+const trackBeginCheckout = (currency: string, value: number, products: IGAProduct[]) => {
+  (window as any)?.dataLayer?.push({
+    event: "begin_checkout",
+    ecommerce: {
+      currency: currency,
+      value: value,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
+
+const trackPurchase = (purchaseInfo: IGAPurchaseInfo, products: IGAProduct[]) => {
+  (window as any)?.dataLayer?.push({
+    event: "purchase",
+    ecommerce: {
+      transaction_id: purchaseInfo.transaction_id,
+      value: purchaseInfo.value,
+      tax: purchaseInfo.tax,
+      shipping: purchaseInfo.shipping,
+      currency: purchaseInfo.currency,
+      coupon: purchaseInfo?.coupon,
+      items: [...products],
+    },
+    debug_mode: true,
+  });
+};
 
 export const setTrackViewItem = (product: Product) => {
   const mappedProduct = mapProduct(product);
   const itemValue = product.hasDiscountedPrice ? product.priceAfterDiscount : product.price;
+
   trackViewItem(product.currency?.name, itemValue, [mappedProduct]);
-}
+};
 
 export const setTrackViewItemList = (itemListId: string, itemListName: string, products: Product[]) => {
   const mappedProducts = products.map((product, index) => {
-    return mapProduct(product, index)
-  })
+    return mapProduct(product, index);
+  });
 
   trackViewItemList(itemListId, itemListName, mappedProducts);
-}
+};
 
 export const setTrackSelectItem = (itemListId: string, itemListName: string, product: Product, index: number) => {
   const mappedProduct = mapProduct(product);
   mappedProduct.index = index;
+
   trackSelectItem(itemListId, itemListName, [mappedProduct]);
-}
+};
 
 // TODO fix when product data is added
 export const setTrackViewCart = (currency: string, value: number, products: Product[]) => {
   const mappedProducts = products.map((product, index) => {
-    return mapProduct(product, index)
+    return mapProduct(product, index);
   });
 
   // Currency can be undefined apparently
   const getCurrency: string = currency ? currency : mappedProducts[0].currency;
 
   // trackViewCart(getCurrency, value, mappedProducts);
-}
+};
 
-
-export const setAddToCart = (product: Product ) => {
+export const setAddToCart = (product: Product) => {
   const mappedProduct = mapProduct(product);
   const currency = mappedProduct.currency;
   const itemValue = product.hasDiscountedPrice ? product.priceAfterDiscount : product.price;
 
   trackAddToCart(currency, itemValue, [mappedProduct]);
-}
+};
 
+// Maps the storeFront product to Google Analytics product
+// Reference: https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_payment_info_item
 const mapProduct = (product: Product, index = 0): IGAProduct => {
   const categories = product.categories ? product.categories[0] : null;
-  const mappedCategories  = categories ? mapCategories(categories) : { };
+  const mappedCategories = categories ? mapCategories(categories) : {};
   return {
     item_id: product?.sku,
     item_name: product?.name,
@@ -116,34 +187,42 @@ const mapProduct = (product: Product, index = 0): IGAProduct => {
     quantity: product?.qty,
     // @ts-ignore
     item_variant: product.variantAttributeValues! ? product.variantAttributeValues![0].name : null,
-  }
-}
+  };
+};
 
 const mapCategories = (category: Category) => {
-  const categoriesObj = {}
+  const categoriesObj = {};
   const categories = getCategories(category);
 
   categories.forEach((categoryName, index) => {
     if (5 > index) {
-      categoriesObj[`item_category${index ? index : ''}`] = categoryName
+      categoriesObj[`item_category${index ? index : ""}`] = categoryName;
     }
-  })
+  });
 
   return categoriesObj;
-}
+};
 
 const getCategories = (category: Category, mappedCategories = []) => {
-
   for (const prop in category) {
-    if (prop == 'parent') {
-      mappedCategories.unshift(category.name)
+    if (prop == "parent") {
+      mappedCategories.unshift(category.name);
 
       return getCategories(category[prop], mappedCategories);
     }
   }
   return mappedCategories;
-}
+};
 
+export interface IGAPurchaseInfo {
+  transaction_id: string;
+  affiliation: string;
+  value: number;
+  tax: number;
+  shipping: number;
+  currency: string;
+  coupon?: string;
+}
 export interface IGAProduct {
   item_id: string;
   item_name: string;
