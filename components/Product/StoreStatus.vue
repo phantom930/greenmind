@@ -18,7 +18,7 @@
           <div>
             <SfSearchBar
               placeholder="Type name of the street or city"
-              :icon="{ icon: 'marker', size: '1.25rem', color: '#43464E' }"
+              :icon="{ icon: 'marker', size: '1.5rem', color: '#43464E' }"
               class="store-search-bar"
             />
           </div>
@@ -35,10 +35,13 @@
           </div>
         </div>
         <div class="checkbox-wrap">
-          <GreenCheckbox />
-          <p class="label">
-            There’s stock on this stores.
-          </p>
+          <GreenCheckbox>
+            <template #label>
+              <p class="label">
+                There’s stock on this stores.
+              </p>
+            </template>
+          </GreenCheckbox>
         </div>
         <p class="font-bold , text-base pb-4">
           Stores found: 4
@@ -83,7 +86,7 @@
                   2 km away
                 </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Måndag—Torsdag
                     </p>
@@ -91,7 +94,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Fredag
                     </p>
@@ -99,7 +102,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Lørdag
                     </p>
@@ -107,7 +110,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Söndag & Helligdage
                     </p>
@@ -167,7 +170,7 @@
                   2 km away
                 </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Måndag—Torsdag
                     </p>
@@ -175,7 +178,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Fredag
                     </p>
@@ -183,7 +186,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Lørdag
                     </p>
@@ -191,7 +194,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Söndag & Helligdage
                     </p>
@@ -251,7 +254,7 @@
                   2 km away
                 </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Måndag—Torsdag
                     </p>
@@ -259,7 +262,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Fredag
                     </p>
@@ -267,7 +270,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Lørdag
                     </p>
@@ -275,7 +278,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Söndag & Helligdage
                     </p>
@@ -335,7 +338,7 @@
                   2 km away
                 </p>
                 <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Måndag—Torsdag
                     </p>
@@ -343,7 +346,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Fredag
                     </p>
@@ -351,7 +354,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Lørdag
                     </p>
@@ -359,7 +362,7 @@
                       10:00 — 18:00
                     </p>
                   </div>
-                  <div class="flex justify-between">
+                  <div class="flex justify-between gap-6">
                     <p class="text-xs">
                       Söndag & Helligdage
                     </p>
@@ -386,46 +389,22 @@
   </SfModal>
 </template>
 <script>
-import { ref, watch } from '@nuxtjs/composition-api';
-
 import {
   SfModal,
-  SfInput,
-  SfButton,
-  SfCheckbox,
-  SfLoader,
-  SfAlert,
   SfBar,
-  SfStoreLocator,
   SfSearchBar
 } from '@storefront-ui/vue';
-import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
-import { required, email } from 'vee-validate/dist/rules';
-import { useUser, usePassword } from '@vue-storefront/odoo';
 import { useUiState } from '~/composables';
 
 export default {
   name: 'StoreStatus',
   components: {
     SfModal,
-    SfInput,
-    SfButton,
-    SfCheckbox,
-    SfLoader,
-    SfAlert,
-    ValidationProvider,
-    ValidationObserver,
     SfBar,
-    SfStoreLocator,
     SfSearchBar
   },
   setup() {
     const { isStoreModalOpen, toggleStoreModal } = useUiState();
-
-    watch(isStoreModalOpen, () => {
-      if (isStoreModalOpen) {
-      }
-    });
 
     return {
       isStoreModalOpen,
@@ -449,7 +428,7 @@ export default {
 }
 
 .checkbox-wrap p {
-  margin-left: -10px;
+  margin-left: 8px;
   font-size: 16px;
   font-weight: 400;
 }
@@ -530,12 +509,13 @@ export default {
   .sf-input__wrapper {
     flex-direction: row-reverse;
     .sf-input__icon {
+      top: 68%;
       right: -20px;
     }
     & input {
       font-size: 20px;
       font-family: "Josefin Sans", sans-serif;
-      padding-left: 30px;
+      padding-left: 24px;
       line-height: 10px;
     }
   }
@@ -550,6 +530,11 @@ export default {
       }
       @include for-mobile {
         padding-top: 20px;
+      }
+    }
+    &__content {
+      @include for-desktop {
+        padding: 40px;
       }
     }
   }

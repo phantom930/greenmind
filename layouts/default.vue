@@ -9,9 +9,9 @@
     </LazyHydrate>
     <LazyHeaderTopbarTertiary class="hidden lg:block" />
 
-    <!-- <LazyHydrate when-idle>
-      <StoreStatus />
-    </LazyHydrate> -->
+    <LazyHydrate when-idle>
+      <ProductStoreStatus />
+    </LazyHydrate>
 
     <nuxt :key="$route.fullPath" />
 
