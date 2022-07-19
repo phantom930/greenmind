@@ -98,7 +98,7 @@
                 {{ productInStock ? $t("Add to Cart") : $t('Out of stock') }}
               </GreenButton>
 
-              <!-- <GreenButton
+              <GreenButton
                 style-type="Secondary"
                 color="Green"
                 shape="Round"
@@ -106,7 +106,7 @@
                 @click="handleStoreStatus"
               >
                 {{ $t("SEE STOCK STATUS IN STORE") }}
-              </GreenButton> -->
+              </GreenButton>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ import { onSSR } from '@vue-storefront/core';
 import { useFacet, useMultipleProduct, useProduct } from '@vue-storefront/odoo';
 import LazyHydrate from 'vue-lazy-hydration';
 import { facetGetters, productGetters, useUiState } from '~/composables';
-import {setAddToCart, setTrackViewItem} from "~/resources/tracking";
+import { setAddToCart, setTrackViewItem } from '~/resources/tracking';
 export default defineComponent({
   name: 'Product',
   components: {
@@ -219,10 +219,10 @@ export default defineComponent({
     });
 
     watch(products, () => {
-       if(products.value) {
+      if (products.value) {
         setTrackViewItem(products.value);
       }
-    })
+    });
 
     const selectAcessories = (accessory) => {
       if (selectedAcessories.has(accessory)) {

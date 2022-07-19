@@ -18,6 +18,7 @@
     >
       <slot name="label" />
       <div
+        v-show="hasImage || description"
         class="general_wrapper"
       >
         <div
