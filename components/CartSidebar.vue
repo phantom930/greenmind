@@ -115,9 +115,10 @@ import {
   SfPrice,
   SfImage
 } from '@storefront-ui/vue';
-import { computed, defineComponent } from '@nuxtjs/composition-api';
+import { computed, defineComponent, watch } from '@nuxtjs/composition-api';
 import { useCart, useUser } from '@vue-storefront/odoo';
 import { useUiState, cartGetters } from '~/composables';
+declare let Clerk: any;
 
 export default defineComponent({
   name: 'CartSidebar',
@@ -139,6 +140,11 @@ export default defineComponent({
     const totals = computed(() => cartGetters.getTotals(cart.value).total);
     const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
     const accessories = computed(() => cartGetters.getAccessories(cart.value));
+
+    watch(items, () => {
+      const itemsIds = items.value.map((product) => product.id);
+      Clerk("cart", "set", itemsIds)
+    })
 
     return {
       isAuthenticated,
