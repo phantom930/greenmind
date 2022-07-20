@@ -14,6 +14,7 @@
           :value="totalItems"
           class="sf-property--full-width sf-property--large property"
         />
+
         <SfProperty
           :name="$t('Subtotal')"
           :value="$currency(totals.subtotal)"
@@ -23,6 +24,17 @@
             { discounted: totals.special > 0 },
           ]"
         />
+        <SfProperty
+          v-if="shippingMethodPrice > 0"
+          :name="$t('Shipping')"
+          :value="$currency(shippingMethodPrice)"
+          :class="[
+            'sf-property--full-width',
+            'sf-property--large property',
+            { discounted: totals.special > 0 },
+          ]"
+        />
+
         <SfProperty
           v-for="discount in discounts"
           :key="discount.id"
@@ -178,7 +190,7 @@
         </template>
       </transition-group>
     </div>
-    <div class="highlighted promo-code text-center mb-8 mt-5">
+    <!-- <div class="highlighted promo-code text-center mb-8 mt-5">
       <span class="mb-3 text-fern-secondary underline cursor-pointer" @click="showGiftCard = !showGiftCard">{{ $t('Pay with gift card') }}</span>
       <transition-group
         name="sf-fade"
@@ -210,7 +222,7 @@
           </GreenButton>
         </template>
       </transition-group>
-    </div>
+    </div> -->
     <div class="highlighted pt-10">
       <SfCharacteristic
         v-for="characteristic in characteristics"

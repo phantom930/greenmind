@@ -43,10 +43,6 @@
       @submit="handleAddNewAddress"
     />
 
-    <VsfShippingProvider
-      name="selectedMethodShipping"
-    />
-
     <SfHeading
       :level="3"
       :title="$t('Billing details')"
@@ -126,7 +122,7 @@
 <script lang="ts">
 import { computed, ref, defineComponent, useRouter } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading } from '@storefront-ui/vue';
-import { useCart, useCountrySearch, useUser } from '@vue-storefront/odoo';
+import { useCart, useCountrySearch, useUser, useShippingProvider } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 import { useCheckoutShipping, useCheckoutBilling, usePartner } from '~/composables';
 import { setTrackAddShippingInfo } from '~/resources/tracking';
@@ -141,7 +137,8 @@ export default defineComponent({
   },
   emits: ['finish', 'change'],
   setup(_, { emit, refs }) {
-    const router = useRouter();
+    const { save } = useShippingProvider();
+
     const { partner } = usePartner();
     const { cart } = useCart();
     const { search, countries } = useCountrySearch('countries');
@@ -216,6 +213,7 @@ export default defineComponent({
     const goToOrderReview = async () => {
       await handleAddNewAddress(shippingForm.value.form);
       await handleAddNewBillingAddress(copyShippingToBilling.value ? shippingForm.value.form : billingForm.value.form);
+      await save({ shippingMethod: {}, customQuery: { setShippingMethod: 'greenNullShippingMethod' }});
 
       setTrackAddShippingInfo(cart.value.order.amountTotal, cart.value.order.websiteOrderLine, selectedShippingMethod.value.name);
 
