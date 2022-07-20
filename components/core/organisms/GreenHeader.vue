@@ -164,8 +164,7 @@ import {
 } from '@storefront-ui/vue';
 import { useUiState } from '~/composables';
 import { useCart, useUser, useFacet } from '@vue-storefront/odoo';
-import { computed, ref, watch } from '@nuxtjs/composition-api';
-import { onSSR } from '@vue-storefront/core';
+import { computed, ref, watch, onMounted } from '@nuxtjs/composition-api';
 import { useUiHelpers, cartGetters } from '~/composables';
 export default {
   components: {
@@ -262,7 +261,7 @@ export default {
       }
     );
 
-    onSSR(async () => {
+    onMounted(async () => {
       await Promise.all([
         loadUser(),
         loadCart({ customQuery: { cartLoad: 'greenCartLoad' } })
