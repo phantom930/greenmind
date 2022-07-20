@@ -116,7 +116,7 @@ export default defineComponent({
         send({ message: 'Some error occurr', type: 'danger' });
       }
 
-      router.push('/');
+      router.push({ name: 'paymentResponse'});
     };
 
     const processOrder = async () => {
