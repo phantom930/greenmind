@@ -120,7 +120,7 @@ export default defineComponent({
   },
   setup() {
     const { cart } = useCart();
-    const orderLines = computed(() => cartGetters.getItems(cart.value));
+    const orderLines = computed(() => cartGetters.getItesmWithoutDiscounts(cart.value));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const agreeTermsConditions = ref(false);
 
