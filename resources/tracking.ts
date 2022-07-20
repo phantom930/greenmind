@@ -1,4 +1,5 @@
 import { Category, Product } from "@vue-storefront/odoo-api";
+import { GreenProduct } from "~/green-api/types";
 
 const trackViewItem = (currency: string, value: number, products: IGAProduct[]) => {
   (window as any)?.dataLayer?.push({
@@ -150,8 +151,8 @@ export const setTrackSelectItem = (itemListId: string, itemListName: string, pro
   trackSelectItem(itemListId, itemListName, [mappedProduct]);
 };
 
-// TODO fix when product data is added
-export const setTrackViewCart = (currency: string, value: number, products: Product[]) => {
+
+export const setTrackViewCart = (value: number, products: Product[], currency?: string) => {
   const mappedProducts = products.map((product, index) => {
     return mapProduct(product, index);
   });
@@ -159,7 +160,7 @@ export const setTrackViewCart = (currency: string, value: number, products: Prod
   // Currency can be undefined apparently
   const getCurrency: string = currency ? currency : mappedProducts[0].currency;
 
-  // trackViewCart(getCurrency, value, mappedProducts);
+  trackViewCart(getCurrency, value, mappedProducts);
 };
 
 export const setAddToCart = (product: Product) => {
@@ -172,22 +173,27 @@ export const setAddToCart = (product: Product) => {
 
 // Maps the storeFront product to Google Analytics product
 // Reference: https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_payment_info_item
-const mapProduct = (product: Product, index = 0): IGAProduct => {
+const mapProduct = (product: GreenProduct, index = 0): IGAProduct => {
   const categories = product.categories ? product.categories[0] : null;
   const mappedCategories = categories ? mapCategories(categories) : {};
-  return {
-    item_id: product?.sku,
-    item_name: product?.name,
-    affiliation: "Greenmind.dk",
-    currency: product.currency?.name,
-    index: index,
-    ...mappedCategories,
-    price: product?.price,
-    discount: product.hasDiscountedPrice ? product.price - product.priceAfterDiscount : null,
-    quantity: product?.qty,
-    // @ts-ignore
-    item_variant: product.variantAttributeValues! ? product.variantAttributeValues![0].name : null,
-  };
+  let mappedProduct = {
+      item_id: product.id,
+      item_name: product?.name,
+      affiliation: "Greenmind.dk",
+      currency: product.currency?.name,
+      index: index,
+      ...mappedCategories,
+      price: product?.price,
+      discount: product.hasDiscountedPrice ? product.price - product.priceAfterDiscount : null,
+      quantity: product?.qty,
+      item_variant: product.combinationInfoVariant ? product.combinationInfoVariant.grade_name : null,
+  }
+
+    if(product.googleAnalytics){
+      mappedProduct = { ...mappedProduct, ...product.googleAnalytics };
+    }
+
+  return mappedProduct;
 };
 
 const mapCategories = (category: Category) => {
@@ -196,7 +202,7 @@ const mapCategories = (category: Category) => {
 
   categories.forEach((categoryName, index) => {
     if (5 > index) {
-      categoriesObj[`item_category${index ? index : ""}`] = categoryName;
+      categoriesObj[`item_category${index > 0 ? index + 1 : ""}`] = categoryName;
     }
   });
 
@@ -224,7 +230,7 @@ export interface IGAPurchaseInfo {
   coupon?: string;
 }
 export interface IGAProduct {
-  item_id: string;
+  item_id: number;
   item_name: string;
   affiliation?: string;
   coupon?: string;
