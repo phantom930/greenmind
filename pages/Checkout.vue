@@ -29,7 +29,8 @@
 import { SfSteps } from '@storefront-ui/vue';
 import { useCart } from '@vue-storefront/odoo';
 import { usePartner } from '~/composables';
-import { computed, useRouter, useRoute, defineComponent } from '@nuxtjs/composition-api';
+import { computed, useRouter, useRoute, defineComponent, onMounted } from '@nuxtjs/composition-api';
+import { setTrackBeginCheckout } from "~/resources/tracking";
 
 const STEPS = {
   personaldetails: 'Personal details',
@@ -113,6 +114,15 @@ export default defineComponent({
 
       router.push({ name: stepNameIndex});
     };
+
+    onMounted(() => {
+      if(currentStepIndex.value == 0) {
+        const products = cart.value.order.orderLines?.map((orderLine) => orderLine)
+        if(products && products.length > 0) {
+          setTrackBeginCheckout(cart.value.order.amountTotal, products)
+        }
+      }
+    });
 
     return {
       cart,

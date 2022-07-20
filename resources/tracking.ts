@@ -1,4 +1,4 @@
-import { Category, Product } from "@vue-storefront/odoo-api";
+import { Category, OrderLine, Product } from "@vue-storefront/odoo-api";
 import { GreenProduct } from "~/green-api/types";
 
 const trackViewItem = (currency: string, value: number, products: IGAProduct[]) => {
@@ -170,6 +170,31 @@ export const setAddToCart = (product: Product) => {
 
   trackAddToCart(currency, itemValue, [mappedProduct]);
 };
+
+export const setTrackBeginCheckout = (value: number, orderLines: OrderLine[], currency?: string) => {
+  const mappedProducts = orderLines.map((orderLine, index) => {
+    if(orderLine.name !== "PostNord Fragt") {
+      const mappedOrderLine = mapOrderLine(orderLine);
+      return mapProduct(mappedOrderLine, index);
+    }
+  }).filter((product) => product != undefined );
+
+  // Currency can be undefined apparently
+  const getCurrency: string = currency ? currency : mappedProducts[0].currency;
+
+  trackBeginCheckout(getCurrency, value, mappedProducts);
+};
+
+const mapOrderLine = (orderLine: OrderLine): GreenProduct => {
+   const product = {...orderLine.product};
+
+   product.price = orderLine.priceTotal;
+   product.qty = orderLine.quantity;
+
+   return product;
+}
+
+
 
 // Maps the storeFront product to Google Analytics product
 // Reference: https://developers.google.com/analytics/devguides/collection/ga4/reference/events#add_payment_info_item
