@@ -15,8 +15,8 @@ export const getStandGradeName = (orderLine: GreenOrderLine): string => {
 };
 
 export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.websiteOrderLine.sort(item => {
-  if (item.coupon || item.giftCard) return 1;
-});
+  if (item.coupon || item.giftCard) return -1;
+}).reverse();
 
 export const getDiscountPrice = (orderLine: GreenOrderLine): string => `${String(orderLine.priceTotal)?.replace('-', '')} Discount`;
 
