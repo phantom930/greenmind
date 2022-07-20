@@ -130,6 +130,10 @@
         />
       </LazyHydrate>
     </div>
+
+    <LazyHydrate when-idle>
+      <ProductStoreStatus :product-id="47304" />
+    </LazyHydrate>
   </div>
 </template>
 <script >

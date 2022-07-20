@@ -403,6 +403,12 @@ export default {
     SfBar,
     SfSearchBar
   },
+  props: {
+    productId: {
+      type: Number,
+      required: true
+    }
+  },
   setup() {
     const { isStoreModalOpen, toggleStoreModal } = useUiState();
 
