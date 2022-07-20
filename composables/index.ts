@@ -11,6 +11,7 @@ import usePartner from './usePartner';
 import usePayment from './usePayment';
 import useGiftCard from './useGiftCard';
 import useCoupon from './useCoupon';
+import useStore from './useStore';
 
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
@@ -30,6 +31,7 @@ export {
   useCheckoutBilling,
   usePartner,
   useCoupon,
+  useStore,
 
   facetGetters,
   productGetters,

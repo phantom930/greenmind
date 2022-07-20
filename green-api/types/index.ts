@@ -130,3 +130,7 @@ export interface GreenGraphQlProductParam extends GraphQlProductParam {
 export declare type GreenGraphQlAddMultipleProductsParams = {
     products: GreenGraphQlProductParam[];
 };
+
+export declare type GetStockInput = {
+  productId: number
+}

@@ -4,6 +4,7 @@ const applyGiftCard = require('./applyGiftCard');
 const applyCoupon = require('./applyCoupon');
 const cartLoadWithUpdate = require('./cartLoadWithUpdate');
 const makeGiftCardPayment = require('./makeGiftCardPayment');
+const getStock = require('./getStock');
 
 module.exports = {
   createUpdatePartner,
@@ -11,5 +12,6 @@ module.exports = {
   applyGiftCard,
   applyCoupon,
   makeGiftCardPayment,
-  cartLoadWithUpdate
+  cartLoadWithUpdate,
+  getStock
 };
