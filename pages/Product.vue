@@ -132,7 +132,7 @@
     </div>
 
     <LazyHydrate when-idle>
-      <ProductStoreStatus :product-id="47304" />
+      <ProductStoreStatus :id="product.id" />
     </LazyHydrate>
   </div>
 </template>

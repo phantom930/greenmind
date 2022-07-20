@@ -3,7 +3,7 @@ import { Context } from '@vue-storefront/core';
 import { ref, computed } from '@nuxtjs/composition-api';
 import { GetStockInput } from '~/green-api/types';
 
-const usePayment = (): any => {
+const useStore = (): any => {
   const context: Context = useVSFContext();
   const stockList = sharedRef(null, 'useStore-stockList');
   const loading = ref(false);
@@ -16,9 +16,9 @@ const usePayment = (): any => {
 
     try {
       const { data } = await context.$odoo.api.getStock(params);
-      stockList.value = data?.stores?.store || [];
+      stockList.value = data?.stores?.stores || [];
     } catch (err) {
-      error.value.getStock = err.response?.data?.graphQLErrors?.[0]?.message;
+      error.value.getStock = err.response?.data?.graphQLErrors?.[0];
     } finally {
       loading.value = false;
     }
@@ -32,4 +32,4 @@ const usePayment = (): any => {
   };
 };
 
-export default usePayment;
+export default useStore;

@@ -43,11 +43,15 @@
             </template>
           </GreenCheckbox>
         </div>
-        <p class="font-bold , text-base pb-4">
-          Stores found: 4
+        <p class="font-bold text-base pb-4">
+          {{ `Stores found: ${stockList.length}` }}
         </p>
         <div class="flex flex-wrap justify-between stores-list">
-          <div class="indi-product">
+          <div
+            v-for="(stock, index) in stockList"
+            :key="index"
+            class="indi-product"
+          >
             <div class="flex justify-between relative items-end stores-data">
               <div class="flex items-end">
                 <img
@@ -58,17 +62,18 @@
                 >
                 <div>
                   <p class="text-xl font-medium">
-                    Vesterbrogade
+                    {{ stock.name }}
                   </p>
                   <p class="text-sm font-normal">
-                    Vesterbrogade 84, 1620 Kbh. V
+                    {{ stock.address.street }}
                   </p>
                   <div class="flex items-center font-normal contact-number">
                     <img
                       :src="require('/assets/images/product/phoneIcon.svg')"
                     >
                     <p class="text-xs ml-1">
-                      8 (020) 302 00 22
+                      <!-- {{8 (020) 302 00 22}} -->
+                      {{ `8(020)${stock.address.phone}` }}
                     </p>
                   </div>
                   <div class="flex items-center font-normal contact-email">
@@ -76,7 +81,7 @@
                       :src="require('/assets/images/product/mailIcon.svg')"
                     >
                     <p class="text-xs ml-1">
-                      example@email.com
+                      {{ stock.address.email }}
                     </p>
                   </div>
                 </div>
@@ -127,260 +132,9 @@
               shape="Round"
               size="small"
               class="my-4 pickup-store"
+              :disabled="!stock.qty"
             >
-              {{ $t("Pick Up") }}
-            </GreenButton>
-          </div>
-          <div class="indi-product">
-            <div class="flex justify-between relative items-end stores-data">
-              <div class="flex items-end">
-                <img
-                  :src="require('/assets/images/product/store.svg')"
-                  width="106"
-                  height="141"
-                  class="mr-4"
-                >
-                <div>
-                  <p class="text-xl font-medium">
-                    Vesterbrogade
-                  </p>
-                  <p class="text-sm font-normal">
-                    Vesterbrogade 84, 1620 Kbh. V
-                  </p>
-                  <div class="flex items-center font-normal contact-number">
-                    <img
-                      :src="require('/assets/images/product/phoneIcon.svg')"
-                    >
-                    <p class="text-xs ml-1">
-                      8 (020) 302 00 22
-                    </p>
-                  </div>
-                  <div class="flex items-center font-normal contact-email">
-                    <img
-                      :src="require('/assets/images/product/mailIcon.svg')"
-                    >
-                    <p class="text-xs ml-1">
-                      example@email.com
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <p class="absolute top-0 right-0 store-distance">
-                  2 km away
-                </p>
-                <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Måndag—Torsdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Fredag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Lørdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Söndag & Helligdage
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <GreenButton
-              style-type="Primary"
-              color="Green"
-              shape="Round"
-              size="small"
-              class="my-4 pickup-store"
-            >
-              {{ $t("Pick Up") }}
-            </GreenButton>
-          </div>
-          <div class="indi-product">
-            <div class="flex justify-between relative items-end stores-data">
-              <div class="flex items-end">
-                <img
-                  :src="require('/assets/images/product/store.svg')"
-                  width="106"
-                  height="141"
-                  class="mr-4"
-                >
-                <div>
-                  <p class="text-xl font-medium">
-                    Vesterbrogade
-                  </p>
-                  <p class="text-sm font-normal">
-                    Vesterbrogade 84, 1620 Kbh. V
-                  </p>
-                  <div class="flex items-center font-normal contact-number">
-                    <img
-                      :src="require('/assets/images/product/phoneIcon.svg')"
-                    >
-                    <p class="text-xs ml-1">
-                      8 (020) 302 00 22
-                    </p>
-                  </div>
-                  <div class="flex items-center font-normal contact-email">
-                    <img
-                      :src="require('/assets/images/product/mailIcon.svg')"
-                    >
-                    <p class="text-xs ml-1">
-                      example@email.com
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <p class="absolute top-0 right-0 store-distance">
-                  2 km away
-                </p>
-                <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Måndag—Torsdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Fredag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Lørdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Söndag & Helligdage
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <GreenButton
-              style-type="Primary"
-              color="Green"
-              shape="Round"
-              size="small"
-              class="my-4 pickup-store"
-            >
-              {{ $t("Pick Up") }}
-            </GreenButton>
-          </div>
-          <div class="indi-product">
-            <div class="flex justify-between relative items-end stores-data">
-              <div class="flex items-end">
-                <img
-                  :src="require('/assets/images/product/store.svg')"
-                  width="106"
-                  height="141"
-                  class="mr-4"
-                >
-                <div>
-                  <p class="text-xl font-medium">
-                    Vesterbrogade
-                  </p>
-                  <p class="text-sm font-normal">
-                    Vesterbrogade 84, 1620 Kbh. V
-                  </p>
-                  <div class="flex items-center font-normal contact-number">
-                    <img
-                      :src="require('/assets/images/product/phoneIcon.svg')"
-                    >
-                    <p class="text-xs ml-1">
-                      8 (020) 302 00 22
-                    </p>
-                  </div>
-                  <div class="flex items-center font-normal contact-email">
-                    <img
-                      :src="require('/assets/images/product/mailIcon.svg')"
-                    >
-                    <p class="text-xs ml-1">
-                      example@email.com
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <p class="absolute top-0 right-0 store-distance">
-                  2 km away
-                </p>
-                <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Måndag—Torsdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Fredag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Lørdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Söndag & Helligdage
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <GreenButton
-              style-type="Primary"
-              color="Green"
-              shape="Round"
-              size="small"
-              class="my-4 pickup-store"
-            >
-              {{ $t("Pick Up") }}
+              {{ stock.qty ? $t('Pick Up') : $t('Out of stock') }}
             </GreenButton>
           </div>
         </div>
@@ -394,7 +148,8 @@ import {
   SfBar,
   SfSearchBar
 } from '@storefront-ui/vue';
-import { useUiState } from '~/composables';
+import { onSSR } from '@vue-storefront/core';
+import { useUiNotification, useUiState, useStore } from '~/composables';
 
 export default {
   name: 'StoreStatus',
@@ -404,15 +159,27 @@ export default {
     SfSearchBar
   },
   props: {
-    productId: {
+    id: {
       type: Number,
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const { isStoreModalOpen, toggleStoreModal } = useUiState();
+    const { send } = useUiNotification();
+    const { error, stockList, getStock } = useStore();
+
+    onSSR(async () => {
+      await getStock({
+        productId: props.id
+      });
+
+      if (error.value.getStock)
+        send({ message: error?.value?.getStock?.message, type: 'danger' });
+    });
 
     return {
+      stockList,
       isStoreModalOpen,
       toggleStoreModal
     };
