@@ -118,7 +118,7 @@ import {
 import { computed, defineComponent, watch } from '@nuxtjs/composition-api';
 import { useCart, useUser } from '@vue-storefront/odoo';
 import { useUiState, cartGetters } from '~/composables';
-import { setTrackViewCart } from "~/resources/tracking";
+import { setTrackViewCart } from '~/resources/tracking';
 
 export default defineComponent({
   name: 'CartSidebar',
@@ -143,11 +143,10 @@ export default defineComponent({
 
     watch(isCartSidebarOpen, () => {
       const products = items.value.map((item) => item.product);
-      if(products.length > 0 && isCartSidebarOpen.value) {
-        setTrackViewCart(totals.value,  products);
+      if (products.length > 0 && isCartSidebarOpen.value) {
+        setTrackViewCart(totals.value, products);
       }
-    })
-
+    });
 
     return {
       isAuthenticated,

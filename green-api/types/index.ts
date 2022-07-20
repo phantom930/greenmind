@@ -75,6 +75,9 @@ export interface CombinationInfoGrade {
 export interface GoogleAnalytics {
     item_id: number;
     currency: string;
+    item_variant: string;
+    item_color: string;
+    item_storage: string;
     item_brand: string;
     item_category: string;
     item_category2: string;
