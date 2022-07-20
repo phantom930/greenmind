@@ -117,7 +117,7 @@ export default defineComponent({
 
     onMounted(() => {
       if(currentStepIndex.value == 0) {
-        const products = cart.value.order.orderLines?.map((orderLine) => orderLine)
+        const products = cart.value.order.websiteOrderLine?.map((orderLine) => orderLine)
         if(products && products.length > 0) {
           setTrackBeginCheckout(cart.value.order.amountTotal, products)
         }

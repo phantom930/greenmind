@@ -129,6 +129,7 @@ import { SfButton, SfHeading } from '@storefront-ui/vue';
 import { useCart, useCountrySearch, useUser } from '@vue-storefront/odoo';
 import { onSSR } from '@vue-storefront/core';
 import { useCheckoutShipping, useCheckoutBilling, usePartner } from '~/composables';
+import { setTrackAddShippingInfo } from "~/resources/tracking";
 
 export default defineComponent({
   name: 'Shipping',
@@ -215,6 +216,8 @@ export default defineComponent({
     const goToOrderReview = async () => {
       await handleAddNewAddress(shippingForm.value.form);
       await handleAddNewBillingAddress(copyShippingToBilling.value ? shippingForm.value.form : billingForm.value.form);
+
+      setTrackAddShippingInfo(cart.value.order.amountTotal, cart.value.order.websiteOrderLine, selectedShippingMethod.value.name )
 
       emit('change', 'revieworder');
     };

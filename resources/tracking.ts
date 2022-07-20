@@ -1,5 +1,5 @@
 import { Category, OrderLine, Product } from "@vue-storefront/odoo-api";
-import { GreenProduct } from "~/green-api/types";
+import { GreenOrderLine, GreenProduct } from "~/green-api/types";
 
 const trackViewItem = (currency: string, value: number, products: IGAProduct[]) => {
   (window as any)?.dataLayer?.push({
@@ -173,10 +173,8 @@ export const setAddToCart = (product: Product) => {
 
 export const setTrackBeginCheckout = (value: number, orderLines: OrderLine[], currency?: string) => {
   const mappedProducts = orderLines.map((orderLine, index) => {
-    if(orderLine.name !== "PostNord Fragt") {
       const mappedOrderLine = mapOrderLine(orderLine);
       return mapProduct(mappedOrderLine, index);
-    }
   }).filter((product) => product != undefined );
 
   // Currency can be undefined apparently
@@ -185,13 +183,42 @@ export const setTrackBeginCheckout = (value: number, orderLines: OrderLine[], cu
   trackBeginCheckout(getCurrency, value, mappedProducts);
 };
 
+
+export const setTrackRemoveFromCart = (value: number, orderLine: GreenOrderLine, currency?: string) => {
+
+  const mappedOrderLine =  mapOrderLine(orderLine);
+  const mappedProduct = mapProduct(mappedOrderLine);
+
+  const getCurrency: string = currency ? currency : mappedProduct[0].currency;
+
+  console.log(mappedProduct);
+
+  // setTrackRemoveFromCart(value, mappedProduct, getCurrency);
+}
+
+
+export const setTrackAddShippingInfo = (value: number, orderLines: GreenOrderLine[], shippingTier: string, currency?: string) => {
+
+  const mappedProducts = orderLines.map((orderLine, index) => {
+      const mappedOrderLine = mapOrderLine(orderLine);
+      return mapProduct(mappedOrderLine, index);
+  }).filter((product) => product != undefined );
+
+  // Currency can be undefined apparently
+  const getCurrency: string = currency ? currency : mappedProducts[0].currency;
+
+  const getShipping = shippingTier ? shippingTier : "";
+
+  trackAddShippingInfo(getCurrency, value, getShipping,  mappedProducts);
+
+}
+
 const mapOrderLine = (orderLine: OrderLine): GreenProduct => {
-   const product = {...orderLine.product};
+  const product = {...orderLine.product};
+  product.price = orderLine.priceTotal;
+  product.qty = orderLine.quantity;
 
-   product.price = orderLine.priceTotal;
-   product.qty = orderLine.quantity;
-
-   return product;
+  return product;
 }
 
 
