@@ -184,16 +184,15 @@ export const setTrackBeginCheckout = (value: number, orderLines: OrderLine[], cu
 };
 
 
-export const setTrackRemoveFromCart = (value: number, orderLine: GreenOrderLine, currency?: string) => {
+export const setTrackRemoveFromCart = (orderLine: GreenOrderLine) => {
 
   const mappedOrderLine =  mapOrderLine(orderLine);
   const mappedProduct = mapProduct(mappedOrderLine);
+  const getCurrency: string = mappedProduct?.currency;
 
-  const getCurrency: string = currency ? currency : mappedProduct[0].currency;
+  const itemValue = orderLine.product?.hasDiscountedPrice ? orderLine.product?.priceAfterDiscount : orderLine.product.price;
 
-  console.log(mappedProduct);
-
-  // setTrackRemoveFromCart(value, mappedProduct, getCurrency);
+  trackRemoveFromCart(getCurrency, itemValue, [mappedProduct]);
 }
 
 
@@ -215,7 +214,6 @@ export const setTrackAddShippingInfo = (value: number, orderLines: GreenOrderLin
 
 const mapOrderLine = (orderLine: OrderLine): GreenProduct => {
   const product = {...orderLine.product};
-  product.price = orderLine.priceTotal;
   product.qty = orderLine.quantity;
 
   return product;

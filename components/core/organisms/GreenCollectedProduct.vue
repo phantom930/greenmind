@@ -16,7 +16,7 @@
     :qty="cartGetters.getItemQty(orderLine)"
     class="collected-product"
     @input="handleUpdateItem(orderLine, $event)"
-    @click:remove="handleRemoveItemAndAccessories(orderLine)"
+    @click:remove="handleRemoveItemAndAccessories(orderLine); trackRemoveProduct(orderLine)"
   >
     <template #image>
       <div v-if="isGiftCardOrCoupon" />
@@ -65,6 +65,7 @@ import { SfCollectedProduct } from '@storefront-ui/vue';
 import { cartGetters, useCollectedProduct } from '~/composables';
 import { defineComponent, computed, PropType, toRefs } from '@nuxtjs/composition-api';
 import { GreenOrderLine } from '~/green-api/types';
+import { setTrackRemoveFromCart } from "~/resources/tracking";
 
 export default defineComponent({
   components: {
@@ -93,6 +94,13 @@ export default defineComponent({
 
     const isGiftCardOrCoupon = computed(() => props.orderLine?.giftCard || props.orderLine.coupon);
 
+    const trackRemoveProduct = (orderLine: GreenOrderLine) => {
+        if(!orderLine) {
+          return;
+        }
+        setTrackRemoveFromCart(orderLine);
+    }
+
     return {
       isGiftCardOrCoupon,
       quantityInStock,
@@ -103,7 +111,8 @@ export default defineComponent({
       cartGetters,
       getPrice,
       handleRemoveItemAndAccessories,
-      handleUpdateItem
+      handleUpdateItem,
+      trackRemoveProduct
     };
   }
 });
