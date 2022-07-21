@@ -141,12 +141,21 @@ export const setTrackViewItemList = (itemListId: string, itemListName: string, p
     return mapProduct(product, index);
   });
 
+    mappedProducts.forEach((product) => {
+        product.item_list_id = itemListId;
+        product.item_list_name = itemListName;
+    })
+
   trackViewItemList(itemListId, itemListName, mappedProducts);
 };
 
 export const setTrackSelectItem = (itemListId: string, itemListName: string, product: Product, index: number) => {
   const mappedProduct = mapProduct(product);
   mappedProduct.index = index;
+
+  mappedProduct.item_list_id = itemListId;
+  mappedProduct.item_list_name = itemListName;
+
 
   trackSelectItem(itemListId, itemListName, [mappedProduct]);
 };
@@ -251,6 +260,7 @@ const mapProduct = (product: GreenProduct, index = 0): IGAProduct => {
       discount: product.hasDiscountedPrice ? product.price - product.priceAfterDiscount : null,
       quantity: product?.qty,
       item_variant: product.combinationInfoVariant ? product.combinationInfoVariant.grade_name : null,
+      item_brand: product?.manufacturerName,
   }
 
     if(product.googleAnalytics){
