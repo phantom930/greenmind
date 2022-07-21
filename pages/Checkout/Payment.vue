@@ -55,7 +55,7 @@
       :disabled="!canFinishPayment"
       :size="$device.isMobile ? 'Max' : 'Medium'"
       class="my-5"
-      @click="providerPaymentHandler()"
+      @click="providerPaymentHandler(); trackAddPaymentInfo()"
     >
       {{ $t("Confirm & Pay") }}
     </GreenButton>
@@ -68,6 +68,7 @@ import { onSSR } from '@vue-storefront/core';
 import { cartGetters, useCart, useMakeOrder } from '@vue-storefront/odoo';
 import { computed, defineComponent, ref, useRouter } from '@nuxtjs/composition-api';
 import { useUiHelpers, usePayment, useUiNotification } from '~/composables';
+import { setTrackAddPaymentInfo } from "~/resources/tracking";
 
 export default defineComponent({
   name: 'Payment',
@@ -133,6 +134,10 @@ export default defineComponent({
       () => providerList.value.length > 1
     );
 
+    const trackAddPaymentInfo = () => {
+      setTrackAddPaymentInfo(cart.value.order.amountTotal, cart.value.order.websiteOrderLine, selectedProvider.value.name);
+    }
+
     return {
       handleMakeGiftPayment,
       cartExcedLimitTotalAmount,
@@ -150,7 +155,8 @@ export default defineComponent({
       selectedProvider,
       providerListHasMoreThanOne,
       providerPaymentHandler,
-      getComponentProviderByName: th.getComponentProviderByName
+      getComponentProviderByName: th.getComponentProviderByName,
+      trackAddPaymentInfo
     };
   }
 });

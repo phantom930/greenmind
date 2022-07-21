@@ -208,9 +208,24 @@ export const setTrackAddShippingInfo = (value: number, orderLines: GreenOrderLin
 
   const getShipping = shippingTier ? shippingTier : "";
 
-  trackAddShippingInfo(getCurrency, value, getShipping,  mappedProducts);
+  trackAddShippingInfo(getCurrency, value, getShipping, mappedProducts);
 
 }
+
+
+export const setTrackAddPaymentInfo = (value: number, orderLines: GreenOrderLine[], paymentType: string  ) => {
+  const mappedProducts = orderLines.map((orderLine, index) => {
+      const mappedOrderLine = mapOrderLine(orderLine);
+      return mapProduct(mappedOrderLine, index);
+  }).filter((product) => product != undefined );
+
+  // Currency can be undefined apparently
+  const getCurrency = mappedProducts[0].currency;
+
+  trackAddPaymentInfo(getCurrency, value, paymentType,  mappedProducts);
+
+}
+
 
 const mapOrderLine = (orderLine: OrderLine): GreenProduct => {
   const product = {...orderLine.product};
@@ -218,7 +233,6 @@ const mapOrderLine = (orderLine: OrderLine): GreenProduct => {
 
   return product;
 }
-
 
 
 // Maps the storeFront product to Google Analytics product
