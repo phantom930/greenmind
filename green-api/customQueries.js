@@ -36,6 +36,7 @@ module.exports = {
       }
       products {
         id
+        googleAnalytics
         websiteSubtitle
         smallImage
         price
@@ -93,6 +94,7 @@ module.exports = {
         id
         websiteSubtitle
         smallImage
+        googleAnalytics
         price
         name
         description
@@ -119,6 +121,7 @@ module.exports = {
                     description
                     smallImage
                     slug
+                    googleAnalytics
                     manufacturerName
                     jsonLd
                     qty
@@ -321,28 +324,7 @@ module.exports = {
       }
     }`
   }),
-  greenGetRealProduct: ({variables}) => ({
-    variables,
-    query: gql `
-    query($productTemplateId: Int, $combinationId: [Int]) {
-    productVariant(
-      productTemplateId: $productTemplateId
-      combinationId: $combinationId
-    ) {
-      product{
-        id
-        variantAttributeValues{
-          id
-          name
-          attribute{
-            id
-            name
-          }
-        }
-      }
-    }
-  }`
-  }),
+
   greenAddAddress: ({variables}) => ({
     variables,
     mutation: gql `
@@ -411,19 +393,7 @@ module.exports = {
     query: gql `
     query {
       paymentConfirmation{
-        order{
-          lastTransaction{
-            payment{
-              name
-              amount
-              paymentReference
-            }
-            acquirer
-            state
-            amount
-          }
-    
-        }
+        ${orderFragment}
       }
     }`
   })

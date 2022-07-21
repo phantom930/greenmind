@@ -22,7 +22,6 @@ import { SfHeading, SfButton } from '@storefront-ui/vue';
 import { ref, onMounted, defineComponent, computed, Ref, watch } from '@nuxtjs/composition-api';
 import { usePayment, cartGetters } from '@vue-storefront/odoo';
 import { PaymentTransactionState } from '~/green-api/types';
-import { Order } from "@vue-storefront/odoo/lib/composables/types";
 export default defineComponent({
   components: {
     SfHeading,
@@ -47,7 +46,7 @@ export default defineComponent({
       const data = await getPaymentConfirmation({ customQuery: { paymentConfirmation: 'greenConfirmationPayment' }});
       paymentResponse.value = data;
 
-      paymentStatus.value = paymentResponse.value.order?.lastTransaction.state;
+      paymentStatus.value = paymentResponse.value.order?.lastTransaction?.state;
 
     });
 
