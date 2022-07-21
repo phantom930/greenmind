@@ -46,7 +46,8 @@ export default defineComponent({
     onMounted(async () => {
       const data = await getPaymentConfirmation({ customQuery: { paymentConfirmation: 'greenConfirmationPayment' }});
       paymentResponse.value = data;
-       paymentStatus.value = paymentResponse.value.order?.lastTransaction.state;
+
+      paymentStatus.value = paymentResponse.value.order?.lastTransaction.state;
 
     });
 
@@ -66,8 +67,7 @@ export default defineComponent({
       const clerkProducts = paymentResponse.value.orderLines.map((orderLine) => {
         return {id: orderLine.id, quantity: orderLine.quantity, price: orderLine.priceTotal}});
 
-      console.log(clerkProducts)
-      // Clerk("call", "log/sale", {sale: paymentResponse.value.id, products: });
+      Clerk("call", "log/sale", {sale: paymentResponse.value.id, products: clerkProducts, email: paymentResponse.value.partner?.email });
 
     })
 
