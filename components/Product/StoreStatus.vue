@@ -55,10 +55,10 @@
             :key="index"
             class="indi-product"
           >
-            <div class="flex justify-between relative items-end stores-data">
-              <div class="flex items-end">
+            <div class="flex justify-between relative items-start stores-data">
+              <div class="flex items-start">
                 <img
-                  :src="require('/assets/images/product/store.svg')"
+                  :src="`${$config.baseURL}${stock.address.image.replace('/', '')}`"
                   width="106"
                   height="141"
                   class="mr-4"
@@ -70,12 +70,11 @@
                   <p class="text-sm font-normal">
                     {{ stock.address.street }}
                   </p>
-                  <div class="flex items-center font-normal contact-number">
+                  <!-- <div class="flex items-center font-normal contact-number">
                     <img
                       :src="require('/assets/images/product/phoneIcon.svg')"
                     >
                     <p class="text-xs ml-1">
-                      <!-- {{8 (020) 302 00 22}} -->
                       {{ `8(020)${stock.address.phone}` }}
                     </p>
                   </div>
@@ -86,59 +85,39 @@
                     <p class="text-xs ml-1">
                       {{ stock.address.email }}
                     </p>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div>
-                <p class="absolute top-0 right-0 store-distance">
+                <!-- <p class="absolute top-0 right-0 store-distance">
                   2 km away
-                </p>
-                <div class="bg-gray-200 p-2 rounded-md store-position">
-                  <div class="flex justify-between gap-6">
+                </p> -->
+                <div v-if="stock.openHours" class="bg-gray-200 p-2 rounded-md store-position">
+                  <div
+                    v-for="(openHour, key) in stock.openHours"
+                    :key="key"
+                    class="flex justify-between gap-6"
+                  >
                     <p class="text-xs">
-                      Måndag—Torsdag
+                      {{ openHour.dayOfWeek }}
                     </p>
                     <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Fredag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Lørdag
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
-                    </p>
-                  </div>
-                  <div class="flex justify-between gap-6">
-                    <p class="text-xs">
-                      Söndag & Helligdage
-                    </p>
-                    <p class="text-xs">
-                      10:00 — 18:00
+                      {{ openHour.openHours }}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            <GreenButton
+            <!-- <GreenButton
               style-type="Primary"
               color="Green"
               shape="Round"
               size="small"
               class="my-4 pickup-store"
-              :disabled="!stock.qty"
+              :disabled="!stock.isInStock"
             >
-              {{ stock.qty ? $t('Pick Up') : $t('Out of stock') }}
-            </GreenButton>
+              {{ stock.isInStock ? $t('Pick Up') : $t('Out of stock') }}
+            </GreenButton> -->
           </div>
         </div>
       </div>
@@ -178,15 +157,17 @@ export default {
 
     const stocks = computed(() => {
       if (isStockAvailable.value) {
-        return stockList?.value?.filter((stock) =>
-          stock.qty && stock.address.street.toLowerCase().indexOf(searchKeyword.value.toLowerCase()) > -1
-        );
+        return stockList.value ? stockList.value.filter((stock) =>
+          stock.isInStock && stock.address.street.toLowerCase().indexOf(searchKeyword.value.toLowerCase()) > -1
+        ) : [];
       } else {
-        return stockList?.value?.filter((stock) =>
+        return stockList.value ? stockList.value.filter((stock) =>
           stock.address.street.toLowerCase().indexOf(searchKeyword.value.toLowerCase()) > -1
-        );
+        ) : [];
       }
     });
+
+    console.log(stockList.value, stocks.value);
 
     const handleSearch = () => {
       searchKeyword.value = searchString.value;
@@ -326,6 +307,7 @@ export default {
       @include for-desktop {
         width: 90% !important;
         height: auto !important;
+        min-height: 703px;
       }
       @include for-mobile {
         padding-top: 20px;

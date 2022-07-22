@@ -10,13 +10,18 @@ const getStock = async (context, params) => {
         stores {
           name
           address {
+            image
             email
             phone
             street
             street2
             zip
           }
-          qty
+          isInStock
+          openHours {
+            dayOfWeek
+            openHours
+          }
         }
         totalCount
       }
