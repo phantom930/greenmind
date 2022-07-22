@@ -63,10 +63,10 @@ export default defineComponent({
       if(!paymentSuccess) {
         return;
       }
-      const clerkProducts = paymentResponse.value.orderLines.map((orderLine) => {
+      const clerkProducts = paymentResponse.value.order?.orderLines?.map((orderLine) => {
         return {id: orderLine.id, quantity: orderLine.quantity, price: orderLine.priceTotal}});
 
-      Clerk("call", "log/sale", {sale: paymentResponse.value.id, products: clerkProducts, email: paymentResponse.value.partner?.email });
+      Clerk("call", "log/sale", {sale: paymentResponse.value.order?.id, products: clerkProducts, email: paymentResponse.value.order?.partner?.email });
 
     })
 
