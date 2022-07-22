@@ -16,6 +16,27 @@ Tip - Add to your /etc/hosts
 6. Or yarn dev-default
 ```
 
+## Dev fake host extension
+To fetch itens from API we must set any domain with products in backend
+We can use in middleware.config.js:  
+
+{
+    name: 'cookieExtension',
+    hooks: (req, res) => {
+
+    return {
+        beforeCreate: ({ configuration }) => ({
+        ...configuration,
+        auth: req.headers.cookie,
+        'resquest-host': 'vue-dev.greenmind.space'
+        }),
+        beforeCall: ({ configuration, callName, args }) => args,
+        afterCall: ({ configuration, callName, response }) => response
+    };
+    }
+}
+
+
 ## Env vars used
 
 
