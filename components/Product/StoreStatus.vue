@@ -58,7 +58,7 @@
             <div class="flex justify-between relative items-start stores-data">
               <div class="flex items-start">
                 <img
-                  :src="$image(stock.address.image, 98, 120, 'store')"
+                  :src="require('/assets/images/product/store.svg')"
                   width="98"
                   height="120"
                   class="mr-4 pb-1"
