@@ -58,10 +58,10 @@
             <div class="flex justify-between relative items-start stores-data">
               <div class="flex items-start">
                 <img
-                  :src="`${$config.baseURL}${stock.address.image.replace('/', '')}`"
-                  width="106"
-                  height="141"
-                  class="mr-4"
+                  :src="$image(stock.address.image, 98, 120, 'store')"
+                  width="98"
+                  height="120"
+                  class="mr-4 pb-1"
                 >
                 <div>
                   <p class="text-xl font-medium">
