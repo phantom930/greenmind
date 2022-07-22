@@ -112,6 +112,7 @@ import { computed, defineComponent, ref } from '@nuxtjs/composition-api';
 import { SfButton, SfHeading } from '@storefront-ui/vue';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
 import { cartGetters, productGetters } from '~/composables';
+import { GreenCart } from '~/green-api/types';
 
 export default defineComponent({
   name: 'Revieworder',
@@ -120,7 +121,7 @@ export default defineComponent({
   },
   setup() {
     const { cart } = useCart();
-    const orderLines = computed(() => cartGetters.getItemsWithoutDiscounts(cart.value));
+    const orderLines = computed(() => cartGetters.getItemsWithoutDiscounts(cart.value as GreenCart));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const agreeTermsConditions = ref(false);
 

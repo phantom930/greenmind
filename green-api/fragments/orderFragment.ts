@@ -20,6 +20,8 @@ order {
   amountTotal
   amountTax
   amountDelivery
+  amountDiscounts
+  amountGiftCards
   orderUrl
   stage
   totalCount

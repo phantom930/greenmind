@@ -119,7 +119,9 @@ export interface GreenOrder extends Order {
     accessoryLines?: GreenOrderLine[];
     orderLines?: GreenOrderLine[];
     websiteOrderLine?: GreenOrderLine[];
-    partner?: GreenPartner
+    partner?: GreenPartner;
+    amountDiscounts: number;
+    amountGiftCards: number;
 }
 
 export interface GreenCart extends Cart {
