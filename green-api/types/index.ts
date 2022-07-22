@@ -115,6 +115,7 @@ export interface GreenPartner extends Partner {
 }
 export interface GreenOrder extends Order {
     totalCount?: number,
+    amountSubtotal?: number,
     lastTransaction?: GreenPaymentTransaction,
     accessoryLines?: GreenOrderLine[];
     orderLines?: GreenOrderLine[];

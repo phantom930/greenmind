@@ -17,31 +17,31 @@
 
         <SfProperty
           :name="$t('Subtotal')"
-          :value="$currency(totals.subtotal)"
-          :class="[
-            'sf-property--full-width',
-            'sf-property--large property',
-            { discounted: totals.special > 0 },
-          ]"
+          :value="$currency(subtotal)"
+          class="sf-property--full-width sf-property--large property"
         />
+
+        <SfProperty
+          v-if="discountCoupons < 0"
+          :name="$t('Discount')"
+          :value="$currency(discountCoupons)"
+          class="sf-property--full-width sf-property--large property"
+        />
+
+        <SfProperty
+          v-if="discountGiftCards < 0"
+          :name="$t('Discount')"
+          :value="$currency(discountGiftCards)"
+          class="sf-property--full-width sf-property--large property"
+        />
+
         <SfProperty
           v-if="shippingMethodPrice > 0"
           :name="$t('Shipping')"
           :value="$currency(shippingMethodPrice)"
-          :class="[
-            'sf-property--full-width',
-            'sf-property--large property',
-            { discounted: totals.special > 0 },
-          ]"
+          class="sf-property--full-width sf-property--large property"
         />
 
-        <SfProperty
-          v-for="discount in discounts"
-          :key="discount.id"
-          :name="discount.name + (discount.code && ` (${discount.code})`)"
-          :value="$currency(discount.value)"
-          class="sf-property--full-width sf-property--small"
-        />
         <SfProperty
           v-if="totals.special > 0"
           :value="$currency(totals.special)"
@@ -240,6 +240,7 @@ import { SfHeading, SfProperty, SfCharacteristic, SfLink, SfInput } from '@store
 import { computed, ref, defineComponent, useRoute } from '@nuxtjs/composition-api';
 import { useCart, checkoutGetters } from '@vue-storefront/odoo';
 import { cartGetters, useGiftCard, useUiNotification, useCoupon } from '~/composables';
+import { GreenCart } from '~/green-api/types';
 
 export default defineComponent({
   name: 'CartPreview',
@@ -270,10 +271,12 @@ export default defineComponent({
     const partner = computed(() => cart?.value?.order?.partner || {});
     const partnerShipping = computed(() => cart?.value?.order?.partnerShipping || {});
     const partnerInvoice = computed(() => cart?.value?.order?.partnerInvoice || {});
-    const products = computed(() => cartGetters.getItems(cart.value));
-    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
+    const products = computed(() => cartGetters.getItems(cart.value as GreenCart));
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value as GreenCart));
     const totals = computed(() => cartGetters.getTotals(cart.value));
-    const discounts = computed(() => cartGetters.getDiscounts(cart.value));
+    const subtotal = computed(() => cartGetters.getSubTotal(cart.value as GreenCart));
+    const discountCoupons = computed(() => cartGetters.getDiscountsByCoupon(cart.value as GreenCart));
+    const discountGiftCards = computed(() => cartGetters.getDiscountsByGiftCards(cart.value as GreenCart));
     const shippingMethodPrice = computed(() =>
       checkoutGetters.getShippingMethodPrice(cart.value?.order?.shippingMethod)
     );
@@ -310,6 +313,9 @@ export default defineComponent({
     };
 
     return {
+      subtotal,
+      discountCoupons,
+      discountGiftCards,
       showCoupon,
       handleAddCouponCode,
       showGiftCard,
@@ -325,7 +331,6 @@ export default defineComponent({
       partnerShipping,
       partnerInvoice,
       shippingMethodPrice,
-      discounts,
       totalItems,
       listIsHidden,
       products,

@@ -49,7 +49,13 @@
       <div class="subtotal">
         <p>{{ $t('Subtotal') }}:</p>
         <div class="price">
-          {{ $currency(totals.subtotal) }}
+          {{ $currency(subtotal) }}
+        </div>
+      </div>
+      <div v-if="discountCoupons < 0" class="subtotal">
+        <p>{{ $t('Discount') }}:</p>
+        <div class="price">
+          {{ $currency(discountCoupons) }}
         </div>
       </div>
       <div class="shipping">
@@ -124,11 +130,17 @@ export default defineComponent({
     const orderLines = computed(() => cartGetters.getItemsWithoutDiscounts(cart.value as GreenCart));
     const totals = computed(() => cartGetters.getTotals(cart.value));
     const agreeTermsConditions = ref(false);
+    const subtotal = computed(() => cartGetters.getSubTotal(cart.value as GreenCart));
+    const discountCoupons = computed(() => cartGetters.getDiscountsByCoupon(cart.value as GreenCart));
+    const discountGiftCards = computed(() => cartGetters.getDiscountsByGiftCards(cart.value as GreenCart));
 
     const shippingMethodPrice = computed(() =>
       checkoutGetters.getShippingMethodPrice(cart.value?.order?.shippingMethod)
     );
     return {
+      discountCoupons,
+      discountGiftCards,
+      subtotal,
       shippingMethodPrice,
       cart,
       agreeTermsConditions,

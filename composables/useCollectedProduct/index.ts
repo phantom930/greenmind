@@ -2,7 +2,7 @@
 import { useCart, useMultipleProduct } from '@vue-storefront/odoo';
 import { cartGetters } from '~/composables';
 import { computed, Ref } from '@nuxtjs/composition-api';
-import { GreenOrderLine } from '~/green-api/types';
+import { GreenCart, GreenOrderLine } from '~/green-api/types';
 
 declare let Clerk: any;
 
@@ -17,7 +17,7 @@ const useCollectedProduct = (orderLine: Ref<GreenOrderLine>): any => {
 
   const anyLoading = computed(() => loading.value || multipleLoading.value);
 
-  const getPrice = (orderLine: GreenOrderLine) => cartGetters.getPrice(cart.value, orderLine);
+  const getPrice = (orderLine: GreenOrderLine) => cartGetters.getPrice(cart.value as GreenCart, orderLine);
 
   const handleRemoveItemAndAccessories = async (orderLine: GreenOrderLine) => {
     if (anyLoading.value) {

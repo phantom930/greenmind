@@ -22,6 +22,7 @@ order {
   amountDelivery
   amountDiscounts
   amountGiftCards
+  amountSubtotal
   orderUrl
   stage
   totalCount

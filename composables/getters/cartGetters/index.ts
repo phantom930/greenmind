@@ -21,7 +21,11 @@ export const getItems = (cart: GreenCart): GreenOrderLine[] => cart?.order?.webs
 export const getItemsWithoutDiscounts = (cart: GreenCart): GreenOrderLine[] => getItems(cart)
   ?.filter(item => !item.coupon && !item.giftCard) || [];
 
-export const getDiscountPrice = (orderLine: GreenOrderLine): string => `${String(orderLine.priceTotal)?.replace('-', '')} Discount`;
+export const getSubTotal = (cart: GreenCart): number => cart?.order?.amountSubtotal;
+
+export const getDiscountsByCoupon = (cart: GreenCart): number => cart?.order?.amountDiscounts;
+
+export const getDiscountsByGiftCards = (cart: GreenCart): number => cart?.order?.amountGiftCards;
 
 export const getTotalItems = (cart: GreenCart): number => cart?.order?.totalCount || 0;
 
@@ -53,8 +57,10 @@ const getters = {
   accessoryIsInCart,
   getItemImageFilename,
   getStandGradeName,
-  getDiscountPrice,
-  getItemsWithoutDiscounts
+  getDiscountsByCoupon,
+  getDiscountsByGiftCards,
+  getItemsWithoutDiscounts,
+  getSubTotal
 };
 
 export default getters;

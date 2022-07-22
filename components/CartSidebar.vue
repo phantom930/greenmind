@@ -119,6 +119,7 @@ import { computed, defineComponent, watch } from '@nuxtjs/composition-api';
 import { useCart, useUser } from '@vue-storefront/odoo';
 import { useUiState, cartGetters } from '~/composables';
 import { setTrackViewCart } from '~/resources/tracking';
+import { GreenCart } from '~/green-api/types';
 declare let Clerk: any;
 
 export default defineComponent({
@@ -137,15 +138,15 @@ export default defineComponent({
     const { cart, removeItem, updateItemQty } = useCart();
     const { isAuthenticated } = useUser();
 
-    const items = computed(() => cartGetters.getItems(cart.value));
+    const items = computed(() => cartGetters.getItems(cart.value as GreenCart));
     const totals = computed(() => cartGetters.getTotals(cart.value).total);
-    const totalItems = computed(() => cartGetters.getTotalItems(cart.value));
-    const accessories = computed(() => cartGetters.getAccessories(cart.value));
+    const totalItems = computed(() => cartGetters.getTotalItems(cart.value as GreenCart));
+    const accessories = computed(() => cartGetters.getAccessories(cart.value as GreenCart));
 
     watch(items, () => {
       const itemsIds = items.value.map((product) => product.id);
-      Clerk("cart", "set", itemsIds)
-    })
+      Clerk('cart', 'set', itemsIds);
+    });
 
     watch(isCartSidebarOpen, () => {
       const products = items.value.map((item) => item.product);
