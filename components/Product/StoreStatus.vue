@@ -22,6 +22,7 @@
               :icon="{ icon: 'marker', size: '1.5rem', color: '#43464E' }"
               class="store-search-bar"
               @input="(value) => searchString = value"
+              @keypress.enter="() => searchKeyword = searchString"
             />
           </div>
           <div>
@@ -186,6 +187,7 @@ export default {
       stocks,
       isStockAvailable,
       searchString,
+      searchKeyword,
       isStoreModalOpen,
       handleSearch,
       toggleStoreModal
