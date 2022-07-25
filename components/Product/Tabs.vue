@@ -9,7 +9,7 @@
       title="Description"
     >
       <div class="product__description">
-        {{ description }}
+        <span v-html="description" />
       </div>
     </SfTab>
     <SfTab
@@ -50,7 +50,7 @@ export default defineComponent({
   },
   setup(props) {
 
-    const description = computed(() => productGetters.getDescription(props.product));
+    const description = computed(() => productGetters.getDescription(props.product).replace(/\n/g, '<br/>'));
     const attributesWithoutGrade = computed(() => [
       ...productGetters.getAttributesValues(props.product),
       ...productGetters.getSchemaAttributeValues(props.product)
