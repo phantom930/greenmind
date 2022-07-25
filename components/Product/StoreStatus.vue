@@ -35,8 +35,14 @@
                   <p class="text-xl font-medium">
                     {{ stock.name }}
                   </p>
-                  <p class="text-sm font-normal">
+                  <p v-if="stock.address.street" class="text-sm font-normal">
                     {{ stock.address.street }}
+                  </p>
+                  <p v-if="stock.address.street2" class="text-sm font-normal">
+                    {{ stock.address.street2 }}
+                  </p>
+                  <p v-if="stock.address.zip" class="text-sm font-normal">
+                    {{ stock.address.zip }}
                   </p>
                   <!-- <div class="flex items-center font-normal contact-number">
                     <img
