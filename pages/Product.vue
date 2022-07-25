@@ -171,8 +171,6 @@ export default defineComponent({
       };
     });
 
-    console.log('product:', product.value);
-
     const properties = computed(() => productGetters.getProperties(product.value));
     const code = computed(() => productGetters.getCode(product.value));
     const combinationInfo = computed(() => product.value?.combinationInfoVariant || {});
