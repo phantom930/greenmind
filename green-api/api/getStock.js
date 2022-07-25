@@ -17,7 +17,6 @@ const getStock = async (context, params) => {
             street2
             zip
           }
-          isInStock
           openHours {
             dayOfWeek
             openHours
