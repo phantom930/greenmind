@@ -14,10 +14,10 @@
     </template>
     <transition name="sf-fade" mode="out-in">
       <div>
-        <p class="font-bold text-base pb-4">
+        <p class="font-bold text-base pb-4 stores-list-header">
           {{ `${$t('Stores found')}: ${stocks.length}` }}
         </p>
-        <div class="flex flex-wrap justify-between stores-list">
+        <div v-if="stocks.length" class="flex flex-wrap justify-between">
           <div
             v-for="(stock, index) in stocks"
             :key="index"
@@ -93,6 +93,9 @@
               {{ stock.isInStock ? $t('Pick Up') : $t('Out of stock') }}
             </GreenButton> -->
           </div>
+        </div>
+        <div v-else class="text-center text-2xl font-medium py-6 m-auto lg:w-3/4">
+          {{ $t("Not available for pickup") }}
         </div>
       </div>
     </transition>
@@ -179,8 +182,8 @@ export default {
     font-weight: 500;
   }
 }
-.stores-list {
-  border-top: 2px solid var(--_c-greenmind-fern-primary-medium-green);
+.stores-list-header {
+  border-bottom: 2px solid var(--_c-greenmind-fern-primary-medium-green);
 }
 
 .pickup-store {
