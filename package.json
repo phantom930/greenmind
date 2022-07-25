@@ -30,6 +30,7 @@
     }
   },
   "dependencies": {
+    "@adyen/adyen-web": "^5.19.0",
     "@nuxt/image": "^0.6.1",
     "@nuxt/types": "latest",
     "@nuxtjs/amp": "^0.5.4",
