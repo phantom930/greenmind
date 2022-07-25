@@ -15,7 +15,7 @@
     <transition name="sf-fade" mode="out-in">
       <div>
         <p class="font-bold text-base pb-4">
-          {{ `Stores found: ${stocks.length}` }}
+          {{ `${$t('Stores found')}: ${stocks.length}` }}
         </p>
         <div class="flex flex-wrap justify-between stores-list">
           <div
