@@ -142,7 +142,7 @@
       border-bottom: var(--c-light) solid 1px;
       margin-bottom: var(--spacer-base);
     }
-    
+
     &__gallery {
       flex: 1;
     }
@@ -179,7 +179,7 @@
     margin-top: 7%;
   }
   ::v-deep .sf-tabs__title {
-    margin-right: 15%;
+    margin-right: 10%;
   }
   .total-price-buttons .total-price {
     font-size: 34px;
@@ -209,10 +209,10 @@
     & button {
       @include for-mobile {
         min-width: 100%;
-      } 
+      }
     }
   }
-  
+
   .product_variants {
     text-align: left;
     --heading-title-color: var(--_c-greenmind-secondary-black);
@@ -242,7 +242,7 @@
     margin-bottom: 40px;
   }
 
-  
+
 
   .image-wrapper img{
     display: flex;
@@ -265,4 +265,3 @@
       justify-content: center;
   }
   }
-  
