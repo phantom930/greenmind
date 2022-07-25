@@ -14,39 +14,6 @@
     </template>
     <transition name="sf-fade" mode="out-in">
       <div>
-        <div class="block lg:flex items-end">
-          <div>
-            <SfSearchBar
-              :value="searchString"
-              placeholder="Type name of the street or city"
-              :icon="{ icon: 'marker', size: '1.5rem', color: '#43464E' }"
-              class="store-search-bar"
-              @input="(value) => searchString = value"
-              @keypress.enter="() => searchKeyword = searchString"
-            />
-          </div>
-          <div>
-            <GreenButton
-              style-type="Primary"
-              color="Green"
-              shape="Round"
-              size="small"
-              class="pickup-store"
-              @click="handleSearch"
-            >
-              {{ $t("SØG") }}
-            </GreenButton>
-          </div>
-        </div>
-        <div class="checkbox-wrap">
-          <GreenCheckbox :value="isStockAvailable" @change="isStockAvailable = !isStockAvailable">
-            <template #label>
-              <p class="label">
-                There’s stock on this stores.
-              </p>
-            </template>
-          </GreenCheckbox>
-        </div>
         <p class="font-bold text-base pb-4">
           {{ `Stores found: ${stocks.length}` }}
         </p>
@@ -128,19 +95,17 @@
 <script>
 import {
   SfModal,
-  SfBar,
-  SfSearchBar
+  SfBar
 } from '@storefront-ui/vue';
 import { onSSR } from '@vue-storefront/core';
-import { computed, ref } from '@vue/composition-api';
+import { computed } from '@vue/composition-api';
 import { useUiNotification, useUiState, useStore } from '~/composables';
 
 export default {
   name: 'StoreStatus',
   components: {
     SfModal,
-    SfBar,
-    SfSearchBar
+    SfBar
   },
   props: {
     id: {
@@ -152,27 +117,10 @@ export default {
     const { isStoreModalOpen, toggleStoreModal } = useUiState();
     const { send } = useUiNotification();
     const { error, stockList, getStock } = useStore();
-    const isStockAvailable = ref(false);
-    const searchString = ref('');
-    const searchKeyword = ref('');
 
     const stocks = computed(() => {
-      if (isStockAvailable.value) {
-        return stockList.value ? stockList.value.filter((stock) =>
-          stock.isInStock && stock.address.street.toLowerCase().indexOf(searchKeyword.value.toLowerCase()) > -1
-        ) : [];
-      } else {
-        return stockList.value ? stockList.value.filter((stock) =>
-          stock.address.street.toLowerCase().indexOf(searchKeyword.value.toLowerCase()) > -1
-        ) : [];
-      }
+      return stockList.value ? stockList.value : [];
     });
-
-    console.log(stockList.value, stocks.value);
-
-    const handleSearch = () => {
-      searchKeyword.value = searchString.value;
-    };
 
     onSSR(async () => {
       await getStock({
@@ -185,11 +133,7 @@ export default {
 
     return {
       stocks,
-      isStockAvailable,
-      searchString,
-      searchKeyword,
       isStoreModalOpen,
-      handleSearch,
       toggleStoreModal
     };
   }
