@@ -15,6 +15,7 @@ const getStock = async (context, params) => {
             phone
             street
             street2
+            city
             zip
           }
           openHours {

@@ -41,8 +41,8 @@
                   <p v-if="stock.address.street2" class="text-sm font-normal">
                     {{ stock.address.street2 }}
                   </p>
-                  <p v-if="stock.address.zip" class="text-sm font-normal">
-                    {{ stock.address.zip }}
+                  <p v-if="stock.address.zip && stock.address.city" class="text-sm font-normal">
+                    {{ `${stock.address.zip} ${stock.address.city}` }}
                   </p>
                   <!-- <div class="flex items-center font-normal contact-number">
                     <img
