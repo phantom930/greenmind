@@ -4,9 +4,9 @@
       <nuxt-link
         :to="{ name: 'discountCampaign' }"
         class="underline text-center y-link sf-button"
-        title="SE TILBUD"
+        title="SE VORES TILBUD"
       >
-        SE TILBUD
+        SE VORES TILBUD
       </nuxt-link>
     </template>
   </SfTopBar>
