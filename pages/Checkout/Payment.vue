@@ -54,7 +54,7 @@
       style-type="Primary"
       color="Green"
       shape="Round"
-      :disabled="!canFinishPayment && !cartExceedLimitTotalAmount"
+      :disabled="!canFinishPayment"
       :size="$device.isMobile ? 'Max' : 'Medium'"
       class="my-5"
       @click="providerPaymentHandler(); trackAddPaymentInfo()"
