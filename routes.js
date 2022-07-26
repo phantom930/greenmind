@@ -20,12 +20,12 @@ export function getRoutes(localeIndex, themeDir = __dirname) {
 
   return [
 
-    /* Dynamic content Pages */
-    {
-      name: 'paymentResponse',
-      path: '/*',
-      component: path.resolve(themeDir, 'pages/DynamicPage.vue')
-    },
+    /* Duplicated route name */
+    // {
+    //   name: 'paymentResponse',
+    //   path: '/*',
+    //   component: path.resolve(themeDir, 'pages/DynamicPage.vue')
+    // },
     {
       name: 'home',
       path: '/',
