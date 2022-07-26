@@ -52,9 +52,9 @@
           "
         />
         <SfProperty
-          v-if="!isPersonalOrShippingPage"
+          v-if="!(shippingMethodPrice > 0) && !isPersonalOrShippingPage"
           :name="$t('Shipping')"
-          :value="shippingMethodPrice ? $currency(shippingMethodPrice) : $t('Free')"
+          :value="$t('Free')"
           class="sf-property--full-width sf-property--large property"
         />
 

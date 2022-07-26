@@ -6,7 +6,7 @@
     <SfTab
       v-if="description"
       data-cy="product-tab_description"
-      title="Description"
+      :title="$t('Description')"
     >
       <div class="product__description">
         <span v-html="description" />
