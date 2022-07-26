@@ -44,6 +44,7 @@ export default {
   },
   components: [
     '~/components/',
+    '~/components/blocks',
     '~/components/core/atoms',
     '~/components/core/organisms',
     '~/components/core/molecules'
@@ -169,8 +170,8 @@ export default {
         // @core-development-only-start
         // @core-development-only-end
         useRawSource: {
-          dev: ['@vue-storefront/odoo', '@vue-storefront/core'],
-          prod: ['@vue-storefront/odoo', '@vue-storefront/core']
+          dev: ['@vue-storefront/odoo', '@vue-storefront/core', '@vue-storefront/storyblok'],
+          prod: ['@vue-storefront/odoo', '@vue-storefront/core', '@vue-storefront/storyblok']
         }
       }
     ],
@@ -198,6 +199,19 @@ export default {
   },
   modules: makeModules([
     '@nuxtjs/sitemap',
+    [
+      '@vue-storefront/storyblok/nuxt',
+      {
+        jsBridge: 'https://app.storyblok.com/f/storyblok-v2-latest.js'
+      }
+    ],
+    [
+      'storyblok-nuxt',
+      {
+        accessToken: '0vS0uwQC7Ym1Wuf2siDT6gtt',
+        cacheProvider: 'memory'
+      }
+    ],
     '@nuxtjs/i18n',
     '@nuxtjs/gtm',
     ['@nuxtjs/redirect-module', { statusCode: 301 }],

@@ -12,7 +12,7 @@ import usePayment from './usePayment';
 import useGiftCard from './useGiftCard';
 import useCoupon from './useCoupon';
 import useStore from './useStore';
-
+import useGetLocale from './useGetLocale';
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
 import facetGetters from './getters/facetGetters';
@@ -32,6 +32,7 @@ export {
   usePartner,
   useCoupon,
   useStore,
+  useGetLocale,
 
   facetGetters,
   productGetters,
