@@ -9,7 +9,6 @@ const trackViewItem = (currency: string, value: number, products: IGAProduct[]) 
       value: value,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -21,7 +20,6 @@ const trackViewItemList = (itemListId: string, itemListName: string, products: I
       item_list_name: itemListName,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -33,7 +31,6 @@ const trackSelectItem = (itemListId: string, itemListName: string, products: IGA
       item_list_name: itemListName,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -45,7 +42,6 @@ const trackViewCart = (currency: string, value: number, products: IGAProduct[]) 
       value: value,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -57,7 +53,6 @@ const trackAddToCart = (currency: string, value: number, products: IGAProduct[])
       value: value,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -69,7 +64,6 @@ const trackRemoveFromCart = (currency: string, value: number, products: IGAProdu
       value: value,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -83,7 +77,6 @@ const trackAddPaymentInfo = (currency: string, value: number, paymentType: strin
       coupon: coupon,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -97,7 +90,6 @@ const trackAddShippingInfo = (currency: string, value: number, shippingTier: str
       coupon: coupon,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -109,7 +101,6 @@ const trackBeginCheckout = (currency: string, value: number, products: IGAProduc
       value: value,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
@@ -125,7 +116,6 @@ const trackPurchase = (purchaseInfo: IGAPurchaseInfo, products: IGAProduct[]) =>
       coupon: purchaseInfo?.coupon,
       items: [...products],
     },
-    debug_mode: true,
   });
 };
 
