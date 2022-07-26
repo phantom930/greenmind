@@ -28,21 +28,6 @@ module.exports = {
         {
           name: 'rebuild-extension',
           extendApp: rebuildExtension.default
-        },
-        {
-          name: 'cookieExtension',
-          hooks: (req, res) => {
-
-            return {
-              beforeCreate: ({ configuration }) => ({
-                ...configuration,
-                auth: req.headers.cookie,
-                'resquest-host': 'vue-dev.greenmind.space'
-              }),
-              beforeCall: ({ configuration, callName, args }) => args,
-              afterCall: ({ configuration, callName, response }) => response
-            };
-          }
         }
       ],
       customQueries
