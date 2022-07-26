@@ -33,7 +33,9 @@
       />
     </abstract-payment-observer>
 
-    <span v-if="cartExcedLimitTotalAmount"> You can't pass over 50000! </span>
+    <p v-if="cartExceedLimitTotalAmount" class="pt-4 text-primary-red">
+      You can't pass over 50000!
+    </p>
     <GreenButton
       v-if="totals.total === 0"
       style-type="Primary"
@@ -68,7 +70,7 @@ import { onSSR } from '@vue-storefront/core';
 import { cartGetters, useCart, useMakeOrder } from '@vue-storefront/odoo';
 import { computed, defineComponent, ref, useRouter } from '@nuxtjs/composition-api';
 import { useUiHelpers, usePayment, useUiNotification } from '~/composables';
-import { setTrackAddPaymentInfo } from "~/resources/tracking";
+import { setTrackAddPaymentInfo } from '~/resources/tracking';
 
 export default defineComponent({
   name: 'Payment',
@@ -111,6 +113,22 @@ export default defineComponent({
       await getPaymentProviderList();
     });
 
+    const processOrder = async () => {
+      await make();
+    };
+
+    const providerPaymentHandler = () => {};
+
+    const cartExceedLimitTotalAmount = computed(() => cart?.value?.order?.amountTotal > 50000);
+
+    const canFinishPayment = computed(() => (!cartExceedLimitTotalAmount.value && isPaymentReady.value) || cart?.value?.order?.amountTotal === 0);
+
+    const providerListHasMoreThanOne = computed(
+      () => providerList.value.length > 1
+    );
+
+    const totals = computed(() => cartGetters.getTotals(cart.value));
+
     const handleMakeGiftPayment = async () => {
       const response = await makeGiftCardPayment();
       if (!response) {
@@ -120,33 +138,19 @@ export default defineComponent({
       router.push({ name: 'paymentResponse'});
     };
 
-    const processOrder = async () => {
-      await make();
-    };
-
-    const providerPaymentHandler = () => {};
-
-    const cartExcedLimitTotalAmount = computed(() => cart?.value?.order?.amountTotal > 50000);
-
-    const canFinishPayment = computed(() => (!cartExcedLimitTotalAmount.value && isPaymentReady.value) || cart?.value?.order?.amountTotal === 0);
-
-    const providerListHasMoreThanOne = computed(
-      () => providerList.value.length > 1
-    );
-
     const trackAddPaymentInfo = () => {
       setTrackAddPaymentInfo(cart.value.order.amountTotal, cart.value.order.websiteOrderLine, selectedProvider.value.name);
-    }
+    };
 
     return {
       handleMakeGiftPayment,
-      cartExcedLimitTotalAmount,
+      cartExceedLimitTotalAmount,
       canFinishPayment,
       isPaymentReady,
       terms,
       loading,
       products: computed(() => cartGetters.getItems(cart.value)),
-      totals: computed(() => cartGetters.getTotals(cart.value)),
+      totals,
       tableHeaders: ['Description', 'Size', 'Color', 'Quantity', 'Amount'],
       cartGetters,
       processOrder,

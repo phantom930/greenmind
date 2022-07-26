@@ -1,6 +1,6 @@
 :root {
-  --font-family--primary: "Josefin Sans"; 
-  --font-family--secondary: "Josefin Sans"; 
+  --font-family--primary: "Josefin Sans";
+  --font-family--secondary: "Josefin Sans";
   --line-height--primary: 24px;
   @include generate-color-variants(--_c-greenmind-primary-black, #1d1f22);
   @include generate-color-variants(--_c-greenmind-secondary-black, #43464E);
@@ -28,7 +28,7 @@
 
   @include generate-color-variants(--_c-greenmind-fern-primary-medium-green, #7BA393);
   @include assign-color-variants(--c-primary, --_c-greenmind-fern-primary-medium-green);
-  
+
   @include generate-color-variants(--_c-greenmind-fern-secondary-medium-green, #78A886);
 
   @include generate-color-variants(--_c-greenmind-mint-primary-light-green, #A5CEBE);
@@ -120,13 +120,13 @@ h4 {
 
 .sf-range {
   --range-tooltip-font-family	: var(--font-family--primary);
-  --range-tooltip-font-size: 16px;  
-  --range-tooltip-font-line-height: 22px;	
+  --range-tooltip-font-size: 16px;
+  --range-tooltip-font-line-height: 22px;
 }
 
 .sf-hero {
   --hero-item-subtitle-font: var(--font-family--primary);
-  --hero-item-title-font: var(--font-family--primary);  
+  --hero-item-title-font: var(--font-family--primary);
 }
 
 .sf-footer-column {
@@ -138,11 +138,11 @@ h4 {
 .sf-carousel {
   --call-to-action-title-font: var(--font-family--primary);
   --call-to-action-title-font-weight: 700;
-  --call-to-action-title-font-size: 34px;	
+  --call-to-action-title-font-size: 34px;
   --call-to-action-title-font-line-height: 35px;
 
-  --call-to-action-description-font-weight: 400;	
-  --call-to-action-description-font-family: var(--font-family--primary);	
+  --call-to-action-description-font-weight: 400;
+  --call-to-action-description-font-family: var(--font-family--primary);
   --call-to-action-description-font-size: 18px;
   @include for-mobile {
     --carousel-width: 90%;
@@ -152,7 +152,7 @@ h4 {
   @include for-mobile {
     display: flex !important;
   }
-  
+
 }
 
 .sf-sidebar__aside {
@@ -212,6 +212,9 @@ h4 {
 }
 .text-primary-grey {
   color: var(--_c-greenmind-primary-grey);
+}
+.text-primary-red {
+  color: var(--_c-greenmind-primary-red);
 }
 .text-fern-secondary {
   color: var(--_c-greenmind-fern-secondary-medium-green);
