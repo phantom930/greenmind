@@ -116,8 +116,12 @@ const useUiHelpers = (): any => {
 
     const upperName = provider.toLocaleUpperCase();
 
-    if (upperName.includes('ADYEN_OG')) {
+    if (upperName === 'ADYEN_OG') {
       return 'AdyenExternalPaymentProvider';
+    }
+
+    if (upperName === 'ADYEN') {
+      return 'AdyenDirectPaymentProvider';
     }
 
     if (upperName.includes('WIRE')) {

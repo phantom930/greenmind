@@ -10,6 +10,7 @@ const getPaymentAcquirerList = async (context, params) => {
         id
         name
         provider
+        displayAs
       }
     }`
   });

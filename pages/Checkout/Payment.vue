@@ -17,7 +17,7 @@
           :is-checked="selectedProvider.id === provider.id"
           :has-general-wrapper="false"
           emit-value
-          :label="provider.name"
+          :label="provider.displayAs"
           @change="selectProvider"
         />
       </div>
@@ -28,6 +28,7 @@
         :is="getComponentProviderByName(selectedProvider.provider)"
         class="py-8"
         :provider="selectedProvider"
+        :cart="cart"
         @isPaymentReady="isPaymentReady = arguments[0]"
         @providerPaymentHandler="providerPaymentHandler = arguments[0]"
       />
@@ -79,8 +80,8 @@ export default defineComponent({
     SfImage,
     VsfPaymentProvider: () =>
       import('~/components/Checkout/VsfPaymentProvider'),
-    AdyenPaymentProvider: () =>
-      import('~/components/Checkout/AdyenPaymentProvider'),
+    AdyenDirectPaymentProvider: () =>
+      import('~/components/Checkout/AdyenDirectPaymentProvider'),
     AdyenExternalPaymentProvider: () =>
       import('~/components/Checkout/AdyenExternalPaymentProvider'),
     WireTransferPaymentProvider: () =>
@@ -143,6 +144,7 @@ export default defineComponent({
     };
 
     return {
+      cart,
       handleMakeGiftPayment,
       cartExceedLimitTotalAmount,
       canFinishPayment,

@@ -12,14 +12,14 @@ import usePayment from './usePayment';
 import useGiftCard from './useGiftCard';
 import useCoupon from './useCoupon';
 import useStore from './useStore';
-import useAdyenDropInPayment from './useAdyenDropInPayment';
+import useAdyenDirectPayment from './useAdyenDirectPayment';
 import useGetLocale from './useGetLocale';
 import cartGetters from './getters/cartGetters';
 import productGetters from './getters/productGetters';
 import facetGetters from './getters/facetGetters';
 
 export {
-  useAdyenDropInPayment,
+  useAdyenDirectPayment,
   useGiftCard,
   usePayment,
   useUiHelpers,
