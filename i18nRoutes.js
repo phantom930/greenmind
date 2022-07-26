@@ -162,9 +162,9 @@ export default {
     sv: '/job-hos-greenmind'
   },
   discountCampaign: {
-    en: '/aktive-kampagner',
-    da: '/aktive-kampagner',
-    de: '/aktive-kampagner',
-    sv: '/aktive-kampagner'
+    en: '/tilbud',
+    da: '/tilbud',
+    de: '/tilbud',
+    sv: '/tilbud'
   }
 };
