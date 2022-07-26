@@ -1,5 +1,8 @@
 <template>
-  <div id="dropin-container" />
+  <div>
+    <SfLoader :class="{ loader: loading }" :loading="loading" />
+    <div id="dropin-container" ref="dropinDivElement" />
+  </div>
 </template>
 
 <script>
@@ -7,11 +10,14 @@
 
 import { ref, onMounted } from '@nuxtjs/composition-api';
 import { useAdyenDirectPayment } from '~/composables';
-// import AdyenCheckout from '@adyen/adyen-web';
-// import '@adyen/adyen-web/dist/adyen.css';
-
+import { SfLoader } from '@storefront-ui/vue';
+import AdyenCheckout from '@adyen/adyen-web';
+import '@adyen/adyen-web/dist/adyen.css';
 export default {
   name: 'AdyenDirectPaymentProvider',
+  components: {
+    SfLoader
+  },
   props: {
     provider: {
       required: true,
@@ -22,8 +28,15 @@ export default {
       type: Object
     }
   },
+  onDestroyed() {
+    this.adyenDropin.unmount();
+    this.adyenDropin = null;
+  },
+  emits: ['isPaymentReady', 'providerPaymentHandler'],
   setup(props, { emit }) {
     const adyenDropin = ref(null);
+    const dropinDivElement = ref(null);
+    const loading = ref(false);
 
     const {
       openAdyenTransaction,
@@ -37,6 +50,7 @@ export default {
     } = useAdyenDirectPayment(props.provider.id, props.cart.order.id);
 
     onMounted(async() => {
+      loading.value = true;
       await openAdyenTransaction();
       await getAdyenAcquirerInfo();
       await getAdyenPaymentMethods();
@@ -55,22 +69,34 @@ export default {
           console.error(error.name, error.message, error.stack, component);
         },
         onAdditionalDetails: async (state, dropin) => {
-          console.log(state);
           await getAdyenPaymentDetails({
             acquirerId: props.provider.id,
             transactionReference: transaction.value.reference,
             paymentDetails: state.data
           });
         },
+        onChange: (state, component) => {
+          console.log(component.isValid);
+          if (component.isValid) {
+            emit('isPaymentReady', true);
+            return;
+          }
+          emit('isPaymentReady', false);
+        },
+
         onSubmit: async(state, dropin) => {
-          console.log(state);
-          await adyenMakeDirectPayment({
+          const response = await adyenMakeDirectPayment({
             acquirerId: props.provider.id,
             reference: transaction.value.reference,
             paymentMethod: state.data.paymentMethod,
             token: transaction.value.access_token,
-            browserInfo: { test: '2'}
+            browserInfo: state.data?.browserInfo || {}
           });
+
+          console.log(response);
+          if (response.action?.type === 'redirect' && response.action?.paymentMethodType === 'mobilepay') {
+            window.open(response.action?.url, '_blank');
+          }
         },
         paymentMethodsConfiguration: {
           card: {
@@ -81,23 +107,34 @@ export default {
         }
       };
 
-      // const checkout = new AdyenCheckout(configuration);
-      // adyenDropin.value = checkout.create(
-      //   'dropin', {
-      //     openFirstPaymentMethod: true,
-      //     openFirstStoredPaymentMethod: false,
-      //     showStoredPaymentMethods: false,
-      //     showPaymentMethods: true,
-      //     showPayButton: false,
-      //     setStatusAutomatically: true
-      //   }
-      // ).mount('#dropin-container');
+      const checkout = await AdyenCheckout(configuration);
 
-      emit('isPaymentReady', true);
+      adyenDropin.value = checkout.create(
+        'dropin', {
+          openFirstPaymentMethod: true,
+          openFirstStoredPaymentMethod: false,
+          showStoredPaymentMethods: false,
+          showPaymentMethods: true,
+          showPayButton: false,
+          setStatusAutomatically: true,
+          onSelect: (component) => {
+            if (component.isValid) {
+              emit('isPaymentReady', true);
+              return;
+            }
+            emit('isPaymentReady', false);
+          }
+        }
+      ).mount(dropinDivElement.value);
+
+      loading.value = false;
+
       emit('providerPaymentHandler', adyenDropin.value.submit);
     });
 
     return {
+      loading,
+      dropinDivElement,
       adyenDropin,
       acquirerInfo
     };

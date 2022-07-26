@@ -11,15 +11,17 @@
     event-pubsub "4.3.0"
     js-message "1.0.7"
 
-"@adyen/adyen-web@4.7.3":
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/@adyen/adyen-web/-/adyen-web-4.7.3.tgz#bbb56dea272f9afc5b11677068ac893096c6c115"
-  integrity sha512-PScBuaIxFlVPOs50z5Yu2tknTQUJzPCboXzVHaFLpJzQrohgOkkCXjvbPgUif5qdvWz8Pj/Jbu4G6fDr/DOB8Q==
+"@adyen/adyen-web@^5.19.0":
+  version "5.19.0"
+  resolved "https://registry.yarnpkg.com/@adyen/adyen-web/-/adyen-web-5.19.0.tgz#8156ce1ac22ba44c3fd0abbad246a6e329690a85"
+  integrity sha512-Asjws3ICic6IQ7gxI+qObtQajR3RrnDA0MYFdinWg2gafx9IO8LCUbclv+WuZiP8sx614vMliNdl41xQjK+VOw==
   dependencies:
-    "@types/applepayjs" "^3.0.2"
+    "@babel/runtime" "^7.15.4"
+    "@babel/runtime-corejs3" "^7.16.3"
+    "@types/applepayjs" "^3.0.4"
     "@types/googlepay" "^0.6.2"
     classnames "^2.3.1"
-    core-js "^3.14.0"
+    core-js-pure "^3.18.1"
     preact "^10.5.13"
 
 "@ampproject/remapping@^2.1.0":
@@ -934,10 +936,25 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
+"@babel/runtime-corejs3@^7.16.3":
+  version "7.18.9"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.18.9.tgz#7bacecd1cb2dd694eacd32a91fcf7021c20770ae"
+  integrity sha512-qZEWeccZCrHA2Au4/X05QW5CMdm4VjUDCrGq5gf1ZDcM4hRqreKrtwAn7yci9zfgAS9apvnsFXiGBHBAxZdK9A==
+  dependencies:
+    core-js-pure "^3.20.2"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.14.0", "@babel/runtime@^7.8.4":
   version "7.17.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.9.tgz#d19fbf802d01a8cb6cf053a64e472d42c434ba72"
   integrity sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.15.4":
+  version "7.18.9"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
+  integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2099,7 +2116,7 @@
   dependencies:
     anymatch "*"
 
-"@types/applepayjs@^3.0.2":
+"@types/applepayjs@^3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/applepayjs/-/applepayjs-3.0.4.tgz#9806a4b3ccd73dcf169c61a34be7a39f91d77540"
   integrity sha512-RqaVZWy1Kj4e1PoUoOI8uA+4UuuLpicQFxfU9Y/xWJFZFT6mFB4PiiY911iDxFk7pdvaj5HKH7VsWRisRca1Rg==
@@ -4967,15 +4984,15 @@ core-js-compat@^3.12.1, core-js-compat@^3.20.2, core-js-compat@^3.21.0:
     browserslist "^4.20.3"
     semver "7.0.0"
 
+core-js-pure@^3.18.1, core-js-pure@^3.20.2:
+  version "3.24.0"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.24.0.tgz#10eeb90dbf0d670a6b22b081aecc7deb2faec7e1"
+  integrity sha512-uzMmW8cRh7uYw4JQtzqvGWRyC2T5+4zipQLQdi2FmiRqP83k3d6F3stv2iAlNhOs6cXN401FCD5TL0vvleuHgA==
+
 core-js@^2.4.0, core-js@^2.6.5:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
-
-core-js@^3.14.0:
-  version "3.24.0"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.24.0.tgz#4928d4e99c593a234eb1a1f9abd3122b04d3ac57"
-  integrity sha512-IeOyT8A6iK37Ep4kZDD423mpi6JfPRoPUdQwEWYiGolvn4o6j2diaRzNfDfpTdu3a5qMbrGUzKUpYpRY8jXCkQ==
 
 core-js@^3.6.5:
   version "3.22.3"

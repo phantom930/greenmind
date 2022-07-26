@@ -20,19 +20,18 @@
           :label="provider.displayAs"
           @change="selectProvider"
         />
+        <abstract-payment-observer v-if="selectedProvider.provider && (selectedProvider.id === provider.id)">
+          <component
+            :is="getComponentProviderByName(selectedProvider.provider)"
+            class="py-8"
+            :provider="selectedProvider"
+            :cart="cart"
+            @isPaymentReady="isPaymentReady = arguments[0]"
+            @providerPaymentHandler="providerPaymentHandler = arguments[0]"
+          />
+        </abstract-payment-observer>
       </div>
     </template>
-
-    <abstract-payment-observer v-if="selectedProvider.provider">
-      <component
-        :is="getComponentProviderByName(selectedProvider.provider)"
-        class="py-8"
-        :provider="selectedProvider"
-        :cart="cart"
-        @isPaymentReady="isPaymentReady = arguments[0]"
-        @providerPaymentHandler="providerPaymentHandler = arguments[0]"
-      />
-    </abstract-payment-observer>
 
     <p v-if="cartExceedLimitTotalAmount" class="pt-4 text-primary-red">
       You can't pass over 50000!

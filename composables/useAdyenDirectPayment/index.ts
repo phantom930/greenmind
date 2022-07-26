@@ -49,7 +49,7 @@ const useAdyenDropInPayment = (acquirerId: number, cartId?: number): IUseAdyenDr
   const adyenMakeDirectPayment = async(params: any) => {
     const { data } = await context.$odoo.api.adyenMakeDirectPayment(params);
 
-    data?.adyenPayments?.adyenPayments || {};
+    return data?.adyenPayments?.adyenPayments || {};
   };
 
   const setTransaction = (transaction: any) => transaction.value = transaction;
