@@ -6,6 +6,12 @@
         :image="require(`/assets/images/homeHero/homeHero_red.webp`)"
       />
     </nuxt-link> -->
+    <nuxt-link to="/tilbud" :title="$t('Offer')">
+      <SfHeroItem
+        class="top-hero-item"
+        :image="require(`/assets/images/homeHero/homeHero_0.webp`)"
+      />
+    </nuxt-link>
     <nuxt-link :to="{ name: 'home' }" :title="$t('Home')">
       <SfHeroItem
         class="top-hero-item"
