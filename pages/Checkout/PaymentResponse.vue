@@ -1,15 +1,15 @@
 <template>
   <div id="thank-you">
     <SfHeading
-      v-if="paymentSuccess"
       :title="$t('Your cart is empty')"
       :level="2"
     />
+    <p class="text mb">
+      Tak for din bestilling. Vi går i gang med at behandle din bestilling snarest muligt.
+    </p>
     <nuxt-link to="/" :title="$t('Thank you for your order')">
       <SfButton class="back-button color-secondary button-size">
-        {{
-          paymentSuccess ? $t("Thank you for your order") : $t('There is a problem with the order')
-        }}
+        Fortsæt med at handle
       </SfButton>
     </nuxt-link>
   </div>
