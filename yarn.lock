@@ -2730,7 +2730,7 @@
     lodash-es "^4.17.15"
     vue "^2.6.11"
 
-"@vue-storefront/middleware@^2.7.1":
+"@vue-storefront/middleware@^2.5.6":
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/@vue-storefront/middleware/-/middleware-2.7.1.tgz#f289adca30ab5665bed13df2b55a7de879b9ff70"
   integrity sha512-SqY/ew+n4ewazOdcUYeZQbqMOwHUjBMkaB/vgUFjwIomoMgi8zo/+K+emycY3CcTF9XS6KsT3lO7H5+MIxdUBg==
