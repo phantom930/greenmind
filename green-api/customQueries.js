@@ -102,6 +102,7 @@ module.exports = {
         imageFilename
         slug
         combinationInfoVariant
+        manufacturerName
       }
     }
   }
@@ -331,7 +332,7 @@ module.exports = {
     mutation addAddress($name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $street2: String, $zip: String!, $type: AddressEnum! ) {
       addAddress(type: $type, address: {name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, street2: $street2, zip: $zip}) {
         id
-        name 
+        name
         street
         street2
         city
@@ -354,7 +355,7 @@ module.exports = {
     mutation updateAddress($id: Int!, $name: String!, $city: String!, $countryId: Int!, $phone: String!, $street: String!, $street2: String, $zip: String!) {
       updateAddress( address: {id: $id,name: $name, city: $city, countryId: $countryId, phone: $phone, street: $street, street2: $street2, zip: $zip}) {
         id
-        name 
+        name
         street
         street2
         city

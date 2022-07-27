@@ -103,12 +103,13 @@ export default {
     const products = computed(() => facetGetters.getProducts(result.value));
     const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
-    const customQueryProducts = {
-      getProductTemplatesList: 'greenGetProductListFormHomePage'
-    };
-
     onSSR(async () => {
-      const params = { filter: { hero: true }, customQueryProducts };
+      const params = {
+        filter: { hero: true },
+        customQueryProducts: {
+          getProductTemplatesList: 'greenGetProductListFormHomePage'
+        }
+      };
 
       await search(params);
 
