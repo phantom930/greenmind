@@ -103,8 +103,6 @@ export default {
     const products = computed(() => facetGetters.getProducts(result.value));
     const mobileOrTabletSize = computed(() => root.$breakpoints.sMd);
 
-    console.log('products:', products.value);
-
     onSSR(async () => {
       const params = {
         filter: { hero: true },
