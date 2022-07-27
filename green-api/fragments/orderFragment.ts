@@ -26,6 +26,16 @@ order {
   orderUrl
   stage
   totalCount
+  lastTransaction{
+    payment{
+      name
+      amount
+      paymentReference
+    }
+    acquirer
+    state
+    amount
+  }
   websiteOrderLine {
     id
     name
